@@ -6,9 +6,6 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Instrument+Sans:wght@400..700&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .path { position: relative; margin-top: 40px; }
@@ -25,26 +22,45 @@
     .unit.live h3 { color: var(--ink); }
     .unit.live p { color: var(--accent); font-weight: 600; }
     .unit.live:hover h3 { color: var(--accent); }
+    .home-fold { min-height: calc(100svh - 64px); }
+    .home-fold svg { width: 100%; max-height: calc(100svh - 120px); }
   </style>
 </head>
-<body>
+<body data-root="./">
+<a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
   <div class="wrap">
     <a class="logo" href="./">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Course</a><a href="about.html">About</a></nav>
     <div class="spacer"></div>
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
     </button>
+    <a class="btn sm" href="account/">Sign in</a>
   </div>
 </header>
 
-<main class="wrap">
-  <section style="padding:72px 0 24px">
-    <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
-    <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
-    <a class="btn reveal" href="lessons/budgeting/">Start with budgeting <span class="arrow">→</span></a>
+<main class="wrap" id="main">
+  <section class="fold home-fold">
+    <div>
+      <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
+      <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
+      <a class="btn reveal" href="lessons/budgeting/">Start with budgeting <span class="arrow">→</span></a>
+    </div>
+    <svg class="reveal" viewBox="0 0 480 520" role="img" aria-label="A winding road through five parts: foundations, your money, your business, markets and Wall Street, and career launch">
+      <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
+      <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--card)" stroke-width="2" stroke-dasharray="8 10" class="flow"/>
+      <circle r="8" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="9s" repeatCount="indefinite" path="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50"/></circle>
+      <g font-family="Fraunces, serif" font-size="21" fill="var(--ink)">
+        <circle cx="80" cy="470" r="13" fill="var(--accent)"/><text x="104" y="508">First paycheck</text>
+        <circle cx="330" cy="380" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="352" y="386" font-size="17">Your money</text>
+        <circle cx="150" cy="270" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="20" y="246" font-size="17">Your business</text>
+        <circle cx="330" cy="160" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="200" y="138" font-size="17">Markets</text>
+        <circle cx="410" cy="50" r="13" fill="var(--ink)"/><text x="400" y="22" text-anchor="end">Wall Street deal</text>
+      </g>
+    </svg>
   </section>
 
   <div class="path">
@@ -74,7 +90,13 @@
     <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><p>Coming soon</p></div></div>
   </div>
 </main>
-<footer class="foot"><div class="wrap">FinanceHub</div></footer>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="about.html">About and contact</a><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/cookies.html">Cookies and storage</a><a href="legal/privacy.html#delete">Delete my data</a><a href="credits.html">Credits</a></nav>
+    <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
 
 <script src="assets/js/save.js"></script>
 <script src="assets/js/site.js"></script>

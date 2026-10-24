@@ -33,6 +33,41 @@
     update();
   }
 
+  // Storage notice. We set no tracking or ad cookies, so this informs rather than asks.
+  const base = document.body.dataset.root || "./";
+  let noticed = false;
+  try { noticed = localStorage.getItem("fh-notice-ok") === "1"; } catch (e) { noticed = true; }
+  if (!noticed) {
+    const n = document.createElement("div");
+    n.className = "notice";
+    n.setAttribute("role", "region");
+    n.setAttribute("aria-label", "How this site stores data");
+    n.innerHTML = `<p>No tracking or ad cookies here. Your progress is saved in this browser so you don't lose it. <a href="${base}legal/cookies.html">Details</a></p><button class="btn sm">Got it</button>`;
+    n.querySelector("button").addEventListener("click", () => {
+      try { localStorage.setItem("fh-notice-ok", "1"); } catch (e) { /* storage blocked */ }
+      n.remove();
+    });
+    document.body.appendChild(n);
+  }
+
+  // Companion panel in the right margin: your character's numbers, live.
+  const comp = document.querySelector(".companion");
+  if (comp && window.FH) {
+    const render = () => {
+      const s = FH.state, c = s.character, m = FH.money;
+      comp.querySelector("[data-k=pay]").textContent = m(c.monthlyTakeHome);
+      comp.querySelector("[data-k=ef]").textContent = m(c.emergencyFund);
+      comp.querySelector("[data-k=inv]").textContent = m(c.investments);
+      const debt = comp.querySelector("[data-k=debt]");
+      debt.textContent = m(c.creditCardDebt);
+      debt.classList.toggle("bad", c.creditCardDebt > 0);
+      comp.querySelector("[data-k=xp]").textContent = s.xp;
+      comp.querySelector("[data-k=badges]").textContent = s.badges.length;
+    };
+    document.addEventListener("fh:save", render);
+    render();
+  }
+
   // Section rail: highlight the chapter currently on screen.
   const rail = document.querySelector(".rail");
   if (rail) {

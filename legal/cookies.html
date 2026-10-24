@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookies and storage · FinanceHub</title>
+  <meta name="description" content="Everything FinanceHub saves in your browser, and how to clear it.">
+  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../">Course</a><a href="../about.html">About</a></nav>
+    <div class="spacer"></div>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Sign in</a>
+  </div>
+</header>
+<main id="main" class="wrap narrow doc">
+<h1>Cookies and storage</h1>
+<p class="updated">Last updated October 24, 2026</p>
+
+<div class="callout"><b>Short version:</b> FinanceHub sets no cookies and uses no trackers. It saves a few items in your browser's local storage so the site works, like keeping your progress. Because these are needed for the site to work and aren't used for tracking, we tell you about them instead of asking for consent.</div>
+
+<h2>What we save in your browser</h2>
+<table>
+  <tr><th>Name</th><th>What it's for</th><th>How long</th></tr>
+  <tr><td><code>financehub-save-v1</code></td><td>Your progress, XP, badges, game results and character numbers</td><td>Until you clear it</td></tr>
+  <tr><td><code>fh-theme</code></td><td>Remembers light or dark mode</td><td>Until you clear it</td></tr>
+  <tr><td><code>fh-notice-ok</code></td><td>Remembers that you closed the storage notice</td><td>Until you clear it</td></tr>
+  <tr><td><code>fh-reflect-…</code></td><td>Your private reflection answers</td><td>Until you clear it</td></tr>
+</table>
+<p>When accounts launch, our account provider (Supabase) will also save a sign-in token in local storage so you stay signed in. It's only used to keep you signed in.</p>
+
+<h2>What we don't use</h2>
+<p>No advertising cookies, no analytics, no social media pixels, no fingerprinting, and no third-party font or audio services. If that ever changes, we'll ask for your consent first, with "no" as easy to pick as "yes".</p>
+
+<h2>Clearing it</h2>
+<p>Use the erase button on the <a href="privacy.html#delete">privacy page</a>, or clear site data in your browser settings.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../about.html">About and contact</a><a href="../legal/privacy.html">Privacy</a><a href="../legal/terms.html">Terms</a><a href="../legal/cookies.html">Cookies and storage</a><a href="../legal/privacy.html#delete">Delete my data</a><a href="../credits.html">Credits</a></nav>
+    <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../assets/js/save.js"></script>
+<script src="../assets/js/site.js"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+
+</body>
+</html>

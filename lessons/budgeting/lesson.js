@@ -121,7 +121,11 @@
     lines.forEach((t, i) => {
       const p = document.createElement("p");
       p.textContent = t;
+      p.tabIndex = 0;
+      p.setAttribute("role", "button");
+      p.setAttribute("aria-label", `Play from line ${i + 1}: ${t}`);
       p.addEventListener("click", () => playLine(i));
+      p.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); playLine(i); } });
       transcript.appendChild(p);
     });
   }).catch(() => { transcript.innerHTML = "<p>The narration couldn't load. Try refreshing the page.</p>"; });
