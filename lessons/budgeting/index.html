@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budgeting Frameworks · FinanceHub</title>
+  <meta name="description" content="Unit 4, Lesson 1: zero-based budgeting and the 50/30/20 rule, taught visually, by ear, by playing, and by doing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono&display=swap">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <span class="muted small">Unit 4 · Lesson 1</span>
+    <div class="spacer"></div>
+    <span class="pill" title="Experience points">⭐ <span id="xp">0</span> XP</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="lesson-progress"></div></div>
+</header>
+
+<nav class="style-nav" aria-label="Lesson sections">
+  <div class="wrap">
+    <div class="row" id="style-chips">
+      <button class="chip" data-target="hook"><span class="dot"></span>🎯 Start</button>
+      <button class="chip" data-target="see" data-style="visual"><span class="dot"></span>👀 See it</button>
+      <button class="chip" data-target="hear" data-style="auditory"><span class="dot"></span>🎧 Hear it</button>
+      <button class="chip" data-target="play" data-style="kinesthetic"><span class="dot"></span>🎮 Play it</button>
+      <button class="chip" data-target="logic" data-style="logical"><span class="dot"></span>🧮 Break it down</button>
+      <button class="chip" data-target="nature" data-style="naturalistic"><span class="dot"></span>🌿 Nature link</button>
+      <button class="chip" data-target="notes" data-style="reading"><span class="dot"></span>📝 Notes</button>
+      <button class="chip" data-target="together" data-style="social"><span class="dot"></span>👥 Together</button>
+      <button class="chip" data-target="solo" data-style="solitary"><span class="dot"></span>🧘 On your own</button>
+      <button class="chip" data-target="check"><span class="dot"></span>✅ Check</button>
+      <button class="chip" data-target="connects"><span class="dot"></span>🔗 Connects to</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- HOOK -->
+  <section class="section" id="hook">
+    <div class="eyebrow">Unit 4 · Budgeting and banking</div>
+    <h1>Give every dollar a job</h1>
+    <p class="lead">You just got your first real paycheck: <b>$2,400</b> a month after taxes. Rent alone eats $900. By the end of this lesson you'll have a plan for every dollar, and you'll have survived a month of real life with it.</p>
+
+    <div class="grid-2 q4">
+      <div class="card"><h3><span class="tag">❓</span>What am I doing?</h3><p>Splitting the money you take home into planned jobs (needs, wants and savings) <i>before</i> you spend it.</p></div>
+      <div class="card"><h3><span class="tag">💡</span>Why does it matter?</h3><p>Without a plan, surprise costs end up on a credit card at 20%+ interest. With one, they come out of savings you already set aside.</p></div>
+      <div class="card"><h3><span class="tag">⚙️</span>How does it work?</h3><p>Two tools: the <b>50/30/20 rule</b> gives you a quick target split, and <b>zero-based budgeting</b> assigns every single dollar until $0 is left unplanned.</p></div>
+      <div class="card"><h3><span class="tag">🧑‍💼</span>Who does this for a living?</h3><p><b>Financial planners</b> build these budgets for clients. Inside companies, <b>FP&amp;A analysts</b> (financial planning and analysis) do the same thing at scale, with millions of dollars and dozens of departments.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>Which way do you learn best?</h3>
+      <p class="muted small">Pick one and we'll flag that part of every lesson for you. You can still use all of them.</p>
+      <div class="row" style="display:flex;flex-wrap:wrap;gap:8px" id="style-picker">
+        <button class="chip" data-pick="visual">👀 Seeing</button>
+        <button class="chip" data-pick="auditory">🎧 Hearing</button>
+        <button class="chip" data-pick="kinesthetic">🎮 Doing</button>
+        <button class="chip" data-pick="logical">🧮 Logic and patterns</button>
+        <button class="chip" data-pick="naturalistic">🌿 Nature</button>
+        <button class="chip" data-pick="reading">📝 Reading and writing</button>
+        <button class="chip" data-pick="social">👥 With others</button>
+        <button class="chip" data-pick="solitary">🧘 On my own</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEE IT -->
+  <section class="section" id="see" data-style="visual">
+    <div class="eyebrow">👀 See it <span class="your-style">Your style</span></div>
+    <h2>The 50/30/20 split, live</h2>
+    <p>Drag the slider to change the take-home pay. Watch how much each part gets.</p>
+
+    <div class="card">
+      <label for="pay-slider" class="muted small">Monthly take-home pay</label>
+      <div class="big-num" id="pay-label">$2,400</div>
+      <input type="range" id="pay-slider" min="1000" max="8000" step="100" value="2400" aria-label="Monthly take-home pay">
+
+      <div class="bar" style="margin-top:16px" aria-hidden="true">
+        <div class="bg-needs" id="bar-needs" style="width:50%">Needs</div>
+        <div class="bg-wants" id="bar-wants" style="width:30%">Wants</div>
+        <div class="bg-savings" id="bar-savings" style="width:20%">Savings</div>
+      </div>
+      <div class="grid-4" style="margin-top:16px">
+        <div><div class="muted small">Needs · 50%</div><div class="big-num c-needs" id="amt-needs">$1,200</div><div class="small muted">rent, groceries, transport, insurance, minimum debt payments</div></div>
+        <div><div class="muted small">Wants · 30%</div><div class="big-num c-wants" id="amt-wants">$720</div><div class="small muted">eating out, games, concerts, new clothes, upgrades</div></div>
+        <div><div class="muted small">Savings · 20%</div><div class="big-num c-savings" id="amt-savings">$480</div><div class="small muted">emergency fund, investing, extra debt payments</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px">Every dollar gets a job</h3>
+    <p>Each square is 1% of your paycheck. Zero-based budgeting means <b>no grey squares left</b>. Tap a category to hand out the squares.</p>
+    <div class="card">
+      <div class="dollar-grid" id="dollar-grid" aria-label="100 squares, each 1% of take-home pay"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+        <button class="btn small bg-needs" data-give="needs">+5% Needs</button>
+        <button class="btn small bg-wants" data-give="wants">+5% Wants</button>
+        <button class="btn small bg-savings" data-give="savings">+5% Savings</button>
+        <button class="btn small ghost" id="grid-reset">Reset</button>
+      </div>
+      <p class="small" style="margin-top:12px" id="grid-status">100% unassigned. Every grey square is money with no plan.</p>
+    </div>
+  </section>
+
+  <!-- HEAR IT -->
+  <section class="section" id="hear" data-style="auditory">
+    <div class="eyebrow">🎧 Hear it <span class="your-style">Your style</span></div>
+    <h2>Listen to the walkthrough</h2>
+    <p>About 2 minutes. Each line lights up as it's read, so you can follow along or close your eyes.</p>
+    <div class="card">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px">
+        <button class="btn" id="speak-play">▶ Play</button>
+        <button class="btn ghost" id="speak-stop">■ Stop</button>
+        <label class="small muted" for="speak-rate">Speed</label>
+        <select id="speak-rate"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.2">1.2×</option><option value="1.4">1.4×</option></select>
+      </div>
+      <div class="script" id="script">
+        <p>Here's the big idea. A budget isn't a punishment. It's a plan that tells your money where to go before it disappears.</p>
+        <p>Start with what you actually take home after taxes. In our example that's twenty-four hundred dollars a month.</p>
+        <p>The fifty, thirty, twenty rule is a quick target. Fifty percent goes to needs, the things you'd be in trouble without: rent, food, getting to work.</p>
+        <p>Thirty percent goes to wants. That's fun money: eating out, games, clothes you'd like but don't need.</p>
+        <p>And twenty percent goes to your future: an emergency fund first, then investing or paying down debt faster.</p>
+        <p>Zero-based budgeting goes one step further. You keep assigning dollars until income minus everything you planned equals exactly zero.</p>
+        <p>Zero doesn't mean you spend it all. Savings counts as a job. It just means no dollar is wandering around without a plan.</p>
+        <p>Here's why this matters. When your car breaks down, a budget with an emergency fund pays for it calmly. Without one, the repair goes on a credit card, and it keeps costing you interest for months.</p>
+        <p>Companies do the exact same thing. Every department gets a budget, and analysts compare what was planned against what actually happened. You're learning the job right now.</p>
+      </div>
+      <p class="small muted hidden" id="speak-unsupported">Your browser can't read aloud. Try Chrome, Edge or Safari, or read the lines above.</p>
+    </div>
+  </section>
+
+  <!-- PLAY IT -->
+  <section class="section" id="play" data-style="kinesthetic">
+    <div class="eyebrow">🎮 Play it <span class="your-style">Your style</span></div>
+    <h2>Month Survivor</h2>
+    <p>Build a zero-based budget for your $2,400, then live through four weeks of real life. Surprise costs will hit. Can you finish the month without going into debt?</p>
+
+    <div class="card game" id="game">
+      <!-- Phase 1: plan -->
+      <div id="g-plan">
+        <div class="game-head">
+          <div><div class="muted small">Left to assign</div><div class="left-to-assign" id="g-left">$0</div></div>
+          <button class="btn" id="g-start" disabled>Start the month →</button>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <div class="bg-needs" id="g-bar-needs">Needs</div>
+          <div class="bg-wants" id="g-bar-wants">Wants</div>
+          <div class="bg-savings" id="g-bar-savings">Savings</div>
+        </div>
+        <p class="small muted" id="g-split" style="margin-top:6px"></p>
+        <div id="g-rows"></div>
+      </div>
+
+      <!-- Phase 2: play -->
+      <div id="g-live" class="hidden">
+        <div class="stats">
+          <div class="stat"><small>Emergency fund</small><b id="s-ef">$0</b></div>
+          <div class="stat"><small>Fun money left</small><b id="s-fun">$0</b></div>
+          <div class="stat"><small>Credit card debt</small><b id="s-debt">$0</b></div>
+          <div class="stat"><small>Happiness</small><b id="s-happy">70</b><div class="meter"><div id="m-happy" class="bg-savings" style="width:70%"></div></div></div>
+          <div class="stat"><small>Stress</small><b id="s-stress">20</b><div class="meter"><div id="m-stress" style="width:20%;background:var(--danger)"></div></div></div>
+        </div>
+        <div id="g-event"></div>
+        <ul class="log" id="g-log"></ul>
+      </div>
+
+      <!-- Phase 3: results -->
+      <div id="g-result" class="hidden"></div>
+    </div>
+  </section>
+
+  <!-- BREAK IT DOWN -->
+  <section class="section" id="logic" data-style="logical">
+    <div class="eyebrow">🧮 Break it down <span class="your-style">Your style</span></div>
+    <h2>The logic, step by step</h2>
+
+    <h3>The 50/30/20 rule</h3>
+    <div class="formula">Needs   = 0.50 × take-home pay<br>Wants   = 0.30 × take-home pay<br>Savings = 0.20 × take-home pay</div>
+
+    <h3 style="margin-top:24px">Zero-based budgeting</h3>
+    <div class="formula">Take-home pay − (sum of every planned category) = $0</div>
+
+    <h3 style="margin-top:24px">Worked example: $2,400 take-home</h3>
+    <ol class="steps">
+      <li><b>Find the targets.</b> Needs 0.50 × 2,400 = <b>$1,200</b>. Wants 0.30 × 2,400 = <b>$720</b>. Savings 0.20 × 2,400 = <b>$480</b>.</li>
+      <li><b>List fixed needs first.</b> Rent $900, phone $50, transport $120, groceries $280. Total = <b>$1,350</b>. That's $150 over the needs target, which is normal when rent is high.</li>
+      <li><b>Take the overage from wants, not savings.</b> Wants drop from $720 to <b>$570</b>. Savings stay at $480.</li>
+      <li><b>Split savings by priority.</b> Emergency fund first ($330), investing second ($150), until you have about 3 months of needs saved.</li>
+      <li><b>Check the zero.</b> 2,400 − (1,350 + 570 + 480) = <b>0</b>. Every dollar has a job.</li>
+    </ol>
+
+    <details class="card" style="margin-top:12px">
+      <summary>Go deeper (college level): why 50/30/20 is a <i>heuristic</i>, not a law</summary>
+      <p style="margin-top:12px">A heuristic is a rule of thumb that's good enough most of the time. The rule was popularized by Elizabeth Warren and Amelia Warren Tyagi in <i>All Your Worth</i> (2005). It ignores location: in high-rent cities, needs often run 60% or more. It also ignores goals: someone paying off a 24% credit card should push "savings" well above 20%, because paying off 24% debt is a guaranteed 24% return.</p>
+      <p>In a college finance class, this links to <b>opportunity cost</b> (every dollar spent on a want is a dollar not compounding) and to <b>liquidity</b> (an emergency fund is cash you can reach right away without selling investments at a bad time).</p>
+    </details>
+  </section>
+
+  <!-- NATURE -->
+  <section class="section" id="nature" data-style="naturalistic">
+    <div class="eyebrow">🌿 Nature link <span class="your-style">Your style</span></div>
+    <h2>Your budget is a watershed</h2>
+    <p>Your paycheck is rainfall. It splits into streams, and the savings stream fills a reservoir. In a drought (a surprise bill), towns with a full reservoir are fine. Towns without one go thirsty, or borrow water at a high price.</p>
+    <div class="card">
+      <svg viewBox="0 0 700 312" role="img" aria-label="Rain falls into a river that splits into needs, wants and savings streams; savings fills a reservoir" style="width:100%;height:auto">
+        <g fill="var(--ink-2)" opacity=".5">
+          <ellipse cx="330" cy="40" rx="90" ry="26"/><ellipse cx="390" cy="34" rx="70" ry="24"/><ellipse cx="280" cy="46" rx="56" ry="20"/>
+        </g>
+        <g stroke="var(--needs)" stroke-width="2" opacity=".7">
+          <line x1="300" y1="72" x2="296" y2="90" class="flow"/><line x1="340" y1="72" x2="336" y2="90" class="flow"/><line x1="380" y1="72" x2="376" y2="90" class="flow"/>
+        </g>
+        <text x="460" y="44" font-size="14" fill="var(--ink)" font-weight="700">Rain = your $2,400 paycheck</text>
+        <path d="M340 100 V150" stroke="var(--brand)" stroke-width="30" fill="none" stroke-linecap="round" opacity=".35"/>
+        <path d="M340 100 V150" stroke="var(--brand)" stroke-width="6" fill="none" class="flow"/>
+        <path d="M340 150 C 300 180, 160 180, 120 240" stroke="var(--needs)" stroke-width="24" fill="none" opacity=".35"/>
+        <path d="M340 150 C 300 180, 160 180, 120 240" stroke="var(--needs)" stroke-width="5" fill="none" class="flow"/>
+        <path d="M340 150 C 340 190, 340 200, 340 240" stroke="var(--wants)" stroke-width="15" fill="none" opacity=".35"/>
+        <path d="M340 150 C 340 190, 340 200, 340 240" stroke="var(--wants)" stroke-width="4" fill="none" class="flow"/>
+        <path d="M340 150 C 380 180, 520 180, 560 220" stroke="var(--savings)" stroke-width="10" fill="none" opacity=".35"/>
+        <path d="M340 150 C 380 180, 520 180, 560 220" stroke="var(--savings)" stroke-width="3" fill="none" class="flow"/>
+        <rect x="500" y="220" width="150" height="60" rx="10" fill="var(--savings)" opacity=".25"/>
+        <rect x="500" y="246" width="150" height="34" rx="6" fill="var(--savings)" opacity=".55"/>
+        <text x="120" y="268" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">Needs stream · 50%</text>
+        <text x="340" y="268" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">Wants · 30%</text>
+        <text x="575" y="300" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">Reservoir · 20% savings</text>
+      </svg>
+    </div>
+    <p style="margin-top:16px"><b>Why the stream widths matter:</b> rivers carve deeper channels where more water flows. Spending habits work the same way. The categories you feed the most become the easiest places for money to keep going. A budget is you choosing where the channels get carved.</p>
+  </section>
+
+  <!-- NOTES -->
+  <section class="section" id="notes" data-style="reading">
+    <div class="eyebrow">📝 Notes <span class="your-style">Your style</span></div>
+    <h2>Summary notes</h2>
+    <div class="card">
+      <ul>
+        <li><b>Take-home pay</b> (net pay) is what's left after taxes and deductions. Budgets start here, not from your salary.</li>
+        <li><b>Needs</b> are costs you'd face real trouble without: housing, groceries, transport to work, insurance, minimum debt payments.</li>
+        <li><b>Wants</b> are improvements to your life you could pause: eating out, entertainment, upgrades.</li>
+        <li><b>Savings</b> includes your emergency fund, investing, and extra debt payments above the minimum.</li>
+        <li><b>50/30/20</b> is a quick target split. Adjust it to your city and goals.</li>
+        <li><b>Zero-based budgeting:</b> income − all planned categories = $0. Savings is a category.</li>
+        <li><b>Order of priority:</b> needs → minimum debt payments → starter emergency fund → high-interest debt → wants and investing.</li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top:28px">Fill in the blanks</h3>
+    <div class="card" id="blanks">
+      <p>1. With $3,000 take-home, the 50/30/20 rule puts <input class="blank" data-answer="1500" inputmode="numeric" aria-label="Blank 1"> dollars toward needs.</p>
+      <p>2. In a zero-based budget, income minus all planned spending and saving equals <input class="blank" data-answer="0" inputmode="numeric" aria-label="Blank 2"> dollars.</p>
+      <p>3. With $3,000 take-home, the savings target is <input class="blank" data-answer="600" inputmode="numeric" aria-label="Blank 3"> dollars.</p>
+      <p>4. Budgets start from <input class="blank" data-answer="take-home|net|take home|takehome|net pay" aria-label="Blank 4"> pay, not gross pay.</p>
+      <button class="btn small" id="blanks-check">Check my answers</button>
+      <span class="small" id="blanks-result" style="margin-left:8px"></span>
+    </div>
+  </section>
+
+  <!-- TOGETHER -->
+  <section class="section" id="together" data-style="social">
+    <div class="eyebrow">👥 Together <span class="your-style">Your style</span></div>
+    <h2>Do this with a friend or study group</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🎭 Roommate budget role-play</h3>
+        <p>Two roommates share $1,800 rent and $150 utilities. One earns $2,400 take-home, the other $3,600.</p>
+        <p class="small muted">One of you argues for a 50/50 split. The other argues for splitting by income (40/60). Then agree on one, and each build your 50/30/20 budget with it. Who ends up over their needs target?</p>
+      </div>
+      <div class="card">
+        <h3>⚖️ Quick debate</h3>
+        <p>"The 50/30/20 rule doesn't work for people in expensive cities."</p>
+        <p class="small muted">Take opposite sides for 3 minutes each. Use real rent numbers from a city you'd want to live in. The winner is whoever changes the other person's mind with a number.</p>
+      </div>
+      <div class="card">
+        <h3>🏆 Survivor showdown</h3>
+        <p>Both play Month Survivor and compare grades.</p>
+        <p class="small muted">Explain one choice you made differently and why. Teaching someone else your reasoning is one of the fastest ways to lock it in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLO -->
+  <section class="section" id="solo" data-style="solitary">
+    <div class="eyebrow">🧘 On your own <span class="your-style">Your style</span></div>
+    <h2>Reflect on your own money</h2>
+    <p class="muted">These answers stay on your device. Nobody else sees them.</p>
+    <div class="card">
+      <p><b>1.</b> Think about the last $100 you spent. How much was a need, a want, or savings? Were you surprised?</p>
+      <textarea data-reflect="r1" placeholder="Write freely..."></textarea>
+      <p style="margin-top:16px"><b>2.</b> What's one "want" you'd happily cut to grow your emergency fund faster, and one you'd never cut?</p>
+      <textarea data-reflect="r2" placeholder="Write freely..."></textarea>
+      <p style="margin-top:16px"><b>3.</b> When you start college, what will your biggest needs be? Make a rough guess for each.</p>
+      <textarea data-reflect="r3" placeholder="Write freely..."></textarea>
+      <p class="small muted" id="reflect-saved"></p>
+    </div>
+  </section>
+
+  <!-- CHECK -->
+  <section class="section" id="check">
+    <div class="eyebrow">✅ Check</div>
+    <h2>Exam-style quiz</h2>
+    <p>These are written the way a college exam would ask them. Each correct first try is worth 10 XP.</p>
+    <div class="card" id="quiz"></div>
+
+    <h3 style="margin-top:32px">💼 Job task: you're the financial planner</h3>
+    <div class="card">
+      <p>Your client, Jordan, takes home <b>$4,000</b> a month. Jordan spends $2,300 on needs (rent is $1,700), $1,400 on wants, $300 on savings, and has a $3,000 credit card balance at 24% APR.</p>
+      <p><b>Your task:</b> compare Jordan to 50/30/20, name the biggest problem, and suggest a new split in dollars.</p>
+      <textarea id="job-answer" placeholder="Write your recommendation to Jordan..."></textarea>
+      <details style="margin-top:12px">
+        <summary>Show a model answer</summary>
+        <div style="margin-top:10px">
+          <p><b>Targets:</b> needs $2,000, wants $1,200, savings $800. Jordan is $300 over on needs, $200 over on wants, and $500 under on savings.</p>
+          <p><b>Biggest problem:</b> the 24% credit card. That balance costs about $60 a month in interest (3,000 × 0.24 ÷ 12), which is more than any savings account will pay.</p>
+          <p><b>Suggested split:</b> needs stay $2,300 for now (rent is locked by the lease), wants cut to $900, savings rise to $800, with $600 to the card and $200 to a starter emergency fund. The card is paid off in about 5 to 6 months, and then the $600 moves to the emergency fund and investing.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONNECTS -->
+  <section class="section" id="connects">
+    <div class="eyebrow">🔗 Connects to</div>
+    <h2>Where this fits</h2>
+    <div class="links">
+      <div class="card link-card past"><div class="small muted">Uses · Unit 2</div><b>Net worth and cash flow</b><p class="small muted">A budget is your planned cash flow for the month.</p></div>
+      <div class="card link-card past"><div class="small muted">Uses · Unit 3</div><b>Reading a pay stub</b><p class="small muted">Take-home pay comes from the bottom of your pay stub.</p></div>
+      <div class="card link-card"><div class="small muted">Unlocks · Unit 5</div><b>Credit and debt</b><p class="small muted">Why the credit card in Month Survivor cost so much.</p></div>
+      <div class="card link-card"><div class="small muted">Unlocks · Unit 6</div><b>Emergency funds</b><p class="small muted">How big your reservoir should be.</p></div>
+      <div class="card link-card"><div class="small muted">Unlocks · Unit 7</div><b>Investing</b><p class="small muted">Where your 20% goes once the emergency fund is full.</p></div>
+      <div class="card link-card"><div class="small muted">Unlocks · Units 9 and 10</div><b>Company budgets</b><p class="small muted">Your startup gets a budget, and you'll compare plan vs. actual like an FP&amp;A analyst.</p></div>
+    </div>
+    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn" href="../../">Back to course map</a>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../assets/js/save.js"></script>
+<script src="lesson.js"></script>
+</body>
+</html>
