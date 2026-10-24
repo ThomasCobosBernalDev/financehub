@@ -5,16 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
+  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono&display=swap">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Instrument+Sans:wght@400..700&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    .part { margin-top: 32px; }
-    .unit { display: flex; gap: 14px; align-items: flex-start; }
-    .unit .n { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; background: var(--surface-2); }
-    .unit.live .n { background: var(--brand); color: var(--brand-ink); }
-    .unit h3 { margin: 4px 0 2px; font-size: 17px; }
-    .soon { font-size: 12px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; }
+    .path { position: relative; margin-top: 40px; }
+    .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+    .part-name { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--accent); margin: 56px 0 8px 64px; }
+    .unit { position: relative; display: flex; gap: 20px; align-items: baseline; padding: 14px 0; color: inherit; text-decoration: none; }
+    .unit .n {
+      flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; position: relative; top: 10px;
+      font-family: var(--serif); font-size: 19px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3);
+    }
+    .unit h3 { margin: 0; font-size: clamp(22px, 3vw, 30px); color: var(--ink-3); transition: color .2s; }
+    .unit p { margin: 4px 0 0; font-size: 15px; color: var(--ink-3); }
+    .unit.live .n { background: var(--accent); color: #fff; box-shadow: none; }
+    .unit.live h3 { color: var(--ink); }
+    .unit.live p { color: var(--accent); font-weight: 600; }
+    .unit.live:hover h3 { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -22,64 +32,52 @@
   <div class="wrap">
     <a class="logo" href="./">Finance<span>Hub</span></a>
     <div class="spacer"></div>
-    <span class="pill">⭐ <span id="xp">0</span> XP</span>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
   </div>
 </header>
 
-<main class="wrap" style="padding-bottom:64px">
-  <section style="padding:48px 0 8px">
-    <h1>Learn finance by seeing it and playing it</h1>
-    <p class="lead">One story from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has a game.</p>
-    <a class="btn" href="lessons/budgeting/">Try the first lesson: Budgeting →</a>
+<main class="wrap">
+  <section style="padding:72px 0 24px">
+    <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
+    <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
+    <a class="btn reveal" href="lessons/budgeting/">Start with budgeting <span class="arrow">→</span></a>
   </section>
 
-  <div class="part">
-    <div class="eyebrow">Part 1 · Foundations</div>
-    <div class="grid-2">
-      <div class="card unit"><div class="n">1</div><div><h3>How the money system works</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><span class="soon">Coming soon</span></div></div>
-    </div>
-  </div>
+  <div class="path">
+    <div class="part-name reveal">Part 1 · Foundations</div>
+    <div class="unit reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><p>Coming soon</p></div></div>
 
-  <div class="part">
-    <div class="eyebrow">Part 2 · Your money</div>
-    <div class="grid-2">
-      <div class="card unit"><div class="n">3</div><div><h3>Earning and taxes</h3><span class="soon">Coming soon</span></div></div>
-      <a class="card unit live" href="lessons/budgeting/" style="text-decoration:none;color:inherit"><div class="n">4</div><div><h3>Budgeting and banking</h3><span class="small c-good"><b>Lesson 1 is live:</b> Give every dollar a job</span></div></a>
-      <div class="card unit"><div class="n">5</div><div><h3>Credit and debt</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">6</div><div><h3>Protection</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">7</div><div><h3>Investing and retirement</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">8</div><div><h3>Big purchases</h3><span class="soon">Coming soon</span></div></div>
-    </div>
-  </div>
+    <div class="part-name reveal">Part 2 · Your money</div>
+    <div class="unit reveal"><div class="n">3</div><div><h3>Earning and taxes</h3><p>Coming soon</p></div></div>
+    <a class="unit live reveal" href="lessons/budgeting/"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>Lesson 1 is open: Give every dollar a job →</p></div></a>
+    <div class="unit reveal"><div class="n">5</div><div><h3>Credit and debt</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">6</div><div><h3>Protection</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">7</div><div><h3>Investing and retirement</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">8</div><div><h3>Big purchases</h3><p>Coming soon</p></div></div>
 
-  <div class="part">
-    <div class="eyebrow">Part 3 · Your business</div>
-    <div class="grid-2">
-      <div class="card unit"><div class="n">9</div><div><h3>Starting a business</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">10</div><div><h3>Accounting</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">11</div><div><h3>Corporate finance</h3><span class="soon">Coming soon</span></div></div>
-    </div>
-  </div>
+    <div class="part-name reveal">Part 3 · Your business</div>
+    <div class="unit reveal"><div class="n">9</div><div><h3>Starting a business</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">10</div><div><h3>Accounting</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">11</div><div><h3>Corporate finance</h3><p>Coming soon</p></div></div>
 
-  <div class="part">
-    <div class="eyebrow">Part 4 · Markets and Wall Street</div>
-    <div class="grid-2">
-      <div class="card unit"><div class="n">12</div><div><h3>Investments and portfolios</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">13</div><div><h3>Valuation and modeling</h3><span class="soon">Coming soon</span></div></div>
-      <div class="card unit"><div class="n">14</div><div><h3>Macro, markets and institutions</h3><span class="soon">Coming soon</span></div></div>
-    </div>
-  </div>
+    <div class="part-name reveal">Part 4 · Markets and Wall Street</div>
+    <div class="unit reveal"><div class="n">12</div><div><h3>Investments and portfolios</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">13</div><div><h3>Valuation and modeling</h3><p>Coming soon</p></div></div>
+    <div class="unit reveal"><div class="n">14</div><div><h3>Macro, markets and institutions</h3><p>Coming soon</p></div></div>
 
-  <div class="part">
-    <div class="eyebrow">Part 5 · Career launch</div>
-    <div class="grid-2">
-      <div class="card unit"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><span class="soon">Coming soon</span></div></div>
-    </div>
+    <div class="part-name reveal">Part 5 · Career launch</div>
+    <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><p>Coming soon</p></div></div>
   </div>
 </main>
+<footer class="foot"><div class="wrap">FinanceHub</div></footer>
 
 <script src="assets/js/save.js"></script>
+<script src="assets/js/site.js"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 </body>
 </html>
