@@ -1,6 +1,156 @@
-<!-- title: Sign in -->
+<!-- title: Your account -->
 <!-- description: Sign in to save your FinanceHub progress across devices. -->
-<h1>Sign in</h1>
-<p>Accounts are coming in the next update. Then you'll be able to sign in and keep your progress on any device.</p>
-<p>Until then, your progress is saved in this browser. You won't lose it when accounts arrive: it will move into your account the first time you sign in.</p>
-<p><a class="btn" href="../">Back to the course <span class="arrow">→</span></a></p>
+<div id="acct-loading"><h1>Your account</h1><p class="muted">Loading…</p></div>
+
+<section id="acct-out" class="hidden">
+  <h1 id="acct-title">Sign in</h1>
+  <p class="muted" id="acct-sub">Save your progress and pick up on any device.</p>
+  <div class="auth-tabs" role="tablist">
+    <button role="tab" id="tab-in" aria-selected="true">Sign in</button>
+    <button role="tab" id="tab-up" aria-selected="false">Create account</button>
+  </div>
+
+  <form id="form-in" class="auth-form" novalidate>
+    <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+    <button class="btn" type="submit">Sign in</button>
+    <button class="linkish" type="button" id="forgot">Forgot your password?</button>
+  </form>
+
+  <form id="form-up" class="auth-form hidden" novalidate>
+    <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    <label><span>Password <span class="small muted">(at least 8 characters)</span></span><input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+    <label class="check"><input type="checkbox" name="age" required><span>I'm 13 or older.</span></label>
+    <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="../legal/terms.html" target="_blank">terms of use</a> and have read the <a href="../legal/privacy.html" target="_blank">privacy policy</a>.</span></label>
+    <p class="small muted">We only use your email to sign you in. No marketing emails, ever.</p>
+    <button class="btn" type="submit">Create account</button>
+  </form>
+
+  <form id="form-reset" class="auth-form hidden" novalidate>
+    <p>Enter your email and we'll send a link to reset your password.</p>
+    <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    <button class="btn" type="submit">Send reset link</button>
+    <button class="linkish" type="button" id="reset-back">Back to sign in</button>
+  </form>
+
+  <form id="form-newpw" class="auth-form hidden" novalidate>
+    <p>Choose a new password.</p>
+    <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+    <button class="btn" type="submit">Save new password</button>
+  </form>
+  <p class="auth-msg" id="acct-msg" role="status" aria-live="polite"></p>
+</section>
+
+<section id="acct-in" class="hidden">
+  <h1>Your account</h1>
+  <p>Signed in as <b id="acct-email"></b>. Your progress saves to your account automatically.</p>
+  <table>
+    <tr><th>XP</th><td id="acct-xp"></td></tr>
+    <tr><th>Badges</th><td id="acct-badges"></td></tr>
+    <tr><th>Lessons finished</th><td id="acct-lessons"></td></tr>
+  </table>
+  <p><a class="btn" href="../">Keep learning <span class="arrow">→</span></a> <button class="btn line" id="sign-out">Sign out</button></p>
+
+  <h2>Delete your account</h2>
+  <p>This permanently deletes your account and all progress saved to it. Progress saved in this browser stays until you <a href="../legal/privacy.html#delete">erase it</a>.</p>
+  <label class="auth-form" style="max-width:360px">Type DELETE to confirm<input type="text" id="delete-confirm" autocomplete="off"></label>
+  <p><button class="btn line danger" id="delete-account" disabled>Delete my account</button></p>
+  <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
+</section>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const show = (id) => ["#acct-loading", "#acct-out", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
+  const forms = ["#form-in", "#form-up", "#form-reset", "#form-newpw"];
+  const showForm = (id) => {
+    forms.forEach((f) => $(f).classList.toggle("hidden", f !== id));
+    $("#tab-in").setAttribute("aria-selected", id === "#form-in");
+    $("#tab-up").setAttribute("aria-selected", id === "#form-up");
+    $(".auth-tabs").classList.toggle("hidden", id === "#form-reset" || id === "#form-newpw");
+    $("#acct-title").textContent = id === "#form-up" ? "Create your account" : id === "#form-in" ? "Sign in" : "Reset your password";
+    msg("");
+  };
+  const msg = (text, bad) => { const m = $("#acct-msg"); m.textContent = text; m.classList.toggle("bad", !!bad); };
+  const friendly = (e) => {
+    const t = (e && e.message) || String(e);
+    if (/invalid login/i.test(t)) return "That email and password don't match.";
+    if (/already registered/i.test(t)) return "There's already an account with that email. Try signing in.";
+    if (/rate limit/i.test(t)) return "Too many tries. Wait a few minutes and try again.";
+    if (/not confirmed/i.test(t)) return "Check your email and click the confirmation link first.";
+    return t;
+  };
+
+  if (!window.FHAuth) { show("#acct-out"); msg("Accounts couldn't load. Check your connection and refresh.", true); return; }
+
+  $("#tab-in").addEventListener("click", () => showForm("#form-in"));
+  $("#tab-up").addEventListener("click", () => showForm("#form-up"));
+  $("#forgot").addEventListener("click", () => showForm("#form-reset"));
+  $("#reset-back").addEventListener("click", () => showForm("#form-in"));
+
+  $("#form-in").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    msg("Signing in…");
+    const { error } = await FHAuth.signIn(f.email.value.trim(), f.password.value);
+    if (error) msg(friendly(error), true); else msg("");
+  });
+
+  $("#form-up").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.email.value.includes("@")) return msg("Enter a valid email address.", true);
+    if (f.password.value.length < 8) return msg("Use at least 8 characters for your password.", true);
+    if (!f.age.checked) return msg("You need to be 13 or older to create an account.", true);
+    if (!f.terms.checked) return msg("Please agree to the terms and privacy policy to continue.", true);
+    msg("Creating your account…");
+    const { data, error } = await FHAuth.signUp(f.email.value.trim(), f.password.value, {
+      age_confirmed: true, terms_accepted_at: new Date().toISOString(),
+    });
+    if (error) return msg(friendly(error), true);
+    if (!data.session) msg("Almost done. Check your email and click the link to confirm your account.");
+  });
+
+  $("#form-reset").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const { error } = await FHAuth.resetPassword(e.target.email.value.trim());
+    msg(error ? friendly(error) : "If that email has an account, a reset link is on its way.", !!error);
+  });
+
+  document.addEventListener("fh:recovery", () => { show("#acct-out"); showForm("#form-newpw"); });
+  $("#form-newpw").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const pw = e.target.password.value;
+    if (pw.length < 8) return msg("Use at least 8 characters.", true);
+    const { error } = await FHAuth.setPassword(pw);
+    if (error) return msg(friendly(error), true);
+    msg("Password updated.");
+    setTimeout(() => render(FHAuth.user), 800);
+  });
+
+  $("#sign-out").addEventListener("click", () => FHAuth.signOut());
+  $("#delete-confirm").addEventListener("input", (e) => ($("#delete-account").disabled = e.target.value.trim() !== "DELETE"));
+  $("#delete-account").addEventListener("click", async () => {
+    $("#delete-account").disabled = true;
+    try {
+      await FHAuth.deleteAccount();
+      $("#delete-msg").textContent = "Your account has been deleted.";
+    } catch (err) {
+      $("#delete-msg").textContent = "Something went wrong: " + friendly(err);
+      $("#delete-account").disabled = false;
+    }
+  });
+
+  const render = (user) => {
+    if (!user) { show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
+    show("#acct-in");
+    $("#acct-email").textContent = user.email;
+    const s = FH.state;
+    $("#acct-xp").textContent = s.xp;
+    $("#acct-badges").textContent = s.badges.length;
+    $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
+  };
+  FHAuth.onChange(render);
+  document.addEventListener("fh:save", () => FHAuth.user && render(FHAuth.user));
+})();
+</script>

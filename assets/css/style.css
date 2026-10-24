@@ -521,3 +521,22 @@ details.deeper > div { padding-top: 12px; color: var(--ink-2); }
   .fold-art { max-width: 380px; margin: 0 auto; width: 100%; }
 }
 @media (max-width: 560px) { .four.compact { grid-template-columns: 1fr; } }
+
+/* ---------- Account forms ---------- */
+.auth-tabs { display: flex; gap: 4px; margin: 28px 0 8px; background: var(--paper-2); padding: 4px; border-radius: 99px; width: max-content; }
+.auth-tabs button { font: inherit; font-size: 15px; font-weight: 600; border: 0; background: none; color: var(--ink-2); padding: 8px 18px; border-radius: 99px; cursor: pointer; }
+.auth-tabs button[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0, 0, 0, .08); }
+.auth-form { display: grid; gap: 18px; max-width: 420px; margin-top: 20px; }
+.auth-form label { display: grid; gap: 6px; font-weight: 600; font-size: 15px; color: var(--ink); }
+.auth-form input[type="email"], .auth-form input[type="password"], .auth-form input[type="text"] {
+  font: inherit; font-weight: 400; color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px;
+}
+.auth-form input:focus { border-color: var(--accent); outline: none; }
+.auth-form .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; color: var(--ink-2); }
+.auth-form .check input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); flex: none; }
+.auth-form .btn { justify-self: start; }
+.linkish { font: inherit; font-size: 15px; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; justify-self: start; text-decoration: underline; text-underline-offset: 3px; }
+.auth-msg { min-height: 1.6em; margin-top: 12px; color: var(--ink-2); }
+.auth-msg.bad { color: var(--danger); }
+.btn.danger { color: var(--danger); box-shadow: inset 0 0 0 1.5px var(--danger); }

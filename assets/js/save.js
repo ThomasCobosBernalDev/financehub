@@ -1,5 +1,5 @@
 // FinanceHub save file: one record for the learner's character, company and progress.
-// Stored in the browser for now; step 3 moves it to a Supabase account.
+// Always kept in this browser; auth.js also syncs it to the learner's account when signed in.
 (function () {
   const KEY = "financehub-save-v1";
 
@@ -19,6 +19,7 @@
     },
     company: null, // created in Unit 9
     lessons: {}, // lessonId -> { sections: {id: true}, quizBest, gameBest, completedAt }
+    updatedAt: null,
   });
 
   let state;
@@ -29,6 +30,7 @@
   }
 
   const persist = () => {
+    state.updatedAt = new Date().toISOString();
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
   };
 
@@ -85,6 +87,12 @@
       emit();
     },
     save() { persist(); emit(); },
+    // Swap in a save that came from the learner's account.
+    replace(next) {
+      state = Object.assign(fresh(), next);
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
+      document.dispatchEvent(new CustomEvent("fh:save", { detail: state, bubbles: false }));
+    },
     reset() { state = fresh(); persist(); emit(); },
     toast,
     money: (n) => (n < 0 ? "-$" : "$") + Math.abs(Math.round(n)).toLocaleString("en-US"),

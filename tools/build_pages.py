@@ -45,6 +45,8 @@ SHELL = """<!doctype html>
   </div>
 </footer>
 <script src="{r}assets/js/save.js"></script>
+<script src="{r}assets/vendor/supabase-2.45.4.js"></script>
+<script src="{r}assets/js/auth.js"></script>
 <script src="{r}assets/js/site.js"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 {scripts}

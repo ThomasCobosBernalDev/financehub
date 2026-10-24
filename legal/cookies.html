@@ -36,8 +36,9 @@
   <tr><td><code>fh-theme</code></td><td>Remembers light or dark mode</td><td>Until you clear it</td></tr>
   <tr><td><code>fh-notice-ok</code></td><td>Remembers that you closed the storage notice</td><td>Until you clear it</td></tr>
   <tr><td><code>fh-reflect-…</code></td><td>Your private reflection answers</td><td>Until you clear it</td></tr>
+  <tr><td><code>sb-…-auth-token</code></td><td>Keeps you signed in (only if you have an account). Set by our account provider, Supabase.</td><td>Until you sign out</td></tr>
 </table>
-<p>When accounts launch, our account provider (Supabase) will also save a sign-in token in local storage so you stay signed in. It's only used to keep you signed in.</p>
+
 
 <h2>What we don't use</h2>
 <p>No advertising cookies, no analytics, no social media pixels, no fingerprinting, and no third-party font or audio services. If that ever changes, we'll ask for your consent first, with "no" as easy to pick as "yes".</p>
@@ -53,6 +54,8 @@
   </div>
 </footer>
 <script src="../assets/js/save.js"></script>
+<script src="../assets/vendor/supabase-2.45.4.js"></script>
+<script src="../assets/js/auth.js"></script>
 <script src="../assets/js/site.js"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 
