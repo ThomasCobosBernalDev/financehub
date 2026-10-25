@@ -5,12 +5,12 @@
 
 <!-- @start -->
         <h1 class="reveal">Why prices are <em>what they are.</em></h1>
-        <p class="story reveal"><span class="story-tag">The story so far</span> Your summer of fixing bikes paid off: you've got a stack of them ready and a table at the Saturday market. Each one cost you about <span class="mark">$30</span> in parts. Charge too much and people walk past. Charge too little and they're gone in ten minutes. So what's the right price?</p>
+        <p class="story reveal"><span class="story-tag">The story so far</span> In Lesson 1 you spent your weekends fixing up old bikes. Now you have a few ready to sell, and you've rented a table at the Saturday market. Each bike cost you about <span class="mark">$30</span> in parts. If you charge too much, people walk past. If you charge too little, they sell out in ten minutes and you could have made more. So what's the right price?</p>
         <div class="four compact">
-          <div class="reveal"><div class="word">What</div><p>Find the price where the number people want to buy matches the number for sale.</p></div>
-          <div class="reveal"><div class="word">Why</div><p>Every price you'll ever pay, from rent to stock shares, is set by this tug-of-war.</p></div>
-          <div class="reveal"><div class="word">How</div><p>Buyers want more when prices fall. Sellers offer more when prices rise. They meet at <b>equilibrium</b>.</p></div>
-          <div class="reveal"><div class="word">Who</div><p><b>Pricing analysts</b> set prices for companies. <b>Commodity traders</b> bet on where prices go next.</p></div>
+          <div class="reveal"><div class="word">What</div><p>Finding the price where the number of things people want to buy matches the number for sale.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Almost every price you'll ever pay, from rent to concert tickets to stocks, is set this way.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Buyers want more when the price drops (<dfn class="term" data-def="How many of something buyers want at each possible price.">demand</dfn>). Sellers want to sell more when the price rises (<dfn class="term" data-def="How many of something sellers are willing to sell at each possible price.">supply</dfn>). The price ends up where the two match: <dfn class="term" data-def="The price where the number buyers want equals the number sellers bring. Nothing is left over and nobody is left out.">equilibrium</dfn>.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Pricing analysts</b> set prices for companies. <b>Commodity traders</b> buy and sell things like oil and wheat, betting on where prices go next.</p></div>
         </div>
 
 <!-- @art -->
@@ -35,7 +35,12 @@
 
 <!-- @see -->
       <h2 class="reveal">Drag the price.<br>Watch the market <em>react.</em></h2>
-      <p class="lead reveal">This is the bike market in your town. Blue is how many bikes people want at each price. Orange is how many sellers bring. Find where they meet, then shake things up.</p>
+      <p class="lead reveal">This chart is the bike market in your whole town, not just your table. Up the side is the price of a bike. Along the bottom is how many bikes change hands in a month.</p>
+      <ul class="reveal ppf-key">
+        <li><b style="color:var(--needs)">Blue line, demand:</b> how many bikes buyers want at each price. It slopes down, because the cheaper bikes are, the more people want one.</li>
+        <li><b style="color:var(--wants)">Orange line, supply:</b> how many bikes sellers bring at each price. It slopes up, because higher prices make it worth fixing and selling more.</li>
+      </ul>
+      <p class="muted reveal">Drag the price and watch the two numbers. Where the lines cross, they're equal. Then try the buttons to see what moves the lines.</p>
 
       <div class="reveal sd-wrap" style="margin-top:36px">
         <div>
@@ -80,7 +85,7 @@
 
 <!-- @play -->
       <h2 class="reveal">Market <em>Stall</em></h2>
-      <p class="lead reveal">Six Saturdays. You fix 3 bikes a week at $30 each in parts. Set your price, open the stall, and watch who stops. Your score is how close you get to the best possible profit.</p>
+      <p class="lead reveal">You'll run your stall for six Saturdays. Each bike costs you $30 in parts. Each week, pick a price, open the stall, and watch how many buyers stop. Read the news each week, because it changes how many people want bikes. Your score is how close you get to the most profit you could possibly have made.</p>
 
       <div class="ledger reveal" id="game">
         <div class="market" id="market">
@@ -130,29 +135,31 @@
       <h2 class="reveal">The logic, <em>step by step.</em></h2>
 
       <h3 class="reveal" style="margin-top:40px">The two laws</h3>
-      <div class="formula reveal">Law of demand: price <span class="op">↑</span> → quantity demanded <span class="op">↓</span><br>Law of supply: price <span class="op">↑</span> → quantity supplied <span class="op">↑</span></div>
+      <p class="reveal">The <b>law of demand</b> says that when a price goes up, people buy less of it. The <b>law of supply</b> says that when a price goes up, sellers offer more of it. The amount buyers want at a given price is called the <dfn class="term" data-def="How many units buyers want at one specific price.">quantity demanded</dfn>. The amount sellers offer is the <dfn class="term" data-def="How many units sellers offer at one specific price.">quantity supplied</dfn>.</p>
+      <div class="formula reveal">Price goes up <span class="op">→</span> quantity demanded goes down<br>Price goes up <span class="op">→</span> quantity supplied goes up</div>
 
       <h3 class="reveal">Equilibrium</h3>
-      <div class="formula reveal">Quantity demanded <span class="op">=</span> quantity supplied</div>
+      <p class="reveal">The market settles at the one price where those two amounts are equal. Every bike brought to market finds a buyer, and every buyer willing to pay that price gets a bike.</p>
+      <div class="formula reveal">Equilibrium: quantity demanded <span class="op">=</span> quantity supplied</div>
 
       <h3 class="reveal">Worked example: solve it like an exam</h3>
       <ol class="steps reveal">
-        <li><b>Write the curves.</b> Demand: Q<sub>d</sub> = 100 − P. Supply: Q<sub>s</sub> = 2P − 20. (P is price in dollars, Q is bikes.)</li>
-        <li><b>Set them equal.</b> 100 − P = 2P − 20, so 120 = 3P and <b>P = $40</b>.</li>
-        <li><b>Find the quantity.</b> Plug P back in: Q = 100 − 40 = <b>60 bikes</b>. Check with supply: 2(40) − 20 = 60. ✓</li>
-        <li><b>Test a price below.</b> At $30, Q<sub>d</sub> = 70 and Q<sub>s</sub> = 40. Buyers want 30 more than exist: a <b>shortage</b> of 30. Prices get pushed up.</li>
-        <li><b>Test a price above.</b> At $50, Q<sub>d</sub> = 50 and Q<sub>s</sub> = 80. A <b>surplus</b> of 30 unsold bikes. Prices get pushed down.</li>
+        <li><b>Read the equations.</b> Exams often describe demand and supply as equations. Here, P is the price in dollars and Q is a number of bikes. Demand is Q<sub>d</sub> = 100 − P, which means "at a price of P, buyers want 100 minus P bikes." At $20 they'd want 80 bikes, and at $50 they'd want 50. Supply is Q<sub>s</sub> = 2P − 20, so at $50 sellers would bring 2 × 50 − 20 = 80 bikes.</li>
+        <li><b>Set them equal.</b> Equilibrium is where the two amounts match, so write 100 − P = 2P − 20. Add P and 20 to both sides to get 120 = 3P. Divide by 3: <b>P = $40</b>.</li>
+        <li><b>Find the quantity.</b> Put $40 back into either equation. Demand: 100 − 40 = <b>60 bikes</b>. Supply: 2 × 40 − 20 = 60. They match, so the answer checks out.</li>
+        <li><b>Try a price that's too low.</b> At $30, buyers want 100 − 30 = 70 bikes, but sellers only bring 2 × 30 − 20 = 40. That's 30 more bikes wanted than exist, called a <dfn class="term" data-def="When buyers want more than sellers have at the current price. It pushes the price up.">shortage</dfn>. Buyers compete for the few bikes, so the price rises.</li>
+        <li><b>Try a price that's too high.</b> At $50, buyers want 50 but sellers bring 80. That's 30 bikes nobody buys, called a <dfn class="term" data-def="When sellers have more than buyers want at the current price. It pushes the price down.">surplus</dfn>. Sellers cut prices to get rid of them, so the price falls.</li>
       </ol>
 
       <h3 class="reveal">Shift or slide?</h3>
-      <p class="reveal">A change in the bike's own price <b>slides</b> you along a curve. Anything else (income, tastes, prices of related goods, number of buyers or sellers, costs) <b>shifts</b> the whole curve. Exams test this constantly.</p>
+      <p class="reveal">If only the price of bikes changes, you <b>slide</b> along the lines you already have. For example, when bikes get cheaper, buyers move down the demand line and buy more. But if something <i>other</i> than the price changes, the whole line <b>shifts</b> to a new spot. For example, when school starts, more kids need bikes at <i>every</i> price, so the whole demand line moves right. Things that shift demand include buyers' incomes, what's popular, and how many buyers there are. Things that shift supply include the cost of parts, new tools, and how many sellers there are. Exams test this difference all the time.</p>
 
       <details class="deeper reveal">
-        <summary>Go deeper: elasticity, price ceilings and price floors</summary>
+        <summary>Go deeper: elasticity, price limits, and surplus</summary>
         <div>
-          <p><b>Price elasticity of demand</b> measures how much buyers react to price: % change in quantity demanded ÷ % change in price. If a 10% price rise cuts sales 20%, elasticity is −2 (elastic: people have options). Gas and insulin are inelastic (people buy them anyway). Elastic goods punish price hikes, which is why your stall's pricing mattered so much.</p>
-          <p><b>Price ceilings</b> are legal maximums set below equilibrium, like rent control. They cause shortages: more people want apartments at that rent than exist. <b>Price floors</b> are legal minimums set above equilibrium, like a minimum wage. They can cause surpluses (unemployment) in the textbook model, though real-world evidence is debated, and that debate is a classic exam essay.</p>
-          <p><b>Consumer and producer surplus.</b> A buyer who'd pay $150 for a bike priced at $100 gets $50 of "consumer surplus." A seller whose cost is $30 gets $70 of "producer surplus." Equilibrium maximizes the two added together. You'll see these as triangles on a graph.</p>
+          <p><b>1. Elasticity.</b> <dfn class="term" data-def="How strongly buyers react when a price changes.">Price elasticity of demand</dfn> measures how strongly buyers react to a price change. Some things people buy no matter what, like gas or medicine. If their price goes up, people still buy about the same amount. That's called <b>inelastic</b>. Other things have lots of alternatives, like a certain brand of chips. Raise the price a little and many people switch. That's <b>elastic</b>. To measure it, divide the percent change in how much people buy by the percent change in price. If the price rises 10% and sales drop 20%, elasticity is 20 ÷ 10 = 2, which counts as elastic (anything above 1 is). Used bikes are fairly elastic, which is why your stall price mattered so much.</p>
+          <p><b>2. Price limits set by law.</b> A <dfn class="term" data-def="A maximum price set by law, below what the market would charge.">price ceiling</dfn> is a legal maximum price, like rent control. When it's set below the equilibrium price, more people want apartments at that rent than there are apartments, so you get a shortage. A <dfn class="term" data-def="A minimum price set by law, above what the market would charge.">price floor</dfn> is a legal minimum price, like the minimum wage (the price of an hour of work). In the simple model, a floor set above equilibrium means more people want jobs than employers want to fill. Real-world studies disagree about how big that effect is, and exams love asking you to argue both sides.</p>
+          <p><b>3. Consumer and producer surplus.</b> Say a buyer would have paid up to $150 for one of your bikes, and you charge $100. They got a $50 deal. That extra value to the buyer is called <dfn class="term" data-def="The difference between the most a buyer would pay and what they actually pay.">consumer surplus</dfn>. The bike cost you $30, so selling at $100 leaves you $70 more than you needed. That's <dfn class="term" data-def="The difference between what a seller receives and the lowest price they'd accept (their cost).">producer surplus</dfn>. At equilibrium, the two added together are as big as they can be. On exam graphs they show up as two triangles.</p>
         </div>
       </details>
 
@@ -197,8 +204,9 @@
           <li><b>Equilibrium:</b> the price where quantity demanded = quantity supplied. The market "clears."</li>
           <li><b>Shortage:</b> price below equilibrium. Buyers want more than exists. Price tends to rise.</li>
           <li><b>Surplus:</b> price above equilibrium. More for sale than buyers want. Price tends to fall.</li>
-          <li><b>Demand shifters:</b> income, tastes, number of buyers, prices of substitutes and complements, expectations.</li>
-          <li><b>Supply shifters:</b> input costs, technology, number of sellers, expectations, taxes.</li>
+          <li><b>What shifts demand:</b> buyers' incomes, what's popular, the number of buyers, prices of <i>substitutes</i> (things you'd buy instead, like scooters) and <i>complements</i> (things used together, like helmets), and what people expect to happen.</li>
+          <li><b>What shifts supply:</b> the cost of materials, technology, the number of sellers, expectations, and taxes.</li>
+          <li><b>Normal good:</b> something people buy more of when their income goes up, like bikes or restaurant meals.</li>
           <li><b>Own price changes</b> = movement along the curve. <b>Anything else</b> = shift of the curve.</li>
         </ul>
       </div>
@@ -207,7 +215,7 @@
       <div class="paper reveal" id="blanks">
         <div>1. When the price is below equilibrium, the market has a <input type="text" class="blank" data-answer="shortage" aria-label="Blank 1">.</div>
         <div>2. Demand: Q = 80 − P. Supply: Q = P. The equilibrium price is $<input type="text" class="blank" data-answer="40" inputmode="numeric" aria-label="Blank 2">.</div>
-        <div>3. If people's incomes rise and bikes are a normal good, the demand curve shifts to the <input type="text" class="blank" data-answer="right|out|outward" aria-label="Blank 3">.</div>
+        <div>3. If people's incomes rise and bikes are a normal good (people buy more when they earn more), the demand curve shifts to the <input type="text" class="blank" data-answer="right|out|outward" aria-label="Blank 3">.</div>
         <div>4. Cheaper parts shift the <input type="text" class="blank" data-answer="supply|supply curve" aria-label="Blank 4"> curve to the right.</div>
         <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
       </div>
@@ -217,11 +225,11 @@
       <div class="cols">
         <div class="reveal">
           <h3>The concert ticket auction</h3>
-          <p>Write down the most you'd pay for a ticket to your favorite artist. One person is the seller with 3 tickets. Start at $300 and lower the price until 3 people say "buy." That price is your group's equilibrium. Who got consumer surplus, and how much?</p>
+          <p>Write down the most you'd pay for a ticket to your favorite artist. One person is the seller with 3 tickets. Start at $300 and lower the price until 3 people say "buy." That price is your group's equilibrium. Anyone who wrote a higher number got a deal. How big was each person's deal (their consumer surplus)?</p>
         </div>
         <div class="reveal">
           <h3>Shift or slide?</h3>
-          <p>Take turns calling out headlines ("Gas hits $6 a gallon," "A new e-bike costs half as much"). The others race to say which curve moves, which way, and what happens to price. Loser buys the snacks.</p>
+          <p>Take turns making up news headlines, like "Gas hits $6 a gallon" or "A new e-bike costs half as much." Everyone else races to say whether demand or supply moves, which way, and what happens to the price of regular bikes. Loser buys the snacks.</p>
         </div>
         <div class="reveal">
           <h3>Stall showdown</h3>

@@ -6,8 +6,8 @@
   <title>Who Sets the Price of Money · FinanceHub</title>
   <meta name="description" content="Unit 1, Lesson 4: interest rates, the Federal Reserve and how one rate ripples into every loan and savings account. Run the Fed yourself.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../assets/css/style.css?v=202610250550">
-  <link rel="stylesheet" href="lesson.css?v=202610250550">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610250555">
+  <link rel="stylesheet" href="lesson.css?v=202610250555">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Skip to the lesson</a>
@@ -61,11 +61,11 @@
       <div class="fold-text">
         <div class="kicker reveal"><span class="num">Unit 1 · Lesson 4</span> Interest rates and central banks</div>
         <h1 class="reveal">Who sets the <em>price of money?</em></h1>
-        <p class="story reveal"><span class="story-tag">The story so far</span> You're about to graduate. You want an <span class="mark">$8,000</span> loan for a used car to get to work, and the bank quotes you 9%. A year ago it was 5%. Meanwhile your savings account suddenly pays 4%. Nothing about you changed. Twelve people in Washington voted.</p>
+        <p class="story reveal"><span class="story-tag">The story so far</span> You're about to graduate. You want an <span class="mark">$8,000</span> loan for a used car to get to work, and the bank quotes you 9%. A year ago the same loan was 5%. Meanwhile your savings account, which paid almost nothing, now pays 4%. Nothing about you changed. What changed is that twelve people at the <b>Federal Reserve</b>, the US central bank, voted to raise interest rates. This lesson shows how one vote reaches your car loan.</p>
         <div class="four compact">
-          <div class="reveal"><div class="word">What</div><p>Understand interest as the price of borrowing money, and who moves it.</p></div>
+          <div class="reveal"><div class="word">What</div><p>Understand <dfn class="term" data-def="The price of borrowing money, written as a percent of the loan per year. Borrowers pay it; savers earn it.">interest</dfn> as the price of borrowing money, and who moves it.</p></div>
           <div class="reveal"><div class="word">Why</div><p>One rate decision changes what your car, house, credit card and savings cost or earn.</p></div>
-          <div class="reveal"><div class="word">How</div><p>The <b>Federal Reserve</b> raises rates to cool inflation and cuts them to protect jobs.</p></div>
+          <div class="reveal"><div class="word">How</div><p>The <dfn class="term" data-def="The central bank of the United States, often called the Fed. It sets short-term interest rates and watches over banks.">Federal Reserve</dfn> raises rates to cool inflation and cuts them to protect jobs.</p></div>
           <div class="reveal"><div class="word">Who</div><p><b>Fed economists</b> make the call. <b>Bond traders</b> and <b>bank treasury analysts</b> bet on it.</p></div>
         </div>
       </div>
@@ -95,7 +95,7 @@
     <div class="wrap">
       <div class="kicker reveal"><span class="num">01</span> See it <span class="pref-tag">your style</span></div>
       <h2 class="reveal">Turn one dial.<br>Watch every rate <em>move.</em></h2>
-      <p class="lead reveal">The Fed sets one short-term rate, the <b>federal funds rate</b>: what banks charge each other overnight. Everything else is priced on top of it. Drag it and watch your own costs change.</p>
+      <p class="lead reveal">The Fed controls one rate, the <dfn class="term" data-def="The interest rate banks charge each other for overnight loans. The Fed sets a target for it, and almost every other rate is built on top of it.">federal funds rate</dfn>. It's what banks charge each other to borrow overnight. Banks then add an extra amount on top, called a <dfn class="term" data-def="The gap between two interest rates. Here, the extra percent a lender adds above the fed funds rate to cover its risk and costs.">spread</dfn>, to set the rates they charge you. So when the Fed moves its rate, every rate below moves with it. Drag the slider and watch your own costs change.</p>
 
       <div class="reveal" style="margin-top:36px">
         <div class="payline"><span class="val" id="rp-rate">4.0%</span><span class="muted">federal funds rate</span></div>
@@ -131,7 +131,7 @@
     <div class="wrap">
       <div class="kicker reveal"><span class="num">03</span> Play it <span class="pref-tag">your style</span></div>
       <h2 class="reveal">Rate <em>Dial</em></h2>
-      <p class="lead reveal">You chair the Fed for eight meetings, two years. Your mandate: inflation near <b>2%</b> and unemployment near <b>4%</b>. Rates work with a delay, so you're steering a ship, not a car. Pick a moment in history.</p>
+      <p class="lead reveal">You chair the Fed for eight meetings, two years. Your job, set by Congress, has two goals: keep inflation (how fast prices rise) near <b>2%</b> and unemployment (the share of people who want a job but can't find one) near <b>4%</b>. Raise rates to slow prices down; cut them to help hiring. One catch: a rate change takes months to work, so you're steering a big ship, not a car. Pick a moment in history to start.</p>
 
       <div class="ledger reveal" id="game">
         <div class="ledger-head">
@@ -183,28 +183,31 @@
       <h2 class="reveal">The logic, <em>step by step.</em></h2>
 
       <h3 class="reveal" style="margin-top:40px">Interest is a price</h3>
-      <div class="formula reveal">Interest <span class="op">=</span> principal <span class="op">×</span> rate <span class="op">×</span> time</div>
-      <p class="reveal">Borrowers are buyers of money, savers are sellers. Like any price, interest rises when demand for loans is high or the supply of savings is low. The Fed leans on it from the outside.</p>
+      <p class="reveal">When you borrow, you pay back what you borrowed plus a fee for using it. That fee is interest. The amount you borrow is called the <dfn class="term" data-def="The original amount of money borrowed or saved, before any interest.">principal</dfn>. The simplest way to work out the fee:</p>
+      <div class="formula reveal">Interest <span class="op">=</span> principal <span class="op">×</span> rate <span class="op">×</span> years</div>
+      <p class="reveal"><b>In words:</b> take the amount borrowed, multiply by the yearly rate (as a decimal, so 6% is 0.06), then multiply by how many years. Borrow <b>$1,000 at 6% for 2 years</b>: $1,000 × 0.06 × 2 = <b>$120</b> of interest. This is called <dfn class="term" data-def="Interest paid only on the original principal, never on past interest. Unit 2 covers compound interest, where interest earns interest.">simple interest</dfn>. Real loans usually charge interest on interest too, which you'll see in Unit 2.</p>
+      <p class="reveal">Why does the rate go up or down? Think back to Lesson 2. Interest is the price of money, so it follows supply and demand. Borrowers are the buyers of money and savers are the sellers. When lots of people want loans, or few people are saving, the price (the rate) rises. On top of that, the Fed pushes rates up or down on purpose.</p>
 
       <h3 class="reveal">How a rate hike travels</h3>
       <ol class="steps reveal">
-        <li><b>The Fed raises its target</b> for the fed funds rate, say from 4% to 4.5%. It does this mainly by raising the interest it pays banks on their reserves, so no bank lends overnight for less.</li>
-        <li><b>Banks reprice.</b> The prime rate, usually fed funds + 3, goes to 7.5%. Credit cards and car loans follow within weeks.</li>
-        <li><b>Borrowing gets expensive.</b> On an $8,000, 5-year car loan, 8% costs $162 a month; 10% costs $170. Multiply that across millions of buyers and fewer cars get bought.</li>
-        <li><b>Saving gets rewarded.</b> Higher savings rates make people wait to spend. Businesses delay new factories because their loans cost more too.</li>
-        <li><b>Spending cools, so prices cool.</b> Less demand means sellers can't raise prices as easily. This takes about 1 to 2 years to fully show up, which is why the Fed has to act before it sees the result.</li>
+        <li><b>The Fed raises its target</b> for the fed funds rate, say from 4% to 4.5%. How? Banks keep spare cash at the Fed, called <dfn class="term" data-def="Money banks keep on deposit at the Fed instead of lending it out.">reserves</dfn>, and the Fed pays them interest on it. If the Fed pays 4.5% on that cash, no bank will lend to another bank for less, because it can earn 4.5% risk-free by doing nothing.</li>
+        <li><b>Banks raise their own rates.</b> The <dfn class="term" data-def="The rate banks charge their safest business customers. It is usually the fed funds rate plus 3 percentage points.">prime rate</dfn> is usually the fed funds rate plus 3, so it goes from 7% to 7.5%. Credit card and car loan rates are built on the prime rate, so they rise within weeks.</li>
+        <li><b>Borrowing gets more expensive.</b> Take an $8,000 car loan paid back over 5 years. At 8% the monthly payment is about $162. At 10% it's about $170. That's only $8 a month for you, but across millions of buyers, some decide not to buy at all.</li>
+        <li><b>Saving pays more.</b> When your savings account earns more, waiting to spend looks better. Businesses also hold off on new buildings and machines, because their loans cost more too.</li>
+        <li><b>Spending slows, so prices slow.</b> With fewer buyers, stores can't raise prices as easily, so inflation comes down. This takes about 1 to 2 years to fully show up, which is why the Fed has to act before it sees the result.</li>
       </ol>
 
       <h3 class="reveal">Real interest rate</h3>
+      <p class="reveal">You met nominal and real in Lesson 3. The rate a bank quotes you is the <dfn class="term" data-def="The interest rate as quoted, before taking inflation into account.">nominal rate</dfn>. But inflation shrinks what your money can buy while it's lent out, so what you really gain or pay is smaller. That's the <dfn class="term" data-def="The interest rate after subtracting inflation: what your money truly grows or costs in buying power.">real rate</dfn>:</p>
       <div class="formula reveal">Real rate <span class="op">≈</span> nominal rate <span class="op">−</span> inflation</div>
-      <p class="reveal">What matters for spending is the real rate. A 5% rate with 8% inflation is still cheap money (−3% real). That's why in 1979 the Fed had to push rates near 20% to finally get ahead of inflation.</p>
+      <p class="reveal"><b>Example:</b> your savings pay 5% but prices rise 8% this year. Your balance grows 5%, yet it buys 3% <i>less</i> than before, so the real rate is 5 − 8 = <b>−3%</b>. For a borrower that's cheap money, which is why high inflation keeps going if rates stay low. In 1979, inflation was over 11%, so the Fed had to push rates close to 20% before borrowing actually felt expensive.</p>
 
       <details class="deeper reveal">
-        <summary>Go deeper: the Fed's tools, the dual mandate and the Taylor rule</summary>
+        <summary>Go deeper: who votes, the Fed's other tools, and a rule traders use</summary>
         <div>
-          <p><b>Who decides.</b> The Federal Open Market Committee (FOMC): the 7 Fed governors plus 5 of the 12 regional Fed bank presidents vote, eight scheduled meetings a year. Congress gave the Fed a <i>dual mandate</i>: maximum employment and stable prices, which the Fed defines as 2% inflation over time.</p>
-          <p><b>The toolkit.</b> Interest on reserve balances (the main lever today), overnight reverse repos (a floor under rates), open market operations (buying or selling Treasury bonds), and the discount rate (emergency lending to banks). When rates hit zero, the Fed can do <i>quantitative easing</i>: buy long-term bonds to push long rates down. Shrinking that pile later is <i>quantitative tightening</i>.</p>
-          <p><b>The Taylor rule</b>, a famous rule of thumb from economist John Taylor (1993): rate ≈ 2 + inflation + 0.5 × (inflation − 2) + 0.5 × (output gap). With 4% inflation and output at normal, it suggests 2 + 4 + 1 + 0 = 7%. The Fed doesn't follow it mechanically, but traders use it to judge whether policy is tight or loose. You'll meet it again in Unit 14.</p>
+          <p><b>Who votes.</b> The twelve people from the story are the <dfn class="term" data-def="Federal Open Market Committee: the Fed group that votes on interest rates, eight times a year.">FOMC</dfn>. That's the 7 Fed governors in Washington plus 5 of the 12 presidents of the regional Fed banks (they take turns). They meet eight times a year. Congress gave them two goals, called the <dfn class="term" data-def="The Fed's two goals set by Congress: as many jobs as possible, and stable prices (about 2% inflation).">dual mandate</dfn>: as many jobs as possible, and stable prices, which the Fed defines as about 2% inflation.</p>
+          <p><b>Other tools.</b> Paying interest on bank reserves is the main lever, as you saw above. The Fed can also buy or sell government bonds, which adds or removes money from banks, and it lends directly to banks in an emergency. When its rate is already at zero and the economy still needs help, it can do <dfn class="term" data-def="QE: the Fed buys large amounts of long-term bonds to push long-term rates (like mortgages) down.">quantitative easing (QE)</dfn>: buy huge amounts of long-term bonds, which pushes mortgage and other long-term rates down. Selling them off later is called quantitative tightening (QT). You'll see both in Unit 14.</p>
+          <p><b>A rule of thumb traders use.</b> Economist John Taylor suggested a simple way to guess where the Fed's rate "should" be, now called the <dfn class="term" data-def="A rule of thumb for where the Fed's rate should be, based on inflation and how hard the economy is running.">Taylor rule</dfn>. In words: start at 2%, add the current inflation rate, then add half of how far inflation is above the 2% goal. (A fuller version also adjusts for whether the economy is running hotter or colder than normal.) With 4% inflation: 2 + 4 + half of (4 − 2) = 2 + 4 + 1 = <b>7%</b>. If the Fed's real rate is far below that, traders say policy is "loose." The Fed doesn't follow it exactly; it's a yardstick.</p>
         </div>
       </details>
     </div>
@@ -254,16 +257,17 @@
           <li><b>Raise rates</b> → borrowing costs more, saving pays more → spending slows → inflation cools, unemployment can rise.</li>
           <li><b>Cut rates</b> → borrowing is cheap → spending and hiring pick up → risk of inflation.</li>
           <li><b>Lags:</b> rate changes take about 1–2 years to fully hit the economy.</li>
-          <li><b>Prime rate</b> ≈ fed funds + 3%. Card, car and home rates are priced off it or off bond yields.</li>
-          <li><b>Real rate</b> ≈ nominal rate − inflation.</li>
+          <li><b>Prime rate</b> ≈ fed funds rate + 3%. Credit card and car loan rates are built on top of it.</li>
+          <li><b>Simple interest</b> = principal × rate × years.</li>
+          <li><b>Real rate</b> ≈ nominal rate − inflation. 5% interest with 8% inflation is −3% real.</li>
         </ul>
       </div>
 
       <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
       <div class="paper reveal" id="blanks">
         <div>1. To fight high inflation, the Fed usually <input type="text" class="blank" data-answer="raises|increases|hikes|raises rates" aria-label="Blank 1"> interest rates.</div>
-        <div>2. If the fed funds rate is 5%, the prime rate is about <input type="text" class="blank" data-answer="8|8%" inputmode="numeric" aria-label="Blank 2">%.</div>
-        <div>3. Simple interest on $2,000 at 6% for one year is $<input type="text" class="blank" data-answer="120" inputmode="numeric" aria-label="Blank 3">.</div>
+        <div>2. The prime rate is usually the fed funds rate plus 3. If the fed funds rate is 5%, the prime rate is about <input type="text" class="blank" data-answer="8|8%" inputmode="numeric" aria-label="Blank 2">%.</div>
+        <div>3. You borrow $2,000 at 6% simple interest for one year. The interest you owe is $<input type="text" class="blank" data-answer="120" inputmode="numeric" aria-label="Blank 3">.</div>
         <div>4. The Fed's inflation target is <input type="text" class="blank" data-answer="2|2%" inputmode="numeric" aria-label="Blank 4">%.</div>
         <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
       </div>
@@ -314,8 +318,8 @@
 
       <h3 class="reveal" style="margin-top:72px">On the job: you're the bank treasury analyst</h3>
       <div class="reveal">
-        <p>Your bank has <b>$500 million</b> in savings deposits paying 1% and <b>$400 million</b> in car loans at fixed rates averaging 6%. Analysts expect the Fed to raise rates by <b>2 percentage points</b> this year, and savers will demand about 2.5% to stay.</p>
-        <p><b>Your task:</b> estimate how the bank's yearly interest profit changes. Why are fixed-rate loans a risk when rates rise?</p>
+        <p>Your bank has <b>$500 million</b> in savings deposits paying 1% and <b>$400 million</b> in car loans at fixed rates averaging 6%. Analysts expect the Fed to raise rates by <b>2 percentage points</b> this year (for example, from 3% to 5%). To keep savers from moving their money elsewhere, your bank will have to raise its savings rate to about 2.5%.</p>
+        <p><b>Your task:</b> the bank's interest profit is what it earns on loans minus what it pays savers. Estimate how that yearly profit changes. Then explain why loans with a <i>fixed</i> rate (one that never changes) are a risk when rates rise.</p>
         <textarea id="job-answer" placeholder="Write your memo to the bank's leadership…"></textarea>
         <details class="deeper">
           <summary>See a model answer</summary>
@@ -374,11 +378,11 @@
   </div>
 </footer>
 
-<script src="../../assets/js/save.js?v=202610250550"></script>
-<script src="../../assets/vendor/supabase-2.45.4.js?v=202610250550"></script>
-<script src="../../assets/js/auth.js?v=202610250550"></script>
-<script src="../../assets/js/site.js?v=202610250550"></script>
-<script src="../../assets/js/lesson-kit.js?v=202610250550"></script>
-<script src="lesson.js?v=202610250550"></script>
+<script src="../../assets/js/save.js?v=202610250555"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610250555"></script>
+<script src="../../assets/js/auth.js?v=202610250555"></script>
+<script src="../../assets/js/site.js?v=202610250555"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610250555"></script>
+<script src="lesson.js?v=202610250555"></script>
 </body>
 </html>
