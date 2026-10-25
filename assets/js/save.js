@@ -133,6 +133,7 @@
     },
     setStyles(list) {
       state.styles = list && list.length ? [...new Set(list)] : null;
+      state.preferredStyle = null; // the old single pick would otherwise come back as a filter
       persist();
       emit();
     },

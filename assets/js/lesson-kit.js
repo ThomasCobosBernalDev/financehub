@@ -79,7 +79,7 @@
       opened.clear();
       applyStyle();
     }));
-    $(".sf-all", filter).addEventListener("click", () => { FH.setStyles(null); opened.clear(); applyStyle(); });
+    $(".sf-all", filter).addEventListener("click", () => { FH.setStyles(FH.STYLES.map((x) => x.id)); opened.clear(); applyStyle(); });
 
     const seenIO = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting && FH.markSection(id, e.target.id)) FH.addXP(5); }),
