@@ -884,3 +884,10 @@ body:has(.notice) .style-filter { display: none; }
 /* Cards lift off the textured page. */
 .goal-card, .level-card, .q-opt { box-shadow: inset 0 0 0 1.5px var(--line), var(--shadow); }
 .learn-pick { box-shadow: var(--shadow); }
+
+/* Scroll-driven money scene behind the home page (assets/js/money-bg.js). */
+.money-bg { position: fixed; z-index: -1; left: 50%; top: 50%; width: min(96vh, 860px, 110vw); aspect-ratio: 1; transform: translate(-50%, -46%); pointer-events: none; opacity: .1; }
+.money-bg svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.money-bg ellipse { stroke: var(--paper); stroke-width: 2.5; }
+html[data-theme="dark"] .money-bg { opacity: .13; }
+@media (min-width: 1025px) { .money-bg { left: 36%; width: min(90vh, 760px); } }
