@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250230">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250235">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -39,21 +39,21 @@
     .lp-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
     .learn-pick h2 { margin: 0 0 6px; font-size: clamp(28px, 2.6vw, 36px); }
     .learn-pick > p { margin: 0 0 16px; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
-    .lp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 11px 34px 11px 12px; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); display: grid; grid-template-columns: 26px 1fr; column-gap: 10px; align-items: start; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
-    .lp-card:hover { transform: translateY(-1px); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
-    .lp-card svg { grid-row: span 2; width: 24px; height: 24px; color: var(--ink-3); margin-top: 1px; transition: color .2s; }
-    .lp-card b { font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; }
-    .lp-card small { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; margin-top: 2px; }
-    .lp-card .tick { position: absolute; top: 11px; right: 11px; width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line); transition: all .2s; }
-    .lp-card.on { background: color-mix(in srgb, var(--accent) 10%, var(--paper)); box-shadow: inset 0 0 0 2px var(--accent); }
-    .lp-card.on svg { color: var(--accent); }
-    .lp-card.on .tick { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat; box-shadow: none; }
-    .lp-foot { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
-    .lp-foot .small { font-size: 13.5px; }
     .path-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 48px; }
     .path { margin-top: 0; }
-    .part-name, #styles { scroll-margin-top: 88px; }
+    .hero-setup { margin: 20px 0 0; font-size: 15px; color: var(--ink-3); }
+    .hero-setup a { color: var(--accent); font-weight: 600; }
+    .my-path-card { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 20px 24px; margin: 8px 0 16px; border-radius: 20px; background: var(--accent-soft); }
+    .my-path-card .kicker { margin: 0 0 4px; color: var(--accent); }
+    .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
+    .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
+    .my-path-card .btn { flex: none; }
+    .unit .path-tag { display: inline-block; vertical-align: middle; font-family: var(--sans); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); position: relative; top: -3px; }
+    .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
+    .unit.off-path { opacity: .55; }
+    .unit.off-path:hover { opacity: 1; }
+    @media (max-width: 640px) { .my-path-card { flex-direction: column; align-items: stretch; } }
+    .part-name, #styles, #my-path { scroll-margin-top: 88px; }
     .road { position: sticky; top: 96px; align-self: start; padding-top: 48px; }
     .road svg { width: 100%; height: auto; max-height: calc(100svh / var(--z, 1) - 140px); display: block; }
     .road .stop circle { fill: var(--paper); stroke: var(--line); stroke-width: 3; transition: fill .4s, stroke .4s, r .4s; }
@@ -89,6 +89,7 @@
 <nav class="rail" data-own aria-label="Page sections">
   <a href="#top"><i></i><span>Start</span></a>
   <a href="#styles"><i></i><span>How you learn best</span></a>
+  <a href="#my-path"><i></i><span>Your path</span></a>
   <a href="#part-1"><i></i><span>Part 1 · Foundations</span></a>
   <a href="#part-2"><i></i><span>Part 2 · Your money</span></a>
   <a href="#part-3"><i></i><span>Part 3 · Your business</span></a>
@@ -101,6 +102,7 @@
       <h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>
       <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
       <div class="continue reveal"><a class="btn" href="lessons/scarcity/" id="continue"><span>Start Unit 1 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Every choice has a price tag</small></div>
+      <p class="hero-setup reveal" id="hero-setup">New here? <a href="start/">Build your own path</a> in about a minute.</p>
     </div>
     <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
       <div class="lp-kicker">Make it yours</div>
@@ -113,6 +115,7 @@
 
 
 
+  <div class="my-path-card reveal" id="my-path"></div>
   <div class="path-wrap">
   <div class="path">
     <div class="part-name reveal" id="part-1" data-part="1">Part 1 · Foundations</div>
@@ -175,10 +178,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250230"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250230"></script>
-<script src="assets/js/auth.js?v=202610250230"></script>
-<script src="assets/js/site.js?v=202610250230"></script>
+<script src="assets/js/save.js?v=202610250235"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250235"></script>
+<script src="assets/js/auth.js?v=202610250235"></script>
+<script src="assets/js/site.js?v=202610250235"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 // Lesson list: mark finished lessons and point the main button at the next one.
@@ -187,34 +190,50 @@ links.forEach((a) => {
   const l = FH.state.lessons[a.dataset.lesson];
   if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += " · done"; }
 });
-const next = links.find((a) => !a.classList.contains("done"));
-const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
-if (next) {
-  const c = document.getElementById("continue");
-  c.href = next.getAttribute("href");
-  c.querySelector("span").textContent = `${started ? "Continue" : "Start"} Unit ${next.dataset.unit} · Lesson ${next.dataset.n}`;
-  document.getElementById("continue-title").textContent = next.querySelector("b").textContent;
-}
+// Your path: mark units your goals skip or you already know, and point the main button at the next lesson.
+const paintPath = () => {
+  const { on, known, setUp } = FH.path;
+  document.querySelectorAll(".path .unit").forEach((u) => {
+    const n = Number(u.querySelector(".n").textContent);
+    u.classList.toggle("off-path", setUp && !on.has(n));
+    u.classList.toggle("known", known.has(n));
+    let tag = u.querySelector(".path-tag");
+    const text = known.has(n) ? "You know this" : setUp && !on.has(n) ? "Extra" : "";
+    if (!text) { if (tag) tag.remove(); return; }
+    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
+    tag.textContent = text;
+  });
+  const next = FH.nextLesson();
+  const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
+  if (next) {
+    const c = document.getElementById("continue");
+    c.href = next.href;
+    c.querySelector("span").textContent = `${started ? "Continue" : "Start"} Unit ${next.unit} · Lesson ${next.n}`;
+    document.getElementById("continue-title").textContent = next.title;
+  }
+  document.getElementById("hero-setup").hidden = setUp;
+  const card = document.getElementById("my-path");
+  const p = FH.state.profile;
+  if (setUp) {
+    const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
+    const todo = [...on].filter((n) => !known.has(n)).length;
+    card.innerHTML = `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b> and <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><a class="btn sm line" href="start/">Change my path</a>`;
+  } else {
+    card.innerHTML = `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`;
+  }
+};
+paintPath();
+document.addEventListener("fh:save", paintPath);
 
 // How do you learn best? Multi-select, saved to the save file (and the account, if signed in).
 const grid = document.getElementById("lp-grid");
-const ICONS = {
-  visual: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="3"/>',
-  auditory: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
-  kinesthetic: '<rect x="3" y="7" width="18" height="11" rx="4"/><path d="M8 11v3M6.5 12.5h3"/><circle cx="16" cy="11.5" r="1"/><circle cx="17.5" cy="14" r="1"/>',
-  logical: '<path d="M4 6h7M7.5 2.5v7M14 6h6M4 17l6-6M4 11l6 6M14 15h6M14 19h6"/>',
-  naturalistic: '<path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l8-8"/>',
-  reading: '<path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/>',
-  social: '<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 19c.5-3 2.5-5 5-5s4.5 2 5 5M11 19c.5-3 2.5-5 5-5s4.5 2 5 5"/>',
-  solitary: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-4 3.5-6 7-6s6.2 2 7 6"/>',
-};
 FH.STYLES.forEach((st) => {
   const b = document.createElement("button");
   b.type = "button";
   b.className = "lp-card";
   b.dataset.id = st.id;
   b.setAttribute("aria-pressed", "false");
-  b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[st.id]}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
+  b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
   b.addEventListener("click", () => {
     const cur = new Set(FH.state.styles || []);
     cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);

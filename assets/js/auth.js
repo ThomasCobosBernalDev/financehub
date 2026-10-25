@@ -22,6 +22,8 @@
     const out = JSON.parse(JSON.stringify(newer));
     out.xp = Math.max(a.xp || 0, b.xp || 0);
     out.badges = [...new Set([...(a.badges || []), ...(b.badges || [])])];
+    const pa = a.profile, pb = b.profile;
+    out.profile = !pa ? pb || null : !pb ? pa : (pa.setAt || "") >= (pb.setAt || "") ? pa : pb;
     out.lessons = {};
     for (const id of new Set([...Object.keys(a.lessons || {}), ...Object.keys(b.lessons || {})])) {
       const x = (a.lessons || {})[id] || {}, y = (b.lessons || {})[id] || {};
@@ -81,12 +83,21 @@
     a.title = `Signed in as ${name}`;
   });
 
+  // First sign-in on a save with no setup: send the learner through the short setup once.
+  let recovering = false;
+  const askSetup = () => {
+    if (!user || recovering || (FH.state.profile && FH.state.profile.done) || /\/start\/?$/.test(location.pathname)) return;
+    try { if (sessionStorage.getItem("fh-setup-asked")) return; sessionStorage.setItem("fh-setup-asked", "1"); } catch (e) { return; }
+    location.href = (document.body.dataset.root || "./") + "start/";
+  };
+
   client.auth.onAuthStateChange((event, session) => {
     const was = user && user.id;
     user = session ? session.user : null;
+    if (event === "PASSWORD_RECOVERY") recovering = true;
     paintHeader();
     if (event === "USER_UPDATED") paintHeader();
-    if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(notify);
+    if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(() => { notify(); askSetup(); });
     else notify();
     if (event === "PASSWORD_RECOVERY") document.dispatchEvent(new CustomEvent("fh:recovery"));
   });
