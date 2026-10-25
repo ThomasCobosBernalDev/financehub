@@ -118,7 +118,6 @@ PAGE = """<!doctype html>
 {art}
       </div>
     </div>
-{style_pick}
   </section>
 {chapters}
 </main>

@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250152">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250206">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -29,6 +29,25 @@
     .unit .lessons a.done .dot { background: var(--accent); box-shadow: none; }
     .unit .lessons b { font-family: var(--serif); font-weight: 500; font-size: 19px; color: var(--ink); }
     .unit .lessons small { color: var(--ink-3); font-size: 14px; }
+    .continue { display: inline-flex; flex-direction: column; gap: 8px; }
+    .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
+    .learn-pick { margin: 40px 0 24px; padding: clamp(24px, 4vw, 44px); background: var(--card); border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 24px 60px -36px rgba(60, 40, 20, .35); }
+    .lp-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; align-items: end; margin-bottom: 28px; }
+    .lp-head h2 { margin: 0; }
+    .lp-head p { margin: 0; color: var(--ink-2); }
+    .lp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 18px 16px 16px; border-radius: 18px; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); display: flex; flex-direction: column; gap: 6px; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
+    .lp-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+    .lp-card svg { width: 28px; height: 28px; color: var(--ink-3); margin-bottom: 4px; transition: color .2s; }
+    .lp-card b { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.2; }
+    .lp-card small { font-size: 13.5px; color: var(--ink-3); line-height: 1.4; }
+    .lp-card .tick { position: absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line); transition: all .2s; }
+    .lp-card.on { background: color-mix(in srgb, var(--accent) 10%, var(--paper)); box-shadow: inset 0 0 0 2px var(--accent); }
+    .lp-card.on svg { color: var(--accent); }
+    .lp-card.on .tick { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat; box-shadow: none; }
+    .lp-foot { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+    @media (max-width: 960px) { .lp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lp-head { grid-template-columns: 1fr; gap: 10px; } }
+    @media (max-width: 420px) { .lp-card { padding: 14px 12px; } .lp-card b { font-size: 16px; } .lp-card small { font-size: 12.5px; } }
     .home-fold { min-height: calc(100svh / var(--z, 1) - 64px); }
     .home-fold svg { width: 100%; max-height: calc(100svh / var(--z, 1) - 120px); }
   </style>
@@ -54,7 +73,7 @@
     <div>
       <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
       <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
-      <a class="btn reveal" href="lessons/scarcity/" id="continue">Start Unit 1 <span class="arrow">→</span></a>
+      <div class="continue reveal"><a class="btn" href="lessons/scarcity/" id="continue"><span>Start Unit 1 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Every choice has a price tag</small></div>
     </div>
     <svg class="reveal" viewBox="0 0 480 520" role="img" aria-label="A winding road through five parts: foundations, your money, your business, markets and Wall Street, and career launch">
       <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
@@ -70,14 +89,23 @@
     </svg>
   </section>
 
+  <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
+    <div class="lp-head">
+      <h2 id="styles-h">How do you <em>learn best?</em></h2>
+      <p>Pick as many as fit. Every lesson teaches all eight ways. Your picks stay open and the rest fold down, so you can skip what doesn't help you. Change it anytime, here or inside a lesson.</p>
+    </div>
+    <div class="lp-grid" id="lp-grid"></div>
+    <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+  </section>
+
   <div class="path">
     <div class="part-name reveal">Part 1 · Foundations</div>
     <div class="unit live open reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>4 lessons are open. Start here.</p>
       <ol class="lessons">
-        <li><a href="lessons/scarcity/" data-lesson="u1-scarcity"><span class="dot"></span><b>Every choice has a price tag</b><small>Scarcity and trade-offs · Ten Free Hours</small></a></li>
-        <li><a href="lessons/supply-demand/" data-lesson="u1-supply-demand"><span class="dot"></span><b>Why prices are what they are</b><small>Supply and demand · Market Stall</small></a></li>
-        <li><a href="lessons/inflation/" data-lesson="u1-inflation"><span class="dot"></span><b>Why your money shrinks</b><small>Inflation and GDP · Beat Inflation</small></a></li>
-        <li><a href="lessons/interest-rates/" data-lesson="u1-interest-rates"><span class="dot"></span><b>Who sets the price of money?</b><small>Interest rates and the Fed · Rate Dial</small></a></li>
+        <li><a href="lessons/scarcity/" data-unit="1" data-n="1" data-lesson="u1-scarcity"><span class="dot"></span><b>Every choice has a price tag</b><small>Scarcity and trade-offs · Ten Free Hours</small></a></li>
+        <li><a href="lessons/supply-demand/" data-unit="1" data-n="2" data-lesson="u1-supply-demand"><span class="dot"></span><b>Why prices are what they are</b><small>Supply and demand · Market Stall</small></a></li>
+        <li><a href="lessons/inflation/" data-unit="1" data-n="3" data-lesson="u1-inflation"><span class="dot"></span><b>Why your money shrinks</b><small>Inflation and GDP · Beat Inflation</small></a></li>
+        <li><a href="lessons/interest-rates/" data-unit="1" data-n="4" data-lesson="u1-interest-rates"><span class="dot"></span><b>Who sets the price of money?</b><small>Interest rates and the Fed · Rate Dial</small></a></li>
       </ol>
     </div></div>
     <div class="unit reveal"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><p>Coming soon</p></div></div>
@@ -86,7 +114,7 @@
     <div class="unit reveal"><div class="n">3</div><div><h3>Earning and taxes</h3><p>Coming soon</p></div></div>
     <div class="unit live open reveal"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>1 lesson is open.</p>
       <ol class="lessons">
-        <li><a href="lessons/budgeting/" data-lesson="u4-budgeting-frameworks"><span class="dot"></span><b>Give every dollar a job</b><small>Budgeting frameworks · Month Survivor</small></a></li>
+        <li><a href="lessons/budgeting/" data-unit="4" data-n="1" data-lesson="u4-budgeting-frameworks"><span class="dot"></span><b>Give every dollar a job</b><small>Budgeting frameworks · Month Survivor</small></a></li>
       </ol>
     </div></div>
     <div class="unit reveal"><div class="n">5</div><div><h3>Credit and debt</h3><p>Coming soon</p></div></div>
@@ -116,18 +144,68 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250152"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250152"></script>
-<script src="assets/js/auth.js?v=202610250152"></script>
-<script src="assets/js/site.js?v=202610250152"></script>
+<script src="assets/js/save.js?v=202610250206"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250206"></script>
+<script src="assets/js/auth.js?v=202610250206"></script>
+<script src="assets/js/site.js?v=202610250206"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
-// Mark finished lessons and point the main button at the next one.
+// Lesson list: mark finished lessons and point the main button at the next one.
 const links = [...document.querySelectorAll(".lessons a")];
-links.forEach((a) => { const l = FH.state.lessons[a.dataset.lesson]; if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += " · done"; } });
+links.forEach((a) => {
+  const l = FH.state.lessons[a.dataset.lesson];
+  if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += " · done"; }
+});
 const next = links.find((a) => !a.classList.contains("done"));
 const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
-if (next && started) { const c = document.getElementById("continue"); c.href = next.getAttribute("href"); c.firstChild.textContent = "Continue: " + next.querySelector("b").textContent + " "; }
+if (next) {
+  const c = document.getElementById("continue");
+  c.href = next.getAttribute("href");
+  c.querySelector("span").textContent = `${started ? "Continue" : "Start"} Unit ${next.dataset.unit} · Lesson ${next.dataset.n}`;
+  document.getElementById("continue-title").textContent = next.querySelector("b").textContent;
+}
+
+// How do you learn best? Multi-select, saved to the save file (and the account, if signed in).
+const grid = document.getElementById("lp-grid");
+const ICONS = {
+  visual: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="3"/>',
+  auditory: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+  kinesthetic: '<rect x="3" y="7" width="18" height="11" rx="4"/><path d="M8 11v3M6.5 12.5h3"/><circle cx="16" cy="11.5" r="1"/><circle cx="17.5" cy="14" r="1"/>',
+  logical: '<path d="M4 6h7M7.5 2.5v7M14 6h6M4 17l6-6M4 11l6 6M14 15h6M14 19h6"/>',
+  naturalistic: '<path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l8-8"/>',
+  reading: '<path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/>',
+  social: '<circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 19c.5-3 2.5-5 5-5s4.5 2 5 5M11 19c.5-3 2.5-5 5-5s4.5 2 5 5"/>',
+  solitary: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-4 3.5-6 7-6s6.2 2 7 6"/>',
+};
+FH.STYLES.forEach((st) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "lp-card";
+  b.dataset.id = st.id;
+  b.setAttribute("aria-pressed", "false");
+  b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[st.id]}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
+  b.addEventListener("click", () => {
+    const cur = new Set(FH.state.styles || []);
+    cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);
+    FH.setStyles([...cur]);
+    paintStyles();
+  });
+  grid.appendChild(b);
+});
+const paintStyles = () => {
+  const picks = FH.state.styles || [];
+  grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
+  const all = picks.length === FH.STYLES.length;
+  document.getElementById("lp-all").textContent = all ? "Clear all" : "Select all";
+  document.getElementById("lp-status").textContent = !picks.length ? "Nothing picked yet, so lessons show every part."
+    : all ? "All eight picked. Lessons show every part." : `${picks.length} picked. Lessons will open these first.`;
+};
+document.getElementById("lp-all").addEventListener("click", () => {
+  FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id));
+  paintStyles();
+});
+document.addEventListener("fh:save", paintStyles);
+paintStyles();
 </script>
 </body>
 </html>

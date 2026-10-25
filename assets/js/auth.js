@@ -66,13 +66,26 @@
 
   // Header button reads "Account" once signed in.
   const paintHeader = () => document.querySelectorAll('a[href$="account/"]').forEach((a) => {
-    if (a.classList.contains("btn")) a.textContent = user ? "Account" : "Sign in";
+    if (!a.classList.contains("btn")) return;
+    const name = user && ((user.user_metadata || {}).username || user.email.split("@")[0]);
+    a.classList.toggle("signed-in", !!user);
+    a.textContent = "";
+    if (!user) { a.textContent = "Sign in"; a.removeAttribute("title"); return; }
+    const av = document.createElement("span");
+    av.className = "avatar";
+    av.textContent = name[0].toUpperCase();
+    const nm = document.createElement("span");
+    nm.className = "uname";
+    nm.textContent = name;
+    a.append(av, nm);
+    a.title = `Signed in as ${name}`;
   });
 
   client.auth.onAuthStateChange((event, session) => {
     const was = user && user.id;
     user = session ? session.user : null;
     paintHeader();
+    if (event === "USER_UPDATED") paintHeader();
     if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(notify);
     else notify();
     if (event === "PASSWORD_RECOVERY") document.dispatchEvent(new CustomEvent("fh:recovery"));

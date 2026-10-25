@@ -8,6 +8,7 @@
     xp: 0,
     badges: [],
     preferredStyle: null,
+    styles: null, // learning styles the learner picked; null means show everything
     character: {
       name: "You",
       age: 18,
@@ -50,6 +51,18 @@
     toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
   };
 
+  // The eight ways every lesson teaches. `chapter` is the lesson section each one maps to.
+  const STYLES = [
+    { id: "visual", label: "Seeing", chapter: "See it", desc: "Diagrams and charts you can drag and poke" },
+    { id: "auditory", label: "Listening", chapter: "Hear it", desc: "A short narrated walkthrough" },
+    { id: "kinesthetic", label: "Doing", chapter: "Play it", desc: "A game where you make the calls" },
+    { id: "logical", label: "Working out the logic", chapter: "Break it down", desc: "Formulas and step-by-step examples" },
+    { id: "naturalistic", label: "Linking it to nature", chapter: "Nature link", desc: "The idea as a living system" },
+    { id: "reading", label: "Reading and writing", chapter: "Notes", desc: "Notes to copy and blanks to fill" },
+    { id: "social", label: "Talking it through", chapter: "Together", desc: "Debates and challenges with friends" },
+    { id: "solitary", label: "Thinking on my own", chapter: "On your own", desc: "Private questions about your own life" },
+  ];
+
   const emit = () => document.dispatchEvent(new CustomEvent("fh:save", { detail: state }));
 
   window.FH = {
@@ -81,6 +94,17 @@
       persist();
       emit();
     },
+    // Picked learning styles (ids from FH.STYLES). An empty or full list means "show everything".
+    get styles() {
+      const s = state.styles || (state.preferredStyle ? [state.preferredStyle] : null);
+      return s && s.length && s.length < STYLES.length ? s : null;
+    },
+    setStyles(list) {
+      state.styles = list && list.length ? [...new Set(list)] : null;
+      persist();
+      emit();
+    },
+    STYLES,
     updateCharacter(patch) {
       Object.assign(state.character, patch);
       persist();

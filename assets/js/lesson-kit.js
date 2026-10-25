@@ -19,21 +19,67 @@
     };
     document.addEventListener("fh:save", renderProgress);
 
+    // ---------- Learning-style filter ----------
+    // Chapters outside the learner's picked styles fold down to one line; "Show anyway" opens them.
+    const opened = new Set();
+    chapters.forEach((c) => {
+      if (!c.dataset.style) return;
+      const k = c.querySelector(".kicker");
+      const b = document.createElement("button");
+      b.className = "unfold";
+      b.type = "button";
+      b.textContent = "Show anyway";
+      b.addEventListener("click", () => { opened.add(c.id); applyStyle(); });
+      k.appendChild(b);
+    });
     const applyStyle = () => {
-      const pref = FH.state.preferredStyle;
-      chapters.forEach((c) => c.classList.toggle("is-preferred", !!pref && c.dataset.style === pref));
-      $$(".rail a").forEach((a) => a.classList.toggle("pref", !!pref && a.dataset.style === pref));
-      $$("#style-picker button").forEach((b) => b.classList.toggle("on", b.dataset.pick === pref));
+      const picks = FH.styles;
+      chapters.forEach((c) => {
+        const st = c.dataset.style;
+        const mine = !!picks && !!st && picks.includes(st);
+        c.classList.toggle("is-preferred", mine);
+        c.classList.toggle("is-folded", !!picks && !!st && !mine && !opened.has(c.id));
+      });
+      $$(".rail a").forEach((a) => {
+        const st = a.dataset.style;
+        a.classList.toggle("pref", !!picks && !!st && picks.includes(st));
+        a.classList.toggle("folded", !!picks && !!st && !picks.includes(st) && !opened.has(a.getAttribute("href").slice(1)));
+      });
+      renderFilter();
     };
-    $$("#style-picker button").forEach((b) =>
-      b.addEventListener("click", () => {
-        FH.setPreferredStyle(b.dataset.pick);
-        applyStyle();
-        FH.toast("Got it. That part of every lesson is marked for you.");
-        const target = $(`main .chapter[data-style="${b.dataset.pick}"]`);
-        if (target) setTimeout(() => target.scrollIntoView(), 700);
-      })
-    );
+    $$(".rail a").forEach((a) => a.addEventListener("click", () => {
+      const id = a.getAttribute("href").slice(1);
+      if (a.classList.contains("folded")) { opened.add(id); applyStyle(); }
+    }));
+
+    const filter = document.createElement("div");
+    filter.className = "style-filter";
+    filter.innerHTML = `<button class="sf-toggle" type="button" aria-expanded="false" aria-controls="sf-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span></span></button>
+      <div class="sf-panel" id="sf-panel" hidden>
+        <b>How you learn best</b>
+        <p>Your picks stay open. The rest fold down so you can skip them.</p>
+        <div class="sf-opts">${FH.STYLES.map((x) => `<label><input type="checkbox" value="${x.id}"><span>${x.label}<small>${x.chapter}</small></span></label>`).join("")}</div>
+        <button class="btn sm line sf-all" type="button">Show every part</button>
+      </div>`;
+    document.body.appendChild(filter);
+    const toggle = $(".sf-toggle", filter), panel = $(".sf-panel", filter);
+    const renderFilter = () => {
+      const picks = FH.styles;
+      $("span", toggle).textContent = picks ? `Your styles · ${picks.length} of 8` : "All learning styles";
+      $$("input", filter).forEach((i) => { i.checked = !picks || picks.includes(i.value); });
+    };
+    toggle.addEventListener("click", () => {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute("aria-expanded", String(!panel.hidden));
+    });
+    document.addEventListener("click", (e) => { if (!filter.contains(e.target) && !panel.hidden) { panel.hidden = true; toggle.setAttribute("aria-expanded", "false"); } });
+    $$("input", filter).forEach((i) => i.addEventListener("change", () => {
+      const list = $$("input", filter).filter((x) => x.checked).map((x) => x.value);
+      FH.setStyles(list);
+      opened.clear();
+      applyStyle();
+    }));
+    $(".sf-all", filter).addEventListener("click", () => { FH.setStyles(null); opened.clear(); applyStyle(); });
 
     const seenIO = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting && FH.markSection(id, e.target.id)) FH.addXP(5); }),
