@@ -91,6 +91,8 @@
     signOut: () => client.auth.signOut(),
     resetPassword: (email) => client.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }),
     setPassword: (password) => client.auth.updateUser({ password }),
+    setUsername: (username) => client.auth.updateUser({ data: { username } }),
+    resendConfirmation: (email) => client.auth.resend({ type: "signup", email, options: { emailRedirectTo: location.origin + location.pathname } }),
     deleteAccount: async () => {
       const { error } = await client.rpc("delete_my_account");
       if (error) throw error;

@@ -6,7 +6,7 @@
   <title>Your account · FinanceHub</title>
   <meta name="description" content="Sign in to save your FinanceHub progress across devices.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610250053">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610250152">
 </head>
 <body data-root="../">
 <a class="skip" href="#main">Skip to content</a>
@@ -69,8 +69,10 @@
       </form>
 
       <form id="form-up" class="auth-form hidden" novalidate>
+        <label><span>Username <span class="small muted">(what we'll call you)</span></span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
         <label>Email<input type="email" name="email" autocomplete="email" required></label>
-        <label><span>Password <span class="small muted">(at least 8 characters)</span></span><input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Password<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">At least 8 characters</li><li data-rule="special">At least one special character, like ! ? # or @</li></ul>
         <label class="check"><input type="checkbox" name="age" required><span>I'm 13 or older.</span></label>
         <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="../legal/terms.html" target="_blank">terms of use</a> and have read the <a href="../legal/privacy.html" target="_blank">privacy policy</a>.</span></label>
         <button class="btn" type="submit">Create account</button>
@@ -86,15 +88,39 @@
 
       <form id="form-newpw" class="auth-form hidden" novalidate>
         <p>Choose a new password.</p>
-        <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+        <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">At least 8 characters</li><li data-rule="special">At least one special character, like ! ? # or @</li></ul>
         <button class="btn" type="submit">Save new password</button>
       </form>
       <p class="auth-msg" id="acct-msg" role="status" aria-live="polite"></p>
     </section>
 
+    <section id="acct-sent" class="hidden sent">
+      <svg class="sent-art" viewBox="0 0 120 96" aria-hidden="true">
+        <rect x="8" y="18" width="104" height="70" rx="10" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M10 24 L60 60 L110 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="96" cy="20" r="16" fill="var(--accent)"/>
+        <path d="M89 20 l5 5 l9 -10" fill="none" stroke="var(--on-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>Check your email</h1>
+      <p>We sent a confirmation link to <b id="sent-email"></b>. Open it to finish creating your account, then come back and sign in.</p>
+      <ol class="sent-steps">
+        <li>Open the email from FinanceHub (check spam if you don't see it).</li>
+        <li>Click <b>Confirm your email</b>.</li>
+        <li>Come back here and sign in.</li>
+      </ol>
+      <button class="btn" id="sent-signin" type="button">I've confirmed, sign in <span class="arrow">→</span></button>
+      <p class="sent-more"><button class="linkish" type="button" id="sent-resend">Resend the email</button> · <button class="linkish" type="button" id="sent-back">Use a different email</button></p>
+      <p class="auth-msg" id="sent-msg" role="status" aria-live="polite"></p>
+    </section>
+
     <section id="acct-in" class="hidden">
-      <h1>Your account</h1>
+      <h1 id="acct-hello">Your account</h1>
       <p class="muted">Signed in as <b id="acct-email"></b>. Progress saves automatically.</p>
+      <form id="form-name" class="auth-form name-form hidden" novalidate>
+        <label><span>Pick a username</span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
+        <button class="btn sm" type="submit">Save</button>
+      </form>
       <dl class="acct-stats">
         <div><dt>XP</dt><dd id="acct-xp"></dd></div>
         <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
@@ -120,15 +146,23 @@
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202610250053"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610250053"></script>
-<script src="../assets/js/auth.js?v=202610250053"></script>
-<script src="../assets/js/site.js?v=202610250053"></script>
+<script src="../assets/js/save.js?v=202610250152"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610250152"></script>
+<script src="../assets/js/auth.js?v=202610250152"></script>
+<script src="../assets/js/site.js?v=202610250152"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 <script>
 (function () {
   const $ = (s) => document.querySelector(s);
-  const show = (id) => ["#acct-loading", "#acct-out", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
+  const show = (id) => ["#acct-loading", "#acct-out", "#acct-sent", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
+  // Password rules: 8+ characters and at least one special character.
+  const RULES = { len: (p) => p.length >= 8, special: (p) => /[^A-Za-z0-9]/.test(p) };
+  const pwOk = (p) => Object.values(RULES).every((r) => r(p));
+  document.querySelectorAll("[data-rules]").forEach((inp) => inp.addEventListener("input", () => {
+    inp.closest("form").querySelectorAll(".pw-rules li").forEach((li) => li.classList.toggle("ok", RULES[li.dataset.rule](inp.value)));
+  }));
+  const USERNAME = /^[A-Za-z0-9_.]{3,20}$/;
+  let pendingEmail = "";
   const forms = ["#form-in", "#form-up", "#form-reset", "#form-newpw"];
   const showForm = (id) => {
     forms.forEach((f) => $(f).classList.toggle("hidden", f !== id));
@@ -166,16 +200,46 @@
   $("#form-up").addEventListener("submit", async (e) => {
     e.preventDefault();
     const f = e.target;
+    const username = f.username.value.trim();
+    if (!USERNAME.test(username)) return msg("Usernames are 3 to 20 letters, numbers, dots or underscores.", true);
     if (!f.email.value.includes("@")) return msg("Enter a valid email address.", true);
-    if (f.password.value.length < 8) return msg("Use at least 8 characters for your password.", true);
+    if (!pwOk(f.password.value)) return msg("Your password needs at least 8 characters and one special character.", true);
     if (!f.age.checked) return msg("You need to be 13 or older to create an account.", true);
     if (!f.terms.checked) return msg("Please agree to the terms and privacy policy to continue.", true);
     msg("Creating your account…");
     const { data, error } = await FHAuth.signUp(f.email.value.trim(), f.password.value, {
-      age_confirmed: true, terms_accepted_at: new Date().toISOString(),
+      username, age_confirmed: true, terms_accepted_at: new Date().toISOString(),
     });
     if (error) return msg(friendly(error), true);
-    if (!data.session) msg("Almost done. Check your email and click the link to confirm your account.");
+    msg("");
+    if (!data.session) {
+      pendingEmail = f.email.value.trim();
+      $("#sent-email").textContent = pendingEmail;
+      $("#sent-msg").textContent = "";
+      show("#acct-sent");
+      $(".auth-card").scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  });
+
+  $("#sent-signin").addEventListener("click", () => {
+    show("#acct-out");
+    showForm("#form-in");
+    $("#form-in").email.value = pendingEmail;
+    $("#form-in").password.focus();
+  });
+  $("#sent-back").addEventListener("click", () => { show("#acct-out"); showForm("#form-up"); });
+  $("#sent-resend").addEventListener("click", async () => {
+    const { error } = await FHAuth.resendConfirmation(pendingEmail);
+    $("#sent-msg").textContent = error ? friendly(error) : "Sent again. It can take a minute to arrive.";
+  });
+
+  $("#form-name").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = e.target.username.value.trim();
+    if (!USERNAME.test(name)) return FH.toast("Usernames are 3 to 20 letters, numbers, dots or underscores.");
+    const { data, error } = await FHAuth.setUsername(name);
+    if (error) return FH.toast(friendly(error));
+    render(data.user);
   });
 
   $("#form-reset").addEventListener("submit", async (e) => {
@@ -188,7 +252,7 @@
   $("#form-newpw").addEventListener("submit", async (e) => {
     e.preventDefault();
     const pw = e.target.password.value;
-    if (pw.length < 8) return msg("Use at least 8 characters.", true);
+    if (!pwOk(pw)) return msg("Use at least 8 characters and one special character.", true);
     const { error } = await FHAuth.setPassword(pw);
     if (error) return msg(friendly(error), true);
     msg("Password updated.");
@@ -210,9 +274,12 @@
 
   const render = (user) => {
     $(".auth-shell").classList.toggle("signed-in", !!user);
-    if (!user) { show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
+    if (!user) { if (!$("#acct-sent").classList.contains("hidden")) return; show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
     show("#acct-in");
     $("#acct-email").textContent = user.email;
+    const name = (user.user_metadata || {}).username;
+    $("#acct-hello").textContent = name ? `Hi, ${name}` : "Your account";
+    $("#form-name").classList.toggle("hidden", !!name);
     const s = FH.state;
     $("#acct-xp").textContent = s.xp;
     $("#acct-badges").textContent = s.badges.length;
