@@ -80,7 +80,7 @@ h1 em, h2 em { font-style: italic; color: var(--accent); }
 p { margin: 0 0 1em; }
 a { color: var(--accent); text-underline-offset: 3px; }
 b, strong { font-weight: 650; }
-.mark { background: linear-gradient(transparent 58%, var(--highlight) 58%); padding: 0 2px; }
+.mark { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 .narrow { max-width: 720px; }
