@@ -1,62 +1,94 @@
 <!-- title: Your account -->
 <!-- description: Sign in to save your FinanceHub progress across devices. -->
-<div id="acct-loading"><h1>Your account</h1><p class="muted">Loading…</p></div>
+<!-- main: wrap auth-page -->
+<div class="auth-shell">
+  <aside class="auth-side" aria-hidden="true">
+    <p class="kicker">Free account</p>
+    <p class="auth-side-title">Your progress<br><em>follows you.</em></p>
+    <svg viewBox="0 0 360 230" class="auth-art">
+      <rect x="18" y="40" width="150" height="104" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <rect x="30" y="52" width="126" height="72" rx="6" fill="var(--paper-2)"/>
+      <rect x="40" y="64" width="60" height="8" rx="4" fill="var(--accent)"/>
+      <rect x="40" y="80" width="96" height="6" rx="3" fill="var(--line)"/>
+      <rect x="40" y="92" width="80" height="6" rx="3" fill="var(--line)"/>
+      <path d="M6 150h174l-10 10H16z" fill="var(--line)"/>
+      <rect x="262" y="70" width="80" height="140" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <rect x="272" y="86" width="60" height="100" rx="6" fill="var(--paper-2)"/>
+      <rect x="280" y="98" width="34" height="7" rx="3.5" fill="var(--accent)"/>
+      <rect x="280" y="112" width="44" height="5" rx="2.5" fill="var(--line)"/>
+      <rect x="280" y="122" width="38" height="5" rx="2.5" fill="var(--line)"/>
+      <path class="flow" d="M150 150 C 200 200, 230 60, 268 120" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="6 8" stroke-linecap="round"/>
+      <circle r="9" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M150 150 C 200 200, 230 60, 268 120"/></circle>
+    </svg>
+    <ul class="auth-perks">
+      <li><b>Pick up anywhere.</b> Laptop in class, phone on the bus, same spot.</li>
+      <li><b>Keep your XP and badges</b> even if you clear your browser.</li>
+      <li><b>Free, always.</b> No ads, no tracking, no marketing emails.</li>
+    </ul>
+  </aside>
 
-<section id="acct-out" class="hidden">
-  <h1 id="acct-title">Sign in</h1>
-  <p class="muted" id="acct-sub">Save your progress and pick up on any device.</p>
-  <div class="auth-tabs" role="tablist">
-    <button role="tab" id="tab-in" aria-selected="true">Sign in</button>
-    <button role="tab" id="tab-up" aria-selected="false">Create account</button>
+  <div class="auth-card">
+    <div id="acct-loading"><h1>Your account</h1><p class="muted">Loading…</p></div>
+
+    <section id="acct-out" class="hidden">
+      <h1 id="acct-title">Sign in</h1>
+      <p class="muted" id="acct-sub">Save your progress and pick up on any device.</p>
+      <div class="auth-tabs" role="tablist">
+        <button role="tab" id="tab-in" aria-selected="true">Sign in</button>
+        <button role="tab" id="tab-up" aria-selected="false">Create account</button>
+      </div>
+
+      <form id="form-in" class="auth-form" novalidate>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+        <button class="btn" type="submit">Sign in</button>
+        <button class="linkish" type="button" id="forgot">Forgot your password?</button>
+      </form>
+
+      <form id="form-up" class="auth-form hidden" novalidate>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label><span>Password <span class="small muted">(at least 8 characters)</span></span><input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+        <label class="check"><input type="checkbox" name="age" required><span>I'm 13 or older.</span></label>
+        <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="../legal/terms.html" target="_blank">terms of use</a> and have read the <a href="../legal/privacy.html" target="_blank">privacy policy</a>.</span></label>
+        <button class="btn" type="submit">Create account</button>
+        <p class="small muted">We only use your email to sign you in. No marketing emails, ever.</p>
+      </form>
+
+      <form id="form-reset" class="auth-form hidden" novalidate>
+        <p>Enter your email and we'll send a link to reset your password.</p>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <button class="btn" type="submit">Send reset link</button>
+        <button class="linkish" type="button" id="reset-back">Back to sign in</button>
+      </form>
+
+      <form id="form-newpw" class="auth-form hidden" novalidate>
+        <p>Choose a new password.</p>
+        <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
+        <button class="btn" type="submit">Save new password</button>
+      </form>
+      <p class="auth-msg" id="acct-msg" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="acct-in" class="hidden">
+      <h1>Your account</h1>
+      <p class="muted">Signed in as <b id="acct-email"></b>. Progress saves automatically.</p>
+      <dl class="acct-stats">
+        <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+        <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
+        <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
+      </dl>
+      <div class="acct-actions"><a class="btn" href="../">Keep learning <span class="arrow">→</span></a><button class="btn line" id="sign-out">Sign out</button></div>
+
+      <details class="acct-danger">
+        <summary>Delete your account</summary>
+        <p>This permanently deletes your account and all progress saved to it. Progress saved in this browser stays until you <a href="../legal/privacy.html#delete">erase it</a>.</p>
+        <div class="auth-form"><label>Type DELETE to confirm<input type="text" id="delete-confirm" autocomplete="off"></label>
+        <button class="btn line danger" id="delete-account" disabled>Delete my account</button></div>
+        <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
+      </details>
+    </section>
   </div>
-
-  <form id="form-in" class="auth-form" novalidate>
-    <label>Email<input type="email" name="email" autocomplete="email" required></label>
-    <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
-    <button class="btn" type="submit">Sign in</button>
-    <button class="linkish" type="button" id="forgot">Forgot your password?</button>
-  </form>
-
-  <form id="form-up" class="auth-form hidden" novalidate>
-    <label>Email<input type="email" name="email" autocomplete="email" required></label>
-    <label><span>Password <span class="small muted">(at least 8 characters)</span></span><input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
-    <label class="check"><input type="checkbox" name="age" required><span>I'm 13 or older.</span></label>
-    <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="../legal/terms.html" target="_blank">terms of use</a> and have read the <a href="../legal/privacy.html" target="_blank">privacy policy</a>.</span></label>
-    <p class="small muted">We only use your email to sign you in. No marketing emails, ever.</p>
-    <button class="btn" type="submit">Create account</button>
-  </form>
-
-  <form id="form-reset" class="auth-form hidden" novalidate>
-    <p>Enter your email and we'll send a link to reset your password.</p>
-    <label>Email<input type="email" name="email" autocomplete="email" required></label>
-    <button class="btn" type="submit">Send reset link</button>
-    <button class="linkish" type="button" id="reset-back">Back to sign in</button>
-  </form>
-
-  <form id="form-newpw" class="auth-form hidden" novalidate>
-    <p>Choose a new password.</p>
-    <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required></label>
-    <button class="btn" type="submit">Save new password</button>
-  </form>
-  <p class="auth-msg" id="acct-msg" role="status" aria-live="polite"></p>
-</section>
-
-<section id="acct-in" class="hidden">
-  <h1>Your account</h1>
-  <p>Signed in as <b id="acct-email"></b>. Your progress saves to your account automatically.</p>
-  <table>
-    <tr><th>XP</th><td id="acct-xp"></td></tr>
-    <tr><th>Badges</th><td id="acct-badges"></td></tr>
-    <tr><th>Lessons finished</th><td id="acct-lessons"></td></tr>
-  </table>
-  <p><a class="btn" href="../">Keep learning <span class="arrow">→</span></a> <button class="btn line" id="sign-out">Sign out</button></p>
-
-  <h2>Delete your account</h2>
-  <p>This permanently deletes your account and all progress saved to it. Progress saved in this browser stays until you <a href="../legal/privacy.html#delete">erase it</a>.</p>
-  <label class="auth-form" style="max-width:360px">Type DELETE to confirm<input type="text" id="delete-confirm" autocomplete="off"></label>
-  <p><button class="btn line danger" id="delete-account" disabled>Delete my account</button></p>
-  <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
-</section>
+</div>
 
 <script>
 (function () {
@@ -142,6 +174,7 @@
   });
 
   const render = (user) => {
+    $(".auth-shell").classList.toggle("signed-in", !!user);
     if (!user) { show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
     show("#acct-in");
     $("#acct-email").textContent = user.email;

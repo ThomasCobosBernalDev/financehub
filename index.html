@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250007">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -22,8 +22,8 @@
     .unit.live h3 { color: var(--ink); }
     .unit.live p { color: var(--accent); font-weight: 600; }
     .unit.live:hover h3 { color: var(--accent); }
-    .home-fold { min-height: calc(100svh - 64px); }
-    .home-fold svg { width: 100%; max-height: calc(100svh - 120px); }
+    .home-fold { min-height: calc(100svh / var(--z, 1) - 64px); }
+    .home-fold svg { width: 100%; max-height: calc(100svh / var(--z, 1) - 120px); }
   </style>
 </head>
 <body data-root="./">
@@ -98,10 +98,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js"></script>
-<script src="assets/vendor/supabase-2.45.4.js"></script>
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/site.js"></script>
+<script src="assets/js/save.js?v=202610250007"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250007"></script>
+<script src="assets/js/auth.js?v=202610250007"></script>
+<script src="assets/js/site.js?v=202610250007"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 </body>
 </html>

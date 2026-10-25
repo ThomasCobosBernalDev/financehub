@@ -503,11 +503,11 @@ details.deeper > div { padding-top: 12px; color: var(--ink-2); }
 #start { padding: 24px 0 56px; }
 .fold {
   display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center;
-  min-height: calc(100svh - 64px - 24px);
+  min-height: calc(100svh / var(--z, 1) - 64px - 24px);
 }
 .fold h1 { font-size: clamp(42px, 4.6vw, 66px); margin-bottom: .25em; }
 .fold .kicker { margin-bottom: 10px; }
-.fold-art svg { width: 100%; height: auto; max-height: calc(100svh - 120px); display: block; }
+.fold-art svg { width: 100%; height: auto; max-height: calc(100svh / var(--z, 1) - 120px); display: block; }
 .story { font-size: 18px; margin-bottom: 0; line-height: 1.6; color: var(--ink-2); max-width: 600px; }
 .story-tag {
   display: inline-block; margin-right: 6px; font-family: var(--serif); font-style: italic; color: var(--accent);
@@ -540,3 +540,162 @@ details.deeper > div { padding-top: 12px; color: var(--ink-2); }
 .auth-msg { min-height: 1.6em; margin-top: 12px; color: var(--ink-2); }
 .auth-msg.bad { color: var(--danger); }
 .btn.danger { color: var(--danger); box-shadow: inset 0 0 0 1.5px var(--danger); }
+
+/* ======================================================================
+   Device layer: phones, tablets, laptops and big screens.
+   Breakpoints: ≤380 small phones · ≤720 phones · 721–1024 tablets ·
+   phone landscape (short screens) · coarse pointers (touch) · ≥1800 big screens.
+   ====================================================================== */
+
+/* Notches and rounded corners (iPhone, Android): keep content inside the safe area. */
+.wrap { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+.notice { bottom: max(16px, env(safe-area-inset-bottom)); }
+.toast { bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px)); }
+.foot { padding-bottom: max(96px, calc(env(safe-area-inset-bottom) + 64px)); }
+
+/* Header never wraps. */
+.topbar .btn, .xp, .logo { white-space: nowrap; }
+html { -webkit-tap-highlight-color: transparent; }
+img, svg, video { max-width: 100%; }
+
+/* Footer: centered. */
+.foot { text-align: center; }
+.foot nav { justify-content: center; }
+.foot .disclaimer { margin-left: auto; margin-right: auto; }
+
+/* Touch screens: every control at least 44px tall, and no hover-only tricks. */
+@media (pointer: coarse) {
+  .btn.sm, .speed button, .auth-tabs button, .opt, .choice, .opts button { min-height: 44px; }
+  .linkish { min-height: 44px; display: inline-flex; align-items: center; }
+  input[type="range"] { height: 44px; }
+  input[type="range"]::-webkit-slider-thumb { width: 28px; height: 28px; margin-top: -11px; }
+  input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; }
+  .icon-btn { width: 44px; height: 44px; }
+  .choice:hover { transform: none; }
+  .btn:hover { transform: none; }
+  .foot nav a { padding: 8px 0; }
+}
+
+/* Tablets (iPad portrait, small laptops). */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left)); padding-right: max(32px, env(safe-area-inset-right)); }
+  .chapter { padding: 80px 0; }
+  .fold { grid-template-columns: 1fr; gap: 32px; min-height: 0; padding-top: 32px; }
+  .fold-art { max-width: 460px; margin: 0 auto; }
+  .four.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figures { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .figure .val { font-size: 40px; }
+  .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+  .alloc { grid-template-columns: 150px 1fr 76px; }
+}
+
+/* iPad landscape and small laptops: two columns, a little tighter. */
+@media (min-width: 1025px) and (max-width: 1239px) {
+  .fold { gap: 40px; }
+}
+
+/* Phones. */
+@media (max-width: 720px) {
+  .wrap { padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+  .topbar .wrap { gap: 10px; height: 58px; }
+  .logo { font-size: 21px; }
+  h1 { font-size: clamp(36px, 10vw, 48px); }
+  h2 { font-size: clamp(28px, 8vw, 38px); }
+  .lead, .story { font-size: 17px; }
+  .chapter.tint { margin: 32px 0; }
+  .figures { grid-template-columns: 1fr; gap: 20px; }
+  .figure .val { font-size: 40px; }
+  .ledger { border-radius: 20px; padding: 16px; }
+  .left-big { font-size: 36px; }
+  .ledger-head .btn { width: 100%; }
+  .event-card { padding: 20px; }
+  .event-card h3 { font-size: 24px; }
+  .gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .gauge b { font-size: 24px; }
+  .transcript p { font-size: 19px; }
+  .player { gap: 14px; }
+  .formula { font-size: 18px; }
+  .question .stem { font-size: 20px; }
+  .style-pick { font-size: 22px; }
+  .foot nav { gap: 4px 18px; }
+  .notice { flex-direction: column; align-items: stretch; text-align: left; }
+  .notice .btn { width: 100%; }
+}
+
+/* Small phones (iPhone SE, older Androids). */
+@media (max-width: 380px) {
+  .xp { display: none; }
+  .topbar .btn.sm { padding: 8px 12px; }
+  .icon-btn { width: 40px; height: 40px; }
+  .gauges { grid-template-columns: 1fr 1fr; }
+  .grade { font-size: 88px; }
+}
+
+/* Phones turned sideways: short screens, so drop full-height layouts. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .fold, .home-fold { min-height: 0; }
+  .fold { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 28px; padding-top: 16px; }
+  .fold-art { max-width: none; }
+  .fold-art svg, .home-fold svg { max-height: 80vh; }
+  .chapter { padding: 48px 0; }
+  .topbar .wrap { height: 52px; }
+  .rail, .companion { display: none !important; }
+}
+
+/* Big screens: scale everything up so the page doesn't float in empty space. */
+/* zoom scales vh too, so full-height pieces divide by --z */
+@media (min-width: 1800px) { html { zoom: 1.18; --z: 1.18; } }
+@media (min-width: 2300px) { html { zoom: 1.4; --z: 1.4; } }
+@media (min-width: 3200px) { html { zoom: 1.8; --z: 1.8; } }
+
+/* ---------- Account page ---------- */
+.auth-page { padding-top: clamp(24px, 5vw, 64px); padding-bottom: 72px; }
+.auth-shell {
+  display: grid; grid-template-columns: 1fr minmax(0, 460px); gap: clamp(32px, 6vw, 88px);
+  align-items: center; max-width: 1060px; margin: 0 auto; min-height: calc(100svh / var(--z, 1) - 220px);
+}
+.auth-side-title { font-family: var(--serif); font-size: clamp(36px, 4.4vw, 56px); line-height: 1.05; margin: 8px 0 24px; color: var(--ink); letter-spacing: -.01em; }
+.auth-side-title em { color: var(--accent); }
+.auth-art { width: 100%; max-width: 420px; display: block; margin-bottom: 20px; }
+.auth-perks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; max-width: 440px; }
+.auth-perks li { position: relative; padding-left: 28px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+.auth-perks li::before { content: ""; position: absolute; left: 0; top: .5em; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); }
+.auth-perks b { color: var(--ink); }
+.auth-card {
+  background: var(--card); border-radius: 24px; padding: clamp(24px, 4vw, 44px);
+  box-shadow: 0 1px 0 var(--line), 0 24px 60px -28px rgba(60, 40, 20, .35); border: 1px solid var(--line);
+}
+.auth-card h1 { font-size: clamp(30px, 3.4vw, 40px); margin: 0 0 6px; }
+.auth-card .auth-tabs { width: 100%; margin: 24px 0 4px; }
+.auth-card .auth-tabs button { flex: 1; }
+.auth-card .auth-form { max-width: none; }
+.auth-card .auth-form .btn[type="submit"] { justify-self: stretch; justify-content: center; }
+.auth-card .auth-form input[type="email"], .auth-card .auth-form input[type="password"], .auth-card .auth-form input[type="text"] { width: 100%; box-sizing: border-box; }
+.auth-card .auth-msg:empty { min-height: 0; margin: 0; }
+.acct-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+.acct-stats div { background: var(--paper-2); border-radius: 14px; padding: 14px 12px; text-align: center; }
+.acct-stats dt { font-size: 13px; color: var(--ink-3); font-weight: 600; }
+.acct-stats dd { margin: 4px 0 0; font-family: var(--serif); font-size: 30px; color: var(--ink); }
+.acct-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.acct-danger { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 16px; }
+.acct-danger summary { cursor: pointer; color: var(--danger); font-weight: 600; min-height: 32px; display: flex; align-items: center; }
+.acct-danger p { color: var(--ink-2); font-size: 15px; }
+@media (max-width: 900px) {
+  .auth-shell { grid-template-columns: 1fr; min-height: 0; max-width: 520px; gap: 24px; }
+  .auth-side { order: 2; }
+  .auth-art { display: none; }
+  .auth-side .kicker, .auth-side-title { display: none; }
+  .auth-perks { padding: 0 4px; }
+}
+@media (max-width: 480px) {
+  .auth-card { border-radius: 18px; padding: 22px 18px; }
+  .acct-stats dd { font-size: 24px; }
+  .acct-actions .btn { flex: 1; justify-content: center; }
+}
+.auth-shell.signed-in { grid-template-columns: minmax(0, 560px); justify-content: center; min-height: 0; }
+.auth-shell.signed-in .auth-side { display: none; }
+
+@media (max-width: 1024px) {
+  .fold.home-fold svg { max-height: 52svh; max-width: 420px; justify-self: center; }
+}
+html[data-theme="dark"] .auth-card .auth-tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }

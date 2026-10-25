@@ -13,7 +13,7 @@ SHELL = """<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{title} · FinanceHub</title>
   <meta name="description" content="{description}">
   <script>try {{ if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; }} catch (e) {{}}</script>
@@ -34,7 +34,7 @@ SHELL = """<!doctype html>
     <a class="btn sm" href="{r}account/">Sign in</a>
   </div>
 </header>
-<main id="main" class="wrap narrow doc">
+<main id="main" class="{main_class}">
 {body}
 </main>
 <footer class="foot">
@@ -66,7 +66,8 @@ for name in sorted(os.listdir(SRC)):
         body, scripts = body[:i].rstrip(), body[i:]
     out = name.replace("__", "/")
     depth = out.count("/")
-    html = SHELL.format(title=meta["title"], description=meta["description"], r="../" * depth, body=body, scripts=scripts)
+    html = SHELL.format(title=meta["title"], description=meta["description"], r="../" * depth, body=body, scripts=scripts,
+                        main_class=meta.get("main", "wrap narrow doc"))
     path = os.path.join(ROOT, out)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w").write(html)
