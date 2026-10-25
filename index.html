@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250255">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250257">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -33,9 +33,9 @@
     .unit .lessons small { color: var(--ink-3); font-size: 14px; }
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
-    .home-fold { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 40px; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 48px; }
+    .home-fold { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 40px; min-height: calc(100svh / var(--z, 1) - 64px); padding: 24px 0 190px; }
     .home-fold { position: relative; isolation: isolate; }
-    .hero-deco { position: absolute; z-index: -1; left: calc(50% - 50vw / var(--z, 1)); width: calc(100vw / var(--z, 1)); bottom: 0; height: min(240px, 28%); pointer-events: none; -webkit-mask: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); }
+    .fold.home-fold .hero-deco { max-height: none; max-width: none; justify-self: auto; position: absolute; z-index: -1; left: calc(50% - 50vw / var(--z, 1)); width: calc(100vw / var(--z, 1)); bottom: 0; height: 180px; pointer-events: none; -webkit-mask: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); mask: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
     body { overflow-x: clip; }
     .hero-deco rect { transform-box: fill-box; transform-origin: 50% 100%; animation: barUp 1.1s var(--ease) both; animation-delay: calc(var(--i, 0) * 60ms + .2s); }
     @keyframes barUp { from { transform: scaleY(0); } }
@@ -72,7 +72,8 @@
     .road .stop.on text { fill: var(--ink); font-size: 21px; }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
     @media (max-width: 1024px) {
-      .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; }
+      .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; padding-bottom: 150px; }
+      .fold.home-fold .hero-deco { height: 130px; }
       .path-wrap { grid-template-columns: 1fr; }
       .road { display: none; }
     }
@@ -193,10 +194,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250255"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250255"></script>
-<script src="assets/js/auth.js?v=202610250255"></script>
-<script src="assets/js/site.js?v=202610250255"></script>
+<script src="assets/js/save.js?v=202610250257"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250257"></script>
+<script src="assets/js/auth.js?v=202610250257"></script>
+<script src="assets/js/site.js?v=202610250257"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 // Lesson list: mark finished lessons and point the main button at the next one.
