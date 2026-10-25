@@ -66,7 +66,7 @@ for name in sorted(os.listdir(SRC)):
         body, scripts = body[:i].rstrip(), body[i:]
     out = name.replace("__", "/")
     depth = out.count("/")
-    html = SHELL.format(title=meta["title"], description=meta["description"], r="../" * depth, body=body, scripts=scripts,
+    html = SHELL.format(title=meta["title"], description=meta["description"], r=("../" * depth) or "./", body=body, scripts=scripts,
                         main_class=meta.get("main", "wrap narrow doc"))
     path = os.path.join(ROOT, out)
     os.makedirs(os.path.dirname(path), exist_ok=True)
