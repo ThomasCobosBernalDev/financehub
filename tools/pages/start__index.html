@@ -234,6 +234,7 @@
       li.innerHTML = `<span class="n">${u}</span><b>${name}</b><small>${k ? "You know this. It's there to review." : open ? `${open} lesson${open > 1 ? "s" : ""} open now` : "Coming soon"}</small>`;
       list.appendChild(li);
     });
+    if (window.FHStagger) FHStagger();
     const extra = FH.UNIT_NAMES.length - on.size;
     const gl = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
     $("#path-sum").textContent = `Built for: ${gl.join(" and ")}. ${todo} unit${todo === 1 ? "" : "s"} to learn${kn.size ? `, ${kn.size} you already know` : ""}${extra ? `, and ${extra} extra unit${extra === 1 ? "" : "s"} you can still open anytime` : ""}.` + (p.quiz ? ` You got ${p.quiz.right} of ${p.quiz.of} on the check.` : "");

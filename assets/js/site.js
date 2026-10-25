@@ -12,15 +12,29 @@
     })
   );
 
-  // Fade elements up as they scroll into view.
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
-      { rootMargin: "0px 0px -8% 0px" }
-    );
-    reveals.forEach((el) => io.observe(el));
-  } else reveals.forEach((el) => el.classList.add("in"));
+  // Fade elements up as they scroll into view. Lists and grids come in one item at a time.
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+    { rootMargin: "0px 0px -8% 0px" }
+  ) : null;
+  const watch = (el) => (io ? io.observe(el) : el.classList.add("in"));
+  document.querySelectorAll(".reveal").forEach(watch);
+  const STAGGER = ".four, .figures, .lessons, .lp-grid, .goal-grid, .level-grid, .my-path, .cols, .steps, [data-stagger]";
+  const stagger = () => document.querySelectorAll(STAGGER).forEach((list) => {
+    [...list.children].forEach((kid, i) => {
+      if (kid.classList.contains("rv-kid")) return;
+      kid.classList.add("rv-kid");
+      kid.style.setProperty("--i", Math.min(i, 10));
+      watch(kid);
+    });
+  });
+  // Some lists are filled in by page scripts, so run once those are done too.
+  stagger();
+  document.addEventListener("DOMContentLoaded", stagger);
+  window.FHStagger = stagger;
+
+  // Units on the course path slide in from alternating sides.
+  document.querySelectorAll(".path .unit").forEach((u, i) => u.classList.add(i % 2 ? "from-right" : "from-left"));
 
   // Thin reading-progress line under the header.
   const bar = document.querySelector(".read-progress");
