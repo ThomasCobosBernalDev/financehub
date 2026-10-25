@@ -72,7 +72,7 @@
 
   // Section rail: highlight the chapter currently on screen.
   const rail = document.querySelector(".rail");
-  if (rail) {
+  if (rail && !rail.hasAttribute("data-own")) {
     const links = [...rail.querySelectorAll("a")];
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => {

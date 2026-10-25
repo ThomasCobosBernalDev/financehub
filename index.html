@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250206">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250230">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -31,25 +31,43 @@
     .unit .lessons small { color: var(--ink-3); font-size: 14px; }
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
-    .learn-pick { margin: 40px 0 24px; padding: clamp(24px, 4vw, 44px); background: var(--card); border-radius: 28px; border: 1px solid var(--line); box-shadow: 0 24px 60px -36px rgba(60, 40, 20, .35); }
-    .lp-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; align-items: end; margin-bottom: 28px; }
-    .lp-head h2 { margin: 0; }
-    .lp-head p { margin: 0; color: var(--ink-2); }
-    .lp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-    .lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 18px 16px 16px; border-radius: 18px; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); display: flex; flex-direction: column; gap: 6px; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
-    .lp-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
-    .lp-card svg { width: 28px; height: 28px; color: var(--ink-3); margin-bottom: 4px; transition: color .2s; }
-    .lp-card b { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.2; }
-    .lp-card small { font-size: 13.5px; color: var(--ink-3); line-height: 1.4; }
-    .lp-card .tick { position: absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line); transition: all .2s; }
+    .home-fold { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 40px; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 48px; }
+    .home-fold h1 { font-size: clamp(42px, 4.4vw, 62px); }
+    .home-fold .lead { font-size: 18px; }
+    .home-fold .lead b { color: var(--accent); font-weight: 600; }
+    .learn-pick { padding: clamp(20px, 2.4vw, 28px); background: var(--card); border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 24px 60px -36px rgba(60, 40, 20, .35); }
+    .lp-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+    .learn-pick h2 { margin: 0 0 6px; font-size: clamp(28px, 2.6vw, 36px); }
+    .learn-pick > p { margin: 0 0 16px; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+    .lp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 11px 34px 11px 12px; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); display: grid; grid-template-columns: 26px 1fr; column-gap: 10px; align-items: start; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
+    .lp-card:hover { transform: translateY(-1px); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+    .lp-card svg { grid-row: span 2; width: 24px; height: 24px; color: var(--ink-3); margin-top: 1px; transition: color .2s; }
+    .lp-card b { font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; }
+    .lp-card small { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; margin-top: 2px; }
+    .lp-card .tick { position: absolute; top: 11px; right: 11px; width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line); transition: all .2s; }
     .lp-card.on { background: color-mix(in srgb, var(--accent) 10%, var(--paper)); box-shadow: inset 0 0 0 2px var(--accent); }
     .lp-card.on svg { color: var(--accent); }
-    .lp-card.on .tick { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat; box-shadow: none; }
-    .lp-foot { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
-    @media (max-width: 960px) { .lp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lp-head { grid-template-columns: 1fr; gap: 10px; } }
-    @media (max-width: 420px) { .lp-card { padding: 14px 12px; } .lp-card b { font-size: 16px; } .lp-card small { font-size: 12.5px; } }
-    .home-fold { min-height: calc(100svh / var(--z, 1) - 64px); }
-    .home-fold svg { width: 100%; max-height: calc(100svh / var(--z, 1) - 120px); }
+    .lp-card.on .tick { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat; box-shadow: none; }
+    .lp-foot { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+    .lp-foot .small { font-size: 13.5px; }
+    .path-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 48px; }
+    .path { margin-top: 0; }
+    .part-name, #styles { scroll-margin-top: 88px; }
+    .road { position: sticky; top: 96px; align-self: start; padding-top: 48px; }
+    .road svg { width: 100%; height: auto; max-height: calc(100svh / var(--z, 1) - 140px); display: block; }
+    .road .stop circle { fill: var(--paper); stroke: var(--line); stroke-width: 3; transition: fill .4s, stroke .4s, r .4s; }
+    .road .stop text { fill: var(--ink-3); font-size: 17px; transition: fill .4s; }
+    .road .stop.past circle { fill: var(--accent); stroke: var(--accent); }
+    .road .stop.on circle { fill: var(--accent); stroke: color-mix(in srgb, var(--accent) 35%, transparent); stroke-width: 10; }
+    .road .stop.on text { fill: var(--ink); font-size: 21px; }
+    @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
+    @media (max-width: 1024px) {
+      .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; }
+      .path-wrap { grid-template-columns: 1fr; }
+      .road { display: none; }
+    }
+    @media (max-width: 420px) { .lp-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body data-root="./">
@@ -68,38 +86,36 @@
   </div>
 </header>
 
+<nav class="rail" data-own aria-label="Page sections">
+  <a href="#top"><i></i><span>Start</span></a>
+  <a href="#styles"><i></i><span>How you learn best</span></a>
+  <a href="#part-1"><i></i><span>Part 1 · Foundations</span></a>
+  <a href="#part-2"><i></i><span>Part 2 · Your money</span></a>
+  <a href="#part-3"><i></i><span>Part 3 · Your business</span></a>
+  <a href="#part-4"><i></i><span>Part 4 · Wall Street</span></a>
+  <a href="#part-5"><i></i><span>Part 5 · Career launch</span></a>
+</nav>
 <main class="wrap" id="main">
-  <section class="fold home-fold">
+  <section class="fold home-fold" id="top">
     <div>
-      <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
-      <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
+      <h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>
+      <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
       <div class="continue reveal"><a class="btn" href="lessons/scarcity/" id="continue"><span>Start Unit 1 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Every choice has a price tag</small></div>
     </div>
-    <svg class="reveal" viewBox="0 0 480 520" role="img" aria-label="A winding road through five parts: foundations, your money, your business, markets and Wall Street, and career launch">
-      <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
-      <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--card)" stroke-width="2" stroke-dasharray="8 10" class="flow"/>
-      <circle r="8" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="9s" repeatCount="indefinite" path="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50"/></circle>
-      <g font-family="Fraunces, serif" font-size="21" fill="var(--ink)">
-        <circle cx="80" cy="470" r="13" fill="var(--accent)"/><text x="104" y="508">First paycheck</text>
-        <circle cx="330" cy="380" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="352" y="386" font-size="17">Your money</text>
-        <circle cx="150" cy="270" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="20" y="246" font-size="17">Your business</text>
-        <circle cx="330" cy="160" r="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><text x="200" y="138" font-size="17">Markets</text>
-        <circle cx="410" cy="50" r="13" fill="var(--ink)"/><text x="400" y="22" text-anchor="end">Wall Street deal</text>
-      </g>
-    </svg>
-  </section>
-
-  <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
-    <div class="lp-head">
+    <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
+      <div class="lp-kicker">Make it yours</div>
       <h2 id="styles-h">How do you <em>learn best?</em></h2>
-      <p>Pick as many as fit. Every lesson teaches all eight ways. Your picks stay open and the rest fold down, so you can skip what doesn't help you. Change it anytime, here or inside a lesson.</p>
-    </div>
-    <div class="lp-grid" id="lp-grid"></div>
-    <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+      <p>Pick as many as you like. Your picks open first in every lesson, and the rest fold away until you want them.</p>
+      <div class="lp-grid" id="lp-grid"></div>
+      <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+    </section>
   </section>
 
+
+
+  <div class="path-wrap">
   <div class="path">
-    <div class="part-name reveal">Part 1 · Foundations</div>
+    <div class="part-name reveal" id="part-1" data-part="1">Part 1 · Foundations</div>
     <div class="unit live open reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>4 lessons are open. Start here.</p>
       <ol class="lessons">
         <li><a href="lessons/scarcity/" data-unit="1" data-n="1" data-lesson="u1-scarcity"><span class="dot"></span><b>Every choice has a price tag</b><small>Scarcity and trade-offs · Ten Free Hours</small></a></li>
@@ -110,7 +126,7 @@
     </div></div>
     <div class="unit reveal"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><p>Coming soon</p></div></div>
 
-    <div class="part-name reveal">Part 2 · Your money</div>
+    <div class="part-name reveal" id="part-2" data-part="2">Part 2 · Your money</div>
     <div class="unit reveal"><div class="n">3</div><div><h3>Earning and taxes</h3><p>Coming soon</p></div></div>
     <div class="unit live open reveal"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>1 lesson is open.</p>
       <ol class="lessons">
@@ -122,18 +138,33 @@
     <div class="unit reveal"><div class="n">7</div><div><h3>Investing and retirement</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">8</div><div><h3>Big purchases</h3><p>Coming soon</p></div></div>
 
-    <div class="part-name reveal">Part 3 · Your business</div>
+    <div class="part-name reveal" id="part-3" data-part="3">Part 3 · Your business</div>
     <div class="unit reveal"><div class="n">9</div><div><h3>Starting a business</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">10</div><div><h3>Accounting</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">11</div><div><h3>Corporate finance</h3><p>Coming soon</p></div></div>
 
-    <div class="part-name reveal">Part 4 · Markets and Wall Street</div>
+    <div class="part-name reveal" id="part-4" data-part="4">Part 4 · Markets and Wall Street</div>
     <div class="unit reveal"><div class="n">12</div><div><h3>Investments and portfolios</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">13</div><div><h3>Valuation and modeling</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">14</div><div><h3>Macro, markets and institutions</h3><p>Coming soon</p></div></div>
 
-    <div class="part-name reveal">Part 5 · Career launch</div>
+    <div class="part-name reveal" id="part-5" data-part="5">Part 5 · Career launch</div>
     <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><p>Coming soon</p></div></div>
+  </div>
+  <aside class="road" aria-hidden="false">
+  <svg viewBox="0 0 480 520" role="img" aria-label="A winding road through the five parts of the course. The part you are looking at lights up.">
+    <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
+    <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--card)" stroke-width="2" stroke-dasharray="8 10" class="flow"/>
+    <circle r="8" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="9s" repeatCount="indefinite" path="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50"/></circle>
+    <g font-family="Fraunces, serif" font-size="19" fill="var(--ink)">
+      <g class="stop" data-part="1"><circle cx="80" cy="470" r="13"/><text x="104" y="508">Foundations</text></g>
+      <g class="stop" data-part="2"><circle cx="330" cy="380" r="12"/><text x="354" y="386">Your money</text></g>
+      <g class="stop" data-part="3"><circle cx="150" cy="270" r="12"/><text x="20" y="246">Your business</text></g>
+      <g class="stop" data-part="4"><circle cx="330" cy="160" r="12"/><text x="170" y="138">Wall Street</text></g>
+      <g class="stop" data-part="5"><circle cx="410" cy="50" r="13"/><text x="392" y="22" text-anchor="end">Career launch</text></g>
+    </g>
+  </svg>
+  </aside>
   </div>
 </main>
 <footer class="foot">
@@ -144,10 +175,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250206"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250206"></script>
-<script src="assets/js/auth.js?v=202610250206"></script>
-<script src="assets/js/site.js?v=202610250206"></script>
+<script src="assets/js/save.js?v=202610250230"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250230"></script>
+<script src="assets/js/auth.js?v=202610250230"></script>
+<script src="assets/js/site.js?v=202610250230"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 // Lesson list: mark finished lessons and point the main button at the next one.
@@ -206,6 +237,21 @@ document.getElementById("lp-all").addEventListener("click", () => {
 });
 document.addEventListener("fh:save", paintStyles);
 paintStyles();
+// Side rail and road: light up the section you're looking at.
+const railLinks = [...document.querySelectorAll(".rail a")];
+const targets = railLinks.map((a) => document.querySelector(a.getAttribute("href")));
+const stops = [...document.querySelectorAll(".road .stop")];
+const track = () => {
+  const mid = innerHeight * 0.45;
+  let cur = 0;
+  if (scrollY > innerHeight * 0.25) targets.forEach((t, i) => { if (t.getBoundingClientRect().top < mid) cur = i; });
+  railLinks.forEach((a, i) => { a.classList.toggle("current", i === cur); a.classList.toggle("seen", i < cur); });
+  const part = Number(targets[cur].dataset.part || 0) || 1;
+  stops.forEach((g) => { const n = Number(g.dataset.part); g.classList.toggle("on", n === part); g.classList.toggle("past", n < part); });
+};
+let ticking = false;
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
+track();
 </script>
 </body>
 </html>
