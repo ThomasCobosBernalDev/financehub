@@ -5,16 +5,16 @@
 
 <!-- @start -->
         <h1 class="reveal">Every choice has a <em>price tag.</em></h1>
-        <p class="story reveal"><span class="story-tag">Where the story starts</span> You're 17. It's the summer before senior year, you have <span class="mark">$300</span> saved and about <span class="mark">10 free hours</span> every weekend. You can mow lawns, fix up old bikes to resell, study for the SAT or hang out with friends. You can't do all of it.</p>
+        <p class="story reveal"><span class="story-tag">Where the story starts</span> You're 17, and it's the summer before senior year. You have <span class="mark">$300</span> saved and about <span class="mark">10 free hours</span> every weekend. You could mow lawns for neighbors (about 1 hour and $15 per lawn), fix up old bikes and resell them (about 4 hours and $70 profit per bike), study for the SAT, or hang out with friends. You can't do all of it, so you have to choose.</p>
         <div class="four compact">
-          <div class="reveal"><div class="word">What</div><p>Decide how to use something limited, like time or money, when you want more than it can cover.</p></div>
-          <div class="reveal"><div class="word">Why</div><p>Every yes is a no to something else. Seeing the hidden cost makes your choices sharper.</p></div>
-          <div class="reveal"><div class="word">How</div><p>Price each option by its <b>opportunity cost</b>: the best thing you gave up to get it.</p></div>
-          <div class="reveal"><div class="word">Who</div><p><b>Economists</b> study it. <b>Strategy analysts</b> and <b>consultants</b> get paid to make these calls for companies.</p></div>
+          <div class="reveal"><div class="word">What</div><p>Choosing how to use something you only have a limited amount of, like time or money.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Saying yes to one thing always means saying no to something else. When you can see what you're giving up, you make better choices.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Compare each option by its <dfn class="term" data-def="The value of the best thing you give up when you choose something else.">opportunity cost</dfn>: the best thing you give up to get it.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Economists</b> study these choices. <b>Strategy analysts</b> and <b>consultants</b> get paid to make them for companies.</p></div>
         </div>
 
 <!-- @art -->
-        <svg viewBox="0 0 520 560" role="img" aria-label="A curved frontier showing every way to split 10 hours between earning money and studying. A coin slides along the curve. A point inside the curve is wasted time and a point outside is impossible for now.">
+        <svg viewBox="0 0 520 560" role="img" aria-label="The production possibilities frontier: a curve showing every way to split 10 hours between fixing bikes and mowing lawns. A point inside the curve is wasted time and a point outside is impossible for now.">
           <defs>
             <linearGradient id="ppf-fill" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--savings)" stop-opacity=".22"/><stop offset="1" stop-color="var(--savings)" stop-opacity=".06"/></linearGradient>
           </defs>
@@ -27,14 +27,15 @@
           <circle cx="420" cy="150" r="9" fill="none" stroke="var(--danger)" stroke-width="2.5"/>
           <path d="M413 143l14 14M427 143l-14 14" stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round"/>
           <text x="405" y="128" text-anchor="end" font-size="15" fill="var(--ink-2)">Impossible, for now</text>
-          <text x="470" y="506" text-anchor="end" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Money earned →</text>
-          <text transform="translate(40 470) rotate(-90)" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Hours studying →</text>
-          <text x="92" y="168" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="var(--savings)">every way to spend 10 hours</text>
+          <text x="470" y="506" text-anchor="end" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Lawns mowed →</text>
+          <text transform="translate(40 470) rotate(-90)" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Bikes fixed →</text>
+          <text x="92" y="60" font-family="Fraunces, serif" font-size="20" fill="var(--savings)">Production possibilities frontier</text>
+          <text x="92" y="84" font-size="15" fill="var(--ink-2)">every way to split your 10 hours</text>
         </svg>
 
 <!-- @see -->
       <h2 class="reveal">Slide your weekend.<br>Watch what it <em>costs.</em></h2>
-      <p class="lead reveal">Mowing pays $15 an hour. Every hour you spend with friends is an hour you didn't mow. That's not free. It costs $15.</p>
+      <p class="lead reveal">Say mowing pays $15 an hour. Every hour you spend with friends is an hour you aren't mowing, so that hour isn't really free. It costs you the $15 you could have earned. That missed $15 is the hour's <dfn class="term" data-def="The value of the best thing you give up when you choose something else.">opportunity cost</dfn>.</p>
 
       <div class="reveal hours-demo" style="margin-top:36px">
         <div class="payline"><span class="val" id="oc-hours">6</span><span class="muted">hours mowing, out of 10</span></div>
@@ -47,8 +48,15 @@
         </div>
       </div>
 
-      <h3 class="reveal" style="margin-top:88px">Now map every possible weekend.</h3>
-      <p class="muted reveal">This curve is your <b>production possibilities frontier</b>. It shows the most bikes and lawns you can finish in a weekend. Tap anywhere on the chart to test a plan.</p>
+      <h3 class="reveal" style="margin-top:88px">Now look at every possible weekend.</h3>
+      <p class="reveal">This time, picture all 10 hours going to your two jobs: mowing lawns and fixing bikes. A lawn takes about 1 hour. A bike takes about 4 hours. So you could mow 10 lawns, or fix 2 bikes and mow 2 lawns, or anything in between.</p>
+      <p class="reveal">The green curve below shows the most of both you can finish in one weekend. It's called a <dfn class="term" data-def="A curve showing the most of two things you can make with the time or resources you have.">production possibilities frontier</dfn>, or <b>PPF</b> for short.</p>
+      <ul class="reveal ppf-key">
+        <li><b>On the curve:</b> you use all 10 hours. Nothing is wasted.</li>
+        <li><b>Inside the curve:</b> some hours go unused. You could do more of both.</li>
+        <li><b>Outside the curve:</b> impossible with the time and tools you have now.</li>
+      </ul>
+      <p class="muted reveal">Tap anywhere on the chart to test a plan.</p>
       <div class="reveal ppf-wrap" style="margin-top:24px">
         <svg id="ppf" viewBox="0 0 640 420" role="img" aria-label="A chart with bikes fixed on the vertical axis and lawns mowed on the horizontal axis. Tap a point to see whether that plan is possible, wasteful or efficient.">
           <g class="ppf-grid" stroke="var(--line)" stroke-width="1">
@@ -60,6 +68,7 @@
           <path id="ppf-old" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6" opacity="0"/>
           <g id="ppf-ticks" font-size="13" fill="var(--ink-3)"></g>
           <text x="610" y="398" text-anchor="end" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Lawns mowed</text>
+          <path d="M100 52 h28" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/><text x="138" y="57" class="ppf-legend" fill="var(--ink-2)">Production possibilities frontier (PPF)</text>
           <text transform="translate(30 360) rotate(-90)" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bikes fixed</text>
           <g id="ppf-pin" opacity="0"><circle r="10" stroke-width="3"/></g>
           <rect id="ppf-hit" x="80" y="30" width="540" height="330" fill="transparent" style="cursor:crosshair"/>
@@ -67,7 +76,7 @@
         <div class="ppf-side">
           <p id="ppf-msg" class="ppf-msg" aria-live="polite">Tap the chart to try a plan.</p>
           <button class="btn sm line" id="ppf-grow">Buy a $60 repair stand</button>
-          <p class="small muted" style="margin-top:12px">A better tool lets you fix bikes faster. Watch what happens to the frontier.</p>
+          <p class="small muted" style="margin-top:12px">A repair stand lets you fix bikes faster, so the same 10 hours can produce more. Watch the frontier move outward.</p>
         </div>
       </div>
 
@@ -106,26 +115,28 @@
 
       <h3 class="reveal" style="margin-top:40px">Opportunity cost</h3>
       <div class="formula reveal">Opportunity cost of a choice <span class="op">=</span> value of the <b>best</b> option you gave up</div>
-      <p class="reveal">Only the next best option counts, not all of them added together. If you could have mowed ($15) or babysat ($12), an hour with friends costs $15, not $27.</p>
+      <p class="reveal">You only count the single best option you gave up, not every option added together. Say one hour of your time could earn $15 mowing a lawn or $12 babysitting. If you spend that hour with friends instead, the hour cost you <b>$15</b>, the better of the two. It didn't cost $27, because you could never have mowed and babysat in the same hour.</p>
 
-      <h3 class="reveal">Opportunity cost along a frontier</h3>
-      <div class="formula reveal">Cost of 1 more A <span class="op">=</span> B given up <span class="op">÷</span> A gained</div>
+      <h3 class="reveal">Measuring cost in the other thing</h3>
+      <p class="reveal">Opportunity cost doesn't have to be in dollars. Often it's easier to ask: <i>"To get one more of this, how much of that do I give up?"</i></p>
+      <p class="reveal">A bike takes 4 hours. In those same 4 hours you could mow 4 lawns. So one bike costs you <b>4 lawns</b>. As a formula:</p>
+      <div class="formula reveal">Cost of 1 more bike <span class="op">=</span> lawns you give up <span class="op">÷</span> bikes you gain <span class="op">=</span> 4 <span class="op">÷</span> 1 <span class="op">=</span> 4 lawns</div>
 
       <h3 class="reveal">Worked example: bikes or lawns</h3>
       <ol class="steps reveal">
-        <li><b>Know your rates.</b> In 10 hours you can mow 10 lawns ($15 each) or fix 2.5 bikes (4 hours each, about $70 profit each).</li>
-        <li><b>Price one bike in lawns.</b> One bike takes 4 hours, which could have been 4 lawns. So 1 bike costs <b>4 lawns</b>, or $60 of mowing.</li>
-        <li><b>Compare to what it pays.</b> A bike earns $70. Its opportunity cost is $60. The bike wins by $10.</li>
-        <li><b>Watch for rising cost.</b> Your first bike uses your best project. The third one might be a rusty mess that takes 6 hours. Now it costs 6 lawns ($90) and loses. That's why the frontier curves.</li>
-        <li><b>Decide at the margin.</b> Don't ask "bikes or lawns?" Ask "is <i>one more</i> bike worth more than what it pushes out?" Stop when the answer flips.</li>
+        <li><b>Write down what each job takes.</b> A lawn takes 1 hour and pays $15. A bike takes 4 hours and makes about $70 profit.</li>
+        <li><b>Find what one bike costs in lawns.</b> The 4 hours a bike takes could have mowed 4 lawns. So one bike costs <b>4 lawns</b>, which is 4 × $15 = <b>$60</b> of mowing money.</li>
+        <li><b>Compare that cost to what the bike pays.</b> The bike makes $70, and you gave up $60 to fix it. So the bike is the better use of those hours, by $10.</li>
+        <li><b>Watch the cost go up.</b> Your first bike is probably an easy one. Your third might be a rusty mess that takes 6 hours. That bike costs 6 lawns ($90) but still only pays $70, so it's no longer worth it. This rising cost is why the frontier is a curve instead of a straight line.</li>
+        <li><b>Decide one at a time.</b> Don't ask "bikes or lawns?" Ask "is <i>one more</i> bike worth more than the lawns it replaces?" Keep going until the answer becomes no. Economists call this <dfn class="term" data-def="Deciding by comparing the extra benefit and extra cost of one more unit, instead of all or nothing.">thinking at the margin</dfn>.</li>
       </ol>
 
       <details class="deeper reveal">
-        <summary>Go deeper: sunk costs, the bowed frontier and comparative advantage</summary>
+        <summary>Go deeper: sunk costs, why the frontier curves, and comparative advantage</summary>
         <div>
-          <p><b>Sunk costs don't count.</b> Money or time already spent and unrecoverable shouldn't change your next choice. If you spent 3 hours on a bike that turns out to need $80 in parts, the 3 hours are gone either way. Only compare what's still ahead.</p>
-          <p><b>Why the frontier bows outward.</b> Resources aren't equally good at everything. Shift hours from mowing to bikes and you use your best bike skills first, then worse ones, so each extra bike costs more lawns. Economists call this the <i>law of increasing opportunity cost</i>. On an exam, a straight-line frontier means constant opportunity cost.</p>
-          <p><b>Comparative advantage.</b> Say your friend Sam mows 2 lawns an hour but fixes a bike in 8 hours. Sam's bike costs 16 lawns, yours costs 4. Even if Sam were faster at both, you should fix bikes and Sam should mow, then trade. This idea, from David Ricardo in 1817, is the basis for why countries trade, and it shows up in every Principles of Microeconomics course.</p>
+          <p><b>1. Sunk costs.</b> A <dfn class="term" data-def="Time or money you've already spent and can't get back.">sunk cost</dfn> is time or money you've already spent and can't get back. It shouldn't change what you do next. Say you've put 3 hours into a bike, and then you find out it needs $80 of parts. Those 3 hours are gone whether you finish the bike or not. The only question now is whether finishing it will make more than the $80 and the hours still ahead. If it won't, stop, even though it feels like a waste.</p>
+          <p><b>2. Why the frontier curves.</b> Notice the PPF bends outward instead of being a straight line. That's because not every bike is equally easy. You'd pick the easiest bikes first, so each extra bike takes longer and costs you more lawns than the one before. Economists call this the <dfn class="term" data-def="Each extra unit of something costs more of the other thing than the unit before.">law of increasing opportunity cost</dfn>. Exam tip: if a PPF is a straight line, every unit costs the same amount.</p>
+          <p><b>3. Comparative advantage.</b> Having a <dfn class="term" data-def="Being able to do something while giving up less than someone else would.">comparative advantage</dfn> means you can do something while giving up less than someone else would. Say your friend Sam can mow 2 lawns an hour, but takes 8 hours to fix a bike. In those 8 hours Sam could have mowed 16 lawns, so a bike costs Sam 16 lawns. A bike only costs you 4. So you should fix the bikes, Sam should mow the lawns, and you split the work. You both end up with more than if each of you did both jobs. This works even when one person is faster at everything. An economist named David Ricardo explained it in 1817, and it's the main reason countries trade with each other. It's on every intro economics exam.</p>
         </div>
       </details>
 
@@ -162,11 +173,11 @@
       <h2 class="reveal">The page you'd <em>copy down.</em></h2>
       <div class="paper reveal" style="margin-top:32px">
         <ul>
-          <li><b>Scarcity:</b> wants are unlimited, resources (time, money, energy) are limited. It's why economics exists.</li>
+          <li><b>Scarcity:</b> you want more than you have time, money or energy for. That's the reason economics exists.</li>
           <li><b>Trade-off:</b> getting more of one thing means getting less of another.</li>
           <li><b>Opportunity cost:</b> the value of the next best alternative you give up. Only the best one counts.</li>
-          <li><b>Production possibilities frontier (PPF):</b> the most you can make of two things with what you have. On it = efficient. Inside = waste. Outside = impossible for now.</li>
-          <li><b>Growth</b> (better tools, skills, more time) shifts the frontier outward.</li>
+          <li><b>Production possibilities frontier (PPF):</b> a curve showing the most you can make of two things with what you have. On the curve, nothing is wasted. Inside it, something is wasted. Outside it is impossible for now.</li>
+          <li><b>Growth</b> (better tools, better skills, more time) moves the frontier outward.</li>
           <li><b>Marginal thinking:</b> compare the cost and benefit of <i>one more</i> unit, not all or nothing.</li>
           <li><b>Sunk costs</b> are already gone. Ignore them when deciding what's next.</li>
         </ul>
@@ -174,7 +185,7 @@
 
       <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
       <div class="paper reveal" id="blanks">
-        <div>1. You skip a $20 shift to see a $12 movie. The opportunity cost of the movie night is the movie ticket plus <input type="text" class="blank" data-answer="20" inputmode="numeric" aria-label="Blank 1"> dollars of lost pay.</div>
+        <div>1. You skip a $20 work shift to see a $12 movie. The movie night really costs you the $12 ticket plus the <input type="text" class="blank" data-answer="20" inputmode="numeric" aria-label="Blank 1"> dollars you would have earned.</div>
         <div>2. A point inside the frontier means resources are being <input type="text" class="blank" data-answer="wasted|underused|unused|idle" aria-label="Blank 2">.</div>
         <div>3. If 1 bike takes the same time as 4 lawns, the opportunity cost of 1 bike is <input type="text" class="blank" data-answer="4|4 lawns|four|four lawns" aria-label="Blank 3"> lawns.</div>
         <div>4. Money already spent that you can't get back is a <input type="text" class="blank" data-answer="sunk|sunk cost" aria-label="Blank 4"> cost.</div>
@@ -190,7 +201,7 @@
         </div>
         <div class="reveal">
           <h3>Trade like Ricardo</h3>
-          <p>Time each other: how many words can you type in a minute, and how many math problems can you solve? Work out who has the comparative advantage in each, then split a pretend homework load to finish fastest.</p>
+          <p>Time each other for one minute: how many words can each of you type, and how many math problems can each of you solve? Work out who gives up less to do each task (that's comparative advantage), then split a pretend homework load so you finish fastest.</p>
         </div>
         <div class="reveal">
           <h3>Hours showdown</h3>

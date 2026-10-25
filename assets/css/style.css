@@ -378,7 +378,7 @@ textarea { width: 100%; min-height: 96px; resize: vertical; line-height: 1.6; }
 .steps li:last-child::after { display: none; }
 details.deeper { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; margin-top: 16px; }
 details.deeper summary { cursor: pointer; font-family: var(--serif); font-size: 22px; list-style: none; display: flex; justify-content: space-between; }
-details.deeper summary::after { content: "+"; color: var(--accent); transition: transform .3s; }
+details.deeper summary::after { content: ""; flex: none; width: 16px; height: 16px; margin: 8px 0 0 12px; background: linear-gradient(var(--accent), var(--accent)) center / 100% 2px no-repeat, linear-gradient(var(--accent), var(--accent)) center / 2px 100% no-repeat; transition: transform .3s; }
 details.deeper[open] summary::after { transform: rotate(45deg); }
 details.deeper > div { padding-top: 12px; color: var(--ink-2); }
 
@@ -886,3 +886,17 @@ body:has(.notice) .style-filter { display: none; }
 .goal-card, .level-card, .q-opt { box-shadow: inset 0 0 0 1.5px var(--line), var(--shadow); }
 .learn-pick { box-shadow: var(--shadow); }
 
+
+/* Key terms: highlighted where they're introduced, with the meaning on hover or tap. */
+.term { position: relative; font-style: normal; font-weight: 650; color: var(--ink); background: linear-gradient(transparent 58%, color-mix(in srgb, var(--accent) 22%, transparent) 58%); padding: 0 2px; border-radius: 3px; cursor: help; outline-offset: 2px; }
+.term[data-def]:hover::after, .term[data-def]:focus::after { content: attr(data-def); position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); width: max-content; max-width: min(300px, 80vw); padding: 10px 14px; border-radius: 12px; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 500; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; z-index: 40; animation: termIn .2s var(--ease); }
+@keyframes termIn { from { opacity: 0; transform: translate(-50%, 4px); } }
+@media (max-width: 720px) {
+  .term[data-def]:hover::after, .term[data-def]:focus::after { position: fixed; left: 16px; right: 16px; bottom: 16px; width: auto; max-width: none; transform: none; font-size: 15px; animation: none; box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); }
+}
+.term-key { font-size: 14px; color: var(--ink-3); margin-top: 8px; }
+.term-key .term { cursor: default; }
+.blank-ans { margin-left: 8px; font-size: 15px; font-weight: 600; color: var(--good); white-space: nowrap; }
+.ppf-legend { font-size: 15px; }
+.ppf-key { margin: 0 0 12px; padding-left: 20px; }
+.ppf-key li { margin: 4px 0; }

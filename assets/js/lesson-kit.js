@@ -132,6 +132,9 @@
       }).catch(() => { transcript.innerHTML = "<p>The narration couldn't load. Try refreshing the page.</p>"; });
     }
 
+    // ---------- Key terms: tap or hover to see what they mean ----------
+    $$(".term[data-def]").forEach((t) => { t.tabIndex = 0; t.setAttribute("aria-label", `${t.textContent}: ${t.dataset.def}`); });
+
     // ---------- Notes: fill in the blanks ----------
     const blanksBtn = $("#blanks-check");
     if (blanksBtn) blanksBtn.addEventListener("click", () => {
@@ -142,6 +145,12 @@
         b.classList.toggle("right", ok);
         b.classList.toggle("wrong", !ok);
         if (ok) right++;
+        // Show the correct answer next to any blank that was missed.
+        let ans = b.nextElementSibling && b.nextElementSibling.classList.contains("blank-ans") ? b.nextElementSibling : null;
+        if (!ok) {
+          if (!ans) { ans = document.createElement("span"); ans.className = "blank-ans"; b.after(ans); }
+          ans.textContent = `(answer: ${b.dataset.answer.split("|")[0]})`;
+        } else if (ans) ans.remove();
       });
       $("#blanks-result").textContent = `${right} of ${blanks.length} right`;
       if (right === blanks.length) FH.badge(`blanks-${slug}`, "Note Taker");
