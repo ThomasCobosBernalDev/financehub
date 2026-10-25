@@ -4,22 +4,26 @@
 @font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-latin-full-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 @font-face { font-family: "Instrument Sans"; src: url("../fonts/instrument-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
 :root {
-  --paper: #faf7f1;
-  --paper-2: #f1ebe0;
-  --card: #fffdf9;
+  --paper: #f1e9db;
+  --paper-2: #eae0cd;
+  --card: #faf4e9;
   --ink: #1d1c19;
   --ink-2: #605b52;
   --ink-3: #6e675b;
-  --line: #e3dccf;
+  --line: #d9ccb5;
   --accent: #1f6f5c;
-  --accent-soft: #dcebe4;
+  --accent-soft: #d3e3d6;
   --needs: #3357a3;
   --wants: #b85a2c;
   --savings: #237a5a;
   --danger: #b83d31;
   --good: #237a5a;
   --on-color: #ffffff;
-  --grain-opacity: .05;
+  --grain-opacity: .09;
+  --glow-a: rgba(31, 111, 92, .16);
+  --glow-b: rgba(214, 150, 50, .18);
+  --dot: rgba(90, 70, 40, .13);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 40px -24px rgba(70, 45, 15, .35);
   --highlight: #f6dd8b;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -44,15 +48,20 @@
   --good: #5cc49a;
   --highlight: #6b5a1e;
   --on-color: #16150f;
-  --grain-opacity: .04;
+  --grain-opacity: .05;
+  --glow-a: rgba(108, 195, 165, .09);
+  --glow-b: rgba(214, 160, 70, .07);
+  --dot: rgba(239, 233, 220, .06);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 40px -24px rgba(0, 0, 0, .6);
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { background: var(--paper); }
 body {
   margin: 0;
-  background: var(--paper);
+  background: transparent;
   color: var(--ink);
   font-family: var(--sans);
   font-size: 18px;
@@ -63,6 +72,15 @@ body {
 body::before {
   content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Depth behind everything: soft green and amber light plus a faint ledger dot grid. */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60vw 50vh at 92% -8%, var(--glow-a), transparent 70%),
+    radial-gradient(55vw 55vh at -12% 38%, var(--glow-b), transparent 70%),
+    radial-gradient(50vw 45vh at 80% 108%, var(--glow-a), transparent 70%),
+    radial-gradient(var(--dot) 1px, transparent 1.4px) 0 0 / 26px 26px;
 }
 /* Keyboard users always see where they are. */
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
@@ -772,7 +790,7 @@ body:has(.notice) .style-filter { display: none; }
 
 /* Learning-style cards: home hero and the setup page */
 .lp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 11px 34px 11px 12px; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); display: grid; grid-template-columns: 26px 1fr; column-gap: 10px; align-items: start; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
+.lp-card { position: relative; text-align: left; font: inherit; border: 0; cursor: pointer; padding: 11px 34px 11px 12px; border-radius: 14px; background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line), var(--shadow); display: grid; grid-template-columns: 26px 1fr; column-gap: 10px; align-items: start; transition: box-shadow .2s, background .2s, transform .2s var(--ease); }
 .lp-card:hover { transform: translateY(-1px); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 .lp-card svg { grid-row: span 2; width: 24px; height: 24px; color: var(--ink-3); margin-top: 1px; transition: color .2s; }
 .lp-card b { font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; }
@@ -849,3 +867,13 @@ body:has(.notice) .style-filter { display: none; }
   .setup .lp-grid { grid-template-columns: 1fr; }
   .step-nav .btn { width: 100%; justify-content: center; order: -1; }
 }
+
+/* Footer sits on its own warm band so pages have a clear end. */
+.foot { position: relative; background: var(--paper-2); margin-top: 80px; }
+.foot::before { content: ""; position: absolute; left: 0; right: 0; top: -39px; height: 40px; background: var(--paper-2);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C240 2 480 0 720 14s480 26 720 4v22z'/%3E%3C/svg%3E") center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C240 2 480 0 720 14s480 26 720 4v22z'/%3E%3C/svg%3E") center / 100% 100%; }
+
+/* Cards lift off the textured page. */
+.goal-card, .level-card, .q-opt { box-shadow: inset 0 0 0 1.5px var(--line), var(--shadow); }
+.learn-pick { box-shadow: var(--shadow); }
