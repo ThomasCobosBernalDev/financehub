@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250305">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250314">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -58,13 +58,10 @@
     .unit.off-path:hover { opacity: 1; }
     @media (max-width: 640px) { .my-path-card { flex-direction: column; align-items: stretch; } }
     .part-name, #styles, #my-path { scroll-margin-top: 88px; }
-    .road { position: sticky; top: 96px; align-self: start; padding-top: 48px; }
-    .road svg { width: 100%; height: auto; max-height: calc(100svh / var(--z, 1) - 140px); display: block; }
-    .road .stop circle { fill: var(--paper); stroke: var(--line); stroke-width: 3; transition: fill .4s, stroke .4s, r .4s; }
-    .road .stop text { fill: var(--ink-3); font-size: 17px; transition: fill .4s; }
-    .road .stop.past circle { fill: var(--accent); stroke: var(--accent); }
-    .road .stop.on circle { fill: var(--accent); stroke: color-mix(in srgb, var(--accent) 35%, transparent); stroke-width: 10; }
-    .road .stop.on text { fill: var(--ink); font-size: 21px; }
+    .road { position: sticky; top: calc(50svh / var(--z, 1) - 230px); align-self: start; padding-top: 48px; text-align: center; }
+    .road .ss-art { max-width: 380px; margin: 0 auto; }
+    .road .ss-cap b { font-size: 26px; }
+    .road .ss-cap small { font-size: 12px; }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
     @media (max-width: 1024px) {
       .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; padding-bottom: 32px; }
@@ -74,8 +71,6 @@
     @media (max-width: 420px) { .lp-grid { grid-template-columns: 1fr; } }
 
     /* Right-margin scene: one drawing per part of the course, swapped as you scroll. */
-    .side-scene { display: none; position: fixed; z-index: 5; top: 50%; --m: calc((100vw / var(--z, 1) - 1040px) / 2); --w: min(300px, calc(var(--m) - 44px)); width: var(--w); right: calc((var(--m) - var(--w)) / 2); transform: translateY(-46%); pointer-events: none; text-align: center; }
-    @media (min-width: 1400px) { .side-scene { display: block; } }
     .ss-art svg { width: 100%; height: auto; display: block; overflow: visible; }
     .ss-disk { fill: var(--paper-2); stroke: var(--line); stroke-width: 1.5; }
     .ss-cap { margin: 10px 0 0; display: grid; gap: 2px; transition: opacity .3s; }
@@ -155,52 +150,6 @@
   <a href="#part-4"><i></i><span>Part 4 · Wall Street</span></a>
   <a href="#part-5"><i></i><span>Part 5 · Career launch</span></a>
 </nav>
-<aside class="side-scene" aria-hidden="true">
-  <div class="ss-art">
-  <svg viewBox="0 0 280 260">
-    <circle cx="140" cy="130" r="118" class="ss-disk"/>
-    <g class="scene" data-s="0">
-      <g class="coins">
-        <ellipse class="coin" style="--i:0" cx="78" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="78" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="78" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="78" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="140" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="140" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="140" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="140" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="140" cy="148" rx="30" ry="9"/><ellipse class="coin" style="--i:5" cx="140" cy="135" rx="30" ry="9"/><ellipse class="coin" style="--i:6" cx="140" cy="122" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="202" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="202" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="202" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="202" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="202" cy="148" rx="30" ry="9"/>
-      </g>
-      <g class="drop"><ellipse class="coin" cx="140" cy="60" rx="30" ry="9"/><text x="140" y="64" text-anchor="middle" class="coin-s">$</text></g>
-    </g>
-    <g class="scene" data-s="1">
-      <path class="axis" d="M50 40V210H240"/>
-      <path class="draw demand" pathLength="1" d="M62 58 C 110 110, 170 160, 228 196"/>
-      <path class="draw supply" pathLength="1" d="M62 196 C 120 160, 170 110, 228 58"/>
-      <path class="guide draw" pathLength="1" d="M145 127V210M145 127H50"/>
-      <circle class="meet" cx="145" cy="127" r="8"/>
-      <text x="232" y="214" class="lbl" text-anchor="end">quantity</text><text x="56" y="36" class="lbl">price</text>
-    </g>
-    <g class="scene" data-s="2" transform="rotate(-90 140 130)">
-      <circle class="slice s1" cx="140" cy="130" r="68" pathLength="100"/>
-      <circle class="slice s2" cx="140" cy="130" r="68" pathLength="100"/>
-      <circle class="slice s3" cx="140" cy="130" r="68" pathLength="100"/>
-    </g>
-    <g class="scene" data-s="2b"><text x="140" y="130" text-anchor="middle" class="big">50/30/20</text><text x="140" y="150" text-anchor="middle" class="lbl">budget</text></g>
-    <g class="scene" data-s="3">
-      <path class="axis" d="M50 210H240"/>
-      <rect class="bar" style="--i:0" x="62" y="170" width="20" height="40" rx="4"/><rect class="bar" style="--i:1" x="92" y="148" width="20" height="62" rx="4"/><rect class="bar" style="--i:2" x="122" y="156" width="20" height="54" rx="4"/><rect class="bar" style="--i:3" x="152" y="122" width="20" height="88" rx="4"/><rect class="bar" style="--i:4" x="182" y="98" width="20" height="112" rx="4"/><rect class="bar" style="--i:5" x="212" y="64" width="20" height="146" rx="4"/>
-      <path class="draw trend" pathLength="1" d="M66 152 L 98 132 L 128 140 L 160 104 L 190 82 L 226 50"/>
-      <path class="trend-head" d="M214 48 L 228 48 L 228 62"/>
-    </g>
-    <g class="scene" data-s="4">
-      <path class="axis" d="M50 210H240"/>
-      <g class="candle down" style="--i:0"><path d="M70 150V200"/><rect x="62" y="160" width="16" height="30" rx="2"/></g><g class="candle up" style="--i:1"><path d="M98 130V190"/><rect x="90" y="140" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:2"><path d="M126 120V176"/><rect x="118" y="130" width="16" height="30" rx="2"/></g><g class="candle down" style="--i:3"><path d="M154 128V180"/><rect x="146" y="140" width="16" height="26" rx="2"/></g><g class="candle up" style="--i:4"><path d="M182 92V150"/><rect x="174" y="100" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:5"><path d="M210 62V128"/><rect x="202" y="72" width="16" height="40" rx="2"/></g>
-      <path class="draw price" pathLength="1" d="M70 175 L 98 158 L 126 145 L 154 153 L 182 118 L 210 92"/>
-    </g>
-    <g class="scene" data-s="5">
-      <rect class="case" x="62" y="88" width="156" height="112" rx="14"/>
-      <path class="case-h" d="M112 88V72a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v16"/>
-      <path class="case-l" d="M62 132h156"/>
-      <rect class="case-lock" x="128" y="122" width="24" height="20" rx="4"/>
-      <circle class="badge" cx="210" cy="84" r="24"/><path class="draw tick" pathLength="1" d="M199 84l8 8 14-16"/>
-    </g>
-  </svg>
-  </div>
-  <p class="ss-cap"><small id="ss-kick">Start here</small><b id="ss-title">Every dollar counts</b></p>
-</aside>
 <main class="wrap" id="main">
   <section class="fold home-fold" id="top">
     <div>
@@ -259,20 +208,51 @@
     <div class="part-name reveal" id="part-5" data-part="5">Part 5 · Career launch</div>
     <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><p>Coming soon</p></div></div>
   </div>
-  <aside class="road" aria-hidden="false">
-  <svg viewBox="0 0 480 520" role="img" aria-label="A winding road through the five parts of the course. The part you are looking at lights up.">
-    <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
-    <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--card)" stroke-width="2" stroke-dasharray="8 10" class="flow"/>
-    <path id="road-done" d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="8" stroke-linecap="round"/>
-    <circle id="road-coin" r="9" cx="80" cy="470" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"/>
-    <g font-family="Fraunces, serif" font-size="19" fill="var(--ink)">
-      <g class="stop" data-part="1"><circle cx="80" cy="470" r="13"/><text x="104" y="508">Foundations</text></g>
-      <g class="stop" data-part="2"><circle cx="330" cy="380" r="12"/><text x="354" y="386">Your money</text></g>
-      <g class="stop" data-part="3"><circle cx="150" cy="270" r="12"/><text x="20" y="246">Your business</text></g>
-      <g class="stop" data-part="4"><circle cx="330" cy="160" r="12"/><text x="170" y="138">Wall Street</text></g>
-      <g class="stop" data-part="5"><circle cx="410" cy="50" r="13"/><text x="392" y="22" text-anchor="end">Career launch</text></g>
+  <aside class="road side-scene" aria-hidden="true">
+  <div class="ss-art">
+  <svg viewBox="0 0 280 260">
+    <circle cx="140" cy="130" r="118" class="ss-disk"/>
+    <g class="scene" data-s="0">
+      <g class="coins">
+        <ellipse class="coin" style="--i:0" cx="78" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="78" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="78" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="78" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="140" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="140" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="140" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="140" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="140" cy="148" rx="30" ry="9"/><ellipse class="coin" style="--i:5" cx="140" cy="135" rx="30" ry="9"/><ellipse class="coin" style="--i:6" cx="140" cy="122" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="202" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="202" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="202" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="202" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="202" cy="148" rx="30" ry="9"/>
+      </g>
+      <g class="drop"><ellipse class="coin" cx="140" cy="60" rx="30" ry="9"/><text x="140" y="64" text-anchor="middle" class="coin-s">$</text></g>
+    </g>
+    <g class="scene" data-s="1">
+      <path class="axis" d="M50 40V210H240"/>
+      <path class="draw demand" pathLength="1" d="M62 58 C 110 110, 170 160, 228 196"/>
+      <path class="draw supply" pathLength="1" d="M62 196 C 120 160, 170 110, 228 58"/>
+      <path class="guide draw" pathLength="1" d="M145 127V210M145 127H50"/>
+      <circle class="meet" cx="145" cy="127" r="8"/>
+      <text x="232" y="214" class="lbl" text-anchor="end">quantity</text><text x="56" y="36" class="lbl">price</text>
+    </g>
+    <g class="scene" data-s="2" transform="rotate(-90 140 130)">
+      <circle class="slice s1" cx="140" cy="130" r="68" pathLength="100"/>
+      <circle class="slice s2" cx="140" cy="130" r="68" pathLength="100"/>
+      <circle class="slice s3" cx="140" cy="130" r="68" pathLength="100"/>
+    </g>
+    <g class="scene" data-s="2b"><text x="140" y="130" text-anchor="middle" class="big">50/30/20</text><text x="140" y="150" text-anchor="middle" class="lbl">budget</text></g>
+    <g class="scene" data-s="3">
+      <path class="axis" d="M50 210H240"/>
+      <rect class="bar" style="--i:0" x="62" y="170" width="20" height="40" rx="4"/><rect class="bar" style="--i:1" x="92" y="148" width="20" height="62" rx="4"/><rect class="bar" style="--i:2" x="122" y="156" width="20" height="54" rx="4"/><rect class="bar" style="--i:3" x="152" y="122" width="20" height="88" rx="4"/><rect class="bar" style="--i:4" x="182" y="98" width="20" height="112" rx="4"/><rect class="bar" style="--i:5" x="212" y="64" width="20" height="146" rx="4"/>
+      <path class="draw trend" pathLength="1" d="M66 152 L 98 132 L 128 140 L 160 104 L 190 82 L 226 50"/>
+      <path class="trend-head" d="M214 48 L 228 48 L 228 62"/>
+    </g>
+    <g class="scene" data-s="4">
+      <path class="axis" d="M50 210H240"/>
+      <g class="candle down" style="--i:0"><path d="M70 150V200"/><rect x="62" y="160" width="16" height="30" rx="2"/></g><g class="candle up" style="--i:1"><path d="M98 130V190"/><rect x="90" y="140" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:2"><path d="M126 120V176"/><rect x="118" y="130" width="16" height="30" rx="2"/></g><g class="candle down" style="--i:3"><path d="M154 128V180"/><rect x="146" y="140" width="16" height="26" rx="2"/></g><g class="candle up" style="--i:4"><path d="M182 92V150"/><rect x="174" y="100" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:5"><path d="M210 62V128"/><rect x="202" y="72" width="16" height="40" rx="2"/></g>
+      <path class="draw price" pathLength="1" d="M70 175 L 98 158 L 126 145 L 154 153 L 182 118 L 210 92"/>
+    </g>
+    <g class="scene" data-s="5">
+      <rect class="case" x="62" y="88" width="156" height="112" rx="14"/>
+      <path class="case-h" d="M112 88V72a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v16"/>
+      <path class="case-l" d="M62 132h156"/>
+      <rect class="case-lock" x="128" y="122" width="24" height="20" rx="4"/>
+      <circle class="badge" cx="210" cy="84" r="24"/><path class="draw tick" pathLength="1" d="M199 84l8 8 14-16"/>
     </g>
   </svg>
+  </div>
+  <p class="ss-cap"><small id="ss-kick">Start here</small><b id="ss-title">Every dollar counts</b></p>
   </aside>
   </div>
 </main>
@@ -284,10 +264,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250305"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250305"></script>
-<script src="assets/js/auth.js?v=202610250305"></script>
-<script src="assets/js/site.js?v=202610250305"></script>
+<script src="assets/js/save.js?v=202610250314"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250314"></script>
+<script src="assets/js/auth.js?v=202610250314"></script>
+<script src="assets/js/site.js?v=202610250314"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 // Lesson list: mark finished lessons and point the main button at the next one.
@@ -381,36 +361,22 @@ const showScene = (n) => {
   cap.classList.add("swap");
   setTimeout(() => { document.getElementById("ss-kick").textContent = SCENES[n][0]; document.getElementById("ss-title").textContent = SCENES[n][1]; cap.classList.remove("swap"); }, 250);
 };
-// Side rail and road: light up the section you're looking at.
+// Side rail and scene: light up the section you're looking at.
 const railLinks = [...document.querySelectorAll(".rail a")];
 const targets = railLinks.map((a) => document.querySelector(a.getAttribute("href")));
-const stops = [...document.querySelectorAll(".road .stop")];
 const track = () => {
   const mid = innerHeight * 0.45;
   let cur = 0;
   if (scrollY > innerHeight * 0.25) targets.forEach((t, i) => { if (t.getBoundingClientRect().top < mid) cur = i; });
+  // The last part can't reach the middle of the screen, so the very bottom counts as it.
+  if (scrollY + innerHeight >= document.documentElement.scrollHeight - 4) cur = targets.length - 1;
   railLinks.forEach((a, i) => { a.classList.toggle("current", i === cur); a.classList.toggle("seen", i < cur); });
   const part = Number(targets[cur].dataset.part || 0) || 1;
-  stops.forEach((g) => { const n = Number(g.dataset.part); g.classList.toggle("on", n === part); g.classList.toggle("past", n < part); });
   showScene(targets[cur].dataset.part ? part : 0);
 };
 let ticking = false;
 addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
 track();
-// Road: the green trail and the coin follow how far you've scrolled through the course.
-const done = document.getElementById("road-done"), coin = document.getElementById("road-coin"), pathEl = document.querySelector(".path");
-const roadLen = done.getTotalLength();
-done.style.strokeDasharray = roadLen;
-const motion = () => {
-  const r = pathEl.getBoundingClientRect();
-  const p = Math.max(0, Math.min(1, (innerHeight * 0.5 - r.top) / (r.height - innerHeight * 0.3)));
-  done.style.strokeDashoffset = roadLen * (1 - p);
-  const pt = done.getPointAtLength(roadLen * p);
-  coin.setAttribute("cx", pt.x); coin.setAttribute("cy", pt.y);
-};
-let mTick = false;
-addEventListener("scroll", () => { if (!mTick) { mTick = true; requestAnimationFrame(() => { motion(); mTick = false; }); } }, { passive: true });
-motion();
 </script>
 </body>
 </html>
