@@ -1,0 +1,48 @@
+/* Unit 1, Lesson 3: price time machine, GDP bar, Beat Inflation. */
+.tm-years { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-3); margin: 0 2px 32px; font-variant-numeric: tabular-nums; }
+.tm-years span.on { color: var(--ink); font-weight: 700; }
+.basket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.basket .item { background: var(--card); border-radius: 16px; padding: 16px 18px; box-shadow: 0 1px 0 var(--line); }
+.basket small { display: block; font-size: 13px; color: var(--ink-3); font-weight: 600; }
+.basket b { font-family: var(--serif); font-weight: 500; font-size: 32px; font-variant-numeric: tabular-nums; }
+.bill-row { display: grid; grid-template-columns: 400px 1fr; gap: 32px; align-items: center; margin-top: 36px; }
+.bill-box { display: flex; align-items: flex-end; gap: 18px; height: 200px; padding-left: 12px; }
+.bill {
+  width: 92px; height: 46px; border-radius: 6px; flex: none; display: grid; place-items: center; position: relative;
+  background: color-mix(in srgb, var(--savings) 22%, var(--card)); border: 2px solid var(--savings); color: var(--savings);
+  font-family: var(--serif); font-size: 18px; transition: width .5s var(--ease), height .5s var(--ease), font-size .5s var(--ease);
+}
+.bill-box figure { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.bill-box figcaption { font-size: 13px; color: var(--ink-3); font-weight: 600; }
+.bill.now { opacity: .9; }
+.gdp-bar { display: flex; height: 64px; gap: 4px; border-radius: 32px; overflow: hidden; }
+.gdp-bar button { border: 0; color: var(--on-color); font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; transition: filter .2s, flex-basis .3s; padding: 0 10px; white-space: nowrap; overflow: hidden; }
+.gdp-bar button:hover, .gdp-bar button.on { filter: brightness(1.12); }
+.gdp-bar button.on { box-shadow: inset 0 -6px 0 rgba(0, 0, 0, .25); }
+.gdp-nx { font-size: 14px; color: var(--ink-3); margin-top: 10px; }
+.gdp-nx span { font-weight: 700; color: var(--danger); margin-right: 6px; }
+.gdp-msg { font-size: 18px; line-height: 1.55; margin-top: 18px; max-width: 720px; min-height: 4.6em; }
+
+.era-pick, .save-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.era-pick { margin: 6px 0 12px; }
+.save-opts .chip[disabled] { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
+#b-chart { width: 100%; height: auto; display: block; margin-top: 18px; }
+#b-year { font-size: 40px; }
+
+.bill-shrink { animation: shrink 6s var(--ease) infinite; transform-origin: center; }
+@keyframes shrink { 0%, 10% { transform: scale(1); } 60%, 85% { transform: scale(.74); } 100% { transform: scale(1); } }
+.shrink-pond { animation: pond 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pond { 0% { transform: scale(1.4); } 70%, 100% { transform: scale(.8); } }
+.vapor { animation: vapor 3s ease-in-out infinite; }
+@keyframes vapor { 0% { transform: translateY(8px); opacity: 0; } 50% { opacity: .7; } 100% { transform: translateY(-14px); opacity: 0; } }
+
+@media (max-width: 860px) { .bill-row { grid-template-columns: 1fr; gap: 12px; } .bill-box { height: auto; min-height: 170px; } .basket { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  .basket b { font-size: 26px; }
+  .tm-years { font-size: 11px; }
+  .gdp-bar { height: 52px; }
+  .gdp-bar button { font-size: 13px; }
+ 
+  #b-year { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { .bill-shrink, .shrink-pond, .vapor { animation: none; } }

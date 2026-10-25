@@ -1,0 +1,260 @@
+<!-- title: Every Choice Has a Price Tag -->
+<!-- description: Unit 1, Lesson 1: scarcity, trade-offs and opportunity cost. See it, hear it, play it. -->
+<!-- kicker: Unit 1 · Lesson 1 -->
+<!-- topic: Scarcity and trade-offs -->
+
+<!-- @start -->
+        <h1 class="reveal">Every choice has a <em>price tag.</em></h1>
+        <p class="story reveal"><span class="story-tag">Where the story starts</span> You're 17. It's the summer before senior year, you have <span class="mark">$300</span> saved and about <span class="mark">10 free hours</span> every weekend. You can mow lawns, fix up old bikes to resell, study for the SAT or hang out with friends. You can't do all of it.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>Decide how to use something limited, like time or money, when you want more than it can cover.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Every yes is a no to something else. Seeing the hidden cost makes your choices sharper.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Price each option by its <b>opportunity cost</b>: the best thing you gave up to get it.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Economists</b> study it. <b>Strategy analysts</b> and <b>consultants</b> get paid to make these calls for companies.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="A curved frontier showing every way to split 10 hours between earning money and studying. A coin slides along the curve. A point inside the curve is wasted time and a point outside is impossible for now.">
+          <defs>
+            <linearGradient id="ppf-fill" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--savings)" stop-opacity=".22"/><stop offset="1" stop-color="var(--savings)" stop-opacity=".06"/></linearGradient>
+          </defs>
+          <path d="M70 470 V70 M70 470 H470" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M70 110 C 250 110, 430 260, 430 470 L70 470 Z" fill="url(#ppf-fill)"/>
+          <path id="ppf-art" d="M70 110 C 250 110, 430 260, 430 470" fill="none" stroke="var(--savings)" stroke-width="5" stroke-linecap="round"/>
+          <circle r="11" fill="#f6d36b" stroke="#a87b12" stroke-width="1.8"><animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" path="M70 110 C 250 110, 430 260, 430 470"/></circle>
+          <circle cx="190" cy="350" r="9" fill="var(--paper)" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="3 3"/>
+          <text x="206" y="372" font-size="15" fill="var(--ink-2)">Wasted time</text>
+          <circle cx="420" cy="150" r="9" fill="none" stroke="var(--danger)" stroke-width="2.5"/>
+          <path d="M413 143l14 14M427 143l-14 14" stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="405" y="128" text-anchor="end" font-size="15" fill="var(--ink-2)">Impossible, for now</text>
+          <text x="470" y="506" text-anchor="end" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Money earned →</text>
+          <text transform="translate(40 470) rotate(-90)" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Hours studying →</text>
+          <text x="92" y="168" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="var(--savings)">every way to spend 10 hours</text>
+        </svg>
+
+<!-- @see -->
+      <h2 class="reveal">Slide your weekend.<br>Watch what it <em>costs.</em></h2>
+      <p class="lead reveal">Mowing pays $15 an hour. Every hour you spend with friends is an hour you didn't mow. That's not free. It costs $15.</p>
+
+      <div class="reveal hours-demo" style="margin-top:36px">
+        <div class="payline"><span class="val" id="oc-hours">6</span><span class="muted">hours mowing, out of 10</span></div>
+        <input type="range" id="oc-slider" min="0" max="10" step="1" value="6" aria-label="Hours spent mowing" style="margin:20px 0 28px">
+        <div class="hour-strip" id="oc-strip" aria-hidden="true"></div>
+        <div class="figures">
+          <div class="figure"><div class="label">You earn</div><div class="val c-savings" id="oc-earn">$90</div><p>From the hours you mowed</p></div>
+          <div class="figure"><div class="label">Time with friends</div><div class="val c-wants" id="oc-free">4 h</div><p>Fun, rest, the stuff that keeps you sane</p></div>
+          <div class="figure"><div class="label">What that fun really cost</div><div class="val" id="oc-cost">$60</div><p>The money you gave up. That's its opportunity cost.</p></div>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="margin-top:88px">Now map every possible weekend.</h3>
+      <p class="muted reveal">This curve is your <b>production possibilities frontier</b>. It shows the most bikes and lawns you can finish in a weekend. Tap anywhere on the chart to test a plan.</p>
+      <div class="reveal ppf-wrap" style="margin-top:24px">
+        <svg id="ppf" viewBox="0 0 640 420" role="img" aria-label="A chart with bikes fixed on the vertical axis and lawns mowed on the horizontal axis. Tap a point to see whether that plan is possible, wasteful or efficient.">
+          <g class="ppf-grid" stroke="var(--line)" stroke-width="1">
+            <path d="M80 60 H600 M80 130 H600 M80 200 H600 M80 270 H600 M80 340 H600"/>
+          </g>
+          <path d="M80 360 V40 M80 360 H610" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path id="ppf-area" fill="var(--savings)" opacity=".14"/>
+          <path id="ppf-line" fill="none" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/>
+          <path id="ppf-old" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6" opacity="0"/>
+          <g id="ppf-ticks" font-size="13" fill="var(--ink-3)"></g>
+          <text x="610" y="398" text-anchor="end" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Lawns mowed</text>
+          <text transform="translate(30 360) rotate(-90)" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bikes fixed</text>
+          <g id="ppf-pin" opacity="0"><circle r="10" stroke-width="3"/></g>
+          <rect id="ppf-hit" x="80" y="30" width="540" height="330" fill="transparent" style="cursor:crosshair"/>
+        </svg>
+        <div class="ppf-side">
+          <p id="ppf-msg" class="ppf-msg" aria-live="polite">Tap the chart to try a plan.</p>
+          <button class="btn sm line" id="ppf-grow">Buy a $60 repair stand</button>
+          <p class="small muted" style="margin-top:12px">A better tool lets you fix bikes faster. Watch what happens to the frontier.</p>
+        </div>
+      </div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Ten Free <em>Hours</em></h2>
+      <p class="lead reveal">Four weekends, ten hours each. Your goals by the end: <b>$200</b> toward a repair stand, <b>12 hours</b> of SAT practice, and don't burn out. You won't hit everything perfectly. That's the point.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="g-week">Weekend 1 of 4</div>
+            <div class="left-big" id="g-left" aria-live="polite">10 hours left</div>
+          </div>
+          <button class="btn" id="g-go" disabled>Live the weekend <span class="arrow">→</span></button>
+        </div>
+        <div class="hour-strip big" id="g-strip" aria-hidden="true"></div>
+        <p class="split-note" id="g-event-note"></p>
+        <div class="acts" id="g-acts"></div>
+
+        <div class="gauges" style="margin-top:28px">
+          <div class="gauge"><small>Saved</small><b id="s-money">$0</b><div class="meter"><div id="m-money" class="bg-savings" style="width:0%"></div></div></div>
+          <div class="gauge"><small>SAT practice</small><b id="s-study">0 h</b><div class="meter"><div id="m-study" style="width:0%;background:#7a5bb5"></div></div></div>
+          <div class="gauge"><small>Energy</small><b id="s-energy">70</b><div class="meter"><div id="m-energy" class="bg-wants" style="width:70%"></div></div></div>
+        </div>
+        <ul class="timeline" id="g-log"></ul>
+        <div id="g-result" class="hidden"></div>
+      </div>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">Opportunity cost</h3>
+      <div class="formula reveal">Opportunity cost of a choice <span class="op">=</span> value of the <b>best</b> option you gave up</div>
+      <p class="reveal">Only the next best option counts, not all of them added together. If you could have mowed ($15) or babysat ($12), an hour with friends costs $15, not $27.</p>
+
+      <h3 class="reveal">Opportunity cost along a frontier</h3>
+      <div class="formula reveal">Cost of 1 more A <span class="op">=</span> B given up <span class="op">÷</span> A gained</div>
+
+      <h3 class="reveal">Worked example: bikes or lawns</h3>
+      <ol class="steps reveal">
+        <li><b>Know your rates.</b> In 10 hours you can mow 10 lawns ($15 each) or fix 2.5 bikes (4 hours each, about $70 profit each).</li>
+        <li><b>Price one bike in lawns.</b> One bike takes 4 hours, which could have been 4 lawns. So 1 bike costs <b>4 lawns</b>, or $60 of mowing.</li>
+        <li><b>Compare to what it pays.</b> A bike earns $70. Its opportunity cost is $60. The bike wins by $10.</li>
+        <li><b>Watch for rising cost.</b> Your first bike uses your best project. The third one might be a rusty mess that takes 6 hours. Now it costs 6 lawns ($90) and loses. That's why the frontier curves.</li>
+        <li><b>Decide at the margin.</b> Don't ask "bikes or lawns?" Ask "is <i>one more</i> bike worth more than what it pushes out?" Stop when the answer flips.</li>
+      </ol>
+
+      <details class="deeper reveal">
+        <summary>Go deeper: sunk costs, the bowed frontier and comparative advantage</summary>
+        <div>
+          <p><b>Sunk costs don't count.</b> Money or time already spent and unrecoverable shouldn't change your next choice. If you spent 3 hours on a bike that turns out to need $80 in parts, the 3 hours are gone either way. Only compare what's still ahead.</p>
+          <p><b>Why the frontier bows outward.</b> Resources aren't equally good at everything. Shift hours from mowing to bikes and you use your best bike skills first, then worse ones, so each extra bike costs more lawns. Economists call this the <i>law of increasing opportunity cost</i>. On an exam, a straight-line frontier means constant opportunity cost.</p>
+          <p><b>Comparative advantage.</b> Say your friend Sam mows 2 lawns an hour but fixes a bike in 8 hours. Sam's bike costs 16 lawns, yours costs 4. Even if Sam were faster at both, you should fix bikes and Sam should mow, then trade. This idea, from David Ricardo in 1817, is the basis for why countries trade, and it shows up in every Principles of Microeconomics course.</p>
+        </div>
+      </details>
+
+<!-- @nature -->
+      <h2 class="reveal">A tree runs on a <em>budget.</em></h2>
+      <p class="lead reveal">A tree makes only so much sugar from sunlight each year. Every bit spent on roots can't go into leaves, and leaves can't become seeds. Trees in dry ground spend on deep roots. Trees in a crowded forest race upward for light. Neither can max out everything.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 380" role="img" aria-label="A tree with its yearly sugar split three ways: leaves to catch light, roots to find water, and seeds for the future">
+        <path d="M0 250 H900" stroke="var(--line)" stroke-width="2"/>
+        <path d="M0 250 H900 V380 H0Z" fill="var(--wants)" opacity=".08"/>
+        <circle cx="120" cy="70" r="34" fill="#f6d36b"/>
+        <g stroke="#f6d36b" stroke-width="3" stroke-linecap="round"><path d="M120 18v-10M120 132v-10M68 70h-10M182 70h-10M84 34l-7-7M156 106l7 7M84 106l-7 7M156 34l7-7"/></g>
+        <path d="M440 250 C 438 200, 444 170, 440 120" stroke="var(--ink)" stroke-width="16" stroke-linecap="round" fill="none"/>
+        <g class="sway">
+          <circle cx="440" cy="96" r="62" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="384" cy="130" r="40" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="498" cy="128" r="42" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="470" cy="76" r="7" fill="var(--wants)"/><circle cx="410" cy="110" r="7" fill="var(--wants)"/><circle cx="512" cy="132" r="7" fill="var(--wants)"/>
+        </g>
+        <g stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M440 250 C 420 280, 380 300, 330 340"/><path d="M440 250 C 450 290, 470 320, 520 352"/><path d="M440 250 C 440 290, 436 330, 440 370"/><path d="M400 300 C 380 310, 360 312, 340 310"/>
+        </g>
+        <path d="M150 104 C 260 140, 330 110, 380 100" stroke="#e3a91e" stroke-width="3" fill="none" class="flow"/>
+        <text x="560" y="80" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Leaves · catch light</text>
+        <text x="560" y="106" font-size="15" fill="var(--ink-2)">like investing in skills that earn</text>
+        <text x="560" y="160" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Seeds · the future</text>
+        <text x="560" y="186" font-size="15" fill="var(--ink-2)">like saving for later</text>
+        <text x="560" y="320" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Roots · stay alive</text>
+        <text x="560" y="346" font-size="15" fill="var(--ink-2)">like rent, food and the basics</text>
+        <path d="M550 74 H520 M550 154 H520 M550 314 H500" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="3 5"/>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>The lesson from biology.</b> Every living thing faces scarcity, so every living thing makes trade-offs. Ecologists even call it an "energy budget." The tree doesn't feel bad about not growing seeds in a drought year. It puts its sugar where it matters most right now. That's exactly what you're learning to do with money.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Scarcity:</b> wants are unlimited, resources (time, money, energy) are limited. It's why economics exists.</li>
+          <li><b>Trade-off:</b> getting more of one thing means getting less of another.</li>
+          <li><b>Opportunity cost:</b> the value of the next best alternative you give up. Only the best one counts.</li>
+          <li><b>Production possibilities frontier (PPF):</b> the most you can make of two things with what you have. On it = efficient. Inside = waste. Outside = impossible for now.</li>
+          <li><b>Growth</b> (better tools, skills, more time) shifts the frontier outward.</li>
+          <li><b>Marginal thinking:</b> compare the cost and benefit of <i>one more</i> unit, not all or nothing.</li>
+          <li><b>Sunk costs</b> are already gone. Ignore them when deciding what's next.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. You skip a $20 shift to see a $12 movie. The opportunity cost of the movie night is the movie ticket plus <input type="text" class="blank" data-answer="20" inputmode="numeric" aria-label="Blank 1"> dollars of lost pay.</div>
+        <div>2. A point inside the frontier means resources are being <input type="text" class="blank" data-answer="wasted|underused|unused|idle" aria-label="Blank 2">.</div>
+        <div>3. If 1 bike takes the same time as 4 lawns, the opportunity cost of 1 bike is <input type="text" class="blank" data-answer="4|4 lawns|four|four lawns" aria-label="Blank 3"> lawns.</div>
+        <div>4. Money already spent that you can't get back is a <input type="text" class="blank" data-answer="sunk|sunk cost" aria-label="Blank 4"> cost.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>The $1,000 city council</h3>
+          <p>Your town has $1,000 left this year. Options: fix a pothole-filled road, add a bus stop, or repaint the skate park. Each person argues for one. Before you vote, everyone has to name the opportunity cost of their own pick.</p>
+        </div>
+        <div class="reveal">
+          <h3>Trade like Ricardo</h3>
+          <p>Time each other: how many words can you type in a minute, and how many math problems can you solve? Work out who has the comparative advantage in each, then split a pretend homework load to finish fastest.</p>
+        </div>
+        <div class="reveal">
+          <h3>Hours showdown</h3>
+          <p>Both play Ten Free Hours and compare your weekends. Did one of you chase money and the other chase SAT hours? Explain the one hour you'd move if you played again.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your choices.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">What did you do with your last free Saturday? What was the next best thing you could have done instead?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Is there something you keep doing only because you've already put time or money into it? Is that a sunk cost talking?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What's one skill that would push your own frontier outward, so you could get more out of the same hours?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the strategy analyst</h3>
+      <div class="reveal">
+        <p>A coffee shop has <b>40 staff hours</b> a week to spare. It can use them to run a <b>catering service</b> (earns about <b>$1,200</b> a week in profit) or <b>stay open two extra evenings</b> (earns about <b>$900</b>). A third idea, <b>weekend pop-ups</b>, would earn about <b>$1,000</b>.</p>
+        <p><b>Your task:</b> recommend one option, and state its opportunity cost in dollars. What one fact would make you change your answer?</p>
+        <textarea id="job-answer" placeholder="Write your recommendation to the owner…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Pick catering.</b> It earns the most profit for the same 40 hours.</p>
+            <p><b>Opportunity cost: $1,000</b>, the profit from pop-ups, the next best option. Not $1,900: you can only give up one alternative with the same hours.</p>
+            <p><b>What would change it:</b> if catering needs $400 a week in van rental that isn't in the estimate, it drops to $800 and pop-ups win. Always check that every option's numbers include all of its costs.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">This lesson is the first stop <em>on a long road.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson leads to supply and demand, the psychology of money, budgeting, and project decisions in corporate finance">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Start of the course</text><text x="20" y="186">No lessons needed before this one</text>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Scarcity</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../supply-demand/"><text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Supply and demand</text><text x="690" y="66">Next lesson · scarcity sets prices</text></a>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Psychology of money</text><text x="690" y="146">Unit 2 · now vs. later trade-offs</text>
+          <a href="../budgeting/"><text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Budgeting</text><text x="690" y="226">Unit 4 · a budget is trade-offs on paper</text></a>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Project decisions (NPV)</text><text x="690" y="306">Unit 11 · companies choosing projects</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Before</span><b>Start of the course</b></li>
+        <li class="here"><span class="small">You are here</span><b>Scarcity and trade-offs</b></li>
+        <li><span class="muted small">Next · Unit 1</span><b>Supply and demand</b></li>
+        <li><span class="muted small">Later · Unit 2</span><b>Psychology of money</b></li>
+        <li><span class="muted small">Later · Unit 4</span><b>Budgeting</b></li>
+        <li><span class="muted small">Later · Unit 11</span><b>Project decisions (NPV)</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Next: Supply and demand <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>

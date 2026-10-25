@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Who Sets the Price of Money · FinanceHub</title>
+  <meta name="description" content="Unit 1, Lesson 4: interest rates, the Federal Reserve and how one rate ripples into every loan and savings account. Run the Fed yourself.">
+  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610250053">
+  <link rel="stylesheet" href="lesson.css?v=202610250053">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../">Course</a><a href="../../about.html">About</a></nav>
+    <div class="spacer"></div>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<aside class="companion" aria-label="Your character so far">
+  <div class="who">
+    <svg viewBox="-34 -60 68 68" aria-hidden="true"><circle cx="0" cy="-22" r="27" fill="#f2c9a5" stroke="#2a2420" stroke-width="2"/><path d="M-27 -26 C-28 -58 28 -58 27 -26 C16 -40 -6 -42 -27 -26Z" fill="#2a2420"/><circle cx="-9" cy="-22" r="2.8" fill="#2a2420"/><circle cx="9" cy="-22" r="2.8" fill="#2a2420"/><path d="M-9 -10 Q0 -2 9 -10" stroke="#2a2420" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <div><b>You, age 17</b>Fixing up bikes for cash</div>
+  </div>
+  <dl>
+    <dt>Savings</dt><dd data-k="cash">$0</dd>
+    <dt>Lessons done</dt><dd data-k="lessons">0</dd>
+    <dt>XP</dt><dd data-k="xp">0</dd>
+  </dl>
+  <div class="badges"><b data-k="badges">0</b> badges earned. Your numbers carry into every lesson.</div>
+</aside>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 1 · Lesson 4</span> Interest rates and central banks</div>
+        <h1 class="reveal">Who sets the <em>price of money?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> You're about to graduate. You want an <span class="mark">$8,000</span> loan for a used car to get to work, and the bank quotes you 9%. A year ago it was 5%. Meanwhile your savings account suddenly pays 4%. Nothing about you changed. Twelve people in Washington voted.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>Understand interest as the price of borrowing money, and who moves it.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>One rate decision changes what your car, house, credit card and savings cost or earn.</p></div>
+          <div class="reveal"><div class="word">How</div><p>The <b>Federal Reserve</b> raises rates to cool inflation and cuts them to protect jobs.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Fed economists</b> make the call. <b>Bond traders</b> and <b>bank treasury analysts</b> bet on it.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A dial labeled federal funds rate sends ripples outward to a house, a car, a credit card and a piggy bank">
+          <g fill="none" stroke="var(--accent)" stroke-width="2">
+            <circle cx="260" cy="270" r="90" class="ripple r1"/><circle cx="260" cy="270" r="90" class="ripple r2"/><circle cx="260" cy="270" r="90" class="ripple r3"/>
+          </g>
+          <circle cx="260" cy="270" r="82" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/>
+          <g stroke="var(--ink-3)" stroke-width="2" stroke-linecap="round">
+            <path d="M260 200 v10 M210 220 l7 7 M310 220 l-7 7 M190 270 h10 M330 270 h-10"/>
+          </g>
+          <path d="M260 270 L300 232" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" class="needle"/>
+          <circle cx="260" cy="270" r="9" fill="var(--ink)"/>
+          <text x="260" y="320" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">fed funds rate</text>
+          <g transform="translate(90 92)"><path d="M-30 6 L0 -22 L30 6" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><rect x="-22" y="0" width="44" height="34" rx="4" fill="var(--needs)" stroke="var(--ink)" stroke-width="2"/><text y="62" text-anchor="middle" font-size="15" fill="var(--ink-2)">Mortgage</text></g>
+          <g transform="translate(430 100)"><rect x="-34" y="-8" width="68" height="22" rx="8" fill="var(--wants)" stroke="var(--ink)" stroke-width="2"/><path d="M-22 -8 l8 -14 h28 l8 14" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><circle cx="-18" cy="16" r="7" fill="var(--ink)"/><circle cx="18" cy="16" r="7" fill="var(--ink)"/><text y="54" text-anchor="middle" font-size="15" fill="var(--ink-2)">Car loan</text></g>
+          <g transform="translate(90 450)"><rect x="-34" y="-22" width="68" height="44" rx="7" fill="var(--danger)" stroke="var(--ink)" stroke-width="2"/><rect x="-34" y="-12" width="68" height="8" fill="var(--ink)" opacity=".35"/><text y="50" text-anchor="middle" font-size="15" fill="var(--ink-2)">Credit card</text></g>
+          <g transform="translate(430 450)"><ellipse rx="32" ry="24" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/><path d="M-8 -24 h16" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="-6" r="3" fill="var(--ink)"/><text y="52" text-anchor="middle" font-size="15" fill="var(--ink-2)">Savings</text></g>
+          <g stroke="var(--line)" stroke-width="2" stroke-dasharray="3 6"><path d="M200 210 L120 130 M320 210 L400 130 M200 330 L120 420 M320 330 L400 420"/></g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="style-pick reveal" id="style-picker">
+        I learn best by
+        <span class="opts">
+          <button data-pick="visual">seeing</button><span class="sep">,</span>
+          <button data-pick="auditory">listening</button><span class="sep">,</span>
+          <button data-pick="kinesthetic">doing</button><span class="sep">,</span>
+          <button data-pick="logical">working out the logic</button><span class="sep">,</span>
+          <button data-pick="naturalistic">linking it to nature</button><span class="sep">,</span>
+          <button data-pick="reading">reading and writing</button><span class="sep">,</span>
+          <button data-pick="social">talking it through</button><span class="sep">, or</span>
+          <button data-pick="solitary">thinking on my own</button>.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Turn one dial.<br>Watch every rate <em>move.</em></h2>
+      <p class="lead reveal">The Fed sets one short-term rate, the <b>federal funds rate</b>: what banks charge each other overnight. Everything else is priced on top of it. Drag it and watch your own costs change.</p>
+
+      <div class="reveal" style="margin-top:36px">
+        <div class="payline"><span class="val" id="rp-rate">4.0%</span><span class="muted">federal funds rate</span></div>
+        <input type="range" id="rp-slider" min="0" max="10" step="0.25" value="4" aria-label="Federal funds rate" style="margin:20px 0 28px">
+        <div class="rate-grid" id="rp-grid"></div>
+        <p class="small muted" style="margin-top:14px">Spreads are simplified averages. Real rates also depend on your credit score (Unit 5) and on markets' guesses about the future.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Rate <em>Dial</em></h2>
+      <p class="lead reveal">You chair the Fed for eight meetings, two years. Your mandate: inflation near <b>2%</b> and unemployment near <b>4%</b>. Rates work with a delay, so you're steering a ship, not a car. Pick a moment in history.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="f-when">Pick a moment</div>
+            <div class="left-big" id="f-rate">–</div>
+          </div>
+          <button class="btn" id="f-go" disabled>Announce decision <span class="arrow">→</span></button>
+        </div>
+        <div class="era-pick" id="f-eras">
+          <button class="chip" data-sc="1979">1979: prices out of control</button>
+          <button class="chip" data-sc="2008">2008: financial crisis</button>
+          <button class="chip" data-sc="2021">2021: post-pandemic surge</button>
+        </div>
+        <div id="f-play" class="hidden">
+          <p class="split-note" id="f-news"></p>
+          <div class="dial-row" role="group" aria-label="Change the rate">
+            <button class="chip" data-d="-0.75">−0.75</button><button class="chip" data-d="-0.5">−0.50</button><button class="chip" data-d="-0.25">−0.25</button>
+            <button class="chip on" data-d="0">Hold</button>
+            <button class="chip" data-d="0.25">+0.25</button><button class="chip" data-d="0.5">+0.50</button><button class="chip" data-d="0.75">+0.75</button>
+            <button class="chip" id="f-qe" hidden>Start buying bonds (QE)</button>
+          </div>
+        </div>
+        <svg id="f-chart" viewBox="0 0 700 260" role="img" aria-label="Inflation and unemployment over your eight meetings, with target lines at 2% and 4%" class="hidden">
+          <rect id="f-band-i" x="60" width="620" fill="var(--wants)" opacity=".1"/>
+          <rect id="f-band-u" x="60" width="620" fill="var(--needs)" opacity=".1"/>
+          <path d="M60 230 H680 M60 230 V20" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+          <g id="f-ticks" font-size="12" fill="var(--ink-3)"></g>
+          <path id="f-pi" fill="none" stroke="var(--wants)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="f-u" fill="none" stroke="var(--needs)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="f-i" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6"/>
+          <text x="680" y="16" text-anchor="end" font-size="13" font-weight="700"><tspan fill="var(--wants)">━ inflation</tspan>   <tspan fill="var(--needs)">━ unemployment</tspan>   <tspan fill="var(--ink-3)" font-weight="500">┅ your rate</tspan></text>
+        </svg>
+        <div class="gauges" style="margin-top:20px">
+          <div class="gauge"><small>Inflation</small><b id="f-pi-v">–</b></div>
+          <div class="gauge"><small>Unemployment</small><b id="f-u-v">–</b></div>
+          <div class="gauge"><small>Your car loan</small><b id="f-car">–</b></div>
+          <div class="gauge"><small>Your savings rate</small><b id="f-sav">–</b></div>
+        </div>
+        <ul class="timeline" id="f-log"></ul>
+        <div id="f-result" class="hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">Interest is a price</h3>
+      <div class="formula reveal">Interest <span class="op">=</span> principal <span class="op">×</span> rate <span class="op">×</span> time</div>
+      <p class="reveal">Borrowers are buyers of money, savers are sellers. Like any price, interest rises when demand for loans is high or the supply of savings is low. The Fed leans on it from the outside.</p>
+
+      <h3 class="reveal">How a rate hike travels</h3>
+      <ol class="steps reveal">
+        <li><b>The Fed raises its target</b> for the fed funds rate, say from 4% to 4.5%. It does this mainly by raising the interest it pays banks on their reserves, so no bank lends overnight for less.</li>
+        <li><b>Banks reprice.</b> The prime rate, usually fed funds + 3, goes to 7.5%. Credit cards and car loans follow within weeks.</li>
+        <li><b>Borrowing gets expensive.</b> On an $8,000, 5-year car loan, 8% costs $162 a month; 10% costs $170. Multiply that across millions of buyers and fewer cars get bought.</li>
+        <li><b>Saving gets rewarded.</b> Higher savings rates make people wait to spend. Businesses delay new factories because their loans cost more too.</li>
+        <li><b>Spending cools, so prices cool.</b> Less demand means sellers can't raise prices as easily. This takes about 1 to 2 years to fully show up, which is why the Fed has to act before it sees the result.</li>
+      </ol>
+
+      <h3 class="reveal">Real interest rate</h3>
+      <div class="formula reveal">Real rate <span class="op">≈</span> nominal rate <span class="op">−</span> inflation</div>
+      <p class="reveal">What matters for spending is the real rate. A 5% rate with 8% inflation is still cheap money (−3% real). That's why in 1979 the Fed had to push rates near 20% to finally get ahead of inflation.</p>
+
+      <details class="deeper reveal">
+        <summary>Go deeper: the Fed's tools, the dual mandate and the Taylor rule</summary>
+        <div>
+          <p><b>Who decides.</b> The Federal Open Market Committee (FOMC): the 7 Fed governors plus 5 of the 12 regional Fed bank presidents vote, eight scheduled meetings a year. Congress gave the Fed a <i>dual mandate</i>: maximum employment and stable prices, which the Fed defines as 2% inflation over time.</p>
+          <p><b>The toolkit.</b> Interest on reserve balances (the main lever today), overnight reverse repos (a floor under rates), open market operations (buying or selling Treasury bonds), and the discount rate (emergency lending to banks). When rates hit zero, the Fed can do <i>quantitative easing</i>: buy long-term bonds to push long rates down. Shrinking that pile later is <i>quantitative tightening</i>.</p>
+          <p><b>The Taylor rule</b>, a famous rule of thumb from economist John Taylor (1993): rate ≈ 2 + inflation + 0.5 × (inflation − 2) + 0.5 × (output gap). With 4% inflation and output at normal, it suggests 2 + 4 + 1 + 0 = 7%. The Fed doesn't follow it mechanically, but traders use it to judge whether policy is tight or loose. You'll meet it again in Unit 14.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The Fed is a beaver <em>with a dam.</em></h2>
+      <p class="lead reveal">A beaver can't make it rain, but it controls how fast the stream flows. Build the dam higher and water slows and pools. Open a gap and it rushes downstream. The Fed doesn't create spending either. It controls how fast money flows through the economy.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="A stream flows from the left into a beaver dam. Water pools behind the dam, and a slower trickle continues downstream.">
+        <path d="M0 200 C 200 190, 300 210, 420 200 L 420 300 L0 300Z" fill="var(--needs)" opacity=".35"/>
+        <path d="M480 250 C 600 245, 700 260, 900 252 L900 300 L480 300Z" fill="var(--needs)" opacity=".22"/>
+        <path d="M40 220 C 140 214, 240 224, 400 216" stroke="#fff" stroke-width="2" fill="none" class="flow" opacity=".8"/>
+        <path d="M500 268 C 620 264, 720 272, 880 266" stroke="#fff" stroke-width="2" fill="none" class="flow slow" opacity=".7"/>
+        <g stroke="var(--ink)" stroke-width="2">
+          <path d="M410 300 L430 180 L470 180 L490 300Z" fill="var(--wants)"/>
+          <path d="M418 220 h64 M414 250 h72 M422 196 h52" stroke="var(--ink)" stroke-width="2"/>
+          <path d="M424 180 l-12 -14 M448 180 l2 -18 M466 180 l14 -12" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(560 168)">
+          <ellipse cx="0" cy="20" rx="34" ry="22" fill="#8a5a3a" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="30" cy="2" r="14" fill="#8a5a3a" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="35" cy="-2" r="2.5" fill="var(--ink)"/>
+          <path d="M-30 30 q-30 10 -40 -4 q12 -10 40 -6z" fill="#5c3b26" stroke="var(--ink)" stroke-width="2"/>
+          <rect x="38" y="6" width="5" height="6" fill="#fff" stroke="var(--ink)" stroke-width="1"/>
+        </g>
+        <text x="200" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Money flowing in</text>
+        <text x="200" y="184" text-anchor="middle" font-size="15" fill="var(--ink-2)">spending, borrowing, hiring</text>
+        <text x="450" y="110" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">The dam = interest rates</text>
+        <text x="740" y="220" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Calmer downstream</text>
+        <text x="740" y="244" text-anchor="middle" font-size="15" fill="var(--ink-2)">slower prices, fewer new jobs</text>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>Build it too high and the stream dries up</b> downstream: that's a recession. Leave it too low during a flood and everything washes out: that's inflation. Beavers adjust their dams constantly as seasons change. So does the Fed, eight times a year.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Interest rate:</b> the price of borrowing money, as a % of the loan per year.</li>
+          <li><b>The Fed:</b> the US central bank. The FOMC sets a target for the <b>federal funds rate</b>.</li>
+          <li><b>Dual mandate:</b> maximum employment and stable prices (2% inflation).</li>
+          <li><b>Raise rates</b> → borrowing costs more, saving pays more → spending slows → inflation cools, unemployment can rise.</li>
+          <li><b>Cut rates</b> → borrowing is cheap → spending and hiring pick up → risk of inflation.</li>
+          <li><b>Lags:</b> rate changes take about 1–2 years to fully hit the economy.</li>
+          <li><b>Prime rate</b> ≈ fed funds + 3%. Card, car and home rates are priced off it or off bond yields.</li>
+          <li><b>Real rate</b> ≈ nominal rate − inflation.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. To fight high inflation, the Fed usually <input type="text" class="blank" data-answer="raises|increases|hikes|raises rates" aria-label="Blank 1"> interest rates.</div>
+        <div>2. If the fed funds rate is 5%, the prime rate is about <input type="text" class="blank" data-answer="8|8%" inputmode="numeric" aria-label="Blank 2">%.</div>
+        <div>3. Simple interest on $2,000 at 6% for one year is $<input type="text" class="blank" data-answer="120" inputmode="numeric" aria-label="Blank 3">.</div>
+        <div>4. The Fed's inflation target is <input type="text" class="blank" data-answer="2|2%" inputmode="numeric" aria-label="Blank 4">%.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Mock FOMC meeting</h3>
+          <p>Give everyone a role: a worried factory owner, a retiree living on savings, a first-time homebuyer, a Fed economist. Inflation is 4% and unemployment is 4.5%. Debate for five minutes, then vote: raise, hold or cut. Who won, and who paid for it?</p>
+        </div>
+        <div class="reveal">
+          <h3>Read the real statement</h3>
+          <p>Pull up the most recent FOMC statement on federalreserve.gov. Each person highlights one sentence and translates it into plain English for the group. What did they decide, and what are they worried about?</p>
+        </div>
+        <div class="reveal">
+          <h3>Chair showdown</h3>
+          <p>Both play Rate Dial in the same year. Compare your rate paths side by side. Did one of you move early and gently while the other waited and slammed the brakes? Whose economy came out better?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Just you and <em>your rates.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Do you or your family have any loans or savings right now? Look up their rates. Are they fixed, or will they move when the Fed moves?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If rates jumped 2% tomorrow, what's one plan of yours (a car, college, a first apartment) that would get more expensive?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">The Fed has to choose between inflation and jobs in the short run. If you were chair, which would you protect first, and why?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the bank treasury analyst</h3>
+      <div class="reveal">
+        <p>Your bank has <b>$500 million</b> in savings deposits paying 1% and <b>$400 million</b> in car loans at fixed rates averaging 6%. Analysts expect the Fed to raise rates by <b>2 percentage points</b> this year, and savers will demand about 2.5% to stay.</p>
+        <p><b>Your task:</b> estimate how the bank's yearly interest profit changes. Why are fixed-rate loans a risk when rates rise?</p>
+        <textarea id="job-answer" placeholder="Write your memo to the bank's leadership…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Before:</b> the bank earns 6% × $400M = $24M and pays 1% × $500M = $5M, so $19M of interest profit.</p>
+            <p><b>After:</b> the loans are fixed, so they still earn $24M. Deposit costs rise to 2.5% × $500M = $12.5M. Profit falls to <b>$11.5M</b>, down $7.5M (about 39%).</p>
+            <p><b>Why it's risky:</b> the bank's costs float with the Fed but its income is locked in. This "interest rate risk" is exactly what sank Silicon Valley Bank in 2023. Treasury teams manage it by matching fixed and floating assets and liabilities, or by hedging.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Interest rates power <em>the rest of the course.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Inflation leads into this lesson, which leads to compounding, credit and debt, bond prices, and the full Fed toolkit">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <a href="../inflation/"><text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Inflation and GDP</text><text x="20" y="186">Unit 1 · what the Fed is fighting</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Interest rates</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Rates and compounding</text><text x="690" y="66">Unit 2 · how interest snowballs</text>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Credit and debt</text><text x="690" y="146">Unit 5 · what your rate will be</text>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bond prices</text><text x="690" y="226">Unit 12 · rates up, bonds down</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The Fed's full toolkit</text><text x="690" y="306">Unit 14 · QE, QT and crises</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 1</span><b>Inflation and GDP</b></li>
+        <li class="here"><span class="small">You are here</span><b>Interest rates and central banks</b></li>
+        <li><span class="muted small">Next · Unit 2</span><b>Rates and compounding</b></li>
+        <li><span class="muted small">Later · Unit 5</span><b>Credit and debt</b></li>
+        <li><span class="muted small">Later · Unit 12</span><b>Bond prices</b></li>
+        <li><span class="muted small">Later · Unit 14</span><b>The Fed's full toolkit</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../../">Unit 1 complete: back to the course map <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about.html">About and contact</a><a href="../../legal/privacy.html">Privacy</a><a href="../../legal/terms.html">Terms</a><a href="../../legal/cookies.html">Cookies and storage</a><a href="../../legal/privacy.html#delete">Delete my data</a><a href="../../credits.html">Credits</a></nav>
+    <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202610250053"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610250053"></script>
+<script src="../../assets/js/auth.js?v=202610250053"></script>
+<script src="../../assets/js/site.js?v=202610250053"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610250053"></script>
+<script src="lesson.js?v=202610250053"></script>
+</body>
+</html>

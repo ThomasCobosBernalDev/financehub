@@ -1,0 +1,25 @@
+/* Unit 1, Lesson 4: rate ripples and Rate Dial. */
+.rate-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.rate-card { background: var(--card); border-radius: 16px; padding: 18px; box-shadow: 0 1px 0 var(--line); border-top: 4px solid var(--c); }
+.rate-card small { display: block; font-size: 13px; color: var(--ink-3); font-weight: 600; }
+.rate-card b { display: block; font-family: var(--serif); font-weight: 500; font-size: 40px; line-height: 1.1; color: var(--c); font-variant-numeric: tabular-nums; }
+.rate-card p { font-size: 14px; color: var(--ink-2); margin: 6px 0 0; }
+.rate-card.bump b { animation: bump .35s var(--ease); }
+@keyframes bump { 40% { transform: translateY(-3px); } }
+
+.era-pick, .dial-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.era-pick { margin: 6px 0 12px; }
+.dial-row { margin: 8px 0 4px; }
+#f-chart { width: 100%; height: auto; display: block; margin-top: 18px; }
+#f-rate { font-variant-numeric: tabular-nums; }
+
+.ripple { animation: ripple 3.6s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.r2 { animation-delay: 1.2s; } .r3 { animation-delay: 2.4s; }
+@keyframes ripple { from { transform: scale(1); opacity: .8; } to { transform: scale(2.3); opacity: 0; } }
+.needle { animation: needle 6s var(--ease) infinite; transform-origin: 260px 270px; }
+@keyframes needle { 0%, 100% { transform: rotate(-70deg); } 45%, 60% { transform: rotate(15deg); } }
+.flow.slow { animation-duration: 3.2s; }
+
+@media (max-width: 960px) { .rate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .rate-card b { font-size: 32px; } }
+@media (prefers-reduced-motion: reduce) { .ripple, .needle { animation: none; } }

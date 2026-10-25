@@ -42,12 +42,6 @@
 
 .alloc input[type="range"] { --c: var(--accent); }
 
-.connect-list { display: none; list-style: none; padding: 0; margin: 24px 0 0; border-left: 2px solid var(--line); }
-.connect-list li { padding: 10px 0 10px 20px; position: relative; display: flex; flex-direction: column; }
-.connect-list li::before { content: ""; position: absolute; left: -6px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink-3); }
-.connect-list li.here::before { background: var(--accent); border-color: var(--accent); }
-.connect-list li.here b { color: var(--accent); }
-
 @media (max-width: 720px) {
   .pl-name { display: none; }
   .pl-amt { font-size: 30px; transform: translateY(-14px); }

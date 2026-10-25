@@ -55,14 +55,16 @@
   if (comp && window.FH) {
     const render = () => {
       const s = FH.state, c = s.character, m = FH.money;
-      comp.querySelector("[data-k=pay]").textContent = m(c.monthlyTakeHome);
-      comp.querySelector("[data-k=ef]").textContent = m(c.emergencyFund);
-      comp.querySelector("[data-k=inv]").textContent = m(c.investments);
-      const debt = comp.querySelector("[data-k=debt]");
-      debt.textContent = m(c.creditCardDebt);
-      debt.classList.toggle("bad", c.creditCardDebt > 0);
-      comp.querySelector("[data-k=xp]").textContent = s.xp;
-      comp.querySelector("[data-k=badges]").textContent = s.badges.length;
+      const set = (k, v) => { const el = comp.querySelector(`[data-k=${k}]`); if (el) el.textContent = v; return el; };
+      set("pay", m(c.monthlyTakeHome));
+      set("ef", m(c.emergencyFund));
+      set("inv", m(c.investments));
+      set("cash", m(c.checking));
+      const debt = set("debt", m(c.creditCardDebt));
+      if (debt) debt.classList.toggle("bad", c.creditCardDebt > 0);
+      set("xp", s.xp);
+      set("badges", s.badges.length);
+      set("lessons", Object.values(s.lessons).filter((l) => l.completedAt).length);
     };
     document.addEventListener("fh:save", render);
     render();

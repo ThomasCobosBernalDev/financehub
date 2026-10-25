@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250022">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250053">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -18,10 +18,17 @@
     }
     .unit h3 { margin: 0; font-size: clamp(22px, 3vw, 30px); color: var(--ink-3); transition: color .2s; }
     .unit p { margin: 4px 0 0; font-size: 15px; color: var(--ink-3); }
-    .unit.live .n { background: var(--accent); color: #fff; box-shadow: none; }
+    .unit.live .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
     .unit.live h3 { color: var(--ink); }
     .unit.live p { color: var(--accent); font-weight: 600; }
     .unit.live:hover h3 { color: var(--accent); }
+    .unit .lessons { list-style: none; padding: 0; margin: 14px 0 6px; display: grid; gap: 2px; }
+    .unit .lessons a { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; padding: 10px 14px 10px 10px; border-radius: 12px; color: inherit; text-decoration: none; transition: background .2s; }
+    .unit .lessons a:hover { background: var(--card); }
+    .unit .lessons .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 5px; box-shadow: inset 0 0 0 2px var(--accent); }
+    .unit .lessons a.done .dot { background: var(--accent); box-shadow: none; }
+    .unit .lessons b { font-family: var(--serif); font-weight: 500; font-size: 19px; color: var(--ink); }
+    .unit .lessons small { color: var(--ink-3); font-size: 14px; }
     .home-fold { min-height: calc(100svh / var(--z, 1) - 64px); }
     .home-fold svg { width: 100%; max-height: calc(100svh / var(--z, 1) - 120px); }
   </style>
@@ -47,7 +54,7 @@
     <div>
       <h1 class="reveal">Learn money by<br><em>seeing it move.</em></h1>
       <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
-      <a class="btn reveal" href="lessons/budgeting/">Start with budgeting <span class="arrow">→</span></a>
+      <a class="btn reveal" href="lessons/scarcity/" id="continue">Start Unit 1 <span class="arrow">→</span></a>
     </div>
     <svg class="reveal" viewBox="0 0 480 520" role="img" aria-label="A winding road through five parts: foundations, your money, your business, markets and Wall Street, and career launch">
       <path d="M80 470 C 200 470, 380 440, 330 380 S 120 320, 150 270 S 360 220, 330 160 S 380 70, 410 50" fill="none" stroke="var(--line)" stroke-width="22" stroke-linecap="round"/>
@@ -65,12 +72,23 @@
 
   <div class="path">
     <div class="part-name reveal">Part 1 · Foundations</div>
-    <div class="unit reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>Coming soon</p></div></div>
+    <div class="unit live open reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>4 lessons are open. Start here.</p>
+      <ol class="lessons">
+        <li><a href="lessons/scarcity/" data-lesson="u1-scarcity"><span class="dot"></span><b>Every choice has a price tag</b><small>Scarcity and trade-offs · Ten Free Hours</small></a></li>
+        <li><a href="lessons/supply-demand/" data-lesson="u1-supply-demand"><span class="dot"></span><b>Why prices are what they are</b><small>Supply and demand · Market Stall</small></a></li>
+        <li><a href="lessons/inflation/" data-lesson="u1-inflation"><span class="dot"></span><b>Why your money shrinks</b><small>Inflation and GDP · Beat Inflation</small></a></li>
+        <li><a href="lessons/interest-rates/" data-lesson="u1-interest-rates"><span class="dot"></span><b>Who sets the price of money?</b><small>Interest rates and the Fed · Rate Dial</small></a></li>
+      </ol>
+    </div></div>
     <div class="unit reveal"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><p>Coming soon</p></div></div>
 
     <div class="part-name reveal">Part 2 · Your money</div>
     <div class="unit reveal"><div class="n">3</div><div><h3>Earning and taxes</h3><p>Coming soon</p></div></div>
-    <a class="unit live reveal" href="lessons/budgeting/"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>Lesson 1 is open: Give every dollar a job →</p></div></a>
+    <div class="unit live open reveal"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>1 lesson is open.</p>
+      <ol class="lessons">
+        <li><a href="lessons/budgeting/" data-lesson="u4-budgeting-frameworks"><span class="dot"></span><b>Give every dollar a job</b><small>Budgeting frameworks · Month Survivor</small></a></li>
+      </ol>
+    </div></div>
     <div class="unit reveal"><div class="n">5</div><div><h3>Credit and debt</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">6</div><div><h3>Protection</h3><p>Coming soon</p></div></div>
     <div class="unit reveal"><div class="n">7</div><div><h3>Investing and retirement</h3><p>Coming soon</p></div></div>
@@ -98,10 +116,18 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250022"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250022"></script>
-<script src="assets/js/auth.js?v=202610250022"></script>
-<script src="assets/js/site.js?v=202610250022"></script>
-<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+<script src="assets/js/save.js?v=202610250053"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250053"></script>
+<script src="assets/js/auth.js?v=202610250053"></script>
+<script src="assets/js/site.js?v=202610250053"></script>
+<script>
+document.getElementById("xp").textContent = FH.state.xp;
+// Mark finished lessons and point the main button at the next one.
+const links = [...document.querySelectorAll(".lessons a")];
+links.forEach((a) => { const l = FH.state.lessons[a.dataset.lesson]; if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += " · done"; } });
+const next = links.find((a) => !a.classList.contains("done"));
+const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
+if (next && started) { const c = document.getElementById("continue"); c.href = next.getAttribute("href"); c.firstChild.textContent = "Continue: " + next.querySelector("b").textContent + " "; }
+</script>
 </body>
 </html>

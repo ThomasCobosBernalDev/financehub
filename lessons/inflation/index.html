@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Why Your Money Shrinks · FinanceHub</title>
+  <meta name="description" content="Unit 1, Lesson 3: inflation, purchasing power, real vs. nominal, and GDP. Try to beat inflation across real years from history.">
+  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610250053">
+  <link rel="stylesheet" href="lesson.css?v=202610250053">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../">Course</a><a href="../../about.html">About</a></nav>
+    <div class="spacer"></div>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<aside class="companion" aria-label="Your character so far">
+  <div class="who">
+    <svg viewBox="-34 -60 68 68" aria-hidden="true"><circle cx="0" cy="-22" r="27" fill="#f2c9a5" stroke="#2a2420" stroke-width="2"/><path d="M-27 -26 C-28 -58 28 -58 27 -26 C16 -40 -6 -42 -27 -26Z" fill="#2a2420"/><circle cx="-9" cy="-22" r="2.8" fill="#2a2420"/><circle cx="9" cy="-22" r="2.8" fill="#2a2420"/><path d="M-9 -10 Q0 -2 9 -10" stroke="#2a2420" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <div><b>You, age 17</b>Fixing up bikes for cash</div>
+  </div>
+  <dl>
+    <dt>Savings</dt><dd data-k="cash">$0</dd>
+    <dt>Lessons done</dt><dd data-k="lessons">0</dd>
+    <dt>XP</dt><dd data-k="xp">0</dd>
+  </dl>
+  <div class="badges"><b data-k="badges">0</b> badges earned. Your numbers carry into every lesson.</div>
+</aside>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 1 · Lesson 3</span> Inflation and GDP</div>
+        <h1 class="reveal">Why your money <em>shrinks.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Your bike stall did well. Now you have real savings in a drawer, and your grandpa tells you a movie ticket cost about <span class="mark">$2</span> when he was 17. Today it's about $11. Your cash didn't go anywhere. So why will it buy less every year?</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>Measure how fast prices rise (inflation) and how big the economy is (GDP).</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Money that sits still loses value. A raise below inflation is really a pay cut.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Track the price of a <b>basket</b> of everyday things, and adjust every number for it: <b>real</b> vs. <b>nominal</b>.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Government economists</b> measure it. <b>Macro strategists</b> at banks forecast it for investors.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A shopping basket whose price tag keeps rising, next to a dollar bill that keeps shrinking">
+          <g transform="translate(260 300)">
+            <g class="bill-shrink">
+              <rect x="-170" y="-80" width="340" height="160" rx="14" fill="var(--savings)" opacity=".18" stroke="var(--savings)" stroke-width="3"/>
+              <rect x="-150" y="-60" width="300" height="120" rx="8" fill="none" stroke="var(--savings)" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <circle r="40" fill="none" stroke="var(--savings)" stroke-width="3"/>
+              <text y="16" text-anchor="middle" font-family="Fraunces, serif" font-size="48" fill="var(--savings)">$</text>
+              <text x="-130" y="-30" font-family="Fraunces, serif" font-size="26" fill="var(--savings)">100</text>
+              <text x="130" y="50" text-anchor="end" font-family="Fraunces, serif" font-size="26" fill="var(--savings)">100</text>
+            </g>
+          </g>
+          <g transform="translate(260 96)">
+            <path d="M-80 -10 h160 l-18 70 h-124z" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M-50 -10 a50 40 0 0 1 100 0" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="-34" cy="-22" r="13" fill="var(--danger)" stroke="var(--ink)" stroke-width="2"/>
+            <rect x="-10" y="-46" width="20" height="40" rx="4" fill="var(--needs)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M22 -12 q12 -26 30 -10" fill="var(--wants)" stroke="var(--ink)" stroke-width="2"/>
+            <g transform="translate(96 4)">
+              <path d="M12 0 h66 a8 8 0 0 1 8 8 v26 a8 8 0 0 1 -8 8 h-66 l-14 -21z" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+              <text x="48" y="28" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)" class="tick-price">$100</text>
+            </g>
+          </g>
+          <text x="260" y="470" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="21" fill="var(--ink-2)">same bill, smaller basket</text>
+          <text x="260" y="500" text-anchor="middle" font-size="15" fill="var(--ink-3)">at 3% a year, $100 buys about $74 of today's stuff in 10 years</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="style-pick reveal" id="style-picker">
+        I learn best by
+        <span class="opts">
+          <button data-pick="visual">seeing</button><span class="sep">,</span>
+          <button data-pick="auditory">listening</button><span class="sep">,</span>
+          <button data-pick="kinesthetic">doing</button><span class="sep">,</span>
+          <button data-pick="logical">working out the logic</button><span class="sep">,</span>
+          <button data-pick="naturalistic">linking it to nature</button><span class="sep">,</span>
+          <button data-pick="reading">reading and writing</button><span class="sep">,</span>
+          <button data-pick="social">talking it through</button><span class="sep">, or</span>
+          <button data-pick="solitary">thinking on my own</button>.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Travel through time.<br>Watch prices <em>climb.</em></h2>
+      <p class="lead reveal">Drag through the years. These are today's prices pulled back in time using the Consumer Price Index (CPI), the government's measure of what a typical basket of stuff costs.</p>
+
+      <div class="reveal" style="margin-top:36px">
+        <div class="payline"><span class="val" id="tm-year">1980</span><span class="muted" id="tm-sub">$100 then buys what $381 buys today</span></div>
+        <input type="range" id="tm-slider" min="0" max="6" step="1" value="1" aria-label="Year" style="margin:20px 0 8px">
+        <div class="tm-years" aria-hidden="true"><span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span><span>2024</span></div>
+        <div class="basket" id="tm-basket"></div>
+        <div class="bill-row">
+          <div class="bill-box"><div class="bill" id="tm-bill"><span>$100</span></div></div>
+          <p id="tm-bill-note">What $100 from 2024 would have been worth in that year: the green bill. The further back you go, the more a dollar bought.</p>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="margin-top:88px">And GDP: everything a country makes in a year.</h3>
+      <p class="muted reveal">The US economy produced about $29 trillion of goods and services in 2024. Tap a piece to see what's in it. Your bike sales count too.</p>
+      <div class="reveal" style="margin-top:24px">
+        <div class="gdp-bar" id="gdp-bar" role="group" aria-label="GDP split into consumption, investment, government and net exports">
+          <button data-g="c" style="flex-basis:68%" class="bg-needs">C · 68%</button>
+          <button data-g="i" style="flex-basis:18%" class="bg-savings">I · 18%</button>
+          <button data-g="g" style="flex-basis:17%" class="bg-wants">G · 17%</button>
+        </div>
+        <div class="gdp-nx"><span>NX · about −3%</span> The US imports more than it exports, so net exports subtract a little.</div>
+        <p id="gdp-msg" class="gdp-msg" aria-live="polite"><b>GDP = C + I + G + (X − M)</b>. Tap a piece.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Beat <em>Inflation</em></h2>
+      <p class="lead reveal">A time machine drops you into five real years from history. Each year, set your bike price and choose where your $1,000 of savings sits. Then see what prices actually did. Win by keeping your <b>real</b> money, not just your dollar count, growing.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="b-era">Choose an era</div>
+            <div class="left-big" id="b-year">Where to?</div>
+          </div>
+          <button class="btn" id="b-go" disabled>Live the year <span class="arrow">→</span></button>
+        </div>
+        <div class="era-pick" id="b-eras">
+          <button class="chip" data-era="70s">The 1970s</button>
+          <button class="chip" data-era="10s">The 2010s</button>
+          <button class="chip" data-era="20s">The 2020s</button>
+          <button class="chip" data-era="mystery">Surprise me</button>
+        </div>
+        <div id="b-play" class="hidden">
+          <p class="split-note" id="b-hint"></p>
+          <div class="alloc" style="grid-template-columns:150px 1fr 84px">
+            <div class="name">Raise bike price</div>
+            <input type="range" id="b-raise" min="0" max="15" step="0.5" value="3" aria-label="Raise your bike price by this percent">
+            <div class="amt" id="b-raise-v">+3%</div>
+            <div class="hint" id="b-price-hint">New price: $118</div>
+          </div>
+          <div class="alloc" style="grid-template-columns:150px 1fr">
+            <div class="name">Keep savings in</div>
+            <div class="save-opts" id="b-save">
+              <button class="chip on" data-s="cash">Cash drawer</button>
+              <button class="chip" data-s="bank">Bank savings</button>
+              <button class="chip" data-s="tips">Inflation-protected bond</button>
+            </div>
+            <div class="hint" id="b-save-hint" style="grid-column:2/-1"></div>
+          </div>
+        </div>
+        <svg id="b-chart" viewBox="0 0 700 220" role="img" aria-label="Your savings in dollars and in real buying power over the years" class="hidden">
+          <path d="M60 190 H680 M60 190 V20" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+          <g id="b-ticks" font-size="12" fill="var(--ink-3)"></g>
+          <path id="b-nom" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="6 6"/>
+          <path id="b-real" fill="none" stroke="var(--savings)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="b-dots"></g>
+          <text x="680" y="16" text-anchor="end" font-size="13" fill="var(--ink-2)"><tspan fill="var(--savings)" font-weight="700">━ real buying power</tspan>   <tspan fill="var(--ink-3)">┅ dollars</tspan></text>
+        </svg>
+        <div class="gauges" style="margin-top:20px">
+          <div class="gauge"><small>Savings, dollars</small><b id="b-nominal">$1,000</b></div>
+          <div class="gauge"><small>Savings, real</small><b id="b-realv">$1,000</b></div>
+          <div class="gauge"><small>Real stall profit</small><b id="b-profit">$0</b></div>
+        </div>
+        <ul class="timeline" id="b-log"></ul>
+        <div id="b-result" class="hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">Inflation rate</h3>
+      <div class="formula reveal">Inflation <span class="op">=</span> (CPI<sub>this year</sub> <span class="op">−</span> CPI<sub>last year</sub>) <span class="op">÷</span> CPI<sub>last year</sub></div>
+
+      <h3 class="reveal">Moving a price through time</h3>
+      <div class="formula reveal">Price in today's dollars <span class="op">=</span> old price <span class="op">×</span> (CPI<sub>today</sub> <span class="op">÷</span> CPI<sub>then</sub>)</div>
+
+      <h3 class="reveal">Real vs. nominal</h3>
+      <div class="formula reveal">Real rate <span class="op">≈</span> nominal rate <span class="op">−</span> inflation</div>
+
+      <h3 class="reveal">Worked example: was it a raise?</h3>
+      <ol class="steps reveal">
+        <li><b>Get the CPI.</b> The CPI averaged 292.7 in 2022 and 304.7 in 2023.</li>
+        <li><b>Find inflation.</b> (304.7 − 292.7) ÷ 292.7 = 0.041, so prices rose about <b>4.1%</b> from 2022 to 2023.</li>
+        <li><b>Check the raise.</b> Your pay went from $18.00 to $18.36 an hour, a nominal raise of 2%.</li>
+        <li><b>Make it real.</b> Real raise ≈ 2% − 4.1% = <b>−2.1%</b>. You got more dollars but can buy less. That's a pay cut in disguise.</li>
+        <li><b>Flip it to a target.</b> To keep up, you'd need at least $18.00 × 1.041 = <b>$18.74</b>.</li>
+      </ol>
+
+      <h3 class="reveal">GDP</h3>
+      <div class="formula reveal">GDP <span class="op">=</span> C <span class="op">+</span> I <span class="op">+</span> G <span class="op">+</span> (X <span class="op">−</span> M)<br>Real GDP <span class="op">=</span> nominal GDP <span class="op">÷</span> price index <span class="op">×</span> 100</div>
+      <p class="reveal">If nominal GDP grows 5% but prices rose 3%, the economy really grew only about 2%. Two quarters of falling real GDP in a row is a common rule of thumb for a <b>recession</b>.</p>
+
+      <details class="deeper reveal">
+        <summary>Go deeper: what causes inflation, the Fisher equation and CPI's blind spots</summary>
+        <div>
+          <p><b>Two main causes.</b> <i>Demand-pull</i>: people and the government try to spend more than the economy can produce, so prices get bid up (2021, after stimulus). <i>Cost-push</i>: something makes producing stuff more expensive, like an oil shock (1973 and 1979). Over long periods, inflation tracks how fast the money supply grows faster than output. That's the quantity theory: MV = PQ.</p>
+          <p><b>The exact Fisher equation</b> is (1 + nominal) = (1 + real) × (1 + inflation). At 8% nominal and 5% inflation, real = 1.08 ÷ 1.05 − 1 = 2.86%, a bit less than the 3% shortcut. Use the exact version when rates are high.</p>
+          <p><b>CPI isn't perfect.</b> It can overstate inflation because people switch to cheaper substitutes and products get better (a $1,000 phone today does far more than one from 2010). Economists adjust for quality, and some argue it still misses things. Your personal inflation depends on what you actually buy: rent and tuition have risen faster than the average.</p>
+          <p><b>Why not zero inflation?</b> Most central banks aim for about 2%. A little inflation makes it easier for wages and prices to adjust, and avoids <i>deflation</i>, where falling prices make people delay purchases and debts get heavier, which can spiral into a slump.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Cash in a drawer is a pond <em>in summer.</em></h2>
+      <p class="lead reveal">A pond with no stream feeding it loses water to the sun every day. You don't notice from one day to the next, but by August the shore has crept in. Inflation evaporates money the same way. Interest is the stream. If the stream runs slower than the evaporation, the pond still shrinks.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Two ponds. The one on the left has no stream and is shrinking under the sun. The one on the right has a stream flowing in and holds its level.">
+        <circle cx="450" cy="60" r="38" fill="#f6d36b"/>
+        <g stroke="#e3a91e" stroke-width="3" stroke-linecap="round" class="rays"><path d="M450 6v-8M450 122v-8M396 60h-8M512 60h-8M412 22l-6-6M488 98l6 6M412 98l-6 6M488 22l6-6"/></g>
+        <path d="M0 250 H900" stroke="var(--line)" stroke-width="2"/>
+        <ellipse cx="220" cy="270" rx="170" ry="34" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6"/>
+        <ellipse cx="220" cy="270" rx="110" ry="22" fill="var(--needs)" opacity=".45" class="shrink-pond"/>
+        <g stroke="var(--needs)" stroke-width="2" stroke-linecap="round" opacity=".6" class="vapor">
+          <path d="M180 220 q-6 -12 0 -24 q6 -12 0 -24"/><path d="M220 214 q-6 -12 0 -24 q6 -12 0 -24"/><path d="M260 220 q-6 -12 0 -24 q6 -12 0 -24"/>
+        </g>
+        <path d="M900 200 C 820 200, 780 240, 700 262" stroke="var(--needs)" stroke-width="14" fill="none" opacity=".45" stroke-linecap="round"/>
+        <path d="M900 200 C 820 200, 780 240, 700 262" stroke="#fff" stroke-width="2" fill="none" class="flow" opacity=".8"/>
+        <ellipse cx="660" cy="270" rx="150" ry="30" fill="var(--needs)" opacity=".45"/>
+        <ellipse cx="660" cy="270" rx="150" ry="30" fill="none" stroke="var(--ink)" stroke-width="2"/>
+        <text x="220" y="328" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Cash in a drawer</text>
+        <text x="660" y="328" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Earning at least inflation</text>
+        <text x="300" y="160" font-size="17" fill="var(--ink-2)">evaporation = inflation</text>
+        <text x="880" y="180" text-anchor="end" font-size="17" fill="var(--ink-2)">stream = interest</text>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> Hydrologists measure evaporation against inflow to know if a lake is healthy. Do the same with your money: compare what it earns against what inflation takes. That one habit is the whole reason people invest instead of hoarding cash.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Inflation:</b> a general rise in prices across the economy. Each dollar buys less: lower <b>purchasing power</b>.</li>
+          <li><b>CPI:</b> the cost of a fixed basket of goods and services, tracked monthly by the Bureau of Labor Statistics.</li>
+          <li><b>Inflation rate</b> = % change in CPI. The Fed targets about 2% a year.</li>
+          <li><b>Nominal</b> = in raw dollars. <b>Real</b> = adjusted for inflation. Real ≈ nominal − inflation.</li>
+          <li><b>Rule of 70:</b> years for prices to double ≈ 70 ÷ inflation rate. At 3%, about 23 years.</li>
+          <li><b>GDP</b> = market value of all final goods and services made in a country in a year = C + I + G + (X − M).</li>
+          <li><b>Real GDP</b> strips out price changes. Growth in real GDP = the economy actually making more.</li>
+          <li><b>Recession:</b> a broad, lasting fall in economic activity. Rule of thumb: two quarters of falling real GDP.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. The CPI goes from 200 to 210. Inflation was <input type="text" class="blank" data-answer="5|5%" inputmode="numeric" aria-label="Blank 1">%.</div>
+        <div>2. Your savings earn 4% while inflation is 6%. Your real return is about <input type="text" class="blank" data-answer="-2|−2|-2%|−2%" aria-label="Blank 2">%.</div>
+        <div>3. At 7% inflation, prices double in about <input type="text" class="blank" data-answer="10|ten" inputmode="numeric" aria-label="Blank 3"> years.</div>
+        <div>4. In GDP = C + I + G + NX, the letter for household spending is <input type="text" class="blank" data-answer="c" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Interview the past</h3>
+          <p>Ask a parent or grandparent what they paid for a car, their first apartment and a gallon of gas, and when. Convert each to today's dollars with the formula. Which one grew faster than inflation, and why might that be?</p>
+        </div>
+        <div class="reveal">
+          <h3>Build your own CPI</h3>
+          <p>Each person lists five things they buy every month and today's prices. Look up (or guess) prices from five years ago. Whose personal inflation rate is highest? Students who pay rent usually win this one.</p>
+        </div>
+        <div class="reveal">
+          <h3>Era showdown</h3>
+          <p>Each of you plays Beat Inflation in a different era. Compare: in which decade was cash in a drawer the worst idea? Explain it to each other using real vs. nominal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Just you and <em>your buying power.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">What's something you buy often that's gotten noticeably more expensive? How did you change what you buy because of it?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Where is your money sitting right now? Is it earning more or less than inflation?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Think about the salary you'd want after college. What would it need to be in 10 years just to buy the same things, at 3% inflation?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the macro strategist</h3>
+      <div class="reveal">
+        <p>A client keeps <b>$200,000</b> in a savings account earning <b>0.5%</b>. Inflation is running at <b>4%</b>. The client says, "At least I'm not losing money."</p>
+        <p><b>Your task:</b> show the client, in dollars, how much buying power they lose in one year. Then explain in two sentences why "not losing money" isn't true.</p>
+        <textarea id="job-answer" placeholder="Write your note to the client…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Real return</b> ≈ 0.5% − 4% = −3.5%. On $200,000, that's about <b>$7,000</b> of buying power lost in a year (exactly: 200,000 × 1.005 ÷ 1.04 ≈ $193,269, a loss of $6,731).</p>
+            <p><b>The point:</b> the balance goes up by $1,000, but prices go up by $8,000. The client has more dollars and can buy less with them, so in real terms they are losing money every month the cash sits there.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Inflation sets up <em>everything about rates.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Supply and demand leads into this lesson, which leads to interest rates, compounding, investing and how the Fed fights inflation">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <a href="../supply-demand/"><text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Supply and demand</text><text x="20" y="186">Unit 1 · what moves one price</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Inflation and GDP</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../interest-rates/"><text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Interest rates</text><text x="690" y="66">Next lesson · how the Fed fights it</text></a>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Compounding</text><text x="690" y="146">Unit 2 · inflation compounds too</text>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Investing</text><text x="690" y="226">Unit 7 · how to beat inflation</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Macro and the Fed</text><text x="690" y="306">Unit 14 · the full toolkit</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 1</span><b>Supply and demand</b></li>
+        <li class="here"><span class="small">You are here</span><b>Inflation and GDP</b></li>
+        <li><span class="muted small">Next · Unit 1</span><b>Interest rates</b></li>
+        <li><span class="muted small">Later · Unit 2</span><b>Compounding</b></li>
+        <li><span class="muted small">Later · Unit 7</span><b>Investing</b></li>
+        <li><span class="muted small">Later · Unit 14</span><b>Macro and the Fed</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../interest-rates/">Next: Interest rates <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about.html">About and contact</a><a href="../../legal/privacy.html">Privacy</a><a href="../../legal/terms.html">Terms</a><a href="../../legal/cookies.html">Cookies and storage</a><a href="../../legal/privacy.html#delete">Delete my data</a><a href="../../credits.html">Credits</a></nav>
+    <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202610250053"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610250053"></script>
+<script src="../../assets/js/auth.js?v=202610250053"></script>
+<script src="../../assets/js/site.js?v=202610250053"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610250053"></script>
+<script src="lesson.js?v=202610250053"></script>
+</body>
+</html>

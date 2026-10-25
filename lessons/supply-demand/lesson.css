@@ -1,0 +1,34 @@
+/* Unit 1, Lesson 2: supply and demand chart, Market Stall, bees. */
+.sd-wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.sd-wrap svg { width: 100%; height: auto; display: block; }
+#sd-eq, #sd-qd, #sd-qs { transition: cx .3s var(--ease), cy .3s var(--ease); }
+.sd-nums { display: flex; gap: 32px; }
+.sd-nums small { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.sd-nums b { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.sd-msg { font-size: 17px; line-height: 1.55; min-height: 7.5em; margin: 16px 0; }
+.shock-list { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.shock-list small { width: 100%; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+
+.market { margin: -8px -8px 8px; }
+.market svg { width: 100%; height: auto; display: block; overflow: visible; }
+.buyer { transform: translate(-60px, 288px); }
+#stall-price { font-variant-numeric: tabular-nums; }
+
+.pulse-ring { animation: ring 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes ring { from { transform: scale(1); opacity: .9; } to { transform: scale(3); opacity: 0; } }
+.tag-slide { animation: tagslide 5s var(--ease) infinite; }
+@keyframes tagslide { 0% { transform: translate(-6px, 90px); } 40%, 85% { transform: translate(-6px, 245px); } 100% { transform: translate(-6px, 90px); } }
+
+.bee { animation: bee 7s ease-in-out infinite; }
+.b1 { animation-delay: -1s; } .b2 { animation-delay: -2.4s; } .b3 { animation-delay: -3.8s; } .b4 { animation-delay: -5s; } .b5 { animation-delay: -6.2s; }
+@keyframes bee {
+  0% { transform: translate(200px, 190px); } 25% { transform: translate(300px, 170px); }
+  50% { transform: translate(700px, 190px); } 75% { transform: translate(250px, 200px); } 100% { transform: translate(200px, 190px); }
+}
+.b2, .b4 { animation-name: bee2; }
+@keyframes bee2 { 0% { transform: translate(160px, 200px); } 50% { transform: translate(330px, 186px); } 100% { transform: translate(160px, 200px); } }
+.b5 { animation-name: bee3; }
+@keyframes bee3 { 0% { transform: translate(680px, 200px); } 50% { transform: translate(760px, 186px); } 100% { transform: translate(680px, 200px); } }
+
+@media (max-width: 860px) { .sd-wrap { grid-template-columns: 1fr; gap: 8px; } .sd-msg { min-height: 0; } }
+@media (max-width: 720px) { @media (prefers-reduced-motion: reduce) { .bee, .tag-slide, .pulse-ring { animation: none; } }

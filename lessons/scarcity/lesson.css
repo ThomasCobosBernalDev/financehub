@@ -1,0 +1,50 @@
+/* Unit 1, Lesson 1: hour strips, the frontier chart and Ten Free Hours. */
+.hour-strip { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
+.hour-strip span {
+  height: 48px; border-radius: 10px; display: grid; place-items: center; font-size: 13px; font-weight: 600;
+  color: var(--on-color); background: var(--line); transition: background .3s var(--ease), transform .3s var(--ease);
+}
+.hour-strip .k-mow { background: var(--savings); }
+.hour-strip .k-friends { background: var(--wants); }
+.hour-strip.big span { height: 40px; }
+.hour-strip span.lost { background: repeating-linear-gradient(45deg, var(--line), var(--line) 4px, transparent 4px, transparent 9px); opacity: .7; }
+.hour-strip span.spent { animation: spend .5s var(--ease) forwards; }
+@keyframes spend { 40% { transform: translateY(-8px) scale(1.06); } 100% { transform: none; opacity: .45; } }
+
+.ppf-wrap { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.ppf-wrap svg { width: 100%; height: auto; display: block; touch-action: manipulation; }
+.ppf-msg { font-size: 18px; line-height: 1.5; min-height: 6em; }
+#ppf-pin { transition: transform .35s var(--ease); }
+
+.acts { margin-top: 18px; }
+.act { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.act.off { opacity: .45; }
+.act-name { display: flex; gap: 14px; align-items: center; min-width: 0; }
+.act-name i { flex: none; width: 14px; height: 14px; border-radius: 4px; background: var(--c); }
+.act-name b { display: block; }
+.act-name small { color: var(--ink-3); font-size: 14px; }
+.stepper { display: flex; align-items: center; gap: 4px; flex: none; }
+.stepper button {
+  width: 40px; height: 40px; border-radius: 50%; border: 0; font: inherit; font-size: 22px; line-height: 1; cursor: pointer;
+  background: var(--paper-2); color: var(--ink); transition: background .2s;
+}
+.stepper button:hover { background: var(--line); }
+.stepper output { min-width: 52px; text-align: center; font-family: var(--serif); font-size: 20px; font-variant-numeric: tabular-nums; }
+
+
+.sway { animation: sway 6s ease-in-out infinite; transform-origin: 440px 250px; }
+@keyframes sway { 50% { transform: rotate(1.2deg); } }
+
+@media (max-width: 860px) {
+  .ppf-wrap { grid-template-columns: 1fr; gap: 12px; }
+  .ppf-msg { min-height: 0; }
+}
+@media (max-width: 720px) {
+  .hour-strip { gap: 4px; }
+  .hour-strip span { height: 40px; font-size: 11px; border-radius: 8px; }
+  .hour-strip.big span { height: 30px; }
+ 
+    .act-name small { font-size: 13px; }
+}
+@media (pointer: coarse) { .stepper button { width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .sway, .hour-strip span.spent { animation: none; } }

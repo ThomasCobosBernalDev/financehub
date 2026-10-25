@@ -699,3 +699,30 @@ img, svg, video { max-width: 100%; }
   .fold.home-fold svg { max-height: 52svh; max-width: 420px; justify-self: center; }
 }
 html[data-theme="dark"] .auth-card .auth-tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+
+/* ---------- Lesson 'where it leads' list (phones show this instead of the map) ---------- */
+.connect-list { display: none; list-style: none; padding: 0; margin: 24px 0 0; border-left: 2px solid var(--line); }
+.connect-list li { padding: 10px 0 10px 20px; position: relative; display: flex; flex-direction: column; }
+.connect-list li::before { content: ""; position: absolute; left: -6px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink-3); }
+.connect-list li.here::before { background: var(--accent); border-color: var(--accent); }
+.connect-list li.here b { color: var(--accent); }
+
+@media (max-width: 720px) { .connect-map { display: none; } .connect-list { display: block; } }
+
+/* ---------- Shared lesson bits: chips and game results ---------- */
+.chip {
+  font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 99px; cursor: pointer;
+  border: 0; background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); transition: all .2s var(--ease);
+}
+.chip:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.chip.on { background: var(--ink); color: var(--paper); box-shadow: none; }
+@media (pointer: coarse) { .chip { min-height: 44px; } }
+.result-grade { display: flex; gap: 24px; align-items: center; margin: 28px 0 12px; }
+.result-grade .grade { font-family: var(--serif); font-size: 88px; line-height: 1; color: var(--accent); }
+.result-grade p { margin: 4px 0 0; color: var(--ink-2); }
+@media (max-width: 720px) { .result-grade .grade { font-size: 64px; } }
+/* Nature drawings: bigger labels on phones; the small captions are dropped so nothing collides. */
+@media (max-width: 720px) {
+  .nature-art text { font-size: 32px; }
+  .nature-art text[font-size="15"] { display: none; }
+}
