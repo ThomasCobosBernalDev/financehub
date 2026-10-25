@@ -83,12 +83,23 @@
     a.title = `Signed in as ${name}`;
   });
 
-  // First sign-in on a save with no setup: send the learner through the short setup once.
+  // After signing in (or landing from the confirmation email), go to the course, or to the
+  // short setup the first time for a save that has none.
+  const fromEmailLink = /access_token|type=signup|type=magiclink/.test(location.hash);
   let recovering = false;
-  const askSetup = () => {
-    if (!user || recovering || (FH.state.profile && FH.state.profile.done) || /\/start\/?$/.test(location.pathname)) return;
-    try { if (sessionStorage.getItem("fh-setup-asked")) return; sessionStorage.setItem("fh-setup-asked", "1"); } catch (e) { return; }
-    location.href = (document.body.dataset.root || "./") + "start/";
+  const afterSignIn = () => {
+    if (!user || recovering || /\/start\/?$/.test(location.pathname)) return;
+    const root = document.body.dataset.root || "./";
+    let asked = false, justIn = fromEmailLink;
+    try {
+      asked = !!sessionStorage.getItem("fh-setup-asked");
+      justIn = justIn || !!sessionStorage.getItem("fh-just-signed-in");
+      sessionStorage.removeItem("fh-just-signed-in");
+    } catch (e) { /* storage blocked */ }
+    if (!(FH.state.profile && FH.state.profile.done) && !asked) {
+      try { sessionStorage.setItem("fh-setup-asked", "1"); } catch (e) { /* storage blocked */ }
+      location.href = root + "start/";
+    } else if (justIn && /\/account\/?$/.test(location.pathname)) location.href = root;
   };
 
   client.auth.onAuthStateChange((event, session) => {
@@ -97,7 +108,7 @@
     if (event === "PASSWORD_RECOVERY") recovering = true;
     paintHeader();
     if (event === "USER_UPDATED") paintHeader();
-    if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(() => { notify(); askSetup(); });
+    if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(() => { notify(); afterSignIn(); });
     else notify();
     if (event === "PASSWORD_RECOVERY") document.dispatchEvent(new CustomEvent("fh:recovery"));
   });

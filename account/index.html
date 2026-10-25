@@ -6,7 +6,7 @@
   <title>Your account · FinanceHub</title>
   <meta name="description" content="Sign in to save your FinanceHub progress across devices.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610250253">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610250255">
 </head>
 <body data-root="../">
 <a class="skip" href="#main">Skip to content</a>
@@ -146,10 +146,10 @@
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202610250253"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610250253"></script>
-<script src="../assets/js/auth.js?v=202610250253"></script>
-<script src="../assets/js/site.js?v=202610250253"></script>
+<script src="../assets/js/save.js?v=202610250255"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610250255"></script>
+<script src="../assets/js/auth.js?v=202610250255"></script>
+<script src="../assets/js/site.js?v=202610250255"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
 <script>
 (function () {
@@ -193,8 +193,9 @@
     e.preventDefault();
     const f = e.target;
     msg("Signing in…");
+    try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (err) { /* storage blocked */ }
     const { error } = await FHAuth.signIn(f.email.value.trim(), f.password.value);
-    if (error) msg(friendly(error), true); else msg("");
+    if (error) { try { sessionStorage.removeItem("fh-just-signed-in"); } catch (err) { /* storage blocked */ } msg(friendly(error), true); } else msg("Signed in. Taking you to your course…");
   });
 
   $("#form-up").addEventListener("submit", async (e) => {
