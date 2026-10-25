@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610250314">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610250317">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -84,13 +84,6 @@
     .scene .big { font-family: var(--serif); font-size: 19px; fill: var(--ink); }
     .scene .draw { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s var(--ease) .2s; }
     .scene.on .draw { stroke-dashoffset: 0; }
-    .coin { fill: #e0b24a; stroke: #a87b12; stroke-width: 2; }
-    .coin-s { font-family: var(--serif); font-size: 13px; font-weight: 700; fill: #8a6410; }
-    .coins .coin { opacity: 0; transform: translateY(-30px); transition: opacity .4s, transform .5s var(--ease); transition-delay: calc(var(--i) * 70ms); }
-    .scene.on .coins .coin { opacity: 1; transform: none; }
-    .scene.on .drop { animation: coinDrop 2.4s var(--ease) infinite 1s; }
-    .drop { opacity: 0; }
-    @keyframes coinDrop { 0% { opacity: 0; transform: translateY(-20px); } 20% { opacity: 1; } 60% { opacity: 1; transform: translateY(46px); } 75%, 100% { opacity: 0; transform: translateY(46px); } }
     .demand { stroke: var(--accent); stroke-width: 5; }
     .supply { stroke: #d9822b; stroke-width: 5; }
     .guide { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 1; opacity: .5; }
@@ -212,12 +205,6 @@
   <div class="ss-art">
   <svg viewBox="0 0 280 260">
     <circle cx="140" cy="130" r="118" class="ss-disk"/>
-    <g class="scene" data-s="0">
-      <g class="coins">
-        <ellipse class="coin" style="--i:0" cx="78" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="78" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="78" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="78" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="140" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="140" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="140" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="140" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="140" cy="148" rx="30" ry="9"/><ellipse class="coin" style="--i:5" cx="140" cy="135" rx="30" ry="9"/><ellipse class="coin" style="--i:6" cx="140" cy="122" rx="30" ry="9"/><ellipse class="coin" style="--i:0" cx="202" cy="200" rx="30" ry="9"/><ellipse class="coin" style="--i:1" cx="202" cy="187" rx="30" ry="9"/><ellipse class="coin" style="--i:2" cx="202" cy="174" rx="30" ry="9"/><ellipse class="coin" style="--i:3" cx="202" cy="161" rx="30" ry="9"/><ellipse class="coin" style="--i:4" cx="202" cy="148" rx="30" ry="9"/>
-      </g>
-      <g class="drop"><ellipse class="coin" cx="140" cy="60" rx="30" ry="9"/><text x="140" y="64" text-anchor="middle" class="coin-s">$</text></g>
-    </g>
     <g class="scene" data-s="1">
       <path class="axis" d="M50 40V210H240"/>
       <path class="draw demand" pathLength="1" d="M62 58 C 110 110, 170 160, 228 196"/>
@@ -252,7 +239,7 @@
     </g>
   </svg>
   </div>
-  <p class="ss-cap"><small id="ss-kick">Start here</small><b id="ss-title">Every dollar counts</b></p>
+  <p class="ss-cap"><small id="ss-kick">Part 1 · Foundations</small><b id="ss-title">Where prices meet</b></p>
   </aside>
   </div>
 </main>
@@ -264,10 +251,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610250314"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610250314"></script>
-<script src="assets/js/auth.js?v=202610250314"></script>
-<script src="assets/js/site.js?v=202610250314"></script>
+<script src="assets/js/save.js?v=202610250317"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610250317"></script>
+<script src="assets/js/auth.js?v=202610250317"></script>
+<script src="assets/js/site.js?v=202610250317"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 // Lesson list: mark finished lessons and point the main button at the next one.
@@ -345,7 +332,7 @@ paintStyles();
 
 // Right-margin scene follows the part you're reading.
 const SCENES = [
-  ["Start here", "Every dollar counts"],
+  null,
   ["Part 1 · Foundations", "Where prices meet"],
   ["Part 2 · Your money", "Give every dollar a job"],
   ["Part 3 · Your business", "Grow your revenue"],
@@ -372,7 +359,7 @@ const track = () => {
   if (scrollY + innerHeight >= document.documentElement.scrollHeight - 4) cur = targets.length - 1;
   railLinks.forEach((a, i) => { a.classList.toggle("current", i === cur); a.classList.toggle("seen", i < cur); });
   const part = Number(targets[cur].dataset.part || 0) || 1;
-  showScene(targets[cur].dataset.part ? part : 0);
+  showScene(part);
 };
 let ticking = false;
 addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
