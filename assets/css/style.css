@@ -919,3 +919,14 @@ p .frac, li .frac { font-size: .88em; margin: .15em .15em; }
   .mini-table th, .mini-table td { padding: 8px 5px; }
   .mini-table th { font-size: 11px; letter-spacing: 0; }
 }
+
+/* "In this example" callout: ties a new term to the lesson's real numbers. */
+.in-example { margin: 4px 0 32px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--card); border-radius: 0 14px 14px 0; box-shadow: var(--shadow, none); }
+.in-example .ie-tag { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.in-example dl { margin: 0; display: grid; gap: 10px; }
+.in-example dl > div { display: grid; grid-template-columns: minmax(130px, 200px) 1fr; gap: 4px 16px; }
+.in-example dt { font-weight: 700; }
+.in-example dd { margin: 0; color: var(--ink-2); }
+.in-example p { margin: 0; }
+details .in-example { margin: 10px 0 20px; }
+@media (max-width: 560px) { .in-example dl > div { grid-template-columns: 1fr; } }
