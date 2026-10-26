@@ -110,7 +110,7 @@
       old.setAttribute("d", pathFor(OLD_BIKES)); old.setAttribute("opacity", 1);
       grown = true; bikeHours = NEW_BIKES;
       $("#ppf-grow").textContent = "Go back to old tools";
-      msg.innerHTML = "<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster: the chain takes 1 hour instead of 2, the brakes 2 instead of 3, and the full fix-up 2 instead of 4. Your four bikes now take just 6 hours, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.";
+      msg.innerHTML = "<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster. The flat tire bike still takes 1 hour, the chain bike now takes 1 hour (was 2), the brakes bike 2 hours (was 3), and the rusty bike 2 hours (was 4). Those are four separate bikes, so together they now take 1 + 1 + 2 + 2 = 6 hours instead of 10, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.";
     }
     ppf.classList.add("growing");
     animatePPF(from, bikeHours);
