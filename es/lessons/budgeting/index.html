@@ -6,8 +6,8 @@
   <title>Dale un trabajo a cada dólar · FinanceHub</title>
   <meta name="description" content="Unidad 4, Lección 1: presupuesto base cero y la regla 50/30/20. Míralo, escúchalo, juégalo.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610262024">
-  <link rel="stylesheet" href="../../../lessons/budgeting/lesson.css?v=202610262024">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610262040">
+  <link rel="stylesheet" href="../../../lessons/budgeting/lesson.css?v=202610262040">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Saltar a la lección</a>
@@ -125,7 +125,7 @@
         <p class="chart-cap"><b>Qué estás viendo:</b> la regla 50/30/20 como una sola barra. El control deslizante fija tu sueldo neto mensual, de $1,000 a $8,000. La barra siempre se divide en 50% necesidades, 30% deseos y 20% ahorro, y los tres números de abajo muestran esas partes en dólares.</p>
       </div>
 
-      <h3 class="reveal" style="margin-top:88px">Cien monedas. Cada una es el 1% de tu sueldo.</h3>
+      <h3 class="reveal" style="margin-top:64px">Cien monedas. Cada una es el 1% de tu sueldo.</h3>
       <p class="muted reveal">Presupuesto base cero significa que no sobra ninguna moneda vacía. Repártelas.</p>
       <div class="reveal" style="margin-top:28px">
         <div class="coins" id="coins" role="img" aria-label="100 monedas, cada una el 1% del sueldo neto. La línea de abajo dice cuántas necesitan todavía un trabajo."></div>
@@ -342,9 +342,15 @@
       <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
 
       <h3 class="reveal" style="margin-top:40px">La regla 50/30/20</h3>
+      <p class="reveal">En palabras: toma tu sueldo neto (lo que de verdad llega a tu cuenta después de impuestos) y divídelo en tres. La mitad va a <b>necesidades</b>, lo que tienes que pagar para vivir y trabajar. El 30% va a <b>deseos</b>. El 20% va a <b>ahorro</b> y a pagar deudas más rápido.</p>
       <div class="formula reveal">Necesidades <span class="op">=</span> 0.50 <span class="op">×</span> sueldo neto<br>Deseos <span class="op">=</span> 0.30 <span class="op">×</span> sueldo neto<br>Ahorro <span class="op">=</span> 0.20 <span class="op">×</span> sueldo neto</div>
 
+      <h3 class="reveal">Por qué 50/30/20 es una regla práctica, no una ley</h3>
+      <p class="reveal">Una regla práctica (los economistas dicen <i>heurística</i>) sirve la mayoría de las veces. Esta la popularizaron Elizabeth Warren y Amelia Warren Tyagi en <i>All Your Worth</i> (2005). No tiene en cuenta dónde vives: en ciudades caras, las necesidades suelen llegar al 60% o más. Tampoco tiene en cuenta tus metas: si estás pagando una tarjeta al 24%, sube el "ahorro" bastante por encima del 20%, porque pagar una deuda al 24% es un rendimiento garantizado del 24%.</p>
+      <p class="reveal">En una clase universitaria de finanzas esto se conecta con el <b>costo de oportunidad</b> (cada dólar gastado en un deseo es un dólar que no se compone) y con la <b>liquidez</b> (un fondo de emergencia es efectivo que puedes usar al momento sin vender inversiones en mal momento).</p>
+
       <h3 class="reveal">Presupuesto base cero</h3>
+      <p class="reveal">En palabras: antes de que empiece el mes, dale un trabajo a cada dólar de tu sueldo neto. Resta cada categoría planeada y deberías llegar exactamente a $0. Eso no significa que lo gastes todo, porque el ahorro también es una categoría.</p>
       <div class="formula reveal">Sueldo neto <span class="op">−</span> cada categoría planeada <span class="op">=</span> $0</div>
 
       <h3 class="reveal">Ejemplo resuelto: $2,400 netos</h3>
@@ -355,14 +361,6 @@
         <li><b>Reparte el ahorro por prioridad.</b> Primero el fondo de emergencia ($330), luego la inversión ($150), hasta que tengas unos 3 meses de necesidades ahorrados.</li>
         <li><b>Comprueba el cero.</b> 2,400 − (1,350 + 570 + 480) = <b>0</b>. Cada dólar tiene un trabajo.</li>
       </ol>
-
-      <details class="deeper reveal">
-        <summary>Más a fondo: por qué 50/30/20 es una regla práctica, no una ley</summary>
-        <div>
-          <p>Una regla práctica (los economistas dicen <i>heurística</i>) sirve la mayoría de las veces. Esta la popularizaron Elizabeth Warren y Amelia Warren Tyagi en <i>All Your Worth</i> (2005). No tiene en cuenta dónde vives: en ciudades caras, las necesidades suelen llegar al 60% o más. Tampoco tiene en cuenta tus metas: si estás pagando una tarjeta al 24%, sube el "ahorro" bastante por encima del 20%, porque pagar una deuda al 24% es un rendimiento garantizado del 24%.</p>
-          <p>En una clase universitaria de finanzas esto se conecta con el <b>costo de oportunidad</b> (cada dólar gastado en un deseo es un dólar que no se compone) y con la <b>liquidez</b> (un fondo de emergencia es efectivo que puedes usar al momento sin vender inversiones en mal momento).</p>
-        </div>
-      </details>
     </div>
   </section>
 
@@ -539,11 +537,11 @@
   </div>
 </footer>
 
-<script src="../../../assets/js/save.js?v=202610262024"></script>
-<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610262024"></script>
-<script src="../../../assets/js/auth.js?v=202610262024"></script>
-<script src="../../../assets/js/site.js?v=202610262024"></script>
-<script src="../../../assets/js/lesson-kit.js?v=202610262024"></script>
-<script src="../../../lessons/budgeting/lesson.js?v=202610262024"></script>
+<script src="../../../assets/js/save.js?v=202610262040"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610262040"></script>
+<script src="../../../assets/js/auth.js?v=202610262040"></script>
+<script src="../../../assets/js/site.js?v=202610262040"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610262040"></script>
+<script src="../../../lessons/budgeting/lesson.js?v=202610262040"></script>
 </body>
 </html>
