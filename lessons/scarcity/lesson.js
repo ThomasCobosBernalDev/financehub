@@ -24,8 +24,10 @@
   // ---------- See it: production possibilities frontier ----------
   // Lawns 0..10 on x (80..600), bikes 0..5 on y (360..40).
   const X = (l) => 80 + l * 52, Y = (b) => 360 - b * 64;
-  // Hours each bike takes, easiest first. A lawn is always 1 hour; you have 10.
-  const OLD_BIKES = [3, 4, 6], NEW_BIKES = [2, 2, 3, 3];
+  // Hours each bike in the garage takes, quickest first: flat tire, chain,
+  // brakes, full fix-up. The stand speeds up the bigger jobs and frees time
+  // for a fifth bike. A lawn is always 1 hour; you have 10.
+  const OLD_BIKES = [1, 2, 3, 4], NEW_BIKES = [1, 1, 2, 2, 4];
   let bikeHours = OLD_BIKES, grown = false;
   // Most bikes you can finish with the hours left after mowing l lawns.
   const bikesFor = (l, hrs = bikeHours) => {
@@ -34,26 +36,14 @@
     return b;
   };
   const frontier = (l) => bikesFor(l);
-  const fmt = (n) => String(Math.round(n * 4) / 4);
+  const fmt = (n) => String(Math.round(n * 10) / 10);
   // The exact frontier is a few straight pieces (one per bike). Real PPFs have
-  // so many units that the pieces blur into a curve, so draw a smooth curve
-  // through the exact points (monotone cubic, so it never wiggles).
-  const corners = (hrs) => {
-    const pts = [[10, 0]]; let used = 0;
-    for (const h of hrs) { if (used + h > 10) break; used += h; pts.push([10 - used, pts.length]); }
-    if (used < 10) pts.push([0, bikesFor(0, hrs)]);
-    return pts.reverse();
-  };
+  // so many units that the pieces blur into a smooth bow, so draw the textbook
+  // shape: a curve from the most bikes to the most lawns that passes within a
+  // hair of every exact plan (checked for both the old and new tools).
   const smooth = (hrs) => {
-    const P = corners(hrs), n = P.length, d = [], m = [];
-    for (let i = 0; i < n - 1; i++) d.push((P[i + 1][1] - P[i][1]) / (P[i + 1][0] - P[i][0]));
-    m[0] = d[0]; m[n - 1] = d[n - 2];
-    for (let i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : 2 / (1 / d[i - 1] + 1 / d[i]);
-    return (l) => {
-      let i = 0; while (i < n - 2 && l > P[i + 1][0]) i++;
-      const [x0, y0] = P[i], [x1, y1] = P[i + 1], h = x1 - x0, t = (l - x0) / h;
-      return (2 * t ** 3 - 3 * t ** 2 + 1) * y0 + (t ** 3 - 2 * t ** 2 + t) * h * m[i] + (-2 * t ** 3 + 3 * t ** 2) * y1 + (t ** 3 - t ** 2) * h * m[i + 1];
-    };
+    const top = bikesFor(0, hrs);
+    return (l) => top * Math.max(0, 1 - (l / 10) ** 1.4) ** (1 / 1.4);
   };
   const pathFor = (hrs, k = 1, from = hrs) => {
     const a = smooth(from), b2 = smooth(hrs);
@@ -68,7 +58,7 @@
   };
   const ticks = $("#ppf-ticks");
   for (let l = 0; l <= 10; l += 2) { const t = document.createElementNS(NS, "text"); t.setAttribute("x", X(l)); t.setAttribute("y", 380); t.setAttribute("text-anchor", "middle"); t.textContent = l; ticks.appendChild(t); }
-  for (let b = 1; b <= 4; b++) { const t = document.createElementNS(NS, "text"); t.setAttribute("x", 66); t.setAttribute("y", Y(b) + 4); t.setAttribute("text-anchor", "end"); t.textContent = b; ticks.appendChild(t); }
+  for (let b = 1; b <= 5; b++) { const t = document.createElementNS(NS, "text"); t.setAttribute("x", 66); t.setAttribute("y", Y(b) + 4); t.setAttribute("text-anchor", "end"); t.textContent = b; ticks.appendChild(t); }
   drawPPF();
 
   const ppf = $("#ppf"), pin = $("#ppf-pin"), msg = $("#ppf-msg");
@@ -84,7 +74,8 @@
     // Close to the curve counts as on it; elsewhere bikes snap to halves.
     b = Math.abs(b - edge) < 0.3 ? edge : Math.round(b * 2) / 2;
     if (Math.abs(b - edge) < 0.01) b = edge;
-    pin.setAttribute("transform", `translate(${X(l)} ${Y(b)})`);
+    // On the frontier, sit the dot on the drawn curve.
+    pin.setAttribute("transform", `translate(${X(l)} ${Y(b === edge ? smooth(bikeHours)(l) : b)})`);
     pin.setAttribute("opacity", 1);
     const c = pin.querySelector("circle");
     // e.g. "3 lawns (3 h) + 2 bikes (3 h + 4 h = 7 h)"
@@ -114,12 +105,12 @@
     if (grown) {
       grown = false; bikeHours = OLD_BIKES; old.setAttribute("opacity", 0);
       $("#ppf-grow").textContent = "Buy a $60 repair stand";
-      msg.textContent = "Back to your old tools.";
+      msg.innerHTML = "<b>Back to your old tools.</b> Without the stand, your four bikes take 1 + 2 + 3 + 4 = 10 hours, so the curve goes back to where it was: at most 4 bikes.";
     } else {
       old.setAttribute("d", pathFor(OLD_BIKES)); old.setAttribute("opacity", 1);
       grown = true; bikeHours = NEW_BIKES;
       $("#ppf-grow").textContent = "Go back to old tools";
-      msg.innerHTML = "<b>The frontier shifted out.</b> With the stand, bikes take 2, 2, 3 and 3 hours instead of 3, 4 and 6. Same 10 hours, but now up to 4 bikes. Plans that were impossible are possible. That's what economic growth looks like, for you or a whole country.";
+      msg.innerHTML = "<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster: the chain takes 1 hour instead of 2, the brakes 2 instead of 3, and the full fix-up 2 instead of 4. Your four bikes now take just 6 hours, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.";
     }
     ppf.classList.add("growing");
     animatePPF(from, bikeHours);

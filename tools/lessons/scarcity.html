@@ -5,7 +5,7 @@
 
 <!-- @start -->
         <h1 class="reveal">Every choice has a <em>price tag.</em></h1>
-        <p class="story reveal"><span class="story-tag">Where the story starts</span> You're 17, and it's the summer before senior year. You have <span class="mark">$300</span> saved and about <span class="mark">10 free hours</span> every weekend. You could mow lawns for neighbors (about 1 hour and $15 per lawn), fix up old bikes and resell them (about 4 hours and $70 profit per bike), study for the SAT, or hang out with friends. You can't do all of it, so you have to choose.</p>
+        <p class="story reveal"><span class="story-tag">Where the story starts</span> You're 17, and it's the summer before senior year. You have <span class="mark">$300</span> saved and about <span class="mark">10 free hours</span> every weekend. You could mow lawns for neighbors (about 1 hour and $15 per lawn), fix up old bikes and resell them (1 to 4 hours each, and a full 4-hour fix-up makes about $70 profit), study for the SAT, or hang out with friends. You can't do all of it, so you have to choose.</p>
         <div class="four compact">
           <div class="reveal"><div class="word">What</div><p>Choosing how to use something you only have a limited amount of, like time or money.</p></div>
           <div class="reveal"><div class="word">Why</div><p>Saying yes to one thing always means saying no to something else. When you can see what you're giving up, you make better choices.</p></div>
@@ -49,7 +49,7 @@
       </div>
 
       <h3 class="reveal" style="margin-top:88px">Now look at every possible weekend.</h3>
-      <p class="reveal">This time, picture all 10 hours going to your two jobs: mowing lawns and fixing bikes. A lawn always takes 1 hour. Bikes vary. You'd start with the easiest one (3 hours), the next is a normal one (4 hours), and the third is a rusty mess (6 hours). So you could mow 10 lawns, or fix 1 bike and mow 7 lawns, or fix 2 bikes and mow 3 lawns, or put every hour into bikes and get 2.5 (the third one half done).</p>
+      <p class="reveal">This time, picture all 10 hours going to your two jobs: mowing lawns and fixing bikes. A lawn always takes 1 hour. Bikes don't: the four bikes in your garage need different amounts of work. One just has a flat tire (1 hour), one needs a new chain (2 hours), one needs new brakes (3 hours), and one is a rusty mess that needs a full fix-up (4 hours). You'd do the quick ones first. So you could mow 10 lawns, or fix 1 bike and mow 9 lawns, or fix 2 bikes and mow 7, or fix 3 and mow 4, or fix all 4 bikes and mow none.</p>
       <p class="reveal">The green curve below shows the most of both you can finish in one weekend. It's called a <dfn class="term" data-def="A curve showing the most of two things you can make with the time or resources you have.">production possibilities frontier</dfn>, or <b>PPF</b> for short.</p>
       <ul class="reveal ppf-key">
         <li><b>On the curve:</b> you use all 10 hours. Nothing is wasted.</li>
@@ -68,7 +68,7 @@
           <path id="ppf-old" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6" opacity="0"/>
           <g id="ppf-ticks" font-size="13" fill="var(--ink-3)"></g>
           <text x="610" y="398" text-anchor="end" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Lawns mowed</text>
-          <path d="M100 52 h28" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/><text x="138" y="57" class="ppf-legend" fill="var(--ink-2)">Production possibilities frontier (PPF)</text>
+          <path d="M330 52 h28" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/><text x="368" y="57" class="ppf-legend" fill="var(--ink-2)">Production possibilities frontier (PPF)</text>
           <text transform="translate(30 360) rotate(-90)" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bikes fixed</text>
           <g id="ppf-pin" opacity="0"><circle r="10" stroke-width="3"/></g>
           <rect id="ppf-hit" x="56" y="24" width="570" height="356" fill="transparent" style="cursor:crosshair"/>
@@ -76,7 +76,7 @@
         <div class="ppf-side">
           <p id="ppf-msg" class="ppf-msg" aria-live="polite">Tap the chart to try a plan.</p>
           <button class="btn sm line" id="ppf-grow">Buy a $60 repair stand</button>
-          <p class="small muted" style="margin-top:12px">A repair stand lets you fix bikes faster, so the same 10 hours can produce more. Watch the frontier move outward.</p>
+          <p class="small muted" style="margin-top:12px">A repair stand is a clamp that holds a bike while you work, which makes bike jobs faster. Tap the button to see what it does to the curve.</p>
         </div>
       </div>
 
@@ -119,13 +119,13 @@
 
       <h3 class="reveal">Measuring cost in the other thing</h3>
       <p class="reveal">Opportunity cost doesn't have to be in dollars. Often it's easier to ask: <i>"To get one more of this, how much of that do I give up?"</i></p>
-      <p class="reveal">A bike takes 4 hours. In those same 4 hours you could mow 4 lawns. So one bike costs you <b>4 lawns</b>. As a formula:</p>
+      <p class="reveal">Take the full fix-up from the story: it takes 4 hours. In those same 4 hours you could mow 4 lawns. So one bike costs you <b>4 lawns</b>. As a formula:</p>
       <div class="formula reveal">Cost of 1 more bike <span class="op">=</span> <span class="frac"><span>lawns you give up</span><span>bikes you gain</span></span> <span class="op">=</span> <span class="frac"><span>4</span><span>1</span></span> <span style="white-space:nowrap"><span class="op">=</span> 4 lawns</span></div>
 
       <h3 class="reveal">Worked example: bikes or lawns</h3>
       <ol class="steps reveal">
-        <li><b>Write down what each job takes.</b> A lawn takes 1 hour and pays $15. A bike takes 4 hours and makes about $70 profit.</li>
-        <li><b>Find what one bike costs in lawns.</b> The 4 hours a bike takes could have mowed 4 lawns. So one bike costs <b>4 lawns</b>, which is 4 × $15 = <b>$60</b> of mowing money.</li>
+        <li><b>Write down what each job takes.</b> A lawn takes 1 hour and pays $15. A full bike fix-up takes 4 hours and makes about $70 profit.</li>
+        <li><b>Find what one bike costs in lawns.</b> The 4 hours a fix-up takes could have mowed 4 lawns. So one bike costs <b>4 lawns</b>, which is 4 × $15 = <b>$60</b> of mowing money.</li>
         <li><b>Compare that cost to what the bike pays.</b> The bike makes $70, and you gave up $60 to fix it. So the bike is the better use of those hours, by $10.</li>
         <li><b>Watch the cost go up.</b> Your first bike is probably an easy one. Your third might be a rusty mess that takes 6 hours. That bike costs 6 lawns ($90) but still only pays $70, so it's no longer worth it. This rising cost is why the frontier is a curve instead of a straight line.</li>
         <li><b>Decide one at a time.</b> Don't ask "bikes or lawns?" Ask "is <i>one more</i> bike worth more than the lawns it replaces?" Keep going until the answer becomes no. Economists call this <dfn class="term" data-def="Deciding by comparing the extra benefit and extra cost of one more unit, instead of all or nothing.">thinking at the margin</dfn>.</li>
@@ -217,7 +217,7 @@
         <summary>Go deeper: sunk costs, the bend when you work alone, and comparative advantage</summary>
         <div>
           <p><b>1. Sunk costs.</b> A <dfn class="term" data-def="Time or money you've already spent and can't get back.">sunk cost</dfn> is time or money you've already spent and can't get back. It shouldn't change what you do next. Say you've put 3 hours into a bike, and then you find out it needs $80 of parts. Those 3 hours are gone whether you finish the bike or not. The only question now is whether finishing it will make more than the $80 and the hours still ahead. If it won't, stop, even though it feels like a waste.</p>
-          <p><b>2. Same idea, one person.</b> The bend also happens when you work alone. Your first bike of the weekend is an easy one. If you keep going, you get to the rusty bikes that take 6 hours each, so each extra bike costs more lawns. Different reasons, same result: the more of one thing you make, the more each extra one costs. Exam tip: if a PPF is a straight line, every unit costs the same amount.</p>
+          <p><b>2. Same idea, one person.</b> The bend also happens when you work alone. Your first bike of the weekend is an easy one. If you keep going, you get to the rusty bikes that need a full 4-hour fix-up, so each extra bike costs more lawns. Different reasons, same result: the more of one thing you make, the more each extra one costs. Exam tip: if a PPF is a straight line, every unit costs the same amount.</p>
           <p><b>3. Comparative advantage.</b> Having a <dfn class="term" data-def="Being able to do something while giving up less than someone else would.">comparative advantage</dfn> means you can do something while giving up less than someone else would. Say your friend Sam can mow 2 lawns an hour, but takes 8 hours to fix a bike. In those 8 hours Sam could have mowed 16 lawns, so a bike costs Sam 16 lawns. A bike only costs you 4. So you should fix the bikes, Sam should mow the lawns, and you split the work. You both end up with more than if each of you did both jobs. This works even when one person is faster at everything. An economist named David Ricardo explained it in 1817, and it's the main reason countries trade with each other. It's on every intro economics exam.</p>
         </div>
       </details>
