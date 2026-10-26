@@ -34,16 +34,31 @@
     return b;
   };
   const frontier = (l) => bikesFor(l);
-  // Hours that b bikes take.
-  const hoursForBikes = (b) => {
-    let t = 0, rest = b;
-    for (const h of bikeHours) { const n = Math.min(1, rest); t += n * h; rest -= n; if (rest <= 0) break; }
-    return t;
-  };
   const fmt = (n) => { const r = Math.round(n * 4) / 4, w = Math.floor(r), f = r - w; return (w || !f ? w : "") + (["", "¼", "½", "¾"][f * 4] || ""); };
+  // The exact frontier is a few straight pieces (one per bike). Real PPFs have
+  // so many units that the pieces blur into a curve, so draw a smooth curve
+  // through the exact points (monotone cubic, so it never wiggles).
+  const corners = (hrs) => {
+    const pts = [[10, 0]]; let used = 0;
+    for (const h of hrs) { if (used + h > 10) break; used += h; pts.push([10 - used, pts.length]); }
+    if (used < 10) pts.push([0, bikesFor(0, hrs)]);
+    return pts.reverse();
+  };
+  const smooth = (hrs) => {
+    const P = corners(hrs), n = P.length, d = [], m = [];
+    for (let i = 0; i < n - 1; i++) d.push((P[i + 1][1] - P[i][1]) / (P[i + 1][0] - P[i][0]));
+    m[0] = d[0]; m[n - 1] = d[n - 2];
+    for (let i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : 2 / (1 / d[i - 1] + 1 / d[i]);
+    return (l) => {
+      let i = 0; while (i < n - 2 && l > P[i + 1][0]) i++;
+      const [x0, y0] = P[i], [x1, y1] = P[i + 1], h = x1 - x0, t = (l - x0) / h;
+      return (2 * t ** 3 - 3 * t ** 2 + 1) * y0 + (t ** 3 - 2 * t ** 2 + t) * h * m[i] + (-2 * t ** 3 + 3 * t ** 2) * y1 + (t ** 3 - t ** 2) * h * m[i + 1];
+    };
+  };
   const pathFor = (hrs, k = 1, from = hrs) => {
+    const a = smooth(from), b2 = smooth(hrs);
     let d = "";
-    for (let i = 0; i <= 100; i++) { const l = i / 10, b = bikesFor(l, from) + (bikesFor(l, hrs) - bikesFor(l, from)) * k; d += `${i ? "L" : "M"}${X(l).toFixed(1)} ${Y(b).toFixed(1)} `; }
+    for (let i = 0; i <= 100; i++) { const l = i / 10, b = a(l) + (b2(l) - a(l)) * k; d += `${i ? "L" : "M"}${X(l).toFixed(1)} ${Y(b).toFixed(1)} `; }
     return d;
   };
   const drawPPF = () => {
@@ -72,20 +87,23 @@
     pin.setAttribute("transform", `translate(${X(l)} ${Y(b)})`);
     pin.setAttribute("opacity", 1);
     const c = pin.querySelector("circle");
-    const lw = `${l} lawn${l === 1 ? "" : "s"}`, bk = `${fmt(b)} bike${b > 0 && b <= 1 ? "" : "s"}`;
-    const plan = `${lw} and ${bk}`;
-    const hrs = l + hoursForBikes(b);
-    const math = `Lawns take ${l} h, bikes take ${+hoursForBikes(b).toFixed(1)} h: ${+hrs.toFixed(1)} of your 10 hours.`;
+    // e.g. "3 lawns (3 h) + 2 bikes (3 h + 4 h = 7 h)"
+    const parts = []; let rest = b, bh = 0;
+    for (const h of bikeHours) { if (rest <= 0) break; const n = Math.min(1, rest); parts.push(n === 1 ? `${h}\u00a0h` : `${fmt(n)}\u00a0of\u00a0${h}\u00a0h`); bh += n * h; rest -= n; }
+    const bikeNote = !parts.length ? "" : parts.length === 1 && b === 1 ? ` (${parts[0]})` : ` (${parts.join(" + ")} =\u00a0${fmt(bh)}\u00a0h)`;
+    const hrs = l + bh;
+    const plan = [l ? `${l} lawn${l === 1 ? "" : "s"} (${l}\u00a0h)` : "", b ? `${fmt(b)} bike${b <= 1 ? "" : "s"}${bikeNote}` : ""].filter(Boolean).join(" + ") || "Nothing at all";
+    const hr = (n) => `${fmt(n)} hour${n === 1 ? "" : "s"}`;
     let kind;
     if (b === edge) {
       kind = "on"; c.setAttribute("fill", "var(--savings)"); c.setAttribute("stroke", "var(--ink)");
-      msg.innerHTML = `<b class="c-good">Efficient.</b> ${plan} uses every hour. ${math} To get more of one, you have to give up some of the other.`;
+      msg.innerHTML = `<b class="c-good">Efficient:</b> ${plan}. That uses all 10 hours.`;
     } else if (b < edge) {
       kind = "in"; c.setAttribute("fill", "var(--paper)"); c.setAttribute("stroke", "var(--ink-3)");
-      msg.innerHTML = `<b>Possible, but wasteful.</b> ${plan}. ${math} The other ${+(10 - hrs).toFixed(1)} h go unused, so you could have more of both.`;
+      msg.innerHTML = `<b>Wasteful:</b> ${plan}. That's ${hr(hrs)}, so ${hr(10 - hrs)} go unused.`;
     } else {
       kind = "out"; c.setAttribute("fill", "none"); c.setAttribute("stroke", "var(--danger)");
-      msg.innerHTML = `<b class="c-danger">Impossible, for now.</b> ${plan} would take ${+hrs.toFixed(1)} hours. You only have 10.`;
+      msg.innerHTML = `<b class="c-danger">Impossible:</b> ${plan}. That's ${hr(hrs)}, and you only have 10.`;
     }
     tested.add(kind);
     if (tested.size === 3) FH.badge("ppf-explorer", "Frontier Explorer");
