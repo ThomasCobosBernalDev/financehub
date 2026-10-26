@@ -24,15 +24,30 @@
   // ---------- See it: production possibilities frontier ----------
   // Lawns 0..10 on x (80..600), bikes 0..5 on y (360..40).
   const X = (l) => 80 + l * 52, Y = (b) => 360 - b * 64;
-  let bMax = 2.5, grown = false;
-  const frontier = (l, bm = bMax) => bm * Math.sqrt(Math.max(0, 1 - (l / 10) ** 2));
-  const pathFor = (bm) => {
+  // Hours each bike takes, easiest first. A lawn is always 1 hour; you have 10.
+  const OLD_BIKES = [3, 4, 6], NEW_BIKES = [2, 2, 3, 3];
+  let bikeHours = OLD_BIKES, grown = false;
+  // Most bikes you can finish with the hours left after mowing l lawns.
+  const bikesFor = (l, hrs = bikeHours) => {
+    let left = 10 - l, b = 0;
+    for (const h of hrs) { if (left >= h) { b++; left -= h; } else { b += left / h; break; } }
+    return b;
+  };
+  const frontier = (l) => bikesFor(l);
+  // Hours that b bikes take.
+  const hoursForBikes = (b) => {
+    let t = 0, rest = b;
+    for (const h of bikeHours) { const n = Math.min(1, rest); t += n * h; rest -= n; if (rest <= 0) break; }
+    return t;
+  };
+  const fmt = (n) => { const r = Math.round(n * 4) / 4, w = Math.floor(r), f = r - w; return (w || !f ? w : "") + (["", "¼", "½", "¾"][f * 4] || ""); };
+  const pathFor = (hrs, k = 1, from = hrs) => {
     let d = "";
-    for (let i = 0; i <= 50; i++) { const l = i / 5; d += `${i ? "L" : "M"}${X(l).toFixed(1)} ${Y(frontier(l, bm)).toFixed(1)} `; }
+    for (let i = 0; i <= 100; i++) { const l = i / 10, b = bikesFor(l, from) + (bikesFor(l, hrs) - bikesFor(l, from)) * k; d += `${i ? "L" : "M"}${X(l).toFixed(1)} ${Y(b).toFixed(1)} `; }
     return d;
   };
   const drawPPF = () => {
-    const d = pathFor(bMax);
+    const d = pathFor(bikeHours);
     $("#ppf-line").setAttribute("d", d);
     $("#ppf-area").setAttribute("d", `${d} L${X(0)} ${Y(0)} Z`);
   };
@@ -47,48 +62,55 @@
     const pt = ppf.createSVGPoint();
     pt.x = e.clientX; pt.y = e.clientY;
     const p = pt.matrixTransform(ppf.getScreenCTM().inverse());
-    const l = Math.max(0, Math.min(10, (p.x - 80) / 52));
-    const b = Math.max(0, (360 - p.y) / 64);
+    // You can't mow part of a lawn, so lawns snap to whole numbers.
+    const l = Math.round(Math.max(0, Math.min(10, (p.x - 80) / 52)));
     const edge = frontier(l);
+    let b = Math.max(0, (360 - p.y) / 64);
+    // Close to the curve counts as on it; elsewhere bikes snap to halves.
+    b = Math.abs(b - edge) < 0.3 ? edge : Math.round(b * 2) / 2;
+    if (Math.abs(b - edge) < 0.01) b = edge;
     pin.setAttribute("transform", `translate(${X(l)} ${Y(b)})`);
     pin.setAttribute("opacity", 1);
     const c = pin.querySelector("circle");
-    const plan = `${l.toFixed(1)} lawns and ${b.toFixed(1)} bikes`;
+    const lw = `${l} lawn${l === 1 ? "" : "s"}`, bk = `${fmt(b)} bike${b > 0 && b <= 1 ? "" : "s"}`;
+    const plan = `${lw} and ${bk}`;
+    const hrs = l + hoursForBikes(b);
+    const math = `Lawns take ${l} h, bikes take ${+hoursForBikes(b).toFixed(1)} h: ${+hrs.toFixed(1)} of your 10 hours.`;
     let kind;
-    if (Math.abs(b - edge) < 0.18) {
+    if (b === edge) {
       kind = "on"; c.setAttribute("fill", "var(--savings)"); c.setAttribute("stroke", "var(--ink)");
-      msg.innerHTML = `<b class="c-good">Efficient.</b> ${plan} uses every hour. To get more of one, you have to give up some of the other.`;
+      msg.innerHTML = `<b class="c-good">Efficient.</b> ${plan} uses every hour. ${math} To get more of one, you have to give up some of the other.`;
     } else if (b < edge) {
       kind = "in"; c.setAttribute("fill", "var(--paper)"); c.setAttribute("stroke", "var(--ink-3)");
-      msg.innerHTML = `<b>Possible, but wasteful.</b> ${plan} leaves hours unused. You could have more of both.`;
+      msg.innerHTML = `<b>Possible, but wasteful.</b> ${plan}. ${math} The other ${+(10 - hrs).toFixed(1)} h go unused, so you could have more of both.`;
     } else {
       kind = "out"; c.setAttribute("fill", "none"); c.setAttribute("stroke", "var(--danger)");
-      msg.innerHTML = `<b class="c-danger">Impossible, for now.</b> ${plan} needs more hours or better tools than you have.`;
+      msg.innerHTML = `<b class="c-danger">Impossible, for now.</b> ${plan} would take ${+hrs.toFixed(1)} hours. You only have 10.`;
     }
     tested.add(kind);
     if (tested.size === 3) FH.badge("ppf-explorer", "Frontier Explorer");
   });
   $("#ppf-grow").addEventListener("click", () => {
     const old = $("#ppf-old");
+    const from = bikeHours;
     if (grown) {
-      grown = false; bMax = 2.5; old.setAttribute("opacity", 0);
+      grown = false; bikeHours = OLD_BIKES; old.setAttribute("opacity", 0);
       $("#ppf-grow").textContent = "Buy a $60 repair stand";
       msg.textContent = "Back to your old tools.";
     } else {
-      old.setAttribute("d", pathFor(2.5)); old.setAttribute("opacity", 1);
-      grown = true; bMax = 4;
+      old.setAttribute("d", pathFor(OLD_BIKES)); old.setAttribute("opacity", 1);
+      grown = true; bikeHours = NEW_BIKES;
       $("#ppf-grow").textContent = "Go back to old tools";
-      msg.innerHTML = "<b>The frontier shifted out.</b> Same 10 hours, but now up to 4 bikes. Plans that were impossible are possible. That's what economic growth looks like, for you or a whole country.";
+      msg.innerHTML = "<b>The frontier shifted out.</b> With the stand, bikes take 2, 2, 3 and 3 hours instead of 3, 4 and 6. Same 10 hours, but now up to 4 bikes. Plans that were impossible are possible. That's what economic growth looks like, for you or a whole country.";
     }
     ppf.classList.add("growing");
-    animatePPF(grown ? 2.5 : 4, bMax);
+    animatePPF(from, bikeHours);
   });
   const animatePPF = (from, to) => {
     const t0 = performance.now();
     const step = (t) => {
       const k = Math.min(1, (t - t0) / 700), e = 1 - (1 - k) ** 3;
-      const bm = from + (to - from) * e;
-      const d = pathFor(bm);
+      const d = pathFor(to, e, from);
       $("#ppf-line").setAttribute("d", d);
       $("#ppf-area").setAttribute("d", `${d} L${X(0)} ${Y(0)} Z`);
       if (k < 1) requestAnimationFrame(step);

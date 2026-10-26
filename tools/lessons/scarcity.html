@@ -49,7 +49,7 @@
       </div>
 
       <h3 class="reveal" style="margin-top:88px">Now look at every possible weekend.</h3>
-      <p class="reveal">This time, picture all 10 hours going to your two jobs: mowing lawns and fixing bikes. A lawn takes about 1 hour. A bike takes about 4 hours. So you could mow 10 lawns, or fix 2 bikes and mow 2 lawns, or anything in between.</p>
+      <p class="reveal">This time, picture all 10 hours going to your two jobs: mowing lawns and fixing bikes. A lawn always takes 1 hour. Bikes vary. You'd start with the easiest one (3 hours), the next is a normal one (4 hours), and the third is a rusty mess (6 hours). So you could mow 10 lawns, or fix 1 bike and mow 7 lawns, or fix 2 bikes and mow 3 lawns, or put every hour into bikes and get 2½ (the third one half done).</p>
       <p class="reveal">The green curve below shows the most of both you can finish in one weekend. It's called a <dfn class="term" data-def="A curve showing the most of two things you can make with the time or resources you have.">production possibilities frontier</dfn>, or <b>PPF</b> for short.</p>
       <ul class="reveal ppf-key">
         <li><b>On the curve:</b> you use all 10 hours. Nothing is wasted.</li>
@@ -60,7 +60,7 @@
       <div class="reveal ppf-wrap" style="margin-top:24px">
         <svg id="ppf" viewBox="0 0 640 420" role="img" aria-label="A chart with bikes fixed on the vertical axis and lawns mowed on the horizontal axis. Tap a point to see whether that plan is possible, wasteful or efficient.">
           <g class="ppf-grid" stroke="var(--line)" stroke-width="1">
-            <path d="M80 60 H600 M80 130 H600 M80 200 H600 M80 270 H600 M80 340 H600"/>
+            <path d="M80 104 H600 M80 168 H600 M80 232 H600 M80 296 H600"/>
           </g>
           <path d="M80 360 V40 M80 360 H610" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
           <path id="ppf-area" fill="var(--savings)" opacity=".14"/>
@@ -71,7 +71,7 @@
           <path d="M100 52 h28" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/><text x="138" y="57" class="ppf-legend" fill="var(--ink-2)">Production possibilities frontier (PPF)</text>
           <text transform="translate(30 360) rotate(-90)" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bikes fixed</text>
           <g id="ppf-pin" opacity="0"><circle r="10" stroke-width="3"/></g>
-          <rect id="ppf-hit" x="80" y="30" width="540" height="330" fill="transparent" style="cursor:crosshair"/>
+          <rect id="ppf-hit" x="56" y="24" width="570" height="356" fill="transparent" style="cursor:crosshair"/>
         </svg>
         <div class="ppf-side">
           <p id="ppf-msg" class="ppf-msg" aria-live="polite">Tap the chart to try a plan.</p>
