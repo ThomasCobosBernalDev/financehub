@@ -263,7 +263,7 @@
       why: "Think of Maya, Leo and Jordan. To get more bikes, you switch the best bike fixer first, so the first bikes cost few lawns. Then you have to switch people who are worse at bikes, so each extra bike costs more lawns. Costs that keep rising make the curve bulge outward. If everyone were equally good, it would be a straight line." },
     { q: "Which of these would shift a country's PPF outward?",
       opts: ["Unemployment falls", "A new technology makes factories more productive", "Prices of goods fall", "People buy more cars and less wheat"], a: 1,
-      why: "Better technology means more output from the same resources. Lower unemployment moves a point toward the frontier, not the frontier itself." },
+      why: "The curve only moves when the most a country could make goes up. New technology does that: the same workers and machines now produce more. Lower unemployment just puts idle people to work, moving the country from inside up to the curve it already had. Buying more cars and less wheat slides along the same curve. And prices don't change how much can be made at all." },
     { q: "You paid $40 for a concert ticket you can't resell. On the day, you feel sick and would rather stay home. What should you base your decision on?",
       opts: ["The $40, so it isn't wasted", "Only how you feel now, since the $40 is a sunk cost", "Whether the band is popular", "Splitting the difference and leaving early"], a: 1,
       why: "The $40 is gone either way. A rational choice compares only future costs and benefits: going sick versus staying home." },
