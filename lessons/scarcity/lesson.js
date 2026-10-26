@@ -267,9 +267,9 @@
     { q: "You paid $40 for a concert ticket you can't resell. On the day, you feel sick and would rather stay home. What should you base your decision on?",
       opts: ["The $40, so it isn't wasted", "Only how you feel now, since the $40 is a sunk cost", "Whether the band is popular", "Splitting the difference and leaving early"], a: 1,
       why: "The $40 is gone either way. A rational choice compares only future costs and benefits: going sick versus staying home." },
-    { q: "A firm's analyst says, \"Each extra machine adds $5,000 of output and costs $4,000. The fifth one adds $3,500.\" How many machines should the firm buy?",
+    { q: "A factory has 10 workers and one building. Each new machine costs $4,000. Machines 1 to 4 each add $5,000 of output. A 5th machine would add only $3,500, because the same 10 workers can't keep five machines busy. How many machines should the factory buy?",
       opts: ["As many as possible", "Four", "Five", "None"], a: 1,
-      why: "Marginal thinking: buy while each extra unit's benefit beats its cost. The fifth adds $3,500 but costs $4,000, so stop at four." },
+      why: "Buy one more as long as what it adds is bigger than what it costs. Machines 1 to 4 add $5,000 and cost $4,000, so each one gains $1,000. Machine 5 adds $3,500 but costs $4,000, so buying it loses $500. Stop at four. This is the repair-stand example from the lesson: more machines with the same workers means each extra one adds less (diminishing returns)." },
   ];
 
   FHLesson.init({ id: LESSON, short: "scarcity", quiz: QUIZ });
