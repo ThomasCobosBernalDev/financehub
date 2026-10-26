@@ -34,7 +34,7 @@
     return b;
   };
   const frontier = (l) => bikesFor(l);
-  const fmt = (n) => { const r = Math.round(n * 4) / 4, w = Math.floor(r), f = r - w; return (w || !f ? w : "") + (["", "¼", "½", "¾"][f * 4] || ""); };
+  const fmt = (n) => String(Math.round(n * 4) / 4);
   // The exact frontier is a few straight pieces (one per bike). Real PPFs have
   // so many units that the pieces blur into a curve, so draw a smooth curve
   // through the exact points (monotone cubic, so it never wiggles).
@@ -89,8 +89,8 @@
     const c = pin.querySelector("circle");
     // e.g. "3 lawns (3 h) + 2 bikes (3 h + 4 h = 7 h)"
     const parts = []; let rest = b, bh = 0;
-    for (const h of bikeHours) { if (rest <= 0) break; const n = Math.min(1, rest); parts.push(n === 1 ? `${h}\u00a0h` : `${fmt(n)}\u00a0of\u00a0${h}\u00a0h`); bh += n * h; rest -= n; }
-    const bikeNote = !parts.length ? "" : parts.length === 1 && b === 1 ? ` (${parts[0]})` : ` (${parts.join(" + ")} =\u00a0${fmt(bh)}\u00a0h)`;
+    for (const h of bikeHours) { if (rest <= 0) break; const n = Math.min(1, rest); parts.push(`${fmt(n * h)}\u00a0h`); bh += n * h; rest -= n; }
+    const bikeNote = !parts.length ? "" : parts.length === 1 ? ` (${parts[0]})` : ` (${parts.join(" + ")} =\u00a0${fmt(bh)}\u00a0h)`;
     const hrs = l + bh;
     const plan = [l ? `${l} lawn${l === 1 ? "" : "s"} (${l}\u00a0h)` : "", b ? `${fmt(b)} bike${b <= 1 ? "" : "s"}${bikeNote}` : ""].filter(Boolean).join(" + ") || "Nothing at all";
     const hr = (n) => `${fmt(n)} hour${n === 1 ? "" : "s"}`;
