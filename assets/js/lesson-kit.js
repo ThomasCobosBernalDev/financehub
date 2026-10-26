@@ -136,12 +136,29 @@
     $$(".term[data-def]").forEach((t) => { t.tabIndex = 0; t.setAttribute("aria-label", `${t.textContent}: ${t.dataset.def}`); });
 
     // ---------- Notes: fill in the blanks ----------
+    // "$20", "20 dollars" and "twenty" all count as 20.
+    const cleanBlank = (v) => v.trim().toLowerCase().replace(/[$,%!]/g, "").replace(/\.$/, "").replace(/\s+(dollars?|percent|bucks)$/, "").replace(/\s+/g, " ").trim();
+    const NUM = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
+    const wordsToNumber = (t) => {
+      const words = t.replace(/-/g, " ").split(" ").filter((w) => w && w !== "and");
+      if (!words.length) return t;
+      let total = 0, cur = 0;
+      for (const w of words) {
+        if (w in NUM) cur += NUM[w];
+        else if (w === "hundred") cur = (cur || 1) * 100;
+        else if (w === "thousand") { total += (cur || 1) * 1000; cur = 0; }
+        else return t;
+      }
+      return String(total + cur);
+    };
     const blanksBtn = $("#blanks-check");
     if (blanksBtn) blanksBtn.addEventListener("click", () => {
       const blanks = $$("#blanks .blank");
       let right = 0;
       blanks.forEach((b) => {
-        const ok = b.dataset.answer.split("|").includes(b.value.trim().toLowerCase().replace(/[$,%]/g, ""));
+        const answers = b.dataset.answer.toLowerCase().split("|");
+        const typed = cleanBlank(b.value);
+        const ok = answers.includes(typed) || answers.includes(wordsToNumber(typed));
         b.classList.toggle("right", ok);
         b.classList.toggle("wrong", !ok);
         if (ok) right++;
