@@ -136,12 +136,12 @@
       <h2 class="reveal">The logic, <em>step by step.</em></h2>
 
       <h3 class="reveal" style="margin-top:40px">1. The inflation rate</h3>
-      <p class="reveal">The inflation rate is how much the CPI went up, as a percent. Take how much it grew, and divide by where it started. If the CPI goes from 200 to 210, it grew by 10, and 10 ÷ 200 = 0.05, so inflation was 5%.</p>
-      <div class="formula reveal">Inflation <span class="op">=</span> (CPI this year <span class="op">−</span> CPI last year) <span class="op">÷</span> CPI last year</div>
+      <p class="reveal">The inflation rate is how much the CPI went up, as a percent. Take how much it grew, and divide by where it started. If the CPI goes from 200 to 210, it grew by 10, and <span class="frac"><span>10</span><span>200</span></span> = 0.05, so inflation was 5%.</p>
+      <div class="formula reveal">Inflation <span class="op">=</span> <span class="frac"><span>CPI this year <span class="op">−</span> CPI last year</span><span>CPI last year</span></span></div>
 
       <h3 class="reveal">2. Moving a price through time</h3>
-      <p class="reveal">To see what an old price would be today, multiply it by how much the CPI has grown since then. The CPI was 38.8 in 1970 and about 313.7 in 2024, so prices grew about 313.7 ÷ 38.8 = 8.1 times. A $2 movie ticket in 1970 is like about $16 today.</p>
-      <div class="formula reveal">Price in today's dollars <span class="op">=</span> old price <span class="op">×</span> (CPI today <span class="op">÷</span> CPI back then)</div>
+      <p class="reveal">To see what an old price would be today, multiply it by how much the CPI has grown since then. The CPI was 38.8 in 1970 and about 313.7 in 2024, so prices grew about <span class="frac"><span>313.7</span><span>38.8</span></span> = 8.1 times. A $2 movie ticket in 1970 is like about $16 today.</p>
+      <div class="formula reveal">Price in today's dollars <span class="op">=</span> old price <span class="op">×</span> <span class="frac"><span>CPI today</span><span>CPI back then</span></span></div>
 
       <h3 class="reveal">3. Real vs. nominal</h3>
       <p class="reveal">A <dfn class="term" data-def="Measured in plain dollars, without adjusting for inflation.">nominal</dfn> number is plain dollars. A <dfn class="term" data-def="Adjusted for inflation, so it shows what the money can actually buy.">real</dfn> number subtracts inflation, so it shows what you can actually buy. If your savings account pays 4% but prices rise 3%, your money only really grew about 1%.</p>
@@ -150,8 +150,8 @@
       <h3 class="reveal">Worked example: was it a raise?</h3>
       <ol class="steps reveal">
         <li><b>Look up the CPI.</b> It averaged 292.7 in 2022 and 304.7 in 2023.</li>
-        <li><b>Find inflation.</b> It grew by 304.7 − 292.7 = 12. Then 12 ÷ 292.7 = 0.041, so prices rose about <b>4.1%</b>.</li>
-        <li><b>Look at the raise.</b> Say your pay went from $18.00 to $18.36 an hour. That's 36 cents more, and 0.36 ÷ 18 = 0.02, a raise of 2% in plain dollars.</li>
+        <li><b>Find inflation.</b> It grew by 304.7 − 292.7 = 12. Then <span class="frac"><span>12</span><span>292.7</span></span> = 0.041, so prices rose about <b>4.1%</b>.</li>
+        <li><b>Look at the raise.</b> Say your pay went from $18.00 to $18.36 an hour. That's 36 cents more, and <span class="frac"><span>0.36</span><span>18</span></span> = 0.02, a raise of 2% in plain dollars.</li>
         <li><b>Subtract inflation.</b> 2% − 4.1% = <b>−2.1%</b>. You're getting more dollars, but prices went up even more, so you can buy about 2% less than before. It's really a pay cut.</li>
         <li><b>Work out what would keep you even.</b> To keep up with 4.1% inflation, your pay needed to rise to $18.00 × 1.041 = <b>$18.74</b> an hour.</li>
       </ol>
@@ -165,7 +165,7 @@
         <summary>Go deeper: what causes inflation, the exact formula, and why 2%</summary>
         <div>
           <p><b>1. What causes inflation.</b> There are two main kinds. <dfn class="term" data-def="Inflation caused by people and the government trying to buy more than the economy can make.">Demand-pull inflation</dfn> happens when everyone tries to buy more than the economy can make, so sellers raise prices. That happened in 2021, when people had extra money from stimulus checks. <dfn class="term" data-def="Inflation caused by it suddenly costing more to make things, like when oil prices jump.">Cost-push inflation</dfn> happens when making things suddenly gets more expensive, like when oil prices jumped in 1973 and 1979. Over many years, prices also rise when a country prints money faster than it makes stuff: more dollars chasing the same goods.</p>
-          <p><b>2. The exact formula.</b> "Real ≈ nominal − inflation" is a shortcut. The exact version, called the <dfn class="term" data-def="The exact link between nominal rates, real rates and inflation: (1 + nominal) = (1 + real) × (1 + inflation).">Fisher equation</dfn>, is (1 + nominal) = (1 + real) × (1 + inflation). With 8% interest and 5% inflation, the real rate is 1.08 ÷ 1.05 − 1 = 2.86%, a bit less than the shortcut's 3%. The difference only matters when the numbers are big.</p>
+          <p><b>2. The exact formula.</b> "Real ≈ nominal − inflation" is a shortcut. The exact version, called the <dfn class="term" data-def="The exact link between nominal rates, real rates and inflation: (1 + nominal) = (1 + real) × (1 + inflation).">Fisher equation</dfn>, is (1 + nominal) = (1 + real) × (1 + inflation). With 8% interest and 5% inflation, the real rate is <span class="frac"><span>1.08</span><span>1.05</span></span> − 1 = 2.86%, a bit less than the shortcut's 3%. The difference only matters when the numbers are big.</p>
           <p><b>3. The CPI isn't perfect.</b> When something gets expensive, people often switch to a cheaper option, and products keep getting better (a phone today does far more than one from 2010 for similar money). So the CPI may make inflation look a little worse than it feels. On the other hand, your own inflation depends on what <i>you</i> buy. Rent and college tuition have gone up faster than average.</p>
           <p><b>4. Why aim for 2%, not 0%?</b> The Federal Reserve (the US central bank, covered next lesson) aims for about 2% inflation a year. A little inflation is safer than <dfn class="term" data-def="Prices falling across the economy. It sounds nice but can make people stop spending and push the economy into a slump.">deflation</dfn>, when prices fall. Falling prices sound nice, but people put off buying things because they'll be cheaper later, businesses sell less, and people lose jobs.</p>
         </div>
@@ -202,7 +202,7 @@
           <li><b>CPI:</b> the cost of a fixed basket of goods and services, tracked monthly by the Bureau of Labor Statistics.</li>
           <li><b>Inflation rate</b> = % change in CPI. The Fed targets about 2% a year.</li>
           <li><b>Nominal</b> = in raw dollars. <b>Real</b> = adjusted for inflation. Real ≈ nominal − inflation.</li>
-          <li><b>Rule of 70:</b> a quick way to find how many years it takes prices to double. Divide 70 by the inflation rate. At 3% inflation, 70 ÷ 3 ≈ 23 years.</li>
+          <li><b>Rule of 70:</b> a quick way to find how many years it takes prices to double. Divide 70 by the inflation rate. At 3% inflation, <span class="frac"><span>70</span><span>3</span></span> ≈ 23 years.</li>
           <li><b>GDP:</b> the value of everything a country makes and sells in a year. GDP = C + I + G + (X − M): household spending + business investment + government spending + (exports − imports).</li>
           <li><b>Real GDP</b> strips out price changes. Growth in real GDP = the economy actually making more.</li>
           <li><b>Recession:</b> when the economy shrinks for a while. A common rule of thumb is two quarters (six months) in a row of falling real GDP.</li>
@@ -258,7 +258,7 @@
         <details class="deeper">
           <summary>See a model answer</summary>
           <div>
-            <p><b>Real return</b> ≈ 0.5% − 4% = −3.5%. On $200,000, that's about <b>$7,000</b> of buying power lost in a year (exactly: 200,000 × 1.005 ÷ 1.04 ≈ $193,269, a loss of $6,731).</p>
+            <p><b>Real return</b> ≈ 0.5% − 4% = −3.5%. On $200,000, that's about <b>$7,000</b> of buying power lost in a year (exactly: <span class="frac"><span>200,000 × 1.005</span><span>1.04</span></span> ≈ $193,269, a loss of $6,731).</p>
             <p><b>The point:</b> the balance goes up by $1,000, but prices go up by $8,000. The client has more dollars and can buy less with them, so in real terms they are losing money every month the cash sits there.</p>
           </div>
         </details>

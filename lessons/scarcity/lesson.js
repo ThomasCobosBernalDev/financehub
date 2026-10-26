@@ -260,7 +260,7 @@
       why: "Giving up all 100 tons gets 50 cars, so each car costs 100 ÷ 50 = 2 tons of wheat." },
     { q: "Why is a PPF usually bowed outward?",
       opts: ["Prices rise over time", "Resources aren't equally suited to producing both goods", "Technology improves", "People prefer one good"], a: 1,
-      why: "As you shift resources, you move ones that are worse and worse at the new task, so each extra unit costs more. That's the law of increasing opportunity cost." },
+      why: "Think of Maya, Leo and Jordan. To get more bikes, you switch the best bike fixer first, so the first bikes cost few lawns. Then you have to switch people who are worse at bikes, so each extra bike costs more lawns. Costs that keep rising make the curve bulge outward. If everyone were equally good, it would be a straight line." },
     { q: "Which of these would shift a country's PPF outward?",
       opts: ["Unemployment falls", "A new technology makes factories more productive", "Prices of goods fall", "People buy more cars and less wheat"], a: 1,
       why: "Better technology means more output from the same resources. Lower unemployment moves a point toward the frontier, not the frontier itself." },

@@ -6,8 +6,8 @@
   <title>Every Choice Has a Price Tag · FinanceHub</title>
   <meta name="description" content="Unit 1, Lesson 1: scarcity, trade-offs and opportunity cost. See it, hear it, play it.">
   <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../assets/css/style.css?v=202610261746">
-  <link rel="stylesheet" href="lesson.css?v=202610261746">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610261754">
+  <link rel="stylesheet" href="lesson.css?v=202610261754">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Skip to the lesson</a>
@@ -205,7 +205,7 @@
       <h3 class="reveal">Measuring cost in the other thing</h3>
       <p class="reveal">Opportunity cost doesn't have to be in dollars. Often it's easier to ask: <i>"To get one more of this, how much of that do I give up?"</i></p>
       <p class="reveal">A bike takes 4 hours. In those same 4 hours you could mow 4 lawns. So one bike costs you <b>4 lawns</b>. As a formula:</p>
-      <div class="formula reveal">Cost of 1 more bike <span class="op">=</span> lawns you give up <span class="op">÷</span> bikes you gain <span class="op">=</span> 4 <span class="op">÷</span> 1 <span class="op">=</span> 4 lawns</div>
+      <div class="formula reveal">Cost of 1 more bike <span class="op">=</span> <span class="frac"><span>lawns you give up</span><span>bikes you gain</span></span> <span class="op">=</span> <span class="frac"><span>4</span><span>1</span></span> <span style="white-space:nowrap"><span class="op">=</span> 4 lawns</span></div>
 
       <h3 class="reveal">Worked example: bikes or lawns</h3>
       <ol class="steps reveal">
@@ -216,11 +216,47 @@
         <li><b>Decide one at a time.</b> Don't ask "bikes or lawns?" Ask "is <i>one more</i> bike worth more than the lawns it replaces?" Keep going until the answer becomes no. Economists call this <dfn class="term" data-def="Deciding by comparing the extra benefit and extra cost of one more unit, instead of all or nothing.">thinking at the margin</dfn>.</li>
       </ol>
 
+      <h3 class="reveal">Why the frontier bends outward</h3>
+      <p class="reveal">On an exam you'll be asked why a PPF is "bowed outward": it bulges away from the corner instead of being a straight line. The short answer is that <b>not everyone (or everything) is equally good at both jobs.</b> Here's what that means with real numbers.</p>
+      <p class="reveal">Say your business grows and two friends work the weekend with you. You'll call the team's effort "resources". Each person can spend the weekend on bikes <i>or</i> on lawns:</p>
+      <table class="mini-table reveal">
+        <thead><tr><th>Person</th><th>Bikes in a weekend</th><th>Lawns in a weekend</th><th>Cost of each bike</th></tr></thead>
+        <tbody>
+          <tr><td><b>Maya</b>, a bike whiz</td><td>4</td><td>5</td><td><span class="frac"><span>5 lawns</span><span>4 bikes</span></span> = 1.25 lawns</td></tr>
+          <tr><td><b>Leo</b>, so-so at both</td><td>2</td><td>6</td><td><span class="frac"><span>6 lawns</span><span>2 bikes</span></span> = 3 lawns</td></tr>
+          <tr><td><b>Jordan</b>, never held a wrench</td><td>1</td><td>8</td><td><span class="frac"><span>8 lawns</span><span>1 bike</span></span> = 8 lawns</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps reveal">
+        <li><b>Start with everyone mowing.</b> 5 + 6 + 8 = <b>19 lawns, 0 bikes.</b></li>
+        <li><b>You want some bikes, so who switches first?</b> Maya, because she gives up the fewest lawns per bike. You gain 4 bikes and lose only 5 lawns: <b>14 lawns, 4 bikes.</b> Cheap bikes.</li>
+        <li><b>Want more bikes? Leo switches next.</b> You gain 2 bikes but lose 6 lawns: <b>8 lawns, 6 bikes.</b> Each bike now costs 3 lawns.</li>
+        <li><b>Want every possible bike? Jordan has to switch.</b> You gain just 1 bike and lose 8 lawns: <b>0 lawns, 7 bikes.</b> That last bike cost 8 lawns.</li>
+      </ol>
+      <p class="reveal">Each extra bike costs more lawns than the one before, because you used up the people who are good at bikes first. Plot those four points and you get a curve that bulges outward:</p>
+      <svg class="reveal bow-chart" viewBox="0 0 560 370" role="img" aria-label="The team's PPF: points at 19 lawns 0 bikes, 14 lawns 4 bikes, 8 lawns 6 bikes, and 0 lawns 7 bikes form a curve bowed outward above a dashed straight line.">
+        <path d="M70 300 H530 M70 300 V30" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+        <path d="M497.5 300 L70 72.5" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+        <path d="M497.5 300 L385 170 L250 105 L70 72.5" stroke="var(--savings)" stroke-width="4" fill="none" stroke-linejoin="round"/>
+        <g fill="var(--savings)" stroke="var(--ink)" stroke-width="1.5"><circle cx="497.5" cy="300" r="6"/><circle cx="385" cy="170" r="6"/><circle cx="250" cy="105" r="6"/><circle cx="70" cy="72.5" r="6"/></g>
+        <g font-size="13" fill="var(--ink-2)">
+          <text x="497.5" y="322" text-anchor="middle">all mowing: 19 lawns</text>
+          <text x="400" y="166">Maya: 4 bikes</text><text x="400" y="182">for 5 lawns</text>
+          <text x="258" y="95">Leo: 2 bikes for 6 lawns</text>
+          <text x="84" y="60">Jordan: 1 bike for 8 lawns</text>
+          <text x="150" y="236" fill="var(--ink-3)">dashed: if everyone were</text>
+          <text x="150" y="252" fill="var(--ink-3)">equally good (straight line)</text>
+        </g>
+        <text x="300" y="356" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Lawns mowed</text>
+        <text transform="translate(34 300) rotate(-90)" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Bikes fixed</text>
+      </svg>
+      <p class="reveal">If all three of you were equally good at both jobs, every bike would cost the same number of lawns, and the PPF would be the straight dashed line. The bulge comes from people (and machines, land and time) being better at some jobs than others. Economists call this the <dfn class="term" data-def="Each extra unit of something costs more of the other thing than the unit before, because you switch the best-suited resources first.">law of increasing opportunity cost</dfn>.</p>
+
       <details class="deeper reveal">
-        <summary>Go deeper: sunk costs, why the frontier curves, and comparative advantage</summary>
+        <summary>Go deeper: sunk costs, the bend when you work alone, and comparative advantage</summary>
         <div>
           <p><b>1. Sunk costs.</b> A <dfn class="term" data-def="Time or money you've already spent and can't get back.">sunk cost</dfn> is time or money you've already spent and can't get back. It shouldn't change what you do next. Say you've put 3 hours into a bike, and then you find out it needs $80 of parts. Those 3 hours are gone whether you finish the bike or not. The only question now is whether finishing it will make more than the $80 and the hours still ahead. If it won't, stop, even though it feels like a waste.</p>
-          <p><b>2. Why the frontier curves.</b> Notice the PPF bends outward instead of being a straight line. That's because not every bike is equally easy. You'd pick the easiest bikes first, so each extra bike takes longer and costs you more lawns than the one before. Economists call this the <dfn class="term" data-def="Each extra unit of something costs more of the other thing than the unit before.">law of increasing opportunity cost</dfn>. Exam tip: if a PPF is a straight line, every unit costs the same amount.</p>
+          <p><b>2. Same idea, one person.</b> The bend also happens when you work alone. Your first bike of the weekend is an easy one. If you keep going, you get to the rusty bikes that take 6 hours each, so each extra bike costs more lawns. Different reasons, same result: the more of one thing you make, the more each extra one costs. Exam tip: if a PPF is a straight line, every unit costs the same amount.</p>
           <p><b>3. Comparative advantage.</b> Having a <dfn class="term" data-def="Being able to do something while giving up less than someone else would.">comparative advantage</dfn> means you can do something while giving up less than someone else would. Say your friend Sam can mow 2 lawns an hour, but takes 8 hours to fix a bike. In those 8 hours Sam could have mowed 16 lawns, so a bike costs Sam 16 lawns. A bike only costs you 4. So you should fix the bikes, Sam should mow the lawns, and you split the work. You both end up with more than if each of you did both jobs. This works even when one person is faster at everything. An economist named David Ricardo explained it in 1817, and it's the main reason countries trade with each other. It's on every intro economics exam.</p>
         </div>
       </details>
@@ -391,11 +427,11 @@
   </div>
 </footer>
 
-<script src="../../assets/js/save.js?v=202610261746"></script>
-<script src="../../assets/vendor/supabase-2.45.4.js?v=202610261746"></script>
-<script src="../../assets/js/auth.js?v=202610261746"></script>
-<script src="../../assets/js/site.js?v=202610261746"></script>
-<script src="../../assets/js/lesson-kit.js?v=202610261746"></script>
-<script src="lesson.js?v=202610261746"></script>
+<script src="../../assets/js/save.js?v=202610261754"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610261754"></script>
+<script src="../../assets/js/auth.js?v=202610261754"></script>
+<script src="../../assets/js/site.js?v=202610261754"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610261754"></script>
+<script src="lesson.js?v=202610261754"></script>
 </body>
 </html>

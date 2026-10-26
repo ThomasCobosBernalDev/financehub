@@ -900,3 +900,22 @@ body:has(.notice) .style-filter { display: none; }
 .ppf-legend { font-size: 15px; }
 .ppf-key { margin: 0 0 12px; padding-left: 20px; }
 .ppf-key li { margin: 4px 0; }
+
+/* Stacked fraction: <span class="frac"><span>top</span><span>bottom</span></span> */
+.frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 .2em; line-height: 1.25; text-align: center; }
+.frac > span { padding: 0 .3em; }
+.frac > span:first-child { border-bottom: 2px solid currentColor; padding-bottom: .1em; }
+.frac > span:last-child { padding-top: .1em; }
+p .frac, li .frac { font-size: .88em; margin: .15em .15em; }
+.formula { line-height: 2; }
+
+.mini-table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 16px; }
+.mini-table th { text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); padding: 8px 10px; border-bottom: 2px solid var(--line); }
+.mini-table td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.mini-table td .frac { font-size: .85em; }
+.bow-chart { display: block; width: 100%; max-width: 620px; margin: 8px 0 24px; }
+@media (max-width: 560px) {
+  .mini-table { font-size: 14px; }
+  .mini-table th, .mini-table td { padding: 8px 5px; }
+  .mini-table th { font-size: 11px; letter-spacing: 0; }
+}
