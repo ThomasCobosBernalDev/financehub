@@ -6,8 +6,8 @@
   <title>Por qué los precios son los que son · FinanceHub</title>
   <meta name="description" content="Unidad 1, Lección 2: oferta, demanda y precios de equilibrio. Lleva un puesto en el mercado y encuentra el precio justo.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610261923">
-  <link rel="stylesheet" href="../../../lessons/supply-demand/lesson.css?v=202610261923">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610261952">
+  <link rel="stylesheet" href="../../../lessons/supply-demand/lesson.css?v=202610261952">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Saltar a la lección</a>
@@ -62,7 +62,7 @@
       <div class="fold-text">
         <div class="kicker reveal"><span class="num">Unidad 1 · Lección 2</span> Oferta y demanda</div>
         <h1 class="reveal">Por qué los precios son <em>los que son.</em></h1>
-        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> En la Lección 1 pasaste tus fines de semana arreglando bicis viejas. Ahora tienes algunas listas para vender y alquilaste una mesa en el mercado del sábado. Cada bici te costó unos <span class="mark">$30</span> en piezas. Si cobras demasiado, la gente pasa de largo. Si cobras muy poco, se agotan en diez minutos y podrías haber ganado más. Entonces, ¿cuál es el precio justo?</p>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> En la Lección 1 pasaste tus fines de semana arreglando bicicletas viejas. Ahora tienes algunas listas para vender y alquilaste una mesa en el mercado del sábado. Cada bicicleta te costó unos <span class="mark">$30</span> en piezas. Si cobras demasiado, la gente pasa de largo. Si cobras muy poco, se agotan en diez minutos y podrías haber ganado más. Entonces, ¿cuál es el precio justo?</p>
         <div class="four compact">
           <div class="reveal"><div class="word">Qué</div><p>Encontrar el precio en el que la cantidad de cosas que la gente quiere comprar coincide con la cantidad a la venta.</p></div>
           <div class="reveal"><div class="word">Por qué</div><p>Casi todos los precios que pagarás en tu vida, del alquiler a las entradas de conciertos o las acciones, se fijan así.</p></div>
@@ -97,18 +97,18 @@
     <div class="wrap">
       <div class="kicker reveal"><span class="num">01</span> Míralo <span class="pref-tag">tu estilo</span></div>
       <h2 class="reveal">Mueve el precio.<br>Mira cómo <em>reacciona</em> el mercado.</h2>
-      <p class="lead reveal">Esta gráfica es el mercado de bicis de todo tu pueblo, no solo de tu mesa. En el lado está el precio de una bici. Abajo está cuántas bicis cambian de mano en un mes.</p>
+      <p class="lead reveal">Esta gráfica es el mercado de bicicletas de todo tu pueblo, no solo de tu mesa. En el lado está el precio de una bicicleta. Abajo está cuántas bicicletas cambian de mano en un mes.</p>
       <ul class="reveal ppf-key">
-        <li><b style="color:var(--needs)">Línea azul, demanda:</b> cuántas bicis quieren los compradores a cada precio. Baja, porque cuanto más baratas son las bicis, más gente quiere una.</li>
-        <li><b style="color:var(--wants)">Línea naranja, oferta:</b> cuántas bicis traen los vendedores a cada precio. Sube, porque los precios más altos hacen que valga la pena arreglar y vender más.</li>
+        <li><b style="color:var(--needs)">Línea azul, demanda:</b> cuántas bicicletas quieren los compradores a cada precio. Baja, porque cuanto más baratas son las bicicletas, más gente quiere una.</li>
+        <li><b style="color:var(--wants)">Línea naranja, oferta:</b> cuántas bicicletas traen los vendedores a cada precio. Sube, porque los precios más altos hacen que valga la pena arreglar y vender más.</li>
       </ul>
       <p class="muted reveal">Mueve el precio y mira los dos números. Donde se cruzan las líneas, son iguales. Luego prueba los botones para ver qué mueve las líneas.</p>
 
       <div class="reveal sd-wrap" style="margin-top:36px">
         <div>
-          <div class="payline"><span class="val" id="sd-price">$140</span><span class="muted">precio por bici</span></div>
-          <input type="range" id="sd-slider" min="20" max="200" step="5" value="140" aria-label="Precio por bici" style="margin:18px 0 6px">
-          <svg id="sd-chart" viewBox="0 0 600 420" role="img" aria-label="Gráfica de oferta y demanda de bicis. El texto de al lado describe la escasez o el excedente al precio que elijas.">
+          <div class="payline"><span class="val" id="sd-price">$140</span><span class="muted">precio por bicicleta</span></div>
+          <input type="range" id="sd-slider" min="20" max="200" step="5" value="140" aria-label="Precio por bicicleta" style="margin:18px 0 6px">
+          <svg id="sd-chart" viewBox="0 0 600 420" role="img" aria-label="Gráfica de oferta y demanda de bicicletas. El texto de al lado describe la escasez o el excedente al precio que elijas.">
             <g stroke="var(--line)" stroke-width="1"><path d="M70 80 H580 M70 160 H580 M70 240 H580 M70 320 H580"/></g>
             <path d="M70 380 V30 M70 380 H585" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
             <g id="sd-ticks" font-size="13" fill="var(--ink-3)"></g>
@@ -120,7 +120,7 @@
             <path id="sd-pline" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 5"/>
             <circle id="sd-eq" r="8" fill="var(--accent)" stroke="var(--paper)" stroke-width="3"/>
             <circle id="sd-qd" r="6" fill="var(--needs)"/><circle id="sd-qs" r="6" fill="var(--wants)"/>
-            <text x="585" y="410" text-anchor="end" font-family="Fraunces, serif" font-size="18" fill="var(--ink)">Bicis al mes</text>
+            <text x="585" y="410" text-anchor="end" font-family="Fraunces, serif" font-size="18" fill="var(--ink)">Bicicletas al mes</text>
             <text transform="translate(24 380) rotate(-90)" font-family="Fraunces, serif" font-size="18" fill="var(--ink)">Precio</text>
           </svg>
         </div>
@@ -167,11 +167,11 @@
     <div class="wrap">
       <div class="kicker reveal"><span class="num">03</span> Juégalo <span class="pref-tag">tu estilo</span></div>
       <h2 class="reveal">Puesto del <em>mercado</em></h2>
-      <p class="lead reveal">Vas a llevar tu puesto durante seis sábados. Cada bici te cuesta $30 en piezas. Cada semana, elige un precio, abre el puesto y mira cuántos compradores se detienen. Lee las noticias cada semana, porque cambian cuánta gente quiere bicis. Tu puntuación es lo cerca que llegas de la mayor ganancia que podrías haber conseguido.</p>
+      <p class="lead reveal">Vas a llevar tu puesto durante seis sábados. Cada bicicleta te cuesta $30 en piezas. Cada semana, elige un precio, abre el puesto y mira cuántos compradores se detienen. Lee las noticias cada semana, porque cambian cuánta gente quiere bicicletas. Tu puntuación es lo cerca que llegas de la mayor ganancia que podrías haber conseguido.</p>
 
       <div class="ledger reveal" id="game">
         <div class="market" id="market">
-          <svg viewBox="0 0 800 340" role="img" aria-label="La plaza del mercado: tu puesto con bicis a la derecha y compradores que entran desde la izquierda. Los resultados se anuncian en el texto de abajo.">
+          <svg viewBox="0 0 800 340" role="img" aria-label="La plaza del mercado: tu puesto con bicicletas a la derecha y compradores que entran desde la izquierda. Los resultados se anuncian en el texto de abajo.">
             <path d="M0 300 H800" stroke="var(--line)" stroke-width="2"/>
             <g opacity=".5" fill="none" stroke="var(--ink-3)" stroke-width="1.5">
               <path d="M40 300 V200 h70 v100 M50 200 l25 -30 l25 30"/><path d="M150 300 V220 h60 v80"/>
@@ -194,19 +194,19 @@
         <div class="ledger-head" style="margin-top:8px">
           <div>
             <div class="small muted" id="m-week">Sábado 1 de 6</div>
-            <div class="left-big" id="m-stock">4 bicis listas</div>
+            <div class="left-big" id="m-stock">4 bicicletas listas</div>
           </div>
           <button class="btn" id="m-open">Abrir el puesto <span class="arrow">→</span></button>
         </div>
         <p class="split-note" id="m-news"></p>
         <div class="alloc" style="grid-template-columns:120px 1fr 84px">
           <div class="name">Tu precio</div>
-          <input type="range" id="m-price" min="40" max="220" step="5" value="100" aria-label="Tu precio por bici">
+          <input type="range" id="m-price" min="40" max="220" step="5" value="100" aria-label="Tu precio por bicicleta">
           <div class="amt" id="m-price-v">$100</div>
         </div>
         <div class="gauges" style="margin-top:20px">
           <div class="gauge"><small>Ganancia hasta ahora</small><b id="m-profit">$0</b></div>
-          <div class="gauge"><small>Bicis vendidas</small><b id="m-sold">0</b></div>
+          <div class="gauge"><small>Bicicletas vendidas</small><b id="m-sold">0</b></div>
           <div class="gauge"><small>Puntuación</small><b id="m-score">–</b></div>
         </div>
         <ul class="timeline" id="m-log"></ul>
@@ -223,35 +223,35 @@
       <h3 class="reveal" style="margin-top:40px">Las dos leyes</h3>
       <p class="reveal">La <b>ley de la demanda</b> dice que cuando un precio sube, la gente compra menos. La <b>ley de la oferta</b> dice que cuando un precio sube, los vendedores ofrecen más. Lo que los compradores quieren a un precio dado se llama <dfn class="term" data-def="Cuántas unidades quieren los compradores a un precio concreto.">cantidad demandada</dfn>. Lo que ofrecen los vendedores es la <dfn class="term" data-def="Cuántas unidades ofrecen los vendedores a un precio concreto.">cantidad ofrecida</dfn>.</p>
       <div class="formula reveal">El precio sube <span class="op">→</span> la cantidad demandada baja<br>El precio sube <span class="op">→</span> la cantidad ofrecida sube</div>
-      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Demanda</dt><dd>Toda la línea azul de la gráfica de arriba: cada precio posible, cada uno con las bicis que quieren los compradores.</dd></div><div><dt>Cantidad demandada</dt><dd>Un punto de esa línea. En el ejemplo resuelto de abajo, a un precio de <b>$50</b>, los compradores quieren <b>50 bicis</b>.</dd></div><div><dt>Oferta</dt><dd>Toda la línea naranja: cada precio, con las bicis que traen los vendedores.</dd></div><div><dt>Cantidad ofrecida</dt><dd>Un punto de ella. A <b>$50</b>, los vendedores traen <b>80 bicis</b>.</dd></div></dl></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Demanda</dt><dd>Toda la línea azul de la gráfica de arriba: cada precio posible, cada uno con las bicicletas que quieren los compradores.</dd></div><div><dt>Cantidad demandada</dt><dd>Un punto de esa línea. En el ejemplo resuelto de abajo, a un precio de <b>$50</b>, los compradores quieren <b>50 bicicletas</b>.</dd></div><div><dt>Oferta</dt><dd>Toda la línea naranja: cada precio, con las bicicletas que traen los vendedores.</dd></div><div><dt>Cantidad ofrecida</dt><dd>Un punto de ella. A <b>$50</b>, los vendedores traen <b>80 bicicletas</b>.</dd></div></dl></div>
 
       <h3 class="reveal">Equilibrio</h3>
-      <p class="reveal">El mercado se asienta en el único precio en el que esas dos cantidades son iguales. Cada bici que llega al mercado encuentra comprador, y cada comprador dispuesto a pagar ese precio consigue una bici.</p>
+      <p class="reveal">El mercado se asienta en el único precio en el que esas dos cantidades son iguales. Cada bicicleta que llega al mercado encuentra comprador, y cada comprador dispuesto a pagar ese precio consigue una bicicleta.</p>
       <div class="formula reveal">Equilibrio: cantidad demandada <span class="op">=</span> cantidad ofrecida</div>
-      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Equilibrio</dt><dd>En el ejemplo resuelto de abajo, es un precio de <b>$40</b>: los compradores quieren <b>60 bicis</b> y los vendedores traen <b>60 bicis</b>. No sobra nada y nadie se queda fuera.</dd></div></dl></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Equilibrio</dt><dd>En el ejemplo resuelto de abajo, es un precio de <b>$40</b>: los compradores quieren <b>60 bicicletas</b> y los vendedores traen <b>60 bicicletas</b>. No sobra nada y nadie se queda fuera.</dd></div></dl></div>
 
       <h3 class="reveal">Ejemplo resuelto: resuélvelo como en un examen</h3>
       <ol class="steps reveal">
-        <li><b>Lee las ecuaciones.</b> Los exámenes suelen describir la demanda y la oferta con ecuaciones. Aquí, P es el precio en dólares y Q es un número de bicis. La demanda es Q<sub>d</sub> = 100 − P, que significa "a un precio P, los compradores quieren 100 menos P bicis". A $20 querrían 80 bicis, y a $50 querrían 50. La oferta es Q<sub>s</sub> = 2P − 20, así que a $50 los vendedores traerían 2 × 50 − 20 = 80 bicis.</li>
+        <li><b>Lee las ecuaciones.</b> Los exámenes suelen describir la demanda y la oferta con ecuaciones. Aquí, P es el precio en dólares y Q es un número de bicicletas. La demanda es Q<sub>d</sub> = 100 − P, que significa "a un precio P, los compradores quieren 100 menos P bicicletas". A $20 querrían 80 bicicletas, y a $50 querrían 50. La oferta es Q<sub>s</sub> = 2P − 20, así que a $50 los vendedores traerían 2 × 50 − 20 = 80 bicicletas.</li>
         <li><b>Iguálalas.</b> El equilibrio es donde las dos cantidades coinciden, así que escribe 100 − P = 2P − 20. Suma P y 20 a ambos lados para tener 120 = 3P. Divide entre 3: <b>P = $40</b>.</li>
-        <li><b>Encuentra la cantidad.</b> Pon $40 en cualquiera de las dos ecuaciones. Demanda: 100 − 40 = <b>60 bicis</b>. Oferta: 2 × 40 − 20 = 60. Coinciden, así que la respuesta está bien.</li>
-        <li><b>Prueba un precio demasiado bajo.</b> A $30, los compradores quieren 100 − 30 = 70 bicis, pero los vendedores solo traen 2 × 30 − 20 = 40. Se quieren 30 bicis más de las que hay, y eso se llama <dfn class="term" data-def="Cuando los compradores quieren más de lo que tienen los vendedores al precio actual. Empuja el precio hacia arriba.">escasez</dfn>. Los compradores compiten por las pocas bicis, así que el precio sube.</li>
-        <li><b>Prueba un precio demasiado alto.</b> A $50, los compradores quieren 50 pero los vendedores traen 80. Son 30 bicis que nadie compra, y eso se llama <dfn class="term" data-def="Cuando los vendedores tienen más de lo que quieren los compradores al precio actual. Empuja el precio hacia abajo.">excedente</dfn>. Los vendedores bajan los precios para deshacerse de ellas, así que el precio baja.</li>
+        <li><b>Encuentra la cantidad.</b> Pon $40 en cualquiera de las dos ecuaciones. Demanda: 100 − 40 = <b>60 bicicletas</b>. Oferta: 2 × 40 − 20 = 60. Coinciden, así que la respuesta está bien.</li>
+        <li><b>Prueba un precio demasiado bajo.</b> A $30, los compradores quieren 100 − 30 = 70 bicicletas, pero los vendedores solo traen 2 × 30 − 20 = 40. Se quieren 30 bicicletas más de las que hay, y eso se llama <dfn class="term" data-def="Cuando los compradores quieren más de lo que tienen los vendedores al precio actual. Empuja el precio hacia arriba.">escasez</dfn>. Los compradores compiten por las pocas bicicletas, así que el precio sube.</li>
+        <li><b>Prueba un precio demasiado alto.</b> A $50, los compradores quieren 50 pero los vendedores traen 80. Son 30 bicicletas que nadie compra, y eso se llama <dfn class="term" data-def="Cuando los vendedores tienen más de lo que quieren los compradores al precio actual. Empuja el precio hacia abajo.">excedente</dfn>. Los vendedores bajan los precios para deshacerse de ellas, así que el precio baja.</li>
       </ol>
-      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Escasez</dt><dd>A <b>$30</b>: los compradores quieren 70 bicis y los vendedores traen 40. 70 − 40 = <b>faltan 30 bicis</b>.</dd></div><div><dt>Excedente</dt><dd>A <b>$50</b>: los vendedores traen 80 bicis y los compradores quieren 50. 80 − 50 = <b>sobran 30 bicis</b>.</dd></div></dl></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Escasez</dt><dd>A <b>$30</b>: los compradores quieren 70 bicicletas y los vendedores traen 40. 70 − 40 = <b>faltan 30 bicicletas</b>.</dd></div><div><dt>Excedente</dt><dd>A <b>$50</b>: los vendedores traen 80 bicicletas y los compradores quieren 50. 80 − 50 = <b>sobran 30 bicicletas</b>.</dd></div></dl></div>
 
       <h3 class="reveal">¿Desplazamiento o deslizamiento?</h3>
-      <p class="reveal">Si solo cambia el precio de las bicis, te <b>deslizas</b> por las líneas que ya tienes. Por ejemplo, cuando las bicis se abaratan, los compradores bajan por la línea de demanda y compran más. Pero si cambia algo <i>distinto</i> del precio, toda la línea se <b>desplaza</b> a otro sitio. Por ejemplo, cuando empiezan las clases, más chicos necesitan bici a <i>cualquier</i> precio, así que toda la línea de demanda se mueve a la derecha. Lo que desplaza la demanda incluye los ingresos de los compradores, lo que está de moda y cuántos compradores hay. Lo que desplaza la oferta incluye el costo de las piezas, las herramientas nuevas y cuántos vendedores hay. Los exámenes evalúan esta diferencia todo el tiempo.</p>
-      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Deslizamiento (movimiento sobre la línea)</dt><dd>Las bicis bajan de <b>$50</b> a <b>$40</b>, y los compradores pasan de querer 50 bicis a 60. Solo cambió el precio, así que es la misma línea.</dd></div><div><dt>Desplazamiento (la línea se mueve)</dt><dd>Empiezan las clases. Ahora a <b>$40</b> los compradores quieren más de 60 bicis, y lo mismo pasa a cualquier otro precio. Cambió algo además del precio, así que toda la línea se mueve a la derecha.</dd></div></dl></div>
+      <p class="reveal">Si solo cambia el precio de las bicicletas, te <b>deslizas</b> por las líneas que ya tienes. Por ejemplo, cuando las bicicletas se abaratan, los compradores bajan por la línea de demanda y compran más. Pero si cambia algo <i>distinto</i> del precio, toda la línea se <b>desplaza</b> a otro sitio. Por ejemplo, cuando empiezan las clases, más chicos necesitan bicicleta a <i>cualquier</i> precio, así que toda la línea de demanda se mueve a la derecha. Lo que desplaza la demanda incluye los ingresos de los compradores, lo que está de moda y cuántos compradores hay. Lo que desplaza la oferta incluye el costo de las piezas, las herramientas nuevas y cuántos vendedores hay. Los exámenes evalúan esta diferencia todo el tiempo.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Deslizamiento (movimiento sobre la línea)</dt><dd>Las bicicletas bajan de <b>$50</b> a <b>$40</b>, y los compradores pasan de querer 50 bicicletas a 60. Solo cambió el precio, así que es la misma línea.</dd></div><div><dt>Desplazamiento (la línea se mueve)</dt><dd>Empiezan las clases. Ahora a <b>$40</b> los compradores quieren más de 60 bicicletas, y lo mismo pasa a cualquier otro precio. Cambió algo además del precio, así que toda la línea se mueve a la derecha.</dd></div></dl></div>
 
       <details class="deeper reveal">
         <summary>Más a fondo: elasticidad, límites de precio y excedente</summary>
         <div>
-          <p><b>1. Elasticidad.</b> La <dfn class="term" data-def="Con cuánta fuerza reaccionan los compradores cuando cambia un precio.">elasticidad precio de la demanda</dfn> mide con cuánta fuerza reaccionan los compradores a un cambio de precio. Algunas cosas la gente las compra pase lo que pase, como la gasolina o las medicinas. Si su precio sube, se sigue comprando más o menos lo mismo. Eso se llama <b>inelástica</b>. Otras cosas tienen muchas alternativas, como una marca concreta de papas fritas. Sube un poco el precio y mucha gente cambia. Eso es <b>elástica</b>. Para medirla, divide el cambio porcentual de lo que compra la gente entre el cambio porcentual del precio. Si el precio sube un 10% y las ventas bajan un 20%, la elasticidad es <span class="frac"><span>20</span><span>10</span></span> = 2, que cuenta como elástica (cualquier valor mayor que 1 lo es). Las bicis usadas son bastante elásticas, por eso el precio de tu puesto importaba tanto.</p>
-          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Elasticidad precio de la demanda</dt><dd><span class="frac"><span>% de cambio en bicis compradas</span><span>% de cambio en el precio</span></span> = <span class="frac"><span>20%</span><span>10%</span></span> = <b>2</b>. Es mayor que 1, así que la demanda de bicis es elástica.</dd></div></dl></div>
+          <p><b>1. Elasticidad.</b> La <dfn class="term" data-def="Con cuánta fuerza reaccionan los compradores cuando cambia un precio.">elasticidad precio de la demanda</dfn> mide con cuánta fuerza reaccionan los compradores a un cambio de precio. Algunas cosas la gente las compra pase lo que pase, como la gasolina o las medicinas. Si su precio sube, se sigue comprando más o menos lo mismo. Eso se llama <b>inelástica</b>. Otras cosas tienen muchas alternativas, como una marca concreta de papas fritas. Sube un poco el precio y mucha gente cambia. Eso es <b>elástica</b>. Para medirla, divide el cambio porcentual de lo que compra la gente entre el cambio porcentual del precio. Si el precio sube un 10% y las ventas bajan un 20%, la elasticidad es <span class="frac"><span>20</span><span>10</span></span> = 2, que cuenta como elástica (cualquier valor mayor que 1 lo es). Las bicicletas usadas son bastante elásticas, por eso el precio de tu puesto importaba tanto.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Elasticidad precio de la demanda</dt><dd><span class="frac"><span>% de cambio en bicicletas compradas</span><span>% de cambio en el precio</span></span> = <span class="frac"><span>20%</span><span>10%</span></span> = <b>2</b>. Es mayor que 1, así que la demanda de bicicletas es elástica.</dd></div></dl></div>
           <p><b>2. Límites de precio por ley.</b> Un <dfn class="term" data-def="Un precio máximo fijado por ley, por debajo de lo que cobraría el mercado.">precio máximo</dfn> es un tope legal, como el control de alquileres. Cuando se fija por debajo del precio de equilibrio, más gente quiere apartamentos a ese alquiler de los que hay, así que hay escasez. Un <dfn class="term" data-def="Un precio mínimo fijado por ley, por encima de lo que cobraría el mercado.">precio mínimo</dfn> es un piso legal, como el salario mínimo (el precio de una hora de trabajo). En el modelo simple, un piso por encima del equilibrio significa que más gente quiere trabajo del que los empleadores quieren cubrir. Los estudios reales no se ponen de acuerdo sobre lo grande que es ese efecto, y a los exámenes les encanta pedirte que defiendas ambos lados.</p>
-          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Precio máximo</dt><dd>Digamos que el pueblo prohibió vender bicis a más de <b>$30</b>, por debajo del equilibrio de $40. Los compradores quieren 70 bicis pero los vendedores solo traen 40, así que hay una <b>escasez de 30 bicis</b>.</dd></div><div><dt>Precio mínimo</dt><dd>Digamos que una ley dijera que las bicis deben venderse a <b>$50</b> como mínimo. Los vendedores traen 80 pero los compradores quieren 50, así que <b>30 bicis no se venden</b>.</dd></div></dl></div>
-          <p><b>3. Excedente del consumidor y del productor.</b> Digamos que un comprador habría pagado hasta $150 por una de tus bicis y cobras $100. Hizo un trato de $50. Ese valor extra para el comprador se llama <dfn class="term" data-def="La diferencia entre lo máximo que pagaría un comprador y lo que de verdad paga.">excedente del consumidor</dfn>. La bici te costó $30, así que venderla a $100 te deja $70 más de lo que necesitabas. Eso es el <dfn class="term" data-def="La diferencia entre lo que recibe un vendedor y el precio más bajo que aceptaría (su costo).">excedente del productor</dfn>. En el equilibrio, los dos sumados son lo más grandes posible. En las gráficas de examen aparecen como dos triángulos.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Precio máximo</dt><dd>Digamos que el pueblo prohibió vender bicicletas a más de <b>$30</b>, por debajo del equilibrio de $40. Los compradores quieren 70 bicicletas pero los vendedores solo traen 40, así que hay una <b>escasez de 30 bicicletas</b>.</dd></div><div><dt>Precio mínimo</dt><dd>Digamos que una ley dijera que las bicicletas deben venderse a <b>$50</b> como mínimo. Los vendedores traen 80 pero los compradores quieren 50, así que <b>30 bicicletas no se venden</b>.</dd></div></dl></div>
+          <p><b>3. Excedente del consumidor y del productor.</b> Digamos que un comprador habría pagado hasta $150 por una de tus bicicletas y cobras $100. Hizo un trato de $50. Ese valor extra para el comprador se llama <dfn class="term" data-def="La diferencia entre lo máximo que pagaría un comprador y lo que de verdad paga.">excedente del consumidor</dfn>. La bicicleta te costó $30, así que venderla a $100 te deja $70 más de lo que necesitabas. Eso es el <dfn class="term" data-def="La diferencia entre lo que recibe un vendedor y el precio más bajo que aceptaría (su costo).">excedente del productor</dfn>. En el equilibrio, los dos sumados son lo más grandes posible. En las gráficas de examen aparecen como dos triángulos.</p>
           <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Excedente del consumidor</dt><dd>Lo máximo que pagaría el comprador menos lo que pagó: $150 − $100 = <b>$50</b>.</dd></div><div><dt>Excedente del productor</dt><dd>Lo que recibiste menos tu costo: $100 − $30 = <b>$70</b>.</dd></div></dl></div>
         </div>
       </details>
@@ -305,9 +305,9 @@
           <li><b>Equilibrio:</b> el precio en el que cantidad demandada = cantidad ofrecida. El mercado "se vacía".</li>
           <li><b>Escasez:</b> precio por debajo del equilibrio. Los compradores quieren más de lo que hay. El precio tiende a subir.</li>
           <li><b>Excedente:</b> precio por encima del equilibrio. Hay más a la venta de lo que quieren los compradores. El precio tiende a bajar.</li>
-          <li><b>Lo que desplaza la demanda:</b> los ingresos de los compradores, lo que está de moda, el número de compradores, los precios de los <i>sustitutos</i> (cosas que comprarías en su lugar, como patinetes) y de los <i>complementos</i> (cosas que se usan juntas, como cascos), y lo que la gente espera que pase.</li>
+          <li><b>Lo que desplaza la demanda:</b> los ingresos de los compradores, lo que está de moda, el número de compradores, los precios de los <i>sustitutos</i> (cosas que comprarías en su lugar, como scooters) y de los <i>complementos</i> (cosas que se usan juntas, como cascos), y lo que la gente espera que pase.</li>
           <li><b>Lo que desplaza la oferta:</b> el costo de los materiales, la tecnología, el número de vendedores, las expectativas y los impuestos.</li>
-          <li><b>Bien normal:</b> algo que la gente compra más cuando suben sus ingresos, como bicis o comidas en restaurantes.</li>
+          <li><b>Bien normal:</b> algo que la gente compra más cuando suben sus ingresos, como bicicletas o comidas en restaurantes.</li>
           <li><b>Cambia el propio precio</b> = movimiento sobre la curva. <b>Cualquier otra cosa</b> = desplazamiento de la curva.</li>
         </ul>
       </div>
@@ -316,7 +316,7 @@
       <div class="paper reveal" id="blanks">
         <div>1. Cuando el precio está por debajo del equilibrio, el mercado tiene <input type="text" class="blank" data-answer="escasez|una escasez" aria-label="Espacio 1">.</div>
         <div>2. Demanda: Q = 80 − P. Oferta: Q = P. El precio de equilibrio es $<input type="text" class="blank" data-answer="40" inputmode="numeric" aria-label="Espacio 2">.</div>
-        <div>3. Si suben los ingresos de la gente y las bicis son un bien normal (la gente compra más cuando gana más), la curva de demanda se desplaza a la <input type="text" class="blank" data-answer="derecha|afuera" aria-label="Espacio 3">.</div>
+        <div>3. Si suben los ingresos de la gente y las bicicletas son un bien normal (la gente compra más cuando gana más), la curva de demanda se desplaza a la <input type="text" class="blank" data-answer="derecha|afuera" aria-label="Espacio 3">.</div>
         <div>4. Las piezas más baratas desplazan la curva de <input type="text" class="blank" data-answer="oferta|la oferta" aria-label="Espacio 4"> a la derecha.</div>
         <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Comprobar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
       </div>
@@ -334,7 +334,7 @@
         </div>
         <div class="reveal">
           <h3>¿Desplazamiento o deslizamiento?</h3>
-          <p>Por turnos, inventen titulares de noticias, como "La gasolina llega a $6 el galón" o "Una bici eléctrica nueva cuesta la mitad". Los demás compiten por decir si se mueve la demanda o la oferta, hacia dónde y qué pasa con el precio de las bicis normales. Quien pierda compra los snacks.</p>
+          <p>Por turnos, inventen titulares de noticias, como "La gasolina llega a $6 el galón" o "Una bicicleta eléctrica nueva cuesta la mitad". Los demás compiten por decir si se mueve la demanda o la oferta, hacia dónde y qué pasa con el precio de las bicicletas normales. Quien pierda compra los snacks.</p>
         </div>
         <div class="reveal">
           <h3>Duelo de puestos</h3>
@@ -427,11 +427,11 @@
   </div>
 </footer>
 
-<script src="../../../assets/js/save.js?v=202610261923"></script>
-<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
-<script src="../../../assets/js/auth.js?v=202610261923"></script>
-<script src="../../../assets/js/site.js?v=202610261923"></script>
-<script src="../../../assets/js/lesson-kit.js?v=202610261923"></script>
-<script src="../../../lessons/supply-demand/lesson.js?v=202610261923"></script>
+<script src="../../../assets/js/save.js?v=202610261952"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610261952"></script>
+<script src="../../../assets/js/auth.js?v=202610261952"></script>
+<script src="../../../assets/js/site.js?v=202610261952"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610261952"></script>
+<script src="../../../lessons/supply-demand/lesson.js?v=202610261952"></script>
 </body>
 </html>

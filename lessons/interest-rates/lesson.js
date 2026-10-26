@@ -21,7 +21,7 @@
   const grid = $("#rp-grid");
   const CARDS = [
     { k: "savings", name: T("High-yield savings", "Ahorro de alto rendimiento"), sub: (r) => T(`$1,000 earns <b>${money(10 * r)}</b> a year`, `$1,000 ganan <b>${money(10 * r)}</b> al año`), color: "var(--savings)" },
-    { k: "car", name: T("Car loan, 5 years", "Préstamo de coche, 5 años"), sub: (r) => T(`$8,000 costs <b>${money(pmt(8000, r, 60))}</b> a month`, `$8,000 cuestan <b>${money(pmt(8000, r, 60))}</b> al mes`), color: "var(--wants)" },
+    { k: "car", name: T("Car loan, 5 years", "Préstamo de carro, 5 años"), sub: (r) => T(`$8,000 costs <b>${money(pmt(8000, r, 60))}</b> a month`, `$8,000 cuestan <b>${money(pmt(8000, r, 60))}</b> al mes`), color: "var(--wants)" },
     { k: "mortgage", name: T("30-year mortgage", "Hipoteca a 30 años"), sub: (r) => T(`$250,000 costs <b>${money(pmt(250000, r, 360))}</b> a month`, `$250,000 cuestan <b>${money(pmt(250000, r, 360))}</b> al mes`), color: "var(--needs)" },
     { k: "card", name: T("Credit card", "Tarjeta de crédito"), sub: (r) => T(`$1,000 balance costs <b>${money(10 * r)}</b> a year`, `Un saldo de $1,000 cuesta <b>${money(10 * r)}</b> al año`), color: "var(--danger)" },
   ];
@@ -50,7 +50,7 @@
       intro: T("Inflation is 11% and climbing. People expect prices to keep rising, so they demand raises, which pushes prices up again.", "La inflación está en 11% y sube. La gente espera que los precios sigan subiendo, así que pide aumentos de sueldo, lo que vuelve a subir los precios.") },
     2008: { label: "2008", start: 2008, best: 14.0, hold: 85.4, i: 3, pi: 3, g: -0.5, shocks: { 1: { g: -2.5, news: T("Lehman Brothers collapses. Banks stop lending to each other.", "Quiebra Lehman Brothers. Los bancos dejan de prestarse entre sí.") }, 2: { g: -1.5, news: T("Layoffs spread. Consumers stop spending.", "Se extienden los despidos. Los consumidores dejan de gastar.") } },
       intro: T("Housing prices are falling and banks are nervous. Things are about to get much worse.", "Los precios de la vivienda bajan y los bancos están nerviosos. Las cosas están a punto de empeorar mucho.") },
-    2021: { label: "2021", start: 2021, best: 332.4, hold: 403.4, i: 0.25, pi: 4.5, g: 1.5, shocks: { 1: { pi: 1.2, news: T("Supply chains are jammed. Used car prices jump 40%.", "Las cadenas de suministro están atascadas. Los coches usados suben un 40%.") }, 3: { pi: 1.0, news: T("War in Ukraine sends energy and food prices soaring.", "La guerra en Ucrania dispara los precios de la energía y los alimentos.") } },
+    2021: { label: "2021", start: 2021, best: 332.4, hold: 403.4, i: 0.25, pi: 4.5, g: 1.5, shocks: { 1: { pi: 1.2, news: T("Supply chains are jammed. Used car prices jump 40%.", "Las cadenas de suministro están atascadas. Los carros usados suben un 40%.") }, 3: { pi: 1.0, news: T("War in Ukraine sends energy and food prices soaring.", "La guerra en Ucrania dispara los precios de la energía y los alimentos.") } },
       intro: T("The economy is reopening fast with stimulus money in people's pockets. Rates are near zero.", "La economía reabre rápido con dinero de estímulo en los bolsillos de la gente. Las tasas están cerca de cero.") },
   };
   let S, F;

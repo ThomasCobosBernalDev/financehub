@@ -41,7 +41,7 @@
   renderTM();
 
   const GDP = {
-    c: T("<b>C, consumption: about 68%.</b> Everything households buy: groceries, rent, haircuts, phones, and the bikes people bought from your stall. It's the biggest engine of the US economy.", "<b>C, consumo: cerca del 68%.</b> Todo lo que compran los hogares: comida, alquiler, cortes de pelo, teléfonos y las bicis que la gente compró en tu puesto. Es el mayor motor de la economía de EE. UU."),
+    c: T("<b>C, consumption: about 68%.</b> Everything households buy: groceries, rent, haircuts, phones, and the bikes people bought from your stall. It's the biggest engine of the US economy.", "<b>C, consumo: cerca del 68%.</b> Todo lo que compran los hogares: comida, alquiler, cortes de pelo, teléfonos y las bicicletas que la gente compró en tu puesto. Es el mayor motor de la economía de EE. UU."),
     i: T("<b>I, investment: about 18%.</b> Businesses buying equipment and buildings, plus new homes. Not stocks: buying a share just moves ownership. A new repair stand for your stall counts.", "<b>I, inversión: cerca del 18%.</b> Empresas que compran equipos y edificios, más las viviendas nuevas. No las acciones: comprar una acción solo cambia quién es dueño. Un soporte de reparación nuevo para tu puesto sí cuenta."),
     g: T("<b>G, government: about 17%.</b> Government purchases: roads, teachers' salaries, the military. Not Social Security checks, since those are transfers, not purchases of goods.", "<b>G, gobierno: cerca del 17%.</b> Compras del gobierno: carreteras, sueldos de maestros, el ejército. No los cheques del Seguro Social, porque son transferencias, no compras de bienes."),
   };
@@ -69,7 +69,7 @@
   const renderRaise = () => {
     fillRange(raise);
     $("#b-raise-v").textContent = `+${(+raise.value).toFixed(1).replace(".0", "")}%`;
-    $("#b-price-hint").textContent = T("New bike price", "Nuevo precio de la bici") + `: ${money(G.price * (1 + raise.value / 100))}`;
+    $("#b-price-hint").textContent = T("New bike price", "Nuevo precio de la bicicleta") + `: ${money(G.price * (1 + raise.value / 100))}`;
   };
   raise.addEventListener("input", renderRaise);
   $$("#b-save button").forEach((b) => b.addEventListener("click", () => {
@@ -89,7 +89,7 @@
     $("#b-go").disabled = false;
     $("#b-log").innerHTML = "";
     const li = document.createElement("li");
-    li.innerHTML = `<b>${E.name}.</b> ${E.intro} ` + T("You start with $1,000 in savings and sell bikes for $115.", "Empiezas con $1,000 de ahorros y vendes bicis a $115.");
+    li.innerHTML = `<b>${E.name}.</b> ${E.intro} ` + T("You start with $1,000 in savings and sell bikes for $115.", "Empiezas con $1,000 de ahorros y vendes bicicletas a $115.");
     $("#b-log").prepend(li);
     startYear();
   }));
@@ -159,13 +159,13 @@
 
     const realChange = ((1 + raise.value / 100) / (1 + inf) - 1) * 100;
     const priceNote = Math.abs(realChange) < 0.6
-      ? T("You kept your bike price in step with inflation, which is the sweet spot.", "Mantuviste el precio de tus bicis al ritmo de la inflación, que es el punto ideal.")
-      : realChange < 0 ? T(`Your price fell ${Math.abs(realChange).toFixed(1)}% in real terms, so you sold more but earned less on each bike.`, `Tu precio bajó un ${Math.abs(realChange).toFixed(1)}% en términos reales, así que vendiste más pero ganaste menos por bici.`)
+      ? T("You kept your bike price in step with inflation, which is the sweet spot.", "Mantuviste el precio de tus bicicletas al ritmo de la inflación, que es el punto ideal.")
+      : realChange < 0 ? T(`Your price fell ${Math.abs(realChange).toFixed(1)}% in real terms, so you sold more but earned less on each bike.`, `Tu precio bajó un ${Math.abs(realChange).toFixed(1)}% en términos reales, así que vendiste más pero ganaste menos por bicicleta.`)
       : T(`Your price rose ${realChange.toFixed(1)}% faster than everyone else's, so shoppers went elsewhere.`, `Tu precio subió un ${realChange.toFixed(1)}% más rápido que el de los demás, así que los compradores se fueron a otro lado.`);
     const saveName = { cash: T("the cash drawer", "la caja"), bank: T("bank savings", "los ahorros del banco"), tips: T("the protected bond", "el bono protegido") }[G.save];
     const li = document.createElement("li");
     li.className = G.real >= before ? "good" : "bad";
-    li.innerHTML = T(`<b>${E.years[y]}</b>: inflation ${E.infl[y].toFixed(1)}%. ${priceNote} You sold ${units} bikes for ${money(realProfit)} of real profit (best possible ${money(BEST_PROFIT)}). Savings in ${saveName} ${G.real >= before ? "gained" : "lost"} <b>${money(Math.abs(G.real - before))}</b> of buying power.`, `<b>${E.years[y]}</b>: inflación del ${E.infl[y].toFixed(1)}%. ${priceNote} Vendiste ${units} bicis por ${money(realProfit)} de ganancia real (lo mejor posible: ${money(BEST_PROFIT)}). Tus ahorros en ${saveName} ${G.real >= before ? "ganaron" : "perdieron"} <b>${money(Math.abs(G.real - before))}</b> de poder de compra.`);
+    li.innerHTML = T(`<b>${E.years[y]}</b>: inflation ${E.infl[y].toFixed(1)}%. ${priceNote} You sold ${units} bikes for ${money(realProfit)} of real profit (best possible ${money(BEST_PROFIT)}). Savings in ${saveName} ${G.real >= before ? "gained" : "lost"} <b>${money(Math.abs(G.real - before))}</b> of buying power.`, `<b>${E.years[y]}</b>: inflación del ${E.infl[y].toFixed(1)}%. ${priceNote} Vendiste ${units} bicicletas por ${money(realProfit)} de ganancia real (lo mejor posible: ${money(BEST_PROFIT)}). Tus ahorros en ${saveName} ${G.real >= before ? "ganaron" : "perdieron"} <b>${money(Math.abs(G.real - before))}</b> de poder de compra.`);
     $("#b-log").prepend(li);
     G.y++;
     G.busy = false;
@@ -235,7 +235,7 @@
       opts: ["+7%", "+3%", "−3%", "−2.5%"], a: 2,
       why: "Real ≈ nominal − inflación = 2% − 5% = −3%. Tu saldo crece, pero su poder de compra se encoge." },
     { q: "¿Cuál de estos se cuenta en el PIB?",
-      opts: ["Un coche usado vendido por un concesionario este año", "Una laptop nueva hecha y vendida este año", "Acciones compradas en una bolsa", "Un cheque del Seguro Social"], a: 1,
+      opts: ["Un carro usado vendido por un concesionario este año", "Una laptop nueva hecha y vendida este año", "Acciones compradas en una bolsa", "Un cheque del Seguro Social"], a: 1,
       why: "El PIB cuenta los bienes y servicios finales producidos este año. Los bienes usados se contaron cuando se hicieron, las acciones solo son propiedad y el Seguro Social es una transferencia." },
     { q: "El PIB nominal creció 6% el año pasado mientras el índice de precios del PIB subió 4%. El PIB real creció cerca de:",
       opts: ["10%", "6%", "4%", "2%"], a: 3,

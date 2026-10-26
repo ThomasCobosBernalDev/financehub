@@ -130,7 +130,7 @@
     { unit: 14, q: "When interest rates rise, prices of existing bonds usually…", a: ["Fall", "Rise", "Stay the same", "Double"] },
   ];
   const QS_ES = [
-    { unit: 1, q: "Una tienda de bicis sube su precio y vende menos bicis. ¿Qué idea lo explica?", a: ["La ley de la demanda", "La inflación", "El costo de oportunidad", "El interés compuesto"] },
+    { unit: 1, q: "Una tienda de bicicletas sube su precio y vende menos bicicletas. ¿Qué idea lo explica?", a: ["La ley de la demanda", "La inflación", "El costo de oportunidad", "El interés compuesto"] },
     { unit: 2, q: "Inviertes $1,000 al 10% anual y dejas que los intereses se queden. ¿Cuánto tienes después de 2 años?", a: ["$1,210", "$1,200", "$1,100", "$2,000"] },
     { unit: 3, q: "Estás en la categoría federal de impuestos del 22%. ¿Más o menos qué parte de tu ingreso se va en impuesto federal sobre la renta?", a: ["Menos del 22%, porque solo el ingreso arriba de cierto límite paga 22%", "Exactamente el 22% de todo lo que ganas", "Más del 22%, al sumar la categoría de abajo", "Nada hasta que ganas $100,000"] },
     { unit: 4, q: "En un presupuesto 50/30/20, ¿para qué es el 20%?", a: ["Ahorrar y pagar deudas", "Renta y cuentas", "Dinero para diversión", "Impuestos"] },

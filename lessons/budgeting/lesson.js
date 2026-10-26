@@ -178,7 +178,7 @@
     S.debt += amt;
     S.stress += 6;
     toPin("card", amt, true);
-    log(T(`${msg} +${money(amt)} on the card at 24% APR.`, `${msg} +${money(amt)} en la tarjeta al 24% TAE.`), "bad");
+    log(T(`${msg} +${money(amt)} on the card at 24% APR.`, `${msg} +${money(amt)} en la tarjeta al 24% de interés anual.`), "bad");
   };
   // Pay from a bucket; whatever it can't cover goes on the card.
   const pay = (amt, bucket, msg) => {
@@ -191,10 +191,10 @@
   const gain = (amt, bucket, msg) => { S[bucket] += amt; fromPin(bucket, amt); log(msg, "good"); };
 
   const EVENTS = [
-    { icon: "bike", title: T("Your bike chain snaps", "Se rompe la cadena de tu bici"), text: T("A repair is $140. Without it you're walking 40 minutes to work.", "Arreglarla cuesta $140. Sin ella, caminas 40 minutos al trabajo."),
+    { icon: "bike", title: T("Your bike chain snaps", "Se rompe la cadena de tu bicicleta"), text: T("A repair is $140. Without it you're walking 40 minutes to work.", "Arreglarla cuesta $140. Sin ella, caminas 40 minutos al trabajo."),
       choices: [
-        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$140 jar", "−$140 fondo"), run: () => pay(140, "ef", T("Fixed the bike from the emergency fund.", "Arreglaste la bici con el fondo de emergencia.")) },
-        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$140 debt", "+$140 deuda"), run: () => card(140, T("Bike repair.", "Arreglo de la bici.")) },
+        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$140 jar", "−$140 fondo"), run: () => pay(140, "ef", T("Fixed the bike from the emergency fund.", "Arreglaste la bicicleta con el fondo de emergencia.")) },
+        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$140 debt", "+$140 deuda"), run: () => card(140, T("Bike repair.", "Arreglo de la bicicleta.")) },
         { label: T("Walk for a while", "Caminar un tiempo"), tag: T("+stress", "+estrés"), run: () => { S.stress += 15; S.happy -= 5; log(T("Walking to work. Tiring, but free.", "Caminas al trabajo. Cansado, pero gratis.")); } },
       ] },
     { icon: "cake", title: T("Best friend's birthday dinner", "Cena de cumpleaños de tu mejor amigo"), text: T("Everyone's going somewhere nice. Your share is about $60.", "Todos van a un sitio bonito. Tu parte son unos $60."),
@@ -244,7 +244,7 @@
     const out = [];
     if (cat("groceries") < 250) {
       const short = 250 - cat("groceries");
-      out.push({ icon: "cart", title: T("The fridge is empty", "El refri está vacío"), text: T(`Your grocery money ran out with days to go. You need about ${money(short)} more food.`, `El dinero de comida se acabó a falta de días. Necesitas unos ${money(short)} más de comida.`),
+      out.push({ icon: "cart", title: T("The fridge is empty", "El refrigerador está vacío"), text: T(`Your grocery money ran out with days to go. You need about ${money(short)} more food.`, `El dinero de comida se acabó a falta de días. Necesitas unos ${money(short)} más de comida.`),
         choices: [
           { label: T("Pay from fun money", "Pagar con el dinero para diversión"), tag: `−${money(short)} ` + T("fun", "diversión"), run: () => pay(short, "fun", T("Bought groceries with fun money.", "Compraste comida con el dinero para diversión.")) },
           { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: `−${money(short)} ` + T("jar", "fondo"), run: () => pay(short, "ef", T("Bought groceries from the emergency fund.", "Compraste comida con el fondo de emergencia.")) },
@@ -373,7 +373,7 @@
     const tip =
       S.debt > 0 ? T("Surprises landed on the card. Next month, move some wants money into the emergency fund before anything happens.", "Las sorpresas acabaron en la tarjeta. El próximo mes, pasa algo del dinero de deseos al fondo de emergencia antes de que pase nada.")
       : S.ef === 0 ? T("You stayed out of debt, but only just. A bigger emergency fund gives you room to breathe.", "Te libraste de la deuda, pero por poco. Un fondo de emergencia más grande te da margen para respirar.")
-      : S.happy < 50 ? T("Your money held up but you were miserable. Budgets that cut all the fun usually break. Give wants a little more room.", "Tu dinero aguantó, pero lo pasaste fatal. Los presupuestos que quitan toda la diversión suelen romperse. Dales un poco más de espacio a los deseos.")
+      : S.happy < 50 ? T("Your money held up but you were miserable. Budgets that cut all the fun usually break. Give wants a little more room.", "Tu dinero aguantó, pero la pasaste muy mal. Los presupuestos que quitan toda la diversión suelen romperse. Dales un poco más de espacio a los deseos.")
       : T("That's a budget doing its job. The surprises came out of money you'd already set aside.", "Eso es un presupuesto haciendo su trabajo. Las sorpresas salieron de dinero que ya habías apartado.");
 
     $("#g-live").classList.add("hidden");
@@ -445,7 +445,7 @@
     { q: "¿A qué número se aplica la regla 50/30/20?",
       opts: ["Al sueldo bruto", "Al sueldo después de impuestos (neto)", "Al patrimonio neto", "Al sueldo antes de aportes a la jubilación e impuestos"], a: 1,
       why: "Se aplica a los ingresos después de impuestos, el dinero que de verdad llega a tu cuenta. Los impuestos se van antes de que puedas presupuestarlos." },
-    { q: "Pones una factura sorpresa de $250 en una tarjeta al 24% TAE y la arrastras 3 meses. Con interés simple, ¿cuánto interés pagas más o menos?",
+    { q: "Pones una factura sorpresa de $250 en una tarjeta al 24% de interés anual y la arrastras 3 meses. Con interés simple, ¿cuánto interés pagas más o menos?",
       opts: ["$6", "$15", "$60", "$24"], a: 1,
       why: "Interés ≈ capital × tasa × tiempo = 250 × 0.24 × (3 ÷ 12) = $15. Las tarjetas reales componen a diario, así que es un poco más. Eso es la Unidad 5." },
     { q: "¿Por qué un fondo de emergencia suele bajar tus costos a largo plazo?",

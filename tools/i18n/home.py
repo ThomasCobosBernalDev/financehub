@@ -18,7 +18,7 @@ PAIRS = [
     ('<span>Part 3 · Your business</span>', '<span>Parte 3 · Tu negocio</span>'),
     ('<span>Part 4 · Wall Street</span>', '<span>Parte 4 · Wall Street</span>'),
     ('<span>Part 5 · Career launch</span>', '<span>Parte 5 · Tu carrera</span>'),
-    ('<h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>', '<h1 class="reveal">Aprende de dinero<br><em>a tu manera.</em></h1>'),
+    ('<h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>', '<h1 class="reveal">Aprende sobre el dinero<br><em>a tu manera.</em></h1>'),
     ('<p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you\'re doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>',
      '<p class="lead reveal">Una sola historia, desde tu primer sueldo hasta un trato en Wall Street. Cada lección se enseña de ocho maneras distintas, y <b>tú eliges cómo aprender</b>: verlo, escucharlo, jugarlo, entender la lógica paso a paso y más. Cada una te muestra qué estás haciendo, por qué importa, cómo funciona y quién se dedica a eso. Y cada lección tiene algo para jugar.</p>'),
     ('<span>Start Unit 1 · Lesson 1</span>', '<span>Empezar Unidad 1 · Lección 1</span>'),

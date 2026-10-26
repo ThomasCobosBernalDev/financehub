@@ -84,7 +84,7 @@
     for (const h of bikeHours) { if (rest <= 0) break; const n = Math.min(1, rest); parts.push(`${fmt(n * h)}\u00a0h`); bh += n * h; rest -= n; }
     const bikeNote = !parts.length ? "" : parts.length === 1 ? ` (${parts[0]})` : ` (${parts.join(" + ")} =\u00a0${fmt(bh)}\u00a0h)`;
     const hrs = l + bh;
-    const plan = [l ? T(`${l} lawn${l === 1 ? "" : "s"}`, `${l} ${l === 1 ? "jardín" : "jardines"}`) + ` (${l}\u00a0h)` : "", b ? T(`${fmt(b)} bike${b <= 1 ? "" : "s"}`, `${fmt(b)} bici${b <= 1 ? "" : "s"}`) + bikeNote : ""].filter(Boolean).join(" + ") || T("Nothing at all", "Nada de nada");
+    const plan = [l ? T(`${l} lawn${l === 1 ? "" : "s"}`, `${l} ${l === 1 ? "jardín" : "jardines"}`) + ` (${l}\u00a0h)` : "", b ? T(`${fmt(b)} bike${b <= 1 ? "" : "s"}`, `${fmt(b)} bicicleta${b <= 1 ? "" : "s"}`) + bikeNote : ""].filter(Boolean).join(" + ") || T("Nothing at all", "Nada de nada");
     const hr = (n) => T(`${fmt(n)} hour${n === 1 ? "" : "s"}`, `${fmt(n)} hora${n === 1 ? "" : "s"}`);
     let kind;
     if (b === edge) {
@@ -106,12 +106,12 @@
     if (grown) {
       grown = false; bikeHours = OLD_BIKES; old.setAttribute("opacity", 0);
       $("#ppf-grow").textContent = T("Buy a $60 repair stand", "Comprar un soporte de $60");
-      msg.innerHTML = T("<b>Back to your old tools.</b> Without the stand, your four bikes take 1 + 2 + 3 + 4 = 10 hours, so the curve goes back to where it was: at most 4 bikes.", "<b>De vuelta a tus herramientas viejas.</b> Sin el soporte, tus cuatro bicis tardan 1 + 2 + 3 + 4 = 10 horas, así que la curva vuelve a donde estaba: 4 bicis como máximo.");
+      msg.innerHTML = T("<b>Back to your old tools.</b> Without the stand, your four bikes take 1 + 2 + 3 + 4 = 10 hours, so the curve goes back to where it was: at most 4 bikes.", "<b>De vuelta a tus herramientas viejas.</b> Sin el soporte, tus cuatro bicicletas tardan 1 + 2 + 3 + 4 = 10 horas, así que la curva vuelve a donde estaba: 4 bicicletas como máximo.");
     } else {
       old.setAttribute("d", pathFor(OLD_BIKES)); old.setAttribute("opacity", 1);
       grown = true; bikeHours = NEW_BIKES;
       $("#ppf-grow").textContent = T("Go back to old tools", "Volver a las herramientas viejas");
-      msg.innerHTML = T("<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster. The flat tire bike still takes 1 hour, the chain bike now takes 1 hour (was 2), the brakes bike 2 hours (was 3), and the rusty bike 2 hours (was 4). Those are four separate bikes, so together they now take 1 + 1 + 2 + 2 = 6 hours instead of 10, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.", "<b>Compraste un soporte de reparación.</b> Sujeta la bici firme, así que los trabajos grandes van más rápido. La bici del pinchazo sigue tardando 1 hora, la de la cadena ahora tarda 1 hora (antes 2), la de los frenos 2 horas (antes 3) y la oxidada 2 horas (antes 4). Son cuatro bicis distintas, así que juntas ahora tardan 1 + 1 + 2 + 2 = 6 horas en vez de 10, y queda tiempo para una quinta bici. Por eso la curva se movió hacia afuera: ahora puedes arreglar hasta 5 bicis en las mismas 10 horas. La línea punteada es tu curva vieja. Cuando lo máximo que puedes producir sube así, los economistas lo llaman <b>crecimiento</b>.");
+      msg.innerHTML = T("<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster. The flat tire bike still takes 1 hour, the chain bike now takes 1 hour (was 2), the brakes bike 2 hours (was 3), and the rusty bike 2 hours (was 4). Those are four separate bikes, so together they now take 1 + 1 + 2 + 2 = 6 hours instead of 10, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.", "<b>Compraste un soporte de reparación.</b> Sujeta la bicicleta firme, así que los trabajos grandes van más rápido. La bicicleta del pinchazo sigue tardando 1 hora, la de la cadena ahora tarda 1 hora (antes 2), la de los frenos 2 horas (antes 3) y la oxidada 2 horas (antes 4). Son cuatro bicicletas distintas, así que juntas ahora tardan 1 + 1 + 2 + 2 = 6 horas en vez de 10, y queda tiempo para una quinta bicicleta. Por eso la curva se movió hacia afuera: ahora puedes arreglar hasta 5 bicicletas en las mismas 10 horas. La línea punteada es tu curva vieja. Cuando lo máximo que puedes producir sube así, los economistas lo llaman <b>crecimiento</b>.");
     }
     ppf.classList.add("growing");
     animatePPF(from, bikeHours);
@@ -132,7 +132,7 @@
   const GOAL_MONEY = 200, GOAL_STUDY = 12;
   const ACTS = [
     { id: "mow", name: T("Mow lawns", "Cortar césped"), unit: 1, desc: T("$15 an hour. Tiring.", "$15 la hora. Cansa."), color: "var(--savings)" },
-    { id: "bike", name: T("Fix a bike to resell", "Arreglar una bici para revender"), unit: 4, desc: "", color: "var(--needs)" },
+    { id: "bike", name: T("Fix a bike to resell", "Arreglar una bicicleta para revender"), unit: 4, desc: "", color: "var(--needs)" },
     { id: "gig", name: T("Help a neighbor move", "Ayudar a un vecino a mudarse"), unit: 1, desc: T("$25 an hour, this weekend only. Exhausting.", "$25 la hora, solo este fin de semana. Agotador."), color: "var(--accent)", eventOnly: true },
     { id: "study", name: T("SAT practice", "Práctica del SAT"), unit: 1, desc: T("1 hour of practice. Draining.", "1 hora de práctica. Agota."), color: "#7a5bb5" },
     { id: "friends", name: T("Friends and rest", "Amigos y descanso"), unit: 1, desc: T("Recharges your energy.", "Recarga tu energía."), color: "var(--wants)" },
@@ -140,7 +140,7 @@
   const EVENTS = [
     { id: "rain", text: T("It's raining all weekend. No lawns can be mowed.", "Llueve todo el fin de semana. No se puede cortar césped."), apply: (w) => { w.noMow = true; } },
     { id: "gig", text: T("A neighbor is moving and will pay $25 an hour, up to 4 hours.", "Un vecino se muda y paga $25 la hora, hasta 4 horas."), apply: (w) => { w.gig = true; } },
-    { id: "parts", text: T("A garage sale has cheap parts. Each bike you fix earns $95 this weekend.", "Una venta de garaje tiene piezas baratas. Cada bici que arregles deja $95 este fin de semana."), apply: (w) => { w.bikePay = 95; } },
+    { id: "parts", text: T("A garage sale has cheap parts. Each bike you fix earns $95 this weekend.", "Una venta de garaje tiene piezas baratas. Cada bicicleta que arregles deja $95 este fin de semana."), apply: (w) => { w.bikePay = 95; } },
   ];
   const S = { week: 0, money: 0, study: 0, energy: 70, log: [] };
   let W, plan, busy = false;
@@ -178,7 +178,7 @@
         const d = +b.dataset.d * a.unit;
         const next = plan[a.id] + d;
         if (next < 0) return;
-        if (d > 0 && used() + d > W.hours) { FH.toast(a.id === "bike" ? T("A bike needs 4 free hours.", "Una bici necesita 4 horas libres.") : T("No hours left. Take some from somewhere else.", "No quedan horas. Quita de otra actividad.")); return; }
+        if (d > 0 && used() + d > W.hours) { FH.toast(a.id === "bike" ? T("A bike needs 4 free hours.", "Una bicicleta necesita 4 horas libres.") : T("No hours left. Take some from somewhere else.", "No quedan horas. Quita de otra actividad.")); return; }
         if (a.id === "gig" && next > 4) { FH.toast(T("The move only needs 4 hours.", "La mudanza solo necesita 4 horas.")); return; }
         plan[a.id] = next;
         $("output", row).textContent = `${next} h`;
@@ -311,15 +311,15 @@
     { q: "En una frontera de posibilidades de producción, un punto dentro de la curva representa:",
       opts: ["Una combinación imposible", "Un uso eficiente de los recursos", "Recursos sin usar o desperdiciados", "Crecimiento económico"], a: 2,
       why: "Dentro de la frontera podrías producir más de al menos un bien sin renunciar a nada del otro, así que se están desperdiciando recursos." },
-    { q: "Un país puede producir 100 toneladas de trigo o 50 coches. Si la FPP es una línea recta, ¿cuál es el costo de oportunidad de un coche?",
+    { q: "Un país puede producir 100 toneladas de trigo o 50 carros. Si la FPP es una línea recta, ¿cuál es el costo de oportunidad de un carro?",
       opts: ["0.5 toneladas de trigo", "2 toneladas de trigo", "50 toneladas de trigo", "100 toneladas de trigo"], a: 1,
-      why: "Renunciar a las 100 toneladas da 50 coches, así que cada coche cuesta 100 ÷ 50 = 2 toneladas de trigo." },
+      why: "Renunciar a las 100 toneladas da 50 carros, así que cada carro cuesta 100 ÷ 50 = 2 toneladas de trigo." },
     { q: "¿Por qué una FPP suele estar curvada hacia afuera?",
       opts: ["Los precios suben con el tiempo", "Los recursos no sirven igual de bien para producir ambos bienes", "La tecnología mejora", "La gente prefiere un bien"], a: 1,
-      why: "Piensa en Maya, Leo y Jordan. Para tener más bicis, primero cambias a quien mejor arregla bicis, así que las primeras bicis cuestan pocos jardines. Luego tienes que cambiar a gente peor con las bicis, así que cada bici extra cuesta más jardines. Costos que siguen subiendo hacen que la curva se abombe hacia afuera. Si todos fueran igual de buenos, sería una línea recta." },
+      why: "Piensa en Maya, Leo y Jordan. Para tener más bicicletas, primero cambias a quien mejor arregla bicicletas, así que las primeras bicicletas cuestan pocos jardines. Luego tienes que cambiar a gente peor con las bicicletas, así que cada bicicleta extra cuesta más jardines. Costos que siguen subiendo hacen que la curva se abombe hacia afuera. Si todos fueran igual de buenos, sería una línea recta." },
     { q: "¿Cuál de estas opciones desplazaría hacia afuera la FPP de un país?",
-      opts: ["Baja el desempleo", "Una nueva tecnología hace las fábricas más productivas", "Bajan los precios de los bienes", "La gente compra más coches y menos trigo"], a: 1,
-      why: "La curva solo se mueve cuando sube lo máximo que un país podría producir. La nueva tecnología hace eso: los mismos trabajadores y máquinas ahora producen más. Un desempleo más bajo solo pone a trabajar a gente parada, y mueve al país desde dentro hasta la curva que ya tenía. Comprar más coches y menos trigo es deslizarse por la misma curva. Y los precios no cambian cuánto se puede producir." },
+      opts: ["Baja el desempleo", "Una nueva tecnología hace las fábricas más productivas", "Bajan los precios de los bienes", "La gente compra más carros y menos trigo"], a: 1,
+      why: "La curva solo se mueve cuando sube lo máximo que un país podría producir. La nueva tecnología hace eso: los mismos trabajadores y máquinas ahora producen más. Un desempleo más bajo solo pone a trabajar a gente parada, y mueve al país desde dentro hasta la curva que ya tenía. Comprar más carros y menos trigo es deslizarse por la misma curva. Y los precios no cambian cuánto se puede producir." },
     { q: "Pagaste $40 por una entrada de concierto que no puedes revender. Ese día te sientes mal y preferirías quedarte en casa. ¿En qué deberías basar tu decisión?",
       opts: ["En los $40, para no desperdiciarlos", "Solo en cómo te sientes ahora, porque los $40 son un costo hundido", "En si la banda es popular", "En un término medio: ir y salir temprano"], a: 1,
       why: "Los $40 ya se fueron, vayas o no. Una decisión racional compara solo costos y beneficios futuros: ir enfermo frente a quedarte en casa." },
