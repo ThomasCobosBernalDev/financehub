@@ -3,6 +3,7 @@
   const LESSON = "u1-supply-demand";
   const { $, $$, fillRange, wait, shuffle } = FHLesson;
   const money = FH.money;
+  const T = FH.t;
   const NS = "http://www.w3.org/2000/svg";
   const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
 
@@ -43,21 +44,21 @@
     const m = $("#sd-msg");
     if (Math.abs(d - s) < 2) {
       gap.setAttribute("stroke", "var(--accent)");
-      m.innerHTML = `<b class="c-good">Equilibrium.</b> At ${money(p)}, about ${Math.round(d)} bikes are wanted and ${Math.round(s)} are for sale. Nobody's left waiting and nothing's left over.`;
-      FH.badge("found-equilibrium", "Found the Equilibrium");
+      m.innerHTML = T(`<b class="c-good">Equilibrium.</b> At ${money(p)}, about ${Math.round(d)} bikes are wanted and ${Math.round(s)} are for sale. Nobody's left waiting and nothing's left over.`, `<b class="c-good">Equilibrio.</b> A ${money(p)}, se quieren unas ${Math.round(d)} bicis y hay ${Math.round(s)} a la venta. Nadie se queda esperando y no sobra nada.`);
+      FH.badge("found-equilibrium", T("Found the Equilibrium", "Encontraste el equilibrio"));
     } else if (d > s) {
       gap.setAttribute("stroke", "var(--needs)");
-      m.innerHTML = `<b>Shortage of ${Math.round(d - s)}.</b> At ${money(p)}, more people want bikes than sellers bring. Lines form, bikes sell out, and sellers raise prices.`;
+      m.innerHTML = T(`<b>Shortage of ${Math.round(d - s)}.</b> At ${money(p)}, more people want bikes than sellers bring. Lines form, bikes sell out, and sellers raise prices.`, `<b>Escasez de ${Math.round(d - s)}.</b> A ${money(p)}, más gente quiere bicis de las que traen los vendedores. Se forman filas, las bicis se agotan y los vendedores suben los precios.`);
     } else {
       gap.setAttribute("stroke", "var(--wants)");
-      m.innerHTML = `<b>Surplus of ${Math.round(s - d)}.</b> At ${money(p)}, sellers bring more bikes than people want. Bikes sit unsold, so sellers cut prices.`;
+      m.innerHTML = T(`<b>Surplus of ${Math.round(s - d)}.</b> At ${money(p)}, sellers bring more bikes than people want. Bikes sit unsold, so sellers cut prices.`, `<b>Excedente de ${Math.round(s - d)}.</b> A ${money(p)}, los vendedores traen más bicis de las que la gente quiere. Las bicis se quedan sin vender, así que bajan los precios.`);
     }
   };
   slider.addEventListener("input", renderSD);
   const SHOCKS = {
-    school: { f: (m) => { m.a += 20; }, msg: "<b>Demand shifted right.</b> Students need bikes to get to class, so more people want one at every price. The new equilibrium has a higher price and more bikes sold." },
-    bigbox: { f: (m) => { m.a -= 25; }, msg: "<b>Demand shifted left.</b> New bikes at a big-box store are a substitute, so fewer people want used ones. Price and quantity both fall." },
-    parts: { f: (m) => { m.s0 += 15; }, msg: "<b>Supply shifted right.</b> Cheaper parts make fixing bikes more profitable, so sellers bring more at every price. Price falls, quantity rises." },
+    school: { f: (m) => { m.a += 20; }, msg: T("<b>Demand shifted right.</b> Students need bikes to get to class, so more people want one at every price. The new equilibrium has a higher price and more bikes sold.", "<b>La demanda se desplazó a la derecha.</b> Los estudiantes necesitan bicis para ir a clase, así que más gente quiere una a cualquier precio. El nuevo equilibrio tiene un precio más alto y más bicis vendidas.") },
+    bigbox: { f: (m) => { m.a -= 25; }, msg: T("<b>Demand shifted left.</b> New bikes at a big-box store are a substitute, so fewer people want used ones. Price and quantity both fall.", "<b>La demanda se desplazó a la izquierda.</b> Las bicis nuevas de una gran tienda son un sustituto, así que menos gente quiere usadas. Bajan el precio y la cantidad.") },
+    parts: { f: (m) => { m.s0 += 15; }, msg: T("<b>Supply shifted right.</b> Cheaper parts make fixing bikes more profitable, so sellers bring more at every price. Price falls, quantity rises.", "<b>La oferta se desplazó a la derecha.</b> Piezas más baratas hacen más rentable arreglar bicis, así que los vendedores traen más a cualquier precio. Baja el precio y sube la cantidad.") },
   };
   $$("[data-shock]").forEach((b) => b.addEventListener("click", () => {
     const k = b.dataset.shock;
@@ -70,22 +71,22 @@
     const e = eq();
     slider.value = Math.round(e.p / 5) * 5;
     renderSD();
-    $("#sd-msg").innerHTML = SHOCKS[k].msg + ` New equilibrium: about <b>${money(e.p)}</b> and <b>${Math.round(e.q)}</b> bikes.`;
+    $("#sd-msg").innerHTML = SHOCKS[k].msg + T(` New equilibrium: about <b>${money(e.p)}</b> and <b>${Math.round(e.q)}</b> bikes.`, ` Nuevo equilibrio: unos <b>${money(e.p)}</b> y <b>${Math.round(e.q)}</b> bicis.`);
   }));
   renderSD();
 
   // ---------- Play it: Market Stall ----------
   const COST = 30, WEEKS = 6;
   const EVENTS = [
-    { id: "school", news: "School starts Monday. Lots of students are shopping for bikes.", n: 16, lo: 60, hi: 190 },
-    { id: "rain", news: "Rain all morning. Only a few shoppers will show up.", n: 5, lo: 50, hi: 170 },
-    { id: "bigbox", news: "A big-box store opened nearby selling new bikes for $120. Nobody will pay more than that for a used one.", n: 10, lo: 50, hi: 170, cap: 120 },
-    { id: "news", news: "The local news ran a story on biking to work. Shoppers will pay about $30 more than usual.", n: 11, lo: 80, hi: 200 },
+    { id: "school", news: T("School starts Monday. Lots of students are shopping for bikes.", "Las clases empiezan el lunes. Muchos estudiantes buscan bici."), n: 16, lo: 60, hi: 190 },
+    { id: "rain", news: T("Rain all morning. Only a few shoppers will show up.", "Llueve toda la mañana. Vendrán pocos compradores."), n: 5, lo: 50, hi: 170 },
+    { id: "bigbox", news: T("A big-box store opened nearby selling new bikes for $120. Nobody will pay more than that for a used one.", "Abrió cerca una gran tienda que vende bicis nuevas a $120. Nadie pagará más que eso por una usada."), n: 10, lo: 50, hi: 170, cap: 120 },
+    { id: "news", news: T("The local news ran a story on biking to work. Shoppers will pay about $30 more than usual.", "Las noticias locales hablaron de ir en bici al trabajo. Los compradores pagarán unos $30 más de lo normal."), n: 11, lo: 80, hi: 200 },
   ];
-  const NORMAL = { news: "A normal Saturday. About 10 shoppers expected.", n: 10, lo: 50, hi: 170 };
+  const NORMAL = { news: T("A normal Saturday. About 10 shoppers expected.", "Un sábado normal. Se esperan unos 10 compradores."), n: 10, lo: 50, hi: 170 };
   const G = { week: 0, stock: 4, rev: 0, opt: 0, sold: 0, fixed: 4, busy: false };
   let deck, wk;
-  const newDeck = () => [NORMAL, ...shuffle([...EVENTS]), { ...NORMAL, news: "Last Saturday of the summer. A normal crowd of about 10." }];
+  const newDeck = () => [NORMAL, ...shuffle([...EVENTS]), { ...NORMAL, news: T("Last Saturday of the summer. A normal crowd of about 10.", "Último sábado del verano. Un público normal de unos 10.") }];
   deck = newDeck();
 
   const priceIn = $("#m-price");
@@ -105,8 +106,8 @@
   };
   const startWeek = () => {
     wk = deck[G.week];
-    $("#m-week").textContent = `Saturday ${G.week + 1} of ${WEEKS}`;
-    $("#m-stock").textContent = `${G.stock} bike${G.stock === 1 ? "" : "s"} ready`;
+    $("#m-week").textContent = T(`Saturday ${G.week + 1} of ${WEEKS}`, `Sábado ${G.week + 1} de ${WEEKS}`);
+    $("#m-stock").textContent = T(`${G.stock} bike${G.stock === 1 ? "" : "s"} ready`, `${G.stock} bici${G.stock === 1 ? "" : "s"} lista${G.stock === 1 ? "" : "s"}`);
     $("#m-news").innerHTML = `<b>${wk.news}</b>`;
     $("#m-open").disabled = false;
     $("#crowd").innerHTML = "";
@@ -152,7 +153,7 @@
     }));
     for (const pp of shuffle(people)) {
       const buys = pp.r >= p && left > 0;
-      pp.tag.textContent = buys ? "Sold!" : pp.r >= p ? "Sold out" : "Too much";
+      pp.tag.textContent = buys ? T("Sold!", "¡Vendida!") : pp.r >= p ? T("Sold out", "Agotado") : T("Too much", "Muy cara");
       pp.tag.setAttribute("fill", buys ? "var(--good)" : "var(--danger)");
       pp.tag.setAttribute("opacity", 1);
       pp.tag.animate([{ opacity: 1 }, { opacity: 1, offset: .6 }, { opacity: 0 }], { duration: 1400, fill: "forwards" });
@@ -171,12 +172,12 @@
     const shortBy = willing - sold;
     const unsold = G.stock;
     let verdict, cls = "";
-    if (shortBy > 0) { verdict = `${shortBy} shopper${shortBy === 1 ? "" : "s"} who'd pay your price left empty-handed. That's a <b>shortage</b>: you could have charged more.`; cls = "bad"; }
-    else if (unsold > 0 && sold < buyers.length) { verdict = `${unsold} bike${unsold === 1 ? "" : "s"} didn't sell while ${buyers.length - sold} shoppers walked away. That's a <b>surplus</b>: a lower price would have moved more.`; }
-    else { verdict = "You priced it right on the edge."; cls = "good"; }
+    if (shortBy > 0) { verdict = T(`${shortBy} shopper${shortBy === 1 ? "" : "s"} who'd pay your price left empty-handed. That's a <b>shortage</b>: you could have charged more.`, `${shortBy} comprador${shortBy === 1 ? "" : "es"} que pagaría${shortBy === 1 ? "" : "n"} tu precio se fue${shortBy === 1 ? "" : "ron"} con las manos vacías. Eso es <b>escasez</b>: podrías haber cobrado más.`); cls = "bad"; }
+    else if (unsold > 0 && sold < buyers.length) { verdict = T(`${unsold} bike${unsold === 1 ? "" : "s"} didn't sell while ${buyers.length - sold} shoppers walked away. That's a <b>surplus</b>: a lower price would have moved more.`, `${unsold} bici${unsold === 1 ? "" : "s"} no se vendi${unsold === 1 ? "ó" : "eron"} mientras ${buyers.length - sold} compradores se iban. Eso es <b>excedente</b>: un precio más bajo habría vendido más.`); }
+    else { verdict = T("You priced it right on the edge.", "Pusiste el precio justo en el límite."); cls = "good"; }
     const li = document.createElement("li");
     li.className = cls || (rev >= best * 0.9 ? "good" : "");
-    li.innerHTML = `Saturday ${G.week + 1}: sold <b>${sold}</b> at ${money(p)} for <b>${money(rev)}</b>. ${verdict} Best price in hindsight: ${money(bestP)} (${money(best)}).`;
+    li.innerHTML = T(`Saturday ${G.week + 1}: sold <b>${sold}</b> at ${money(p)} for <b>${money(rev)}</b>. ${verdict} Best price in hindsight: ${money(bestP)} (${money(best)}).`, `Sábado ${G.week + 1}: vendiste <b>${sold}</b> a ${money(p)} por <b>${money(rev)}</b>. ${verdict} Mejor precio visto ahora: ${money(bestP)} (${money(best)}).`);
     $("#m-log").prepend(li);
     $("#m-profit").textContent = money(G.rev - G.fixed * COST);
     $("#m-sold").textContent = G.sold;
@@ -195,19 +196,19 @@
     const profit = G.rev - G.fixed * COST;
     $("#m-open").classList.add("hidden");
     $("#m-news").textContent = "";
-    $("#m-stock").textContent = "Season's over";
-    $("#m-week").textContent = "Final results";
+    $("#m-stock").textContent = T("Season's over", "Se acabó la temporada");
+    $("#m-week").textContent = T("Final results", "Resultados finales");
     const r = $("#m-result");
     r.classList.remove("hidden");
-    r.innerHTML = `<div class="result-grade"><span class="grade">${grade}</span><div><b>${score}% of the best possible revenue</b><p>${score >= 90 ? "You read the crowd like a pricing analyst. Every week you found the price where your bikes and your buyers matched up." : "The weeks you missed were the ones where the crowd changed. Prices aren't fixed: when demand shifts, the right price shifts with it."}</p></div></div>
-      <p class="small muted">Profit after parts: ${money(profit)}. ${profit > 0 ? "It goes into your savings for the rest of the course." : ""}</p>
-      <button class="btn line" id="m-again">Play again</button>`;
+    r.innerHTML = `<div class="result-grade"><span class="grade">${grade}</span><div><b>${T(`${score}% of the best possible revenue`, `${score}% del mejor ingreso posible`)}</b><p>${score >= 90 ? T("You read the crowd like a pricing analyst. Every week you found the price where your bikes and your buyers matched up.", "Leíste al público como un analista de precios. Cada semana encontraste el precio en el que tus bicis y tus compradores coincidían.") : T("The weeks you missed were the ones where the crowd changed. Prices aren't fixed: when demand shifts, the right price shifts with it.", "Las semanas que fallaste fueron las que cambió el público. Los precios no son fijos: cuando se desplaza la demanda, el precio correcto se mueve con ella.")}</p></div></div>
+      <p class="small muted">${T("Profit after parts", "Ganancia después de piezas")}: ${money(profit)}. ${profit > 0 ? T("It goes into your savings for the rest of the course.", "Va a tus ahorros para el resto del curso.") : ""}</p>
+      <button class="btn line" id="m-again">${T("Play again", "Jugar otra vez")}</button>`;
     const l = FH.lesson(LESSON);
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, score);
     if (first && profit > 0) FH.updateCharacter({ checking: FH.state.character.checking + profit });
-    FH.addXP(first ? 50 : 15, first ? "Finished Market Stall" : "Another season at the market");
-    if (grade === "A") FH.badge("market-stall-a", "Market Stall: A");
+    FH.addXP(first ? 50 : 15, first ? T("Finished Market Stall", "Terminaste Puesto del mercado") : T("Another season at the market", "Otra temporada en el mercado"));
+    if (grade === "A") FH.badge("market-stall-a", T("Market Stall: A", "Puesto del mercado: A"));
     $("#m-again").addEventListener("click", () => {
       Object.assign(G, { week: 0, stock: 4, rev: 0, opt: 0, sold: 0, fixed: 4 });
       deck = newDeck();
@@ -223,7 +224,7 @@
   startWeek();
 
   // ---------- Check ----------
-  const QUIZ = [
+  const QUIZ_EN = [
     { q: "Demand for coffee is Q = 120 − 10P and supply is Q = 20P − 30. What is the equilibrium price?",
       opts: ["$3", "$5", "$7.50", "$15"], a: 1,
       why: "Set them equal: 120 − 10P = 20P − 30, so 150 = 30P and P = $5. Quantity is 120 − 50 = 70." },
@@ -247,5 +248,29 @@
       why: "Elasticity = −20% ÷ 10% = −2. A magnitude above 1 means elastic: buyers react strongly, so the price rise lowers total revenue." },
   ];
 
-  FHLesson.init({ id: LESSON, short: "supply-demand", quiz: QUIZ });
+  const QUIZ_ES = [
+    { q: "La demanda de café es Q = 120 − 10P y la oferta es Q = 20P − 30. ¿Cuál es el precio de equilibrio?",
+      opts: ["$3", "$5", "$7.50", "$15"], a: 1,
+      why: "Iguálalas: 120 − 10P = 20P − 30, así que 150 = 30P y P = $5. La cantidad es 120 − 50 = 70." },
+    { q: "El precio de la gasolina sube mucho. ¿Qué pasa en el mercado de coches eléctricos?",
+      opts: ["La oferta de coches eléctricos se desplaza a la izquierda", "La demanda de coches eléctricos se desplaza a la derecha", "La demanda de coches eléctricos se desplaza a la izquierda", "Un movimiento hacia abajo sobre la curva de demanda"], a: 1,
+      why: "Los coches de gasolina y los eléctricos son sustitutos. La gasolina más cara hace los eléctricos más atractivos a cualquier precio, así que la demanda se desplaza a la derecha." },
+    { q: "¿Cuál de estas causa un movimiento sobre la curva de demanda de pizza, y no un desplazamiento?",
+      opts: ["Una bajada del precio de la pizza", "Una subida de los ingresos de los consumidores", "Una bajada del precio del refresco, un complemento", "Una noticia de que la pizza es sana"], a: 0,
+      why: "Solo un cambio en el precio del propio bien te mueve sobre su curva de demanda. Todo lo demás desplaza la curva." },
+    { q: "Una ciudad fija un tope a los alquileres por debajo del alquiler de equilibrio. El resultado más probable es:",
+      opts: ["Un excedente de apartamentos", "Una escasez de apartamentos", "Ningún cambio en el mercado", "Alquileres más altos"], a: 1,
+      why: "Un precio máximo que obliga sube la cantidad demandada y baja la cantidad ofrecida, así que más gente quiere apartamentos de los que hay." },
+    { q: "Una máquina nueva reduce el costo de producir teléfonos inteligentes. ¿Qué pasa con el precio y la cantidad?",
+      opts: ["Sube el precio, sube la cantidad", "Baja el precio, sube la cantidad", "Baja el precio, baja la cantidad", "Sube el precio, baja la cantidad"], a: 1,
+      why: "Costos más bajos desplazan la oferta a la derecha. Con una curva de demanda con pendiente negativa, eso significa un precio más bajo y una cantidad más alta." },
+    { q: "A un precio de $50, la cantidad demandada es 300 y la ofrecida es 180. El mercado tiene:",
+      opts: ["Un excedente de 120, así que el precio bajará", "Una escasez de 120, así que el precio subirá", "Una escasez de 480", "Llegado al equilibrio"], a: 1,
+      why: "La demanda supera a la oferta en 300 − 180 = 120. Con escasez, los compradores compiten y empujan el precio hacia el equilibrio." },
+    { q: "Subir el precio de un bien de $10 a $11 baja la cantidad demandada de 100 a 80. La demanda de este bien es:",
+      opts: ["Inelástica, porque los compradores apenas reaccionan", "Elástica, porque la cantidad baja un 20% con una subida del 10% en el precio", "Perfectamente inelástica", "Con pendiente positiva"], a: 1,
+      why: "Elasticidad = −20% ÷ 10% = −2. Un valor mayor que 1 significa elástica: los compradores reaccionan mucho, así que la subida de precio baja el ingreso total." },
+  ];
+
+  FHLesson.init({ id: LESSON, short: "supply-demand", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });
 })();

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es" data-alt="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FinanceHub</title>
+  <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primer sueldo hasta Wall Street.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610261923">
+  <style>
+    .path { position: relative; margin-top: 40px; }
+    .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+    .part-name { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--accent); margin: 56px 0 8px 64px; }
+    .unit { position: relative; display: flex; gap: 20px; align-items: baseline; padding: 14px 0; color: inherit; text-decoration: none; }
+    .unit .n {
+      flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; position: relative; top: 10px;
+      font-family: var(--serif); font-size: 19px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3);
+    }
+    .unit h3 { margin: 0; font-size: clamp(22px, 3vw, 30px); color: var(--ink-3); transition: color .2s; }
+    .unit p { margin: 4px 0 0; font-size: 15px; color: var(--ink-3); }
+    .unit.live .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
+    .unit.live h3 { color: var(--ink); }
+    .unit.live p { color: var(--accent); font-weight: 600; }
+    .unit.live:hover h3 { color: var(--accent); }
+    .unit.live > div:last-child { flex: 1; background: var(--card); padding: 16px 20px 10px; border-radius: 20px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+    .unit .lessons a:hover { background: var(--paper-2); }
+    .unit .lessons { list-style: none; padding: 0; margin: 14px 0 6px; display: grid; gap: 2px; }
+    .unit .lessons a { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; padding: 10px 14px 10px 10px; border-radius: 12px; color: inherit; text-decoration: none; transition: background .2s; }
+    .unit .lessons a:hover { background: var(--card); }
+    .unit .lessons .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 5px; box-shadow: inset 0 0 0 2px var(--accent); }
+    .unit .lessons a.done .dot { background: var(--accent); box-shadow: none; }
+    .unit .lessons b { font-family: var(--serif); font-weight: 500; font-size: 19px; color: var(--ink); }
+    .unit .lessons small { color: var(--ink-3); font-size: 14px; }
+    .continue { display: inline-flex; flex-direction: column; gap: 8px; }
+    .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
+    .home-fold { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 40px; min-height: calc(100svh / var(--z, 1) - 64px); padding: 24px 0 64px; }
+    .home-fold { position: relative; isolation: isolate; }
+    body { overflow-x: clip; }
+    .home-fold h1 { font-size: clamp(42px, 4.4vw, 62px); }
+    .home-fold .lead { font-size: 18px; }
+    .home-fold .lead b { color: var(--accent); font-weight: 600; }
+    .learn-pick { padding: clamp(20px, 2.4vw, 28px); background: color-mix(in srgb, var(--card) 70%, transparent); backdrop-filter: blur(6px); border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 70px -40px rgba(60, 40, 20, .5); }
+    .lp-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
+    .learn-pick h2 { margin: 0 0 6px; font-size: clamp(28px, 2.6vw, 36px); }
+    .learn-pick > p { margin: 0 0 16px; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+    .path-wrap { overflow-x: clip; overflow-clip-margin: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 48px; }
+    .path { margin-top: 0; }
+    .hero-setup { margin: 20px 0 0; font-size: 15px; color: var(--ink-3); }
+    .hero-setup a { color: var(--accent); font-weight: 600; }
+    .my-path-card { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 20px 24px; margin: 8px 0 16px; border-radius: 20px; background: var(--accent-soft); }
+    .my-path-card .kicker { margin: 0 0 4px; color: var(--accent); }
+    .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
+    .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
+    .my-path-card .btn { flex: none; }
+    .unit .path-tag { display: inline-block; vertical-align: middle; font-family: var(--sans); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); position: relative; top: -3px; }
+    .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
+    .unit.off-path { opacity: .55; }
+    .unit.off-path:hover { opacity: 1; }
+    @media (max-width: 640px) { .my-path-card { flex-direction: column; align-items: stretch; } }
+    .part-name, #styles, #my-path { scroll-margin-top: 88px; }
+    .road { position: sticky; top: calc(50svh / var(--z, 1) - 230px); align-self: start; padding-top: 48px; text-align: center; }
+    .road .ss-art { max-width: 380px; margin: 0 auto; }
+    .road .ss-cap b { font-size: 26px; }
+    .road .ss-cap small { font-size: 12px; }
+    @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
+    @media (max-width: 1024px) {
+      .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; padding-bottom: 32px; }
+        .path-wrap { grid-template-columns: 1fr; }
+      .road { display: none; }
+    }
+    @media (max-width: 420px) { .lp-grid { grid-template-columns: 1fr; } }
+
+    /* Right-margin scene: one drawing per part of the course, swapped as you scroll. */
+    .ss-art svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .ss-disk { fill: var(--paper-2); stroke: var(--line); stroke-width: 1.5; }
+    .ss-cap { margin: 10px 0 0; display: grid; gap: 2px; transition: opacity .3s; }
+    .ss-cap small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+    .ss-cap b { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.2; color: var(--ink); }
+    .ss-cap.swap { opacity: 0; }
+    .scene { opacity: 0; transition: opacity .5s var(--ease); }
+    .scene.on { opacity: 1; }
+    .scene .axis { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linecap: round; opacity: .6; }
+    .scene .lbl { font-family: var(--sans); font-size: 12px; fill: var(--ink-3); }
+    .scene .big { font-family: var(--serif); font-size: 19px; fill: var(--ink); }
+    .scene .draw { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s var(--ease) .2s; }
+    .scene.on .draw { stroke-dashoffset: 0; }
+    .demand { stroke: var(--accent); stroke-width: 5; }
+    .supply { stroke: #d9822b; stroke-width: 5; }
+    .guide { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 1; opacity: .5; }
+    .meet { fill: var(--card); stroke: var(--ink); stroke-width: 3; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s var(--ease) 1.2s; }
+    .scene.on .meet { transform: scale(1); }
+    .slice { fill: none; stroke-width: 34; stroke-dasharray: 0 100; transition: stroke-dasharray 1s var(--ease), stroke-dashoffset 1s var(--ease); }
+    .s1 { stroke: var(--needs); } .s2 { stroke: var(--wants); } .s3 { stroke: var(--savings); }
+    .scene.on .s1 { stroke-dasharray: 49 51; }
+    .scene.on .s2 { stroke-dasharray: 29 71; stroke-dashoffset: -50; transition-delay: .25s; }
+    .scene.on .s3 { stroke-dasharray: 19 81; stroke-dashoffset: -80; transition-delay: .5s; }
+    .bar { fill: var(--accent); opacity: .85; transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); transition: transform .7s var(--ease); transition-delay: calc(var(--i) * 90ms); }
+    .bar:nth-of-type(n+5) { fill: #e0b24a; }
+    .scene.on .bar { transform: none; }
+    .trend { stroke: var(--ink); stroke-width: 3; transition-delay: .6s; }
+    .trend-head { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .3s 1.6s; }
+    .scene.on .trend-head { opacity: 1; }
+    .candle path { stroke-width: 2; }
+    .candle.up rect { fill: var(--good); } .candle.up path { stroke: var(--good); }
+    .candle.down rect { fill: var(--danger); } .candle.down path { stroke: var(--danger); }
+    .candle { opacity: 0; transform: translateY(14px); transition: opacity .4s, transform .5s var(--ease); transition-delay: calc(var(--i) * 100ms); }
+    .scene.on .candle { opacity: 1; transform: none; }
+    .price { stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 1; opacity: .7; transition-delay: .7s; }
+    .case { fill: #8a5a34; stroke: #5e3b20; stroke-width: 3; }
+    .case-h { fill: none; stroke: #5e3b20; stroke-width: 8; stroke-linecap: round; }
+    .case-l { stroke: #5e3b20; stroke-width: 3; }
+    .case-lock { fill: #e0b24a; stroke: #a87b12; stroke-width: 2; }
+    [data-s="5"] .case, [data-s="5"] .case-h, [data-s="5"] .case-l, [data-s="5"] .case-lock { transform-box: view-box; transform-origin: 140px 200px; transform: scale(.8) translateY(20px); transition: transform .7s var(--ease); }
+    .scene.on[data-s="5"] .case, .scene.on[data-s="5"] .case-h, .scene.on[data-s="5"] .case-l, .scene.on[data-s="5"] .case-lock { transform: none; }
+    .badge { fill: var(--accent); transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s var(--ease) .6s; }
+    .scene.on .badge { transform: scale(1); }
+    .tick { stroke: var(--on-color); stroke-width: 4; transition-delay: 1s; }
+  </style>
+</head>
+<body data-root="./">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="./">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Curso</a><a href="about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="account/">Entrar</a>
+  </div>
+</header>
+
+<nav class="rail" data-own aria-label="Secciones de la página">
+  <a href="#top"><i></i><span>Inicio</span></a>
+  <a href="#styles"><i></i><span>Cómo aprendes mejor</span></a>
+  <a href="#my-path"><i></i><span>Tu camino</span></a>
+  <a href="#part-1"><i></i><span>Parte 1 · Fundamentos</span></a>
+  <a href="#part-2"><i></i><span>Parte 2 · Tu dinero</span></a>
+  <a href="#part-3"><i></i><span>Parte 3 · Tu negocio</span></a>
+  <a href="#part-4"><i></i><span>Parte 4 · Wall Street</span></a>
+  <a href="#part-5"><i></i><span>Parte 5 · Tu carrera</span></a>
+</nav>
+<main class="wrap" id="main">
+  <section class="fold home-fold" id="top">
+    <div>
+      <h1 class="reveal">Aprende de dinero<br><em>a tu manera.</em></h1>
+      <p class="lead reveal">Una sola historia, desde tu primer sueldo hasta un trato en Wall Street. Cada lección se enseña de ocho maneras distintas, y <b>tú eliges cómo aprender</b>: verlo, escucharlo, jugarlo, entender la lógica paso a paso y más. Cada una te muestra qué estás haciendo, por qué importa, cómo funciona y quién se dedica a eso. Y cada lección tiene algo para jugar.</p>
+      <div class="continue reveal"><a class="btn" href="lessons/scarcity/" id="continue"><span>Empezar Unidad 1 · Lección 1</span> <span class="arrow">→</span></a><small id="continue-title">Cada decisión tiene un precio</small></div>
+      <p class="hero-setup reveal" id="hero-setup">¿Eres nuevo aquí? <a href="start/">Crea tu propio camino</a> en más o menos un minuto.</p>
+    </div>
+    <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
+      <div class="lp-kicker">Hazlo tuyo</div>
+      <h2 id="styles-h">¿Cómo <em>aprendes mejor?</em></h2>
+      <p>Elige todos los que quieras. Lo que elijas se abre primero en cada lección, y lo demás se pliega hasta que lo necesites.</p>
+      <div class="lp-grid" id="lp-grid"></div>
+      <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Elegir todos</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+    </section>
+  </section>
+
+
+
+  <div class="my-path-card reveal" id="my-path"></div>
+  <div class="path-wrap">
+  <div class="path">
+    <div class="part-name reveal" id="part-1" data-part="1">Parte 1 · Fundamentos</div>
+    <div class="unit live open reveal"><div class="n">1</div><div><h3>Cómo funciona el sistema del dinero</h3><p>4 lecciones abiertas. Empieza aquí.</p>
+      <ol class="lessons">
+        <li><a href="lessons/scarcity/" data-unit="1" data-n="1" data-lesson="u1-scarcity"><span class="dot"></span><b>Cada decisión tiene un precio</b><small>Escasez y decisiones · Diez horas libres</small></a></li>
+        <li><a href="lessons/supply-demand/" data-unit="1" data-n="2" data-lesson="u1-supply-demand"><span class="dot"></span><b>Por qué los precios son lo que son</b><small>Oferta y demanda · El puesto del mercado</small></a></li>
+        <li><a href="lessons/inflation/" data-unit="1" data-n="3" data-lesson="u1-inflation"><span class="dot"></span><b>Por qué tu dinero se encoge</b><small>Inflación y PIB · Gánale a la inflación</small></a></li>
+        <li><a href="lessons/interest-rates/" data-unit="1" data-n="4" data-lesson="u1-interest-rates"><span class="dot"></span><b>¿Quién pone el precio del dinero?</b><small>Tasas de interés y la Fed · La perilla de tasas</small></a></li>
+      </ol>
+    </div></div>
+    <div class="unit reveal"><div class="n">2</div><div><h3>Mentalidad y matemáticas del dinero</h3><p>Muy pronto</p></div></div>
+
+    <div class="part-name reveal" id="part-2" data-part="2">Parte 2 · Tu dinero</div>
+    <div class="unit reveal"><div class="n">3</div><div><h3>Ingresos e impuestos</h3><p>Muy pronto</p></div></div>
+    <div class="unit live open reveal"><div class="n">4</div><div><h3>Presupuesto y bancos</h3><p>1 lección abierta.</p>
+      <ol class="lessons">
+        <li><a href="lessons/budgeting/" data-unit="4" data-n="1" data-lesson="u4-budgeting-frameworks"><span class="dot"></span><b>Dale un trabajo a cada dólar</b><small>Métodos de presupuesto · Sobrevive el mes</small></a></li>
+      </ol>
+    </div></div>
+    <div class="unit reveal"><div class="n">5</div><div><h3>Crédito y deudas</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">6</div><div><h3>Protección</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">7</div><div><h3>Inversión y jubilación</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">8</div><div><h3>Compras grandes</h3><p>Muy pronto</p></div></div>
+
+    <div class="part-name reveal" id="part-3" data-part="3">Parte 3 · Tu negocio</div>
+    <div class="unit reveal"><div class="n">9</div><div><h3>Empezar un negocio</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">10</div><div><h3>Contabilidad</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">11</div><div><h3>Finanzas corporativas</h3><p>Muy pronto</p></div></div>
+
+    <div class="part-name reveal" id="part-4" data-part="4">Parte 4 · Mercados y Wall Street</div>
+    <div class="unit reveal"><div class="n">12</div><div><h3>Inversiones y portafolios</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">13</div><div><h3>Valuación y modelos</h3><p>Muy pronto</p></div></div>
+    <div class="unit reveal"><div class="n">14</div><div><h3>Macroeconomía, mercados e instituciones</h3><p>Muy pronto</p></div></div>
+
+    <div class="part-name reveal" id="part-5" data-part="5">Parte 5 · Tu carrera</div>
+    <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL y reclutamiento</h3><p>Muy pronto</p></div></div>
+  </div>
+  <aside class="road side-scene" aria-hidden="true">
+  <div class="ss-art">
+  <svg viewBox="0 0 280 260">
+    <circle cx="140" cy="130" r="118" class="ss-disk"/>
+    <g class="scene" data-s="1">
+      <path class="axis" d="M50 40V210H240"/>
+      <path class="draw demand" pathLength="1" d="M62 58 C 110 110, 170 160, 228 196"/>
+      <path class="draw supply" pathLength="1" d="M62 196 C 120 160, 170 110, 228 58"/>
+      <path class="guide draw" pathLength="1" d="M145 127V210M145 127H50"/>
+      <circle class="meet" cx="145" cy="127" r="8"/>
+      <text x="232" y="214" class="lbl" text-anchor="end">cantidad</text><text x="56" y="36" class="lbl">precio</text>
+    </g>
+    <g class="scene" data-s="2" transform="rotate(-90 140 130)">
+      <circle class="slice s1" cx="140" cy="130" r="68" pathLength="100"/>
+      <circle class="slice s2" cx="140" cy="130" r="68" pathLength="100"/>
+      <circle class="slice s3" cx="140" cy="130" r="68" pathLength="100"/>
+    </g>
+    <g class="scene" data-s="2b"><text x="140" y="130" text-anchor="middle" class="big">50/30/20</text><text x="140" y="150" text-anchor="middle" class="lbl">presupuesto</text></g>
+    <g class="scene" data-s="3">
+      <path class="axis" d="M50 210H240"/>
+      <rect class="bar" style="--i:0" x="62" y="170" width="20" height="40" rx="4"/><rect class="bar" style="--i:1" x="92" y="148" width="20" height="62" rx="4"/><rect class="bar" style="--i:2" x="122" y="156" width="20" height="54" rx="4"/><rect class="bar" style="--i:3" x="152" y="122" width="20" height="88" rx="4"/><rect class="bar" style="--i:4" x="182" y="98" width="20" height="112" rx="4"/><rect class="bar" style="--i:5" x="212" y="64" width="20" height="146" rx="4"/>
+      <path class="draw trend" pathLength="1" d="M66 152 L 98 132 L 128 140 L 160 104 L 190 82 L 226 50"/>
+      <path class="trend-head" d="M214 48 L 228 48 L 228 62"/>
+    </g>
+    <g class="scene" data-s="4">
+      <path class="axis" d="M50 210H240"/>
+      <g class="candle down" style="--i:0"><path d="M70 150V200"/><rect x="62" y="160" width="16" height="30" rx="2"/></g><g class="candle up" style="--i:1"><path d="M98 130V190"/><rect x="90" y="140" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:2"><path d="M126 120V176"/><rect x="118" y="130" width="16" height="30" rx="2"/></g><g class="candle down" style="--i:3"><path d="M154 128V180"/><rect x="146" y="140" width="16" height="26" rx="2"/></g><g class="candle up" style="--i:4"><path d="M182 92V150"/><rect x="174" y="100" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:5"><path d="M210 62V128"/><rect x="202" y="72" width="16" height="40" rx="2"/></g>
+      <path class="draw price" pathLength="1" d="M70 175 L 98 158 L 126 145 L 154 153 L 182 118 L 210 92"/>
+    </g>
+    <g class="scene" data-s="5">
+      <rect class="case" x="62" y="88" width="156" height="112" rx="14"/>
+      <path class="case-h" d="M112 88V72a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v16"/>
+      <path class="case-l" d="M62 132h156"/>
+      <rect class="case-lock" x="128" y="122" width="24" height="20" rx="4"/>
+      <circle class="badge" cx="210" cy="84" r="24"/><path class="draw tick" pathLength="1" d="M199 84l8 8 14-16"/>
+    </g>
+  </svg>
+  </div>
+  <p class="ss-cap"><small id="ss-kick">Parte 1 · Fundamentos</small><b id="ss-title">Donde se encuentran los precios</b></p>
+  </aside>
+  </div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="about.html">Acerca de y contacto</a><a href="legal/privacy.html">Privacidad</a><a href="legal/terms.html">Términos</a><a href="legal/cookies.html">Cookies y almacenamiento</a><a href="legal/privacy.html#delete">Borrar mis datos</a><a href="credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../assets/js/save.js?v=202610261923"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../assets/js/auth.js?v=202610261923"></script>
+<script src="../assets/js/site.js?v=202610261923"></script>
+<script>
+document.getElementById("xp").textContent = FH.state.xp;
+const T = FH.t;
+// Lesson list: mark finished lessons and point the main button at the next one.
+const links = [...document.querySelectorAll(".lessons a")];
+links.forEach((a) => {
+  const l = FH.state.lessons[a.dataset.lesson];
+  if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += T(" · done", " · hecha"); }
+});
+// Your path: mark units your goals skip or you already know, and point the main button at the next lesson.
+const paintPath = () => {
+  const { on, known, setUp } = FH.path;
+  document.querySelectorAll(".path .unit").forEach((u) => {
+    const n = Number(u.querySelector(".n").textContent);
+    u.classList.toggle("off-path", setUp && !on.has(n));
+    u.classList.toggle("known", known.has(n));
+    let tag = u.querySelector(".path-tag");
+    const text = known.has(n) ? T("You know this", "Ya lo sabes") : setUp && !on.has(n) ? T("Extra", "Extra") : "";
+    if (!text) { if (tag) tag.remove(); return; }
+    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
+    tag.textContent = text;
+  });
+  const next = FH.nextLesson();
+  const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
+  if (next) {
+    const c = document.getElementById("continue");
+    c.href = next.href;
+    c.querySelector("span").textContent = T(`${started ? "Continue" : "Start"} Unit ${next.unit} · Lesson ${next.n}`, `${started ? "Continuar" : "Empezar"} Unidad ${next.unit} · Lección ${next.n}`);
+    document.getElementById("continue-title").textContent = next.title;
+  }
+  document.getElementById("hero-setup").hidden = setUp;
+  const card = document.getElementById("my-path");
+  const p = FH.state.profile;
+  if (setUp) {
+    const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
+    const todo = [...on].filter((n) => !known.has(n)).length;
+    card.innerHTML = T(
+      `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b> and <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><a class="btn sm line" href="start/">Change my path</a>`,
+      `<div><p class="kicker">Tu camino</p><p class="mp-text">Hecho para <b>${goals.join("</b> y <b>")}</b>. ${todo} unidades por aprender${known.size ? `, ${known.size} que ya sabes` : ""}. Las unidades marcadas como Extra no son necesarias para tu meta, pero siempre están abiertas.</p></div><a class="btn sm line" href="start/">Cambiar mi camino</a>`);
+  } else {
+    card.innerHTML = T(
+      `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`,
+      `<div><p class="kicker">¿No sabes por dónde empezar?</p><p class="mp-text">Cuéntanos por qué estás aprendiendo y qué ya sabes. En más o menos un minuto tendrás un camino que se salta lo que no necesitas.</p></div><a class="btn sm" href="start/">Crear mi camino</a>`);
+  }
+};
+paintPath();
+document.addEventListener("fh:save", paintPath);
+
+// How do you learn best? Multi-select, saved to the save file (and the account, if signed in).
+const grid = document.getElementById("lp-grid");
+FH.STYLES.forEach((st) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "lp-card";
+  b.dataset.id = st.id;
+  b.setAttribute("aria-pressed", "false");
+  b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
+  b.addEventListener("click", () => {
+    const cur = new Set(FH.state.styles || []);
+    cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);
+    FH.setStyles([...cur]);
+    paintStyles();
+  });
+  grid.appendChild(b);
+});
+const paintStyles = () => {
+  const picks = FH.state.styles || [];
+  grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
+  const all = picks.length === FH.STYLES.length;
+  document.getElementById("lp-all").textContent = all ? T("Clear all", "Quitar todos") : T("Select all", "Elegir todos");
+  document.getElementById("lp-status").textContent = !picks.length ? T("Nothing picked yet, so lessons show every part.", "Todavía no eliges nada, así que las lecciones muestran todas las partes.")
+    : all ? T("All eight picked. Lessons show every part.", "Elegiste los ocho. Las lecciones muestran todas las partes.") : T(`${picks.length} picked. Lessons will open these first.`, `${picks.length} elegidos. Las lecciones abrirán estos primero.`);
+};
+document.getElementById("lp-all").addEventListener("click", () => {
+  FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id));
+  paintStyles();
+});
+document.addEventListener("fh:save", paintStyles);
+paintStyles();
+
+// Right-margin scene follows the part you're reading.
+const SCENES = FH.lang === "es" ? [
+  null,
+  ["Parte 1 · Fundamentos", "Donde se encuentran los precios"],
+  ["Parte 2 · Tu dinero", "Dale un trabajo a cada dólar"],
+  ["Parte 3 · Tu negocio", "Haz crecer tus ventas"],
+  ["Parte 4 · Wall Street", "Lee el mercado"],
+  ["Parte 5 · Tu carrera", "Consigue el trabajo"],
+] : [
+  null,
+  ["Part 1 · Foundations", "Where prices meet"],
+  ["Part 2 · Your money", "Give every dollar a job"],
+  ["Part 3 · Your business", "Grow your revenue"],
+  ["Part 4 · Wall Street", "Read the market"],
+  ["Part 5 · Career launch", "Get hired"],
+];
+let sceneNow = -1;
+const showScene = (n) => {
+  if (n === sceneNow) return;
+  sceneNow = n;
+  document.querySelectorAll(".side-scene .scene").forEach((g) => g.classList.toggle("on", parseInt(g.dataset.s, 10) === n));
+  const cap = document.querySelector(".ss-cap");
+  cap.classList.add("swap");
+  setTimeout(() => { document.getElementById("ss-kick").textContent = SCENES[n][0]; document.getElementById("ss-title").textContent = SCENES[n][1]; cap.classList.remove("swap"); }, 250);
+};
+// Side rail and scene: light up the section you're looking at.
+const railLinks = [...document.querySelectorAll(".rail a")];
+const targets = railLinks.map((a) => document.querySelector(a.getAttribute("href")));
+const track = () => {
+  const mid = innerHeight * 0.45;
+  let cur = 0;
+  if (scrollY > innerHeight * 0.25) targets.forEach((t, i) => { if (t.getBoundingClientRect().top < mid) cur = i; });
+  // The last part can't reach the middle of the screen, so the very bottom counts as it.
+  if (scrollY + innerHeight >= document.documentElement.scrollHeight - 4) cur = targets.length - 1;
+  railLinks.forEach((a, i) => { a.classList.toggle("current", i === cur); a.classList.toggle("seen", i < cur); });
+  const part = Number(targets[cur].dataset.part || 0) || 1;
+  showScene(part);
+};
+let ticking = false;
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
+track();
+</script>
+</body>
+</html>

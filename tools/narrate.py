@@ -19,7 +19,7 @@ out_dir = os.path.join(lesson, "audio")
 os.makedirs(out_dir, exist_ok=True)
 
 for i, line in enumerate(spec["lines"], 1):
-    samples, rate = kokoro.create(line, voice=spec["voice"], speed=spec.get("speed", 1.0), lang="en-us")
+    samples, rate = kokoro.create(line, voice=spec["voice"], speed=spec.get("speed", 1.0), lang=spec.get("lang", "en-us"))
     with tempfile.NamedTemporaryFile(suffix=".wav") as wav:
         sf.write(wav.name, samples, rate)
         mp3 = os.path.join(out_dir, f"line-{i:02d}.mp3")

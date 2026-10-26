@@ -3,6 +3,7 @@
   const LESSON = "u1-scarcity";
   const { $, $$, fillRange, wait, shuffle } = FHLesson;
   const money = FH.money;
+  const T = FH.t;
   const NS = "http://www.w3.org/2000/svg";
 
   // ---------- See it: the price of an hour ----------
@@ -16,7 +17,7 @@
     $("#oc-earn").textContent = money(h * 15);
     $("#oc-free").textContent = `${10 - h} h`;
     $("#oc-cost").textContent = money((10 - h) * 15);
-    [...strip.children].forEach((s, i) => { s.className = i < h ? "k-mow" : "k-friends"; s.textContent = i < h ? "$15" : "fun"; });
+    [...strip.children].forEach((s, i) => { s.className = i < h ? "k-mow" : "k-friends"; s.textContent = i < h ? "$15" : T("fun", "ocio"); });
   };
   slider.addEventListener("input", renderOC);
   renderOC();
@@ -83,34 +84,34 @@
     for (const h of bikeHours) { if (rest <= 0) break; const n = Math.min(1, rest); parts.push(`${fmt(n * h)}\u00a0h`); bh += n * h; rest -= n; }
     const bikeNote = !parts.length ? "" : parts.length === 1 ? ` (${parts[0]})` : ` (${parts.join(" + ")} =\u00a0${fmt(bh)}\u00a0h)`;
     const hrs = l + bh;
-    const plan = [l ? `${l} lawn${l === 1 ? "" : "s"} (${l}\u00a0h)` : "", b ? `${fmt(b)} bike${b <= 1 ? "" : "s"}${bikeNote}` : ""].filter(Boolean).join(" + ") || "Nothing at all";
-    const hr = (n) => `${fmt(n)} hour${n === 1 ? "" : "s"}`;
+    const plan = [l ? T(`${l} lawn${l === 1 ? "" : "s"}`, `${l} ${l === 1 ? "jardín" : "jardines"}`) + ` (${l}\u00a0h)` : "", b ? T(`${fmt(b)} bike${b <= 1 ? "" : "s"}`, `${fmt(b)} bici${b <= 1 ? "" : "s"}`) + bikeNote : ""].filter(Boolean).join(" + ") || T("Nothing at all", "Nada de nada");
+    const hr = (n) => T(`${fmt(n)} hour${n === 1 ? "" : "s"}`, `${fmt(n)} hora${n === 1 ? "" : "s"}`);
     let kind;
     if (b === edge) {
       kind = "on"; c.setAttribute("fill", "var(--savings)"); c.setAttribute("stroke", "var(--ink)");
-      msg.innerHTML = `<b class="c-good">Efficient:</b> ${plan}. That uses all 10 hours.`;
+      msg.innerHTML = T(`<b class="c-good">Efficient:</b> ${plan}. That uses all 10 hours.`, `<b class="c-good">Eficiente:</b> ${plan}. Usa las 10 horas.`);
     } else if (b < edge) {
       kind = "in"; c.setAttribute("fill", "var(--paper)"); c.setAttribute("stroke", "var(--ink-3)");
-      msg.innerHTML = `<b>Wasteful:</b> ${plan}. That's ${hr(hrs)}, so ${hr(10 - hrs)} go unused.`;
+      msg.innerHTML = T(`<b>Wasteful:</b> ${plan}. That's ${hr(hrs)}, so ${hr(10 - hrs)} go unused.`, `<b>Desperdicio:</b> ${plan}. Son ${hr(hrs)}, así que ${hr(10 - hrs)} quedan sin usar.`);
     } else {
       kind = "out"; c.setAttribute("fill", "none"); c.setAttribute("stroke", "var(--danger)");
-      msg.innerHTML = `<b class="c-danger">Impossible:</b> ${plan}. That's ${hr(hrs)}, and you only have 10.`;
+      msg.innerHTML = T(`<b class="c-danger">Impossible:</b> ${plan}. That's ${hr(hrs)}, and you only have 10.`, `<b class="c-danger">Imposible:</b> ${plan}. Son ${hr(hrs)}, y solo tienes 10.`);
     }
     tested.add(kind);
-    if (tested.size === 3) FH.badge("ppf-explorer", "Frontier Explorer");
+    if (tested.size === 3) FH.badge("ppf-explorer", T("Frontier Explorer", "Explorador de la frontera"));
   });
   $("#ppf-grow").addEventListener("click", () => {
     const old = $("#ppf-old");
     const from = bikeHours;
     if (grown) {
       grown = false; bikeHours = OLD_BIKES; old.setAttribute("opacity", 0);
-      $("#ppf-grow").textContent = "Buy a $60 repair stand";
-      msg.innerHTML = "<b>Back to your old tools.</b> Without the stand, your four bikes take 1 + 2 + 3 + 4 = 10 hours, so the curve goes back to where it was: at most 4 bikes.";
+      $("#ppf-grow").textContent = T("Buy a $60 repair stand", "Comprar un soporte de $60");
+      msg.innerHTML = T("<b>Back to your old tools.</b> Without the stand, your four bikes take 1 + 2 + 3 + 4 = 10 hours, so the curve goes back to where it was: at most 4 bikes.", "<b>De vuelta a tus herramientas viejas.</b> Sin el soporte, tus cuatro bicis tardan 1 + 2 + 3 + 4 = 10 horas, así que la curva vuelve a donde estaba: 4 bicis como máximo.");
     } else {
       old.setAttribute("d", pathFor(OLD_BIKES)); old.setAttribute("opacity", 1);
       grown = true; bikeHours = NEW_BIKES;
-      $("#ppf-grow").textContent = "Go back to old tools";
-      msg.innerHTML = "<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster. The flat tire bike still takes 1 hour, the chain bike now takes 1 hour (was 2), the brakes bike 2 hours (was 3), and the rusty bike 2 hours (was 4). Those are four separate bikes, so together they now take 1 + 1 + 2 + 2 = 6 hours instead of 10, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.";
+      $("#ppf-grow").textContent = T("Go back to old tools", "Volver a las herramientas viejas");
+      msg.innerHTML = T("<b>You bought a repair stand.</b> It holds the bike steady, so the bigger jobs go faster. The flat tire bike still takes 1 hour, the chain bike now takes 1 hour (was 2), the brakes bike 2 hours (was 3), and the rusty bike 2 hours (was 4). Those are four separate bikes, so together they now take 1 + 1 + 2 + 2 = 6 hours instead of 10, which leaves time for a fifth bike. So the curve moved out: you can now fix up to 5 bikes in the same 10 hours. The dashed line is your old curve. When the most you can make goes up like this, economists call it <b>growth</b>.", "<b>Compraste un soporte de reparación.</b> Sujeta la bici firme, así que los trabajos grandes van más rápido. La bici del pinchazo sigue tardando 1 hora, la de la cadena ahora tarda 1 hora (antes 2), la de los frenos 2 horas (antes 3) y la oxidada 2 horas (antes 4). Son cuatro bicis distintas, así que juntas ahora tardan 1 + 1 + 2 + 2 = 6 horas en vez de 10, y queda tiempo para una quinta bici. Por eso la curva se movió hacia afuera: ahora puedes arreglar hasta 5 bicis en las mismas 10 horas. La línea punteada es tu curva vieja. Cuando lo máximo que puedes producir sube así, los economistas lo llaman <b>crecimiento</b>.");
     }
     ppf.classList.add("growing");
     animatePPF(from, bikeHours);
@@ -130,16 +131,16 @@
   // ---------- Play it: Ten Free Hours ----------
   const GOAL_MONEY = 200, GOAL_STUDY = 12;
   const ACTS = [
-    { id: "mow", name: "Mow lawns", unit: 1, desc: "$15 an hour. Tiring.", color: "var(--savings)" },
-    { id: "bike", name: "Fix a bike to resell", unit: 4, desc: "4 hours each. About $70 profit.", color: "var(--needs)" },
-    { id: "gig", name: "Help a neighbor move", unit: 1, desc: "$25 an hour, this weekend only. Exhausting.", color: "var(--accent)", eventOnly: true },
-    { id: "study", name: "SAT practice", unit: 1, desc: "1 hour of practice. Draining.", color: "#7a5bb5" },
-    { id: "friends", name: "Friends and rest", unit: 1, desc: "Recharges your energy.", color: "var(--wants)" },
+    { id: "mow", name: T("Mow lawns", "Cortar césped"), unit: 1, desc: T("$15 an hour. Tiring.", "$15 la hora. Cansa."), color: "var(--savings)" },
+    { id: "bike", name: T("Fix a bike to resell", "Arreglar una bici para revender"), unit: 4, desc: "", color: "var(--needs)" },
+    { id: "gig", name: T("Help a neighbor move", "Ayudar a un vecino a mudarse"), unit: 1, desc: T("$25 an hour, this weekend only. Exhausting.", "$25 la hora, solo este fin de semana. Agotador."), color: "var(--accent)", eventOnly: true },
+    { id: "study", name: T("SAT practice", "Práctica del SAT"), unit: 1, desc: T("1 hour of practice. Draining.", "1 hora de práctica. Agota."), color: "#7a5bb5" },
+    { id: "friends", name: T("Friends and rest", "Amigos y descanso"), unit: 1, desc: T("Recharges your energy.", "Recarga tu energía."), color: "var(--wants)" },
   ];
   const EVENTS = [
-    { id: "rain", text: "It's raining all weekend. No lawns can be mowed.", apply: (w) => { w.noMow = true; } },
-    { id: "gig", text: "A neighbor is moving and will pay $25 an hour, up to 4 hours.", apply: (w) => { w.gig = true; } },
-    { id: "parts", text: "A garage sale has cheap parts. Each bike you fix earns $95 this weekend.", apply: (w) => { w.bikePay = 95; } },
+    { id: "rain", text: T("It's raining all weekend. No lawns can be mowed.", "Llueve todo el fin de semana. No se puede cortar césped."), apply: (w) => { w.noMow = true; } },
+    { id: "gig", text: T("A neighbor is moving and will pay $25 an hour, up to 4 hours.", "Un vecino se muda y paga $25 la hora, hasta 4 horas."), apply: (w) => { w.gig = true; } },
+    { id: "parts", text: T("A garage sale has cheap parts. Each bike you fix earns $95 this weekend.", "Una venta de garaje tiene piezas baratas. Cada bici que arregles deja $95 este fin de semana."), apply: (w) => { w.bikePay = 95; } },
   ];
   const S = { week: 0, money: 0, study: 0, energy: 70, log: [] };
   let W, plan, busy = false;
@@ -149,10 +150,10 @@
     W = { hours: S.energy < 30 ? 7 : 10, noMow: false, gig: false, bikePay: 70, event: deck[S.week] };
     if (W.event) W.event.apply(W);
     plan = { mow: 0, bike: 0, gig: 0, study: 0, friends: 0 };
-    $("#g-week").textContent = `Weekend ${S.week + 1} of 4`;
+    $("#g-week").textContent = T(`Weekend ${S.week + 1} of 4`, `Fin de semana ${S.week + 1} de 4`);
     const notes = [];
     if (W.event) notes.push(W.event.text);
-    if (W.hours < 10) notes.push("You're burned out, so you only have 7 useful hours this weekend.");
+    if (W.hours < 10) notes.push(T("You're burned out, so you only have 7 useful hours this weekend.", "Estás agotado, así que solo tienes 7 horas útiles este fin de semana."));
     $("#g-event-note").innerHTML = notes.map((n) => `<b>${n}</b>`).join(" ");
     renderActs();
   };
@@ -169,16 +170,16 @@
       const row = document.createElement("div");
       row.className = "act" + (off ? " off" : "");
       row.style.setProperty("--c", a.color);
-      const desc = a.id === "bike" ? `4 hours each. About $${W.bikePay} profit.` : a.desc;
-      row.innerHTML = `<div class="act-name"><i></i><div><b>${a.name}</b><small>${off ? "Rained out" : desc}</small></div></div>
-        <div class="stepper"><button aria-label="Less ${a.name}" data-d="-1">−</button><output>${plan[a.id]} h</output><button aria-label="More ${a.name}" data-d="1">+</button></div>`;
+      const desc = a.id === "bike" ? T(`4 hours each. About $${W.bikePay} profit.`, `4 horas cada una. Unos $${W.bikePay} de ganancia.`) : a.desc;
+      row.innerHTML = `<div class="act-name"><i></i><div><b>${a.name}</b><small>${off ? T("Rained out", "Suspendido por lluvia") : desc}</small></div></div>
+        <div class="stepper"><button aria-label="${T("Less", "Menos")} ${a.name}" data-d="-1">−</button><output>${plan[a.id]} h</output><button aria-label="${T("More", "Más")} ${a.name}" data-d="1">+</button></div>`;
       $$("button", row).forEach((b) => b.addEventListener("click", () => {
         if (busy || off) return;
         const d = +b.dataset.d * a.unit;
         const next = plan[a.id] + d;
         if (next < 0) return;
-        if (d > 0 && used() + d > W.hours) { FH.toast(a.id === "bike" ? "A bike needs 4 free hours." : "No hours left. Take some from somewhere else."); return; }
-        if (a.id === "gig" && next > 4) { FH.toast("The move only needs 4 hours."); return; }
+        if (d > 0 && used() + d > W.hours) { FH.toast(a.id === "bike" ? T("A bike needs 4 free hours.", "Una bici necesita 4 horas libres.") : T("No hours left. Take some from somewhere else.", "No quedan horas. Quita de otra actividad.")); return; }
+        if (a.id === "gig" && next > 4) { FH.toast(T("The move only needs 4 hours.", "La mudanza solo necesita 4 horas.")); return; }
         plan[a.id] = next;
         $("output", row).textContent = `${next} h`;
         renderStrip();
@@ -196,7 +197,7 @@
     for (; n < W.hours; n++) gStrip.appendChild(document.createElement("span"));
     for (; n < 10; n++) { const s = document.createElement("span"); s.className = "lost"; gStrip.appendChild(s); }
     const left = W.hours - used();
-    $("#g-left").textContent = left ? `${left} hour${left === 1 ? "" : "s"} left` : "Every hour has a job";
+    $("#g-left").textContent = left ? T(`${left} hour${left === 1 ? "" : "s"} left`, `Queda${left === 1 ? "" : "n"} ${left} hora${left === 1 ? "" : "s"}`) : T("Every hour has a job", "Cada hora tiene un trabajo");
     $("#g-left").style.color = left ? "" : "var(--good)";
     $("#g-go").disabled = left !== 0;
   };
@@ -225,12 +226,12 @@
     renderGauges();
     const best = bestPaid();
     const parts = [];
-    if (earned) parts.push(`earned <b>${money(earned)}</b>`);
-    if (plan.study) parts.push(`studied <b>${plan.study} h</b>`);
-    if (plan.friends) parts.push(`rested <b>${plan.friends} h</b>`);
+    if (earned) parts.push(T(`earned <b>${money(earned)}</b>`, `ganaste <b>${money(earned)}</b>`));
+    if (plan.study) parts.push(T(`studied <b>${plan.study} h</b>`, `estudiaste <b>${plan.study} h</b>`));
+    if (plan.friends) parts.push(T(`rested <b>${plan.friends} h</b>`, `descansaste <b>${plan.friends} h</b>`));
     const unpaid = plan.study + plan.friends;
-    const oc = unpaid ? ` Those ${unpaid} unpaid hours had an opportunity cost of <b>${money(unpaid * best)}</b>, at your best rate of ${money(best)} an hour.` : " You didn't rest or study at all. Watch your energy.";
-    log(`Weekend ${S.week + 1}: you ${parts.join(", ") || "did nothing"}.${oc}`, energyDelta < -15 ? "bad" : "good");
+    const oc = unpaid ? T(` Those ${unpaid} unpaid hours had an opportunity cost of <b>${money(unpaid * best)}</b>, at your best rate of ${money(best)} an hour.`, ` Esas ${unpaid} horas sin paga tuvieron un costo de oportunidad de <b>${money(unpaid * best)}</b>, a tu mejor tarifa de ${money(best)} la hora.`) : T(" You didn't rest or study at all. Watch your energy.", " No descansaste ni estudiaste nada. Cuida tu energía.");
+    log(T(`Weekend ${S.week + 1}: you ${parts.join(", ") || "did nothing"}.`, `Fin de semana ${S.week + 1}: ${parts.join(", ") || "no hiciste nada"}.`) + oc, energyDelta < -15 ? "bad" : "good");
     S.week++;
     await wait(500);
     busy = false;
@@ -243,28 +244,28 @@
     $("#g-strip").innerHTML = "";
     $("#g-event-note").textContent = "";
     $("#g-go").classList.add("hidden");
-    $("#g-left").textContent = "Summer's over";
-    $("#g-week").textContent = "Final results";
+    $("#g-left").textContent = T("Summer's over", "Se acabó el verano");
+    $("#g-week").textContent = T("Final results", "Resultados finales");
     const mScore = Math.min(1, S.money / GOAL_MONEY) * 40;
     const sScore = Math.min(1, S.study / GOAL_STUDY) * 40;
     const eScore = S.energy >= 40 ? 20 : (S.energy / 40) * 20;
     const score = Math.round(mScore + sScore + eScore);
     const grade = score >= 90 ? "A" : score >= 75 ? "B" : score >= 60 ? "C" : "D";
-    const hit = [S.money >= GOAL_MONEY && "the money goal", S.study >= GOAL_STUDY && "the SAT goal", S.energy >= 40 && "your energy"].filter(Boolean);
+    const hit = [S.money >= GOAL_MONEY && T("the money goal", "la meta de dinero"), S.study >= GOAL_STUDY && T("the SAT goal", "la meta del SAT"), S.energy >= 40 && T("your energy", "tu energía")].filter(Boolean);
     const lesson = hit.length === 3
-      ? "You hit all three. You found the mix where each hour went to whatever it was worth most."
-      : `You protected ${hit.length ? hit.join(" and ") : "nothing fully"}. Every goal you missed is the opportunity cost of the goals you chased. There's no plan that maxes everything, only trade-offs you choose on purpose.`;
+      ? T("You hit all three. You found the mix where each hour went to whatever it was worth most.", "Lograste las tres. Encontraste la mezcla en la que cada hora fue a lo que más valía.")
+      : T(`You protected ${hit.length ? hit.join(" and ") : "nothing fully"}. Every goal you missed is the opportunity cost of the goals you chased. There's no plan that maxes everything, only trade-offs you choose on purpose.`, `Protegiste ${hit.length ? hit.join(" y ") : "nada por completo"}. Cada meta que no lograste es el costo de oportunidad de las metas que perseguiste. No hay plan que lo maximice todo, solo renuncias que eliges a propósito.`);
     const r = $("#g-result");
     r.classList.remove("hidden");
     r.innerHTML = `<div class="result-grade"><span class="grade">${grade}</span><div><b>${score} / 100</b><p>${lesson}</p></div></div>
-      <p class="small muted">${money(S.money)} saved goes into your savings for the rest of the course.</p>
-      <button class="btn line" id="g-again">Play again</button>`;
+      <p class="small muted">${T(`${money(S.money)} saved goes into your savings for the rest of the course.`, `Los ${money(S.money)} ahorrados van a tus ahorros para el resto del curso.`)}</p>
+      <button class="btn line" id="g-again">${T("Play again", "Jugar otra vez")}</button>`;
     const l = FH.lesson(LESSON);
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, score);
     if (first) FH.updateCharacter({ checking: FH.state.character.checking + S.money });
-    FH.addXP(first ? 50 : 15, first ? "Finished Ten Free Hours" : "Another summer down");
-    if (grade === "A") FH.badge("ten-hours-a", "Ten Free Hours: A");
+    FH.addXP(first ? 50 : 15, first ? T("Finished Ten Free Hours", "Terminaste Diez horas libres") : T("Another summer down", "Otro verano más"));
+    if (grade === "A") FH.badge("ten-hours-a", T("Ten Free Hours: A", "Diez horas libres: A"));
     $("#g-again").addEventListener("click", () => {
       Object.assign(S, { week: 0, money: 0, study: 0, energy: 70 });
       deck.splice(1, 3, ...shuffle([...EVENTS]));
@@ -279,7 +280,7 @@
   newWeekend();
 
   // ---------- Check ----------
-  const QUIZ = [
+  const QUIZ_EN = [
     { q: "Jada can work a $16-an-hour shift or tutor for $20 an hour on Saturday. She goes to the beach instead. What's the opportunity cost of her beach day for a 4-hour block?",
       opts: ["$80", "$64", "$144", "$0, because she enjoyed it"], a: 0,
       why: "Opportunity cost is the value of the best alternative given up: tutoring at $20 × 4 = $80. You don't add the shift too, because she could only have done one." },
@@ -303,5 +304,29 @@
       why: "Buy one more as long as what it adds is bigger than what it costs. Machines 1 to 4 add $5,000 and cost $4,000, so each one gains $1,000. Machine 5 adds $3,500 but costs $4,000, so buying it loses $500. Stop at four. This is the repair-stand example from the lesson: more machines with the same workers means each extra one adds less (diminishing returns)." },
   ];
 
-  FHLesson.init({ id: LESSON, short: "scarcity", quiz: QUIZ });
+  const QUIZ_ES = [
+    { q: "Jada puede trabajar un turno de $16 la hora o dar clases particulares a $20 la hora el sábado. En cambio, se va a la playa. ¿Cuál es el costo de oportunidad de su día de playa en un bloque de 4 horas?",
+      opts: ["$80", "$64", "$144", "$0, porque lo disfrutó"], a: 0,
+      why: "El costo de oportunidad es el valor de la mejor alternativa a la que renuncias: dar clases a $20 × 4 = $80. No sumas también el turno, porque solo podía hacer una de las dos." },
+    { q: "En una frontera de posibilidades de producción, un punto dentro de la curva representa:",
+      opts: ["Una combinación imposible", "Un uso eficiente de los recursos", "Recursos sin usar o desperdiciados", "Crecimiento económico"], a: 2,
+      why: "Dentro de la frontera podrías producir más de al menos un bien sin renunciar a nada del otro, así que se están desperdiciando recursos." },
+    { q: "Un país puede producir 100 toneladas de trigo o 50 coches. Si la FPP es una línea recta, ¿cuál es el costo de oportunidad de un coche?",
+      opts: ["0.5 toneladas de trigo", "2 toneladas de trigo", "50 toneladas de trigo", "100 toneladas de trigo"], a: 1,
+      why: "Renunciar a las 100 toneladas da 50 coches, así que cada coche cuesta 100 ÷ 50 = 2 toneladas de trigo." },
+    { q: "¿Por qué una FPP suele estar curvada hacia afuera?",
+      opts: ["Los precios suben con el tiempo", "Los recursos no sirven igual de bien para producir ambos bienes", "La tecnología mejora", "La gente prefiere un bien"], a: 1,
+      why: "Piensa en Maya, Leo y Jordan. Para tener más bicis, primero cambias a quien mejor arregla bicis, así que las primeras bicis cuestan pocos jardines. Luego tienes que cambiar a gente peor con las bicis, así que cada bici extra cuesta más jardines. Costos que siguen subiendo hacen que la curva se abombe hacia afuera. Si todos fueran igual de buenos, sería una línea recta." },
+    { q: "¿Cuál de estas opciones desplazaría hacia afuera la FPP de un país?",
+      opts: ["Baja el desempleo", "Una nueva tecnología hace las fábricas más productivas", "Bajan los precios de los bienes", "La gente compra más coches y menos trigo"], a: 1,
+      why: "La curva solo se mueve cuando sube lo máximo que un país podría producir. La nueva tecnología hace eso: los mismos trabajadores y máquinas ahora producen más. Un desempleo más bajo solo pone a trabajar a gente parada, y mueve al país desde dentro hasta la curva que ya tenía. Comprar más coches y menos trigo es deslizarse por la misma curva. Y los precios no cambian cuánto se puede producir." },
+    { q: "Pagaste $40 por una entrada de concierto que no puedes revender. Ese día te sientes mal y preferirías quedarte en casa. ¿En qué deberías basar tu decisión?",
+      opts: ["En los $40, para no desperdiciarlos", "Solo en cómo te sientes ahora, porque los $40 son un costo hundido", "En si la banda es popular", "En un término medio: ir y salir temprano"], a: 1,
+      why: "Los $40 ya se fueron, vayas o no. Una decisión racional compara solo costos y beneficios futuros: ir enfermo frente a quedarte en casa." },
+    { q: "Una fábrica tiene 10 trabajadores y un edificio. Cada máquina nueva cuesta $4,000. Las máquinas 1 a 4 añaden $5,000 de producción cada una. Una 5.ª máquina añadiría solo $3,500, porque los mismos 10 trabajadores no pueden mantener ocupadas cinco máquinas. ¿Cuántas máquinas debería comprar la fábrica?",
+      opts: ["Todas las posibles", "Cuatro", "Cinco", "Ninguna"], a: 1,
+      why: "Compra una más mientras lo que añade sea mayor que lo que cuesta. Las máquinas 1 a 4 añaden $5,000 y cuestan $4,000, así que cada una gana $1,000. La máquina 5 añade $3,500 pero cuesta $4,000, así que comprarla pierde $500. Para en cuatro. Es el ejemplo del soporte de reparación de la lección: más máquinas con los mismos trabajadores hace que cada una extra añada menos (rendimientos decrecientes)." },
+  ];
+
+  FHLesson.init({ id: LESSON, short: "scarcity", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });
 })();

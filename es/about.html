@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" data-alt="../about.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Acerca de y contacto · FinanceHub</title>
+  <meta name="description" content="Qué es FinanceHub, para quién es y cómo contactarnos.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610261923">
+</head>
+<body data-root="./">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="./">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="./">Curso</a><a href="./about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../about.html" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="./account/">Entrar</a>
+  </div>
+</header>
+<main id="main" class="wrap narrow doc">
+<h1>Acerca de FinanceHub</h1>
+<p>FinanceHub enseña finanzas personales y negocios como una sola historia continua, desde un primer sueldo hasta un trato en Wall Street. Cada lección funciona para distintos tipos de estudiantes: puedes verla, escucharla, jugarla, entender la lógica paso a paso, conectarla con la naturaleza, leer y escribir sobre ella, platicarla con amigos o pensarla por tu cuenta.</p>
+<p>Está hecho para personas a las que les cuesta aprender en clases normales y quieren entender qué están haciendo, por qué importa, cómo funciona y quién se dedica a eso.</p>
+
+<h2>Lo básico</h2>
+<table>
+  <tr><th>Nombre</th><td>FinanceHub</td></tr>
+  <tr><th>A cargo de</th><td>Thomas Cobos, Texas, Estados Unidos</td></tr>
+  <tr><th>Correo</th><td><a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a></td></tr>
+  <tr><th>Qué es</th><td>Un sitio educativo gratuito e independiente</td></tr>
+  <tr><th>Precio</th><td>Gratis. Sin anuncios, sin planes de pago y sin contenido patrocinado.</td></tr>
+  <tr><th>Afiliaciones</th><td>Ninguna. FinanceHub no está conectado con ningún banco, corredor, escuela ni empresa financiera, y nadie le paga por mencionar ningún producto.</td></tr>
+  <tr><th>Asesoría</th><td>Solo educación. FinanceHub no es un asesor de inversiones registrado y no da asesoría financiera personal.</td></tr>
+</table>
+
+<h2 id="contact">Contacto</h2>
+<p>Escribe a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a> para preguntas, correcciones, solicitudes de privacidad (como ver o borrar tus datos) o cualquier otra cosa. Intentamos responder en unos días, y en un máximo de 30 días para solicitudes de privacidad.</p>
+<p>¿Encontraste un error en una lección? Nos encantaría saberlo. En un sitio de finanzas, la precisión importa mucho. También puedes <a href="https://github.com/ThomasCobosBernalDev/financehub/issues/new">reportarlo en GitHub</a>, pero por favor no publiques información personal ahí.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="./about.html">Acerca de y contacto</a><a href="./legal/privacy.html">Privacidad</a><a href="./legal/terms.html">Términos</a><a href="./legal/cookies.html">Cookies y almacenamiento</a><a href="./legal/privacy.html#delete">Borrar mis datos</a><a href="./credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../assets/js/save.js?v=202610261923"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../assets/js/auth.js?v=202610261923"></script>
+<script src="../assets/js/site.js?v=202610261923"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+
+</body>
+</html>

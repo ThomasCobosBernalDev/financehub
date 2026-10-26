@@ -1,0 +1,304 @@
+<!-- title: Por qué tu dinero se encoge -->
+<!-- description: Unidad 1, Lección 3: inflación, poder de compra, real vs. nominal y PIB. Intenta ganarle a la inflación en años reales de la historia. -->
+<!-- kicker: Unidad 1 · Lección 3 -->
+<!-- topic: Inflación y PIB -->
+
+<!-- @start -->
+        <h1 class="reveal">Por qué tu dinero <em>se encoge.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Tu puesto de bicis de la Lección 2 fue bien, y ahora tienes ahorros guardados en un cajón. Entonces tu abuelo comenta que una entrada de cine costaba unos <span class="mark">$2</span> cuando él tenía 17 años. Hoy cuesta unos $11. Tu efectivo sigue todo ahí. Entonces, ¿por qué cada año comprará un poco menos?</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Medir lo rápido que suben los precios (<dfn class="term" data-def="Los precios de toda la economía subiendo con el tiempo, así que cada dólar compra un poco menos.">inflación</dfn>) y cuánto produce un país entero (<dfn class="term" data-def="Producto interno bruto: el valor total de todo lo que un país produce y vende en un año.">PIB</dfn>).</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>El dinero que solo está guardado pierde valor poco a poco. Y si tu sueldo sube menos que los precios, en realidad estás peor.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Sigue el precio de una "canasta" de cosas cotidianas a lo largo del tiempo. Luego ajusta las cantidades de dinero con ella, convirtiendo dólares <dfn class="term" data-def="Medido en dólares tal cual, sin ajustar por inflación.">nominales</dfn> en poder de compra <dfn class="term" data-def="Ajustado por inflación, así que muestra lo que el dinero de verdad puede comprar.">real</dfn>.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>economistas del gobierno</b> la miden. Los <b>estrategas macro</b> de los bancos la predicen para que los inversionistas puedan planificar.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una canasta de compras cuya etiqueta de precio no deja de subir, junto a un billete de dólar que no deja de encogerse">
+          <g transform="translate(260 300)">
+            <g class="bill-shrink">
+              <rect x="-170" y="-80" width="340" height="160" rx="14" fill="var(--savings)" opacity=".18" stroke="var(--savings)" stroke-width="3"/>
+              <rect x="-150" y="-60" width="300" height="120" rx="8" fill="none" stroke="var(--savings)" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <circle r="40" fill="none" stroke="var(--savings)" stroke-width="3"/>
+              <text y="16" text-anchor="middle" font-family="Fraunces, serif" font-size="48" fill="var(--savings)">$</text>
+              <text x="-130" y="-30" font-family="Fraunces, serif" font-size="26" fill="var(--savings)">100</text>
+              <text x="130" y="50" text-anchor="end" font-family="Fraunces, serif" font-size="26" fill="var(--savings)">100</text>
+            </g>
+          </g>
+          <g transform="translate(260 96)">
+            <path d="M-80 -10 h160 l-18 70 h-124z" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M-50 -10 a50 40 0 0 1 100 0" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+            <circle cx="-34" cy="-22" r="13" fill="var(--danger)" stroke="var(--ink)" stroke-width="2"/>
+            <rect x="-10" y="-46" width="20" height="40" rx="4" fill="var(--needs)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M22 -12 q12 -26 30 -10" fill="var(--wants)" stroke="var(--ink)" stroke-width="2"/>
+            <g transform="translate(96 4)">
+              <path d="M12 0 h66 a8 8 0 0 1 8 8 v26 a8 8 0 0 1 -8 8 h-66 l-14 -21z" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+              <text x="48" y="28" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)" class="tick-price">$100</text>
+            </g>
+          </g>
+          <text x="260" y="470" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="21" fill="var(--ink-2)">el mismo billete, una canasta más chica</text>
+          <text x="260" y="500" text-anchor="middle" font-size="15" fill="var(--ink-3)">al 3% anual, en 10 años $100 compran unos $74 de lo de hoy</text>
+        </svg>
+
+<!-- @see -->
+      <h2 class="reveal">Viaja en el tiempo.<br>Mira cómo <em>suben</em> los precios.</h2>
+      <p class="lead reveal">Arrastra el control por los años. Cada año muestra cuánto habrían costado entonces los precios de hoy. Salen del <dfn class="term" data-def="Un número que el gobierno sigue cada mes y que muestra lo que cuesta una canasta típica de cosas cotidianas.">Índice de Precios al Consumidor (IPC)</dfn>, que el gobierno usa para medir lo que cuesta una canasta típica de comida, alquiler, gasolina y otras cosas cotidianas.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>IPC</dt><dd>La canasta está ajustada para que costara <b>$100</b> a principios de los 80. La misma canasta costaba <b>$38.80</b> en 1970 y unos <b>$313.70</b> en 2024, así que el IPC era 38.8 en 1970 y 313.7 en 2024.</dd></div></dl></div>
+
+      <div class="reveal" style="margin-top:36px">
+        <div class="payline"><span class="val" id="tm-year">1980</span><span class="muted" id="tm-sub">$100 de entonces compran lo que $381 hoy</span></div>
+        <input type="range" id="tm-slider" min="0" max="6" step="1" value="1" aria-label="Año" style="margin:20px 0 8px">
+        <div class="tm-years" aria-hidden="true"><span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span><span>2024</span></div>
+        <div class="basket" id="tm-basket"></div>
+        <div class="bill-row">
+          <div class="bill-box"><div class="bill" id="tm-bill"><span>$100</span></div></div>
+          <p id="tm-bill-note">Lo que $100 de 2024 habrían valido en ese año: el billete verde. Cuanto más atrás vas, más compraba un dólar.</p>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="margin-top:88px">Y el PIB: todo lo que produce un país en un año.</h3>
+      <p class="reveal">El PIB suma el valor de todo lo que se produce y se vende en un país en un año. EE. UU. produjo unos $29 billones en 2024. Los economistas lo dividen en cuatro partes, cada una con una letra:</p>
+      <ul class="reveal ppf-key">
+        <li><b>C, consumo:</b> lo que gastan los hogares, como comida, teléfonos y las bicis de tu puesto.</li>
+        <li><b>I, inversión:</b> lo que gastan las empresas en cosas que les ayudan a producir más después, como máquinas y edificios. Las casas nuevas también cuentan aquí.</li>
+        <li><b>G, gobierno:</b> lo que gasta el gobierno en cosas como carreteras, escuelas y el ejército.</li>
+        <li><b>XN, exportaciones netas:</b> lo que vendemos a otros países menos lo que les compramos.</li>
+      </ul>
+      <p class="muted reveal">Toca una parte de la barra para ver qué incluye.</p>
+      <div class="reveal" style="margin-top:24px">
+        <div class="gdp-bar" id="gdp-bar" role="group" aria-label="El PIB dividido en consumo, inversión, gobierno y exportaciones netas">
+          <button data-g="c" style="flex-basis:68%" class="bg-needs">C · 68%</button>
+          <button data-g="i" style="flex-basis:18%" class="bg-savings">I · 18%</button>
+          <button data-g="g" style="flex-basis:17%" class="bg-wants">G · 17%</button>
+        </div>
+        <div class="gdp-nx"><span>XN · cerca de −3%</span> EE. UU. importa más de lo que exporta, así que las exportaciones netas restan un poco.</div>
+        <p id="gdp-msg" class="gdp-msg" aria-live="polite"><b>PIB = C + I + G + (X − M)</b>. Toca una parte.</p>
+      </div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Gánale a la <em>inflación</em></h2>
+      <p class="lead reveal">Una máquina del tiempo te deja en cinco años reales de la historia. Cada año tomas dos decisiones: cuánto subir el precio de tus bicis y dónde guardar tus $1,000 de ahorros. Luego verás qué hicieron de verdad los precios ese año. Para ganar, tu dinero <b>real</b> (lo que puede comprar) tiene que crecer, no solo el número de dólares.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="b-era">Elige una época</div>
+            <div class="left-big" id="b-year">¿Adónde?</div>
+          </div>
+          <button class="btn" id="b-go" disabled>Vivir el año <span class="arrow">→</span></button>
+        </div>
+        <div class="era-pick" id="b-eras">
+          <button class="chip" data-era="70s">Los años 70</button>
+          <button class="chip" data-era="10s">Los años 2010</button>
+          <button class="chip" data-era="20s">Los años 2020</button>
+          <button class="chip" data-era="mystery">Sorpréndeme</button>
+        </div>
+        <div id="b-play" class="hidden">
+          <p class="split-note" id="b-hint"></p>
+          <div class="alloc" style="grid-template-columns:150px 1fr 84px">
+            <div class="name">Subir precio de la bici</div>
+            <input type="range" id="b-raise" min="0" max="15" step="0.5" value="3" aria-label="Sube el precio de tu bici este porcentaje">
+            <div class="amt" id="b-raise-v">+3%</div>
+            <div class="hint" id="b-price-hint">Nuevo precio: $118</div>
+          </div>
+          <div class="alloc" style="grid-template-columns:150px 1fr">
+            <div class="name">Guardar ahorros en</div>
+            <div class="save-opts" id="b-save">
+              <button class="chip on" data-s="cash">Caja</button>
+              <button class="chip" data-s="bank">Ahorros en el banco</button>
+              <button class="chip" data-s="tips">Bono protegido contra la inflación</button>
+            </div>
+            <div class="hint" id="b-save-hint" style="grid-column:2/-1"></div>
+          </div>
+        </div>
+        <svg id="b-chart" viewBox="0 0 700 220" role="img" aria-label="Tus ahorros en dólares y en poder de compra real a lo largo de los años" class="hidden">
+          <path d="M60 190 H680 M60 190 V20" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+          <g id="b-ticks" font-size="12" fill="var(--ink-3)"></g>
+          <path id="b-nom" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="6 6"/>
+          <path id="b-real" fill="none" stroke="var(--savings)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="b-dots"></g>
+          <text x="680" y="16" text-anchor="end" font-size="13" fill="var(--ink-2)"><tspan fill="var(--savings)" font-weight="700">━ poder de compra real</tspan>   <tspan fill="var(--ink-3)">┅ dólares</tspan></text>
+        </svg>
+        <div class="gauges" style="margin-top:20px">
+          <div class="gauge"><small>Ahorros, dólares</small><b id="b-nominal">$1,000</b></div>
+          <div class="gauge"><small>Ahorros, reales</small><b id="b-realv">$1,000</b></div>
+          <div class="gauge"><small>Ganancia real del puesto</small><b id="b-profit">$0</b></div>
+        </div>
+        <ul class="timeline" id="b-log"></ul>
+        <div id="b-result" class="hidden"></div>
+      </div>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">1. La tasa de inflación</h3>
+      <p class="reveal">La tasa de inflación es cuánto subió el IPC, en porcentaje. Toma cuánto creció y divídelo entre donde empezó. Si el IPC pasa de 200 a 210, creció 10, y <span class="frac"><span>10</span><span>200</span></span> = 0.05, así que la inflación fue del 5%.</p>
+      <div class="formula reveal">Inflación <span class="op">=</span> <span class="frac"><span>IPC de este año <span class="op">−</span> IPC del año pasado</span><span>IPC del año pasado</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tasa de inflación</dt><dd>El IPC pasa de 200 a 210: <span class="frac"><span>210 − 200</span><span>200</span></span> = <span class="frac"><span>10</span><span>200</span></span> = 0.05, así que la inflación fue del <b>5%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">2. Mover un precio en el tiempo</h3>
+      <p class="reveal">Para ver cuánto sería hoy un precio antiguo, multiplícalo por cuánto ha crecido el IPC desde entonces. El IPC era 38.8 en 1970 y unos 313.7 en 2024, así que los precios crecieron unas <span class="frac"><span>313.7</span><span>38.8</span></span> = 8.1 veces. Una entrada de cine de $2 en 1970 equivale a unos $16 de hoy.</p>
+      <div class="formula reveal">Precio en dólares de hoy <span class="op">=</span> precio antiguo <span class="op">×</span> <span class="frac"><span>IPC de hoy</span><span>IPC de entonces</span></span></div>
+
+      <h3 class="reveal">3. Real vs. nominal</h3>
+      <p class="reveal">Un número <dfn class="term" data-def="Medido en dólares tal cual, sin ajustar por inflación.">nominal</dfn> son dólares tal cual. Un número <dfn class="term" data-def="Ajustado por inflación, así que muestra lo que el dinero de verdad puede comprar.">real</dfn> le resta la inflación, así que muestra lo que de verdad puedes comprar. Si tu cuenta de ahorros paga 4% pero los precios suben 3%, tu dinero en realidad solo creció cerca de un 1%.</p>
+      <div class="formula reveal">Crecimiento real <span class="op">≈</span> crecimiento nominal <span class="op">−</span> inflación</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Nominal</dt><dd>Tu cuenta de ahorros paga <b>4%</b>. Ese es el número en dólares tal cual.</dd></div><div><dt>Real</dt><dd>Quita el 3% de inflación: 4% − 3% = cerca de <b>1%</b>. Eso es cuánto más puedes comprar de verdad.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿fue un aumento?</h3>
+      <ol class="steps reveal">
+        <li><b>Busca el IPC.</b> Promedió 292.7 en 2022 y 304.7 en 2023.</li>
+        <li><b>Calcula la inflación.</b> Creció 304.7 − 292.7 = 12. Luego <span class="frac"><span>12</span><span>292.7</span></span> = 0.041, así que los precios subieron cerca de un <b>4.1%</b>.</li>
+        <li><b>Mira el aumento.</b> Digamos que tu sueldo pasó de $18.00 a $18.36 la hora. Son 36 centavos más, y <span class="frac"><span>0.36</span><span>18</span></span> = 0.02, un aumento del 2% en dólares tal cual.</li>
+        <li><b>Resta la inflación.</b> 2% − 4.1% = <b>−2.1%</b>. Recibes más dólares, pero los precios subieron todavía más, así que puedes comprar cerca de un 2% menos que antes. En realidad es un recorte de sueldo.</li>
+        <li><b>Calcula qué te mantendría igual.</b> Para seguir el ritmo de una inflación del 4.1%, tu sueldo tenía que subir a $18.00 × 1.041 = <b>$18.74</b> la hora.</li>
+      </ol>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Aumento nominal</dt><dd>De $18.00 a $18.36 es <b>+2%</b> en dólares tal cual.</dd></div><div><dt>Aumento real</dt><dd>2% − 4.1% de inflación = <b>−2.1%</b>. En poder de compra, es un recorte de sueldo.</dd></div></dl></div>
+
+      <h3 class="reveal">4. PIB</h3>
+      <p class="reveal">El PIB son las cuatro partes sumadas: gasto de los hogares, inversión de las empresas, gasto del gobierno y exportaciones (X) menos importaciones (M).</p>
+      <div class="formula reveal">PIB <span class="op">=</span> C <span class="op">+</span> I <span class="op">+</span> G <span class="op">+</span> (X <span class="op">−</span> M)</div>
+      <p class="reveal">El PIB también puede ser real o nominal. Si el PIB en dólares creció un 5% pero los precios subieron un 3%, el país en realidad solo produjo cerca de un 2% más de cosas. Cuando el PIB real se encoge dos trimestres seguidos (seis meses), la gente suele llamarlo <dfn class="term" data-def="Un periodo en el que la economía se encoge: las empresas producen y venden menos, y más gente pierde su trabajo.">recesión</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>PIB</dt><dd>En EE. UU.: el gasto de los hogares (C) es cerca del <b>68%</b> del PIB, la inversión de las empresas (I) cerca del <b>18%</b>, el gobierno (G) cerca del <b>17%</b>, y las exportaciones menos las importaciones (X − M) cerca del <b>−3%</b>. Juntas suman 100%.</dd></div><div><dt>Recesión</dt><dd>A principios de 2020, los negocios cerraron por el COVID y el PIB real se encogió dos trimestres seguidos. Eso fue una recesión.</dd></div></dl></div>
+
+      <details class="deeper reveal">
+        <summary>Más a fondo: qué causa la inflación, la fórmula exacta y por qué un 2%</summary>
+        <div>
+          <p><b>1. Qué causa la inflación.</b> Hay dos tipos principales. La <dfn class="term" data-def="Inflación causada porque la gente y el gobierno intentan comprar más de lo que la economía puede producir.">inflación de demanda</dfn> ocurre cuando todos intentan comprar más de lo que la economía puede producir, así que los vendedores suben los precios. Pasó en 2021, cuando la gente tenía dinero extra de los cheques de estímulo. La <dfn class="term" data-def="Inflación causada porque de pronto cuesta más producir las cosas, como cuando se dispara el petróleo.">inflación de costos</dfn> ocurre cuando producir cosas de pronto sale más caro, como cuando se disparó el petróleo en 1973 y 1979. A lo largo de muchos años, los precios también suben cuando un país imprime dinero más rápido de lo que produce cosas: más dólares persiguiendo los mismos bienes.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Inflación de demanda</dt><dd>2021: la gente tenía dinero del estímulo y quería coches, pero las fábricas no podían hacer suficientes, así que los coches usados subieron más del 30% en un año.</dd></div><div><dt>Inflación de costos</dt><dd>1973: el petróleo se multiplicó más o menos por cuatro, así que la gasolina, el transporte y todo lo hecho de plástico costaba más producirlo, y los precios subieron.</dd></div></dl></div>
+          <p><b>2. La fórmula exacta.</b> "Real ≈ nominal − inflación" es un atajo. La versión exacta, llamada <dfn class="term" data-def="La relación exacta entre tasas nominales, tasas reales e inflación: (1 + nominal) = (1 + real) × (1 + inflación).">ecuación de Fisher</dfn>, es (1 + nominal) = (1 + real) × (1 + inflación). Con un 8% de interés y un 5% de inflación, la tasa real es <span class="frac"><span>1.08</span><span>1.05</span></span> − 1 = 2.86%, un poco menos que el 3% del atajo. La diferencia solo importa cuando los números son grandes.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ecuación de Fisher</dt><dd>8% de interés con 5% de inflación: (1 + 0.08) = (1 + real) × (1 + 0.05). Resuelve: real = <span class="frac"><span>1.08</span><span>1.05</span></span> − 1 = <b>2.86%</b>.</dd></div></dl></div>
+          <p><b>3. El IPC no es perfecto.</b> Cuando algo se encarece, la gente suele cambiar a una opción más barata, y los productos no dejan de mejorar (un teléfono de hoy hace muchísimo más que uno de 2010 por un dinero parecido). Así que el IPC puede hacer que la inflación parezca un poco peor de lo que se siente. Por otro lado, tu propia inflación depende de lo que compras <i>tú</i>. El alquiler y las matrículas universitarias han subido más rápido que el promedio.</p>
+          <p><b>4. ¿Por qué buscar un 2% y no un 0%?</b> La Reserva Federal (el banco central de EE. UU., que verás en la próxima lección) busca una inflación de cerca del 2% al año. Un poco de inflación es más seguro que la <dfn class="term" data-def="Precios que bajan en toda la economía. Suena bien, pero puede hacer que la gente deje de gastar y hundir la economía.">deflación</dfn>, cuando los precios bajan. Los precios a la baja suenan bien, pero la gente aplaza sus compras porque luego serán más baratas, las empresas venden menos y la gente pierde su trabajo.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Deflación</dt><dd>En la Gran Depresión, los precios en EE. UU. bajaron cerca de una cuarta parte de 1929 a 1933, y cerca de 1 de cada 4 trabajadores perdió su empleo.</dd></div></dl></div>
+        </div>
+      </details>
+
+<!-- @nature -->
+      <h2 class="reveal">El efectivo en un cajón es un estanque <em>en verano.</em></h2>
+      <p class="lead reveal">Un estanque sin un arroyo que lo alimente pierde agua por el sol cada día. No lo notas de un día para otro, pero para agosto la orilla ha retrocedido. La inflación evapora el dinero igual. El interés es el arroyo. Si el arroyo corre más despacio que la evaporación, el estanque sigue encogiéndose.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Dos estanques. El de la izquierda no tiene arroyo y se encoge bajo el sol. El de la derecha tiene un arroyo que lo alimenta y mantiene su nivel.">
+        <circle cx="450" cy="60" r="38" fill="#f6d36b"/>
+        <g stroke="#e3a91e" stroke-width="3" stroke-linecap="round" class="rays"><path d="M450 6v-8M450 122v-8M396 60h-8M512 60h-8M412 22l-6-6M488 98l6 6M412 98l-6 6M488 22l6-6"/></g>
+        <path d="M0 250 H900" stroke="var(--line)" stroke-width="2"/>
+        <ellipse cx="220" cy="270" rx="170" ry="34" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6"/>
+        <ellipse cx="220" cy="270" rx="110" ry="22" fill="var(--needs)" opacity=".45" class="shrink-pond"/>
+        <g stroke="var(--needs)" stroke-width="2" stroke-linecap="round" opacity=".6" class="vapor">
+          <path d="M180 220 q-6 -12 0 -24 q6 -12 0 -24"/><path d="M220 214 q-6 -12 0 -24 q6 -12 0 -24"/><path d="M260 220 q-6 -12 0 -24 q6 -12 0 -24"/>
+        </g>
+        <path d="M900 200 C 820 200, 780 240, 700 262" stroke="var(--needs)" stroke-width="14" fill="none" opacity=".45" stroke-linecap="round"/>
+        <path d="M900 200 C 820 200, 780 240, 700 262" stroke="#fff" stroke-width="2" fill="none" class="flow" opacity=".8"/>
+        <ellipse cx="660" cy="270" rx="150" ry="30" fill="var(--needs)" opacity=".45"/>
+        <ellipse cx="660" cy="270" rx="150" ry="30" fill="none" stroke="var(--ink)" stroke-width="2"/>
+        <text x="220" y="328" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Efectivo en un cajón</text>
+        <text x="660" y="328" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Ganando al menos la inflación</text>
+        <text x="300" y="160" font-size="17" fill="var(--ink-2)">evaporación = inflación</text>
+        <text x="880" y="180" text-anchor="end" font-size="17" fill="var(--ink-2)">arroyo = interés</text>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Los hidrólogos comparan la evaporación con lo que entra para saber si un lago está sano. Haz lo mismo con tu dinero: compara lo que gana con lo que se lleva la inflación. Ese único hábito es toda la razón por la que la gente invierte en vez de acumular efectivo.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Inflación:</b> precios que suben en toda la economía. Cada dólar compra menos, es decir, tiene menos <b>poder de compra</b>.</li>
+          <li><b>IPC:</b> el costo de una canasta fija de bienes y servicios, que la Oficina de Estadísticas Laborales sigue cada mes.</li>
+          <li><b>Tasa de inflación</b> = % de cambio del IPC. La Fed busca cerca del 2% al año.</li>
+          <li><b>Nominal</b> = en dólares tal cual. <b>Real</b> = ajustado por inflación. Real ≈ nominal − inflación.</li>
+          <li><b>Regla del 70:</b> una forma rápida de saber cuántos años tardan los precios en duplicarse. Divide 70 entre la tasa de inflación. Con un 3% de inflación, <span class="frac"><span>70</span><span>3</span></span> ≈ 23 años.</li>
+          <li><b>PIB:</b> el valor de todo lo que un país produce y vende en un año. PIB = C + I + G + (X − M): gasto de los hogares + inversión de las empresas + gasto del gobierno + (exportaciones − importaciones).</li>
+          <li>El <b>PIB real</b> quita los cambios de precios. Que crezca el PIB real = la economía de verdad produce más.</li>
+          <li><b>Recesión:</b> cuando la economía se encoge un tiempo. Una regla práctica común es dos trimestres (seis meses) seguidos de PIB real a la baja.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. El IPC pasa de 200 a 210. La inflación fue del <input type="text" class="blank" data-answer="5|5%" inputmode="numeric" aria-label="Espacio 1">%.</div>
+        <div>2. Tus ahorros ganan un 4% mientras la inflación es del 6%. Tu rendimiento real es de aproximadamente <input type="text" class="blank" data-answer="-2|−2|-2%|−2%" aria-label="Espacio 2">%.</div>
+        <div>3. Con la regla del 70, con un 7% de inflación los precios se duplican en unos <input type="text" class="blank" data-answer="10|diez" inputmode="numeric" aria-label="Espacio 3"> años.</div>
+        <div>4. En PIB = C + I + G + XN, la letra del gasto de los hogares es <input type="text" class="blank" data-answer="c" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Comprobar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Entrevista al pasado</h3>
+          <p>Pregunta a tus padres o abuelos cuánto pagaron por un coche, su primer apartamento y un galón de gasolina, y cuándo. Convierte cada uno a dólares de hoy con la fórmula. ¿Cuál creció más rápido que la inflación, y por qué podría ser?</p>
+        </div>
+        <div class="reveal">
+          <h3>Arma tu propio IPC</h3>
+          <p>Cada persona hace una lista de cinco cosas que compra cada mes y sus precios de hoy. Busquen (o adivinen) los precios de hace cinco años. ¿Quién tiene la tasa de inflación personal más alta? Los estudiantes que pagan alquiler suelen ganar esta.</p>
+        </div>
+        <div class="reveal">
+          <h3>Duelo de épocas</h3>
+          <p>Cada uno juega a Gánale a la inflación en una época distinta. Comparen: ¿en qué década era peor idea tener efectivo en un cajón? Explíquenselo usando real vs. nominal.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu poder de compra.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Qué compras a menudo que se ha encarecido bastante? ¿Cómo cambiaste lo que compras por eso?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Dónde está tu dinero ahora mismo? ¿Gana más o menos que la inflación?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Piensa en el sueldo que querrías después de la universidad. ¿Cuánto tendría que ser en 10 años solo para comprar las mismas cosas, con un 3% de inflación?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las preguntaría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el estratega macro</h3>
+      <div class="reveal">
+        <p>Un cliente tiene <b>$200,000</b> en una cuenta de ahorros que gana un <b>0.5%</b>. La inflación está en el <b>4%</b>. El cliente dice: "Al menos no estoy perdiendo dinero".</p>
+        <p><b>Tu tarea:</b> muéstrale al cliente, en dólares, cuánto poder de compra pierde en un año. Luego explica en dos frases por qué "no perder dinero" no es cierto.</p>
+        <textarea id="job-answer" placeholder="Escribe tu nota para el cliente…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Rendimiento real</b> ≈ 0.5% − 4% = −3.5%. Sobre $200,000, son unos <b>$7,000</b> de poder de compra perdidos en un año (exacto: <span class="frac"><span>200,000 × 1.005</span><span>1.04</span></span> ≈ $193,269, una pérdida de $6,731).</p>
+            <p><b>La idea:</b> el saldo sube $1,000, pero los precios suben $8,000. El cliente tiene más dólares y puede comprar menos con ellos, así que en términos reales pierde dinero cada mes que el efectivo sigue ahí.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">La inflación prepara <em>todo lo de las tasas.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="La oferta y la demanda llevan a esta lección, que lleva a las tasas de interés, el interés compuesto, la inversión y cómo combate la Fed la inflación">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <a href="../supply-demand/"><text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Oferta y demanda</text><text x="20" y="186">Unidad 1 · qué mueve un precio</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Inflación y PIB</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../interest-rates/"><text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Tasas de interés</text><text x="690" y="66">Siguiente lección · cómo la combate la Fed</text></a>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Interés compuesto</text><text x="690" y="146">Unidad 2 · la inflación también se compone</text>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Inversión</text><text x="690" y="226">Unidad 7 · cómo ganarle a la inflación</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Macro y la Fed</text><text x="690" y="306">Unidad 14 · todas las herramientas</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 1</span><b>Oferta y demanda</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Inflación y PIB</b></li>
+        <li><span class="muted small">Siguiente · Unidad 1</span><b>Tasas de interés</b></li>
+        <li><span class="muted small">Después · Unidad 2</span><b>Interés compuesto</b></li>
+        <li><span class="muted small">Después · Unidad 7</span><b>Inversión</b></li>
+        <li><span class="muted small">Después · Unidad 14</span><b>Macro y la Fed</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../interest-rates/">Siguiente: Tasas de interés <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>

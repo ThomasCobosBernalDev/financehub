@@ -4,6 +4,8 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const money = FH.money;
+  const T = FH.t;
+  const KIND_NAME = { needs: T("needs", "necesidades"), wants: T("wants", "deseos"), savings: T("savings", "ahorro") };
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const fillRange = (r) => r.style.setProperty("--fill", `${((r.value - r.min) / (r.max - r.min)) * 100}%`);
@@ -16,7 +18,7 @@
     $("#pay-label").textContent = money(pay);
     [["needs", 0.5], ["wants", 0.3], ["savings", 0.2]].forEach(([k, f]) => {
       $(`#amt-${k}`).textContent = money(pay * f);
-      $(`#bar-${k}`).textContent = `${k[0].toUpperCase() + k.slice(1)} ${money(pay * f)}`;
+      $(`#bar-${k}`).textContent = `${KIND_NAME[k][0].toUpperCase() + KIND_NAME[k].slice(1)} ${money(pay * f)}`;
     });
   };
   slider.addEventListener("input", renderSplit);
@@ -38,11 +40,11 @@
     for (; i < 100; i++) { coins[i].style.background = ""; coins[i].classList.remove("on"); }
     const left = 100 - given.needs - given.wants - given.savings;
     const status = $("#coins-status");
-    if (left > 0) status.textContent = `${left} coins with no job yet.`;
+    if (left > 0) status.textContent = T(`${left} coins with no job yet.`, `${left} monedas aún sin trabajo.`);
     else if (given.needs === 50 && given.wants === 30 && given.savings === 20) {
-      status.innerHTML = "<b class='c-good'>Every coin has a job, and it's exactly 50/30/20.</b>";
-      FH.badge("dollar-grid", "Every Dollar Has a Job");
-    } else status.innerHTML = `<b class='c-good'>Every coin has a job.</b> Your split is ${given.needs}/${given.wants}/${given.savings}. That's still a zero-based budget, just not 50/30/20.`;
+      status.innerHTML = T("<b class='c-good'>Every coin has a job, and it's exactly 50/30/20.</b>", "<b class='c-good'>Cada moneda tiene un trabajo, y es exactamente 50/30/20.</b>");
+      FH.badge("dollar-grid", T("Every Dollar Has a Job", "Cada dólar tiene un trabajo"));
+    } else status.innerHTML = T(`<b class='c-good'>Every coin has a job.</b> Your split is ${given.needs}/${given.wants}/${given.savings}. That's still a zero-based budget, just not 50/30/20.`, `<b class='c-good'>Cada moneda tiene un trabajo.</b> Tu reparto es ${given.needs}/${given.wants}/${given.savings}. Sigue siendo un presupuesto base cero, solo que no 50/30/20.`);
   };
   $$("[data-give]").forEach((b) =>
     b.addEventListener("click", () => {
@@ -56,14 +58,14 @@
   // ---------- Play it: Month Survivor ----------
   const INCOME = 2400;
   const CATS = [
-    { id: "rent", label: "Rent", kind: "needs", value: 900, max: 900, locked: true, hint: "Locked by your lease." },
-    { id: "groceries", label: "Groceries", kind: "needs", value: 0, max: 600, hint: "Under about $250 and you'll run out before the month ends." },
-    { id: "transport", label: "Transport", kind: "needs", value: 0, max: 300, hint: "A monthly bus pass is $100." },
-    { id: "phone", label: "Phone", kind: "needs", value: 0, max: 120, hint: "Your plan is $50." },
-    { id: "fun", label: "Fun and eating out", kind: "wants", value: 0, max: 800, hint: "Too little and you'll be tempted to blow the budget." },
-    { id: "subs", label: "Subscriptions", kind: "wants", value: 0, max: 150, hint: "Streaming, games, music." },
-    { id: "ef", label: "Emergency fund", kind: "savings", value: 0, max: 1200, hint: "Pays for surprises so they don't land on the card." },
-    { id: "invest", label: "Investing", kind: "savings", value: 0, max: 1200, hint: "Grows for future you. You'll learn how in Unit 7." },
+    { id: "rent", label: T("Rent", "Alquiler"), kind: "needs", value: 900, max: 900, locked: true, hint: T("Locked by your lease.", "Fijado por tu contrato.") },
+    { id: "groceries", label: T("Groceries", "Comida"), kind: "needs", value: 0, max: 600, hint: T("Under about $250 and you'll run out before the month ends.", "Con menos de unos $250 se te acabará antes de fin de mes.") },
+    { id: "transport", label: T("Transport", "Transporte"), kind: "needs", value: 0, max: 300, hint: T("A monthly bus pass is $100.", "El pase mensual de autobús cuesta $100.") },
+    { id: "phone", label: T("Phone", "Teléfono"), kind: "needs", value: 0, max: 120, hint: T("Your plan is $50.", "Tu plan cuesta $50.") },
+    { id: "fun", label: T("Fun and eating out", "Diversión y comer fuera"), kind: "wants", value: 0, max: 800, hint: T("Too little and you'll be tempted to blow the budget.", "Si es muy poco, te tentará romper el presupuesto.") },
+    { id: "subs", label: T("Subscriptions", "Suscripciones"), kind: "wants", value: 0, max: 150, hint: T("Streaming, games, music.", "Streaming, juegos, música.") },
+    { id: "ef", label: T("Emergency fund", "Fondo de emergencia"), kind: "savings", value: 0, max: 1200, hint: T("Pays for surprises so they don't land on the card.", "Paga las sorpresas para que no acaben en la tarjeta.") },
+    { id: "invest", label: T("Investing", "Inversión"), kind: "savings", value: 0, max: 1200, hint: T("Grows for future you. You'll learn how in Unit 7.", "Crece para tu yo del futuro. Aprenderás cómo en la Unidad 7.") },
   ];
   const cat = (id) => CATS.find((c) => c.id === id).value;
   const KIND_COLOR = { needs: "var(--needs)", wants: "var(--wants)", savings: "var(--savings)" };
@@ -107,7 +109,7 @@
   const setJar = (amt) => $("#jar-fill").setAttribute("y", 46 - Math.min(1, amt / 800) * 68);
   const setTree = (amt) => ($("#tree-crown").style.transform = `scale(${0.45 + Math.min(1, amt / 600) * 0.75})`);
   const setCard = (debt) => {
-    $("#amt-card").textContent = `${money(debt)} owed`;
+    $("#amt-card").textContent = T(`${money(debt)} owed`, `${money(debt)} debe`);
     $("#pl-card").classList.toggle("owing", debt > 0);
   };
   const setFace = (happy, stress) => {
@@ -121,7 +123,7 @@
     const row = document.createElement("div");
     row.className = "alloc" + (c.locked ? " locked" : "");
     row.innerHTML = `
-      <div class="name">${c.label}<small style="color:${KIND_COLOR[c.kind]}">${c.kind}</small></div>
+      <div class="name">${c.label}<small style="color:${KIND_COLOR[c.kind]}">${KIND_NAME[c.kind]}</small></div>
       <input type="range" min="0" max="${c.max}" step="10" value="${c.value}" aria-label="${c.label}" style="--c:${KIND_COLOR[c.kind]}">
       <div class="amt">${money(c.value)}</div>
       <div class="hint">${c.hint}</div>`;
@@ -149,8 +151,8 @@
     $("#g-bar-wants").style.flexBasis = pct(t.wants);
     $("#g-bar-savings").style.flexBasis = pct(t.savings);
     const p = (n) => Math.round((n / INCOME) * 100);
-    $("#g-split").textContent = `${p(t.needs)}% needs · ${p(t.wants)}% wants · ${p(t.savings)}% savings (target 50/30/20). ` +
-      (left > 0 ? `Give ${money(left)} more a job to start.` : left < 0 ? `You're ${money(-left)} over. Pull something back.` : "Every dollar has a job.");
+    $("#g-split").textContent = T(`${p(t.needs)}% needs · ${p(t.wants)}% wants · ${p(t.savings)}% savings (target 50/30/20). `, `${p(t.needs)}% necesidades · ${p(t.wants)}% deseos · ${p(t.savings)}% ahorro (meta 50/30/20). `) +
+      (left > 0 ? T(`Give ${money(left)} more a job to start.`, `Dale trabajo a ${money(left)} más para empezar.`) : left < 0 ? T(`You're ${money(-left)} over. Pull something back.`, `Te pasas por ${money(-left)}. Quita algo.`) : T("Every dollar has a job.", "Cada dólar tiene un trabajo."));
     $("#g-start").disabled = left !== 0;
     // Town reflects the plan as you build it.
     ["rent", "groceries", "transport", "phone", "invest", "ef"].forEach((id) => ($(`#amt-${id}`).textContent = money(cat(id))));
@@ -176,64 +178,64 @@
     S.debt += amt;
     S.stress += 6;
     toPin("card", amt, true);
-    log(`${msg} +${money(amt)} on the card at 24% APR.`, "bad");
+    log(T(`${msg} +${money(amt)} on the card at 24% APR.`, `${msg} +${money(amt)} en la tarjeta al 24% TAE.`), "bad");
   };
   // Pay from a bucket; whatever it can't cover goes on the card.
   const pay = (amt, bucket, msg) => {
     const from = Math.min(S[bucket], amt);
     S[bucket] -= from;
     if (from > 0) toPin(bucket, from);
-    if (amt > from) card(amt - from, `${msg} ${bucket === "ef" ? "The emergency fund" : "Fun money"} ran dry.`);
+    if (amt > from) card(amt - from, `${msg} ` + (bucket === "ef" ? T("The emergency fund ran dry.", "Se vació el fondo de emergencia.") : T("Fun money ran dry.", "Se acabó el dinero para diversión.")));
     else log(msg);
   };
   const gain = (amt, bucket, msg) => { S[bucket] += amt; fromPin(bucket, amt); log(msg, "good"); };
 
   const EVENTS = [
-    { icon: "bike", title: "Your bike chain snaps", text: "A repair is $140. Without it you're walking 40 minutes to work.",
+    { icon: "bike", title: T("Your bike chain snaps", "Se rompe la cadena de tu bici"), text: T("A repair is $140. Without it you're walking 40 minutes to work.", "Arreglarla cuesta $140. Sin ella, caminas 40 minutos al trabajo."),
       choices: [
-        { label: "Pay from the emergency fund", tag: "−$140 jar", run: () => pay(140, "ef", "Fixed the bike from the emergency fund.") },
-        { label: "Put it on the credit card", tag: "+$140 debt", run: () => card(140, "Bike repair.") },
-        { label: "Walk for a while", tag: "+stress", run: () => { S.stress += 15; S.happy -= 5; log("Walking to work. Tiring, but free."); } },
+        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$140 jar", "−$140 fondo"), run: () => pay(140, "ef", T("Fixed the bike from the emergency fund.", "Arreglaste la bici con el fondo de emergencia.")) },
+        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$140 debt", "+$140 deuda"), run: () => card(140, T("Bike repair.", "Arreglo de la bici.")) },
+        { label: T("Walk for a while", "Caminar un tiempo"), tag: T("+stress", "+estrés"), run: () => { S.stress += 15; S.happy -= 5; log(T("Walking to work. Tiring, but free.", "Caminas al trabajo. Cansado, pero gratis.")); } },
       ] },
-    { icon: "cake", title: "Best friend's birthday dinner", text: "Everyone's going somewhere nice. Your share is about $60.",
+    { icon: "cake", title: T("Best friend's birthday dinner", "Cena de cumpleaños de tu mejor amigo"), text: T("Everyone's going somewhere nice. Your share is about $60.", "Todos van a un sitio bonito. Tu parte son unos $60."),
       choices: [
-        { label: "Go, and pay from fun money", tag: "−$60 fun", run: () => { pay(60, "fun", "Great night out."); S.happy += 10; } },
-        { label: "Suggest somewhere cheaper", tag: "−$15 fun", run: () => { pay(15, "fun", "Cheaper hangout, still fun."); S.happy += 6; } },
-        { label: "Skip it", tag: "−happiness", run: () => { S.happy -= 12; log("Skipped the dinner. Saved money, felt left out."); } },
+        { label: T("Go, and pay from fun money", "Ir y pagar con el dinero para diversión"), tag: T("−$60 fun", "−$60 diversión"), run: () => { pay(60, "fun", T("Great night out.", "Gran noche.")); S.happy += 10; } },
+        { label: T("Suggest somewhere cheaper", "Proponer un sitio más barato"), tag: T("−$15 fun", "−$15 diversión"), run: () => { pay(15, "fun", T("Cheaper hangout, still fun.", "Plan más barato, igual de divertido.")); S.happy += 6; } },
+        { label: T("Skip it", "No ir"), tag: T("−happiness", "−felicidad"), run: () => { S.happy -= 12; log(T("Skipped the dinner. Saved money, felt left out.", "Te saltaste la cena. Ahorraste, pero te sentiste excluido.")); } },
       ] },
-    { icon: "clock", title: "Your manager offers overtime", text: "One extra shift adds $110 after taxes.",
+    { icon: "clock", title: T("Your manager offers overtime", "Tu jefe te ofrece horas extra"), text: T("One extra shift adds $110 after taxes.", "Un turno extra suma $110 después de impuestos."),
       choices: [
-        { label: "Take it and save it", tag: "+$110 jar", run: () => { gain(110, "ef", "Overtime +$110 into the emergency fund."); S.stress += 8; } },
-        { label: "Take it and spend it", tag: "+$110 fun", run: () => { gain(110, "fun", "Overtime +$110 into fun money."); S.stress += 8; } },
-        { label: "Turn it down and rest", tag: "−stress", run: () => { S.stress -= 6; log("Turned down overtime and rested."); } },
+        { label: T("Take it and save it", "Aceptar y ahorrarlo"), tag: T("+$110 jar", "+$110 fondo"), run: () => { gain(110, "ef", T("Overtime +$110 into the emergency fund.", "Horas extra +$110 al fondo de emergencia.")); S.stress += 8; } },
+        { label: T("Take it and spend it", "Aceptar y gastarlo"), tag: T("+$110 fun", "+$110 diversión"), run: () => { gain(110, "fun", T("Overtime +$110 into fun money.", "Horas extra +$110 al dinero para diversión.")); S.stress += 8; } },
+        { label: T("Turn it down and rest", "Rechazar y descansar"), tag: T("−stress", "−estrés"), run: () => { S.stress -= 6; log(T("Turned down overtime and rested.", "Rechazaste las horas extra y descansaste.")); } },
       ] },
-    { icon: "health", title: "A trip to the doctor", text: "Bad sore throat. The copay and prescription come to $75.",
+    { icon: "health", title: T("A trip to the doctor", "Una visita al médico"), text: T("Bad sore throat. The copay and prescription come to $75.", "Te duele mucho la garganta. El copago y la receta suman $75."),
       choices: [
-        { label: "Pay from the emergency fund", tag: "−$75 jar", run: () => pay(75, "ef", "Doctor paid from the emergency fund.") },
-        { label: "Put it on the credit card", tag: "+$75 debt", run: () => card(75, "Doctor visit.") },
+        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$75 jar", "−$75 fondo"), run: () => pay(75, "ef", T("Doctor paid from the emergency fund.", "Pagaste el médico con el fondo de emergencia.")) },
+        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$75 debt", "+$75 deuda"), run: () => card(75, T("Doctor visit.", "Visita al médico.")) },
       ] },
-    { icon: "shoe", title: "Sneakers, 40% off", text: "The pair you've wanted is $120, today only.",
+    { icon: "shoe", title: T("Sneakers, 40% off", "Tenis con 40% de descuento"), text: T("The pair you've wanted is $120, today only.", "Los que querías cuestan $120, solo hoy."),
       choices: [
-        { label: "Buy them with fun money", tag: "−$120 fun", run: () => { pay(120, "fun", "New sneakers."); S.happy += 8; } },
-        { label: "Buy them on the card", tag: "+$120 debt", run: () => { card(120, "Sneakers."); S.happy += 8; } },
-        { label: "Pass", tag: "", run: () => { S.happy -= 3; log("Passed on the sneakers."); } },
+        { label: T("Buy them with fun money", "Comprarlos con el dinero para diversión"), tag: T("−$120 fun", "−$120 diversión"), run: () => { pay(120, "fun", T("New sneakers.", "Tenis nuevos.")); S.happy += 8; } },
+        { label: T("Buy them on the card", "Comprarlos con la tarjeta"), tag: T("+$120 debt", "+$120 deuda"), run: () => { card(120, T("Sneakers.", "Tenis.")); S.happy += 8; } },
+        { label: T("Pass", "Pasar"), tag: "", run: () => { S.happy -= 3; log(T("Passed on the sneakers.", "Dejaste pasar los tenis.")); } },
       ] },
-    { icon: "crack", title: "Cracked phone screen", text: "A repair is $160. It still works, barely.",
+    { icon: "crack", title: T("Cracked phone screen", "Pantalla del teléfono rota"), text: T("A repair is $160. It still works, barely.", "Arreglarla cuesta $160. Todavía funciona, a duras penas."),
       choices: [
-        { label: "Pay from the emergency fund", tag: "−$160 jar", run: () => pay(160, "ef", "Screen fixed from the emergency fund.") },
-        { label: "Put it on the credit card", tag: "+$160 debt", run: () => card(160, "Screen repair.") },
-        { label: "Live with the crack", tag: "+stress", run: () => { S.stress += 6; S.happy -= 4; log("Living with a cracked screen."); } },
+        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$160 jar", "−$160 fondo"), run: () => pay(160, "ef", T("Screen fixed from the emergency fund.", "Arreglaste la pantalla con el fondo de emergencia.")) },
+        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$160 debt", "+$160 deuda"), run: () => card(160, T("Screen repair.", "Arreglo de pantalla.")) },
+        { label: T("Live with the crack", "Vivir con la grieta"), tag: T("+stress", "+estrés"), run: () => { S.stress += 6; S.happy -= 4; log(T("Living with a cracked screen.", "Vives con la pantalla rota.")); } },
       ] },
-    { icon: "refund", title: "Surprise refund", text: "Last month's overcharge comes back: $40.",
+    { icon: "refund", title: T("Surprise refund", "Reembolso sorpresa"), text: T("Last month's overcharge comes back: $40.", "Te devuelven un cobro de más del mes pasado: $40."),
       choices: [
-        { label: "Into the emergency fund", tag: "+$40 jar", run: () => gain(40, "ef", "+$40 into the emergency fund.") },
-        { label: "Into fun money", tag: "+$40 fun", run: () => gain(40, "fun", "+$40 into fun money.") },
+        { label: T("Into the emergency fund", "Al fondo de emergencia"), tag: T("+$40 jar", "+$40 fondo"), run: () => gain(40, "ef", T("+$40 into the emergency fund.", "+$40 al fondo de emergencia.")) },
+        { label: T("Into fun money", "Al dinero para diversión"), tag: T("+$40 fun", "+$40 diversión"), run: () => gain(40, "fun", T("+$40 into fun money.", "+$40 al dinero para diversión.")) },
       ] },
-    { icon: "bolt", title: "The electric bill came in high", text: "A cold snap means you owe $45 more than usual.",
+    { icon: "bolt", title: T("The electric bill came in high", "La factura de la luz llegó alta"), text: T("A cold snap means you owe $45 more than usual.", "Una ola de frío hace que debas $45 más de lo normal."),
       choices: [
-        { label: "Pay from the emergency fund", tag: "−$45 jar", run: () => pay(45, "ef", "Extra electric bill from the emergency fund.") },
-        { label: "Pay from fun money", tag: "−$45 fun", run: () => pay(45, "fun", "Extra electric bill from fun money.") },
-        { label: "Put it on the credit card", tag: "+$45 debt", run: () => card(45, "Electric bill.") },
+        { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: T("−$45 jar", "−$45 fondo"), run: () => pay(45, "ef", T("Extra electric bill from the emergency fund.", "Pagaste la luz extra con el fondo de emergencia.")) },
+        { label: T("Pay from fun money", "Pagar con el dinero para diversión"), tag: T("−$45 fun", "−$45 diversión"), run: () => pay(45, "fun", T("Extra electric bill from fun money.", "Pagaste la luz extra con el dinero para diversión.")) },
+        { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: T("+$45 debt", "+$45 deuda"), run: () => card(45, T("Electric bill.", "Factura de la luz.")) },
       ] },
   ];
 
@@ -242,35 +244,35 @@
     const out = [];
     if (cat("groceries") < 250) {
       const short = 250 - cat("groceries");
-      out.push({ icon: "cart", title: "The fridge is empty", text: `Your grocery money ran out with days to go. You need about ${money(short)} more food.`,
+      out.push({ icon: "cart", title: T("The fridge is empty", "El refri está vacío"), text: T(`Your grocery money ran out with days to go. You need about ${money(short)} more food.`, `El dinero de comida se acabó a falta de días. Necesitas unos ${money(short)} más de comida.`),
         choices: [
-          { label: "Pay from fun money", tag: `−${money(short)} fun`, run: () => pay(short, "fun", "Bought groceries with fun money.") },
-          { label: "Pay from the emergency fund", tag: `−${money(short)} jar`, run: () => pay(short, "ef", "Bought groceries from the emergency fund.") },
-          { label: "Order takeout on the card", tag: `+${money(short * 1.6)} debt`, run: () => card(Math.round(short * 1.6), "Takeout costs more than groceries.") },
+          { label: T("Pay from fun money", "Pagar con el dinero para diversión"), tag: `−${money(short)} ` + T("fun", "diversión"), run: () => pay(short, "fun", T("Bought groceries with fun money.", "Compraste comida con el dinero para diversión.")) },
+          { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: `−${money(short)} ` + T("jar", "fondo"), run: () => pay(short, "ef", T("Bought groceries from the emergency fund.", "Compraste comida con el fondo de emergencia.")) },
+          { label: T("Order takeout on the card", "Pedir comida a domicilio con la tarjeta"), tag: `+${money(short * 1.6)} ` + T("debt", "deuda"), run: () => card(Math.round(short * 1.6), T("Takeout costs more than groceries.", "La comida a domicilio cuesta más que hacer la compra.")) },
         ] });
     }
     if (cat("transport") < 100) {
       const cost = 120 - cat("transport");
-      out.push({ icon: "bus", title: "No bus pass", text: `You couldn't afford the monthly pass. Single rides cost ${money(cost)} more.`,
+      out.push({ icon: "bus", title: T("No bus pass", "Sin pase de autobús"), text: T(`You couldn't afford the monthly pass. Single rides cost ${money(cost)} more.`, `No te alcanzó para el pase mensual. Los viajes sueltos cuestan ${money(cost)} más.`),
         choices: [
-          { label: "Pay from fun money", tag: `−${money(cost)} fun`, run: () => pay(cost, "fun", "Paid for bus rides from fun money.") },
-          { label: "Pay from the emergency fund", tag: `−${money(cost)} jar`, run: () => pay(cost, "ef", "Paid for bus rides from the emergency fund.") },
-          { label: "Put it on the credit card", tag: `+${money(cost)} debt`, run: () => card(cost, "Bus rides.") },
+          { label: T("Pay from fun money", "Pagar con el dinero para diversión"), tag: `−${money(cost)} ` + T("fun", "diversión"), run: () => pay(cost, "fun", T("Paid for bus rides from fun money.", "Pagaste los viajes con el dinero para diversión.")) },
+          { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: `−${money(cost)} ` + T("jar", "fondo"), run: () => pay(cost, "ef", T("Paid for bus rides from the emergency fund.", "Pagaste los viajes con el fondo de emergencia.")) },
+          { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: `+${money(cost)} ` + T("debt", "deuda"), run: () => card(cost, T("Bus rides.", "Viajes en autobús.")) },
         ] });
     }
     if (cat("phone") < 50) {
       const cost = 65 - cat("phone");
-      out.push({ icon: "phone", title: "Phone bill overdue", text: `You planned ${money(cat("phone"))}, but the bill is $50, plus a $15 late fee.`,
+      out.push({ icon: "phone", title: T("Phone bill overdue", "Factura del teléfono vencida"), text: T(`You planned ${money(cat("phone"))}, but the bill is $50, plus a $15 late fee.`, `Planeaste ${money(cat("phone"))}, pero la factura es de $50, más $15 de recargo por atraso.`),
         choices: [
-          { label: "Pay from the emergency fund", tag: `−${money(cost)} jar`, run: () => pay(cost, "ef", "Paid the phone bill and late fee.") },
-          { label: "Put it on the credit card", tag: `+${money(cost)} debt`, run: () => card(cost, "Phone bill.") },
+          { label: T("Pay from the emergency fund", "Pagar con el fondo de emergencia"), tag: `−${money(cost)} ` + T("jar", "fondo"), run: () => pay(cost, "ef", T("Paid the phone bill and late fee.", "Pagaste la factura y el recargo.")) },
+          { label: T("Put it on the credit card", "Ponerlo en la tarjeta de crédito"), tag: `+${money(cost)} ` + T("debt", "deuda"), run: () => card(cost, T("Phone bill.", "Factura del teléfono.")) },
         ] });
     }
     if (cat("fun") < 80) {
-      out.push({ icon: "bag", title: "Burnout splurge", text: "With almost no fun money, a rough week ends with you wanting to blow $90.",
+      out.push({ icon: "bag", title: T("Burnout splurge", "Derroche por agotamiento"), text: T("With almost no fun money, a rough week ends with you wanting to blow $90.", "Casi sin dinero para diversión, una semana dura termina con ganas de gastarte $90."),
         choices: [
-          { label: "Splurge on the card", tag: "+$90 debt", run: () => { card(90, "Splurged."); S.happy += 10; } },
-          { label: "Free night in with friends", tag: "", run: () => { S.happy += 4; S.stress -= 4; log("Free night in. Not bad."); } },
+          { label: T("Splurge on the card", "Derrochar con la tarjeta"), tag: T("+$90 debt", "+$90 deuda"), run: () => { card(90, T("Splurged.", "Derrochaste.")); S.happy += 10; } },
+          { label: T("Free night in with friends", "Noche gratis en casa con amigos"), tag: "", run: () => { S.happy += 4; S.stress -= 4; log(T("Free night in. Not bad.", "Noche gratis en casa. Nada mal.")); } },
         ] });
     }
     return out;
@@ -310,7 +312,7 @@
     box.innerHTML = `
       <div class="event-card">
         <svg class="art" aria-hidden="true"><use href="#i-${ev.icon}"/></svg>
-        <div class="when">Week ${week + 1} · ${step + 1} of ${deck.length}</div>
+        <div class="when">${T(`Week ${week + 1} · ${step + 1} of ${deck.length}`, `Semana ${week + 1} · ${step + 1} de ${deck.length}`)}</div>
         <h3>${ev.title}</h3>
         <div class="muted">${ev.text}</div>
         <div class="choices"></div>
@@ -360,19 +362,19 @@
     const interest = S.debt * 0.24 / 12;
     const saved = S.ef + cat("invest");
     const checks = [
-      { ok: S.debt === 0, pts: 35, text: S.debt === 0 ? "No credit card debt" : `${money(S.debt)} on the card, costing about $${interest.toFixed(2)} in interest next month` },
-      { ok: S.ef > 0, pts: 20, text: S.ef > 0 ? `Emergency fund survived with ${money(S.ef)}` : "Emergency fund drained to zero" },
-      { ok: saved >= INCOME * 0.2, pts: 25, text: `Saved ${money(saved)}, ${Math.round((saved / INCOME) * 100)}% of your pay (target 20%)` },
-      { ok: S.happy >= 50, pts: 10, text: `Happiness ${S.happy} out of 100` },
-      { ok: S.stress <= 50, pts: 10, text: `Stress ${S.stress} out of 100` },
+      { ok: S.debt === 0, pts: 35, text: S.debt === 0 ? T("No credit card debt", "Sin deuda en la tarjeta") : T(`${money(S.debt)} on the card, costing about $${interest.toFixed(2)} in interest next month`, `${money(S.debt)} en la tarjeta, que costarán unos $${interest.toFixed(2)} de interés el próximo mes`) },
+      { ok: S.ef > 0, pts: 20, text: S.ef > 0 ? T(`Emergency fund survived with ${money(S.ef)}`, `El fondo de emergencia sobrevivió con ${money(S.ef)}`) : T("Emergency fund drained to zero", "El fondo de emergencia quedó en cero") },
+      { ok: saved >= INCOME * 0.2, pts: 25, text: T(`Saved ${money(saved)}, ${Math.round((saved / INCOME) * 100)}% of your pay (target 20%)`, `Ahorraste ${money(saved)}, el ${Math.round((saved / INCOME) * 100)}% de tu sueldo (meta 20%)`) },
+      { ok: S.happy >= 50, pts: 10, text: T(`Happiness ${S.happy} out of 100`, `Felicidad ${S.happy} de 100`) },
+      { ok: S.stress <= 50, pts: 10, text: T(`Stress ${S.stress} out of 100`, `Estrés ${S.stress} de 100`) },
     ];
     const score = checks.reduce((n, c) => n + (c.ok ? c.pts : 0), 0);
     const grade = score >= 90 ? "A" : score >= 75 ? "B" : score >= 60 ? "C" : score >= 45 ? "D" : "F";
     const tip =
-      S.debt > 0 ? "Surprises landed on the card. Next month, move some wants money into the emergency fund before anything happens."
-      : S.ef === 0 ? "You stayed out of debt, but only just. A bigger emergency fund gives you room to breathe."
-      : S.happy < 50 ? "Your money held up but you were miserable. Budgets that cut all the fun usually break. Give wants a little more room."
-      : "That's a budget doing its job. The surprises came out of money you'd already set aside.";
+      S.debt > 0 ? T("Surprises landed on the card. Next month, move some wants money into the emergency fund before anything happens.", "Las sorpresas acabaron en la tarjeta. El próximo mes, pasa algo del dinero de deseos al fondo de emergencia antes de que pase nada.")
+      : S.ef === 0 ? T("You stayed out of debt, but only just. A bigger emergency fund gives you room to breathe.", "Te libraste de la deuda, pero por poco. Un fondo de emergencia más grande te da margen para respirar.")
+      : S.happy < 50 ? T("Your money held up but you were miserable. Budgets that cut all the fun usually break. Give wants a little more room.", "Tu dinero aguantó, pero lo pasaste fatal. Los presupuestos que quitan toda la diversión suelen romperse. Dales un poco más de espacio a los deseos.")
+      : T("That's a budget doing its job. The surprises came out of money you'd already set aside.", "Eso es un presupuesto haciendo su trabajo. Las sorpresas salieron de dinero que ya habías apartado.");
 
     $("#g-live").classList.add("hidden");
     const r = $("#g-result");
@@ -380,10 +382,10 @@
     r.innerHTML = `
       <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap">
         <div class="grade ${score >= 75 ? "c-good" : score >= 45 ? "" : "c-danger"}">${grade}</div>
-        <div style="flex:1;min-width:240px"><h3 style="margin:0 0 6px">Month complete · ${score} points</h3><p class="muted" style="margin:0">${tip}</p></div>
+        <div style="flex:1;min-width:240px"><h3 style="margin:0 0 6px">${T(`Month complete · ${score} points`, `Mes completado · ${score} puntos`)}</h3><p class="muted" style="margin:0">${tip}</p></div>
       </div>
       <ul class="checks">${checks.map((c) => `<li class="${c.ok ? "" : "no"}">${c.text}</li>`).join("")}</ul>
-      <button class="btn" id="g-again">Plan another month <span class="arrow">→</span></button>`;
+      <button class="btn" id="g-again">${T("Plan another month", "Planear otro mes")} <span class="arrow">→</span></button>`;
     $("#g-again").addEventListener("click", () => {
       r.classList.add("hidden");
       $("#g-plan").classList.remove("hidden");
@@ -402,11 +404,11 @@
       investments: c.investments + cat("invest"),
       creditCardDebt: c.creditCardDebt + S.debt,
     });
-    FH.addXP(first ? 50 : 15, first ? "Survived your first month" : "Another month down");
-    if (grade === "A") FH.badge("month-survivor-a", "Month Survivor: A");
+    FH.addXP(first ? 50 : 15, first ? T("Survived your first month", "Sobreviviste tu primer mes") : T("Another month down", "Otro mes superado"));
+    if (grade === "A") FH.badge("month-survivor-a", T("Month Survivor: A", "Sobrevive al mes: A"));
   };
 
-  const QUIZ = [
+  const QUIZ_EN = [
     { q: "Maria takes home $3,200 a month. Under the 50/30/20 rule, what's the most she should plan to spend on wants?",
       opts: ["$640", "$960", "$1,600", "$1,280"], a: 1,
       why: "Wants are 30% of take-home pay: 0.30 × $3,200 = $960. $640 is the 20% savings target and $1,600 is the 50% needs target." },
@@ -430,5 +432,29 @@
       why: "Variance = actual − budget = $2,500. Spending more than planned is unfavorable. You'll do this for your own company in Unit 10." },
   ];
 
-  FHLesson.init({ id: LESSON, short: "budgeting", quiz: QUIZ, passMark: 6 });
+  const QUIZ_ES = [
+    { q: "María se lleva a casa $3,200 al mes. Según la regla 50/30/20, ¿qué es lo máximo que debería planear gastar en deseos?",
+      opts: ["$640", "$960", "$1,600", "$1,280"], a: 1,
+      why: "Los deseos son el 30% del sueldo neto: 0.30 × $3,200 = $960. $640 es la meta del 20% para ahorro y $1,600 la del 50% para necesidades." },
+    { q: "Dev gana $2,800 y ha planeado $2,650 en un presupuesto base cero. ¿Qué debería hacer Dev ahora?",
+      opts: ["Nada. Sobran $150 como colchón", "Darles trabajo a los $150 restantes, por ejemplo ahorro", "Recortar $150 de necesidades", "Ganar $150 más"], a: 1,
+      why: "Base cero significa ingresos − categorías planeadas = $0. Un colchón está bien, pero tiene que tener nombre de ahorro, no quedar sin asignar." },
+    { q: "¿Cuál de estas es una necesidad según el marco 50/30/20?",
+      opts: ["Una suscripción de streaming", "El pago mínimo de un préstamo estudiantil", "Entradas para un concierto", "Cambiar un teléfono que todavía funciona"], a: 1,
+      why: "Los pagos mínimos de deudas son obligatorios, y saltártelos daña tu crédito. Lo que pagues por encima del mínimo cuenta como ahorro." },
+    { q: "¿A qué número se aplica la regla 50/30/20?",
+      opts: ["Al sueldo bruto", "Al sueldo después de impuestos (neto)", "Al patrimonio neto", "Al sueldo antes de aportes a la jubilación e impuestos"], a: 1,
+      why: "Se aplica a los ingresos después de impuestos, el dinero que de verdad llega a tu cuenta. Los impuestos se van antes de que puedas presupuestarlos." },
+    { q: "Pones una factura sorpresa de $250 en una tarjeta al 24% TAE y la arrastras 3 meses. Con interés simple, ¿cuánto interés pagas más o menos?",
+      opts: ["$6", "$15", "$60", "$24"], a: 1,
+      why: "Interés ≈ capital × tasa × tiempo = 250 × 0.24 × (3 ÷ 12) = $15. Las tarjetas reales componen a diario, así que es un poco más. Eso es la Unidad 5." },
+    { q: "¿Por qué un fondo de emergencia suele bajar tus costos a largo plazo?",
+      opts: ["Gana más que las acciones", "Cubre las sorpresas sin pedir prestado a interés alto", "Baja tus impuestos", "Sube tu puntaje de crédito"], a: 1,
+      why: "Su trabajo no es dar rendimiento. Es evitar deudas caras cuando llegan sorpresas. El puntaje de crédito ni siquiera ve tu saldo de ahorros." },
+    { q: "Una empresa presupuestó $10,000 para marketing este trimestre y gastó $12,500. ¿Cómo lo describiría un analista de FP&A?",
+      opts: ["Variación favorable de $2,500", "Variación desfavorable de $2,500", "Variación favorable del 25%", "Sin variación"], a: 1,
+      why: "Variación = real − presupuesto = $2,500. Gastar más de lo planeado es desfavorable. Lo harás para tu propia empresa en la Unidad 10." },
+  ];
+
+  FHLesson.init({ id: LESSON, short: "budgeting", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN, passMark: 6 });
 })();

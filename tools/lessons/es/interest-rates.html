@@ -1,0 +1,265 @@
+<!-- title: Quién pone el precio del dinero -->
+<!-- description: Unidad 1, Lección 4: tasas de interés, la Reserva Federal y cómo una sola tasa llega a cada préstamo y cuenta de ahorros. Dirige la Fed tú mismo. -->
+<!-- kicker: Unidad 1 · Lección 4 -->
+<!-- topic: Tasas de interés y bancos centrales -->
+
+<!-- @start -->
+        <h1 class="reveal">¿Quién pone el <em>precio del dinero?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Estás a punto de graduarte. Quieres un préstamo de <span class="mark">$8,000</span> para un coche usado con el que ir al trabajo, y el banco te ofrece un 9%. Hace un año el mismo préstamo era al 5%. Mientras tanto, tu cuenta de ahorros, que no pagaba casi nada, ahora paga un 4%. Nada tuyo cambió. Lo que cambió es que doce personas de la <b>Reserva Federal</b>, el banco central de EE. UU., votaron subir las tasas de interés. Esta lección muestra cómo un voto llega a tu préstamo del coche.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Entender el <dfn class="term" data-def="El precio de pedir dinero prestado, escrito como porcentaje del préstamo al año. Quien pide prestado lo paga; quien ahorra lo gana.">interés</dfn> como el precio de pedir dinero prestado, y quién lo mueve.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Una sola decisión sobre la tasa cambia lo que cuestan o ganan tu coche, tu casa, tu tarjeta de crédito y tus ahorros.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>La <dfn class="term" data-def="El banco central de Estados Unidos, a menudo llamado la Fed. Fija las tasas de interés a corto plazo y vigila a los bancos.">Reserva Federal</dfn> sube las tasas para enfriar la inflación y las baja para proteger el empleo.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>economistas de la Fed</b> toman la decisión. Los <b>operadores de bonos</b> y los <b>analistas de tesorería bancaria</b> apuestan sobre ella.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Un dial con la tasa de fondos federales manda ondas hacia una casa, un coche, una tarjeta de crédito y una alcancía">
+          <g fill="none" stroke="var(--accent)" stroke-width="2">
+            <circle cx="260" cy="270" r="90" class="ripple r1"/><circle cx="260" cy="270" r="90" class="ripple r2"/><circle cx="260" cy="270" r="90" class="ripple r3"/>
+          </g>
+          <circle cx="260" cy="270" r="82" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/>
+          <g stroke="var(--ink-3)" stroke-width="2" stroke-linecap="round">
+            <path d="M260 200 v10 M210 220 l7 7 M310 220 l-7 7 M190 270 h10 M330 270 h-10"/>
+          </g>
+          <path d="M260 270 L300 232" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" class="needle"/>
+          <circle cx="260" cy="270" r="9" fill="var(--ink)"/>
+          <text x="260" y="320" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">fondos federales</text>
+          <g transform="translate(90 92)"><path d="M-30 6 L0 -22 L30 6" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><rect x="-22" y="0" width="44" height="34" rx="4" fill="var(--needs)" stroke="var(--ink)" stroke-width="2"/><text y="62" text-anchor="middle" font-size="15" fill="var(--ink-2)">Hipoteca</text></g>
+          <g transform="translate(430 100)"><rect x="-34" y="-8" width="68" height="22" rx="8" fill="var(--wants)" stroke="var(--ink)" stroke-width="2"/><path d="M-22 -8 l8 -14 h28 l8 14" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><circle cx="-18" cy="16" r="7" fill="var(--ink)"/><circle cx="18" cy="16" r="7" fill="var(--ink)"/><text y="54" text-anchor="middle" font-size="15" fill="var(--ink-2)">Préstamo de coche</text></g>
+          <g transform="translate(90 450)"><rect x="-34" y="-22" width="68" height="44" rx="7" fill="var(--danger)" stroke="var(--ink)" stroke-width="2"/><rect x="-34" y="-12" width="68" height="8" fill="var(--ink)" opacity=".35"/><text y="50" text-anchor="middle" font-size="15" fill="var(--ink-2)">Tarjeta de crédito</text></g>
+          <g transform="translate(430 450)"><ellipse rx="32" ry="24" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/><path d="M-8 -24 h16" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="-6" r="3" fill="var(--ink)"/><text y="52" text-anchor="middle" font-size="15" fill="var(--ink-2)">Ahorros</text></g>
+          <g stroke="var(--line)" stroke-width="2" stroke-dasharray="3 6"><path d="M200 210 L120 130 M320 210 L400 130 M200 330 L120 420 M320 330 L400 420"/></g>
+        </svg>
+
+<!-- @see -->
+      <h2 class="reveal">Gira un dial.<br>Mira cómo se <em>mueven</em> todas las tasas.</h2>
+      <p class="lead reveal">La Fed controla una sola tasa, la <dfn class="term" data-def="La tasa de interés que se cobran los bancos entre sí por préstamos de un día para otro. La Fed le fija un objetivo, y casi todas las demás tasas se construyen encima.">tasa de fondos federales</dfn>. Es lo que se cobran los bancos entre sí por prestarse de un día para otro. Luego los bancos le suman un extra, llamado <dfn class="term" data-def="La diferencia entre dos tasas de interés. Aquí, el porcentaje extra que un prestamista suma a la tasa de fondos federales para cubrir su riesgo y sus costos.">diferencial</dfn>, para fijar las tasas que te cobran a ti. Así que cuando la Fed mueve su tasa, todas las tasas de abajo se mueven con ella. Arrastra el control y mira cómo cambian tus propios costos.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tasa de fondos federales</dt><dd>El control empieza en <b>4%</b>: lo que se cobran los bancos entre sí de un día para otro.</dd></div><div><dt>Diferencial</dt><dd>Al 4%, el préstamo de coche de abajo está al <b>8%</b>. El banco sumó 8 − 4 = <b>4 puntos</b>: ese es el diferencial. Una tarjeta de crédito suma unos 16 puntos, así que queda cerca del 20%.</dd></div></dl></div>
+
+      <div class="reveal" style="margin-top:36px">
+        <div class="payline"><span class="val" id="rp-rate">4.0%</span><span class="muted">tasa de fondos federales</span></div>
+        <input type="range" id="rp-slider" min="0" max="10" step="0.25" value="4" aria-label="Tasa de fondos federales" style="margin:20px 0 28px">
+        <div class="rate-grid" id="rp-grid"></div>
+        <p class="small muted" style="margin-top:14px">Los diferenciales son promedios simplificados. Las tasas reales también dependen de tu puntaje de crédito (Unidad 5) y de lo que los mercados esperan del futuro.</p>
+      </div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">El dial de <em>tasas</em></h2>
+      <p class="lead reveal">Presides la Fed durante ocho reuniones, dos años. Tu trabajo, fijado por el Congreso, tiene dos metas: mantener la inflación (lo rápido que suben los precios) cerca del <b>2%</b> y el desempleo (la parte de la gente que quiere trabajo y no lo encuentra) cerca del <b>4%</b>. Sube las tasas para frenar los precios; bájalas para ayudar a contratar. Un detalle: un cambio de tasa tarda meses en hacer efecto, así que conduces un barco grande, no un coche. Elige un momento de la historia para empezar.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="f-when">Elige un momento</div>
+            <div class="left-big" id="f-rate">–</div>
+          </div>
+          <button class="btn" id="f-go" disabled>Anunciar la decisión <span class="arrow">→</span></button>
+        </div>
+        <div class="era-pick" id="f-eras">
+          <button class="chip" data-sc="1979">1979: precios fuera de control</button>
+          <button class="chip" data-sc="2008">2008: crisis financiera</button>
+          <button class="chip" data-sc="2021">2021: subida pospandemia</button>
+        </div>
+        <div id="f-play" class="hidden">
+          <p class="split-note" id="f-news"></p>
+          <div class="dial-row" role="group" aria-label="Cambiar la tasa">
+            <button class="chip" data-d="-0.75">−0.75</button><button class="chip" data-d="-0.5">−0.50</button><button class="chip" data-d="-0.25">−0.25</button>
+            <button class="chip on" data-d="0">Mantener</button>
+            <button class="chip" data-d="0.25">+0.25</button><button class="chip" data-d="0.5">+0.50</button><button class="chip" data-d="0.75">+0.75</button>
+            <button class="chip" id="f-qe" hidden>Empezar a comprar bonos (QE)</button>
+          </div>
+        </div>
+        <svg id="f-chart" viewBox="0 0 700 260" role="img" aria-label="La inflación y el desempleo a lo largo de tus ocho reuniones, con líneas objetivo en 2% y 4%" class="hidden">
+          <rect id="f-band-i" x="60" width="620" fill="var(--wants)" opacity=".1"/>
+          <rect id="f-band-u" x="60" width="620" fill="var(--needs)" opacity=".1"/>
+          <path d="M60 230 H680 M60 230 V20" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+          <g id="f-ticks" font-size="12" fill="var(--ink-3)"></g>
+          <path id="f-pi" fill="none" stroke="var(--wants)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="f-u" fill="none" stroke="var(--needs)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="f-i" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6"/>
+          <text x="680" y="16" text-anchor="end" font-size="13" font-weight="700"><tspan fill="var(--wants)">━ inflación</tspan>   <tspan fill="var(--needs)">━ desempleo</tspan>   <tspan fill="var(--ink-3)" font-weight="500">┅ tu tasa</tspan></text>
+        </svg>
+        <div class="gauges" style="margin-top:20px">
+          <div class="gauge"><small>Inflación</small><b id="f-pi-v">–</b></div>
+          <div class="gauge"><small>Desempleo</small><b id="f-u-v">–</b></div>
+          <div class="gauge"><small>Tu préstamo de coche</small><b id="f-car">–</b></div>
+          <div class="gauge"><small>Tu tasa de ahorro</small><b id="f-sav">–</b></div>
+        </div>
+        <ul class="timeline" id="f-log"></ul>
+        <div id="f-result" class="hidden"></div>
+      </div>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">El interés es un precio</h3>
+      <p class="reveal">Cuando pides prestado, devuelves lo que te prestaron más una tarifa por usarlo. Esa tarifa es el interés. La cantidad que pides prestada se llama <dfn class="term" data-def="La cantidad original de dinero prestada o ahorrada, antes de cualquier interés.">capital</dfn>. La forma más simple de calcular la tarifa:</p>
+      <div class="formula reveal">Interés <span class="op">=</span> capital <span class="op">×</span> tasa <span class="op">×</span> años</div>
+      <p class="reveal"><b>En palabras:</b> toma la cantidad prestada, multiplícala por la tasa anual (en decimal, así que 6% es 0.06) y luego por cuántos años. Pide <b>$1,000 al 6% durante 2 años</b>: $1,000 × 0.06 × 2 = <b>$120</b> de interés. Esto se llama <dfn class="term" data-def="Interés que se paga solo sobre el capital original, nunca sobre intereses pasados. La Unidad 2 trata el interés compuesto, donde el interés gana interés.">interés simple</dfn>. Los préstamos reales suelen cobrar interés sobre el interés también, lo verás en la Unidad 2.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Capital</dt><dd>Los <b>$1,000</b> que pediste prestados.</dd></div><div><dt>Interés simple</dt><dd>$1,000 × 0.06 × 2 = <b>$120</b>. Devuelves $1,000 + $120 = <b>$1,120</b> en total.</dd></div></dl></div>
+      <p class="reveal">¿Por qué la tasa sube o baja? Recuerda la Lección 2. El interés es el precio del dinero, así que sigue la oferta y la demanda. Quienes piden prestado son los compradores de dinero y quienes ahorran son los vendedores. Cuando mucha gente quiere préstamos, o poca gente ahorra, el precio (la tasa) sube. Además, la Fed empuja las tasas hacia arriba o hacia abajo a propósito.</p>
+
+      <h3 class="reveal">Cómo viaja una subida de tasas</h3>
+      <ol class="steps reveal">
+        <li><b>La Fed sube su objetivo</b> para la tasa de fondos federales, digamos del 4% al 4.5%. ¿Cómo? Los bancos guardan efectivo de sobra en la Fed, llamado <dfn class="term" data-def="Dinero que los bancos tienen depositado en la Fed en vez de prestarlo.">reservas</dfn>, y la Fed les paga interés por él. Si la Fed paga un 4.5% por ese efectivo, ningún banco le prestará a otro por menos, porque puede ganar un 4.5% sin riesgo sin hacer nada.</li>
+        <li><b>Los bancos suben sus propias tasas.</b> La <dfn class="term" data-def="La tasa que cobran los bancos a sus clientes empresariales más seguros. Suele ser la tasa de fondos federales más 3 puntos porcentuales.">tasa preferencial</dfn> suele ser la de fondos federales más 3, así que pasa del 7% al 7.5%. Las tasas de tarjetas de crédito y préstamos de coche se construyen sobre la preferencial, así que suben en pocas semanas.</li>
+        <li><b>Pedir prestado se encarece.</b> Toma un préstamo de coche de $8,000 a pagar en 5 años. Al 8% el pago mensual es de unos $162. Al 10% es de unos $170. Para ti son solo $8 al mes, pero entre millones de compradores, algunos deciden no comprar.</li>
+        <li><b>Ahorrar paga más.</b> Cuando tu cuenta de ahorros gana más, esperar para gastar se ve mejor. Las empresas también aplazan edificios y máquinas nuevas, porque sus préstamos también cuestan más.</li>
+        <li><b>El gasto se frena, así que los precios se frenan.</b> Con menos compradores, las tiendas no pueden subir precios tan fácilmente, así que la inflación baja. Esto tarda de 1 a 2 años en verse del todo, por eso la Fed tiene que actuar antes de ver el resultado.</li>
+      </ol>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Reservas</dt><dd>El efectivo de sobra de un banco guardado en la Fed. Al 4.5%, $1 millón de reservas le dan al banco <b>$45,000</b> al año sin hacer nada.</dd></div><div><dt>Tasa preferencial</dt><dd>Fondos federales + 3: 4.5% + 3 = <b>7.5%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Tasa de interés real</h3>
+      <p class="reveal">Conociste lo nominal y lo real en la Lección 3. La tasa que te ofrece un banco es la <dfn class="term" data-def="La tasa de interés tal como se anuncia, antes de tener en cuenta la inflación.">tasa nominal</dfn>. Pero la inflación encoge lo que tu dinero puede comprar mientras está prestado, así que lo que de verdad ganas o pagas es menos. Esa es la <dfn class="term" data-def="La tasa de interés después de restar la inflación: lo que tu dinero de verdad crece o cuesta en poder de compra.">tasa real</dfn>:</p>
+      <div class="formula reveal">Tasa real <span class="op">≈</span> tasa nominal <span class="op">−</span> inflación</div>
+      <p class="reveal"><b>Ejemplo:</b> tus ahorros pagan un 5% pero los precios suben un 8% este año. Tu saldo crece un 5%, pero compra un 3% <i>menos</i> que antes, así que la tasa real es 5 − 8 = <b>−3%</b>. Para quien pide prestado es dinero barato, y por eso una inflación alta sigue si las tasas se quedan bajas. En 1979 la inflación superaba el 11%, así que la Fed tuvo que llevar las tasas cerca del 20% antes de que pedir prestado se sintiera caro de verdad.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tasa nominal</dt><dd>El <b>5%</b> que paga tu cuenta de ahorros.</dd></div><div><dt>Tasa real</dt><dd>5% − 8% de inflación = <b>−3%</b>. Tu dinero compra un 3% menos después de un año, aunque el saldo subió.</dd></div></dl></div>
+
+      <details class="deeper reveal">
+        <summary>Más a fondo: quién vota, las otras herramientas de la Fed y una regla que usan los operadores</summary>
+        <div>
+          <p><b>Quién vota.</b> Las doce personas de la historia son el <dfn class="term" data-def="Comité Federal de Mercado Abierto: el grupo de la Fed que vota las tasas de interés ocho veces al año.">FOMC</dfn>. Son los 7 gobernadores de la Fed en Washington más 5 de los 12 presidentes de los bancos regionales de la Fed (se turnan). Se reúnen ocho veces al año. El Congreso les dio dos metas, llamadas el <dfn class="term" data-def="Las dos metas de la Fed fijadas por el Congreso: el máximo empleo posible y precios estables (cerca de un 2% de inflación).">mandato dual</dfn>: el máximo empleo posible y precios estables, que la Fed define como cerca de un 2% de inflación.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>FOMC</dt><dd>12 votantes: <b>7</b> gobernadores + <b>5</b> presidentes de bancos regionales.</dd></div><div><dt>Mandato dual</dt><dd>Las dos metas que tenías en El dial de tasas: inflación cerca del <b>2%</b> y desempleo cerca del <b>4%</b>.</dd></div></dl></div>
+          <p><b>Otras herramientas.</b> Pagar interés por las reservas de los bancos es la palanca principal, como viste arriba. La Fed también puede comprar o vender bonos del gobierno, lo que añade o quita dinero a los bancos, y presta directamente a los bancos en una emergencia. Cuando su tasa ya está en cero y la economía sigue necesitando ayuda, puede hacer <dfn class="term" data-def="QE: la Fed compra grandes cantidades de bonos a largo plazo para bajar las tasas a largo plazo (como las de las hipotecas).">flexibilización cuantitativa (QE)</dfn>: comprar enormes cantidades de bonos a largo plazo, lo que baja las tasas de las hipotecas y otras a largo plazo. Venderlos después se llama endurecimiento cuantitativo (QT). Verás ambos en la Unidad 14.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Flexibilización cuantitativa</dt><dd>En 2020 la Fed compró billones de dólares en bonos. A principios de 2021, las hipotecas a 30 años habían bajado de un <b>3%</b>, el nivel más bajo de la historia.</dd></div></dl></div>
+          <p><b>Una regla práctica de los operadores.</b> El economista John Taylor propuso una forma simple de adivinar dónde "debería" estar la tasa de la Fed, hoy llamada <dfn class="term" data-def="Una regla práctica para saber dónde debería estar la tasa de la Fed, según la inflación y lo acelerada que va la economía.">regla de Taylor</dfn>. En palabras: empieza en 2%, suma la inflación actual y luego suma la mitad de lo que la inflación está por encima de la meta del 2%. (Una versión más completa también ajusta según si la economía va más caliente o más fría de lo normal.) Con un 4% de inflación: 2 + 4 + la mitad de (4 − 2) = 2 + 4 + 1 = <b>7%</b>. Si la tasa real de la Fed está muy por debajo, los operadores dicen que la política es "laxa". La Fed no la sigue al pie de la letra; es una vara de medir.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Regla de Taylor</dt><dd>La inflación es del 4%: 2 + 4 + <span class="frac"><span>4 − 2</span><span>2</span></span> = 2 + 4 + 1 = <b>7%</b>. Si la tasa de la Fed es solo del 5%, está 2 puntos por debajo de la regla, así que los operadores la llamarían laxa.</dd></div></dl></div>
+        </div>
+      </details>
+
+<!-- @nature -->
+      <h2 class="reveal">La Fed es un castor <em>con su presa.</em></h2>
+      <p class="lead reveal">Un castor no puede hacer que llueva, pero controla lo rápido que corre el arroyo. Si sube la presa, el agua se frena y se estanca. Si abre un hueco, corre río abajo. La Fed tampoco crea el gasto. Controla lo rápido que fluye el dinero por la economía.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Un arroyo corre desde la izquierda hacia la presa de un castor. El agua se estanca detrás de la presa, y un hilo más lento sigue río abajo.">
+        <path d="M0 200 C 200 190, 300 210, 420 200 L 420 300 L0 300Z" fill="var(--needs)" opacity=".35"/>
+        <path d="M480 250 C 600 245, 700 260, 900 252 L900 300 L480 300Z" fill="var(--needs)" opacity=".22"/>
+        <path d="M40 220 C 140 214, 240 224, 400 216" stroke="#fff" stroke-width="2" fill="none" class="flow" opacity=".8"/>
+        <path d="M500 268 C 620 264, 720 272, 880 266" stroke="#fff" stroke-width="2" fill="none" class="flow slow" opacity=".7"/>
+        <g stroke="var(--ink)" stroke-width="2">
+          <path d="M410 300 L430 180 L470 180 L490 300Z" fill="var(--wants)"/>
+          <path d="M418 220 h64 M414 250 h72 M422 196 h52" stroke="var(--ink)" stroke-width="2"/>
+          <path d="M424 180 l-12 -14 M448 180 l2 -18 M466 180 l14 -12" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(560 168)">
+          <ellipse cx="0" cy="20" rx="34" ry="22" fill="#8a5a3a" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="30" cy="2" r="14" fill="#8a5a3a" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="35" cy="-2" r="2.5" fill="var(--ink)"/>
+          <path d="M-30 30 q-30 10 -40 -4 q12 -10 40 -6z" fill="#5c3b26" stroke="var(--ink)" stroke-width="2"/>
+          <rect x="38" y="6" width="5" height="6" fill="#fff" stroke="var(--ink)" stroke-width="1"/>
+        </g>
+        <text x="200" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">El dinero que entra</text>
+        <text x="200" y="184" text-anchor="middle" font-size="15" fill="var(--ink-2)">gasto, préstamos, contrataciones</text>
+        <text x="450" y="110" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">La presa = las tasas de interés</text>
+        <text x="740" y="220" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Más calma río abajo</text>
+        <text x="740" y="244" text-anchor="middle" font-size="15" fill="var(--ink-2)">precios más lentos, menos empleos nuevos</text>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>Si la sube demasiado, el arroyo se seca</b> río abajo: eso es una recesión. Si la deja demasiado baja durante una crecida, todo se inunda: eso es la inflación. Los castores ajustan sus presas constantemente según las estaciones. La Fed también, ocho veces al año.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Tasa de interés:</b> el precio de pedir dinero prestado, como % del préstamo al año.</li>
+          <li><b>La Fed:</b> el banco central de EE. UU. El FOMC fija un objetivo para la <b>tasa de fondos federales</b>.</li>
+          <li><b>Mandato dual:</b> máximo empleo y precios estables (2% de inflación).</li>
+          <li><b>Subir tasas</b> → pedir prestado cuesta más, ahorrar paga más → el gasto se frena → la inflación se enfría, el desempleo puede subir.</li>
+          <li><b>Bajar tasas</b> → pedir prestado es barato → el gasto y la contratación repuntan → riesgo de inflación.</li>
+          <li><b>Retrasos:</b> los cambios de tasa tardan de 1 a 2 años en afectar del todo a la economía.</li>
+          <li><b>Tasa preferencial</b> ≈ fondos federales + 3%. Las tasas de tarjetas de crédito y préstamos de coche se construyen encima.</li>
+          <li><b>Interés simple</b> = capital × tasa × años.</li>
+          <li><b>Tasa real</b> ≈ tasa nominal − inflación. Un 5% de interés con un 8% de inflación es −3% real.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Para combatir una inflación alta, la Fed normalmente <input type="text" class="blank" data-answer="sube|aumenta|eleva|sube las tasas" aria-label="Espacio 1"> las tasas de interés.</div>
+        <div>2. La tasa preferencial suele ser la de fondos federales más 3. Si la de fondos federales es 5%, la preferencial es de aproximadamente <input type="text" class="blank" data-answer="8|8%" inputmode="numeric" aria-label="Espacio 2">%.</div>
+        <div>3. Pides $2,000 al 6% de interés simple durante un año. El interés que debes es $<input type="text" class="blank" data-answer="120" inputmode="numeric" aria-label="Espacio 3">.</div>
+        <div>4. La meta de inflación de la Fed es del <input type="text" class="blank" data-answer="2|2%" inputmode="numeric" aria-label="Espacio 4">%.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Comprobar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Simulacro del FOMC</h3>
+          <p>Den a cada persona un papel: un dueño de fábrica preocupado, un jubilado que vive de sus ahorros, alguien que compra su primera casa, un economista de la Fed. La inflación es del 4% y el desempleo del 4.5%. Debatan cinco minutos y luego voten: subir, mantener o bajar. ¿Quién ganó y quién lo pagó?</p>
+        </div>
+        <div class="reveal">
+          <h3>Lean el comunicado real</h3>
+          <p>Busquen el comunicado más reciente del FOMC en federalreserve.gov. Cada persona subraya una frase y la traduce a palabras sencillas para el grupo. ¿Qué decidieron y qué les preocupa?</p>
+        </div>
+        <div class="reveal">
+          <h3>Duelo de presidentes</h3>
+          <p>Jueguen los dos a El dial de tasas en el mismo año. Comparen sus caminos de tasas lado a lado. ¿Uno se movió pronto y con suavidad mientras el otro esperó y frenó de golpe? ¿Qué economía salió mejor?</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tus tasas.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Tú o tu familia tienen algún préstamo o ahorro ahora mismo? Busquen sus tasas. ¿Son fijas o se moverán cuando se mueva la Fed?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Si las tasas subieran un 2% mañana, ¿qué plan tuyo (un coche, la universidad, un primer apartamento) se encarecería?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">A corto plazo, la Fed tiene que elegir entre la inflación y el empleo. Si presidieras la Fed, ¿qué protegerías primero y por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las preguntaría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el analista de tesorería del banco</h3>
+      <div class="reveal">
+        <p>Tu banco tiene <b>$500 millones</b> en depósitos de ahorro que pagan un 1% y <b>$400 millones</b> en préstamos de coche a tasa fija con un promedio del 6%. Los analistas esperan que la Fed suba las tasas <b>2 puntos porcentuales</b> este año (por ejemplo, del 3% al 5%). Para que los ahorradores no se lleven su dinero, tu banco tendrá que subir su tasa de ahorro a cerca del 2.5%.</p>
+        <p><b>Tu tarea:</b> la ganancia por intereses del banco es lo que gana con los préstamos menos lo que paga a los ahorradores. Estima cómo cambia esa ganancia anual. Luego explica por qué los préstamos a tasa <i>fija</i> (una que nunca cambia) son un riesgo cuando suben las tasas.</p>
+        <textarea id="job-answer" placeholder="Escribe tu informe para la dirección del banco…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Antes:</b> el banco gana 6% × $400M = $24M y paga 1% × $500M = $5M, así que $19M de ganancia por intereses.</p>
+            <p><b>Después:</b> los préstamos son fijos, así que siguen dando $24M. El costo de los depósitos sube a 2.5% × $500M = $12.5M. La ganancia baja a <b>$11.5M</b>, $7.5M menos (cerca de un 39%).</p>
+            <p><b>Por qué es arriesgado:</b> los costos del banco se mueven con la Fed pero sus ingresos están fijos. Este "riesgo de tasa de interés" es justo lo que hundió a Silicon Valley Bank en 2023. Los equipos de tesorería lo gestionan equilibrando activos y pasivos fijos y variables, o con coberturas.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Las tasas de interés mueven <em>el resto del curso.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="La inflación lleva a esta lección, que lleva al interés compuesto, el crédito y la deuda, los precios de los bonos y todas las herramientas de la Fed">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <a href="../inflation/"><text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Inflación y PIB</text><text x="20" y="186">Unidad 1 · contra qué lucha la Fed</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Tasas de interés</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Tasas e interés compuesto</text><text x="690" y="66">Unidad 2 · la bola de nieve del interés</text>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Crédito y deuda</text><text x="690" y="146">Unidad 5 · cuál será tu tasa</text>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Precios de los bonos</text><text x="690" y="226">Unidad 12 · suben tasas, bajan bonos</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Todas las herramientas de la Fed</text><text x="690" y="306">Unidad 14 · QE, QT y crisis</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 1</span><b>Inflación y PIB</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Tasas de interés y bancos centrales</b></li>
+        <li><span class="muted small">Siguiente · Unidad 2</span><b>Tasas e interés compuesto</b></li>
+        <li><span class="muted small">Después · Unidad 5</span><b>Crédito y deuda</b></li>
+        <li><span class="muted small">Después · Unidad 12</span><b>Precios de los bonos</b></li>
+        <li><span class="muted small">Después · Unidad 14</span><b>Todas las herramientas de la Fed</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../../">Unidad 1 completa: volver al mapa del curso <span class="arrow">→</span></a></div>

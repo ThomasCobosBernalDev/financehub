@@ -1,0 +1,362 @@
+<!-- title: Cada decisión tiene un precio -->
+<!-- description: Unidad 1, Lección 1: escasez, renuncias y costo de oportunidad. Míralo, escúchalo, juégalo. -->
+<!-- kicker: Unidad 1 · Lección 1 -->
+<!-- topic: Escasez y renuncias -->
+
+<!-- @start -->
+        <h1 class="reveal">Cada decisión tiene <em>un precio.</em></h1>
+        <p class="story reveal"><span class="story-tag">Donde empieza la historia</span> Tienes 17 años y es el verano antes de tu último año de prepa. Tienes <span class="mark">$300</span> ahorrados y unas <span class="mark">10 horas libres</span> cada fin de semana. Podrías cortar el césped de los jardines de los vecinos (cerca de 1 hora y $15 por jardín), arreglar bicis viejas y revenderlas (de 1 a 4 horas cada una, y un arreglo completo de 4 horas deja unos $70 de ganancia), estudiar para el SAT o salir con tus amigos. No puedes hacerlo todo, así que tienes que elegir.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Elegir cómo usar algo que solo tienes en cantidad limitada, como el tiempo o el dinero.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Decir que sí a una cosa siempre significa decir que no a otra. Cuando ves a qué renuncias, decides mejor.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Compara cada opción por su <dfn class="term" data-def="El valor de lo mejor a lo que renuncias cuando eliges otra cosa.">costo de oportunidad</dfn>: lo mejor a lo que renuncias para conseguirla.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>economistas</b> estudian estas decisiones. Los <b>analistas de estrategia</b> y los <b>consultores</b> cobran por tomarlas para las empresas.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="La frontera de posibilidades de producción: una curva que muestra cada forma de repartir 10 horas entre arreglar bicis y cortar césped. Un punto dentro de la curva es tiempo desperdiciado y uno fuera es imposible por ahora.">
+          <defs>
+            <linearGradient id="ppf-fill" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="var(--savings)" stop-opacity=".22"/><stop offset="1" stop-color="var(--savings)" stop-opacity=".06"/></linearGradient>
+          </defs>
+          <path d="M70 470 V70 M70 470 H470" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M70 110 C 250 110, 430 260, 430 470 L70 470 Z" fill="url(#ppf-fill)"/>
+          <path id="ppf-art" d="M70 110 C 250 110, 430 260, 430 470" fill="none" stroke="var(--savings)" stroke-width="5" stroke-linecap="round"/>
+          <circle r="11" fill="#f6d36b" stroke="#a87b12" stroke-width="1.8"><animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" path="M70 110 C 250 110, 430 260, 430 470"/></circle>
+          <circle cx="190" cy="350" r="9" fill="var(--paper)" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="3 3"/>
+          <text x="206" y="372" font-size="15" fill="var(--ink-2)">Tiempo desperdiciado</text>
+          <circle cx="420" cy="150" r="9" fill="none" stroke="var(--danger)" stroke-width="2.5"/>
+          <path d="M413 143l14 14M427 143l-14 14" stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="405" y="128" text-anchor="end" font-size="15" fill="var(--ink-2)">Imposible, por ahora</text>
+          <text x="470" y="506" text-anchor="end" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Jardines cortados →</text>
+          <text transform="translate(40 470) rotate(-90)" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Bicis arregladas →</text>
+          <text x="92" y="60" font-family="Fraunces, serif" font-size="20" fill="var(--savings)">Frontera de posibilidades de producción</text>
+          <text x="92" y="84" font-size="15" fill="var(--ink-2)">cada forma de repartir tus 10 horas</text>
+        </svg>
+
+<!-- @see -->
+      <h2 class="reveal">Mueve tu fin de semana.<br>Mira lo que <em>cuesta.</em></h2>
+      <p class="lead reveal">Digamos que cortar césped paga $15 la hora. Cada hora que pasas con tus amigos es una hora que no estás cortando césped, así que esa hora no es gratis de verdad. Te cuesta los $15 que podrías haber ganado. Esos $15 perdidos son el <dfn class="term" data-def="El valor de lo mejor a lo que renuncias cuando eliges otra cosa.">costo de oportunidad</dfn> de esa hora.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Costo de oportunidad</dt><dd>Pasa 1 hora con tus amigos y el costo de oportunidad son los <b>$15</b> que podrías haber ganado cortando césped. Pasa 4 horas y son 4 × $15 = <b>$60</b>.</dd></div></dl></div>
+
+      <div class="reveal hours-demo" style="margin-top:36px">
+        <div class="payline"><span class="val" id="oc-hours">6</span><span class="muted">horas cortando césped, de 10</span></div>
+        <input type="range" id="oc-slider" min="0" max="10" step="1" value="6" aria-label="Horas cortando césped" style="margin:20px 0 28px">
+        <div class="hour-strip" id="oc-strip" aria-hidden="true"></div>
+        <div class="figures">
+          <div class="figure"><div class="label">Ganas</div><div class="val c-savings" id="oc-earn">$90</div><p>Por las horas que cortaste césped</p></div>
+          <div class="figure"><div class="label">Tiempo con amigos</div><div class="val c-wants" id="oc-free">4 h</div><p>Diversión, descanso, lo que te mantiene cuerdo</p></div>
+          <div class="figure"><div class="label">Lo que de verdad costó esa diversión</div><div class="val" id="oc-cost">$60</div><p>El dinero al que renunciaste. Ese es su costo de oportunidad.</p></div>
+        </div>
+      </div>
+
+      <h3 class="reveal" style="margin-top:88px">Ahora mira todos los fines de semana posibles.</h3>
+      <p class="reveal">Esta vez, imagina las 10 horas repartidas entre tus dos trabajos: cortar césped y arreglar bicis. Un jardín siempre lleva 1 hora. Las bicis no: las cuatro bicis de tu garaje necesitan distintas cantidades de trabajo. Una solo tiene una llanta ponchada (1 hora), otra necesita cadena nueva (2 horas), otra necesita frenos nuevos (3 horas) y otra es un desastre oxidado que necesita un arreglo completo (4 horas). Harías primero las rápidas. Así que podrías cortar 10 jardines, o arreglar 1 bici y cortar 9 jardines, o arreglar 2 bicis y cortar 7, o arreglar 3 y cortar 4, o arreglar las 4 bicis y no cortar ninguno.</p>
+      <p class="reveal">La curva verde de abajo muestra lo máximo de ambas cosas que puedes terminar en un fin de semana. Se llama <dfn class="term" data-def="Una curva que muestra lo máximo de dos cosas que puedes producir con el tiempo o los recursos que tienes.">frontera de posibilidades de producción</dfn>, o <b>FPP</b> para abreviar.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>FPP</dt><dd>La curva verde de abajo. Cada punto en ella es una forma de usar las 10 horas, como <b>7 jardines + 2 bicis</b> o <b>4 jardines + 3 bicis</b>.</dd></div></dl></div>
+      <ul class="reveal ppf-key">
+        <li><b>Sobre la curva:</b> usas las 10 horas. No se desperdicia nada.</li>
+        <li><b>Dentro de la curva:</b> algunas horas quedan sin usar. Podrías hacer más de ambas cosas.</li>
+        <li><b>Fuera de la curva:</b> imposible con el tiempo y las herramientas que tienes ahora.</li>
+      </ul>
+      <p class="muted reveal">Toca cualquier punto de la gráfica para probar un plan.</p>
+      <div class="reveal ppf-wrap" style="margin-top:24px">
+        <svg id="ppf" viewBox="0 0 640 420" role="img" aria-label="Una gráfica con bicis arregladas en el eje vertical y jardines cortados en el horizontal. Toca un punto para ver si ese plan es posible, un desperdicio o eficiente.">
+          <g class="ppf-grid" stroke="var(--line)" stroke-width="1">
+            <path d="M80 104 H600 M80 168 H600 M80 232 H600 M80 296 H600"/>
+          </g>
+          <path d="M80 360 V40 M80 360 H610" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path id="ppf-area" fill="var(--savings)" opacity=".14"/>
+          <path id="ppf-line" fill="none" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/>
+          <path id="ppf-old" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6" opacity="0"/>
+          <g id="ppf-ticks" font-size="13" fill="var(--ink-3)"></g>
+          <text x="610" y="398" text-anchor="end" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Jardines cortados</text>
+          <path d="M330 52 h28" stroke="var(--savings)" stroke-width="4" stroke-linecap="round"/><text x="368" y="57" class="ppf-legend" fill="var(--ink-2)">Frontera de posibilidades (FPP)</text>
+          <text transform="translate(30 360) rotate(-90)" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bicis arregladas</text>
+          <g id="ppf-pin" opacity="0"><circle r="10" stroke-width="3"/></g>
+          <rect id="ppf-hit" x="56" y="24" width="570" height="356" fill="transparent" style="cursor:crosshair"/>
+        </svg>
+        <div class="ppf-side">
+          <p id="ppf-msg" class="ppf-msg" aria-live="polite">Toca la gráfica para probar un plan.</p>
+          <button class="btn sm line" id="ppf-grow">Comprar un soporte de $60</button>
+          <p class="small muted" style="margin-top:12px">Un soporte de reparación es una abrazadera que sujeta la bici mientras trabajas, y hace más rápidos los arreglos. Toca el botón para ver qué le hace a la curva.</p>
+        </div>
+      </div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Diez horas <em>libres</em></h2>
+      <p class="lead reveal">Cuatro fines de semana, diez horas cada uno. Tus metas al final: <b>$200</b> para un soporte de reparación, <b>12 horas</b> de práctica del SAT, y no agotarte. No vas a lograrlo todo a la perfección. De eso se trata.</p>
+
+      <div class="ledger reveal" id="game">
+        <div class="ledger-head">
+          <div>
+            <div class="small muted" id="g-week">Fin de semana 1 de 4</div>
+            <div class="left-big" id="g-left" aria-live="polite">Quedan 10 horas</div>
+          </div>
+          <button class="btn" id="g-go" disabled>Vivir el fin de semana <span class="arrow">→</span></button>
+        </div>
+        <div class="hour-strip big" id="g-strip" aria-hidden="true"></div>
+        <p class="split-note" id="g-event-note"></p>
+        <div class="acts" id="g-acts"></div>
+
+        <div class="gauges" style="margin-top:28px">
+          <div class="gauge"><small>Ahorrado</small><b id="s-money">$0</b><div class="meter"><div id="m-money" class="bg-savings" style="width:0%"></div></div></div>
+          <div class="gauge"><small>Práctica del SAT</small><b id="s-study">0 h</b><div class="meter"><div id="m-study" style="width:0%;background:#7a5bb5"></div></div></div>
+          <div class="gauge"><small>Energía</small><b id="s-energy">70</b><div class="meter"><div id="m-energy" class="bg-wants" style="width:70%"></div></div></div>
+        </div>
+        <ul class="timeline" id="g-log"></ul>
+        <div id="g-result" class="hidden"></div>
+      </div>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+
+      <h3 class="reveal" style="margin-top:40px">Costo de oportunidad</h3>
+      <div class="formula reveal">Costo de oportunidad de una decisión <span class="op">=</span> valor de la <b>mejor</b> opción a la que renunciaste</div>
+      <p class="reveal">Solo cuentas la mejor opción a la que renunciaste, no todas las opciones sumadas. Digamos que una hora de tu tiempo podría darte $15 cortando un jardín o $12 cuidando niños. Si en cambio pasas esa hora con tus amigos, la hora te costó <b>$15</b>, la mejor de las dos. No costó $27, porque nunca podrías haber cortado césped y cuidado niños en la misma hora.</p>
+
+      <h3 class="reveal">Medir el costo en la otra cosa</h3>
+      <p class="reveal">El costo de oportunidad no tiene que estar en dólares. Muchas veces es más fácil preguntar: <i>"Para tener uno más de esto, ¿cuánto de aquello dejo?"</i></p>
+      <p class="reveal">Toma el arreglo completo de la historia: lleva 4 horas. En esas mismas 4 horas podrías cortar 4 jardines. Así que una bici te cuesta <b>4 jardines</b>. Como fórmula:</p>
+      <div class="formula reveal">Costo de 1 bici más <span class="op">=</span> <span class="frac"><span>jardines a los que renuncias</span><span>bicis que ganas</span></span> <span class="op">=</span> <span class="frac"><span>4</span><span>1</span></span> <span style="white-space:nowrap"><span class="op">=</span> 4 jardines</span></div>
+
+      <h3 class="reveal">Ejemplo resuelto: bicis o jardines</h3>
+      <ol class="steps reveal">
+        <li><b>Anota lo que lleva cada trabajo.</b> Un jardín lleva 1 hora y paga $15. Un arreglo completo de bici lleva 4 horas y deja unos $70 de ganancia.</li>
+        <li><b>Calcula cuánto cuesta una bici en jardines.</b> Las 4 horas de un arreglo podrían haber cortado 4 jardines. Así que una bici cuesta <b>4 jardines</b>, o sea 4 × $15 = <b>$60</b> de dinero de cortar césped.</li>
+        <li><b>Compara ese costo con lo que paga la bici.</b> La bici deja $70, y renunciaste a $60 para arreglarla. Así que la bici es el mejor uso de esas horas, por $10.</li>
+        <li><b>Mira cómo sube el costo.</b> Tu primera bici probablemente sea fácil. La tercera podría ser un desastre oxidado que lleva 6 horas. Esa bici cuesta 6 jardines ($90) pero sigue pagando solo $70, así que ya no vale la pena. Este costo que sube es la razón de que la frontera sea una curva y no una línea recta.</li>
+        <li><b>Decide de una en una.</b> No preguntes "¿bicis o jardines?". Pregunta "¿vale <i>una bici más</i> más que los jardines que reemplaza?". Sigue hasta que la respuesta sea no. Los economistas llaman a esto <dfn class="term" data-def="Decidir comparando el beneficio extra y el costo extra de una unidad más, en vez de todo o nada.">pensar en el margen</dfn>.</li>
+      </ol>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Pensar en el margen</dt><dd>En vez de "¿bicis o jardines?", preguntas por una bici a la vez. Un arreglo cuesta 4 jardines (<b>$60</b>) y paga <b>$70</b>, así que esa bici más vale la pena, por $10.</dd></div></dl></div>
+
+      <h3 class="reveal">¿Cuántos son demasiados? Uno más cada vez</h3>
+      <p class="reveal">Pensar en el margen también te dice cuándo <b>parar</b>. Digamos que tu negocio de bicis crece: tú y dos amigos ahora trabajan en un garaje. Un soporte de reparación (la abrazadera que sujeta la bici mientras la arreglas) se puede alquilar por <b>$60 al mes</b>. Más soportes te dejan arreglar más bicis, pero aquí está el truco: siguen siendo solo tres personas, en un garaje.</p>
+      <table class="mini-table reveal">
+        <thead><tr><th>Soporte</th><th>Ganancia extra que añade al mes<br>(beneficio marginal)</th><th>Alquiler al mes<br>(costo marginal)</th><th>¿Vale la pena?<br>(beneficio − costo)</th></tr></thead>
+        <tbody>
+          <tr><td>1.º</td><td>$150</td><td>$60</td><td>Sí, +$90</td></tr>
+          <tr><td>2.º</td><td>$120</td><td>$60</td><td>Sí, +$60</td></tr>
+          <tr><td>3.º</td><td>$80</td><td>$60</td><td>Sí, +$20</td></tr>
+          <tr><td>4.º</td><td>$40</td><td>$60</td><td><b>No, −$20</b></td></tr>
+        </tbody>
+      </table>
+      <p class="reveal"><b>¿Por qué cada soporte añade menos?</b> El primer soporte se usa todo el día. Con un segundo, dos de ustedes pueden trabajar a la vez. Para el cuarto soporte, hay más soportes que personas. Casi siempre está vacío, así que añade poco. Cada soporte nuevo lo comparten las mismas tres personas y el mismo garaje. Los economistas llaman a esto <dfn class="term" data-def="Cuando sigues añadiendo más de una cosa (como máquinas) pero no de las otras (como trabajadores o espacio), cada unidad extra añade menos que la anterior.">rendimientos decrecientes</dfn>.</p>
+      <p class="reveal">Los economistas tienen nombre para los dos números que comparas. Lo que añade una unidad más es su <dfn class="term" data-def="El beneficio extra de una unidad más.">beneficio marginal</dfn>. Lo que cuesta una unidad más es su <dfn class="term" data-def="El costo extra de una unidad más.">costo marginal</dfn>. ("Marginal" solo significa "uno más".)</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Beneficio marginal</dt><dd>Lo que añade un soporte más. El beneficio marginal del 1.er soporte es <b>$150</b>. El del 4.º es solo <b>$40</b>.</dd></div><div><dt>Costo marginal</dt><dd>Lo que cuesta un soporte más: sus <b>$60</b> de alquiler. Es igual para todos los soportes.</dd></div><div><dt>Lo que te quedas</dt><dd>Beneficio marginal menos costo marginal. Para el 1.er soporte: $150 − $60 = <b>$90</b>. Para el 4.º: $40 − $60 = <b>−$20</b>, una pérdida.</dd></div><div><dt>Rendimientos decrecientes</dt><dd>El beneficio marginal se encoge con cada soporte ($150, $120, $80, $40), porque los comparten las mismas tres personas.</dd></div></dl></div>
+      <p class="reveal"><b>La regla:</b> sigue añadiendo uno más mientras su beneficio marginal sea mayor que su costo marginal. Para en el primero en que no lo sea. Aquí eso significa <b>3 soportes</b>. Fíjate en que el 4.º soporte sigue añadiendo dinero ($40). Solo que añade menos que sus $60 de alquiler, así que alquilarlo perdería $20 al mes.</p>
+
+      <h3 class="reveal">Por qué la frontera se curva hacia afuera</h3>
+      <p class="reveal">En un examen te preguntarán por qué una FPP está "curvada hacia afuera": se abomba lejos de la esquina en vez de ser una línea recta. La respuesta corta es que <b>no todos (ni todo) son igual de buenos en ambos trabajos.</b> Esto es lo que significa con números reales.</p>
+      <p class="reveal">Digamos que tu negocio crece y dos amigos trabajan el fin de semana contigo. Al esfuerzo del equipo lo llamarás "recursos". Cada persona puede pasar el fin de semana con bicis <i>o</i> con jardines:</p>
+      <table class="mini-table reveal">
+        <thead><tr><th>Persona</th><th>Bicis en un fin de semana</th><th>Jardines en un fin de semana</th><th>Costo de cada bici</th></tr></thead>
+        <tbody>
+          <tr><td><b>Maya</b>, un genio de las bicis</td><td>4</td><td>5</td><td><span class="frac"><span>5 jardines</span><span>4 bicis</span></span> = 1.25 jardines</td></tr>
+          <tr><td><b>Leo</b>, regular en ambas</td><td>2</td><td>6</td><td><span class="frac"><span>6 jardines</span><span>2 bicis</span></span> = 3 jardines</td></tr>
+          <tr><td><b>Jordan</b>, nunca ha tocado una llave</td><td>1</td><td>8</td><td><span class="frac"><span>8 jardines</span><span>1 bici</span></span> = 8 jardines</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps reveal">
+        <li><b>Empieza con todos cortando césped.</b> 5 + 6 + 8 = <b>19 jardines, 0 bicis.</b></li>
+        <li><b>Quieres algunas bicis, ¿quién cambia primero?</b> Maya, porque deja menos jardines por bici. Ganas 4 bicis y pierdes solo 5 jardines: <b>14 jardines, 4 bicis.</b> Bicis baratas.</li>
+        <li><b>¿Quieres más bicis? Ahora cambia Leo.</b> Ganas 2 bicis pero pierdes 6 jardines: <b>8 jardines, 6 bicis.</b> Cada bici ahora cuesta 3 jardines.</li>
+        <li><b>¿Quieres todas las bicis posibles? Jordan tiene que cambiar.</b> Ganas solo 1 bici y pierdes 8 jardines: <b>0 jardines, 7 bicis.</b> Esa última bici costó 8 jardines.</li>
+      </ol>
+      <p class="reveal">Cada bici extra cuesta más jardines que la anterior, porque primero usaste a quienes son buenos con las bicis. Dibuja esos cuatro puntos y obtienes una curva que se abomba hacia afuera:</p>
+      <svg class="reveal bow-chart" viewBox="0 0 560 370" role="img" aria-label="La FPP del equipo: puntos en 19 jardines 0 bicis, 14 jardines 4 bicis, 8 jardines 6 bicis y 0 jardines 7 bicis forman una curva abombada hacia afuera sobre una línea recta punteada.">
+        <path d="M70 300 H530 M70 300 V30" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+        <path d="M497.5 300 L70 72.5" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+        <path d="M497.5 300 L385 170 L250 105 L70 72.5" stroke="var(--savings)" stroke-width="4" fill="none" stroke-linejoin="round"/>
+        <g fill="var(--savings)" stroke="var(--ink)" stroke-width="1.5"><circle cx="497.5" cy="300" r="6"/><circle cx="385" cy="170" r="6"/><circle cx="250" cy="105" r="6"/><circle cx="70" cy="72.5" r="6"/></g>
+        <g font-size="13" fill="var(--ink-2)">
+          <text x="548" y="322" text-anchor="end">todos cortan: 19 jardines</text>
+          <text x="400" y="166">Maya: 4 bicis</text><text x="400" y="182">por 5 jardines</text>
+          <text x="258" y="95">Leo: 2 bicis por 6 jardines</text>
+          <text x="84" y="60">Jordan: 1 bici por 8 jardines</text>
+          <text x="150" y="236" fill="var(--ink-3)">punteada: si todos fueran</text>
+          <text x="150" y="252" fill="var(--ink-3)">igual de buenos (línea recta)</text>
+        </g>
+        <text x="300" y="356" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Jardines cortados</text>
+        <text transform="translate(34 300) rotate(-90)" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Bicis arregladas</text>
+      </svg>
+      <p class="reveal">Si los tres fueran igual de buenos en ambos trabajos, cada bici costaría el mismo número de jardines y la FPP sería la línea recta punteada. El abombamiento viene de que las personas (y las máquinas, la tierra y el tiempo) son mejores en unos trabajos que en otros. Los economistas lo llaman la <dfn class="term" data-def="Cada unidad extra de algo cuesta más de la otra cosa que la unidad anterior, porque primero cambias los recursos más adecuados.">ley del costo de oportunidad creciente</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ley del costo de oportunidad creciente</dt><dd>Cada bici extra cuesta más jardines que la anterior: las bicis de Maya cuestan <b>1.25 jardines</b> cada una, las de Leo <b>3</b> y las de Jordan <b>8</b>. Ese costo creciente es lo que curva la línea.</dd></div></dl></div>
+
+      <h3 class="reveal">Moverse sobre la curva vs. mover la curva</h3>
+      <p class="reveal">A los exámenes les encanta esta. En una FPP pueden pasar tres cosas distintas, y solo una mueve la curva. Recuerda: la curva muestra lo <b>máximo</b> que podrías producir con lo que tienes. Así que la curva solo se mueve cuando cambia <i>"lo máximo que podrías producir"</i>.</p>
+      <svg class="reveal bow-chart" viewBox="0 0 560 360" role="img" aria-label="Una FPP con tres flechas: una que se desliza por la curva, una que va de un punto interior hasta la curva y una que empuja toda la curva hacia afuera hasta una curva punteada más grande.">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="var(--ink)"/></marker></defs>
+        <path d="M60 300 H520 M60 300 V20" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
+        <path d="M60 50 A320 250 0 0 1 380 300" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>
+        <path d="M60 90 A270 210 0 0 1 330 300" stroke="var(--savings)" stroke-width="4" fill="none"/>
+        <g stroke="var(--ink)" stroke-width="2.5" fill="none" marker-end="url(#ah)">
+          <path d="M147 119 A255 195 0 0 1 222 153"/>
+          <path d="M175 245 L282 202"/>
+          <path d="M262 160 L300 132"/>
+        </g>
+        <circle cx="168" cy="248" r="6" fill="var(--danger)" stroke="var(--ink)" stroke-width="1.5"/>
+        <g font-family="Fraunces, serif" font-size="17" fill="var(--ink)">
+          <text x="160" y="148">1</text><text x="210" y="252">2</text><text x="306" y="124">3</text>
+        </g>
+        <g font-size="13" fill="var(--ink-2)">
+          <text x="390" y="70">1 · deslizarse por la curva</text>
+          <text x="390" y="92">2 · subir hasta la curva</text>
+          <text x="390" y="114">3 · la curva se mueve</text>
+          <text x="390" y="140" fill="var(--ink-3)">punteada = curva nueva</text>
+        </g>
+        <text x="520" y="330" text-anchor="end" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Jardines cortados</text>
+        <text transform="translate(26 300) rotate(-90)" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Bicis arregladas</text>
+      </svg>
+      <ol class="steps reveal">
+        <li><b>Deslizarse por la curva: cambias de opinión, no de capacidad.</b> Decides hacer más bicis y menos jardines. Eliges otro punto de la misma curva, y lo máximo que podrías producir no ha cambiado. Para un país, "la gente compra más coches y menos trigo" es este caso.</li>
+        <li><b>Subir desde dentro hasta la curva: dejas de desperdiciar.</b> Digamos que Jordan pasó el fin de semana en el sofá. Tu equipo estaba dentro de la curva. Cuando Jordan se pone a trabajar, suben hacia la curva. Pero la curva no se mueve, porque Jordan podía haber trabajado desde el principio. Para un país, <b>que baje el desempleo</b> es este caso: gente que estaba parada empieza a trabajar.</li>
+        <li><b>Toda la curva se mueve hacia afuera: ahora puedes producir más de lo que antes era posible.</b> Esto solo pasa cuando consigues más recursos o mejores. Compras un soporte de reparación para que las bicis vayan más rápido (es el botón de la gráfica de arriba), aprendes una habilidad nueva o se une un cuarto amigo. Para un país, es <b>nueva tecnología</b>, más trabajadores, más máquinas o mejor educación. Los economistas lo llaman <dfn class="term" data-def="Un aumento de lo máximo que puede producir una economía, que se ve como la FPP moviéndose hacia afuera.">crecimiento económico</dfn>.</li>
+      </ol>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Crecimiento económico</dt><dd>Comprar el soporte movió tu curva hacia afuera, de un máximo de <b>4 bicis</b> en 10 horas a <b>5 bicis</b>. Las mismas horas, más posibilidades.</dd></div></dl></div>
+      <p class="reveal"><b>Lo que no la mueve:</b> los precios. Si las bicis se venden más baratas, puedes seguir arreglando exactamente las mismas en un fin de semana. La FPP cuenta cuánto <i>puedes producir</i>, no cuánto vale.</p>
+
+      <details class="deeper reveal">
+        <summary>Más a fondo: costos hundidos, la curva cuando trabajas solo y la ventaja comparativa</summary>
+        <div>
+          <p><b>1. Costos hundidos.</b> Un <dfn class="term" data-def="Tiempo o dinero que ya gastaste y no puedes recuperar.">costo hundido</dfn> es tiempo o dinero que ya gastaste y no puedes recuperar. No debería cambiar lo que haces después. Digamos que le has metido 3 horas a una bici y luego descubres que necesita $80 en piezas. Esas 3 horas ya se fueron, termines la bici o no. La única pregunta ahora es si terminarla te dará más que los $80 y las horas que faltan. Si no, para, aunque se sienta como un desperdicio.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Costo hundido</dt><dd>Las <b>3 horas</b> que ya le dedicaste a la bici. Se fueron de todas formas, así que no deberían contar cuando decides si terminarla.</dd></div></dl></div>
+          <p><b>2. La misma idea, una persona.</b> La curva también aparece cuando trabajas solo. Tu primera bici del fin de semana es fácil. Si sigues, llegas a las bicis oxidadas que necesitan un arreglo completo de 4 horas, así que cada bici extra cuesta más jardines. Razones distintas, mismo resultado: cuanto más produces de una cosa, más cuesta cada unidad extra. Consejo de examen: si una FPP es una línea recta, cada unidad cuesta lo mismo.</p>
+          <p><b>3. Ventaja comparativa.</b> Tener una <dfn class="term" data-def="Poder hacer algo renunciando a menos de lo que renunciaría otra persona.">ventaja comparativa</dfn> significa que puedes hacer algo renunciando a menos de lo que renunciaría otra persona. Digamos que tu amigo Sam puede cortar 2 jardines por hora, pero tarda 8 horas en arreglar una bici. En esas 8 horas Sam podría haber cortado 16 jardines, así que a Sam una bici le cuesta 16 jardines. A ti solo te cuesta 4. Así que tú deberías arreglar las bicis, Sam debería cortar el césped, y se reparten el trabajo. Los dos terminan con más que si cada uno hiciera ambos trabajos. Esto funciona incluso cuando una persona es más rápida en todo. Un economista llamado David Ricardo lo explicó en 1817, y es la razón principal por la que los países comercian entre sí. Sale en todos los exámenes de introducción a la economía.</p>
+          <div class="in-example"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ventaja comparativa</dt><dd>Una bici te cuesta <b>4 jardines</b> a ti pero <b>16 jardines</b> a Sam, así que tú tienes la ventaja comparativa en bicis. Sam renuncia a menos bicis por jardín, así que Sam la tiene en jardines.</dd></div></dl></div>
+        </div>
+      </details>
+
+<!-- @nature -->
+      <h2 class="reveal">Un árbol vive con un <em>presupuesto.</em></h2>
+      <p class="lead reveal">Un árbol solo produce cierta cantidad de azúcar con la luz del sol cada año. Lo que gasta en raíces no puede ir a las hojas, y las hojas no pueden convertirse en semillas. Los árboles en suelo seco gastan en raíces profundas. Los árboles en un bosque lleno compiten hacia arriba por la luz. Ninguno puede maximizarlo todo.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 380" role="img" aria-label="Un árbol con su azúcar anual repartida en tres: hojas para captar luz, raíces para encontrar agua y semillas para el futuro">
+        <path d="M0 250 H900" stroke="var(--line)" stroke-width="2"/>
+        <path d="M0 250 H900 V380 H0Z" fill="var(--wants)" opacity=".08"/>
+        <circle cx="120" cy="70" r="34" fill="#f6d36b"/>
+        <g stroke="#f6d36b" stroke-width="3" stroke-linecap="round"><path d="M120 18v-10M120 132v-10M68 70h-10M182 70h-10M84 34l-7-7M156 106l7 7M84 106l-7 7M156 34l7-7"/></g>
+        <path d="M440 250 C 438 200, 444 170, 440 120" stroke="var(--ink)" stroke-width="16" stroke-linecap="round" fill="none"/>
+        <g class="sway">
+          <circle cx="440" cy="96" r="62" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="384" cy="130" r="40" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="498" cy="128" r="42" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="470" cy="76" r="7" fill="var(--wants)"/><circle cx="410" cy="110" r="7" fill="var(--wants)"/><circle cx="512" cy="132" r="7" fill="var(--wants)"/>
+        </g>
+        <g stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M440 250 C 420 280, 380 300, 330 340"/><path d="M440 250 C 450 290, 470 320, 520 352"/><path d="M440 250 C 440 290, 436 330, 440 370"/><path d="M400 300 C 380 310, 360 312, 340 310"/>
+        </g>
+        <path d="M150 104 C 260 140, 330 110, 380 100" stroke="#e3a91e" stroke-width="3" fill="none" class="flow"/>
+        <text x="560" y="80" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Hojas · captar luz</text>
+        <text x="560" y="106" font-size="15" fill="var(--ink-2)">como invertir en habilidades que pagan</text>
+        <text x="560" y="160" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Semillas · el futuro</text>
+        <text x="560" y="186" font-size="15" fill="var(--ink-2)">como ahorrar para después</text>
+        <text x="560" y="320" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Raíces · seguir vivo</text>
+        <text x="560" y="346" font-size="15" fill="var(--ink-2)">como el alquiler, la comida y lo básico</text>
+        <path d="M550 74 H520 M550 154 H520 M550 314 H500" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="3 5"/>
+      </svg>
+      <p class="reveal" style="max-width:680px"><b>La lección de la biología.</b> Todo ser vivo enfrenta escasez, así que todo ser vivo hace renuncias. Los ecólogos incluso lo llaman "presupuesto de energía". El árbol no se siente mal por no producir semillas en un año de sequía. Pone su azúcar donde más importa ahora mismo. Eso es exactamente lo que estás aprendiendo a hacer con el dinero.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Escasez:</b> quieres más de lo que te alcanza el tiempo, el dinero o la energía. Es la razón de que exista la economía.</li>
+          <li><b>Renuncia (trade-off):</b> tener más de una cosa significa tener menos de otra.</li>
+          <li><b>Costo de oportunidad:</b> el valor de la siguiente mejor alternativa a la que renuncias. Solo cuenta la mejor.</li>
+          <li><b>Frontera de posibilidades de producción (FPP):</b> una curva que muestra lo máximo que puedes producir de dos cosas con lo que tienes. Sobre la curva, no se desperdicia nada. Dentro, algo se desperdicia. Fuera es imposible por ahora.</li>
+          <li>El <b>crecimiento</b> (mejores herramientas, mejores habilidades, más tiempo) mueve la frontera hacia afuera.</li>
+          <li><b>Pensamiento marginal:</b> compara el costo y el beneficio de <i>una unidad más</i>, no todo o nada.</li>
+          <li>Los <b>costos hundidos</b> ya se fueron. Ignóralos al decidir qué sigue.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Faltas a un turno de trabajo de $20 para ver una película de $12. La noche de cine de verdad te cuesta la entrada de $12 más los <input type="text" class="blank" data-answer="20" inputmode="numeric" aria-label="Espacio 1"> dólares que habrías ganado.</div>
+        <div>2. Un punto dentro de la frontera significa que se están <input type="text" class="blank" data-answer="desperdiciando|desaprovechando|malgastando|subutilizando|desperdiciando recursos" aria-label="Espacio 2"> recursos.</div>
+        <div>3. Si 1 bici lleva el mismo tiempo que 4 jardines, el costo de oportunidad de 1 bici es <input type="text" class="blank" data-answer="4|4 jardines|cuatro|cuatro jardines" aria-label="Espacio 3"> jardines.</div>
+        <div>4. El dinero ya gastado que no puedes recuperar es un costo <input type="text" class="blank" data-answer="hundido|costo hundido|irrecuperable" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Comprobar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>El ayuntamiento de $1,000</h3>
+          <p>A tu pueblo le quedan $1,000 este año. Opciones: arreglar una calle llena de baches, añadir una parada de autobús o repintar el skatepark. Cada persona defiende una. Antes de votar, todos tienen que decir el costo de oportunidad de su propia opción.</p>
+        </div>
+        <div class="reveal">
+          <h3>Comercia como Ricardo</h3>
+          <p>Cronométrense un minuto: ¿cuántas palabras puede escribir cada uno y cuántos problemas de mate puede resolver? Calculen quién renuncia a menos en cada tarea (eso es la ventaja comparativa) y luego repartan una tarea de mentira para terminar lo más rápido posible.</p>
+        </div>
+        <div class="reveal">
+          <h3>Duelo de horas</h3>
+          <p>Jueguen los dos a Diez horas libres y comparen sus fines de semana. ¿Uno persiguió el dinero y el otro las horas de SAT? Expliquen qué hora moverían si jugaran otra vez.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tus decisiones.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Qué hiciste con tu último sábado libre? ¿Qué era lo siguiente mejor que podrías haber hecho?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Hay algo que sigues haciendo solo porque ya le metiste tiempo o dinero? ¿Es un costo hundido el que habla?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué habilidad empujaría tu propia frontera hacia afuera, para sacarle más a las mismas horas?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las preguntaría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el analista de estrategia</h3>
+      <div class="reveal">
+        <p>Una cafetería tiene <b>40 horas de personal</b> libres a la semana. Puede usarlas para un <b>servicio de catering</b> (deja unos <b>$1,200</b> a la semana de ganancia) o para <b>abrir dos noches más</b> (deja unos <b>$900</b>). Una tercera idea, <b>puestos temporales los fines de semana</b>, dejaría unos <b>$1,000</b>.</p>
+        <p><b>Tu tarea:</b> recomienda una opción y di su costo de oportunidad en dólares. ¿Qué dato te haría cambiar de respuesta?</p>
+        <textarea id="job-answer" placeholder="Escribe tu recomendación para el dueño…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Elige el catering.</b> Deja la mayor ganancia con las mismas 40 horas.</p>
+            <p><b>Costo de oportunidad: $1,000</b>, la ganancia de los puestos temporales, la siguiente mejor opción. No $1,900: con las mismas horas solo puedes renunciar a una alternativa.</p>
+            <p><b>Qué lo cambiaría:</b> si el catering necesita $400 a la semana de alquiler de una furgoneta que no está en la estimación, baja a $800 y ganan los puestos temporales. Comprueba siempre que los números de cada opción incluyan todos sus costos.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Esta lección es la primera parada <em>de un largo camino.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección lleva a oferta y demanda, la psicología del dinero, el presupuesto y las decisiones de proyectos en finanzas corporativas">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Inicio del curso</text><text x="20" y="186">No hace falta ninguna lección antes</text>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Escasez</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../supply-demand/"><text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Oferta y demanda</text><text x="690" y="66">Siguiente lección · la escasez fija precios</text></a>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Psicología del dinero</text><text x="690" y="146">Unidad 2 · ahora vs. después</text>
+          <a href="../budgeting/"><text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Presupuesto</text><text x="690" y="226">Unidad 4 · renuncias en papel</text></a>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Decisiones de proyectos (VAN)</text><text x="690" y="306">Unidad 11 · empresas eligiendo proyectos</text>
+        </g>
+      </svg>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes</span><b>Inicio del curso</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Escasez y renuncias</b></li>
+        <li><span class="muted small">Siguiente · Unidad 1</span><b>Oferta y demanda</b></li>
+        <li><span class="muted small">Después · Unidad 2</span><b>Psicología del dinero</b></li>
+        <li><span class="muted small">Después · Unidad 4</span><b>Presupuesto</b></li>
+        <li><span class="muted small">Después · Unidad 11</span><b>Decisiones de proyectos (VAN)</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Siguiente: Oferta y demanda <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>

@@ -12,6 +12,15 @@
     })
   );
 
+  // Language switch in the header: remember the pick, then go to the other version of the page.
+  document.querySelectorAll("[data-set-lang]").forEach((a) =>
+    a.addEventListener("click", (e) => {
+      if (!window.FH) return;
+      e.preventDefault();
+      FH.setLang(a.dataset.setLang);
+    })
+  );
+
   // Fade elements up as they scroll into view. Lists and grids come in one item at a time.
   const io = "IntersectionObserver" in window ? new IntersectionObserver(
     (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
@@ -55,8 +64,11 @@
     const n = document.createElement("div");
     n.className = "notice";
     n.setAttribute("role", "region");
-    n.setAttribute("aria-label", "How this site stores data");
-    n.innerHTML = `<p>No tracking or ad cookies here. Your progress is saved in this browser so you don't lose it. <a href="${base}legal/cookies.html">Details</a></p><button class="btn sm">Got it</button>`;
+    const es = root.lang === "es";
+    n.setAttribute("aria-label", es ? "Cómo guarda datos este sitio" : "How this site stores data");
+    n.innerHTML = es
+      ? `<p>Aquí no hay cookies de rastreo ni de anuncios. Tu progreso se guarda en este navegador para que no lo pierdas. <a href="${base}legal/cookies.html">Detalles</a></p><button class="btn sm">Entendido</button>`
+      : `<p>No tracking or ad cookies here. Your progress is saved in this browser so you don't lose it. <a href="${base}legal/cookies.html">Details</a></p><button class="btn sm">Got it</button>`;
     n.querySelector("button").addEventListener("click", () => {
       try { localStorage.setItem("fh-notice-ok", "1"); } catch (e) { /* storage blocked */ }
       n.remove();

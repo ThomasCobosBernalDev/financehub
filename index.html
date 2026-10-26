@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-alt="es/">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
-  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610261834">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="assets/css/style.css?v=202610261923">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -124,6 +124,7 @@
     <a class="logo" href="./">Finance<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Course</a><a href="about.html">About</a></nav>
     <div class="spacer"></div>
+    <a class="lang-switch" href="es/" data-set-lang="es" hreflang="es" aria-label="Ver en español"><span class="ls-long">Español</span><span class="ls-short">ES</span></a>
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
@@ -251,17 +252,18 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610261834"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610261834"></script>
-<script src="assets/js/auth.js?v=202610261834"></script>
-<script src="assets/js/site.js?v=202610261834"></script>
+<script src="assets/js/save.js?v=202610261923"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="assets/js/auth.js?v=202610261923"></script>
+<script src="assets/js/site.js?v=202610261923"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
+const T = FH.t;
 // Lesson list: mark finished lessons and point the main button at the next one.
 const links = [...document.querySelectorAll(".lessons a")];
 links.forEach((a) => {
   const l = FH.state.lessons[a.dataset.lesson];
-  if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += " · done"; }
+  if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += T(" · done", " · hecha"); }
 });
 // Your path: mark units your goals skip or you already know, and point the main button at the next lesson.
 const paintPath = () => {
@@ -271,7 +273,7 @@ const paintPath = () => {
     u.classList.toggle("off-path", setUp && !on.has(n));
     u.classList.toggle("known", known.has(n));
     let tag = u.querySelector(".path-tag");
-    const text = known.has(n) ? "You know this" : setUp && !on.has(n) ? "Extra" : "";
+    const text = known.has(n) ? T("You know this", "Ya lo sabes") : setUp && !on.has(n) ? T("Extra", "Extra") : "";
     if (!text) { if (tag) tag.remove(); return; }
     if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
     tag.textContent = text;
@@ -281,7 +283,7 @@ const paintPath = () => {
   if (next) {
     const c = document.getElementById("continue");
     c.href = next.href;
-    c.querySelector("span").textContent = `${started ? "Continue" : "Start"} Unit ${next.unit} · Lesson ${next.n}`;
+    c.querySelector("span").textContent = T(`${started ? "Continue" : "Start"} Unit ${next.unit} · Lesson ${next.n}`, `${started ? "Continuar" : "Empezar"} Unidad ${next.unit} · Lección ${next.n}`);
     document.getElementById("continue-title").textContent = next.title;
   }
   document.getElementById("hero-setup").hidden = setUp;
@@ -290,9 +292,13 @@ const paintPath = () => {
   if (setUp) {
     const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
     const todo = [...on].filter((n) => !known.has(n)).length;
-    card.innerHTML = `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b> and <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><a class="btn sm line" href="start/">Change my path</a>`;
+    card.innerHTML = T(
+      `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b> and <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><a class="btn sm line" href="start/">Change my path</a>`,
+      `<div><p class="kicker">Tu camino</p><p class="mp-text">Hecho para <b>${goals.join("</b> y <b>")}</b>. ${todo} unidades por aprender${known.size ? `, ${known.size} que ya sabes` : ""}. Las unidades marcadas como Extra no son necesarias para tu meta, pero siempre están abiertas.</p></div><a class="btn sm line" href="start/">Cambiar mi camino</a>`);
   } else {
-    card.innerHTML = `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`;
+    card.innerHTML = T(
+      `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`,
+      `<div><p class="kicker">¿No sabes por dónde empezar?</p><p class="mp-text">Cuéntanos por qué estás aprendiendo y qué ya sabes. En más o menos un minuto tendrás un camino que se salta lo que no necesitas.</p></div><a class="btn sm" href="start/">Crear mi camino</a>`);
   }
 };
 paintPath();
@@ -319,9 +325,9 @@ const paintStyles = () => {
   const picks = FH.state.styles || [];
   grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
   const all = picks.length === FH.STYLES.length;
-  document.getElementById("lp-all").textContent = all ? "Clear all" : "Select all";
-  document.getElementById("lp-status").textContent = !picks.length ? "Nothing picked yet, so lessons show every part."
-    : all ? "All eight picked. Lessons show every part." : `${picks.length} picked. Lessons will open these first.`;
+  document.getElementById("lp-all").textContent = all ? T("Clear all", "Quitar todos") : T("Select all", "Elegir todos");
+  document.getElementById("lp-status").textContent = !picks.length ? T("Nothing picked yet, so lessons show every part.", "Todavía no eliges nada, así que las lecciones muestran todas las partes.")
+    : all ? T("All eight picked. Lessons show every part.", "Elegiste los ocho. Las lecciones muestran todas las partes.") : T(`${picks.length} picked. Lessons will open these first.`, `${picks.length} elegidos. Las lecciones abrirán estos primero.`);
 };
 document.getElementById("lp-all").addEventListener("click", () => {
   FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id));
@@ -331,7 +337,14 @@ document.addEventListener("fh:save", paintStyles);
 paintStyles();
 
 // Right-margin scene follows the part you're reading.
-const SCENES = [
+const SCENES = FH.lang === "es" ? [
+  null,
+  ["Parte 1 · Fundamentos", "Donde se encuentran los precios"],
+  ["Parte 2 · Tu dinero", "Dale un trabajo a cada dólar"],
+  ["Parte 3 · Tu negocio", "Haz crecer tus ventas"],
+  ["Parte 4 · Wall Street", "Lee el mercado"],
+  ["Parte 5 · Tu carrera", "Consigue el trabajo"],
+] : [
   null,
   ["Part 1 · Foundations", "Where prices meet"],
   ["Part 2 · Your money", "Give every dollar a job"],

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es" data-alt="../../start/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arma tu camino · FinanceHub</title>
+  <meta name="description" content="Dile a FinanceHub cómo aprendes, por qué estás aquí y qué ya sabes, y recibe un camino hecho para ti.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610261923">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../">Curso</a><a href="../about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../start/" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Entrar</a>
+  </div>
+</header>
+<main id="main" class="wrap setup-page">
+<div class="setup">
+  <ol class="setup-steps" aria-label="Pasos">
+    <li data-for="0"><i></i><span>Idioma</span></li>
+    <li data-for="1"><i></i><span>Cómo aprendes</span></li>
+    <li data-for="2"><i></i><span>Por qué estás aquí</span></li>
+    <li data-for="3"><i></i><span>Qué sabes</span></li>
+    <li data-for="4"><i></i><span>Tu camino</span></li>
+  </ol>
+
+  <section class="step" data-step="0">
+    <p class="kicker">Paso 1 de 4 · Step 1 of 4</p>
+    <h1>¿Qué idioma? <em>Which language?</em></h1>
+    <p class="lead">Cada lección, juego y examen está en los dos. Puedes cambiar cuando quieras desde arriba.<br><span lang="en">Every lesson, game and quiz comes in both. You can switch anytime from the top of the page.</span></p>
+    <div class="goal-grid lang-grid">
+      <button type="button" class="goal-card" data-lang-pick="es" lang="es"><b>Español</b><small>Aprende en español</small><i class="tick" aria-hidden="true"></i></button>
+      <button type="button" class="goal-card" data-lang-pick="en" lang="en"><b>English</b><small>Learn in English</small><i class="tick" aria-hidden="true"></i></button>
+    </div>
+    <div class="step-nav"><a class="text-link" href="../">Saltar la configuración</a></div>
+  </section>
+
+  <section class="step" data-step="1" hidden>
+    <p class="kicker">Paso 2 de 4</p>
+    <h1>¿Cómo <em>aprendes mejor?</em></h1>
+    <p class="lead">Cada lección enseña cada idea de ocho maneras. Elige las que te funcionan. Se abren primero, y lo demás se pliega hasta que lo necesites.</p>
+    <div class="name-ask" id="name-ask" hidden>
+      <label for="setup-name">Primero elige un nombre de usuario</label>
+      <input id="setup-name" autocomplete="username" maxlength="20" placeholder="p. ej. thomas_c">
+      <small>De 3 a 20 letras, números, puntos o guiones bajos. Se ve en la esquina cuando tienes la sesión iniciada.</small>
+    </div>
+    <div class="lp-grid" id="lp-grid"></div>
+    <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Elegir todos</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+    <div class="step-nav"><button class="text-link" type="button" data-back>← Atrás</button><button class="btn" type="button" data-next>Siguiente <span class="arrow">→</span></button></div>
+  </section>
+
+  <section class="step" data-step="2" hidden>
+    <p class="kicker">Paso 3 de 4</p>
+    <h1>¿Por qué estás <em>aprendiendo?</em></h1>
+    <p class="lead">Elige una o más. Tu camino conserva las unidades que tu meta necesita y pasa las demás a "extra", para que no tengas que ver fusiones y adquisiciones si solo quieres ahorrar.</p>
+    <div class="goal-grid" id="goal-grid"></div>
+    <div class="step-nav"><button class="text-link" type="button" data-back>← Atrás</button><button class="btn" type="button" data-next id="goal-next" disabled>Siguiente <span class="arrow">→</span></button></div>
+  </section>
+
+  <section class="step" data-step="3" hidden>
+    <p class="kicker">Paso 4 de 4</p>
+    <h1>¿Cuánto <em>ya sabes?</em></h1>
+    <p class="lead">Sé honesto. Nada se bloquea y puedes cambiarlo cuando quieras. Si ya sabes algo, una prueba rápida encuentra qué unidades te puedes saltar.</p>
+    <div class="level-grid" id="level-grid"></div>
+    <div class="step-nav"><button class="text-link" type="button" data-back>← Atrás</button><button class="btn" type="button" id="level-next" disabled>Siguiente <span class="arrow">→</span></button></div>
+  </section>
+
+  <section class="step" data-step="quiz" hidden>
+    <p class="kicker" id="q-count">Prueba rápida</p>
+    <div class="q-bar"><i id="q-bar"></i></div>
+    <p class="q-unit" id="q-unit"></p>
+    <h2 class="q-stem" id="q-stem"></h2>
+    <div class="q-opts" id="q-opts"></div>
+    <div class="step-nav"><button class="text-link" type="button" id="q-skip">Saltar la prueba</button><button class="text-link" type="button" id="q-idk">No sé esta</button></div>
+  </section>
+
+  <section class="step" data-step="4" hidden>
+    <p class="kicker">Todo listo</p>
+    <h1>Este es <em>tu camino.</em></h1>
+    <p class="lead" id="path-sum"></p>
+    <ol class="my-path" id="my-path"></ol>
+    <div class="step-nav"><button class="text-link" type="button" id="redo">Cambiar mis respuestas</button><a class="btn" id="path-go" href="../">Ir a mi curso <span class="arrow">→</span></a></div>
+  </section>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../about.html">Acerca de y contacto</a><a href="../legal/privacy.html">Privacidad</a><a href="../legal/terms.html">Términos</a><a href="../legal/cookies.html">Cookies y almacenamiento</a><a href="../legal/privacy.html#delete">Borrar mis datos</a><a href="../credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../../assets/js/save.js?v=202610261923"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../../assets/js/auth.js?v=202610261923"></script>
+<script src="../../assets/js/site.js?v=202610261923"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+<script src="../../assets/js/setup.js?v=202610261923"></script>
+</body>
+</html>

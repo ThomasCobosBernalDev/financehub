@@ -3,14 +3,26 @@
 <!-- main: wrap setup-page -->
 <div class="setup">
   <ol class="setup-steps" aria-label="Setup steps">
-    <li data-for="0"><i></i><span>How you learn</span></li>
-    <li data-for="1"><i></i><span>Why you're here</span></li>
-    <li data-for="2"><i></i><span>What you know</span></li>
-    <li data-for="3"><i></i><span>Your path</span></li>
+    <li data-for="0"><i></i><span>Language</span></li>
+    <li data-for="1"><i></i><span>How you learn</span></li>
+    <li data-for="2"><i></i><span>Why you're here</span></li>
+    <li data-for="3"><i></i><span>What you know</span></li>
+    <li data-for="4"><i></i><span>Your path</span></li>
   </ol>
 
   <section class="step" data-step="0">
-    <p class="kicker">Step 1 of 3</p>
+    <p class="kicker">Step 1 of 4 · Paso 1 de 4</p>
+    <h1>Which language? <em>¿Qué idioma?</em></h1>
+    <p class="lead">Every lesson, game and quiz comes in both. You can switch anytime from the top of the page.<br><span lang="es">Cada lección, juego y examen está en los dos. Puedes cambiar cuando quieras desde arriba.</span></p>
+    <div class="goal-grid lang-grid">
+      <button type="button" class="goal-card" data-lang-pick="en" lang="en"><b>English</b><small>Learn in English</small><i class="tick" aria-hidden="true"></i></button>
+      <button type="button" class="goal-card" data-lang-pick="es" lang="es"><b>Español</b><small>Aprende en español</small><i class="tick" aria-hidden="true"></i></button>
+    </div>
+    <div class="step-nav"><a class="text-link" href="../">Skip setup</a></div>
+  </section>
+
+  <section class="step" data-step="1" hidden>
+    <p class="kicker">Step 2 of 4</p>
     <h1>How do you <em>learn best?</em></h1>
     <p class="lead">Every lesson teaches each idea eight ways. Pick the ones that click for you. They open first, and the rest fold away until you want them.</p>
     <div class="name-ask" id="name-ask" hidden>
@@ -20,19 +32,19 @@
     </div>
     <div class="lp-grid" id="lp-grid"></div>
     <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
-    <div class="step-nav"><a class="text-link" href="../">Skip setup</a><button class="btn" type="button" data-next>Next <span class="arrow">→</span></button></div>
+    <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" data-next>Next <span class="arrow">→</span></button></div>
   </section>
 
-  <section class="step" data-step="1" hidden>
-    <p class="kicker">Step 2 of 3</p>
+  <section class="step" data-step="2" hidden>
+    <p class="kicker">Step 3 of 4</p>
     <h1>Why are you <em>learning?</em></h1>
     <p class="lead">Pick one or more. Your path keeps the units your goal needs and moves the rest to "extra", so you don't sit through mergers and acquisitions if you only want to save money.</p>
     <div class="goal-grid" id="goal-grid"></div>
     <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" data-next id="goal-next" disabled>Next <span class="arrow">→</span></button></div>
   </section>
 
-  <section class="step" data-step="2" hidden>
-    <p class="kicker">Step 3 of 3</p>
+  <section class="step" data-step="3" hidden>
+    <p class="kicker">Step 4 of 4</p>
     <h1>How much do you <em>already know?</em></h1>
     <p class="lead">Be honest. Nothing gets locked, and you can change this anytime. If you know some of it, a quick check finds which units you can skip.</p>
     <div class="level-grid" id="level-grid"></div>
@@ -48,7 +60,7 @@
     <div class="step-nav"><button class="text-link" type="button" id="q-skip">Skip the check</button><button class="text-link" type="button" id="q-idk">I don't know this one</button></div>
   </section>
 
-  <section class="step" data-step="3" hidden>
+  <section class="step" data-step="4" hidden>
     <p class="kicker">All set</p>
     <h1>Here's <em>your path.</em></h1>
     <p class="lead" id="path-sum"></p>
@@ -57,199 +69,4 @@
   </section>
 </div>
 
-<script>
-(() => {
-  const $ = (s, r = document) => r.querySelector(s);
-  const prof = FH.state.profile || {};
-  let goals = new Set(prof.goals || []);
-  let level = prof.level || null;
-  let known = {};
-
-  // ---------- Steps ----------
-  const steps = [...document.querySelectorAll(".step")];
-  const show = (id) => {
-    steps.forEach((s) => (s.hidden = s.dataset.step !== String(id)));
-    const n = id === "quiz" ? 2 : Number(id);
-    document.querySelectorAll(".setup-steps li").forEach((li) => {
-      li.classList.toggle("on", Number(li.dataset.for) === n);
-      li.classList.toggle("done", Number(li.dataset.for) < n);
-    });
-    scrollTo({ top: 0, behavior: "smooth" });
-  };
-  let at = 0;
-  document.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => { saveName(); show(++at); }));
-  document.querySelectorAll("[data-back]").forEach((b) => b.addEventListener("click", () => show(--at)));
-
-  // ---------- Step 1: styles (and a username for new accounts) ----------
-  const grid = $("#lp-grid");
-  FH.STYLES.forEach((st) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "lp-card"; b.dataset.id = st.id; b.setAttribute("aria-pressed", "false");
-    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
-    b.addEventListener("click", () => {
-      const cur = new Set(FH.state.styles || []);
-      cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);
-      FH.setStyles([...cur]);
-    });
-    grid.appendChild(b);
-  });
-  const paintStyles = () => {
-    const picks = FH.state.styles || [];
-    grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
-    const all = picks.length === FH.STYLES.length;
-    $("#lp-all").textContent = all ? "Clear all" : "Select all";
-    $("#lp-status").textContent = !picks.length ? "Nothing picked yet, so lessons show every part." : all ? "All eight. Lessons show every part." : `${picks.length} picked.`;
-  };
-  $("#lp-all").addEventListener("click", () => FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id)));
-  document.addEventListener("fh:save", paintStyles);
-  paintStyles();
-
-  const nameAsk = $("#name-ask"), nameIn = $("#setup-name");
-  if (window.FHAuth) FHAuth.onChange((u) => { nameAsk.hidden = !u || !!(u.user_metadata || {}).username; });
-  const saveName = () => {
-    const v = nameIn.value.trim();
-    if (nameAsk.hidden || !v || !/^[A-Za-z0-9_.]{3,20}$/.test(v)) return;
-    FHAuth.setUsername(v).then(() => { nameAsk.hidden = true; });
-  };
-
-  // ---------- Step 2: goals ----------
-  const ICON = {
-    money: '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.6 0-2.6.8-2.6 2s1 1.7 2.6 2c1.6.3 2.6.8 2.6 2s-1 2-2.6 2c-1.2 0-2.1-.5-2.6-1.3M12 6.5v11"/>',
-    invest: '<path d="M4 18l5-5 4 3 7-8"/><path d="M15 8h5v5"/>',
-    business: '<path d="M4 9h16l-1.5-4h-13zM5 9v10h14V9M10 19v-5h4v5"/>',
-    career: '<path d="M3 9l9-4 9 4-9 4z"/><path d="M7 11v4.5c1.4 1.3 3 2 5 2s3.6-.7 5-2V11M21 9v5"/>',
-  };
-  const gg = $("#goal-grid");
-  FH.GOALS.forEach((g) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "goal-card"; b.dataset.id = g.id;
-    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[g.id]}</svg><b>${g.label}</b><small>${g.desc}</small><span class="units">${g.units.length} of 15 units</span><i class="tick" aria-hidden="true"></i>`;
-    b.addEventListener("click", () => { goals.has(g.id) ? goals.delete(g.id) : goals.add(g.id); paintGoals(); });
-    gg.appendChild(b);
-  });
-  const paintGoals = () => {
-    gg.querySelectorAll(".goal-card").forEach((b) => { const on = goals.has(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
-    $("#goal-next").disabled = !goals.size;
-  };
-  paintGoals();
-
-  // ---------- Step 3: level ----------
-  const LEVELS = [
-    { id: "new", label: "Brand new", desc: "Start from the very beginning." },
-    { id: "basics", label: "I know the basics", desc: "Budgets and bank accounts make sense to me." },
-    { id: "confident", label: "Pretty confident", desc: "I've taken a class or I invest already." },
-    { id: "unsure", label: "Not sure", desc: "Give me the quick check to find out." },
-  ];
-  const lg = $("#level-grid");
-  LEVELS.forEach((l, i) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "level-card"; b.dataset.id = l.id;
-    b.innerHTML = `<span class="bars" aria-hidden="true">${[0, 1, 2].map((k) => `<i class="${l.id === "unsure" ? "q" : k <= i ? "f" : ""}"></i>`).join("")}</span><b>${l.label}</b><small>${l.desc}</small>`;
-    b.addEventListener("click", () => { level = l.id; paintLevel(); });
-    lg.appendChild(b);
-  });
-  const paintLevel = () => {
-    lg.querySelectorAll(".level-card").forEach((b) => { const on = b.dataset.id === level; b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
-    $("#level-next").disabled = !level;
-    $("#level-next").firstChild.textContent = level && level !== "new" ? "Start the quick check " : "Next ";
-  };
-  paintLevel();
-  $("#level-next").addEventListener("click", () => {
-    if (level === "new") { known = {}; finish(); } else startQuiz();
-  });
-
-  // ---------- Quick check: one question per unit on the learner's path ----------
-  const QS = [
-    { unit: 1, q: "A bike shop raises its price and sells fewer bikes. Which idea explains that?", a: ["The law of demand", "Inflation", "Opportunity cost", "Compound interest"] },
-    { unit: 2, q: "You invest $1,000 at 10% a year and leave the interest in. How much do you have after 2 years?", a: ["$1,210", "$1,200", "$1,100", "$2,000"] },
-    { unit: 3, q: "You're in the 22% federal tax bracket. Roughly what share of your income goes to federal income tax?", a: ["Less than 22%, because only income above a cutoff is taxed at 22%", "Exactly 22% of everything you earn", "More than 22%, once you add the bracket below", "None until you earn $100,000"] },
-    { unit: 4, q: "In a 50/30/20 budget, what is the 20% for?", a: ["Saving and paying down debt", "Rent and bills", "Fun money", "Taxes"] },
-    { unit: 5, q: "What has the biggest effect on a FICO credit score?", a: ["Paying every bill on time", "How much money you earn", "How many cards you've closed", "Checking your own score"] },
-    { unit: 6, q: "Your car insurance has a $500 deductible. What does that mean?", a: ["You pay the first $500 of a claim, then insurance pays", "Insurance costs $500 a year", "Insurance pays at most $500", "You get $500 back if you don't crash"] },
-    { unit: 7, q: "What's the main reason people buy an index fund instead of a single stock?", a: ["It spreads your money across many companies, so one crash hurts less", "It always beats the market", "It's guaranteed by the government", "It pays a fixed interest rate"] },
-    { unit: 8, q: "Compared with a 15-year mortgage, a 30-year mortgage for the same house usually has…", a: ["A lower monthly payment but more interest in total", "A higher monthly payment and less interest", "The same total cost", "No interest for the first 15 years"] },
-    { unit: 9, q: "A business breaks even when…", a: ["Its revenue covers all of its costs", "It sells its first product", "It has more cash than debt", "Its prices match competitors"] },
-    { unit: 10, q: "Finish the accounting equation: Assets = …", a: ["Liabilities + equity", "Revenue − expenses", "Cash + inventory", "Equity − liabilities"] },
-    { unit: 11, q: "A project has a positive net present value (NPV). What does that tell you?", a: ["It's expected to earn more than its cost of capital", "It will be profitable in year one", "It pays for itself in under a year", "It has no risk"] },
-    { unit: 12, q: "Diversifying a portfolio mainly reduces which kind of risk?", a: ["Risk tied to one company", "Risk of the whole market falling", "Inflation risk", "Interest rate risk"] },
-    { unit: 13, q: "Enterprise value is equity value plus debt, minus…", a: ["Cash", "Revenue", "Dividends", "Taxes"] },
-    { unit: 14, q: "When interest rates rise, prices of existing bonds usually…", a: ["Fall", "Rise", "Stay the same", "Double"] },
-  ];
-  let qs = [], qi = 0;
-  const startQuiz = () => {
-    const on = FH.path.on, gset = goals;
-    const units = new Set(FH.GOALS.filter((g) => gset.has(g.id)).flatMap((g) => g.units));
-    qs = QS.filter((q) => (units.size ? units : on).has(q.unit));
-    qi = 0; known = {};
-    show("quiz"); askQ();
-  };
-  const askQ = () => {
-    if (qi >= qs.length) return finish();
-    const q = qs[qi];
-    $("#q-count").textContent = `Quick check · ${qi + 1} of ${qs.length}`;
-    $("#q-bar").style.width = `${(qi / qs.length) * 100}%`;
-    $("#q-unit").textContent = `Unit ${q.unit} · ${FH.UNIT_NAMES[q.unit - 1]}`;
-    $("#q-stem").textContent = q.q;
-    const box = $("#q-opts"); box.innerHTML = "";
-    const order = q.a.map((t, i) => ({ t, ok: i === 0 })).sort(() => Math.random() - 0.5);
-    order.forEach((o) => {
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "q-opt"; b.textContent = o.t;
-      b.addEventListener("click", () => {
-        box.querySelectorAll("button").forEach((x) => (x.disabled = true));
-        b.classList.add(o.ok ? "right" : "wrong");
-        if (!o.ok) [...box.children][order.findIndex((x) => x.ok)].classList.add("right");
-        if (o.ok) known[q.unit] = true;
-        setTimeout(() => { qi++; askQ(); }, o.ok ? 650 : 1300);
-      });
-      box.appendChild(b);
-    });
-  };
-  $("#q-idk").addEventListener("click", () => { qi++; askQ(); });
-  $("#q-skip").addEventListener("click", () => {
-    // No check: lean on what they told us.
-    known = level === "confident" ? { 1: true, 2: true, 4: true } : level === "basics" ? { 1: true } : {};
-    finish(true);
-  });
-
-  // ---------- Result ----------
-  const finish = (skipped) => {
-    FH.setProfile({ goals: [...goals], level, known, quiz: qs.length && !skipped ? { right: Object.keys(known).length, of: qs.length } : null, done: true });
-    paintPath();
-    at = 3; show(3);
-  };
-  const paintPath = () => {
-    const { on, known: kn } = FH.path;
-    const p = FH.state.profile;
-    const list = $("#my-path"); list.innerHTML = "";
-    let todo = 0;
-    FH.UNIT_NAMES.forEach((name, i) => {
-      const u = i + 1;
-      if (!on.has(u)) return;
-      const k = kn.has(u);
-      if (!k) todo++;
-      const open = FH.OPEN.filter((l) => l.unit === u).length;
-      const li = document.createElement("li");
-      li.className = k ? "known" : "";
-      li.innerHTML = `<span class="n">${u}</span><b>${name}</b><small>${k ? "You know this. It's there to review." : open ? `${open} lesson${open > 1 ? "s" : ""} open now` : "Coming soon"}</small>`;
-      list.appendChild(li);
-    });
-    if (window.FHStagger) FHStagger();
-    const extra = FH.UNIT_NAMES.length - on.size;
-    const gl = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
-    $("#path-sum").textContent = `Built for: ${gl.join(" and ")}. ${todo} unit${todo === 1 ? "" : "s"} to learn${kn.size ? `, ${kn.size} you already know` : ""}${extra ? `, and ${extra} extra unit${extra === 1 ? "" : "s"} you can still open anytime` : ""}.` + (p.quiz ? ` You got ${p.quiz.right} of ${p.quiz.of} on the check.` : "");
-    const next = FH.nextLesson();
-    const go = $("#path-go");
-    if (next) {
-      const review = kn.has(next.unit) || !on.has(next.unit);
-      go.href = "../" + next.href;
-      go.firstChild.textContent = `${review ? "Review" : "Start"} Unit ${next.unit} · Lesson ${next.n} `;
-      if (review) $("#path-sum").textContent += " The units you still need are being built now, so start with a quick review while they're on the way.";
-    }
-  };
-  $("#redo").addEventListener("click", () => { at = 0; show(0); });
-
-  // Coming back to edit: start on step 1 with the old answers filled in.
-  if (location.hash === "#path" && prof.done) { paintPath(); at = 3; show(3); } else show(0);
-})();
-</script>
+<script src="../assets/js/setup.js"></script>

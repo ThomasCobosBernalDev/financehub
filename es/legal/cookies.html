@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es" data-alt="../../legal/cookies.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cookies y almacenamiento · FinanceHub</title>
+  <meta name="description" content="Todo lo que FinanceHub guarda en tu navegador, y cómo borrarlo.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610261923">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../">Curso</a><a href="../about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../legal/cookies.html" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Entrar</a>
+  </div>
+</header>
+<main id="main" class="wrap narrow doc">
+<h1>Cookies y almacenamiento</h1>
+<p class="updated">Última actualización: 24 de octubre de 2026</p>
+
+<div class="callout"><b>En corto:</b> FinanceHub no pone cookies ni usa rastreadores. Guarda algunas cosas en el almacenamiento local de tu navegador para que el sitio funcione, como tu progreso. Como son necesarias para que el sitio funcione y no se usan para rastrearte, te avisamos en vez de pedirte permiso.</div>
+
+<h2>Lo que guardamos en tu navegador</h2>
+<table>
+  <tr><th>Nombre</th><th>Para qué sirve</th><th>Cuánto dura</th></tr>
+  <tr><td><code>financehub-save-v1</code></td><td>Tu progreso, XP, insignias, resultados de juegos y los números de tu personaje</td><td>Hasta que lo borres</td></tr>
+  <tr><td><code>fh-theme</code></td><td>Recuerda el modo claro u oscuro</td><td>Hasta que lo borres</td></tr>
+  <tr><td><code>fh-lang</code></td><td>Recuerda si quieres el sitio en inglés o en español</td><td>Hasta que lo borres</td></tr>
+  <tr><td><code>fh-notice-ok</code></td><td>Recuerda que cerraste el aviso de almacenamiento</td><td>Hasta que lo borres</td></tr>
+  <tr><td><code>fh-reflect-…</code></td><td>Tus respuestas privadas de reflexión</td><td>Hasta que lo borres</td></tr>
+  <tr><td><code>sb-…-auth-token</code></td><td>Mantiene tu sesión iniciada (solo si tienes cuenta). Lo pone nuestro proveedor de cuentas, Supabase.</td><td>Hasta que cierres sesión</td></tr>
+</table>
+
+<h2>Lo que no usamos</h2>
+<p>No hay cookies de publicidad, ni analítica, ni píxeles de redes sociales, ni huellas digitales, ni servicios externos de fuentes o audio. Si eso cambia algún día, primero te pediremos permiso, y decir "no" será tan fácil como decir "sí".</p>
+
+<h2>Cómo borrarlo</h2>
+<p>Usa el botón de borrar en la <a href="privacy.html#delete">página de privacidad</a>, o borra los datos del sitio en la configuración de tu navegador.</p>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../about.html">Acerca de y contacto</a><a href="../legal/privacy.html">Privacidad</a><a href="../legal/terms.html">Términos</a><a href="../legal/cookies.html">Cookies y almacenamiento</a><a href="../legal/privacy.html#delete">Borrar mis datos</a><a href="../credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../../assets/js/save.js?v=202610261923"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../../assets/js/auth.js?v=202610261923"></script>
+<script src="../../assets/js/site.js?v=202610261923"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+
+</body>
+</html>

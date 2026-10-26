@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-alt="../es/account/">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Your account · FinanceHub</title>
   <meta name="description" content="Sign in to save your FinanceHub progress across devices.">
-  <script>try { if (localStorage.getItem("fh-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610261834">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610261923">
 </head>
 <body data-root="../">
 <a class="skip" href="#main">Skip to content</a>
@@ -15,6 +15,7 @@
     <a class="logo" href="../">Finance<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="../">Course</a><a href="../about.html">About</a></nav>
     <div class="spacer"></div>
+    <a class="lang-switch" href="../es/account/" data-set-lang="es" hreflang="es" aria-label="Ver en español"><span class="ls-long">Español</span><span class="ls-short">ES</span></a>
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
@@ -146,149 +147,11 @@
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202610261834"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610261834"></script>
-<script src="../assets/js/auth.js?v=202610261834"></script>
-<script src="../assets/js/site.js?v=202610261834"></script>
+<script src="../assets/js/save.js?v=202610261923"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../assets/js/auth.js?v=202610261923"></script>
+<script src="../assets/js/site.js?v=202610261923"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script>
-(function () {
-  const $ = (s) => document.querySelector(s);
-  const show = (id) => ["#acct-loading", "#acct-out", "#acct-sent", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
-  // Password rules: 8+ characters and at least one special character.
-  const RULES = { len: (p) => p.length >= 8, special: (p) => /[^A-Za-z0-9]/.test(p) };
-  const pwOk = (p) => Object.values(RULES).every((r) => r(p));
-  document.querySelectorAll("[data-rules]").forEach((inp) => inp.addEventListener("input", () => {
-    inp.closest("form").querySelectorAll(".pw-rules li").forEach((li) => li.classList.toggle("ok", RULES[li.dataset.rule](inp.value)));
-  }));
-  const USERNAME = /^[A-Za-z0-9_.]{3,20}$/;
-  let pendingEmail = "";
-  const forms = ["#form-in", "#form-up", "#form-reset", "#form-newpw"];
-  const showForm = (id) => {
-    forms.forEach((f) => $(f).classList.toggle("hidden", f !== id));
-    $("#tab-in").setAttribute("aria-selected", id === "#form-in");
-    $("#tab-up").setAttribute("aria-selected", id === "#form-up");
-    $(".auth-tabs").classList.toggle("hidden", id === "#form-reset" || id === "#form-newpw");
-    $("#acct-title").textContent = id === "#form-up" ? "Create your account" : id === "#form-in" ? "Sign in" : "Reset your password";
-    msg("");
-  };
-  const msg = (text, bad) => { const m = $("#acct-msg"); m.textContent = text; m.classList.toggle("bad", !!bad); };
-  const friendly = (e) => {
-    const t = (e && e.message) || String(e);
-    if (/invalid login/i.test(t)) return "That email and password don't match.";
-    if (/already registered/i.test(t)) return "There's already an account with that email. Try signing in.";
-    if (/rate limit/i.test(t)) return "Too many tries. Wait a few minutes and try again.";
-    if (/not confirmed/i.test(t)) return "Check your email and click the confirmation link first.";
-    return t;
-  };
-
-  if (!window.FHAuth) { show("#acct-out"); msg("Accounts couldn't load. Check your connection and refresh.", true); return; }
-
-  $("#tab-in").addEventListener("click", () => showForm("#form-in"));
-  $("#tab-up").addEventListener("click", () => showForm("#form-up"));
-  $("#forgot").addEventListener("click", () => showForm("#form-reset"));
-  $("#reset-back").addEventListener("click", () => showForm("#form-in"));
-
-  $("#form-in").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const f = e.target;
-    msg("Signing in…");
-    try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (err) { /* storage blocked */ }
-    const { error } = await FHAuth.signIn(f.email.value.trim(), f.password.value);
-    if (error) { try { sessionStorage.removeItem("fh-just-signed-in"); } catch (err) { /* storage blocked */ } msg(friendly(error), true); } else msg("Signed in. Taking you to your course…");
-  });
-
-  $("#form-up").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const f = e.target;
-    const username = f.username.value.trim();
-    if (!USERNAME.test(username)) return msg("Usernames are 3 to 20 letters, numbers, dots or underscores.", true);
-    if (!f.email.value.includes("@")) return msg("Enter a valid email address.", true);
-    if (!pwOk(f.password.value)) return msg("Your password needs at least 8 characters and one special character.", true);
-    if (!f.age.checked) return msg("You need to be 13 or older to create an account.", true);
-    if (!f.terms.checked) return msg("Please agree to the terms and privacy policy to continue.", true);
-    msg("Creating your account…");
-    const { data, error } = await FHAuth.signUp(f.email.value.trim(), f.password.value, {
-      username, age_confirmed: true, terms_accepted_at: new Date().toISOString(),
-    });
-    if (error) return msg(friendly(error), true);
-    msg("");
-    if (!data.session) {
-      pendingEmail = f.email.value.trim();
-      $("#sent-email").textContent = pendingEmail;
-      $("#sent-msg").textContent = "";
-      show("#acct-sent");
-      $(".auth-card").scrollIntoView({ block: "start", behavior: "smooth" });
-    }
-  });
-
-  $("#sent-signin").addEventListener("click", () => {
-    show("#acct-out");
-    showForm("#form-in");
-    $("#form-in").email.value = pendingEmail;
-    $("#form-in").password.focus();
-  });
-  $("#sent-back").addEventListener("click", () => { show("#acct-out"); showForm("#form-up"); });
-  $("#sent-resend").addEventListener("click", async () => {
-    const { error } = await FHAuth.resendConfirmation(pendingEmail);
-    $("#sent-msg").textContent = error ? friendly(error) : "Sent again. It can take a minute to arrive.";
-  });
-
-  $("#form-name").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = e.target.username.value.trim();
-    if (!USERNAME.test(name)) return FH.toast("Usernames are 3 to 20 letters, numbers, dots or underscores.");
-    const { data, error } = await FHAuth.setUsername(name);
-    if (error) return FH.toast(friendly(error));
-    render(data.user);
-  });
-
-  $("#form-reset").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const { error } = await FHAuth.resetPassword(e.target.email.value.trim());
-    msg(error ? friendly(error) : "If that email has an account, a reset link is on its way.", !!error);
-  });
-
-  document.addEventListener("fh:recovery", () => { show("#acct-out"); showForm("#form-newpw"); });
-  $("#form-newpw").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const pw = e.target.password.value;
-    if (!pwOk(pw)) return msg("Use at least 8 characters and one special character.", true);
-    const { error } = await FHAuth.setPassword(pw);
-    if (error) return msg(friendly(error), true);
-    msg("Password updated.");
-    setTimeout(() => render(FHAuth.user), 800);
-  });
-
-  $("#sign-out").addEventListener("click", () => FHAuth.signOut());
-  $("#delete-confirm").addEventListener("input", (e) => ($("#delete-account").disabled = e.target.value.trim() !== "DELETE"));
-  $("#delete-account").addEventListener("click", async () => {
-    $("#delete-account").disabled = true;
-    try {
-      await FHAuth.deleteAccount();
-      $("#delete-msg").textContent = "Your account has been deleted.";
-    } catch (err) {
-      $("#delete-msg").textContent = "Something went wrong: " + friendly(err);
-      $("#delete-account").disabled = false;
-    }
-  });
-
-  const render = (user) => {
-    $(".auth-shell").classList.toggle("signed-in", !!user);
-    if (!user) { if (!$("#acct-sent").classList.contains("hidden")) return; show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
-    show("#acct-in");
-    $("#acct-email").textContent = user.email;
-    const name = (user.user_metadata || {}).username;
-    $("#acct-hello").textContent = name ? `Hi, ${name}` : "Your account";
-    $("#form-name").classList.toggle("hidden", !!name);
-    const s = FH.state;
-    $("#acct-xp").textContent = s.xp;
-    $("#acct-badges").textContent = s.badges.length;
-    $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
-  };
-  FHAuth.onChange(render);
-  document.addEventListener("fh:save", () => FHAuth.user && render(FHAuth.user));
-})();
-</script>
+<script src="../assets/js/account.js?v=202610261923"></script>
 </body>
 </html>

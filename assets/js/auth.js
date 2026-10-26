@@ -72,7 +72,7 @@
     const name = user && ((user.user_metadata || {}).username || user.email.split("@")[0]);
     a.classList.toggle("signed-in", !!user);
     a.textContent = "";
-    if (!user) { a.textContent = "Sign in"; a.removeAttribute("title"); return; }
+    if (!user) { a.textContent = FH.t("Sign in", "Entrar"); a.removeAttribute("title"); return; }
     const av = document.createElement("span");
     av.className = "avatar";
     av.textContent = name[0].toUpperCase();
@@ -80,7 +80,7 @@
     nm.className = "uname";
     nm.textContent = name;
     a.append(av, nm);
-    a.title = `Signed in as ${name}`;
+    a.title = FH.t(`Signed in as ${name}`, `Sesión iniciada como ${name}`);
   });
 
   // After signing in (or landing from the confirmation email), go to the course, or to the

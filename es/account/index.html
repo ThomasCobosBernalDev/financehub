@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es" data-alt="../../account/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tu cuenta · FinanceHub</title>
+  <meta name="description" content="Inicia sesión para guardar tu progreso de FinanceHub en todos tus dispositivos.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610261923">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../">Curso</a><a href="../about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../account/" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Entrar</a>
+  </div>
+</header>
+<main id="main" class="wrap auth-page">
+<div class="auth-shell">
+  <aside class="auth-side" aria-hidden="true">
+    <p class="kicker">Cuenta gratis</p>
+    <p class="auth-side-title">Tu progreso<br><em>te sigue.</em></p>
+    <svg viewBox="0 0 360 230" class="auth-art">
+      <rect x="18" y="40" width="150" height="104" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <rect x="30" y="52" width="126" height="72" rx="6" fill="var(--paper-2)"/>
+      <rect x="40" y="64" width="60" height="8" rx="4" fill="var(--accent)"/>
+      <rect x="40" y="80" width="96" height="6" rx="3" fill="var(--line)"/>
+      <rect x="40" y="92" width="80" height="6" rx="3" fill="var(--line)"/>
+      <path d="M6 150h174l-10 10H16z" fill="var(--line)"/>
+      <rect x="262" y="70" width="80" height="140" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+      <rect x="272" y="86" width="60" height="100" rx="6" fill="var(--paper-2)"/>
+      <rect x="280" y="98" width="34" height="7" rx="3.5" fill="var(--accent)"/>
+      <rect x="280" y="112" width="44" height="5" rx="2.5" fill="var(--line)"/>
+      <rect x="280" y="122" width="38" height="5" rx="2.5" fill="var(--line)"/>
+      <path class="flow" d="M150 150 C 200 200, 230 60, 268 120" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="6 8" stroke-linecap="round"/>
+      <circle r="9" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M150 150 C 200 200, 230 60, 268 120"/></circle>
+    </svg>
+    <ul class="auth-perks">
+      <li><b>Sigue donde te quedaste.</b> En la laptop en clase o en el celular en el camión, el mismo lugar.</li>
+      <li><b>Conserva tu XP y tus insignias</b> aunque borres tu navegador.</li>
+      <li><b>Gratis, siempre.</b> Sin anuncios, sin rastreo y sin correos de publicidad.</li>
+    </ul>
+  </aside>
+
+  <div class="auth-card">
+    <div id="acct-loading"><h1>Tu cuenta</h1><p class="muted">Cargando…</p></div>
+
+    <section id="acct-out" class="hidden">
+      <h1 id="acct-title">Iniciar sesión</h1>
+      <p class="muted" id="acct-sub">Guarda tu progreso y sigue en cualquier dispositivo.</p>
+      <div class="auth-tabs" role="tablist">
+        <button role="tab" id="tab-in" aria-selected="true">Iniciar sesión</button>
+        <button role="tab" id="tab-up" aria-selected="false">Crear cuenta</button>
+      </div>
+
+      <form id="form-in" class="auth-form" novalidate>
+        <label>Correo<input type="email" name="email" autocomplete="email" required></label>
+        <label>Contraseña<input type="password" name="password" autocomplete="current-password" required></label>
+        <button class="btn" type="submit">Iniciar sesión</button>
+        <button class="linkish" type="button" id="forgot">¿Olvidaste tu contraseña?</button>
+      </form>
+
+      <form id="form-up" class="auth-form hidden" novalidate>
+        <label><span>Nombre de usuario <span class="small muted">(cómo te vamos a llamar)</span></span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
+        <label>Correo<input type="email" name="email" autocomplete="email" required></label>
+        <label>Contraseña<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">Al menos 8 caracteres</li><li data-rule="special">Al menos un carácter especial, como ! ? # o @</li></ul>
+        <label class="check"><input type="checkbox" name="age" required><span>Tengo 13 años o más.</span></label>
+        <label class="check"><input type="checkbox" name="terms" required><span>Acepto los <a href="../legal/terms.html" target="_blank">términos de uso</a> y leí la <a href="../legal/privacy.html" target="_blank">política de privacidad</a>.</span></label>
+        <button class="btn" type="submit">Crear cuenta</button>
+        <p class="small muted">Solo usamos tu correo para iniciar tu sesión. Nunca te mandaremos publicidad.</p>
+      </form>
+
+      <form id="form-reset" class="auth-form hidden" novalidate>
+        <p>Escribe tu correo y te mandaremos un enlace para restablecer tu contraseña.</p>
+        <label>Correo<input type="email" name="email" autocomplete="email" required></label>
+        <button class="btn" type="submit">Mandar enlace</button>
+        <button class="linkish" type="button" id="reset-back">Volver a iniciar sesión</button>
+      </form>
+
+      <form id="form-newpw" class="auth-form hidden" novalidate>
+        <p>Elige una contraseña nueva.</p>
+        <label>Contraseña nueva<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">Al menos 8 caracteres</li><li data-rule="special">Al menos un carácter especial, como ! ? # o @</li></ul>
+        <button class="btn" type="submit">Guardar contraseña nueva</button>
+      </form>
+      <p class="auth-msg" id="acct-msg" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="acct-sent" class="hidden sent">
+      <svg class="sent-art" viewBox="0 0 120 96" aria-hidden="true">
+        <rect x="8" y="18" width="104" height="70" rx="10" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M10 24 L60 60 L110 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="96" cy="20" r="16" fill="var(--accent)"/>
+        <path d="M89 20 l5 5 l9 -10" fill="none" stroke="var(--on-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>Revisa tu correo</h1>
+      <p>Mandamos un enlace de confirmación a <b id="sent-email"></b>. Ábrelo para terminar de crear tu cuenta, y luego regresa a iniciar sesión.</p>
+      <ol class="sent-steps">
+        <li>Abre el correo de FinanceHub (revisa la carpeta de spam si no lo ves). El correo está en inglés.</li>
+        <li>Haz clic en <b>Confirm your email</b>.</li>
+        <li>Regresa aquí e inicia sesión.</li>
+      </ol>
+      <button class="btn" id="sent-signin" type="button">Ya confirmé, iniciar sesión <span class="arrow">→</span></button>
+      <p class="sent-more"><button class="linkish" type="button" id="sent-resend">Mandar el correo otra vez</button> · <button class="linkish" type="button" id="sent-back">Usar otro correo</button></p>
+      <p class="auth-msg" id="sent-msg" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="acct-in" class="hidden">
+      <h1 id="acct-hello">Tu cuenta</h1>
+      <p class="muted">Sesión iniciada como <b id="acct-email"></b>. Tu progreso se guarda solo.</p>
+      <form id="form-name" class="auth-form name-form hidden" novalidate>
+        <label><span>Elige un nombre de usuario</span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
+        <button class="btn sm" type="submit">Guardar</button>
+      </form>
+      <dl class="acct-stats">
+        <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+        <div><dt>Insignias</dt><dd id="acct-badges"></dd></div>
+        <div><dt>Lecciones hechas</dt><dd id="acct-lessons"></dd></div>
+      </dl>
+      <div class="acct-actions"><a class="btn" href="../">Seguir aprendiendo <span class="arrow">→</span></a><button class="btn line" id="sign-out">Cerrar sesión</button></div>
+
+      <details class="acct-danger">
+        <summary>Borrar tu cuenta</summary>
+        <p>Esto borra para siempre tu cuenta y todo el progreso guardado en ella. El progreso guardado en este navegador se queda hasta que lo <a href="../legal/privacy.html#delete">borres</a>.</p>
+        <div class="auth-form"><label>Escribe BORRAR para confirmar<input type="text" id="delete-confirm" autocomplete="off"></label>
+        <button class="btn line danger" id="delete-account" disabled>Borrar mi cuenta</button></div>
+        <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
+      </details>
+    </section>
+  </div>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../about.html">Acerca de y contacto</a><a href="../legal/privacy.html">Privacidad</a><a href="../legal/terms.html">Términos</a><a href="../legal/cookies.html">Cookies y almacenamiento</a><a href="../legal/privacy.html#delete">Borrar mis datos</a><a href="../credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../../assets/js/save.js?v=202610261923"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610261923"></script>
+<script src="../../assets/js/auth.js?v=202610261923"></script>
+<script src="../../assets/js/site.js?v=202610261923"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+<script src="../../assets/js/account.js?v=202610261923"></script>
+</body>
+</html>

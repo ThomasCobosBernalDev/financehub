@@ -2,6 +2,9 @@
 // Always kept in this browser; auth.js also syncs it to the learner's account when signed in.
 (function () {
   const KEY = "financehub-save-v1";
+  // Page language comes from <html lang>. Spanish pages live under es/ and mirror the English ones.
+  const LANG = document.documentElement.lang === "es" ? "es" : "en";
+  const t = (en, es) => (LANG === "es" && es != null ? es : en);
 
   const fresh = () => ({
     version: 1,
@@ -9,6 +12,7 @@
     badges: [],
     preferredStyle: null,
     styles: null, // learning styles the learner picked; null means show everything
+    lang: null, // "en" or "es" once picked; pages also remember it in localStorage "fh-lang"
     profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt }
     character: {
       name: "You",
@@ -54,31 +58,33 @@
 
   // The eight ways every lesson teaches. `chapter` is the lesson section each one maps to.
   const STYLES = [
-    { id: "visual", label: "Seeing", chapter: "See it", desc: "Diagrams and charts you can drag and poke" },
-    { id: "auditory", label: "Listening", chapter: "Hear it", desc: "A short narrated walkthrough" },
-    { id: "kinesthetic", label: "Doing", chapter: "Play it", desc: "A game where you make the calls" },
-    { id: "logical", label: "Working out the logic", chapter: "Break it down", desc: "Formulas and step-by-step examples" },
-    { id: "naturalistic", label: "Linking it to nature", chapter: "Nature link", desc: "The idea as a living system" },
-    { id: "reading", label: "Reading and writing", chapter: "Notes", desc: "Notes to copy and blanks to fill" },
-    { id: "social", label: "Talking it through", chapter: "Together", desc: "Debates and challenges with friends" },
-    { id: "solitary", label: "Thinking on my own", chapter: "On your own", desc: "Private questions about your own life" },
+    { id: "visual", label: t("Seeing", "Viendo"), chapter: t("See it", "Míralo"), desc: t("Diagrams and charts you can drag and poke", "Diagramas y gráficas que puedes mover y tocar") },
+    { id: "auditory", label: t("Listening", "Escuchando"), chapter: t("Hear it", "Escúchalo"), desc: t("A short narrated walkthrough", "Un recorrido corto narrado") },
+    { id: "kinesthetic", label: t("Doing", "Haciendo"), chapter: t("Play it", "Juégalo"), desc: t("A game where you make the calls", "Un juego donde tú tomas las decisiones") },
+    { id: "logical", label: t("Working out the logic", "Entendiendo la lógica"), chapter: t("Break it down", "Paso a paso"), desc: t("Formulas and step-by-step examples", "Fórmulas y ejemplos paso a paso") },
+    { id: "naturalistic", label: t("Linking it to nature", "Conectándolo con la naturaleza"), chapter: t("Nature link", "Conexión con la naturaleza"), desc: t("The idea as a living system", "La idea como un sistema vivo") },
+    { id: "reading", label: t("Reading and writing", "Leyendo y escribiendo"), chapter: t("Notes", "Apuntes"), desc: t("Notes to copy and blanks to fill", "Apuntes para copiar y espacios para llenar") },
+    { id: "social", label: t("Talking it through", "Hablándolo con otros"), chapter: t("Together", "En grupo"), desc: t("Debates and challenges with friends", "Debates y retos con amigos") },
+    { id: "solitary", label: t("Thinking on my own", "Pensando por mi cuenta"), chapter: t("On your own", "Por tu cuenta"), desc: t("Private questions about your own life", "Preguntas privadas sobre tu propia vida") },
   ];
 
   // Why people learn here, and the units each goal needs (numbers match the course map).
   const GOALS = [
-    { id: "money", label: "Understand how money works", desc: "Budgeting, credit, taxes, insurance and the economy around you", units: [1, 2, 3, 4, 5, 6, 7, 8] },
-    { id: "invest", label: "Save more and start investing", desc: "Build an emergency fund, beat inflation and grow your money", units: [1, 2, 4, 5, 7, 8, 12, 14] },
-    { id: "business", label: "Start or run a business", desc: "Pricing, accounting, cash flow and raising money", units: [1, 2, 3, 4, 9, 10, 11] },
-    { id: "career", label: "Study finance and get hired", desc: "Everything, through valuation, deals and interviews", units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
+    { id: "money", label: t("Understand how money works", "Entender cómo funciona el dinero"), desc: t("Budgeting, credit, taxes, insurance and the economy around you", "Presupuesto, crédito, impuestos, seguros y la economía a tu alrededor"), units: [1, 2, 3, 4, 5, 6, 7, 8] },
+    { id: "invest", label: t("Save more and start investing", "Ahorrar más y empezar a invertir"), desc: t("Build an emergency fund, beat inflation and grow your money", "Crear un fondo de emergencia, ganarle a la inflación y hacer crecer tu dinero"), units: [1, 2, 4, 5, 7, 8, 12, 14] },
+    { id: "business", label: t("Start or run a business", "Empezar o manejar un negocio"), desc: t("Pricing, accounting, cash flow and raising money", "Precios, contabilidad, flujo de caja y conseguir inversión"), units: [1, 2, 3, 4, 9, 10, 11] },
+    { id: "career", label: t("Study finance and get hired", "Estudiar finanzas y conseguir trabajo"), desc: t("Everything, through valuation, deals and interviews", "Todo, hasta valuación, transacciones y entrevistas"), units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
   ];
-  const UNIT_NAMES = ["How the money system works", "Money mindset and math toolkit", "Earning and taxes", "Budgeting and banking", "Credit and debt", "Protection", "Investing and retirement", "Big purchases", "Starting a business", "Accounting", "Corporate finance", "Investments and portfolios", "Valuation and modeling", "Macro, markets and institutions", "Excel, Python, SQL and recruiting"];
-  // Lessons that are open so far, in course order. Paths are from the site root.
+  const UNIT_NAMES = LANG === "es"
+    ? ["Cómo funciona el sistema del dinero", "Mentalidad y matemáticas del dinero", "Ingresos e impuestos", "Presupuesto y bancos", "Crédito y deudas", "Protección", "Inversión y jubilación", "Compras grandes", "Empezar un negocio", "Contabilidad", "Finanzas corporativas", "Inversiones y portafolios", "Valuación y modelos", "Macroeconomía, mercados e instituciones", "Excel, Python, SQL y reclutamiento"]
+    : ["How the money system works", "Money mindset and math toolkit", "Earning and taxes", "Budgeting and banking", "Credit and debt", "Protection", "Investing and retirement", "Big purchases", "Starting a business", "Accounting", "Corporate finance", "Investments and portfolios", "Valuation and modeling", "Macro, markets and institutions", "Excel, Python, SQL and recruiting"];
+  // Lessons that are open so far, in course order. Paths are from this language's site root.
   const OPEN = [
-    { unit: 1, n: 1, id: "u1-scarcity", href: "lessons/scarcity/", title: "Every choice has a price tag" },
-    { unit: 1, n: 2, id: "u1-supply-demand", href: "lessons/supply-demand/", title: "Why prices are what they are" },
-    { unit: 1, n: 3, id: "u1-inflation", href: "lessons/inflation/", title: "Why your money shrinks" },
-    { unit: 1, n: 4, id: "u1-interest-rates", href: "lessons/interest-rates/", title: "Who sets the price of money?" },
-    { unit: 4, n: 1, id: "u4-budgeting-frameworks", href: "lessons/budgeting/", title: "Give every dollar a job" },
+    { unit: 1, n: 1, id: "u1-scarcity", href: "lessons/scarcity/", title: t("Every choice has a price tag", "Cada decisión tiene un precio") },
+    { unit: 1, n: 2, id: "u1-supply-demand", href: "lessons/supply-demand/", title: t("Why prices are what they are", "Por qué los precios son lo que son") },
+    { unit: 1, n: 3, id: "u1-inflation", href: "lessons/inflation/", title: t("Why your money shrinks", "Por qué tu dinero se encoge") },
+    { unit: 1, n: 4, id: "u1-interest-rates", href: "lessons/interest-rates/", title: t("Who sets the price of money?", "¿Quién pone el precio del dinero?") },
+    { unit: 4, n: 1, id: "u4-budgeting-frameworks", href: "lessons/budgeting/", title: t("Give every dollar a job", "Dale un trabajo a cada dólar") },
   ];
   const UNITS = UNIT_NAMES.length;
 
@@ -111,7 +117,7 @@
       state.badges.push(id);
       persist();
       emit();
-      toast(`Badge unlocked: ${label}`);
+      toast(t(`Badge unlocked: ${label}`, `Insignia desbloqueada: ${label}`));
     },
     markSection(lessonId, sectionId) {
       const l = lesson(lessonId);
@@ -136,6 +142,17 @@
       state.preferredStyle = null; // the old single pick would otherwise come back as a filter
       persist();
       emit();
+    },
+    lang: LANG,
+    t,
+    // Remember the reader's language (this browser and their account) and go to that version of the page.
+    setLang(lang, go = true) {
+      state.lang = lang;
+      try { localStorage.setItem("fh-lang", lang); } catch (e) { /* storage blocked */ }
+      persist();
+      emit();
+      const alt = document.documentElement.dataset.alt;
+      if (go && lang !== LANG && alt) location.href = alt + location.search + location.hash;
     },
     STYLES,
     GOALS,
@@ -168,6 +185,8 @@
     // Swap in a save that came from the learner's account.
     replace(next) {
       state = Object.assign(fresh(), next);
+      // A language saved on the account wins in this browser too.
+      if (state.lang) try { localStorage.setItem("fh-lang", state.lang); } catch (e) { /* storage blocked */ }
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
       document.dispatchEvent(new CustomEvent("fh:save", { detail: state, bubbles: false }));
     },
