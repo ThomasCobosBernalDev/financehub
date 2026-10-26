@@ -32,6 +32,7 @@
           <text x="92" y="60" font-family="Fraunces, serif" font-size="20" fill="var(--savings)">Frontera de posibilidades de producción</text>
           <text x="92" y="84" font-size="15" fill="var(--ink-2)">cada forma de repartir tus 10 horas</text>
         </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo de la frontera de posibilidades de producción (FPP) para tus 10 horas libres, todavía sin números. Los jardines cortados van hacia la derecha y las bicicletas arregladas hacia arriba. La curva verde es cada forma de usar las 10 horas. La parte sombreada debajo son planes que desperdician tiempo, y el espacio más allá es imposible por ahora. La gráfica real con números está en «Míralo».</p>
 
 <!-- @see -->
       <h2 class="reveal">Mueve tu fin de semana.<br>Mira lo que <em>cuesta.</em></h2>
@@ -48,6 +49,7 @@
           <div class="figure"><div class="label">Lo que de verdad costó esa diversión</div><div class="val" id="oc-cost">$60</div><p>El dinero al que renunciaste. Ese es su costo de oportunidad.</p></div>
         </div>
       </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> tus 10 horas libres como 10 casillas. Las verdes son horas cortando jardines ($15 cada una) y las naranjas son horas con tus amigos. El control deslizante elige cuántas horas cortas, de 0 a 10. Los números de abajo muestran lo que ganas y lo que te cuesta tu tiempo libre.</p>
 
       <h3 class="reveal" style="margin-top:88px">Ahora mira todos los fines de semana posibles.</h3>
       <p class="reveal">Esta vez, imagina las 10 horas repartidas entre tus dos trabajos: cortar césped y arreglar bicicletas. Un jardín siempre lleva 1 hora. Las bicicletas no: las cuatro bicicletas de tu garaje necesitan distintas cantidades de trabajo. Una solo tiene una llanta desinflada (1 hora), otra necesita cadena nueva (2 horas), otra necesita frenos nuevos (3 horas) y otra es un desastre oxidado que necesita un arreglo completo (4 horas). Harías primero las rápidas. Así que podrías cortar 10 jardines, o arreglar 1 bicicleta y cortar 9 jardines, o arreglar 2 bicicletas y cortar 7, o arreglar 3 y cortar 4, o arreglar las 4 bicicletas y no cortar ninguno.</p>
@@ -81,6 +83,7 @@
           <p class="small muted" style="margin-top:12px">Un soporte de reparación es una abrazadera que sujeta la bicicleta mientras trabajas, y hace más rápidos los arreglos. Toca el botón para ver qué le hace a la curva.</p>
         </div>
       </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> la FPP real de un fin de semana. Los jardines cortados van abajo (0 a 10) y las bicicletas arregladas suben por el lado (0 a 5). La línea verde es cada plan que usa las 10 horas, y el área sombreada debajo es cada plan que podrías hacer. Toca un punto para probarlo. Después de comprar el soporte de reparación, la línea punteada muestra dónde estaba la curva antigua.</p>
 
 <!-- @hear -->
       <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
@@ -172,9 +175,11 @@
         <path d="M70 300 H530 M70 300 V30" stroke="var(--ink)" stroke-width="1.5" fill="none"/>
         <path d="M497.5 300 L70 72.5" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
         <path d="M497.5 300 L385 170 L250 105 L70 72.5" stroke="var(--savings)" stroke-width="4" fill="none" stroke-linejoin="round"/>
+        <path d="M182.5 300 v5 M295 300 v5 M407.5 300 v5 M497.5 300 v5 M70 267.5 h-5 M70 235 h-5 M70 202.5 h-5 M70 170 h-5 M70 137.5 h-5 M70 105 h-5 M70 72.5 h-5" stroke="var(--ink)" stroke-width="1.5"/>
+        <g font-size="12" fill="var(--ink-3)"><text x="70" y="320" text-anchor="middle">0</text><text x="182.5" y="320" text-anchor="middle">5</text><text x="295" y="320" text-anchor="middle">10</text><text x="407.5" y="320" text-anchor="middle">15</text><text x="497.5" y="320" text-anchor="middle">19</text><text x="60" y="304" text-anchor="end">0</text><text x="60" y="271.5" text-anchor="end">1</text><text x="60" y="239" text-anchor="end">2</text><text x="60" y="206.5" text-anchor="end">3</text><text x="60" y="174" text-anchor="end">4</text><text x="60" y="141.5" text-anchor="end">5</text><text x="60" y="109" text-anchor="end">6</text><text x="60" y="76.5" text-anchor="end">7</text></g>
         <g fill="var(--savings)" stroke="var(--ink)" stroke-width="1.5"><circle cx="497.5" cy="300" r="6"/><circle cx="385" cy="170" r="6"/><circle cx="250" cy="105" r="6"/><circle cx="70" cy="72.5" r="6"/></g>
         <g font-size="13" fill="var(--ink-2)">
-          <text x="548" y="322" text-anchor="end">todos cortan: 19 jardines</text>
+          <text x="552" y="246" text-anchor="end">todos cortan:</text><text x="552" y="262" text-anchor="end">19 jardines</text>
           <text x="400" y="166">Maya: 4 bicicletas</text><text x="400" y="182">por 5 jardines</text>
           <text x="258" y="95">Leo: 2 bicicletas por 6 jardines</text>
           <text x="84" y="60">Jordan: 1 bicicleta por 8 jardines</text>
@@ -184,6 +189,7 @@
         <text x="300" y="356" text-anchor="middle" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Jardines cortados</text>
         <text transform="translate(34 300) rotate(-90)" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Bicicletas arregladas</text>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> la FPP real del equipo, hecha con la tabla de arriba. Los jardines cortados van abajo (0 a 19) y las bicicletas arregladas suben por el lado (0 a 7). Cada punto es un plan: todos cortando, luego Maya cambia a bicicletas, luego Leo, luego Jordan. La línea verde los une. La línea recta punteada es cómo se vería la curva si los tres fueran igual de buenos en los dos trabajos.</p>
       <p class="reveal">Si los tres fueran igual de buenos en ambos trabajos, cada bicicleta costaría el mismo número de jardines y la FPP sería la línea recta punteada. El abombamiento viene de que las personas (y las máquinas, la tierra y el tiempo) son mejores en unos trabajos que en otros. Los economistas lo llaman la <dfn class="term" data-def="Cada unidad extra de algo cuesta más de la otra cosa que la unidad anterior, porque primero cambias los recursos más adecuados.">ley del costo de oportunidad creciente</dfn>.</p>
       <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ley del costo de oportunidad creciente</dt><dd>Cada bicicleta extra cuesta más jardines que la anterior: las bicicletas de Maya cuestan <b>1.25 jardines</b> cada una, las de Leo <b>3</b> y las de Jordan <b>8</b>. Ese costo creciente es lo que curva la línea.</dd></div></dl></div>
 
@@ -212,6 +218,7 @@
         <text x="520" y="330" text-anchor="end" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Jardines cortados</text>
         <text transform="translate(26 300) rotate(-90)" font-family="Fraunces, serif" font-size="17" fill="var(--ink)">Bicicletas arregladas</text>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no números reales. Es una FPP con las bicicletas hacia arriba y los jardines hacia la derecha, que muestra los tres tipos de movimiento: (1) deslizarse por la curva, (2) un plan con desperdicio dentro de la curva (el punto rojo) que sube hasta ella y (3) toda la curva que se mueve hacia afuera, hasta la curva punteada más grande.</p>
       <ol class="steps reveal">
         <li><b>Deslizarse por la curva: cambias de opinión, no de capacidad.</b> Decides hacer más bicicletas y menos jardines. Eliges otro punto de la misma curva, y lo máximo que podrías producir no ha cambiado. Para un país, "la gente compra más carros y menos trigo" es este caso.</li>
         <li><b>Subir desde dentro hasta la curva: dejas de desperdiciar.</b> Digamos que Jordan pasó el fin de semana en el sofá. Tu equipo estaba dentro de la curva. Cuando Jordan se pone a trabajar, suben hacia la curva. Pero la curva no se mueve, porque Jordan podía haber trabajado desde el principio. Para un país, <b>que baje el desempleo</b> es este caso: gente que estaba parada empieza a trabajar.</li>
@@ -219,6 +226,26 @@
       </ol>
       <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Crecimiento económico</dt><dd>Comprar el soporte movió tu curva hacia afuera, de un máximo de <b>4 bicicletas</b> en 10 horas a <b>5 bicicletas</b>. Las mismas horas, más posibilidades.</dd></div></dl></div>
       <p class="reveal"><b>Lo que no la mueve:</b> los precios. Si las bicicletas se venden más baratas, puedes seguir arreglando exactamente las mismas en un fin de semana. La FPP cuenta cuánto <i>puedes producir</i>, no cuánto vale.</p>
+
+      <h3 class="reveal">¿Qué punto de la curva es el mejor?</h3>
+      <p class="reveal">Si la FPP no cuenta dinero, ¿cómo eliges un punto? Todos los puntos de la curva usan las 10 horas, así que ninguno desperdicia nada. Para elegir el <b>mejor</b>, das un segundo paso después de dibujar la curva: tomas en cuenta cuánto paga cada cosa.</p>
+      <ol class="steps reveal">
+        <li><b>Haz la lista de los planes de la curva.</b> Las bicicletas toman 1, 2, 3 y luego 4 horas, y cada hora que sobra va a los jardines. Eso da cinco planes: 0 bicicletas + 10 jardines, 1 bicicleta + 9 jardines, 2 bicicletas + 7 jardines, 3 bicicletas + 4 jardines y 4 bicicletas + 0 jardines.</li>
+        <li><b>Ponle precio a cada plan.</b> Un jardín paga $15 y una bicicleta deja unos $70 de ganancia. Para 2 bicicletas + 7 jardines: 2 × $70 = $140, más 7 × $15 = $105, o sea $245 en total.</li>
+        <li><b>Elige el plan que deja más dinero.</b> A $70 por bicicleta, gana 4 bicicletas + 0 jardines: 4 × $70 = $280.</li>
+      </ol>
+      <p class="reveal">Ahora cambia la ganancia por bicicleta y mira cómo se mueve el ganador. La curva sigue exactamente igual, porque puedes seguir produciendo lo mismo. Solo cambia cuál es el mejor punto.</p>
+      <div class="reveal best-box" style="margin-top:24px">
+        <div class="payline"><span class="val" id="best-price">$70</span><span class="muted">de ganancia por bicicleta (un jardín siempre paga $15)</span></div>
+        <input type="range" id="best-slider" min="20" max="100" step="5" value="70" aria-label="Ganancia por bicicleta" style="margin:16px 0 24px">
+        <div class="best-plans" id="best-plans"></div>
+        <p id="best-msg" class="best-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> los cinco planes con bicicletas completas de tu curva, una barra para cada uno. Una barra más larga significa que el plan deja más dinero, desde $0 a la izquierda hasta $400 a la derecha, con la ganancia por bicicleta que eliges en el control deslizante ($20 a $100). Debajo de cada total ves de dónde sale: el dinero de las bicicletas más el de los jardines. La barra verde es la ganadora. Son los números reales de la lección, no un dibujo.</p>
+      <p class="reveal">El atajo: agrega una bicicleta más solo si su ganancia supera los jardines que te cuesta. La 1.ª bicicleta cuesta 1 jardín ($15), la 2.ª cuesta 2 jardines ($30), la 3.ª cuesta 3 jardines ($45) y la 4.ª cuesta 4 jardines ($60). A $40 por bicicleta valen la pena la 1.ª y la 2.ª, pero no la 3.ª, porque $40 es menos que $45. Así que gana 2 bicicletas + 7 jardines, con $185 (2 × $40 = $80, más 7 × $15 = $105). Es pensar en el margen otra vez.</p>
+      <p class="reveal"><b>¿Por qué solo bicicletas completas?</b> Un punto en medio de la curva, como 5 jardines + 2.7 bicicletas, es posible, pero 0.7 de bicicleta no se puede vender. No gana nada hasta que la terminas. Así que ese plan en realidad paga 5 jardines y 2 bicicletas terminadas: 5 × $15 = $75, más 2 × $70 = $140, o sea $215. Si usaras esas 2 horas sin terminar en jardines, ganarías $30 más.</p>
+      <p class="reveal">Los economistas tienen nombres para estos dos pasos. Cualquier plan sobre la curva tiene <dfn class="term" data-def="Producir lo máximo posible con lo que tienes, sin desperdiciar nada. Todos los puntos de la FPP la tienen.">eficiencia productiva</dfn>: no se desperdicia nada. El único plan que vale más tiene <dfn class="term" data-def="Producir la mezcla de cosas que más vale, según los precios o lo que la gente quiere. Es un solo punto de la FPP.">eficiencia asignativa</dfn>: estás produciendo la mezcla correcta.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Eficiencia productiva</dt><dd>Cualquier plan sobre la curva, como <b>2 bicicletas + 7 jardines</b> o <b>4 bicicletas + 0 jardines</b>. Se usan las 10 horas.</dd></div><div><dt>Eficiencia asignativa</dt><dd>A $70 por bicicleta, <b>4 bicicletas + 0 jardines</b>, que valen <b>$280</b>, lo máximo de todos los planes. A $40 por bicicleta, es <b>2 bicicletas + 7 jardines</b>, que valen <b>$185</b>.</dd></div></dl></div>
 
       <details class="deeper reveal">
         <summary>Más a fondo: costos hundidos, la curva cuando trabajas solo y la ventaja comparativa</summary>
@@ -258,6 +285,7 @@
         <text x="560" y="346" font-size="15" fill="var(--ink-2)">como el alquiler, la comida y lo básico</text>
         <path d="M550 74 H520 M550 154 H520 M550 314 H500" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="3 5"/>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. El azúcar que un árbol produce en un año se reparte en tres: hojas para captar luz, raíces para buscar agua y semillas para el futuro. Igual que con tus 10 horas, más para una parte significa menos para las otras.</p>
       <p class="reveal" style="max-width:680px"><b>La lección de la biología.</b> Todo ser vivo enfrenta escasez, así que todo ser vivo hace renuncias. Los ecólogos incluso lo llaman "presupuesto de energía". El árbol no se siente mal por no producir semillas en un año de sequía. Pone su azúcar donde más importa ahora mismo. Eso es exactamente lo que estás aprendiendo a hacer con el dinero.</p>
 
 <!-- @notes -->
@@ -351,6 +379,7 @@
           <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Decisiones de proyectos (VAN)</text><text x="690" y="306">Unidad 11 · empresas eligiendo proyectos</text>
         </g>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: lo que viene antes, esta lección en el medio y las lecciones que se apoyan en ella.</p>
       <ul class="connect-list">
         <li><span class="muted small">Antes</span><b>Inicio del curso</b></li>
         <li class="here"><span class="small">Estás aquí</span><b>Escasez y renuncias</b></li>

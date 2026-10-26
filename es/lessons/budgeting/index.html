@@ -6,8 +6,8 @@
   <title>Dale un trabajo a cada dólar · FinanceHub</title>
   <meta name="description" content="Unidad 4, Lección 1: presupuesto base cero y la regla 50/30/20. Míralo, escúchalo, juégalo.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610261952">
-  <link rel="stylesheet" href="../../../lessons/budgeting/lesson.css?v=202610261952">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610262024">
+  <link rel="stylesheet" href="../../../lessons/budgeting/lesson.css?v=202610262024">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Saltar a la lección</a>
@@ -98,6 +98,7 @@
           <text x="420" y="516" text-anchor="middle" font-family="Fraunces, serif" font-size="28" fill="var(--ink)">Ahorro</text>
           <text x="420" y="544" text-anchor="middle" font-size="16" fill="var(--ink-2)">20% · $480</text>
         </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo de un sueldo de $2,400 que se divide en tres corrientes con la regla 50/30/20: $1,200 para necesidades, $720 para deseos y $480 para ahorro. El ancho de cada corriente va con su parte.</p>
       </div>
     </div>
   </section>
@@ -121,6 +122,7 @@
           <div class="figure"><div class="label">Deseos · 30%</div><div class="val c-wants" id="amt-wants">$720</div><p>Comer fuera, videojuegos, conciertos, ropa nueva, mejoras</p></div>
           <div class="figure"><div class="label">Ahorro · 20%</div><div class="val c-savings" id="amt-savings">$480</div><p>Fondo de emergencia, inversión, pagar deudas más rápido</p></div>
         </div>
+        <p class="chart-cap"><b>Qué estás viendo:</b> la regla 50/30/20 como una sola barra. El control deslizante fija tu sueldo neto mensual, de $1,000 a $8,000. La barra siempre se divide en 50% necesidades, 30% deseos y 20% ahorro, y los tres números de abajo muestran esas partes en dólares.</p>
       </div>
 
       <h3 class="reveal" style="margin-top:88px">Cien monedas. Cada una es el 1% de tu sueldo.</h3>
@@ -134,6 +136,7 @@
           <button class="btn sm line" id="coins-reset">Empezar de nuevo</button>
         </div>
         <p class="small" id="coins-status" aria-live="polite" style="margin-top:18px">100 monedas aún sin trabajo.</p>
+        <p class="chart-cap"><b>Qué estás viendo:</b> tu sueldo como 100 monedas, así que cada moneda es 1% del total. Cada botón le da trabajo a 5 monedas: azul para necesidades, naranja para deseos y verde para ahorro. Las monedas vacías todavía no tienen trabajo. El presupuesto base cero significa terminar sin monedas vacías.</p>
       </div>
     </div>
   </section>
@@ -292,6 +295,7 @@
             <symbol id="i-cash" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="8" width="26" height="16" rx="3"/><circle cx="16" cy="16" r="4"/></g></symbol>
           </svg>
           <div class="week-strip" id="week-strip" aria-hidden="true"><span>Semana 1</span><span>Semana 2</span><span>Semana 3</span><span>Semana 4</span></div>
+          <p class="chart-cap"><b>Qué estás viendo:</b> el tablero del juego: tu pueblo durante un mes, contigo en el medio y alrededor los lugares a donde va tu dinero. La franja de abajo cuenta las cuatro semanas.</p>
         </div>
 
         <!-- Phase 1: plan -->
@@ -391,6 +395,7 @@
         <text x="394" y="336" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Deseos · 30%</text>
         <text x="680" y="336" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Embalse · 20%</text>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. La lluvia (tu sueldo) forma un río que se divide en una corriente ancha de necesidades, una mediana de deseos y una angosta de ahorro. La de ahorro llena una represa para los meses secos.</p>
       <p class="reveal" style="max-width:680px"><b>Por qué importa el ancho del arroyo.</b> Los ríos excavan cauces más hondos donde corre más agua. Los hábitos de gasto funcionan igual: las categorías que más alimentas se vuelven el camino más fácil para que el dinero siga yendo ahí. Un presupuesto es decidir tú dónde se excavan los cauces.</p>
     </div>
   </section>
@@ -510,6 +515,7 @@
           <text x="800" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Planes de empresa</text><text x="800" y="306">Unidades 9–10 · plan vs. real</text>
         </g>
       </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: lo que viene antes, esta lección en el medio y las lecciones que se apoyan en ella.</p>
       <ul class="connect-list">
         <li><span class="muted small">Antes · Unidad 2</span><b>Patrimonio y flujo de caja</b></li>
         <li><span class="muted small">Antes · Unidad 3</span><b>Leer un recibo de sueldo</b></li>
@@ -533,11 +539,11 @@
   </div>
 </footer>
 
-<script src="../../../assets/js/save.js?v=202610261952"></script>
-<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610261952"></script>
-<script src="../../../assets/js/auth.js?v=202610261952"></script>
-<script src="../../../assets/js/site.js?v=202610261952"></script>
-<script src="../../../assets/js/lesson-kit.js?v=202610261952"></script>
-<script src="../../../lessons/budgeting/lesson.js?v=202610261952"></script>
+<script src="../../../assets/js/save.js?v=202610262024"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610262024"></script>
+<script src="../../../assets/js/auth.js?v=202610262024"></script>
+<script src="../../../assets/js/site.js?v=202610262024"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610262024"></script>
+<script src="../../../lessons/budgeting/lesson.js?v=202610262024"></script>
 </body>
 </html>

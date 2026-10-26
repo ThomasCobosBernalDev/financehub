@@ -280,6 +280,35 @@
   newWeekend();
 
   // ---------- Check ----------
+  // ---------- Which point is best? Price each whole-bike plan ----------
+  const bestSlider = $("#best-slider");
+  const PLANS = [[0, 10], [1, 9], [2, 7], [3, 4], [4, 0]];
+  const bikesTxt = (k) => `${k} ${k === 1 ? T("bike", "bicicleta") : T("bikes", "bicicletas")}`;
+  const lawnsTxt = (l) => `${l} ${l === 1 ? T("lawn", "jardín") : T("lawns", "jardines")}`;
+  const bestBox = $("#best-plans");
+  bestBox.innerHTML = PLANS.map(([k, l]) => `<div class="bp-row"><span class="bp-name">${bikesTxt(k)} + ${lawnsTxt(l)}</span><span class="bp-bar"><i></i></span><span class="bp-val"><b></b><small></small></span></div>`).join("");
+  const bestRows = [...bestBox.children];
+  function drawBest() {
+    const p = +bestSlider.value;
+    const totals = PLANS.map(([k, l]) => k * p + l * 15);
+    const top = Math.max(...totals);
+    bestRows.forEach((r, i) => {
+      const [k, l] = PLANS[i];
+      r.classList.toggle("win", totals[i] === top);
+      r.querySelector("i").style.width = `${(totals[i] / 400) * 100}%`;
+      r.querySelector("b").textContent = money(totals[i]);
+      r.querySelector("small").textContent = `${money(k * p)} + ${money(l * 15)}`;
+    });
+    $("#best-price").textContent = money(p);
+    fillRange(bestSlider);
+    const wins = PLANS.filter((_, i) => totals[i] === top).map(([k, l]) => `<b>${bikesTxt(k)} + ${lawnsTxt(l)}</b>`);
+    $("#best-msg").innerHTML = wins.length === 1
+      ? T(`At ${money(p)} a bike, the best plan is ${wins[0]}, making <b>${money(top)}</b>.`, `A ${money(p)} por bicicleta, el mejor plan es ${wins[0]}, que deja <b>${money(top)}</b>.`)
+      : T(`At ${money(p)} a bike, it's a tie: ${wins.join(" and ")} both make <b>${money(top)}</b>.`, `A ${money(p)} por bicicleta hay empate: ${wins.join(" y ")} dejan <b>${money(top)}</b> cada uno.`);
+  }
+  bestSlider.addEventListener("input", drawBest);
+  drawBest();
+
   const QUIZ_EN = [
     { q: "Jada can work a $16-an-hour shift or tutor for $20 an hour on Saturday. She goes to the beach instead. What's the opportunity cost of her beach day for a 4-hour block?",
       opts: ["$80", "$64", "$144", "$0, because she enjoyed it"], a: 0,

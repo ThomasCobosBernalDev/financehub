@@ -85,7 +85,7 @@
     reset();
     $("#b-eras").classList.add("hidden");
     $("#b-play").classList.remove("hidden");
-    $("#b-chart").classList.remove("hidden");
+    $("#b-chart").classList.remove("hidden"); $("#b-chart-cap").hidden = false;
     $("#b-go").disabled = false;
     $("#b-log").innerHTML = "";
     const li = document.createElement("li");
@@ -193,7 +193,7 @@
     FH.save();
     $("#b-again").addEventListener("click", () => {
       res.classList.add("hidden");
-      $("#b-chart").classList.add("hidden");
+      $("#b-chart").classList.add("hidden"); $("#b-chart-cap").hidden = true;
       $("#b-eras").classList.remove("hidden");
       $("#b-year").textContent = T("Where to?", "¿Adónde?");
       $("#b-era").textContent = T("Choose an era", "Elige una época");

@@ -31,10 +31,26 @@
 .stepper button:hover { background: var(--line); }
 .stepper output { min-width: 52px; text-align: center; font-family: var(--serif); font-size: 20px; font-variant-numeric: tabular-nums; }
 
+.best-plans { display: grid; gap: 10px; }
+.bp-row { display: grid; grid-template-columns: minmax(150px, 190px) 1fr 110px; gap: 14px; align-items: center; }
+.bp-name { font-size: 15px; }
+.bp-bar { height: 26px; border-radius: 8px; background: var(--paper-2); overflow: hidden; }
+.bp-bar i { display: block; height: 100%; border-radius: 8px; background: var(--ink-3); opacity: .45; transition: width .35s var(--ease), background .25s, opacity .25s; }
+.bp-row.win .bp-bar i { background: var(--savings); opacity: 1; }
+.bp-row.win .bp-name { font-weight: 700; }
+.bp-val { font-variant-numeric: tabular-nums; line-height: 1.2; }
+.bp-val b { display: block; font-family: var(--serif); font-size: 19px; }
+.bp-val small { color: var(--ink-3); font-size: 13px; }
+.bp-row.win .bp-val b { color: var(--savings); }
+.best-msg { font-size: 18px; margin: 20px 0 0; min-height: 3em; }
 
 .sway { animation: sway 6s ease-in-out infinite; transform-origin: 440px 250px; }
 @keyframes sway { 50% { transform: rotate(1.2deg); } }
 
+@media (max-width: 560px) {
+  .bp-row { grid-template-columns: 1fr 96px; gap: 4px 12px; }
+  .bp-bar { grid-column: 1 / -1; grid-row: 2; height: 18px; }
+}
 @media (max-width: 860px) {
   .ppf-wrap { grid-template-columns: 1fr; gap: 12px; }
   .ppf-msg { min-height: 0; }

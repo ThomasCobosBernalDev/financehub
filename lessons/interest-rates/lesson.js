@@ -68,7 +68,7 @@
     F = { n: 0, i: S.i, pi: S.pi, g: S.g, d: 0, qe: 0, loss: 0, hist: [{ pi: S.pi, u: unemp(S.g), i: S.i }], busy: false };
     $("#f-eras").classList.add("hidden");
     $("#f-play").classList.remove("hidden");
-    $("#f-chart").classList.remove("hidden");
+    $("#f-chart").classList.remove("hidden"); $("#f-chart-cap").hidden = false;
     $("#f-go").disabled = false;
     $("#f-log").innerHTML = `<li>${S.intro}</li>`;
     meeting();
@@ -173,7 +173,7 @@
     FH.save();
     $("#f-again").addEventListener("click", () => {
       r.classList.add("hidden");
-      $("#f-chart").classList.add("hidden");
+      $("#f-chart").classList.add("hidden"); $("#f-chart-cap").hidden = true;
       $("#f-eras").classList.remove("hidden");
       $("#f-when").textContent = T("Pick a moment", "Elige un momento");
       $("#f-rate").textContent = "–";
