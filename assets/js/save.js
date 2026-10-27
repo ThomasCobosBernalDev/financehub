@@ -112,7 +112,7 @@
     L(5, 3, "u5-index-funds", t("Index funds and the S&P 500", "Los fondos indexados y el S&P 500"), t("One fund, 500 companies", "Un fondo, 500 empresas"), { href: "lessons/index-funds/", needs: ["u5-stocks"] }),
     L(5, 4, "u5-brokerage", t("Open a brokerage account", "Abre una cuenta de inversión"), t("What you need and the fees to watch", "Qué necesitas y las comisiones que debes vigilar"), { href: "lessons/brokerage/", needs: ["u1-checking-savings"] }),
     L(5, 5, "u5-first-trade", t("Buy your first $10", "Compra tus primeros $10"), t("Fractional shares and placing an order", "Acciones fraccionadas y cómo hacer una orden"), { href: "lessons/first-trade/", needs: ["u5-index-funds", "u5-brokerage"] }),
-    L(5, 6, "u5-market-drops", t("When the market drops", "Cuando el mercado cae"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { needs: ["u5-first-trade"] }),
+    L(5, 6, "u5-market-drops", t("When the market drops", "Cuando el mercado cae"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { href: "lessons/market-drops/", needs: ["u5-first-trade"] }),
     L(5, 7, "u5-retirement", t("401(k) and Roth IRA", "El 401(k) y la Roth IRA"), t("Retirement accounts and the employer match", "Cuentas para el retiro y la aportación del empleador"), { needs: ["u5-index-funds"] }),
     L(6, 1, "u6-insurance", t("Insurance, explained", "Los seguros, explicados"), t("Health, car and renters insurance", "Seguro médico, de carro y de inquilino")),
     L(6, 2, "u6-scams", t("Spot scams and protect your identity", "Detecta estafas y protege tu identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad")),

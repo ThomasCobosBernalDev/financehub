@@ -1,0 +1,21 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "S&P": "ese y pe",
+    "VOO": "ve o o",
+    "J.P. Morgan": "jota pe Morgan"
+  },
+  "lines": [
+    "Algún día tu app va a estar en rojo. Tu fondo va a estar abajo, las noticias van a decir que los mercados se desploman, y alguien que conoces va a vender todo. Esta lección es sobre ese momento.",
+    "Las acciones son volátiles. De 1928 a 2025, el S&P 500 perdió dinero en 26 de 98 años, como uno de cada cuatro. Su peor año, 1931, perdió casi 44 por ciento. El mejor, 1954, ganó más de 52.",
+    "Una caída de 10 por ciento o más es una corrección. Una caída de 20 por ciento o más es un mercado bajista. Desde 1970 ha habido seis grandes. La caída de 2020 bajó 34 por ciento en como un mes y se recuperó en seis meses. La crisis de 2008 bajó 57 por ciento y tardó cinco años y medio en volver.",
+    "El tiempo cambia las probabilidades. En un año, las acciones perdieron dinero como una cuarta parte de las veces. En diez años, como una de cada dieciocho. En veinte años, nunca, ni una vez en 79 periodos desde 1928.",
+    "Vender por pánico es vender porque tienes miedo. Hace segura la pérdida, y luego tienes que adivinar cuándo volver a entrar. Algunos de los mejores días llegan justo después de los peores, así que quien vende muchas veces se pierde el rebote.",
+    "Parte de las ganas de vender es la aversión a las pérdidas. Una pérdida se siente como el doble de fuerte que una ganancia del mismo tamaño, así que una semana en rojo se siente como emergencia aunque no lo sea.",
+    "Volver cuesta más que caer. Después de una caída de 50 por ciento, necesitas una ganancia de 100 por ciento para quedar igual.",
+    "El promedio del costo en dólares ayuda. Invierte la misma cantidad cada mes, y cuando bajen los precios, ese dinero compra más acciones.",
+    "La protección de verdad es un plan hecho antes de la caída. Guarda en ahorros el dinero que vas a necesitar en unos cinco años, ten un fondo de emergencia e invierte solo el dinero que puede esperar. Así, como un oso en invierno, puedes descansar en la guarida hasta la primavera."
+  ]
+}

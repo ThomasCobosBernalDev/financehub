@@ -1,0 +1,278 @@
+<!-- title: When the Market Drops -->
+<!-- description: Unit 5, Lesson 6: volatility, corrections and bear markets, how long recoveries took, why time cuts the chance of a loss, the cost of panic selling, dollar-cost averaging and time horizons, all with real S&P 500 data. Play: ride out three real stretches of market history without knowing which years they are. -->
+<!-- kicker: Unit 5 · Lesson 6 -->
+<!-- topic: Market drops -->
+
+<!-- @start -->
+        <h1 class="reveal">When the market drops, <em>don't drop out.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> You've got VOO in your Oakline account and $10 going in every Friday. Then one morning the app is red. Your fund is down 4% this week, the news says "markets tumble," and a friend texts that he sold everything. You wonder if you should too. This lesson is about that moment, because it will come, more than once.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <dfn class="term" data-def="A drop of 20% or more in stock prices from their most recent high.">bear market</dfn> is a drop of 20% or more from the market's last high. Smaller dips happen almost every year.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Drops are the price of stocks' higher long-run returns. Selling in a panic turns a temporary drop into a permanent loss.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Invest only money you won't need for years, keep an emergency fund, keep buying on a schedule, and don't sell because prices fell.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Financial advisors</b> spend much of their job talking clients out of panic selling. <b>Portfolio managers</b> at funds decide how much risk to hold.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="A line that falls steeply, then climbs back past its old high, with a small figure holding steady at the bottom.">
+          <g stroke="var(--line)" stroke-width="1.5"><line x1="40" y1="140" x2="480" y2="140" stroke-dasharray="4 6"/><line x1="40" y1="420" x2="480" y2="420"/></g>
+          <text x="476" y="130" text-anchor="end" font-size="13" fill="var(--ink-3)">old high</text>
+          <path d="M40 220 C 80 200, 110 150, 150 140 C 175 134, 190 170, 205 230 C 220 300, 240 380, 262 392 C 282 402, 296 340, 318 300 C 340 262, 360 250, 384 200 C 404 160, 424 150, 444 120 C 456 104, 470 96, 480 90" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="md-line"/>
+          <circle cx="150" cy="140" r="8" fill="var(--ink)"/>
+          <circle cx="262" cy="392" r="9" fill="var(--wants)"/>
+          <text x="276" y="426" font-size="15" font-weight="700" fill="var(--wants)">−34%</text>
+          <circle cx="436" cy="133" r="8" fill="var(--savings)"/>
+          <text x="420" y="176" text-anchor="end" font-size="15" font-weight="700" fill="var(--savings)">back, and higher</text>
+          <g transform="translate(232 330)" class="md-hold">
+            <circle cx="0" cy="-30" r="12" fill="var(--needs)"/>
+            <path d="M0 -18 V 18 M0 -6 L -16 -22 M0 -6 L 16 -22 M0 18 L -12 40 M0 18 L 12 40" stroke="var(--needs)" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <text x="260" y="522" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">hold on through the dip</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a sketch shaped like the real 2020 drop, when the S&amp;P 500 fell 34% in about a month and was back at a new high five months later. The person is holding on instead of jumping off.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Drops are normal. <em>Selling is optional.</em></h2>
+      <p class="lead reveal">Every chart below uses real S&amp;P 500 history. Look at how often prices fall, how deep the worst falls went, and what time does to the odds.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Prices swing every year</h3>
+      <p class="reveal">How much and how fast prices move up and down is called <dfn class="term" data-def="How much and how fast prices swing up and down. Stocks have high volatility; a savings account has none.">volatility</dfn>. Stocks are volatile: some years are great, some are awful, and you can't tell which is coming. Drag across the chart to see each year.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Volatility</dt><dd>From 1928 to 2025, the S&amp;P 500 with dividends fell in <b>26 of 98 years</b>, about 1 in 4. Its worst year was <b>1931, −43.8%</b>. Its best was <b>1954, +52.6%</b>.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="years">
+        <svg viewBox="0 0 1000 284" class="md-years" id="yr-chart" role="img" aria-label="Bar chart of the S&amp;P 500's return in every year from 1928 to 2025"></svg>
+        <div class="md-readout" id="yr-out" aria-live="polite"></div>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> real data. Each bar is one year from 1928 to 2025, showing the S&amp;P 500's total return including dividends, from Aswath Damodaran's NYU dataset. Bars above the middle line are gains, bars below are losses. The scale runs from −50% to +55%.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Corrections and bear markets</h3>
+      <p class="reveal">A <dfn class="term" data-def="A drop of 10% or more in stock prices from a recent high, but less than 20%.">correction</dfn> is a drop of 10% or more from a recent high. A bear market is 20% or more. The opposite, a long climb, is a bull market. Getting back to the old high is the <dfn class="term" data-def="The time it takes prices to climb back to their old high after a drop.">recovery</dfn>. Tap a bear market to read what happened.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Correction</dt><dd>From February to April 2025, the S&amp;P 500 fell about <b>19%</b> as new tariffs shook markets. It was back at a new high by late June.</dd></div><div><dt>Bear market</dt><dd>From January 3 to October 12, 2022, it fell <b>25.4%</b> as interest rates jumped.</dd></div><div><dt>Recovery</dt><dd>It passed its January 2022 high on <b>January 19, 2024</b>, about 2 years after the drop began.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="bears">
+        <div class="bear-head"><span>Bear market</span><span>How far it fell</span><span>Months from the old high back to it</span></div>
+        <div id="bear-rows"></div>
+        <p class="split-msg" id="bear-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> real data for six S&amp;P 500 bear markets since 1970. The orange bar is how far prices fell from the high to the bottom. The gray bar is how many months passed from the old high until prices were back to it. These use prices only; counting dividends, recoveries came a little sooner.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Time shrinks the chance of a loss</h3>
+      <p class="reveal">Your <dfn class="term" data-def="How long until you need the money. The longer it is, the more ups and downs you can wait out.">time horizon</dfn> is how long until you need the money. Over one year, stocks lose money often. Over long stretches, losses got rare, because good years had time to outweigh bad ones. Slide to pick how many years you hold.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Time horizon</dt><dd>Money for a car next year has a <b>1-year</b> horizon: about 1 in 4 one-year stretches lost money. Retirement money at 20 has a <b>45-year</b> horizon. Every <b>20-year</b> stretch since 1928, all 79 of them, ended with a gain.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="hold">
+        <label class="md-lab" for="hd-yrs">Hold for <b id="hd-yrs-v">5 years</b></label>
+        <input type="range" id="hd-yrs" min="1" max="20" step="1" value="5">
+        <div class="hd-big"><b id="hd-pct">11.7%</b><span id="hd-txt"></span></div>
+        <div class="hd-cells" id="hd-cells" aria-hidden="true"></div>
+        <p class="split-msg" id="hd-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> real data. Each small square is one stretch of the length you picked, starting in a different year from 1928 on, using the S&amp;P 500's yearly total returns. Orange squares lost money from start to end; green squares gained. Past results don't promise future ones.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Why selling after a drop hurts</h3>
+      <p class="reveal"><dfn class="term" data-def="Selling investments because prices fell and you're scared, instead of because your plans changed.">Panic selling</dfn> means selling because prices fell and you're scared. It locks in the loss, and then you have to guess when to get back in. Some of the market's best days come right after its worst ones: J.P. Morgan found that over the 20 years it studied, 7 of the 10 best days came within two weeks of the 10 worst, and missing just those 10 best days cut an investor's ending value roughly in half. Part of the urge comes from <dfn class="term" data-def="The way losses feel about twice as strong as gains of the same size, which pushes people to sell after drops.">loss aversion</dfn>: psychologists Daniel Kahneman and Amos Tversky found that losses feel about twice as strong as gains of the same size.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Panic selling</dt><dd>$10,000 in the S&amp;P 500 at the start of 2008 was worth <b>$6,345</b> after the year's −36.6%. Sell then and hold cash, and five years later you'd have about <b>$6,380</b>. Stay invested, and by the end of 2013 it was about <b>$14,350</b>.</dd></div><div><dt>Loss aversion</dt><dd>Watching $100 disappear feels about as bad as gaining <b>$200</b> feels good. That's why a red week feels like an emergency even when it isn't.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Keep buying on a schedule</h3>
+      <p class="reveal"><dfn class="term" data-def="Investing the same dollar amount on a regular schedule no matter the price, so you buy more shares when prices are low.">Dollar-cost averaging</dfn> means investing the same amount on a schedule, like $100 a month, no matter what. When prices drop, the same $100 buys more shares, so drops quietly help you. Drag the middle month's price.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Dollar-cost averaging</dt><dd>$100 a month at $50, then $25, then $50 buys 2 + 4 + 2 = <b>8 shares</b> for $300. At $50 they're worth <b>$400</b>, even though the price ended where it started.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="dca">
+        <label class="md-lab" for="dc-mid">Month 2 price <b id="dc-mid-v">$25</b></label>
+        <input type="range" id="dc-mid" min="10" max="90" step="5" value="25">
+        <div class="dc-months" id="dc-months"></div>
+        <dl class="md-out" id="dc-out"></dl>
+        <p class="split-msg" id="dc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a calculator with made-up prices, not market data. Each month you invest $100. The coins show how many shares $100 buys at that month's price. Month 1 and month 3 stay at $50.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The real protection: a plan made before the drop</h3>
+      <p class="reveal">Drops hurt most when you need the money during one. So keep money you'll need within about five years, like your emergency fund or a car down payment, in savings, not stocks. With that cushion, you never have to sell low to pay a bill.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The plan</dt><dd>Your <b>$3,600</b> emergency fund sits in savings. Your VOO is for 10+ years from now. When the market drops 25%, nothing in your life forces a sale, so you keep your $10 a week going in.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Hold or fold: <em>ride real history.</em></h2>
+      <p class="lead reveal">Three rounds, each a real stretch of S&amp;P 500 history, one year at a time. You start each round with <b>$10,000</b> in an index fund and add <b>$100 a month</b>. After each year's news, decide: stay invested, or sell and sit in cash, which earns that year's real Treasury bill rate. You won't know which years they are until the round ends.</p>
+
+      <div class="ride reveal" id="ride">
+        <div class="rd-top">
+          <div><small id="rd-round">Round 1 of 3</small><b id="rd-year">Year 1 of 6</b></div>
+          <div class="pg-score"><small>Rounds at or above holding</small><b id="rd-score">0 of 0</b></div>
+        </div>
+        <div class="rd-grid">
+          <div class="rd-main">
+            <div class="rd-val"><small>Your money</small><b id="rd-val">$10,000</b><span id="rd-where">in the fund</span></div>
+            <div class="rd-news" id="rd-news"></div>
+            <div class="rd-btns" id="rd-btns"></div>
+          </div>
+          <svg viewBox="0 0 520 280" class="rd-chart" id="rd-chart" role="img" aria-label="Your money over the years in this round"></svg>
+        </div>
+      </div>
+      <div id="rd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> real yearly S&amp;P 500 total returns and real 3-month Treasury bill returns from Damodaran's NYU dataset. The headlines describe what really happened those years. Your $1,200 a year goes in at the start of each year after the first, into wherever your money is. Taxes and fees are left out.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Four calculations explain why drops feel so big and why time and steady buying help.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: The size of a drop</h3>
+      <p class="reveal">Subtract the old value from the new value, then divide by the old value.</p>
+      <div class="formula reveal">Percent change <span class="op">=</span> <span class="frac"><span>new value − old value</span><span>old value</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>2008</dt><dd><span class="frac"><span>$6,345 − $10,000</span><span>$10,000</span></span> = <span class="frac"><span>−$3,655</span><span>$10,000</span></span> = <b>−36.55%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: The gain you need to get back</h3>
+      <p class="reveal">After a drop, you're starting from a smaller amount, so climbing back takes a bigger percent than the fall. Divide the drop by what's left.</p>
+      <div class="formula reveal">Gain needed <span class="op">=</span> <span class="frac"><span>drop</span><span>1 − drop</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Down 50%</dt><dd><span class="frac"><span>0.50</span><span>1 − 0.50</span></span> = <span class="frac"><span>0.50</span><span>0.50</span></span> = <b>100%</b>. $10,000 falls to $5,000, and $5,000 must double to get back.</dd></div><div><dt>Down 36.55%</dt><dd><span class="frac"><span>0.3655</span><span>0.6345</span></span> ≈ <b>57.6%</b>. After 2008, the S&amp;P 500 gained 25.9% in 2009 and 14.8% in 2010, and with dividends it was back above even by the end of 2012.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Your average cost when you buy on a schedule</h3>
+      <p class="reveal">Divide all the money you put in by all the shares you got.</p>
+      <div class="formula reveal">Average cost per share <span class="op">=</span> <span class="frac"><span>total invested</span><span>total shares</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$50, $25, $50</dt><dd><span class="frac"><span>$300</span><span>8 shares</span></span> = <b>$37.50</b> a share, below the $41.67 average of the three prices, because $100 bought extra shares in the cheap month.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: The chance of a loss over a stretch</h3>
+      <p class="reveal">Count the stretches that lost money and divide by all the stretches of that length.</p>
+      <div class="formula reveal">Chance of a loss <span class="op">=</span> <span class="frac"><span>stretches that lost money</span><span>all stretches</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>5 years</dt><dd><span class="frac"><span>11</span><span>94</span></span> ≈ <b>11.7%</b>.</dd></div><div><dt>10 years</dt><dd><span class="frac"><span>5</span><span>89</span></span> ≈ <b>5.6%</b>.</dd></div><div><dt>20 years</dt><dd><span class="frac"><span>0</span><span>79</span></span> = <b>0%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: a bear market with your $10 a week</h3>
+      <ol class="steps reveal">
+        <li><b>Before.</b> You hold $2,000 of VOO for retirement and $3,600 of emergency savings. You add $10 every Friday.</li>
+        <li><b>The drop.</b> Prices fall 25%: <span class="frac"><span>$1,500 − $2,000</span><span>$2,000</span></span> = −25%. Your account shows $1,500.</li>
+        <li><b>The urge.</b> Loss aversion says sell. Your plan says nothing changed: you won't touch this money for decades, and bills come from savings.</li>
+        <li><b>Keep buying.</b> Each $10 now buys shares about 25% cheaper than before the drop.</li>
+        <li><b>The recovery.</b> To get back, prices need <span class="frac"><span>0.25</span><span>0.75</span></span> ≈ 33.3%. In 2022's bear market, that took until January 2024, and your cheap Friday shares gained even more.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Bears sleep <em>through the winter.</em></h2>
+      <p class="lead reveal">A black bear doesn't hunt through a blizzard. It eats well in the fall, builds up fat, and then spends the winter in its den, living off that stored fat for months. When spring comes, it walks out into a world with food again.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="A bear sleeping in a den under the snow while snow falls outside.">
+        <path d="M0 250 C 200 236, 520 258, 900 240 V340 H0Z" fill="#e8eef2"/>
+        <path d="M300 250 C 300 140, 360 96, 450 96 C 540 96, 600 140, 600 250Z" fill="#8a6a4f" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M290 160 C 330 104, 400 84, 450 84 C 520 84, 580 110, 612 164 C 590 150, 560 146, 540 150 C 520 120, 470 112, 450 112 C 420 112, 380 120, 360 150 C 340 140, 310 146, 290 160Z" fill="#f4f7f9" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M340 250 C 340 186, 380 150, 450 150 C 520 150, 560 186, 560 250Z" fill="#4a3526"/>
+        <g class="md-bear">
+          <ellipse cx="450" cy="226" rx="78" ry="34" fill="#2e2a28"/>
+          <circle cx="392" cy="214" r="26" fill="#2e2a28"/>
+          <circle cx="378" cy="194" r="9" fill="#2e2a28"/><circle cx="404" cy="190" r="9" fill="#2e2a28"/>
+          <ellipse cx="376" cy="222" rx="11" ry="8" fill="#6b5a4e"/>
+          <path d="M386 210 q 6 4 12 0" fill="none" stroke="#e8eef2" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g fill="var(--ink-3)" font-family="Fraunces, serif" font-size="22" class="md-z"><text x="420" y="176">z</text><text x="436" y="160" font-size="18">z</text><text x="450" y="146" font-size="14">z</text></g>
+        <g fill="#c9d3da" class="md-snow">
+          <circle cx="120" cy="130" r="5"/><circle cx="200" cy="140" r="4"/><circle cx="90" cy="200" r="4"/><circle cx="700" cy="70" r="5"/><circle cx="780" cy="150" r="4"/><circle cx="660" cy="190" r="4"/><circle cx="830" cy="100" r="3"/><circle cx="250" cy="112" r="3"/>
+        </g>
+        <g font-size="16" fill="var(--ink-2)">
+          <text x="40" y="52" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Store up, then wait it out</text><text x="40" y="76">fat for the winter, savings for the drop</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A bear sleeps in a snowy den while snow falls outside.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> In a bear market, act like a bear in winter. Your emergency fund is the fat you stored up, so you don't have to go out and sell in the storm. Wait in the den, keep your small weekly buys going, and walk out when spring comes.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Volatility:</b> how much prices swing. The S&amp;P 500 fell in 26 of 98 years from 1928 to 2025, about 1 in 4.</li>
+          <li><b>Correction:</b> down 10% or more. <b>Bear market:</b> down 20% or more. <b>Recovery:</b> back to the old high, from 6 months (2020) to over 7 years (2000 and 1973).</li>
+          <li><b>Gain needed to recover</b> = <span class="frac"><span>drop</span><span>1 − drop</span></span>. Down 50% needs +100%.</li>
+          <li><b>Time horizon:</b> when you need the money. Losing stretches since 1928: 1 year 26.5%, 5 years 11.7%, 10 years 5.6%, 20 years 0%.</li>
+          <li><b>Panic selling</b> locks in losses and risks missing the best days. <b>Loss aversion:</b> losses feel about twice as strong as gains.</li>
+          <li><b>Dollar-cost averaging:</b> the same amount on a schedule buys more shares when prices are low.</li>
+          <li>Money needed within about five years belongs in savings, not stocks.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A drop of 20% or more from a recent high is a <input type="text" class="blank" data-answer="bear|bear market" aria-label="Blank 1"> market.</div>
+        <div>2. After a 50% drop, you need a <input type="text" class="blank" data-answer="100|one hundred|100%" inputmode="numeric" aria-label="Blank 2">% gain to get back to even.</div>
+        <div>3. Investing the same amount on a schedule is dollar-cost <input type="text" class="blank" data-answer="averaging" aria-label="Blank 3">.</div>
+        <div>4. Of the 79 twenty-year stretches since 1928, <input type="text" class="blank" data-answer="0|zero|none|no" aria-label="Blank 4"> lost money.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Ask someone who lived it</h3>
+          <p>Interview a parent or older friend about 2008 or 2020. What did they do with their investments? What do they wish they'd done?</p>
+        </div>
+        <div class="reveal">
+          <h3>Recovery math race</h3>
+          <p>Call out a drop, like 20%, 40% or 60%. First to say the gain needed to get back, 25%, 67% or 150%, wins the round.</p>
+        </div>
+        <div class="reveal">
+          <h3>Write the rule together</h3>
+          <p>As a group, write one sentence each of you would read before selling in a drop. Compare and pick the one that would actually stop you.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">If your investments dropped 30% next month, what would you feel, and what would you do?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Which money in your life do you need within five years, and which can wait ten or more?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Write your own rule for drops, the sentence you'd read before hitting Sell.</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the financial advisor</h3>
+      <div class="reveal">
+        <p>A 30-year-old client calls. Her retirement account, all in an S&amp;P 500 index fund, fell from <b>$40,000</b> to <b>$30,000</b> in a bear market. She wants to sell everything "until things calm down" and buy back later. She has a $9,000 emergency fund and adds $500 a month to the account.</p>
+        <p><b>Your task:</b> work out the size of her drop and the gain needed to get back, then explain what selling now would require to work out, and what you'd suggest instead.</p>
+        <textarea id="job-answer" placeholder="Write what you'd tell her…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>The numbers:</b> <span class="frac"><span>$30,000 − $40,000</span><span>$40,000</span></span> = −25%. To get back she needs <span class="frac"><span>0.25</span><span>0.75</span></span> ≈ 33.3%, so $30,000 must grow by $10,000.</p>
+            <p><b>What selling requires:</b> she'd have to be right twice, selling before more drops and buying back before the rebound. Big rebound days often come within days of the worst days, and in 2022's bear market, prices were back at the old high by January 2024. If she waits for things to feel calm, she'll likely buy back higher than she sold.</p>
+            <p><b>What to suggest:</b> her money is for retirement, 35 years away, and she has $9,000 of emergency savings, so nothing forces her to sell. Keep the $500 a month going: each deposit now buys about a third more shares than before the drop. If the swings are truly unbearable, the long-term fix is a mix with some bonds chosen calmly, not a sale in a panic.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">From one scary drop <em>to a lifetime of them.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on buying your first $10 and why invest at all, and leads to retirement accounts, behavioral finance, and the business cycle">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 110 C 320 110, 320 170, 360 170"/><path d="M270 230 C 320 230, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../first-trade/"><text x="20" y="104" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Buy your first $10</text><text x="20" y="126">Unit 5 · Lesson 5</text></a>
+          <a href="../why-invest/"><text x="20" y="224" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Why invest at all?</text><text x="20" y="246">Unit 5 · Lesson 1</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Market drops</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">401(k) and Roth IRA</text><text x="690" y="86">Next lesson · decades of compounding</text>
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Why we make bad money choices</text><text x="690" y="186">Unit 10 · behavioral finance</text>
+          <text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Booms and recessions</text><text x="690" y="286">Unit 9 · the business cycle</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons that come before, this lesson in the middle, and the later lessons that build on it.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 5</span><b>Buy your first $10</b></li>
+        <li><span class="muted small">Before · Unit 5</span><b>Why invest at all?</b></li>
+        <li class="here"><span class="small">You are here</span><b>Market drops</b></li>
+        <li><span class="muted small">Next · Unit 5</span><b>401(k) and Roth IRA</b></li>
+        <li><span class="muted small">Later · Unit 10</span><b>Why we make bad money choices</b></li>
+        <li><span class="muted small">Later · Unit 9</span><b>Booms and recessions</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Next open lesson: Why prices are what they are <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>

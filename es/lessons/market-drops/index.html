@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/market-drops/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cuando el mercado cae · FinanceHub</title>
+  <meta name="description" content="Unidad 5, Lección 6: volatilidad, correcciones y mercados bajistas, cuánto tardaron las recuperaciones, por qué el tiempo baja la probabilidad de perder, el costo de vender por pánico, el promedio del costo en dólares y el plazo, todo con datos reales del S&P 500. Juega: aguanta tres periodos reales de la historia del mercado sin saber qué años son.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610270633">
+  <link rel="stylesheet" href="../../../lessons/market-drops/lesson.css?v=202610270633">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../">Curso</a><a href="../../about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../../lessons/market-drops/" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<aside class="companion" aria-label="Tu personaje hasta ahora">
+  <div class="who">
+    <svg viewBox="-34 -60 68 68" aria-hidden="true"><circle cx="0" cy="-22" r="27" fill="#f2c9a5" stroke="#2a2420" stroke-width="2"/><path d="M-27 -26 C-28 -58 28 -58 27 -26 C16 -40 -6 -42 -27 -26Z" fill="#2a2420"/><circle cx="-9" cy="-22" r="2.8" fill="#2a2420"/><circle cx="9" cy="-22" r="2.8" fill="#2a2420"/><path d="M-9 -10 Q0 -2 9 -10" stroke="#2a2420" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <div><b>Tú</b>Tu dinero, lección por lección</div>
+  </div>
+  <dl>
+    <dt>Ahorros</dt><dd data-k="cash">$0</dd>
+    <dt>Lecciones hechas</dt><dd data-k="lessons">0</dd>
+    <dt>XP</dt><dd data-k="xp">0</dd>
+  </dl>
+  <div class="badges"><b data-k="badges">0</b> insignias ganadas. Tus números pasan a cada lección.</div>
+</aside>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 5 · Lección 6</span> Caídas del mercado</div>
+        <h1 class="reveal">Cuando el mercado cae, <em>no te bajes.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Ya tienes VOO en tu cuenta de Oakline y $10 que entran cada viernes. Una mañana la app está en rojo. Tu fondo bajó 4% esta semana, las noticias dicen "se desploman los mercados" y un amigo te escribe que vendió todo. Te preguntas si tú también deberías. Esta lección es sobre ese momento, porque va a llegar, y más de una vez.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Un <dfn class="term" data-def="Una caída de 20% o más en los precios de las acciones desde su máximo más reciente.">mercado bajista</dfn> es una caída de 20% o más desde el último máximo del mercado. Bajadas más chicas pasan casi cada año.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Las caídas son el precio de los mejores rendimientos de las acciones a largo plazo. Vender por pánico convierte una caída temporal en una pérdida permanente.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Invierte solo dinero que no vas a necesitar en años, ten un fondo de emergencia, sigue comprando con un calendario y no vendas porque bajaron los precios.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>asesores financieros</b> pasan buena parte de su trabajo convenciendo a sus clientes de no vender por pánico. Los <b>administradores de portafolios</b> de los fondos deciden cuánto riesgo tomar.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una línea que cae muy rápido y luego sube más allá de su máximo anterior, con una figura pequeña que aguanta abajo.">
+          <g stroke="var(--line)" stroke-width="1.5"><line x1="40" y1="140" x2="480" y2="140" stroke-dasharray="4 6"/><line x1="40" y1="420" x2="480" y2="420"/></g>
+          <text x="476" y="130" text-anchor="end" font-size="13" fill="var(--ink-3)">máximo anterior</text>
+          <path d="M40 220 C 80 200, 110 150, 150 140 C 175 134, 190 170, 205 230 C 220 300, 240 380, 262 392 C 282 402, 296 340, 318 300 C 340 262, 360 250, 384 200 C 404 160, 424 150, 444 120 C 456 104, 470 96, 480 90" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="md-line"/>
+          <circle cx="150" cy="140" r="8" fill="var(--ink)"/>
+          <circle cx="262" cy="392" r="9" fill="var(--wants)"/>
+          <text x="276" y="426" font-size="15" font-weight="700" fill="var(--wants)">−34%</text>
+          <circle cx="436" cy="133" r="8" fill="var(--savings)"/>
+          <text x="420" y="176" text-anchor="end" font-size="15" font-weight="700" fill="var(--savings)">de vuelta, y más arriba</text>
+          <g transform="translate(232 330)" class="md-hold">
+            <circle cx="0" cy="-30" r="12" fill="var(--needs)"/>
+            <path d="M0 -18 V 18 M0 -6 L -16 -22 M0 -6 L 16 -22 M0 18 L -12 40 M0 18 L 12 40" stroke="var(--needs)" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <text x="260" y="522" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">aguanta durante la bajada</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo con la forma de la caída real de 2020, cuando el S&amp;P 500 bajó 34% en más o menos un mes y cinco meses después ya estaba en un nuevo máximo. La persona aguanta en vez de saltar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Las caídas son normales. <em>Vender es opcional.</em></h2>
+      <p class="lead reveal">Todas las gráficas de abajo usan la historia real del S&amp;P 500. Mira qué tan seguido bajan los precios, qué tan hondo llegaron las peores caídas y qué le hace el tiempo a las probabilidades.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Los precios se mueven cada año</h3>
+      <p class="reveal">Qué tanto y qué tan rápido suben y bajan los precios se llama <dfn class="term" data-def="Qué tanto y qué tan rápido suben y bajan los precios. Las acciones tienen mucha volatilidad; una cuenta de ahorro no tiene nada.">volatilidad</dfn>. Las acciones son volátiles: hay años buenísimos, hay años terribles, y no sabes cuál viene. Arrastra el dedo sobre la gráfica para ver cada año.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Volatilidad</dt><dd>De 1928 a 2025, el S&amp;P 500 con dividendos bajó en <b>26 de 98 años</b>, como 1 de cada 4. Su peor año fue <b>1931, −43.8%</b>. El mejor fue <b>1954, +52.6%</b>.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="years">
+        <svg viewBox="0 0 1000 284" class="md-years" id="yr-chart" role="img" aria-label="Gráfica de barras con el rendimiento del S&amp;P 500 en cada año de 1928 a 2025"></svg>
+        <div class="md-readout" id="yr-out" aria-live="polite"></div>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> datos reales. Cada barra es un año de 1928 a 2025 y muestra el rendimiento total del S&amp;P 500 con dividendos, de los datos de Aswath Damodaran en NYU. Las barras arriba de la línea del centro son ganancias y las de abajo son pérdidas. La escala va de −50% a +55%.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Correcciones y mercados bajistas</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Una caída de 10% o más en los precios de las acciones desde un máximo reciente, pero de menos de 20%.">corrección</dfn> es una caída de 10% o más desde un máximo reciente. Un mercado bajista es de 20% o más. Lo contrario, una subida larga, es un mercado alcista. Volver al máximo anterior es la <dfn class="term" data-def="El tiempo que tardan los precios en volver a su máximo anterior después de una caída.">recuperación</dfn>. Toca un mercado bajista para leer qué pasó.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Corrección</dt><dd>De febrero a abril de 2025, el S&amp;P 500 bajó como <b>19%</b> porque los nuevos aranceles sacudieron los mercados. Para finales de junio ya estaba en un nuevo máximo.</dd></div><div><dt>Mercado bajista</dt><dd>Del 3 de enero al 12 de octubre de 2022 bajó <b>25.4%</b> porque las tasas de interés subieron mucho.</dd></div><div><dt>Recuperación</dt><dd>Pasó su máximo de enero de 2022 el <b>19 de enero de 2024</b>, como 2 años después de que empezó la caída.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="bears">
+        <div class="bear-head"><span>Mercado bajista</span><span>Cuánto cayó</span><span>Meses desde el máximo anterior hasta volver a él</span></div>
+        <div id="bear-rows"></div>
+        <p class="split-msg" id="bear-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> datos reales de seis mercados bajistas del S&amp;P 500 desde 1970. La barra naranja es cuánto bajaron los precios desde el máximo hasta el fondo. La barra gris es cuántos meses pasaron desde el máximo anterior hasta que los precios volvieron a él. Usan solo precios; contando dividendos, las recuperaciones llegaron un poco antes.</p>
+
+      <h3 class="reveal" style="margin-top:56px">El tiempo baja la probabilidad de perder</h3>
+      <p class="reveal">Tu <dfn class="term" data-def="Cuánto falta para que necesites el dinero. Entre más largo, más subidas y bajadas puedes esperar.">plazo</dfn> es cuánto falta para que necesites el dinero. En un año, las acciones pierden dinero seguido. En periodos largos, las pérdidas se volvieron raras, porque los años buenos tuvieron tiempo de pesar más que los malos. Desliza para elegir cuántos años las tienes.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Plazo</dt><dd>El dinero para un carro el próximo año tiene un plazo de <b>1 año</b>: como 1 de cada 4 periodos de un año perdió dinero. El dinero para el retiro a los 20 años tiene un plazo de <b>45 años</b>. Cada periodo de <b>20 años</b> desde 1928, los 79, terminó con ganancia.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="hold">
+        <label class="md-lab" for="hd-yrs">Mantenerlas <b id="hd-yrs-v">5 años</b></label>
+        <input type="range" id="hd-yrs" min="1" max="20" step="1" value="5">
+        <div class="hd-big"><b id="hd-pct">11.7%</b><span id="hd-txt"></span></div>
+        <div class="hd-cells" id="hd-cells" aria-hidden="true"></div>
+        <p class="split-msg" id="hd-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> datos reales. Cada cuadrito es un periodo del largo que elegiste, empezando en un año distinto desde 1928, con los rendimientos totales anuales del S&amp;P 500. Los cuadros naranjas perdieron dinero de principio a fin; los verdes ganaron. Los resultados pasados no prometen los futuros.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Por qué vender después de una caída duele</h3>
+      <p class="reveal"><dfn class="term" data-def="Vender tus inversiones porque bajaron los precios y te dio miedo, no porque cambiaron tus planes.">Vender por pánico</dfn> es vender porque bajaron los precios y te dio miedo. Convierte la pérdida en algo seguro, y luego tienes que adivinar cuándo volver a entrar. Algunos de los mejores días del mercado llegan justo después de los peores: J.P. Morgan encontró que, en los 20 años que estudió, 7 de los 10 mejores días llegaron a menos de dos semanas de los 10 peores, y perderse solo esos 10 mejores días dejó el valor final de un inversionista más o menos a la mitad. Parte de las ganas de vender viene de la <dfn class="term" data-def="La forma en que las pérdidas se sienten como el doble de fuertes que ganancias del mismo tamaño, lo que empuja a la gente a vender después de las caídas.">aversión a las pérdidas</dfn>: los psicólogos Daniel Kahneman y Amos Tversky encontraron que las pérdidas se sienten como el doble de fuertes que las ganancias del mismo tamaño.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Vender por pánico</dt><dd>$10,000 en el S&amp;P 500 a principios de 2008 valían <b>$6,345</b> después del −36.6% de ese año. Si vendías ahí y te quedabas en efectivo, cinco años después tendrías como <b>$6,380</b>. Si te quedabas invertido, para finales de 2013 tenías como <b>$14,350</b>.</dd></div><div><dt>Aversión a las pérdidas</dt><dd>Ver desaparecer $100 se siente igual de mal que lo bien que se siente ganar <b>$200</b>. Por eso una semana en rojo se siente como emergencia aunque no lo sea.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Sigue comprando con un calendario</h3>
+      <p class="reveal">El <dfn class="term" data-def="Invertir la misma cantidad de dólares con un calendario fijo sin importar el precio, para comprar más acciones cuando los precios están bajos.">promedio del costo en dólares</dfn> es invertir la misma cantidad con un calendario, como $100 al mes, pase lo que pase. Cuando los precios bajan, los mismos $100 compran más acciones, así que las caídas te ayudan sin que lo notes. Mueve el precio del segundo mes.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Promedio del costo en dólares</dt><dd>$100 al mes a $50, luego a $25 y luego a $50 compran 2 + 4 + 2 = <b>8 acciones</b> por $300. A $50 valen <b>$400</b>, aunque el precio terminó donde empezó.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="dca">
+        <label class="md-lab" for="dc-mid">Precio del mes 2 <b id="dc-mid-v">$25</b></label>
+        <input type="range" id="dc-mid" min="10" max="90" step="5" value="25">
+        <div class="dc-months" id="dc-months"></div>
+        <dl class="md-out" id="dc-out"></dl>
+        <p class="split-msg" id="dc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una calculadora con precios inventados, no datos del mercado. Cada mes inviertes $100. Las monedas muestran cuántas acciones compran $100 al precio de ese mes. El mes 1 y el mes 3 se quedan en $50.</p>
+
+      <h3 class="reveal" style="margin-top:56px">La protección de verdad: un plan hecho antes de la caída</h3>
+      <p class="reveal">Las caídas duelen más cuando necesitas el dinero justo en una. Así que el dinero que vas a necesitar en unos cinco años, como tu fondo de emergencia o el enganche de un carro, va en ahorros, no en acciones. Con ese colchón, nunca tienes que vender barato para pagar una cuenta.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El plan</dt><dd>Tu fondo de emergencia de <b>$3,600</b> está en ahorros. Tu VOO es para dentro de 10 años o más. Cuando el mercado baja 25%, nada en tu vida te obliga a vender, así que tus $10 a la semana siguen entrando.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">¿Aguantas o te sales? <em>Vive la historia real.</em></h2>
+      <p class="lead reveal">Tres rondas, cada una un periodo real de la historia del S&amp;P 500, un año a la vez. Empiezas cada ronda con <b>$10,000</b> en un fondo indexado y agregas <b>$100 al mes</b>. Después de las noticias de cada año, decide: seguir invertido, o vender y quedarte en efectivo, que gana la tasa real de los bonos del Tesoro de ese año. No vas a saber qué años son hasta que termine la ronda.</p>
+
+      <div class="ride reveal" id="ride">
+        <div class="rd-top">
+          <div><small id="rd-round">Ronda 1 de 3</small><b id="rd-year">Año 1 de 6</b></div>
+          <div class="pg-score"><small>Rondas iguales o mejores que no vender</small><b id="rd-score">0 de 0</b></div>
+        </div>
+        <div class="rd-grid">
+          <div class="rd-main">
+            <div class="rd-val"><small>Tu dinero</small><b id="rd-val">$10,000</b><span id="rd-where">en el fondo</span></div>
+            <div class="rd-news" id="rd-news"></div>
+            <div class="rd-btns" id="rd-btns"></div>
+          </div>
+          <svg viewBox="0 0 520 280" class="rd-chart" id="rd-chart" role="img" aria-label="Tu dinero a lo largo de los años de esta ronda"></svg>
+        </div>
+      </div>
+      <div id="rd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> rendimientos totales anuales reales del S&amp;P 500 y rendimientos reales de los bonos del Tesoro a 3 meses, de los datos de Damodaran en NYU. Los titulares describen lo que de verdad pasó esos años. Tus $1,200 al año entran al inicio de cada año después del primero, a donde esté tu dinero. No se cuentan impuestos ni comisiones.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Cuatro cálculos explican por qué las caídas se sienten tan grandes y por qué el tiempo y comprar con constancia ayudan.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: El tamaño de una caída</h3>
+      <p class="reveal">Resta el valor anterior al valor nuevo y divide entre el valor anterior.</p>
+      <div class="formula reveal">Cambio porcentual <span class="op">=</span> <span class="frac"><span>valor nuevo − valor anterior</span><span>valor anterior</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>2008</dt><dd><span class="frac"><span>$6,345 − $10,000</span><span>$10,000</span></span> = <span class="frac"><span>−$3,655</span><span>$10,000</span></span> = <b>−36.55%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: La ganancia que necesitas para volver</h3>
+      <p class="reveal">Después de una caída, empiezas desde una cantidad más chica, así que volver toma un porcentaje más grande que la caída. Divide la caída entre lo que quedó.</p>
+      <div class="formula reveal">Ganancia necesaria <span class="op">=</span> <span class="frac"><span>caída</span><span>1 − caída</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Baja 50%</dt><dd><span class="frac"><span>0.50</span><span>1 − 0.50</span></span> = <span class="frac"><span>0.50</span><span>0.50</span></span> = <b>100%</b>. $10,000 bajan a $5,000, y $5,000 tienen que duplicarse para volver.</dd></div><div><dt>Baja 36.55%</dt><dd><span class="frac"><span>0.3655</span><span>0.6345</span></span> ≈ <b>57.6%</b>. Después de 2008, el S&amp;P 500 ganó 25.9% en 2009 y 14.8% en 2010, y con dividendos ya estaba arriba de donde empezó a finales de 2012.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Tu costo promedio cuando compras con un calendario</h3>
+      <p class="reveal">Divide todo el dinero que pusiste entre todas las acciones que recibiste.</p>
+      <div class="formula reveal">Costo promedio por acción <span class="op">=</span> <span class="frac"><span>total invertido</span><span>total de acciones</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>$50, $25, $50</dt><dd><span class="frac"><span>$300</span><span>8 acciones</span></span> = <b>$37.50</b> por acción, abajo del promedio de $41.67 de los tres precios, porque $100 compraron acciones de más en el mes barato.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: La probabilidad de perder en un periodo</h3>
+      <p class="reveal">Cuenta los periodos que perdieron dinero y divide entre todos los periodos de ese largo.</p>
+      <div class="formula reveal">Probabilidad de perder <span class="op">=</span> <span class="frac"><span>periodos que perdieron dinero</span><span>todos los periodos</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>5 años</dt><dd><span class="frac"><span>11</span><span>94</span></span> ≈ <b>11.7%</b>.</dd></div><div><dt>10 años</dt><dd><span class="frac"><span>5</span><span>89</span></span> ≈ <b>5.6%</b>.</dd></div><div><dt>20 años</dt><dd><span class="frac"><span>0</span><span>79</span></span> = <b>0%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: un mercado bajista con tus $10 a la semana</h3>
+      <ol class="steps reveal">
+        <li><b>Antes.</b> Tienes $2,000 de VOO para el retiro y $3,600 de ahorros de emergencia. Agregas $10 cada viernes.</li>
+        <li><b>La caída.</b> Los precios bajan 25%: <span class="frac"><span>$1,500 − $2,000</span><span>$2,000</span></span> = −25%. Tu cuenta muestra $1,500.</li>
+        <li><b>Las ganas.</b> La aversión a las pérdidas dice vende. Tu plan dice que nada cambió: no vas a tocar este dinero en décadas, y las cuentas se pagan con los ahorros.</li>
+        <li><b>Sigue comprando.</b> Cada $10 ahora compra acciones como 25% más baratas que antes de la caída.</li>
+        <li><b>La recuperación.</b> Para volver, los precios necesitan <span class="frac"><span>0.25</span><span>0.75</span></span> ≈ 33.3%. En el mercado bajista de 2022 eso tardó hasta enero de 2024, y tus acciones baratas de los viernes ganaron todavía más.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Los osos duermen <em>todo el invierno.</em></h2>
+      <p class="lead reveal">Un oso negro no sale a cazar en plena tormenta de nieve. Come bien en el otoño, junta grasa, y luego pasa el invierno en su guarida, viviendo meses de esa grasa guardada. Cuando llega la primavera, sale a un mundo donde otra vez hay comida.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Un oso durmiendo en una guarida bajo la nieve mientras nieva afuera.">
+        <path d="M0 250 C 200 236, 520 258, 900 240 V340 H0Z" fill="#e8eef2"/>
+        <path d="M300 250 C 300 140, 360 96, 450 96 C 540 96, 600 140, 600 250Z" fill="#8a6a4f" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M290 160 C 330 104, 400 84, 450 84 C 520 84, 580 110, 612 164 C 590 150, 560 146, 540 150 C 520 120, 470 112, 450 112 C 420 112, 380 120, 360 150 C 340 140, 310 146, 290 160Z" fill="#f4f7f9" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M340 250 C 340 186, 380 150, 450 150 C 520 150, 560 186, 560 250Z" fill="#4a3526"/>
+        <g class="md-bear">
+          <ellipse cx="450" cy="226" rx="78" ry="34" fill="#2e2a28"/>
+          <circle cx="392" cy="214" r="26" fill="#2e2a28"/>
+          <circle cx="378" cy="194" r="9" fill="#2e2a28"/><circle cx="404" cy="190" r="9" fill="#2e2a28"/>
+          <ellipse cx="376" cy="222" rx="11" ry="8" fill="#6b5a4e"/>
+          <path d="M386 210 q 6 4 12 0" fill="none" stroke="#e8eef2" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g fill="var(--ink-3)" font-family="Fraunces, serif" font-size="22" class="md-z"><text x="420" y="176">z</text><text x="436" y="160" font-size="18">z</text><text x="450" y="146" font-size="14">z</text></g>
+        <g fill="#c9d3da" class="md-snow">
+          <circle cx="120" cy="130" r="5"/><circle cx="200" cy="140" r="4"/><circle cx="90" cy="200" r="4"/><circle cx="700" cy="70" r="5"/><circle cx="780" cy="150" r="4"/><circle cx="660" cy="190" r="4"/><circle cx="830" cy="100" r="3"/><circle cx="250" cy="112" r="3"/>
+        </g>
+        <g font-size="16" fill="var(--ink-2)">
+          <text x="40" y="52" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Junta reservas y luego espera</text><text x="40" y="76">grasa para el invierno, ahorros para la caída</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Un oso duerme en una guarida con nieve mientras afuera nieva.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> En un mercado bajista, haz como el oso en invierno. Tu fondo de emergencia es la grasa que juntaste, así que no tienes que salir a vender en plena tormenta. Espera en la guarida, sigue con tus compras chiquitas de cada semana y sal cuando llegue la primavera.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Volatilidad:</b> qué tanto se mueven los precios. El S&amp;P 500 bajó en 26 de 98 años de 1928 a 2025, como 1 de cada 4.</li>
+          <li><b>Corrección:</b> baja 10% o más. <b>Mercado bajista:</b> baja 20% o más. <b>Recuperación:</b> volver al máximo anterior, de 6 meses (2020) a más de 7 años (2000 y 1973).</li>
+          <li><b>Ganancia necesaria para recuperarte</b> = <span class="frac"><span>caída</span><span>1 − caída</span></span>. Bajar 50% necesita +100%.</li>
+          <li><b>Plazo:</b> cuándo necesitas el dinero. Periodos con pérdida desde 1928: 1 año 26.5%, 5 años 11.7%, 10 años 5.6%, 20 años 0%.</li>
+          <li><b>Vender por pánico</b> hace segura la pérdida y te arriesga a perder los mejores días. <b>Aversión a las pérdidas:</b> las pérdidas se sienten como el doble que las ganancias.</li>
+          <li><b>Promedio del costo en dólares:</b> la misma cantidad con un calendario compra más acciones cuando los precios están bajos.</li>
+          <li>El dinero que necesitas en unos cinco años va en ahorros, no en acciones.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Una caída de 20% o más desde un máximo reciente es un mercado <input type="text" class="blank" data-answer="bajista" aria-label="Espacio 1">.</div>
+        <div>2. Después de una caída de 50%, necesitas una ganancia de <input type="text" class="blank" data-answer="100|cien|100%" inputmode="numeric" aria-label="Espacio 2">% para volver a donde empezaste.</div>
+        <div>3. Invertir la misma cantidad con un calendario fijo se llama <input type="text" class="blank" data-answer="promedio|promediar" aria-label="Espacio 3"> del costo en dólares.</div>
+        <div>4. De los 79 periodos de 20 años desde 1928, <input type="text" class="blank" data-answer="ninguno|0|cero|ningún|ninguno perdió" aria-label="Espacio 4"> perdió dinero.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Pregúntale a alguien que lo vivió</h3>
+          <p>Entrevista a tu papá, tu mamá o a un amigo mayor sobre 2008 o 2020. ¿Qué hicieron con sus inversiones? ¿Qué desearían haber hecho?</p>
+        </div>
+        <div class="reveal">
+          <h3>Carrera de recuperación</h3>
+          <p>Digan una caída, como 20%, 40% o 60%. Quien diga primero la ganancia necesaria para volver, 25%, 67% o 150%, gana la ronda.</p>
+        </div>
+        <div class="reveal">
+          <h3>Escriban la regla juntos</h3>
+          <p>En grupo, escriban una frase que cada quien leería antes de vender en una caída. Compárenlas y elijan la que de verdad los detendría.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Si tus inversiones bajaran 30% el próximo mes, ¿qué sentirías y qué harías?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué dinero de tu vida necesitas en los próximos cinco años, y cuál puede esperar diez o más?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Escribe tu propia regla para las caídas, la frase que leerías antes de tocar Vender.</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el asesor financiero</h3>
+      <div class="reveal">
+        <p>Te llama una clienta de 30 años. Su cuenta para el retiro, toda en un fondo indexado del S&amp;P 500, bajó de <b>$40,000</b> a <b>$30,000</b> en un mercado bajista. Quiere vender todo "hasta que las cosas se calmen" y volver a comprar después. Tiene un fondo de emergencia de $9,000 y agrega $500 al mes a la cuenta.</p>
+        <p><b>Tu tarea:</b> calcula el tamaño de su caída y la ganancia que necesita para volver, explica qué tendría que pasar para que vender ahora le saliera bien, y qué le sugerirías en lugar de eso.</p>
+        <textarea id="job-answer" placeholder="Escribe lo que le dirías…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Los números:</b> <span class="frac"><span>$30,000 − $40,000</span><span>$40,000</span></span> = −25%. Para volver necesita <span class="frac"><span>0.25</span><span>0.75</span></span> ≈ 33.3%, o sea que sus $30,000 tienen que crecer $10,000.</p>
+            <p><b>Qué necesita para que vender funcione:</b> acertar dos veces, vender antes de más caídas y volver a comprar antes del rebote. Los días de rebote grandes muchas veces llegan a pocos días de los peores, y en el mercado bajista de 2022 los precios ya estaban en el máximo anterior para enero de 2024. Si espera a que todo se sienta tranquilo, lo más probable es que vuelva a comprar más caro de lo que vendió.</p>
+            <p><b>Qué sugerirle:</b> su dinero es para el retiro, dentro de 35 años, y tiene $9,000 de ahorros de emergencia, así que nada la obliga a vender. Que siga con sus $500 al mes: cada depósito ahora compra como un tercio más de acciones que antes de la caída. Si los vaivenes de verdad no los aguanta, la solución a largo plazo es una mezcla con algunos bonos, elegida con calma, no una venta por pánico.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">De una caída que asusta <em>a toda una vida de ellas.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en comprar tus primeros $10 y en por qué invertir, y lleva a las cuentas para el retiro, las finanzas conductuales y el ciclo económico">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 110 C 320 110, 320 170, 360 170"/><path d="M270 230 C 320 230, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../first-trade/"><text x="20" y="104" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Compra tus primeros $10</text><text x="20" y="126">Unidad 5 · Lección 5</text></a>
+          <a href="../why-invest/"><text x="20" y="224" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">¿Por qué invertir?</text><text x="20" y="246">Unidad 5 · Lección 1</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Caídas del mercado</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">El 401(k) y la Roth IRA</text><text x="690" y="86">Siguiente lección · décadas de crecimiento</text>
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Por qué tomamos malas decisiones</text><text x="690" y="186">Unidad 10 · finanzas conductuales</text>
+          <text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Auges y recesiones</text><text x="690" y="286">Unidad 9 · el ciclo económico</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones que van antes, esta lección en el centro y las lecciones posteriores que se basan en ella.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 5</span><b>Compra tus primeros $10</b></li>
+        <li><span class="muted small">Antes · Unidad 5</span><b>¿Por qué invertir?</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Caídas del mercado</b></li>
+        <li><span class="muted small">Siguiente · Unidad 5</span><b>El 401(k) y la Roth IRA</b></li>
+        <li><span class="muted small">Después · Unidad 10</span><b>Por qué tomamos malas decisiones con el dinero</b></li>
+        <li><span class="muted small">Después · Unidad 9</span><b>Auges y recesiones</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Siguiente lección abierta: Por qué los precios son lo que son <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about.html">Acerca de y contacto</a><a href="../../legal/privacy.html">Privacidad</a><a href="../../legal/terms.html">Términos</a><a href="../../legal/cookies.html">Cookies y almacenamiento</a><a href="../../legal/privacy.html#delete">Borrar mis datos</a><a href="../../credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202610270633"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610270633"></script>
+<script src="../../../assets/js/auth.js?v=202610270633"></script>
+<script src="../../../assets/js/site.js?v=202610270633"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610270633"></script>
+<script src="../../../lessons/market-drops/lesson.js?v=202610270633"></script>
+</body>
+</html>

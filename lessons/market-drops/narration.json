@@ -1,0 +1,20 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P",
+    "VOO": "V O O",
+    "J.P. Morgan": "J P Morgan"
+  },
+  "lines": [
+    "One day your app will be red. Your fund will be down, the news will say markets are tumbling, and someone you know will sell everything. This lesson is about that moment.",
+    "Stocks are volatile. From 1928 to 2025, the S&P 500 lost money in 26 of 98 years, about one year in four. Its worst year, 1931, lost almost 44 percent. Its best, 1954, gained more than 52.",
+    "A drop of 10 percent or more is a correction. A drop of 20 percent or more is a bear market. Since 1970 there have been six big ones. The 2020 crash fell 34 percent in about a month and was back in six months. The 2008 crisis fell 57 percent and took five and a half years to get back.",
+    "Time changes the odds. Over one year, stocks lost money about a quarter of the time. Over ten years, about one time in eighteen. Over twenty years, never, not once in 79 stretches since 1928.",
+    "Panic selling is selling because you're scared. It locks in the loss, and then you have to guess when to get back in. Some of the best days come right after the worst ones, so people who sell often miss the rebound.",
+    "Part of the urge is loss aversion. A loss feels about twice as strong as a gain of the same size, so a red week feels like an emergency even when it isn't.",
+    "Climbing back takes more than the fall. After a 50 percent drop, you need a 100 percent gain to get back to even.",
+    "Dollar-cost averaging helps. Invest the same amount every month, and when prices drop, that money buys more shares.",
+    "The real protection is a plan made before the drop. Keep money you'll need within about five years in savings, keep an emergency fund, and invest only money that can wait. Then, like a bear in winter, you can rest in the den until spring."
+  ]
+}

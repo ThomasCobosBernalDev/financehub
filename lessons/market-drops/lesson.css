@@ -1,0 +1,110 @@
+/* Unit 5, Lesson 6: yearly returns chart, bear markets, holding periods, dollar-cost averaging, hold-or-fold game. */
+.md-line { stroke-dasharray: 900; stroke-dashoffset: 900; animation: md-draw 3.2s var(--ease) .3s forwards; }
+@keyframes md-draw { to { stroke-dashoffset: 0; } }
+.md-hold { animation: md-sway 3s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes md-sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+.md-z text { animation: md-z 3s ease-in-out infinite; }
+.md-z text:nth-child(2) { animation-delay: .5s; }
+.md-z text:nth-child(3) { animation-delay: 1s; }
+@keyframes md-z { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+.md-snow { animation: md-fall 6s linear infinite; }
+@keyframes md-fall { from { transform: translateY(-20px); } to { transform: translateY(40px); } }
+.md-bear { animation: md-breathe 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes md-breathe { 50% { transform: scaleY(1.04); } }
+
+.split-msg[data-tone="good"] { border-color: var(--good); }
+.split-msg[data-tone="warn"] { border-color: var(--wants); }
+.md-card { background: var(--card); border-radius: 24px; padding: clamp(18px, 3.5vw, 30px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); margin-top: 20px; }
+.md-card .split-msg { margin: 16px 0 0; font-size: 17px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.md-lab { display: block; font-size: 15px; color: var(--ink-2); margin: 0 0 8px; }
+.md-lab b { color: var(--ink); }
+
+/* Every year since 1928 */
+.md-years { display: block; width: 100%; height: auto; touch-action: pan-y; cursor: crosshair; outline: none; }
+.md-years:focus-visible { box-shadow: 0 0 0 3px var(--accent); border-radius: 8px; }
+.yr-bar { transition: opacity .15s; }
+.yr-bar.dim { opacity: .35; }
+.md-readout { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-top: 10px; font-size: 17px; min-height: 28px; }
+.md-readout b { font-family: var(--serif); font-size: 24px; font-weight: 500; }
+.md-readout .up, .rd-news .up { color: var(--good); font-weight: 700; }
+.md-readout .down, .rd-news .down { color: var(--wants); font-weight: 700; }
+.md-readout span:last-child:not(.up):not(.down) { color: var(--ink-2); }
+
+/* Bear markets */
+.bear-head, .bear-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: 14px; align-items: center; }
+.bear-head { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); padding: 0 10px 8px; }
+.bear-row { width: 100%; font: inherit; color: var(--ink); background: none; border: 0; border-top: 1px solid var(--line); padding: 12px 10px; text-align: left; cursor: pointer; border-radius: 10px; transition: background .2s; }
+.bear-row:hover { background: var(--paper-2); }
+.bear-row.on { background: var(--highlight); }
+.bear-bar { height: 26px; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.bear-bar i { display: block; height: 20px; border-radius: 6px; flex: none; }
+.bear-bar i.fall { background: var(--wants); }
+.bear-bar i.rec { background: color-mix(in srgb, var(--ink-3) 55%, transparent); }
+.bear-bar em { font-style: normal; font-size: 14px; font-weight: 700; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Holding periods */
+.hd-big { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 14px; }
+.hd-big b { font-family: var(--serif); font-weight: 500; font-size: 48px; line-height: 1; color: var(--wants); font-variant-numeric: tabular-nums; }
+.hd-big span { color: var(--ink-2); font-size: 16px; }
+.hd-cells { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 14px; }
+.hd-cells i { width: 12px; height: 12px; border-radius: 3px; }
+.hd-cells i.gain { background: color-mix(in srgb, var(--savings) 75%, transparent); }
+.hd-cells i.lose { background: var(--wants); }
+
+/* Dollar-cost averaging */
+.dc-months { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.dc-m { display: grid; gap: 4px; justify-items: center; text-align: center; }
+.dc-stack { width: 64px; height: 120px; display: flex; align-items: flex-end; background: var(--paper-2); border-radius: 12px; overflow: hidden; }
+.dc-stack i { display: block; width: 100%; background: repeating-linear-gradient(to top, var(--savings) 0 10px, color-mix(in srgb, var(--savings) 70%, var(--card)) 10px 12px); transition: height .3s var(--ease); }
+.dc-m b { font-variant-numeric: tabular-nums; }
+.dc-m span { font-size: 14px; color: var(--ink-2); }
+.md-out { margin: 16px 0 0; display: grid; gap: 6px; }
+.md-out div { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+.md-out dt { color: var(--ink-2); }
+.md-out dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Hold or fold */
+.ride { margin-top: 28px; background: var(--card); border-radius: 24px; padding: clamp(16px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); }
+.rd-top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.rd-top small, .pg-score small, .rd-val small, .rd-news small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.rd-top > div > b { font-family: var(--serif); font-weight: 500; font-size: 24px; }
+.pg-score { text-align: right; }
+.pg-score b { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.rd-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; margin-top: 20px; align-items: start; }
+.rd-val b { display: block; font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.rd-val span { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 700; padding: 3px 10px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.rd-val span[data-pos="C"] { background: var(--paper-2); color: var(--ink-2); }
+.rd-news { margin-top: 18px; background: var(--paper-2); border-radius: 16px; padding: 14px 16px; }
+.rd-news p { margin: 6px 0 0; font-size: 16px; line-height: 1.55; }
+.rd-news .rd-head { font-family: var(--serif); font-size: 19px; line-height: 1.4; }
+.rd-news.flash { animation: rd-flash .6s var(--ease); }
+@keyframes rd-flash { from { transform: translateY(8px); opacity: .3; } }
+.rd-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
+.rd-btns small { flex-basis: 100%; font-size: 14px; color: var(--ink-2); }
+.rd-chart { display: block; width: 100%; height: auto; }
+.rd-cmp { margin: 12px 0 0; display: grid; gap: 4px; }
+.rd-cmp div { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 6px; font-size: 15px; }
+.rd-cmp dt { color: var(--ink-2); }
+.rd-cmp dd { margin: 0; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rd-cmp .you dd { color: var(--accent); }
+#rd-result { margin-top: 8px; }
+#rd-result .rd-cmp { max-width: 520px; }
+
+@media (max-width: 760px) {
+  .rd-grid { grid-template-columns: 1fr; }
+  .bear-head { display: none; }
+  .bear-row { grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+  .bear-row b { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .rd-btns .btn { flex: 1 1 100%; justify-content: center; }
+  .rd-cmp div { flex-direction: column; gap: 0; }
+  .rd-cmp dd { text-align: left; }
+  .md-out div { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .md-out dd { text-align: left; }
+  .dc-stack { width: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .md-line { animation: none; stroke-dashoffset: 0; }
+  .md-hold, .md-z text, .md-snow, .md-bear, .rd-news.flash { animation: none; }
+}
