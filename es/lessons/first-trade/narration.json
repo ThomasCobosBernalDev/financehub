@@ -1,0 +1,27 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "S&P": "ese y pe",
+    "ETF": "e te efe",
+    "VOO": "ve o o",
+    "VOOG": "ve o o ge",
+    "VFIAX": "ve efe i a equis",
+    "SPY": "ese pe ye",
+    "IVV": "i ve ve",
+    "NYSE": "ene ye ese e",
+    "T+1": "te más uno"
+  },
+  "lines": [
+    "Tu cuenta está abierta y tus cincuenta dólares ya llegaron. Ahora haces una orden, tu instrucción al broker: qué comprar, cuánto y a qué precio.",
+    "Primero, busca el fondo por su símbolo, un código corto como VOO para el Vanguard S&P 500 ETF. Hay nombres parecidos, así que lee el nombre completo. VOOG solo tiene las empresas que crecen más rápido, y VFIAX es un fondo mutuo que pide tres mil dólares para empezar.",
+    "Una acción de VOO costaba unos setecientos dólares en octubre de 2026. No necesitas una completa. Escribe diez dólares y recibes una acción fraccionada: diez entre setecientos, más o menos el uno punto cuatro por ciento de una acción. Tu pedazo sube y baja el mismo porcentaje que una acción completa.",
+    "Cada cotización muestra dos precios. El precio de compra es lo más que alguien pagaría ahora mismo. El precio de venta es lo menos por lo que alguien vendería. Si compras de inmediato, pagas el precio de venta. La diferencia entre los dos es el diferencial, un costo escondido. En VOO es de unos dos centavos. En una empresa pequeñita puede ser de cuarenta centavos en una acción de cuatro dólares.",
+    "Una orden a mercado compra de inmediato al mejor precio disponible. Casi siempre se llena, pero el precio no está garantizado. Una orden límite solo compra a tu precio o menos. El precio está garantizado, pero puede que nunca se llene, y una orden del día vence al cierre.",
+    "El mercado abre de nueve y media de la mañana a cuatro de la tarde, hora del Este, de lunes a viernes. En California es de seis y media a la una. Las órdenes que mandas cuando está cerrado esperan a la siguiente apertura, y para entonces el precio puede haber cambiado.",
+    "Después de enviarla, recibes una confirmación de la operación. La entrega oficial del efectivo y las acciones, llamada liquidación, pasa un día hábil después, una regla llamada T+1.",
+    "Tu app muestra tu costo base, lo que pagaste, junto a tu valor de mercado, tus acciones por el precio de hoy. Si VOO sube a setecientos treinta y cinco, tus diez dólares valen diez con cincuenta, una ganancia de cinco por ciento.",
+    "Activa la reinversión de dividendos, para que los centavos que VOO te paga cada trimestre compren más VOO. Agrega una inversión automática, como diez dólares cada viernes, y tu dinero sigue entrando sin que muevas un dedo."
+  ]
+}

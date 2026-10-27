@@ -1,0 +1,26 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P",
+    "ETF": "E T F",
+    "VOO": "V O O",
+    "VOOG": "V O O G",
+    "VFIAX": "V F I A X",
+    "SPY": "S P Y",
+    "IVV": "I V V",
+    "NYSE": "N Y S E",
+    "T+1": "T plus one"
+  },
+  "lines": [
+    "Your account is open and your fifty dollars has landed. Now you place an order, your instruction to the broker: what to buy, how much, and at what price.",
+    "First, find the fund by its ticker symbol, a short code like VOO for the Vanguard S&P 500 ETF. Names look alike, so read the full name. VOOG holds only the faster-growing companies, and VFIAX is a mutual fund that asks for three thousand dollars to start.",
+    "One share of VOO cost about seven hundred dollars in October 2026. You don't need a whole one. Type ten dollars and you get a fractional share: ten divided by seven hundred, about one and a half hundredths of a share. Your piece rises and falls by the same percent as a whole share.",
+    "Every quote shows two prices. The bid is the most anyone will pay right now. The ask is the least anyone will sell for. Buy right away and you pay the ask. The gap between them is the spread, a hidden cost. For VOO it's about two cents. For a tiny company it can be forty cents on a four dollar stock.",
+    "A market order buys right away at the best price available. It almost always fills, but the price isn't guaranteed. A limit order buys only at your price or lower. The price is guaranteed, but it might never fill, and a day order expires at the close.",
+    "The market is open from nine thirty in the morning to four in the afternoon, Eastern time, Monday to Friday. That's six thirty to one o'clock in California. Orders sent while it's closed wait for the next open, and the price may have moved by then.",
+    "After you submit, you get a trade confirmation. The official handoff of cash and shares, called settlement, happens one business day later, a rule called T+1.",
+    "Your app shows your cost basis, what you paid, next to your market value, your shares times today's price. If VOO climbs to seven thirty-five, your ten dollars is worth ten fifty, a five percent gain.",
+    "Turn on dividend reinvestment, so the few cents VOO pays you each quarter buy more VOO. Add a recurring investment, like ten dollars every Friday, and your money keeps going in without you lifting a finger."
+  ]
+}

@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/first-trade/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Buy Your First $10 · FinanceHub</title>
+  <meta name="description" content="Unit 5, Lesson 5: tickers, fractional shares, the bid and the ask, market and limit orders, market hours, settlement, cost basis and dividend reinvestment. Play: place four real-style orders on a practice order ticket.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610270606">
+  <link rel="stylesheet" href="lesson.css?v=202610270606">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../">Course</a><a href="../../about.html">About</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../es/lessons/first-trade/" data-set-lang="es" hreflang="es" aria-label="Ver en español"><span class="ls-long">Español</span><span class="ls-short">ES</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<aside class="companion" aria-label="Your character so far">
+  <div class="who">
+    <svg viewBox="-34 -60 68 68" aria-hidden="true"><circle cx="0" cy="-22" r="27" fill="#f2c9a5" stroke="#2a2420" stroke-width="2"/><path d="M-27 -26 C-28 -58 28 -58 27 -26 C16 -40 -6 -42 -27 -26Z" fill="#2a2420"/><circle cx="-9" cy="-22" r="2.8" fill="#2a2420"/><circle cx="9" cy="-22" r="2.8" fill="#2a2420"/><path d="M-9 -10 Q0 -2 9 -10" stroke="#2a2420" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <div><b>You</b>Your money, lesson by lesson</div>
+  </div>
+  <dl>
+    <dt>Savings</dt><dd data-k="cash">$0</dd>
+    <dt>Lessons done</dt><dd data-k="lessons">0</dd>
+    <dt>XP</dt><dd data-k="xp">0</dd>
+  </dl>
+  <div class="badges"><b data-k="badges">0</b> badges earned. Your numbers carry into every lesson.</div>
+</aside>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 5 · Lesson 5</span> Placing an order</div>
+        <h1 class="reveal">Buy your <em>first $10.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Your Oakline account is open, and on Wednesday your <b>$50</b> landed as buying power. You know what you want: an S&amp;P 500 index fund. You search for it and see that one share costs about <b>$700</b>. You only want to put in $10 today. Good news: you can. You just have to tell the app exactly what to buy, how much, and at what price.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>An <dfn class="term" data-def="Your instructions to a broker to buy or sell an investment: which one, how much, and at what price.">order</dfn> is your instruction to the broker: what to buy or sell, how much, and at what price.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>The way you fill in the order decides what price you pay and whether the trade happens at all.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Look up the fund's ticker, choose dollars or shares, pick a market or limit order, check the numbers, and submit.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Market makers</b>, firms like Citadel Securities and Virtu, stand ready to buy and sell all day. <b>Exchanges</b> like the NYSE and Nasdaq match buyers with sellers. Your broker sends your order to them.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A phone with an order to buy $10 of VOO, next to a circle that stands for one $700 share with a thin slice cut out for your $10.">
+          <rect x="40" y="40" width="220" height="430" rx="34" fill="var(--ink)"/>
+          <rect x="52" y="56" width="196" height="398" rx="24" fill="var(--card)"/>
+          <rect x="120" y="66" width="60" height="8" rx="4" fill="var(--line)"/>
+          <text x="68" y="106" font-size="13" font-weight="700" fill="var(--ink-3)">BUY VOO</text>
+          <text x="68" y="128" font-size="12" fill="var(--ink-2)">Vanguard S&amp;P 500 ETF</text>
+          <rect x="68" y="146" width="164" height="50" rx="12" fill="var(--paper-2)"/>
+          <text x="82" y="166" font-size="11" font-weight="700" fill="var(--ink-3)">AMOUNT</text>
+          <text x="82" y="187" font-size="18" font-weight="700" fill="var(--ink)">$10.00</text>
+          <rect x="68" y="206" width="164" height="50" rx="12" fill="var(--paper-2)"/>
+          <text x="82" y="226" font-size="11" font-weight="700" fill="var(--ink-3)">ORDER TYPE</text>
+          <text x="82" y="247" font-size="15" fill="var(--ink)">Market</text>
+          <text x="68" y="290" font-size="12" fill="var(--ink-2)">Ask price</text><text x="232" y="290" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)">$700.00</text>
+          <text x="68" y="314" font-size="12" fill="var(--ink-2)">You get about</text><text x="232" y="314" text-anchor="end" font-size="12" font-weight="700" fill="var(--savings)" class="ft-est">0.014286 sh</text>
+          <rect x="68" y="380" width="164" height="44" rx="22" fill="var(--accent)"/>
+          <text x="150" y="408" text-anchor="middle" font-size="16" font-weight="700" fill="var(--on-color)">Submit</text>
+          <g transform="translate(392 250)">
+            <circle r="96" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="3"/>
+            <path class="ft-slice" d="M0 0 L0 -96 A96 96 0 0 1 8.6 -95.6 Z" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+            <text y="38" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">1 share</text>
+            <text y="60" text-anchor="middle" font-size="14" fill="var(--ink-2)">$700</text>
+            <path d="M10 -102 C 18 -122, 32 -130, 44 -130" fill="none" stroke="var(--ink-3)" stroke-width="2"/>
+            <text x="48" y="-126" font-size="15" font-weight="700" fill="var(--savings)">your $10</text>
+          </g>
+          <path d="M262 250 C 276 250, 284 250, 294 250" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="4 6" class="ft-dash"/>
+          <text x="260" y="522" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">a slice is enough to start</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a sketch of a made-up order screen. The price is close to what one share of VOO really cost in October 2026. The circle stands for one share, and the green sliver is the part your $10 buys.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">From a search box <em>to a filled order.</em></h2>
+      <p class="lead reveal">Buying your first investment takes about a minute. Here's what each part of the order screen means, in the order you'll see it.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Find the fund by its ticker</h3>
+      <p class="reveal">Every stock and fund has a <dfn class="term" data-def="A short code of letters that names one stock or fund on the market, like VOO or AAPL.">ticker symbol</dfn>, a short code of letters you type into the search box. Names can look alike, so check the full name before you buy.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Ticker symbol</dt><dd><b>VOO</b> is the Vanguard S&amp;P 500 ETF. <b>SPY</b> and <b>IVV</b> are two other ETFs that copy the same index.</dd></div><div><dt>Look-alikes</dt><dd><b>VOOG</b> holds only the faster-growing companies in the S&amp;P 500, not all of them. <b>VFIAX</b> is Vanguard's S&amp;P 500 mutual fund, which asks for $3,000 to start.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">You don't need a whole share</h3>
+      <p class="reveal">The <dfn class="term" data-def="What one share of a stock or fund costs right now.">share price</dfn> is what one share costs. Most big brokers let you buy a <dfn class="term" data-def="A piece of one share, like 0.25 of a share. You can buy one by entering a dollar amount instead of a number of shares.">fractional share</dfn>, a piece of one share, by typing a dollar amount instead of a number of shares. Your piece rises and falls by the same percent as a whole share.</p>
+      <div class="formula reveal">Shares you get <span class="op">=</span> <span class="frac"><span>dollars you invest</span><span>share price</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Share price</dt><dd>One share of VOO cost about <b>$700</b> in October 2026.</dd></div><div><dt>Fractional share</dt><dd><span class="frac"><span>$10</span><span>$700</span></span> ≈ <b>0.014286</b> shares, about 1.4% of one share. If VOO rises 10% to $770, your slice is worth <b>$11.00</b>, also 10% more.</dd></div></dl></div>
+      <p class="reveal">Slide the amount and the price, then move the market, to see what you'd own.</p>
+
+      <div class="ft-card reveal" id="slice">
+        <div class="ft-controls">
+          <label class="ft-lab" for="sl-amt">You invest <b id="sl-amt-v">$10</b></label>
+          <input type="range" id="sl-amt" min="1" max="100" step="1" value="10">
+          <div class="ft-lab">Share price</div>
+          <div class="chips" id="sl-price">
+            <button type="button" class="chip on" data-p="700">VOO, $700</button>
+            <button type="button" class="chip" data-p="250">a $250 stock</button>
+            <button type="button" class="chip" data-p="40">a $40 stock</button>
+          </div>
+          <label class="ft-lab" for="sl-move">The price moves <b id="sl-move-v">0%</b></label>
+          <input type="range" id="sl-move" min="-30" max="30" step="5" value="0">
+        </div>
+        <div class="ft-pie">
+          <svg viewBox="-110 -104 220 262" id="sl-pie" role="img" aria-label="One share as a circle, with your slice filled in">
+            <circle r="96" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="3"/>
+            <path id="sl-wedge" fill="var(--savings)" stroke="var(--ink)" stroke-width="2"/>
+            <text y="128" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">1 share</text>
+            <text y="150" text-anchor="middle" font-size="15" fill="var(--ink-2)" id="sl-pie-p">$700</text>
+          </svg>
+        </div>
+        <dl class="ft-out" id="sl-out"></dl>
+        <p class="split-msg" id="sl-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a calculator, not market data. The circle is one share at the price you picked, and the green slice is the part your money buys. Moving the price shows that your slice gains or loses the same percent as a whole share.</p>
+      <p class="reveal">Fractional shares come with fine print. Some brokers only allow market orders for them, you usually can't move them to another broker without selling them first, and you may not get to vote at shareholder meetings.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The bid, the ask and the spread</h3>
+      <p class="reveal">A quote shows two prices. The <dfn class="term" data-def="The highest price a buyer is offering for a stock or fund right now. Sellers get this price.">bid</dfn> is the most anyone will pay right now, and the <dfn class="term" data-def="The lowest price a seller will accept for a stock or fund right now. Buyers pay this price.">ask</dfn> is the least anyone will sell for. Buy right away and you pay the ask; sell right away and you get the bid. The gap between them is the <dfn class="term" data-def="The difference between the ask and the bid. It's a hidden cost each time you buy and then sell.">spread</dfn>, a small hidden cost on every round trip. Market makers earn it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Bid and ask</dt><dd>VOO: bid <b>$699.98</b>, ask <b>$700.00</b>. You buy at $700.00. Someone selling right now gets $699.98.</dd></div><div><dt>Spread</dt><dd>$700.00 − $699.98 = <b>2 cents</b>, tiny for a giant fund. A tiny company might show bid $4.00, ask $4.40: a <b>40-cent</b> spread, about 9% of the price.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Market order or limit order?</h3>
+      <p class="reveal">A <dfn class="term" data-def="An order to buy or sell right away at the best price available at that moment.">market order</dfn> buys or sells right away at the best price available. It almost always fills, but the price isn't guaranteed. A <dfn class="term" data-def="An order to buy only at your price or lower, or sell only at your price or higher. The price is guaranteed, but it might not fill.">limit order</dfn> buys only at your price or lower, or sells only at your price or higher. The price is guaranteed, but it might never fill. Most limit orders are a <dfn class="term" data-def="An order that expires at the end of the trading day if it hasn't filled.">day order</dfn>: if they haven't filled by the close, they expire.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Market order</dt><dd>Buy $10 of VOO now: it fills in about a second at the <b>$700.00</b> ask.</dd></div><div><dt>Limit order</dt><dd>Buy $10 of VOO with a <b>$690</b> limit: it waits. If VOO falls to $690 before 4:00 p.m., it fills at $690 or less. If not, nothing happens.</dd></div><div><dt>Day order</dt><dd>VOO bottoms out at $694 today, so your $690 order expires at 4:00 p.m. Your <b>$10</b> stays as cash.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">When the market is open</h3>
+      <p class="reveal">U.S. stock exchanges keep <dfn class="term" data-def="The hours stock exchanges are open for normal trading: 9:30 a.m. to 4:00 p.m. Eastern time, Monday to Friday, except holidays.">market hours</dfn> of 9:30 a.m. to 4:00 p.m. Eastern time, Monday to Friday, except holidays. Some brokers also trade in <dfn class="term" data-def="Trading before 9:30 a.m. or after 4:00 p.m. Eastern. Fewer people trade, so spreads are wider and prices jump more.">extended hours</dfn>, before and after, when fewer people trade and spreads get wider. Orders sent while the market is closed wait for the open, and the price may be different by then. Many brokers only take dollar orders while the market is open.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Market hours</dt><dd>9:30 a.m. Eastern is <b>6:30 a.m.</b> in California and 8:30 a.m. in Chicago. The close, 4:00 p.m. Eastern, is <b>1:00 p.m.</b> in California.</dd></div><div><dt>Closed</dt><dd>You send a market order for one whole share on Sunday night. It waits until Monday at 9:30 a.m. If VOO opens at $710, you pay about <b>$710</b>, not Friday's $700.</dd></div></dl></div>
+      <p class="reveal">Pick a day and slide the time to see what happens to an order you send.</p>
+
+      <div class="ft-card reveal" id="hours">
+        <div class="chips" id="hr-day">
+          <button type="button" class="chip" data-d="0">Mon</button><button type="button" class="chip on" data-d="1">Tue</button><button type="button" class="chip" data-d="2">Wed</button><button type="button" class="chip" data-d="3">Thu</button><button type="button" class="chip" data-d="4">Fri</button><button type="button" class="chip" data-d="5">Sat</button><button type="button" class="chip" data-d="6">Sun</button>
+        </div>
+        <label class="ft-lab" for="hr-time">Time in New York <b id="hr-et">10:30 a.m.</b> <span class="muted" id="hr-pt">(7:30 a.m. in California)</span></label>
+        <input type="range" id="hr-time" min="0" max="47" step="1" value="21">
+        <svg viewBox="0 0 600 64" class="hr-band" id="hr-band" role="img" aria-label="A 24-hour band showing when the market is closed, in extended hours, and open">
+          <rect x="0" y="10" width="600" height="26" rx="6" fill="var(--paper-2)"/>
+          <rect x="100" y="10" width="137.5" height="26" fill="color-mix(in srgb, var(--wants) 35%, transparent)"/>
+          <rect x="237.5" y="10" width="162.5" height="26" fill="color-mix(in srgb, var(--savings) 55%, transparent)"/>
+          <rect x="400" y="10" width="100" height="26" fill="color-mix(in srgb, var(--wants) 35%, transparent)"/>
+          <g font-size="12" fill="var(--ink-2)" text-anchor="middle"><text x="0" y="56" text-anchor="start">12 a.m.</text><text x="100" y="56">4 a.m.</text><text x="237.5" y="56">9:30</text><text x="400" y="56">4 p.m.</text><text x="500" y="56">8 p.m.</text></g>
+          <line id="hr-mark" x1="262.5" x2="262.5" y1="4" y2="42" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="hr-status"><span class="hr-dot" id="hr-dot"></span><b id="hr-status">Open</b></div>
+        <p class="split-msg" id="hr-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a 24-hour band in New York time. Green is regular market hours, orange is extended hours at brokers that offer them, and gray is closed. Real exchanges also close on about ten holidays a year, which this sketch leaves out.</p>
+
+      <h3 class="reveal" style="margin-top:56px">After you tap Submit</h3>
+      <p class="reveal">You get a <dfn class="term" data-def="A record of a finished trade: what you bought or sold, how many shares, the price, the total and the date.">trade confirmation</dfn> showing the shares, price and total. The official handoff of cash and shares, called <dfn class="term" data-def="The official transfer of cash and shares after a trade. In the U.S. it happens one business day after the trade, called T+1.">settlement</dfn>, happens one business day later, a rule called T+1. Your app then tracks your <dfn class="term" data-def="What you paid for an investment, including any fees. You compare it with today's value to see your gain or loss.">cost basis</dfn>, what you paid, next to your <dfn class="term" data-def="What your shares are worth at today's price: shares × share price.">market value</dfn>, what your shares are worth today.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Trade confirmation</dt><dd>"Bought 0.014286 VOO at $700.00. Total $10.00. Tuesday."</dd></div><div><dt>Settlement</dt><dd>Bought Tuesday, settles <b>Wednesday</b>. Sell on a Friday and it settles <b>Monday</b>, since weekends don't count.</dd></div><div><dt>Cost basis</dt><dd><b>$10.00</b>, what you paid.</dd></div><div><dt>Market value</dt><dd>A month later VOO is at $735: 0.014286 × $735 = <b>$10.50</b>, a $0.50 gain.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Let it grow on its own</h3>
+      <p class="reveal">VOO pays dividends four times a year, recently about 1% of its price per year in total. Turn on <dfn class="term" data-def="A setting that uses each dividend to buy more of the same stock or fund automatically, even pieces of a share.">dividend reinvestment</dfn> and each payment buys more VOO for you. A <dfn class="term" data-def="An automatic purchase of the same amount on a schedule you pick, like $10 every Friday.">recurring investment</dfn> buys a set amount on a schedule, so you don't have to remember.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Dividend reinvestment</dt><dd>1% of $10 is about 10 cents a year, so roughly <b>3 cents</b> each quarter. Reinvested, those 3 cents buy about 0.00004 more shares.</dd></div><div><dt>Recurring investment</dt><dd><b>$10 every Friday</b> is $520 a year going in without you lifting a finger.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Work the <em>order desk.</em></h2>
+      <p class="lead reveal">Four missions on a practice order ticket, each at a different moment. Read the mission, fill in the ticket, and submit. If something's off, the app tells you what would really happen, and you can fix it. Your score counts the missions you get right on the first submit.</p>
+
+      <div class="desk reveal" id="desk">
+        <div class="dk-top">
+          <div class="dk-mission"><small id="dk-round">Mission 1 of 4</small><b id="dk-clock"></b><p id="dk-goal"></p></div>
+          <div class="pg-score"><small>Right on the first submit</small><b id="dk-score">0 of 0</b></div>
+        </div>
+        <div class="dk-grid">
+          <form class="dk-ticket" id="dk-ticket" onsubmit="return false">
+            <div class="dk-quote" id="dk-quote"></div>
+            <div class="dk-field"><span class="dk-lab" id="dk-sym-l">Symbol</span><div class="dk-sym" id="dk-sym" role="group" aria-labelledby="dk-sym-l"></div></div>
+            <div class="dk-field"><span class="dk-lab" id="dk-side-l">Action</span><div class="seg" id="dk-side" role="group" aria-labelledby="dk-side-l"><button type="button" data-v="buy" aria-pressed="true">Buy</button><button type="button" data-v="sell" aria-pressed="false">Sell</button></div></div>
+            <div class="dk-field"><span class="dk-lab" id="dk-unit-l">Amount in</span><div class="seg" id="dk-unit" role="group" aria-labelledby="dk-unit-l"><button type="button" data-v="usd" aria-pressed="true">Dollars</button><button type="button" data-v="sh" aria-pressed="false">Shares</button></div></div>
+            <div class="dk-field"><label class="dk-lab" for="dk-amt" id="dk-amt-l">Amount ($)</label><input type="text" inputmode="decimal" id="dk-amt" autocomplete="off" placeholder="0"></div>
+            <div class="dk-field"><span class="dk-lab" id="dk-type-l">Order type</span><div class="seg" id="dk-type" role="group" aria-labelledby="dk-type-l"><button type="button" data-v="mkt" aria-pressed="true">Market</button><button type="button" data-v="lim" aria-pressed="false">Limit</button></div></div>
+            <div class="dk-field hidden" id="dk-lim-row"><label class="dk-lab" for="dk-lim">Limit price ($)</label><input type="text" inputmode="decimal" id="dk-lim" autocomplete="off" placeholder="0.00"></div>
+            <div class="dk-est" id="dk-est" aria-live="polite"></div>
+            <button class="btn dk-submit" type="button" id="dk-submit">Submit order</button>
+          </form>
+          <div class="dk-side">
+            <svg viewBox="0 0 600 230" class="dk-chart" id="dk-chart" role="img" aria-label="Today's price chart"></svg>
+            <div class="dk-hold" id="dk-hold"></div>
+            <div class="dk-why hidden" id="dk-why" aria-live="polite"></div>
+            <button class="btn dk-next" type="button" id="dk-next" disabled>Next mission <span class="arrow">→</span></button>
+          </div>
+        </div>
+      </div>
+      <div id="dk-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a practice order ticket in a made-up app. VOO's prices are close to its real price in October 2026, but each day's ups and downs are made up, and so is Cobble Bikes. The chart shows the price during one trading day, from 9:30 a.m. to 4:00 p.m. Eastern.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Four small calculations cover everything the order screen does with your money.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: How many shares your dollars buy</h3>
+      <p class="reveal">Divide the dollars you invest by the price of one share.</p>
+      <div class="formula reveal">Shares <span class="op">=</span> <span class="frac"><span>dollars you invest</span><span>share price</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$10 of VOO</dt><dd><span class="frac"><span>$10</span><span>$700</span></span> ≈ <b>0.014286</b> shares.</dd></div><div><dt>$10 with a $690 limit</dt><dd><span class="frac"><span>$10</span><span>$690</span></span> ≈ <b>0.014493</b> shares. A lower price means a few more slivers for the same $10.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: What your slice is worth</h3>
+      <p class="reveal">Multiply your shares by today's price. Because your slice is a fixed piece of a share, it moves by the same percent as the share.</p>
+      <div class="formula reveal">Market value <span class="op">=</span> shares <span class="op">×</span> share price</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>VOO up 10%</dt><dd>0.014286 × $770 = <b>$11.00</b>. <span class="frac"><span>$11.00 − $10.00</span><span>$10.00</span></span> = <b>10%</b>, the same as <span class="frac"><span>$770 − $700</span><span>$700</span></span> = 10% for a whole share.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: What the spread costs</h3>
+      <p class="reveal">Subtract the bid from the ask, then divide by the ask. That's roughly what you'd lose if you bought and sold right away.</p>
+      <div class="formula reveal">Spread cost <span class="op">=</span> <span class="frac"><span>ask − bid</span><span>ask</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>VOO</dt><dd><span class="frac"><span>$700.00 − $699.98</span><span>$700.00</span></span> ≈ <b>0.003%</b>. Almost nothing.</dd></div><div><dt>A tiny company</dt><dd><span class="frac"><span>$4.40 − $4.00</span><span>$4.40</span></span> ≈ <b>9.1%</b>. Buy $10 and sell right away, and you'd get back about $9.09.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Your gain or loss</h3>
+      <p class="reveal">Subtract your cost basis from the market value. Divide by the cost basis to get the percent.</p>
+      <div class="formula reveal">Gain <span class="op">=</span> market value <span class="op">−</span> cost basis <span class="op">·</span> Gain % <span class="op">=</span> <span class="frac"><span>gain</span><span>cost basis</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A month later</dt><dd>0.014286 × $735 = $10.50. $10.50 − $10.00 = <b>$0.50</b>, and <span class="frac"><span>$0.50</span><span>$10.00</span></span> = <b>5%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: your first order, start to finish</h3>
+      <ol class="steps reveal">
+        <li><b>Tuesday, 11:05 a.m. Eastern.</b> Search VOO and check the full name: Vanguard S&amp;P 500 ETF. Choose Buy, Dollars, $10, Market.</li>
+        <li><b>One second later.</b> Filled at the $700.00 ask: <span class="frac"><span>$10</span><span>$700</span></span> ≈ 0.014286 shares. The confirmation says so.</li>
+        <li><b>Wednesday.</b> The trade settles (T+1). Buying power shows $40.00.</li>
+        <li><b>End of the quarter.</b> About 3 cents of dividends arrive and, with reinvestment on, buy a little more VOO.</li>
+        <li><b>A month after buying.</b> VOO is at $735: market value $10.50, cost basis $10.00, gain $0.50 or 5%.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Leaf-cutter ants <em>carry it piece by piece.</em></h2>
+      <p class="lead reveal">A leaf-cutter ant can't carry a whole leaf, so it cuts out a piece it can carry and takes it home. Day after day, millions of ants in one colony bring back pieces, and the pieces feed a fungus garden that feeds the whole colony.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Leaf-cutter ants carrying pieces of a leaf along a trail to their nest.">
+        <path d="M0 262 C 220 250, 520 272, 900 256 V340 H0Z" fill="#e3cf9f" opacity=".6"/>
+        <g transform="translate(110 150)">
+          <path d="M0 110 C -10 60, 10 0, 70 -40 C 120 10, 120 70, 80 110 C 60 100, 56 82, 66 68 C 52 70, 44 60, 50 46 C 36 50, 26 40, 30 26 C 14 50, 6 80, 0 110Z" fill="#6aa84f" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M0 110 C 20 60, 40 10, 70 -40" fill="none" stroke="#3d7a2c" stroke-width="3"/>
+          <path d="M0 110 V 116" stroke="var(--ink)" stroke-width="4"/>
+        </g>
+        <path d="M760 262 C 780 200, 860 200, 880 262Z" fill="#c9a46a" stroke="var(--ink)" stroke-width="3"/>
+        <ellipse cx="820" cy="250" rx="14" ry="10" fill="#5a3b28"/>
+        <path d="M230 258 C 400 248, 600 262, 760 256" fill="none" stroke="#b99a62" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+        <g class="ft-ants">
+          <g transform="translate(300 250)"><g class="ft-ant"><path d="M-6 -16 L 18 -40 L 34 -14Z" fill="#6aa84f" stroke="var(--ink)" stroke-width="2"/><path d="M8 -6 L 14 -18" stroke="var(--ink)" stroke-width="2"/><g fill="#7a3b1e"><ellipse cx="-12" cy="0" rx="9" ry="6"/><ellipse cx="2" cy="-2" rx="6" ry="5"/><ellipse cx="14" cy="-4" rx="7" ry="6"/></g><path d="M-8 4 L -14 12 M0 4 L 0 13 M6 2 L 10 12" stroke="#7a3b1e" stroke-width="2.5" stroke-linecap="round"/></g></g>
+          <g transform="translate(440 254)"><g class="ft-ant"><path d="M-4 -16 L 24 -36 L 30 -10Z" fill="#7cb85f" stroke="var(--ink)" stroke-width="2"/><path d="M8 -6 L 14 -18" stroke="var(--ink)" stroke-width="2"/><g fill="#7a3b1e"><ellipse cx="-12" cy="0" rx="9" ry="6"/><ellipse cx="2" cy="-2" rx="6" ry="5"/><ellipse cx="14" cy="-4" rx="7" ry="6"/></g><path d="M-8 4 L -14 12 M0 4 L 0 13 M6 2 L 10 12" stroke="#7a3b1e" stroke-width="2.5" stroke-linecap="round"/></g></g>
+          <g transform="translate(580 256)"><g class="ft-ant"><path d="M-8 -14 L 12 -42 L 32 -16Z" fill="#6aa84f" stroke="var(--ink)" stroke-width="2"/><path d="M8 -6 L 14 -18" stroke="var(--ink)" stroke-width="2"/><g fill="#7a3b1e"><ellipse cx="-12" cy="0" rx="9" ry="6"/><ellipse cx="2" cy="-2" rx="6" ry="5"/><ellipse cx="14" cy="-4" rx="7" ry="6"/></g><path d="M-8 4 L -14 12 M0 4 L 0 13 M6 2 L 10 12" stroke="#7a3b1e" stroke-width="2.5" stroke-linecap="round"/></g></g>
+          <g transform="translate(700 256)"><g class="ft-ant"><path d="M-4 -14 L 20 -38 L 30 -12Z" fill="#7cb85f" stroke="var(--ink)" stroke-width="2"/><path d="M8 -6 L 14 -18" stroke="var(--ink)" stroke-width="2"/><g fill="#7a3b1e"><ellipse cx="-12" cy="0" rx="9" ry="6"/><ellipse cx="2" cy="-2" rx="6" ry="5"/><ellipse cx="14" cy="-4" rx="7" ry="6"/></g><path d="M-8 4 L -14 12 M0 4 L 0 13 M6 2 L 10 12" stroke="#7a3b1e" stroke-width="2.5" stroke-linecap="round"/></g></g>
+        </g>
+        <g font-size="16" fill="var(--ink-2)">
+          <text x="40" y="52" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Take the piece you can carry</text><text x="40" y="76">small pieces, every day, add up to a garden</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Ants carry leaf pieces from the leaf on the left along a trail to their nest on the right.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> You don't need the whole $700 share. Take the piece you can afford, like $10, and keep bringing pieces home. A recurring $10 a week is the ant trail: small, steady, and it adds up.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Order:</b> what to buy or sell, how much, at what price. <b>Ticker symbol:</b> the fund's code, like VOO. Check the full name.</li>
+          <li><b>Fractional share:</b> a piece of a share, bought in dollars. Shares = <span class="frac"><span>dollars</span><span>share price</span></span>. It moves by the same percent as a whole share.</li>
+          <li><b>Bid:</b> what sellers get now. <b>Ask:</b> what buyers pay now. <b>Spread:</b> ask − bid, a hidden cost, tiny for big funds.</li>
+          <li><b>Market order:</b> fills now, price not guaranteed. <b>Limit order:</b> your price or better, might not fill. <b>Day order:</b> expires at the close.</li>
+          <li><b>Market hours:</b> 9:30 a.m. to 4:00 p.m. Eastern, Monday to Friday. <b>Extended hours:</b> before and after, with wider spreads.</li>
+          <li><b>Settlement:</b> one business day after the trade (T+1). <b>Cost basis:</b> what you paid. <b>Market value:</b> shares × price. <b>Gain:</b> value − cost basis.</li>
+          <li><b>Dividend reinvestment</b> and a <b>recurring investment</b> keep your money growing without extra effort.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A short code like VOO that names a fund is its <input type="text" class="blank" data-answer="ticker|ticker symbol|symbol" aria-label="Blank 1">.</div>
+        <div>2. $10 invested at a share price of $500 buys <input type="text" class="blank" data-answer="0.02|.02|0.020" inputmode="decimal" aria-label="Blank 2"> shares.</div>
+        <div>3. An order that buys only at your price or lower is a <input type="text" class="blank" data-answer="limit|limit order" aria-label="Blank 3"> order.</div>
+        <div>4. Regular market hours end at <input type="text" class="blank" data-answer="4|four|4:00|4 pm|4:00 pm|4 p.m.|4:00 p.m." aria-label="Blank 4"> p.m. Eastern time.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Ticker hunt</h3>
+          <p>Each person finds three tickers for S&amp;P 500 funds and one look-alike that isn't one. Swap lists and spot the impostor by reading the full names.</p>
+        </div>
+        <div class="reveal">
+          <h3>Limit-order bets</h3>
+          <p>Pick a well-known stock. Everyone writes down a limit buy price for tomorrow. After the close, check the day's low to see whose order would have filled.</p>
+        </div>
+        <div class="reveal">
+          <h3>Slice math race</h3>
+          <p>One person calls out a dollar amount and a share price, like $25 and $500. First to say the number of shares, 0.05, wins the round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own <span class="pref-tag">your style</span></div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">What would you buy with your first $10, and why that one?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Would you use a market order or a limit order for your first buy? What would make you pick the other one?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If you set up a recurring investment, how much and how often could you keep it going without missing it?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're in customer support at a broker</h3>
+      <div class="reveal">
+        <p>A customer messages you, annoyed. On Monday morning she placed a limit order to buy VOO at <b>$680</b> when it was trading at <b>$695</b>. That day VOO's lowest price was <b>$684.10</b>, and it closed at <b>$690</b>. Her order never filled and now it's gone. She thinks the app is broken.</p>
+        <p><b>Your task:</b> explain in plain words why her order didn't fill and why it disappeared, then give her two ways to buy if she still wants to.</p>
+        <textarea id="job-answer" placeholder="Write what you'd tell her…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Why it didn't fill:</b> a limit buy order only fills at your limit price or lower. Her limit was $680, and the lowest VOO traded all day was $684.10, which is still $4.10 above her limit. No seller was willing to go as low as $680, so the app correctly waited.</p>
+            <p><b>Why it disappeared:</b> it was a day order, so it expired at the 4:00 p.m. close. Nothing was charged, and her cash is still in her account.</p>
+            <p><b>Her options:</b> place a market order to buy right away at the current ask, around $690 if prices stay near the close, or place a new limit order at a price closer to where VOO is trading, like $688, knowing it still might not fill. If she's investing for years, a few dollars per share matter far less than getting invested.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">From your first order <em>to a lifetime of them.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on opening a brokerage account and index funds, and leads to market drops, retirement accounts, and percentages and growth">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 110 C 320 110, 320 170, 360 170"/><path d="M270 230 C 320 230, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../brokerage/"><text x="20" y="104" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Brokerage account</text><text x="20" y="126">Unit 5 · Lesson 4</text></a>
+          <a href="../index-funds/"><text x="20" y="224" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Index funds</text><text x="20" y="246">Unit 5 · Lesson 3</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Your first $10</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">When the market drops</text><text x="690" y="86">Next lesson · holding on</text>
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">401(k) and Roth IRA</text><text x="690" y="186">Unit 5 · accounts with tax breaks</text>
+          <text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Percentages and growth</text><text x="690" y="286">Unit 10 · the math of gains</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons that come before, this lesson in the middle, and the later lessons that build on it.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 5</span><b>Brokerage account</b></li>
+        <li><span class="muted small">Before · Unit 5</span><b>Index funds</b></li>
+        <li class="here"><span class="small">You are here</span><b>Your first $10</b></li>
+        <li><span class="muted small">Next · Unit 5</span><b>When the market drops</b></li>
+        <li><span class="muted small">Later · Unit 5</span><b>401(k) and Roth IRA</b></li>
+        <li><span class="muted small">Later · Unit 10</span><b>Percentages and growth</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Next open lesson: Why prices are what they are <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about.html">About and contact</a><a href="../../legal/privacy.html">Privacy</a><a href="../../legal/terms.html">Terms</a><a href="../../legal/cookies.html">Cookies and storage</a><a href="../../legal/privacy.html#delete">Delete my data</a><a href="../../credits.html">Credits</a></nav>
+    <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202610270606"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610270606"></script>
+<script src="../../assets/js/auth.js?v=202610270606"></script>
+<script src="../../assets/js/site.js?v=202610270606"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610270606"></script>
+<script src="lesson.js?v=202610270606"></script>
+</body>
+</html>
