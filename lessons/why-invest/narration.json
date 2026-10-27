@@ -1,0 +1,19 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P"
+  },
+  "lines": [
+    "Why invest at all? Because two forces are working on your money all the time, whether you notice them or not.",
+    "The first force is inflation. Prices go up almost every year. Something that cost a hundred dollars in 2000 cost about a hundred and eighty-seven dollars in 2025.",
+    "So a hundred-dollar bill kept in a drawer since 2000 is still a hundred dollars. But it only buys about what fifty-three dollars bought back then. Cash doesn't lose dollars. It loses buying power.",
+    "A savings account helps. At four percent, with inflation around three percent, your buying power grows about one percent a year. That's safe, but slow.",
+    "The second force is compounding. When an investment grows, next year's growth is figured on the bigger amount. Your gains start earning gains of their own.",
+    "A thousand dollars growing ten percent a year becomes eleven hundred, then twelve hundred and ten, then thirteen hundred and thirty-one. After thirty years, it's about seventeen thousand four hundred.",
+    "Ten percent a year is about what the S&P 500, a list of five hundred of the biggest U.S. companies, has averaged since 1928. But that's an average. In 2008, it fell about thirty-seven percent in a single year.",
+    "That's the trade. Over long stretches, investing has grown much faster than prices. In the short run, it can drop hard. Since 1928, every twenty-year stretch still ended ahead of safe savings.",
+    "So the rule is simple. Money you'll need in the next few years stays in savings. Money you won't need for five years or more, after your emergency fund is full, can be invested.",
+    "And you can start small. Even ten dollars a month has decades to compound. Time is the one thing you can't buy back, so starting early matters more than starting big."
+  ]
+}

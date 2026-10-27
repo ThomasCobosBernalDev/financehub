@@ -1,0 +1,20 @@
+{
+ "voice": "ef_dora",
+ "speed": 1.0,
+ "lang": "es",
+ "say": {
+  "S&P": "ese y pe"
+ },
+ "lines": [
+  "¿Por qué invertir? Porque hay dos fuerzas que actúan sobre tu dinero todo el tiempo, te des cuenta o no.",
+  "La primera fuerza es la inflación. Los precios suben casi todos los años. Algo que costaba cien dólares en el año 2000 costaba unos ciento ochenta y siete dólares en 2025.",
+  "Así que un billete de cien dólares guardado en un cajón desde el año 2000 sigue siendo de cien dólares. Pero solo compra lo que antes compraban unos cincuenta y tres dólares. El efectivo no pierde dólares. Pierde poder de compra.",
+  "Una cuenta de ahorro ayuda. Al cuatro por ciento, con una inflación de alrededor de tres por ciento, tu poder de compra crece más o menos uno por ciento al año. Es seguro, pero lento.",
+  "La segunda fuerza es el interés compuesto. Cuando una inversión crece, el crecimiento del año siguiente se calcula sobre la cantidad más grande. Tus ganancias empiezan a generar sus propias ganancias.",
+  "Mil dólares que crecen diez por ciento al año se vuelven mil cien, luego mil doscientos diez, luego mil trescientos treinta y uno. Después de treinta años, son unos diecisiete mil cuatrocientos.",
+  "Diez por ciento al año es más o menos lo que ha dado en promedio el S&P 500, una lista de quinientas de las empresas más grandes de Estados Unidos, desde 1928. Pero es un promedio. En 2008 cayó alrededor de treinta y siete por ciento en un solo año.",
+  "Ese es el trato. En periodos largos, invertir ha crecido mucho más rápido que los precios. En el corto plazo, puede caer fuerte. Desde 1928, cada periodo de veinte años terminó por encima del ahorro seguro.",
+  "Así que la regla es sencilla. El dinero que vas a necesitar en los próximos años se queda en el ahorro. El dinero que no vas a necesitar en cinco años o más, cuando tu fondo de emergencia ya esté lleno, se puede invertir.",
+  "Y puedes empezar con poco. Hasta diez dólares al mes tienen décadas para crecer. El tiempo es lo único que no puedes volver a comprar, así que empezar temprano importa más que empezar con mucho."
+ ]
+}

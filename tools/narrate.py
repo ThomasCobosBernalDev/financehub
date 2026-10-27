@@ -2,6 +2,8 @@
 
 Usage: python3 tools/narrate.py lessons/budgeting
 Reads <lesson>/narration.json and writes <lesson>/audio/line-NN.mp3.
+An optional "say" map in narration.json swaps text for the voice only, e.g. {"S&P": "S and P"},
+so the transcript keeps the written form.
 Needs: pip install kokoro-onnx soundfile, ffmpeg, and the model files
 (kokoro-v1.0.onnx, voices-v1.0.bin from github.com/thewh1teagle/kokoro-onnx releases)
 in $KOKORO_DIR (default /tmp/kokoro).
@@ -19,6 +21,8 @@ out_dir = os.path.join(lesson, "audio")
 os.makedirs(out_dir, exist_ok=True)
 
 for i, line in enumerate(spec["lines"], 1):
+    for written, spoken in spec.get("say", {}).items():
+        line = line.replace(written, spoken)
     samples, rate = kokoro.create(line, voice=spec["voice"], speed=spec.get("speed", 1.0), lang=spec.get("lang", "en-us"))
     with tempfile.NamedTemporaryFile(suffix=".wav") as wav:
         sf.write(wav.name, samples, rate)
