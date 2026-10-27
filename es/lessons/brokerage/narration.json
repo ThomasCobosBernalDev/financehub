@@ -1,0 +1,25 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "S&P": "ese y pe",
+    "SIPC": "sípic",
+    "FDIC": "efe de i ce",
+    "ETF": "e te efe",
+    "ETFs": "e te efes",
+    "IRS": "i erre ese"
+  },
+  "lines": [
+    "Tu cuenta de cheques puede pagar cuentas y guardar efectivo, pero no puede comprar ni una sola acción. Para eso necesitas una cuenta de inversión, una cuenta que guarda tus inversiones como una cuenta de banco guarda tu efectivo.",
+    "Un broker, o casa de bolsa, es la empresa que compra y vende inversiones por ti y las guarda en esa cuenta. Fidelity, Charles Schwab, Vanguard y Robinhood son brokers.",
+    "Antes cobraban una comisión por cada operación. Una comisión de cuatro dólares con noventa y cinco centavos en una compra de diez dólares se comería como la mitad de tu dinero. Desde 2019, los brokers grandes cobran cero por comprar o vender acciones y ETFs de Estados Unidos en línea.",
+    "Al registrarte, el broker verifica quién eres. Eso se llama conoce a tu cliente. Das tu nombre, dirección, fecha de nacimiento y número de Seguro Social, que también le sirve para mandarte formularios de impuestos a ti y al IRS. Un broker real nunca necesita la contraseña de tu banco ni el PIN de tu tarjeta de débito.",
+    "Si tienes menos de dieciocho años, en la mayoría de los estados uno de tus padres abre una cuenta custodia para ti, y pasa a ser tuya cuando tienes la edad.",
+    "Después eliges una cuenta de efectivo o una cuenta de margen. En una cuenta de efectivo solo inviertes el dinero que depositas. Una cuenta de margen te deja pedirle prestado al broker. Si pides mil dólares además de tus propios mil y la inversión baja treinta por ciento, pierdes sesenta por ciento de tu dinero. Para tu primera cuenta, elige efectivo.",
+    "Luego conectas tu banco con dos números que aparecen abajo en un cheque o en la app de tu banco. El número de ruta dice cuál banco. El número de cuenta dice cuál cuenta. Una transferencia tarda de uno a tres días hábiles, y después aparece como saldo disponible, efectivo listo para invertir.",
+    "Lee la lista de comisiones. La mayoría nunca te toca si compras un fondo indexado barato y lo dejas ahí. Las que hay que vigilar son las comisiones por comprar ciertos fondos mutuos, por llevarte tu cuenta a otro broker, por estados de cuenta en papel, y los intereses de margen.",
+    "Los bancos tienen el seguro de la FDIC. Las cuentas de inversión tienen la SIPC, que cubre hasta quinientos mil dólares por cliente, incluidos doscientos cincuenta mil en efectivo, si el broker quiebra y tus inversiones desaparecen. No cubre las pérdidas cuando bajan los precios. Ese riesgo es tuyo.",
+    "Por último, activa la verificación en dos pasos, para que entrar pida tu contraseña más un código que llega a tu teléfono. Así tu cuenta queda lista para tu primera compra."
+  ]
+}

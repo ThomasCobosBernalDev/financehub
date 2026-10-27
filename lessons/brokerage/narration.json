@@ -1,0 +1,24 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P",
+    "SIPC": "sipick",
+    "FDIC": "F D I C",
+    "ETF": "E T F",
+    "ETFs": "E T Fs",
+    "IRS": "I R S"
+  },
+  "lines": [
+    "Your checking account can pay bills and hold cash, but it can't buy a single share. For that you need a brokerage account, an account that holds your investments the way a bank account holds your cash.",
+    "A broker is the company that buys and sells investments for you and holds them in that account. Fidelity, Charles Schwab, Vanguard and Robinhood are all brokers.",
+    "Brokers used to charge a commission on every trade. A four ninety-five commission on a ten dollar trade would eat about half your money. Since 2019, the big brokers charge zero to buy or sell U.S. stocks and ETFs online.",
+    "When you sign up, the broker checks who you are. That's called know your customer. You give your name, address, birthday and Social Security number, which also lets the broker send tax forms to you and the IRS. A real broker never needs your bank password or your debit card PIN.",
+    "Under eighteen in most states, a parent opens a custodial account for you, and it becomes yours when you're old enough.",
+    "Next you pick a cash account or a margin account. In a cash account you only invest money you put in. A margin account lets you borrow from the broker. If you borrow a thousand dollars on top of your own thousand and the investment falls thirty percent, you lose sixty percent of your money. For a first account, pick cash.",
+    "Then you link your bank with two numbers from the bottom of a check or your bank app. The routing number says which bank. The account number says which account. A transfer takes one to three business days, and then it shows up as buying power, cash that's ready to invest.",
+    "Read the fee schedule. Most fees never touch you if you buy a cheap index fund and hold it. The ones to watch are fees for buying certain mutual funds, for moving your account to another broker, for paper statements, and margin interest.",
+    "Banks have FDIC insurance. Brokerage accounts have SIPC, which covers up to five hundred thousand dollars per customer, including two hundred fifty thousand in cash, if the broker fails and your investments go missing. It does not cover losses when prices fall. That risk is yours.",
+    "Last, turn on two-factor authentication, so logging in takes your password plus a code sent to your phone. Then your account is ready for your first trade."
+  ]
+}
