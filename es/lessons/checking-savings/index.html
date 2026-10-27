@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/checking-savings/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dónde vive tu dinero · FinanceHub</title>
+  <meta name="description" content="Unidad 1, Lección 1: cuentas de cheques y de ahorro, el interés y el APY, y cómo repartir tu sueldo entre las dos. Maneja la app de un banco de práctica durante un mes.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610270114">
+  <link rel="stylesheet" href="../../../lessons/checking-savings/lesson.css?v=202610270114">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="../../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../">Curso</a><a href="../../about.html">Acerca de</a></nav>
+    <div class="spacer"></div>
+    <a class="lang-switch" href="../../../lessons/checking-savings/" data-set-lang="en" hreflang="en" aria-label="View in English"><span class="ls-long">English</span><span class="ls-short">EN</span></a>
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<aside class="companion" aria-label="Tu personaje hasta ahora">
+  <div class="who">
+    <svg viewBox="-34 -60 68 68" aria-hidden="true"><circle cx="0" cy="-22" r="27" fill="#f2c9a5" stroke="#2a2420" stroke-width="2"/><path d="M-27 -26 C-28 -58 28 -58 27 -26 C16 -40 -6 -42 -27 -26Z" fill="#2a2420"/><circle cx="-9" cy="-22" r="2.8" fill="#2a2420"/><circle cx="9" cy="-22" r="2.8" fill="#2a2420"/><path d="M-9 -10 Q0 -2 9 -10" stroke="#2a2420" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <div><b>Tú</b>Tu dinero, lección por lección</div>
+  </div>
+  <dl>
+    <dt>Ahorros</dt><dd data-k="cash">$0</dd>
+    <dt>Lecciones hechas</dt><dd data-k="lessons">0</dd>
+    <dt>XP</dt><dd data-k="xp">0</dd>
+  </dl>
+  <div class="badges"><b data-k="badges">0</b> insignias ganadas. Tus números pasan a cada lección.</div>
+</aside>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 1 · Lección 1</span> Cheques y ahorro</div>
+        <h1 class="reveal">Dónde vive <em>tu dinero.</em></h1>
+        <p class="story reveal"><span class="story-tag">Donde empieza la historia</span> Acabas de conseguir un trabajo de medio tiempo y tu primer pago ya viene en camino: <span class="mark">$600</span> por dos semanas de trabajo. Por ahora, tus únicos ahorros son <span class="mark">$300</span> en efectivo en una caja de zapatos. Tu jefe te da un formulario de depósito directo y te pregunta a qué cuenta de banco debe llegar tu sueldo. Todavía no tienes una. Entonces, ¿dónde debe vivir tu dinero?</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Las dos cuentas básicas de un banco: una <dfn class="term" data-def="Una cuenta para el dinero de todos los días que entra y sale: ahí llega tu sueldo, y de ahí salen tus pagos con tarjeta y tus gastos fijos.">cuenta de cheques</dfn> para gastar y una <dfn class="term" data-def="Una cuenta para el dinero que apartas para después. Te paga interés.">cuenta de ahorro</dfn> para el dinero que apartas.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>El efectivo se puede perder o te lo pueden robar, y no gana nada. Un banco lo cuida, te deja pagar con tarjeta o con una app, y te paga por guardar tus ahorros.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Tu sueldo llega a la cuenta de cheques. Deja ahí lo suficiente para tus gastos más un poco extra, y pasa el resto al ahorro.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>asesores bancarios</b> ayudan a la gente a elegir y abrir cuentas. Los <b>equipos de tesorería de los bancos</b> deciden qué tasa de interés pagan las cuentas de ahorro.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Un sueldo cae en una tarjeta de cuenta de cheques, y unas monedas pasan de la cuenta de cheques a un frasco de ahorro">
+          <g transform="translate(130 60)">
+            <rect x="-90" y="0" width="180" height="96" rx="10" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/>
+            <path d="M-90 10 L0 58 L90 10" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+            <text x="0" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--savings)">$600</text>
+          </g>
+          <path d="M130 170 V214" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 7" class="cs-flow"/>
+          <path d="M120 206 l10 12 l10 -12" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(130 300)">
+            <rect x="-110" y="-70" width="220" height="140" rx="16" fill="var(--needs)"/>
+            <rect x="-86" y="-34" width="38" height="28" rx="5" fill="#f2c96b"/>
+            <path d="M-86 -20 h38 M-67 -34 v28" stroke="#c9a040" stroke-width="1.5"/>
+            <text x="-86" y="34" font-family="Fraunces, serif" font-size="20" fill="#fff" letter-spacing="2">•••• 4821</text>
+            <text x="86" y="-42" text-anchor="end" font-size="14" font-weight="700" fill="#fff" opacity=".85">DÉBITO</text>
+          </g>
+          <path d="M248 300 C 300 300, 320 300, 352 300" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 7" fill="none" class="cs-flow"/>
+          <path d="M344 290 l12 10 l-12 10" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(430 300)">
+            <path d="M-56 -66 h112 v12 c18 10 22 24 22 44 v86 c0 18 -14 30 -32 30 h-92 c-18 0 -32 -12 -32 -30 v-86 c0 -20 4 -34 22 -44z" fill="var(--savings)" opacity=".14" stroke="var(--savings)" stroke-width="3"/>
+            <rect x="-62" y="-82" width="124" height="18" rx="6" fill="var(--savings)"/>
+            <g fill="#f2c96b" stroke="#c9a040" stroke-width="2">
+              <ellipse cx="-30" cy="92" rx="22" ry="8"/><ellipse cx="0" cy="92" rx="22" ry="8"/><ellipse cx="30" cy="92" rx="22" ry="8"/>
+              <ellipse cx="-16" cy="80" rx="22" ry="8"/><ellipse cx="16" cy="80" rx="22" ry="8"/><ellipse cx="0" cy="68" rx="22" ry="8"/>
+            </g>
+            <ellipse cx="0" cy="-40" rx="14" ry="5" fill="#f2c96b" stroke="#c9a040" stroke-width="2" class="cs-coin"/>
+            <text x="0" y="16" text-anchor="middle" font-size="15" font-weight="700" fill="var(--savings)">4% APY</text>
+          </g>
+          <text x="130" y="420" text-anchor="middle" font-family="Fraunces, serif" font-size="23" fill="var(--ink)">Cheques</text>
+          <text x="130" y="446" text-anchor="middle" font-size="15" fill="var(--ink-2)">dinero para este mes</text>
+          <text x="430" y="420" text-anchor="middle" font-family="Fraunces, serif" font-size="23" fill="var(--ink)">Ahorro</text>
+          <text x="430" y="446" text-anchor="middle" font-size="15" fill="var(--ink-2)">dinero para después</text>
+          <text x="260" y="512" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="21" fill="var(--ink-2)">gasta de una, haz crecer la otra</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo, no datos reales. Tu sueldo de $600 cae en la cuenta de cheques, que viene con una tarjeta de débito. El dinero que no necesitas este mes pasa al frasco del ahorro, donde gana interés.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Dos cuentas, <em>dos trabajos.</em></h2>
+      <p class="lead reveal">Un banco te da dos cuentas básicas, y cada una tiene su propio trabajo. Una <dfn class="term" data-def="Una cuenta para el dinero de todos los días que entra y sale: ahí llega tu sueldo, y de ahí salen tus pagos con tarjeta y tus gastos fijos.">cuenta de cheques</dfn> es para el dinero que entra y sale todos los días. Una <dfn class="term" data-def="Una cuenta para el dinero que apartas para después. Te paga interés.">cuenta de ahorro</dfn> es para el dinero que apartas para después.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Cuenta de cheques</dt><dd>Tu sueldo de <b>$600</b> llega aquí, y de aquí salen tu factura del celular de <b>$45</b> y una comida de <b>$12</b>.</dd></div><div><dt>Cuenta de ahorro</dt><dd>El dinero que no vas a tocar este mes, como <b>$500</b> que estás juntando para un carro, espera aquí.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El ahorro te paga por esperar</h3>
+      <p class="reveal">Una cuenta de ahorro te paga <dfn class="term" data-def="Dinero que el banco te paga por tener tu dinero ahí. (Cuando pides prestado, el interés es lo que tú pagas.)">interés</dfn> por tener dinero en ella. Los bancos muestran la tasa como <dfn class="term" data-def="Rendimiento porcentual anual: el porcentaje que gana tu saldo en un año.">APY</dfn>, las siglas en inglés de rendimiento porcentual anual: el porcentaje que gana tu saldo en un año. La mayoría de las cuentas de cheques pagan poco o nada de interés.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>APY</dt><dd><b>4% APY</b> quiere decir que cada $100 ganan unos <b>$4</b> en un año.</dd></div><div><dt>Interés</dt><dd><b>$500</b> que dejas un año en ahorro al 4% APY ganan unos <b>$20</b>. Esos $20 son el interés.</dd></div></dl></div>
+      <p class="small muted reveal">Las tasas cambian con el tiempo. En 2025, las cuentas de ahorro básicas de muchos bancos grandes pagaban cerca de 0.01%, y muchas cuentas de ahorro en línea pagaban entre 3.5% y 4%. Esta lección usa 4% para que las cuentas sean fáciles.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Cómo se mueve el dinero entre ellas</h3>
+      <p class="reveal">Tu sueldo normalmente llega a la cuenta de cheques por <dfn class="term" data-def="Tu empleador manda tu sueldo directo a tu cuenta de banco, así que no hay un cheque de papel que cobrar.">depósito directo</dfn>. Gastas desde la cuenta de cheques con una <dfn class="term" data-def="Una tarjeta que paga directo desde tu cuenta de cheques. Gasta dinero que ya tienes, no dinero prestado.">tarjeta de débito</dfn>, y tus pagos fijos pueden salir solos con pago automático. Entre tus dos cuentas haces una <dfn class="term" data-def="Mover dinero de una de tus cuentas a otra. Entre dos cuentas del mismo banco, normalmente pasa al instante.">transferencia</dfn>, que en el mismo banco normalmente pasa al instante.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Depósito directo</dt><dd>Tu sueldo de <b>$600</b> aparece en la cuenta de cheques el día de pago, un viernes sí y otro no.</dd></div><div><dt>Tarjeta de débito</dt><dd>Compras una comida de <b>$12</b>, y los $12 salen de la cuenta de cheques al momento.</dd></div><div><dt>Transferencia</dt><dd>Pasas <b>$500</b> de la cuenta de cheques al ahorro en la app de tu banco.</dd></div></dl></div>
+      <svg class="cs-map reveal" viewBox="0 0 900 330" role="img" aria-label="Flujo del dinero: el sueldo entra a la cuenta de cheques por depósito directo. Las compras con tarjeta de débito y los pagos fijos salen de la cuenta de cheques. Las transferencias mueven dinero entre cheques y ahorro.">
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path d="M150 165 H300" stroke="var(--savings)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M470 140 C 540 140, 560 70, 640 70" stroke="var(--danger)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M470 165 C 540 165, 560 165, 640 165" stroke="var(--danger)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M385 215 V250" stroke="var(--accent)"/>
+          <path d="M385 250 C 385 270, 400 280, 430 280 H 560" stroke="var(--accent)" class="cs-flow" stroke-dasharray="8 8"/>
+        </g>
+        <path d="M290 157 l12 8 l-12 8 M630 62 l12 8 l-12 8 M630 157 l12 8 l-12 8 M550 272 l12 8 l-12 8" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="20" y="130" width="130" height="70" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+        <text x="85" y="162" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Sueldo</text>
+        <text x="85" y="184" text-anchor="middle" font-size="14" fill="var(--ink-2)">$600</text>
+        <text x="225" y="152" text-anchor="middle" font-size="14" fill="var(--ink-2)">depósito directo</text>
+        <rect x="300" y="115" width="170" height="100" rx="16" fill="var(--needs)"/>
+        <text x="385" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="#fff">Cheques</text>
+        <text x="385" y="184" text-anchor="middle" font-size="14" fill="#fff" opacity=".9">poco o nada de interés</text>
+        <text x="660" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Pagos con débito</text>
+        <text x="660" y="88" font-size="14" fill="var(--ink-2)">comida $12, gasolina $40</text>
+        <text x="660" y="161" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Pagos automáticos</text>
+        <text x="660" y="183" font-size="14" fill="var(--ink-2)">celular $45, streaming $15</text>
+        <text x="470" y="270" text-anchor="middle" font-size="14" fill="var(--ink-2)">transferencia</text>
+        <rect x="570" y="245" width="170" height="70" rx="16" fill="var(--savings)"/>
+        <text x="655" y="276" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="#fff">Ahorro</text>
+        <text x="655" y="298" text-anchor="middle" font-size="14" fill="#fff" opacity=".9">gana 4% APY</text>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un diagrama, no datos. Las flechas verdes traen dinero y las rojas lo sacan. Tu sueldo llega a la cuenta de cheques por depósito directo. Los pagos con tarjeta y los pagos automáticos salen de la cuenta de cheques. Una transferencia pasa al ahorro el dinero que todavía no necesitas.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Lado a lado</h3>
+      <div class="reveal" style="overflow-x:auto">
+        <table class="mini-table">
+          <thead><tr><th></th><th>Cheques</th><th>Ahorro</th></tr></thead>
+          <tbody>
+            <tr><td><b>Trabajo principal</b></td><td>Gastos de todos los días</td><td>Dinero apartado para después</td></tr>
+            <tr><td><b>Ahí llega tu sueldo</b></td><td>Casi siempre</td><td>Casi nunca</td></tr>
+            <tr><td><b>Tarjeta de débito</b></td><td>Sí</td><td>Normalmente no</td></tr>
+            <tr><td><b>Interés</b></td><td>Poco o nada</td><td>Sí, se muestra como APY</td></tr>
+            <tr><td><b>Sacar dinero</b></td><td>Las veces que quieras</td><td>Muchos bancos permiten unas 6 veces al mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal" style="margin-top:56px">Cuando la cuenta de cheques se queda sin dinero</h3>
+      <p class="reveal">Si gastas más de lo que tienes en la cuenta de cheques, eso es un <dfn class="term" data-def="Gastar más de lo que tiene tu cuenta de cheques. El banco puede cubrir la diferencia y cobrarte un cargo por hacerlo.">sobregiro</dfn>. El banco puede cubrir la diferencia y cobrarte un <b>cargo por sobregiro</b>. Algunos bancos grandes cobran unos $35 cada vez, otros cobran menos y otros no cobran nada. Por eso la gente deja un <dfn class="term" data-def="Dinero extra que dejas en la cuenta de cheques además de tus gastos planeados, para que una sorpresa no la sobregire.">colchón</dfn> en la cuenta de cheques: dinero extra además de los gastos, para sorpresas como una llanta desinflada.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Sobregiro</dt><dd>Tienes <b>$40</b> en la cuenta de cheques y pagas <b>$60</b> con tu tarjeta. Te faltan $20. Si el banco lo cubre y te cobra <b>$35</b>, ahora le debes al banco $20 + $35 = <b>$55</b>.</dd></div><div><dt>Colchón</dt><dd>Tus gastos hasta el día de pago son $250. Dejar <b>$150</b> más encima de eso es tu colchón. En esta lección, apunta a un colchón de <b>$100 a $200</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Reparte tus $900</h3>
+      <p class="reveal">Tus <b>$300</b> en efectivo más tu sueldo de <b>$600</b> suman <b>$900</b>. Tus gastos hasta el próximo pago, dentro de dos semanas, suman <b>$250</b>: celular $45, gasolina $80, supermercado $110 y streaming $15. Mueve el control para elegir cuánto pasa al ahorro.</p>
+      <div class="split reveal" id="split">
+        <div class="split-top"><span class="small muted">Pasado al ahorro</span><b id="sp-move">$0</b></div>
+        <input type="range" id="sp-range" min="0" max="900" step="25" value="0" aria-label="Cantidad que pasas al ahorro">
+        <div class="split-accts">
+          <div class="split-acct chk"><small>Cheques</small><b id="sp-chk">$900</b><p id="sp-chk-note"></p></div>
+          <div class="split-acct sav"><small>Ahorro · 4% APY</small><b id="sp-sav">$0</b><p id="sp-sav-note"></p></div>
+        </div>
+        <svg class="split-bar" id="sp-bar" viewBox="0 0 640 86" role="img" aria-label="Saldo de la cuenta de cheques comparado con los gastos y un colchón">
+          <rect x="20" y="22" width="600" height="26" rx="6" fill="var(--paper-2)"/>
+          <rect x="20" y="22" width="166.7" height="26" fill="var(--danger)" opacity=".16"/>
+          <rect x="186.7" y="22" width="133.3" height="26" fill="var(--savings)" opacity=".18"/>
+          <rect id="sp-fill" x="20" y="28" width="600" height="14" rx="4" fill="var(--needs)"/>
+          <path d="M186.7 14 V56 M320 14 V56" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="103" y="72" text-anchor="middle" font-size="13" fill="var(--ink-2)">gastos $250</text>
+          <text x="253" y="72" text-anchor="middle" font-size="13" fill="var(--ink-2)">colchón</text>
+          <g font-size="12" fill="var(--ink-3)"><text x="20" y="12">$0</text><text x="186.7" y="12" text-anchor="middle">$250</text><text x="320" y="12" text-anchor="middle">$450</text><text x="620" y="12" text-anchor="end">$900</text></g>
+        </svg>
+        <p class="split-msg" id="sp-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> el saldo de tu cuenta de cheques como una barra azul, en una escala de $0 a $900. La zona roja son los $250 que vas a gastar antes del próximo pago. La zona verde, de $250 a $450, es un colchón de $100 a $200. La tarjeta del ahorro muestra lo que gana el resto en un año al 4% APY.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Maneja la app <em>de tu banco.</em></h2>
+      <p class="lead reveal">Esta es la app de un banco de práctica con tus dos cuentas. Vas a manejar un mes, una semana a la vez. Antes de cada semana, mueve dinero entre la cuenta de cheques y el ahorro. Luego pasa la semana, y los pagos fijos y con tarjeta salen de la cuenta de cheques. Dos metas: que la cuenta de cheques nunca baje de $0, porque cada sobregiro cuesta un cargo de $35, y tener en el ahorro todo lo que puedas sin riesgo, donde gana 4% APY.</p>
+
+      <div class="bank-game reveal" id="game">
+        <div class="phone" aria-label="App del banco de práctica">
+          <div class="ph-bar"><span class="ph-bank">Banco de Práctica</span><span class="ph-week" id="g-week">Semana 1 de 4</span></div>
+          <div class="ph-acct chk" id="g-chk-card"><small>Cheques ••4821</small><b id="g-chk">$0.00</b><span>Saldo disponible</span></div>
+          <div class="ph-acct sav" id="g-sav-card"><small>Ahorro ••7310 · 4.00% APY</small><b id="g-sav">$0.00</b><span id="g-int">Interés acumulado este mes: $0.00</span></div>
+          <div class="ph-transfer" id="g-transfer">
+            <b class="ph-title">Transferir</b>
+            <div class="ph-dir" role="group" aria-label="Dirección de la transferencia">
+              <button class="chip on" type="button" data-dir="save">Cheques → Ahorro</button>
+              <button class="chip" type="button" data-dir="spend">Ahorro → Cheques</button>
+            </div>
+            <div class="ph-amt">
+              <button class="icon-btn" type="button" id="g-minus" aria-label="Menos">−</button>
+              <label class="ph-amt-in"><span>$</span><input type="text" id="g-amt" value="100" inputmode="numeric" aria-label="Cantidad a transferir en dólares"></label>
+              <button class="icon-btn" type="button" id="g-plus" aria-label="Más">+</button>
+            </div>
+            <button class="btn sm" type="button" id="g-move">Transferir</button>
+            <small class="ph-wd" id="g-wd">Retiros de ahorro: 0 de 6 este mes</small>
+          </div>
+          <b class="ph-title ph-act-title">Movimientos</b>
+          <ul class="ph-activity" id="g-act" aria-live="polite"></ul>
+        </div>
+        <div class="ledger coach">
+          <div class="small muted" id="g-phase">Planea la semana 1</div>
+          <div class="left-big" id="g-title">Lo que viene esta semana</div>
+          <ul class="upcoming" id="g-up"></ul>
+          <p class="split-note" id="g-hint"></p>
+          <button class="btn" type="button" id="g-go">Pasar la semana <span class="arrow">→</span></button>
+          <div class="gauges" style="margin-top:20px">
+            <div class="gauge"><small>Cargos por sobregiro</small><b id="g-fees">$0</b></div>
+            <div class="gauge"><small>Promedio en ahorro</small><b id="g-avg">$0</b></div>
+            <div class="gauge"><small>Interés ganado</small><b id="g-earn">$0.00</b></div>
+          </div>
+          <div id="g-result" class="hidden"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Cada día de pago respondes tres preguntas: cuánto necesita la cuenta de cheques, cuánto pasa al ahorro y cuánto va a ganar ese ahorro.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Cuánto necesita la cuenta de cheques</h3>
+      <p class="reveal">Suma todo lo que vas a gastar antes de que llegue tu próximo sueldo. Luego suma tu colchón para sorpresas. Ese total es lo que dejas en la cuenta de cheques.</p>
+      <div class="formula reveal">Dejar en cheques <span class="op">=</span> gastos hasta el próximo pago <span class="op">+</span> colchón</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Gastos hasta el pago</dt><dd>Celular $45 + gasolina $80 + supermercado $110 + streaming $15 = <b>$250</b></dd></div><div><dt>Colchón</dt><dd><b>$150</b>, a la mitad del rango de $100 a $200</dd></div><div><dt>Dejar en cheques</dt><dd>$250 + $150 = <b>$400</b></dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Pasa el resto al ahorro</h3>
+      <p class="reveal">Lo que sobra después de lo que dejas en cheques va al ahorro.</p>
+      <div class="formula reveal">Pasar al ahorro <span class="op">=</span> dinero total <span class="op">−</span> lo que dejas en cheques</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Pasar al ahorro</dt><dd>$900 − $400 = <b>$500</b></dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Cuánto gana el ahorro</h3>
+      <p class="reveal">Si el saldo se queda igual todo el año, el interés del año es el saldo por el APY. Para usar un porcentaje en una cuenta, primero divídelo entre 100. Así, 4% se vuelve <span class="frac"><span>4</span><span>100</span></span> = 0.04. Para una cantidad mensual aproximada, divide el interés del año entre 12.</p>
+      <div class="formula reveal">Interés del año <span class="op">=</span> saldo <span class="op">×</span> APY</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Al 4% APY</dt><dd>$500 × 0.04 = <b>$20</b> al año, o unos <span class="frac"><span>$20</span><span>12</span></span> ≈ <b>$1.67</b> al mes.</dd></div><div><dt>Al 0.01% APY</dt><dd>0.01% es <span class="frac"><span>0.01</span><span>100</span></span> = 0.0001, así que $500 × 0.0001 = <b>$0.05</b> al año. Cinco centavos.</dd></div><div><dt>La diferencia</dt><dd>$20 − $0.05 = <b>$19.95</b> al año, con los mismos $500, solo por elegir la cuenta.</dd></div></dl></div>
+
+      <h3 class="reveal">¿Por qué no dejar todo en el ahorro?</h3>
+      <p class="reveal">Tu tarjeta de débito y tus pagos automáticos salen de la cuenta de cheques, no del ahorro. Si la cuenta de cheques tiene muy poco, un pago puede sobregirarla sin que te des cuenta. Además, muchos bancos permiten solo unos seis retiros o transferencias desde el ahorro al mes, y algunos cobran un cargo si te pasas. El ahorro está hecho para esperar, no para pagar.</p>
+
+      <h3 class="reveal">¿Por qué no dejar todo en la cuenta de cheques?</h3>
+      <p class="reveal">La cuenta de cheques paga poco o nada de interés, así que el dinero extra ahí no gana nada. También es fácil gastarlo sin querer: cada dólar en la cuenta de cheques está a un pago con tarjeta de distancia. El dinero en una cuenta de ahorro aparte es un poco más difícil de alcanzar, y eso ayuda a que se quede ahorrado.</p>
+
+      <h3 class="reveal">Ejemplo resuelto: el siguiente día de pago</h3>
+      <ol class="steps reveal">
+        <li><b>Día de pago.</b> Dos semanas después quedan $150 en la cuenta de cheques, y llega otro sueldo de $600. La cuenta de cheques ahora tiene $150 + $600 = <b>$750</b>.</li>
+        <li><b>Gastos hasta el próximo pago.</b> Seguro del carro $110 + supermercado $60 + gasolina $40 = <b>$210</b>.</li>
+        <li><b>Dejar en cheques.</b> $210 + un colchón de $150 = <b>$360</b>.</li>
+        <li><b>Pasar al ahorro.</b> $750 − $360 = <b>$390</b>.</li>
+        <li><b>Lo que gana.</b> $390 × 0.04 = unos <b>$15.60</b> al año, además de lo que ya había.</li>
+      </ol>
+      <p class="reveal">Muchos bancos te dejan programar una transferencia automática el día de pago, así pasa sin que tengas que acordarte.</p>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Las abejas guardan dos tipos <em>de miel.</em></h2>
+      <p class="lead reveal">Dentro de una colmena, las celdas del centro tienen miel y polen que alimentan a la colonia todos los días. La miel para el invierno va en las celdas de afuera. Cuando está lista, las abejas sellan cada una de esas celdas con una tapa de cera, y no abren las tapas hasta que las necesitan. Tu cuenta de cheques son las celdas abiertas. Tu cuenta de ahorro son las selladas.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Un panal. Las celdas abiertas del centro tienen miel para el día a día. Las celdas selladas de los lados guardan miel para el invierno.">
+        <defs><path id="hex" d="M0 -30 L26 -15 L26 15 L0 30 L-26 15 L-26 -15Z"/></defs>
+        <g stroke="var(--ink)" stroke-width="2">
+          <use href="#hex" x="330" y="110" fill="var(--wants)" opacity=".85"/><use href="#hex" x="382" y="110" fill="#f2c96b"/><use href="#hex" x="434" y="110" fill="#f2c96b"/><use href="#hex" x="486" y="110" fill="#f2c96b"/><use href="#hex" x="538" y="110" fill="var(--wants)" opacity=".85"/>
+          <use href="#hex" x="356" y="155" fill="#f2c96b"/><use href="#hex" x="408" y="155" fill="var(--card)"/><use href="#hex" x="460" y="155" fill="#f2c96b"/><use href="#hex" x="512" y="155" fill="#f2c96b"/>
+          <use href="#hex" x="330" y="200" fill="var(--wants)" opacity=".85"/><use href="#hex" x="382" y="200" fill="#f2c96b"/><use href="#hex" x="434" y="200" fill="var(--card)"/><use href="#hex" x="486" y="200" fill="#f2c96b"/><use href="#hex" x="538" y="200" fill="var(--wants)" opacity=".85"/>
+        </g>
+        <g stroke="var(--ink)" stroke-width="2" fill="#e8d9a8">
+          <use href="#hex" x="226" y="110"/><use href="#hex" x="278" y="110"/><use href="#hex" x="252" y="155"/><use href="#hex" x="304" y="155"/><use href="#hex" x="226" y="200"/><use href="#hex" x="278" y="200"/><use href="#hex" x="252" y="245"/><use href="#hex" x="304" y="245"/>
+          <use href="#hex" x="590" y="110"/><use href="#hex" x="642" y="110"/><use href="#hex" x="564" y="155"/><use href="#hex" x="616" y="155"/><use href="#hex" x="590" y="200"/><use href="#hex" x="642" y="200"/><use href="#hex" x="564" y="245"/><use href="#hex" x="616" y="245"/>
+        </g>
+        <g fill="var(--ink-3)" opacity=".5"><circle cx="226" cy="110" r="3"/><circle cx="278" cy="110" r="3"/><circle cx="252" cy="155" r="3"/><circle cx="304" cy="155" r="3"/><circle cx="226" cy="200" r="3"/><circle cx="278" cy="200" r="3"/><circle cx="252" cy="245" r="3"/><circle cx="304" cy="245" r="3"/><circle cx="590" cy="110" r="3"/><circle cx="642" cy="110" r="3"/><circle cx="564" cy="155" r="3"/><circle cx="616" cy="155" r="3"/><circle cx="590" cy="200" r="3"/><circle cx="642" cy="200" r="3"/><circle cx="564" cy="245" r="3"/><circle cx="616" cy="245" r="3"/></g>
+        <g class="cs-bee"><ellipse cx="434" cy="40" rx="15" ry="10" fill="#f2c96b" stroke="var(--ink)" stroke-width="2"/><path d="M430 31 v18 M438 31 v18" stroke="var(--ink)" stroke-width="3"/><ellipse cx="428" cy="27" rx="8" ry="5" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5" opacity=".9"/><ellipse cx="440" cy="27" rx="8" ry="5" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5" opacity=".9"/></g>
+        <text x="434" y="296" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Celdas abiertas: comida para hoy</text><text x="434" y="320" text-anchor="middle" font-size="16" fill="var(--ink-2)">como la cuenta de cheques</text>
+        <text x="120" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Celdas selladas:</text>
+        <text x="120" y="194" text-anchor="middle" font-size="16" fill="var(--ink-2)">miel de invierno, como el ahorro</text>
+        <text x="775" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Celdas selladas:</text>
+        <text x="775" y="194" text-anchor="middle" font-size="16" fill="var(--ink-2)">cerradas hasta que hagan falta</text>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. Las celdas amarillas abiertas del centro tienen miel para el día a día, y las anaranjadas tienen polen. Las celdas pálidas de la izquierda y la derecha están selladas con cera y guardan miel para el invierno.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Una colmena que se come su miel sellada en verano se muere de hambre en invierno. Una colmena sin miel abierta no puede alimentarse hoy. Necesita las dos, separadas, y tu dinero también.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Cuenta de cheques:</b> el dinero de todos los días que entra y sale. Depósito directo, tarjeta de débito, pagos fijos. Poco o nada de interés.</li>
+          <li><b>Cuenta de ahorro:</b> dinero apartado para después. Gana interés. Muchos bancos permiten unos 6 retiros al mes.</li>
+          <li><b>APY:</b> el porcentaje que gana tu saldo en un año. Interés del año = saldo × APY, con el APY en decimal (4% = 0.04).</li>
+          <li><b>Dejar en cheques</b> = gastos hasta el próximo pago + un colchón. <b>Pasa el resto</b> al ahorro.</li>
+          <li><b>Sobregiro:</b> gastar más de lo que tiene la cuenta de cheques. El banco puede cobrar un cargo, de unos $35 en algunos bancos grandes.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Tu sueldo llega por depósito directo a tu cuenta de <input type="text" class="blank" data-answer="cheques" aria-label="Espacio 1">.</div>
+        <div>2. $1,000 en ahorro al 4% APY ganan unos $<input type="text" class="blank" data-answer="40|cuarenta" inputmode="numeric" aria-label="Espacio 2"> en un año.</div>
+        <div>3. Una tarjeta de débito saca dinero de tu cuenta de <input type="text" class="blank" data-answer="cheques" aria-label="Espacio 3">.</div>
+        <div>4. Tus gastos hasta el día de pago son $300 y quieres un colchón de $150. Deja $<input type="text" class="blank" data-answer="450" inputmode="numeric" aria-label="Espacio 4"> en la cuenta de cheques.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Busca a un amigo o <em>a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Carrera de tasas</h3>
+          <p>Cada quien elige un banco o una cooperativa de crédito distinta y busca en su sitio web el APY de su cuenta de ahorro. Calculen cuánto ganarían $1,000 en un año en cada uno. ¿Qué opción gana, y por cuánto?</p>
+        </div>
+        <div class="reveal">
+          <h3>Lean la letra chica</h3>
+          <p>Elijan juntos la página de la cuenta de cheques de un banco. Busquen la cuota mensual, cómo evitarla y el cargo por sobregiro. ¿Le serviría esa cuenta a alguien con un sueldo de $600?</p>
+        </div>
+        <div class="reveal">
+          <h3>Reparto en sesenta segundos</h3>
+          <p>Una persona dice un sueldo y una lista de gastos. La otra tiene 60 segundos para decir cuánto se queda en cheques y cuánto pasa al ahorro, haciendo las cuentas en voz alta. Luego cambien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta <span class="pref-tag">tu estilo</span></div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Dónde vive tu dinero ahora mismo: en efectivo, en una tarjeta, en una app, en una cuenta de banco? ¿Cómo te sientes con eso?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Para qué ahorrarías en una cuenta de ahorro? ¿Más o menos cuánto cuesta?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Piensa en tus propios gastos de dos semanas. ¿Cuánto dejarías en la cuenta de cheques, y qué colchón te da tranquilidad?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las preguntaría un examen de universidad. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el asesor bancario</h3>
+      <div class="reveal">
+        <p>Una clienta, Ana, tiene <b>$4,000</b> en su cuenta de cheques y nada en ahorro. Su cuenta de cheques no paga interés. Le pagan dos veces al mes, y gasta unos <b>$750</b> entre un pago y otro.</p>
+        <p><b>Tu tarea:</b> recomienda cuánto debe dejar Ana en la cuenta de cheques y cuánto debe pasar al ahorro. Luego dile cuánto ganaría en un año la parte del ahorro al 4% APY.</p>
+        <textarea id="job-answer" placeholder="Escribe tu recomendación para Ana…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Dejar en cheques:</b> $750 de gastos hasta su próximo pago + un colchón de unos $250 = <b>$1,000</b>. (Un colchón más grande va con un presupuesto más grande).</p>
+            <p><b>Pasar al ahorro:</b> $4,000 − $1,000 = <b>$3,000</b>. Al 4% APY, eso gana $3,000 × 0.04 = <b>$120</b> al año, contra $0 en la cuenta de cheques.</p>
+            <p><b>Dile a Ana:</b> sus pagos fijos y su tarjeta siguen saliendo de la cuenta de cheques, y puede transferir dinero desde el ahorro cuando lo necesite.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">Todo lo que haces con tu dinero <em>empieza aquí.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección empieza el curso y lleva a abrir una cuenta, el ahorro de alto rendimiento, el presupuesto y la inversión">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Inicio del curso</text><text x="20" y="186">No hace falta ninguna lección antes</text>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Cheques y ahorro</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Abre tu primera cuenta</text><text x="690" y="66">Siguiente · bancos y cooperativas</text>
+          <a href="../budgeting/"><text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Presupuesto</text><text x="690" y="146">Unidad 3 · un trabajo para cada dólar</text></a>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Ahorro de alto rendimiento</text><text x="690" y="226">Unidad 3 · que tu ahorro gane más</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">¿Por qué invertir?</text><text x="690" y="306">Unidad 5 · más allá del ahorro</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: lo que viene antes, esta lección en el medio y las lecciones que se apoyan en ella.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes</span><b>Inicio del curso</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Cheques y ahorro</b></li>
+        <li><span class="muted small">Siguiente · Unidad 1</span><b>Abre tu primera cuenta</b></li>
+        <li><span class="muted small">Después · Unidad 3</span><b>Presupuesto</b></li>
+        <li><span class="muted small">Después · Unidad 3</span><b>Ahorro de alto rendimiento</b></li>
+        <li><span class="muted small">Después · Unidad 5</span><b>¿Por qué invertir?</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../budgeting/">Siguiente lección abierta: Dale un trabajo a cada dólar <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about.html">Acerca de y contacto</a><a href="../../legal/privacy.html">Privacidad</a><a href="../../legal/terms.html">Términos</a><a href="../../legal/cookies.html">Cookies y almacenamiento</a><a href="../../legal/privacy.html#delete">Borrar mis datos</a><a href="../../credits.html">Créditos</a></nav>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202610270114"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610270114"></script>
+<script src="../../../assets/js/auth.js?v=202610270114"></script>
+<script src="../../../assets/js/site.js?v=202610270114"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610270114"></script>
+<script src="../../../lessons/checking-savings/lesson.js?v=202610270114"></script>
+</body>
+</html>

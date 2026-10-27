@@ -1,0 +1,337 @@
+<!-- title: Where Your Money Lives -->
+<!-- description: Unit 1, Lesson 1: checking vs. savings accounts, interest and APY, and how to split a paycheck between them. Run a practice bank app for a month. -->
+<!-- kicker: Unit 1 · Lesson 1 -->
+<!-- topic: Checking and savings -->
+
+<!-- @start -->
+        <h1 class="reveal">Where your money <em>lives.</em></h1>
+        <p class="story reveal"><span class="story-tag">Where the story starts</span> You just got a part-time job, and your first paycheck is on the way: <span class="mark">$600</span> for two weeks of work. Right now your only savings is <span class="mark">$300</span> in cash in a shoebox. Your manager hands you a direct deposit form and asks which bank account your pay should go to. You don't have one yet. So where should your money live?</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>The two basic bank accounts: a <dfn class="term" data-def="A bank account for everyday money moving in and out: your pay comes in, and your card swipes and bills go out.">checking account</dfn> for spending and a <dfn class="term" data-def="A bank account for money you're setting aside for later. It pays you interest.">savings account</dfn> for money you set aside.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Cash can be lost or stolen and earns nothing. A bank keeps it safe, lets you pay with a card or an app, and pays you to hold your savings.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Your pay lands in checking. Keep enough there for your bills plus a little extra, and move the rest to savings.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Personal bankers</b> help people choose and open accounts. <b>Bank treasury teams</b> decide what interest rate savings accounts pay.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="A paycheck drops into a checking account card, and coins move from checking into a savings jar">
+          <g transform="translate(130 60)">
+            <rect x="-90" y="0" width="180" height="96" rx="10" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/>
+            <path d="M-90 10 L0 58 L90 10" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+            <text x="0" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--savings)">$600</text>
+          </g>
+          <path d="M130 170 V214" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 7" class="cs-flow"/>
+          <path d="M120 206 l10 12 l10 -12" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(130 300)">
+            <rect x="-110" y="-70" width="220" height="140" rx="16" fill="var(--needs)"/>
+            <rect x="-86" y="-34" width="38" height="28" rx="5" fill="#f2c96b"/>
+            <path d="M-86 -20 h38 M-67 -34 v28" stroke="#c9a040" stroke-width="1.5"/>
+            <text x="-86" y="34" font-family="Fraunces, serif" font-size="20" fill="#fff" letter-spacing="2">•••• 4821</text>
+            <text x="86" y="-42" text-anchor="end" font-size="14" font-weight="700" fill="#fff" opacity=".85">DEBIT</text>
+          </g>
+          <path d="M248 300 C 300 300, 320 300, 352 300" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 7" fill="none" class="cs-flow"/>
+          <path d="M344 290 l12 10 l-12 10" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g transform="translate(430 300)">
+            <path d="M-56 -66 h112 v12 c18 10 22 24 22 44 v86 c0 18 -14 30 -32 30 h-92 c-18 0 -32 -12 -32 -30 v-86 c0 -20 4 -34 22 -44z" fill="var(--savings)" opacity=".14" stroke="var(--savings)" stroke-width="3"/>
+            <rect x="-62" y="-82" width="124" height="18" rx="6" fill="var(--savings)"/>
+            <g fill="#f2c96b" stroke="#c9a040" stroke-width="2">
+              <ellipse cx="-30" cy="92" rx="22" ry="8"/><ellipse cx="0" cy="92" rx="22" ry="8"/><ellipse cx="30" cy="92" rx="22" ry="8"/>
+              <ellipse cx="-16" cy="80" rx="22" ry="8"/><ellipse cx="16" cy="80" rx="22" ry="8"/><ellipse cx="0" cy="68" rx="22" ry="8"/>
+            </g>
+            <ellipse cx="0" cy="-40" rx="14" ry="5" fill="#f2c96b" stroke="#c9a040" stroke-width="2" class="cs-coin"/>
+            <text x="0" y="16" text-anchor="middle" font-size="15" font-weight="700" fill="var(--savings)">4% APY</text>
+          </g>
+          <text x="130" y="420" text-anchor="middle" font-family="Fraunces, serif" font-size="23" fill="var(--ink)">Checking</text>
+          <text x="130" y="446" text-anchor="middle" font-size="15" fill="var(--ink-2)">money for this month</text>
+          <text x="430" y="420" text-anchor="middle" font-family="Fraunces, serif" font-size="23" fill="var(--ink)">Savings</text>
+          <text x="430" y="446" text-anchor="middle" font-size="15" fill="var(--ink-2)">money for later</text>
+          <text x="260" y="512" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="21" fill="var(--ink-2)">spend from one, grow the other</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a sketch, not real data. Your $600 paycheck drops into checking, which comes with a debit card. Money you don't need this month moves over to the savings jar, where it earns interest.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Two accounts, <em>two jobs.</em></h2>
+      <p class="lead reveal">A bank gives you two basic accounts, and each one has its own job. A <dfn class="term" data-def="A bank account for everyday money moving in and out: your pay comes in, and your card swipes and bills go out.">checking account</dfn> is for money moving in and out every day. A <dfn class="term" data-def="A bank account for money you're setting aside for later. It pays you interest.">savings account</dfn> is for money you're setting aside for later.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Checking account</dt><dd>Your <b>$600</b> paycheck lands here, and your <b>$45</b> phone bill and a <b>$12</b> lunch come out of here.</dd></div><div><dt>Savings account</dt><dd>Money you won't touch this month, like <b>$500</b> you're building up for a car, waits here.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Savings pays you to wait</h3>
+      <p class="reveal">A savings account pays you <dfn class="term" data-def="Money a bank pays you for keeping your money there. (When you borrow, interest is what you pay instead.)">interest</dfn> for keeping money in it. Banks show the rate as an <dfn class="term" data-def="Annual percentage yield: the percent your balance earns in one year.">APY</dfn>, short for annual percentage yield: the percent your balance earns in one year. Most checking accounts pay little or no interest.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>APY</dt><dd><b>4% APY</b> means each $100 earns about <b>$4</b> in a year.</dd></div><div><dt>Interest</dt><dd><b>$500</b> left in savings for a year at 4% APY earns about <b>$20</b>. That $20 is the interest.</dd></div></dl></div>
+      <p class="small muted reveal">Rates change over time. In 2025, basic savings accounts at many big banks paid about 0.01%, and many online savings accounts paid about 3.5% to 4%. This lesson uses 4% to keep the math easy.</p>
+
+      <h3 class="reveal" style="margin-top:56px">How money moves between them</h3>
+      <p class="reveal">Your pay usually reaches checking by <dfn class="term" data-def="Your employer sends your pay straight into your bank account, so there's no paper check to cash.">direct deposit</dfn>. You spend from checking with a <dfn class="term" data-def="A card that pays for things straight out of your checking account. It spends money you already have, not borrowed money.">debit card</dfn>, and bills can come out on their own on autopay. Between your two accounts you make a <dfn class="term" data-def="Moving money from one of your accounts to another. Between two accounts at the same bank, it usually happens right away.">transfer</dfn>, which at the same bank usually happens right away.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Direct deposit</dt><dd>Your <b>$600</b> paycheck shows up in checking on payday, every other Friday.</dd></div><div><dt>Debit card</dt><dd>You buy a <b>$12</b> lunch, and $12 leaves checking right away.</dd></div><div><dt>Transfer</dt><dd>You move <b>$500</b> from checking to savings in your bank's app.</dd></div></dl></div>
+      <svg class="cs-map reveal" viewBox="0 0 900 330" role="img" aria-label="Money flow: a paycheck goes into checking by direct deposit. Debit card purchases and bills come out of checking. Transfers move money between checking and savings.">
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path d="M150 165 H300" stroke="var(--savings)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M470 140 C 540 140, 560 70, 640 70" stroke="var(--danger)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M470 165 C 540 165, 560 165, 640 165" stroke="var(--danger)" class="cs-flow" stroke-dasharray="8 8"/>
+          <path d="M385 215 V250" stroke="var(--accent)"/>
+          <path d="M385 250 C 385 270, 400 280, 430 280 H 560" stroke="var(--accent)" class="cs-flow" stroke-dasharray="8 8"/>
+        </g>
+        <path d="M290 157 l12 8 l-12 8 M630 62 l12 8 l-12 8 M630 157 l12 8 l-12 8 M550 272 l12 8 l-12 8" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="20" y="130" width="130" height="70" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+        <text x="85" y="162" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Paycheck</text>
+        <text x="85" y="184" text-anchor="middle" font-size="14" fill="var(--ink-2)">$600</text>
+        <text x="225" y="152" text-anchor="middle" font-size="14" fill="var(--ink-2)">direct deposit</text>
+        <rect x="300" y="115" width="170" height="100" rx="16" fill="var(--needs)"/>
+        <text x="385" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="#fff">Checking</text>
+        <text x="385" y="184" text-anchor="middle" font-size="14" fill="#fff" opacity=".9">little or no interest</text>
+        <text x="660" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Debit card swipes</text>
+        <text x="660" y="88" font-size="14" fill="var(--ink-2)">lunch $12, gas $40</text>
+        <text x="660" y="161" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Bills on autopay</text>
+        <text x="660" y="183" font-size="14" fill="var(--ink-2)">phone $45, streaming $15</text>
+        <text x="470" y="270" text-anchor="middle" font-size="14" fill="var(--ink-2)">transfer</text>
+        <rect x="570" y="245" width="170" height="70" rx="16" fill="var(--savings)"/>
+        <text x="655" y="276" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="#fff">Savings</text>
+        <text x="655" y="298" text-anchor="middle" font-size="14" fill="#fff" opacity=".9">earns 4% APY</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a diagram, not data. Green arrows bring money in, red arrows take it out. Your paycheck arrives in checking by direct deposit. Card swipes and autopay bills leave from checking. A transfer moves money you don't need yet over to savings.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Side by side</h3>
+      <div class="reveal" style="overflow-x:auto">
+        <table class="mini-table">
+          <thead><tr><th></th><th>Checking</th><th>Savings</th></tr></thead>
+          <tbody>
+            <tr><td><b>Main job</b></td><td>Everyday spending</td><td>Money set aside for later</td></tr>
+            <tr><td><b>Paycheck lands here</b></td><td>Usually</td><td>Rarely</td></tr>
+            <tr><td><b>Debit card</b></td><td>Yes</td><td>Usually no</td></tr>
+            <tr><td><b>Interest</b></td><td>Little or none</td><td>Yes, shown as APY</td></tr>
+            <tr><td><b>Taking money out</b></td><td>As often as you like</td><td>Many banks allow about 6 times a month</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal" style="margin-top:56px">When checking runs dry</h3>
+      <p class="reveal">If you spend more than you have in checking, that's an <dfn class="term" data-def="Spending more than your checking account holds. The bank may cover the gap and charge you a fee for it.">overdraft</dfn>. The bank may cover the gap and charge an <b>overdraft fee</b>. Some big banks charge about $35 each time, some charge less, and some charge nothing. That's why people keep a <dfn class="term" data-def="Extra money you keep in checking on top of your planned bills, so a surprise doesn't overdraw the account.">cushion</dfn> in checking: extra money on top of the bills, for surprises like a flat tire.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Overdraft</dt><dd>You have <b>$40</b> in checking and swipe your card for <b>$60</b>. You're $20 short. If the bank covers it and charges <b>$35</b>, you now owe the bank $20 + $35 = <b>$55</b>.</dd></div><div><dt>Cushion</dt><dd>Your bills until payday are $250. Keeping <b>$150</b> more on top of that is your cushion. In this lesson, aim for a cushion of <b>$100 to $200</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Split your $900</h3>
+      <p class="reveal">Your <b>$300</b> in cash plus your <b>$600</b> paycheck makes <b>$900</b>. Your bills and spending until the next paycheck, two weeks away, come to <b>$250</b>: phone $45, gas $80, groceries $110 and streaming $15. Drag the slider to choose how much goes to savings.</p>
+      <div class="split reveal" id="split">
+        <div class="split-top"><span class="small muted">Moved to savings</span><b id="sp-move">$0</b></div>
+        <input type="range" id="sp-range" min="0" max="900" step="25" value="0" aria-label="Amount moved to savings">
+        <div class="split-accts">
+          <div class="split-acct chk"><small>Checking</small><b id="sp-chk">$900</b><p id="sp-chk-note"></p></div>
+          <div class="split-acct sav"><small>Savings · 4% APY</small><b id="sp-sav">$0</b><p id="sp-sav-note"></p></div>
+        </div>
+        <svg class="split-bar" id="sp-bar" viewBox="0 0 640 86" role="img" aria-label="Checking balance compared with bills and a cushion">
+          <rect x="20" y="22" width="600" height="26" rx="6" fill="var(--paper-2)"/>
+          <rect x="20" y="22" width="166.7" height="26" fill="var(--danger)" opacity=".16"/>
+          <rect x="186.7" y="22" width="133.3" height="26" fill="var(--savings)" opacity=".18"/>
+          <rect id="sp-fill" x="20" y="28" width="600" height="14" rx="4" fill="var(--needs)"/>
+          <path d="M186.7 14 V56 M320 14 V56" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="103" y="72" text-anchor="middle" font-size="13" fill="var(--ink-2)">bills $250</text>
+          <text x="253" y="72" text-anchor="middle" font-size="13" fill="var(--ink-2)">cushion</text>
+          <g font-size="12" fill="var(--ink-3)"><text x="20" y="12">$0</text><text x="186.7" y="12" text-anchor="middle">$250</text><text x="320" y="12" text-anchor="middle">$450</text><text x="620" y="12" text-anchor="end">$900</text></g>
+        </svg>
+        <p class="split-msg" id="sp-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> your checking balance as a blue bar, on a scale from $0 to $900. The red zone is the $250 you'll spend before the next paycheck. The green zone, from $250 to $450, is a $100 to $200 cushion. The savings card shows what the rest earns in a year at 4% APY.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Run your <em>bank app.</em></h2>
+      <p class="lead reveal">This is a practice bank app with your two accounts. You'll run one month, a week at a time. Before each week, move money between checking and savings. Then the week plays out, and bills and card swipes come out of checking. Two goals: never let checking drop below $0, since each overdraft costs a $35 fee, and keep as much as you safely can in savings, where it earns 4% APY.</p>
+
+      <div class="bank-game reveal" id="game">
+        <div class="phone" aria-label="Practice bank app">
+          <div class="ph-bar"><span class="ph-bank">Practice Bank</span><span class="ph-week" id="g-week">Week 1 of 4</span></div>
+          <div class="ph-acct chk" id="g-chk-card"><small>Checking ••4821</small><b id="g-chk">$0.00</b><span>Available balance</span></div>
+          <div class="ph-acct sav" id="g-sav-card"><small>Savings ••7310 · 4.00% APY</small><b id="g-sav">$0.00</b><span id="g-int">Interest so far this month: $0.00</span></div>
+          <div class="ph-transfer" id="g-transfer">
+            <b class="ph-title">Transfer</b>
+            <div class="ph-dir" role="group" aria-label="Transfer direction">
+              <button class="chip on" type="button" data-dir="save">Checking → Savings</button>
+              <button class="chip" type="button" data-dir="spend">Savings → Checking</button>
+            </div>
+            <div class="ph-amt">
+              <button class="icon-btn" type="button" id="g-minus" aria-label="Less">−</button>
+              <label class="ph-amt-in"><span>$</span><input type="text" id="g-amt" value="100" inputmode="numeric" aria-label="Transfer amount in dollars"></label>
+              <button class="icon-btn" type="button" id="g-plus" aria-label="More">+</button>
+            </div>
+            <button class="btn sm" type="button" id="g-move">Transfer</button>
+            <small class="ph-wd" id="g-wd">Savings withdrawals: 0 of 6 this month</small>
+          </div>
+          <b class="ph-title ph-act-title">Activity</b>
+          <ul class="ph-activity" id="g-act" aria-live="polite"></ul>
+        </div>
+        <div class="ledger coach">
+          <div class="small muted" id="g-phase">Plan week 1</div>
+          <div class="left-big" id="g-title">Coming up this week</div>
+          <ul class="upcoming" id="g-up"></ul>
+          <p class="split-note" id="g-hint"></p>
+          <button class="btn" type="button" id="g-go">Live the week <span class="arrow">→</span></button>
+          <div class="gauges" style="margin-top:20px">
+            <div class="gauge"><small>Overdraft fees</small><b id="g-fees">$0</b></div>
+            <div class="gauge"><small>Average in savings</small><b id="g-avg">$0</b></div>
+            <div class="gauge"><small>Interest earned</small><b id="g-earn">$0.00</b></div>
+          </div>
+          <div id="g-result" class="hidden"></div>
+        </div>
+      </div>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every payday, you answer three questions: how much checking needs, how much moves to savings, and what that savings will earn.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: How much checking needs</h3>
+      <p class="reveal">Add up everything you'll spend before your next paycheck arrives. Then add your cushion for surprises. That total is what to keep in checking.</p>
+      <div class="formula reveal">Keep in checking <span class="op">=</span> spending until next payday <span class="op">+</span> cushion</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Spending until payday</dt><dd>Phone $45 + gas $80 + groceries $110 + streaming $15 = <b>$250</b></dd></div><div><dt>Cushion</dt><dd><b>$150</b>, in the middle of the $100 to $200 range</dd></div><div><dt>Keep in checking</dt><dd>$250 + $150 = <b>$400</b></dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Move the rest to savings</h3>
+      <p class="reveal">Whatever is left over after the checking amount goes to savings.</p>
+      <div class="formula reveal">Move to savings <span class="op">=</span> total money <span class="op">−</span> keep in checking</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Move to savings</dt><dd>$900 − $400 = <b>$500</b></dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: What savings earns</h3>
+      <p class="reveal">If the balance stays the same all year, the interest for the year is the balance times the APY. To use a percent in math, divide it by 100 first. So 4% becomes <span class="frac"><span>4</span><span>100</span></span> = 0.04. For a rough monthly amount, divide the yearly interest by 12.</p>
+      <div class="formula reveal">Interest for a year <span class="op">=</span> balance <span class="op">×</span> APY</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>At 4% APY</dt><dd>$500 × 0.04 = <b>$20</b> a year, or about <span class="frac"><span>$20</span><span>12</span></span> ≈ <b>$1.67</b> a month.</dd></div><div><dt>At 0.01% APY</dt><dd>0.01% is <span class="frac"><span>0.01</span><span>100</span></span> = 0.0001, so $500 × 0.0001 = <b>$0.05</b> a year. Five cents.</dd></div><div><dt>The difference</dt><dd>$20 − $0.05 = <b>$19.95</b> a year, on the same $500, just from picking the account.</dd></div></dl></div>
+
+      <h3 class="reveal">Why not keep everything in savings?</h3>
+      <p class="reveal">Your debit card and your autopay bills pull from checking, not savings. If checking is too low, a bill can overdraw it before you notice. Many banks also allow only about six withdrawals or transfers out of savings each month, and some charge a fee past that. Savings is built for waiting, not for paying.</p>
+
+      <h3 class="reveal">Why not keep everything in checking?</h3>
+      <p class="reveal">Checking pays little or no interest, so the extra money there earns nothing. It's also easy to spend by accident: every dollar in checking is one swipe of your debit card away. Money in a separate savings account is a little harder to reach, which helps it stay saved.</p>
+
+      <h3 class="reveal">Worked example: the next payday</h3>
+      <ol class="steps reveal">
+        <li><b>Payday.</b> Two weeks later, $150 is left in checking, and another $600 paycheck arrives. Checking now has $150 + $600 = <b>$750</b>.</li>
+        <li><b>Spending until the next payday.</b> Car insurance $110 + groceries $60 + gas $40 = <b>$210</b>.</li>
+        <li><b>Keep in checking.</b> $210 + a $150 cushion = <b>$360</b>.</li>
+        <li><b>Move to savings.</b> $750 − $360 = <b>$390</b>.</li>
+        <li><b>What it earns.</b> $390 × 0.04 = about <b>$15.60</b> a year, added on top of what's already there.</li>
+      </ol>
+      <p class="reveal">Many banks let you set up an automatic transfer on payday, so this happens without you having to remember it.</p>
+
+<!-- @nature -->
+      <h2 class="reveal">Bees keep two kinds <em>of honey.</em></h2>
+      <p class="lead reveal">Inside a hive, the cells near the middle hold honey and pollen that feed the colony every day. Honey for winter goes in the outer cells. Once it's ready, the bees seal each of those cells with a wax cap, and they don't open the caps until they need them. Your checking account is the open cells. Your savings account is the capped ones.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="A honeycomb. The open cells in the middle hold honey for daily use. The sealed cells around the edge store honey for winter.">
+        <defs><path id="hex" d="M0 -30 L26 -15 L26 15 L0 30 L-26 15 L-26 -15Z"/></defs>
+        <g stroke="var(--ink)" stroke-width="2">
+          <use href="#hex" x="330" y="110" fill="var(--wants)" opacity=".85"/><use href="#hex" x="382" y="110" fill="#f2c96b"/><use href="#hex" x="434" y="110" fill="#f2c96b"/><use href="#hex" x="486" y="110" fill="#f2c96b"/><use href="#hex" x="538" y="110" fill="var(--wants)" opacity=".85"/>
+          <use href="#hex" x="356" y="155" fill="#f2c96b"/><use href="#hex" x="408" y="155" fill="var(--card)"/><use href="#hex" x="460" y="155" fill="#f2c96b"/><use href="#hex" x="512" y="155" fill="#f2c96b"/>
+          <use href="#hex" x="330" y="200" fill="var(--wants)" opacity=".85"/><use href="#hex" x="382" y="200" fill="#f2c96b"/><use href="#hex" x="434" y="200" fill="var(--card)"/><use href="#hex" x="486" y="200" fill="#f2c96b"/><use href="#hex" x="538" y="200" fill="var(--wants)" opacity=".85"/>
+        </g>
+        <g stroke="var(--ink)" stroke-width="2" fill="#e8d9a8">
+          <use href="#hex" x="226" y="110"/><use href="#hex" x="278" y="110"/><use href="#hex" x="252" y="155"/><use href="#hex" x="304" y="155"/><use href="#hex" x="226" y="200"/><use href="#hex" x="278" y="200"/><use href="#hex" x="252" y="245"/><use href="#hex" x="304" y="245"/>
+          <use href="#hex" x="590" y="110"/><use href="#hex" x="642" y="110"/><use href="#hex" x="564" y="155"/><use href="#hex" x="616" y="155"/><use href="#hex" x="590" y="200"/><use href="#hex" x="642" y="200"/><use href="#hex" x="564" y="245"/><use href="#hex" x="616" y="245"/>
+        </g>
+        <g fill="var(--ink-3)" opacity=".5"><circle cx="226" cy="110" r="3"/><circle cx="278" cy="110" r="3"/><circle cx="252" cy="155" r="3"/><circle cx="304" cy="155" r="3"/><circle cx="226" cy="200" r="3"/><circle cx="278" cy="200" r="3"/><circle cx="252" cy="245" r="3"/><circle cx="304" cy="245" r="3"/><circle cx="590" cy="110" r="3"/><circle cx="642" cy="110" r="3"/><circle cx="564" cy="155" r="3"/><circle cx="616" cy="155" r="3"/><circle cx="590" cy="200" r="3"/><circle cx="642" cy="200" r="3"/><circle cx="564" cy="245" r="3"/><circle cx="616" cy="245" r="3"/></g>
+        <g class="cs-bee"><ellipse cx="434" cy="40" rx="15" ry="10" fill="#f2c96b" stroke="var(--ink)" stroke-width="2"/><path d="M430 31 v18 M438 31 v18" stroke="var(--ink)" stroke-width="3"/><ellipse cx="428" cy="27" rx="8" ry="5" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5" opacity=".9"/><ellipse cx="440" cy="27" rx="8" ry="5" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5" opacity=".9"/></g>
+        <text x="434" y="296" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Open cells: food for today</text><text x="434" y="320" text-anchor="middle" font-size="16" fill="var(--ink-2)">like checking</text>
+        <text x="130" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Capped cells:</text>
+        <text x="130" y="194" text-anchor="middle" font-size="16" fill="var(--ink-2)">winter honey, like savings</text>
+        <text x="770" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Capped cells:</text>
+        <text x="770" y="194" text-anchor="middle" font-size="16" fill="var(--ink-2)">sealed until needed</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. The open yellow cells in the middle hold honey for daily use, and the orange ones hold pollen. The pale cells on the left and right are sealed with wax, storing honey for winter.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> A hive that eats its capped honey in summer starves in winter. A hive with no open honey can't feed itself today. It needs both, kept apart, and so does your money.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Checking account:</b> everyday money in and out. Direct deposit, debit card, bills. Little or no interest.</li>
+          <li><b>Savings account:</b> money set aside for later. Earns interest. Many banks allow about 6 withdrawals a month.</li>
+          <li><b>APY:</b> the percent your balance earns in a year. Interest for a year = balance × APY, with the APY as a decimal (4% = 0.04).</li>
+          <li><b>Keep in checking</b> = spending until next payday + a cushion. <b>Move the rest</b> to savings.</li>
+          <li><b>Overdraft:</b> spending more than checking holds. The bank may charge a fee, about $35 at some big banks.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Your paycheck arrives in your <input type="text" class="blank" data-answer="checking|checking account" aria-label="Blank 1"> account by direct deposit.</div>
+        <div>2. $1,000 in savings at 4% APY earns about $<input type="text" class="blank" data-answer="40|forty" inputmode="numeric" aria-label="Blank 2"> in a year.</div>
+        <div>3. A debit card takes money out of your <input type="text" class="blank" data-answer="checking|checking account" aria-label="Blank 3"> account.</div>
+        <div>4. Spending until payday is $300, and you want a $150 cushion. Keep $<input type="text" class="blank" data-answer="450" inputmode="numeric" aria-label="Blank 4"> in checking.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Rate race</h3>
+          <p>Each person picks a different bank or credit union and looks up its savings APY on its website. Work out what $1,000 would earn in a year at each one. Whose pick wins, and by how much?</p>
+        </div>
+        <div class="reveal">
+          <h3>Read the fine print</h3>
+          <p>Pick one bank's checking account page together. Find the monthly fee, how to avoid it, and the overdraft fee. Would this account work for someone with a $600 paycheck?</p>
+        </div>
+        <div class="reveal">
+          <h3>Sixty-second split</h3>
+          <p>One person names a paycheck and a list of bills. The other has 60 seconds to say how much stays in checking and how much moves to savings, with the math out loud. Then switch.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Where does your money live right now: cash, a card, an app, a bank account? How do you feel about that?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What's one thing you'd save for in a savings account? About how much does it cost?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Think about your own bills and spending for two weeks. How much would you keep in checking, and what cushion feels safe to you?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the personal banker</h3>
+      <div class="reveal">
+        <p>A customer, Ana, keeps <b>$4,000</b> in checking and nothing in savings. Her checking pays no interest. She's paid twice a month, and she spends about <b>$750</b> between paychecks.</p>
+        <p><b>Your task:</b> recommend how much Ana should keep in checking and how much she should move to savings. Then tell her how much the savings part would earn in a year at 4% APY.</p>
+        <textarea id="job-answer" placeholder="Write your recommendation to Ana…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Keep in checking:</b> $750 of spending until her next paycheck + a cushion of about $250 = <b>$1,000</b>. (A bigger cushion fits her bigger budget.)</p>
+            <p><b>Move to savings:</b> $4,000 − $1,000 = <b>$3,000</b>. At 4% APY, that earns $3,000 × 0.04 = <b>$120</b> a year, compared with $0 in checking.</p>
+            <p><b>Tell Ana:</b> her bills and card still run from checking, and she can transfer money back from savings any time she needs it.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Every money move <em>starts here.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson starts the course and leads to opening an account, high-yield savings, budgeting, and investing">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="15" fill="var(--ink-2)">
+          <text x="20" y="164" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Start of the course</text><text x="20" y="186">No lessons needed before this one</text>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Checking and savings</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Open your first account</text><text x="690" y="66">Next lesson · banks and credit unions</text>
+          <a href="../budgeting/"><text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Budgeting</text><text x="690" y="146">Unit 3 · a job for every dollar</text></a>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">High-yield savings</text><text x="690" y="226">Unit 3 · make savings earn more</text>
+          <text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Why invest at all?</text><text x="690" y="306">Unit 5 · beyond a savings account</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: what comes before, this lesson in the middle, and the later lessons that build on it.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Before</span><b>Start of the course</b></li>
+        <li class="here"><span class="small">You are here</span><b>Checking and savings</b></li>
+        <li><span class="muted small">Next · Unit 1</span><b>Open your first account</b></li>
+        <li><span class="muted small">Later · Unit 3</span><b>Budgeting</b></li>
+        <li><span class="muted small">Later · Unit 3</span><b>High-yield savings</b></li>
+        <li><span class="muted small">Later · Unit 5</span><b>Why invest at all?</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../budgeting/">Next open lesson: Give every dollar a job <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>

@@ -94,7 +94,7 @@
   // `needs` lists lessons it builds on; a path adds any the learner skipped.
   const L = (unit, n, id, title, sub, extra) => Object.assign({ unit, n, id, title, sub }, extra);
   const CATALOG = [
-    L(1, 1, "u1-checking-savings", t("Where your money lives", "Dónde vive tu dinero"), t("Checking vs. savings", "Cuenta de cheques vs. de ahorro")),
+    L(1, 1, "u1-checking-savings", t("Where your money lives", "Dónde vive tu dinero"), t("Checking vs. savings · Run your bank app", "Cheques vs. ahorro · Maneja la app de tu banco"), { href: "lessons/checking-savings/" }),
     L(1, 2, "u1-open-account", t("Open your first account", "Abre tu primera cuenta"), t("Banks, credit unions and FDIC insurance", "Bancos, cooperativas y el seguro de la FDIC")),
     L(1, 3, "u1-bank-fees", t("Dodge the fees", "Evita las comisiones"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones")),
     L(1, 4, "u1-moving-money", t("Move money safely", "Mueve tu dinero con seguridad"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago")),
