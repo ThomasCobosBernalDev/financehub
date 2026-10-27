@@ -1,0 +1,22 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "401(k)": "four oh one K",
+    "IRAs": "I R A's",
+    "IRA": "I R A",
+    "S&P": "S and P",
+    "IRS": "I R S"
+  },
+  "lines": [
+    "Your first real job offer will come with a benefits packet, and somewhere in it is a line about a 401(k) and a match. Over a career, that one line can be worth hundreds of thousands of dollars.",
+    "A 401(k) is a retirement account through your job. You pick a percent of pay, and that slice of every paycheck goes in and gets invested before you ever see it. In 2026 you can put in up to 24,500 dollars a year.",
+    "Many employers add a match. If yours matches 100 percent up to 4 percent of pay, and you earn 50,000 dollars, you put in 2,000 and they add 2,000. That's a 100 percent return on day one. Always put in at least enough to get the whole match.",
+    "The match may need to vest, which means become fully yours, after a few years on the job. Your own contributions are always yours.",
+    "Traditional accounts skip the tax now and tax the money when you take it out. Roth accounts are the reverse: you pay tax now, and everything comes out tax-free in retirement. If your tax rate is low now and likely higher later, Roth usually wins. If the rates are the same, they tie exactly.",
+    "An IRA is a retirement account you open yourself, at a brokerage like Oakline. In 2026 you can put in up to 7,500 dollars, but no more than you earned from work. A summer job is enough to start a Roth IRA in college.",
+    "Time does the heavy lifting. 200 dollars a month from age 22, growing 7 percent a year after inflation, is about 686,000 dollars at 67. Start at 32 instead and it's about 332,000, less than half.",
+    "Don't cash out early. Before age 59 and a half, you usually pay a 10 percent penalty plus income tax. When you change jobs, roll the money into an IRA or your new plan instead.",
+    "The order is simple: get the whole match, then fill a Roth IRA, then put more in the 401(k), all in low-cost index or target-date funds. Like a squirrel burying acorns, put a little away with every paycheck and leave it alone. The ones left in the ground grow into oaks."
+  ]
+}

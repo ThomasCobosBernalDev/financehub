@@ -1,0 +1,23 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "401(k)": "cuatro cero uno ka",
+    "IRAs": "i erre a",
+    "IRA": "i erre a",
+    "S&P": "ese y pe",
+    "IRS": "i erre ese"
+  },
+  "lines": [
+    "Tu primera oferta de trabajo de verdad va a venir con un paquete de beneficios, y en algún lugar dice algo de un 401(k) y una aportación del empleador. A lo largo de tu carrera, esa sola línea puede valer cientos de miles de dólares.",
+    "Un 401(k) es una cuenta para el retiro que tienes por tu trabajo. Eliges un porcentaje del sueldo, y esa parte de cada cheque entra y se invierte antes de que la veas. En 2026 puedes poner hasta 24,500 dólares al año.",
+    "Muchos empleadores agregan una aportación equivalente. Si el tuyo iguala el 100 por ciento hasta el 4 por ciento del sueldo, y ganas 50,000 dólares, tú pones 2,000 y ellos agregan 2,000. Es un rendimiento de 100 por ciento desde el primer día. Siempre pon por lo menos lo necesario para recibir toda la aportación.",
+    "Puede que la aportación del empleador tarde unos años de trabajo en volverse completamente tuya. Lo que tú aportas siempre es tuyo.",
+    "Las cuentas tradicionales no pagan impuesto ahora y lo cobran cuando sacas el dinero. Las cuentas Roth son al revés: pagas el impuesto ahora y todo sale sin impuestos en el retiro. Si tu tasa de impuestos es baja ahora y probablemente más alta después, la Roth normalmente gana. Si las tasas son iguales, empatan exactamente.",
+    "Una IRA es una cuenta para el retiro que abres tú mismo, en una casa de bolsa como Oakline. En 2026 puedes poner hasta 7,500 dólares, pero no más de lo que ganaste trabajando. Un trabajo de verano basta para empezar una Roth IRA en la universidad.",
+    "El tiempo hace el trabajo pesado. 200 dólares al mes desde los 22 años, creciendo 7 por ciento al año después de la inflación, son como 686,000 dólares a los 67. Si empiezas a los 32, son como 332,000, menos de la mitad.",
+    "No saques el dinero antes de tiempo. Antes de los 59 años y medio, normalmente pagas una multa de 10 por ciento más el impuesto sobre la renta. Cuando cambies de trabajo, mejor pasa el dinero a una IRA o a tu nuevo plan.",
+    "El orden es sencillo: recibe toda la aportación, luego llena una Roth IRA, y luego pon más en el 401(k), todo en fondos indexados o con fecha objetivo de bajo costo. Como una ardilla que entierra bellotas, guarda un poco con cada cheque y no lo toques. Las que se quedan en la tierra se vuelven robles."
+  ]
+}
