@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>FinanceHub</title>
-  <meta name="description" content="A visual, game-based finance and business course, from your first paycheck to Wall Street.">
+  <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610270017">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610270047">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -52,8 +52,36 @@
     .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
     .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
     .my-path-card .btn { flex: none; }
-    .mp-actions { flex: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .mp-actions { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
     .mp-actions .text-link { font-size: 14px; color: var(--ink-3); }
+    .unit.planned h3 { color: var(--ink-2); }
+    .unit.planned > div:last-child { flex: 1; padding: 6px 0 0; }
+    .unit .lessons .soon { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; padding: 8px 14px 8px 10px; }
+    .unit .lessons .soon .dot { box-shadow: inset 0 0 0 2px var(--line); }
+    .unit .lessons .soon b { color: var(--ink-3); font-size: 17px; }
+    .unit .lessons .off-path { opacity: .45; }
+    .unit .lessons .off-path:hover { opacity: 1; }
+    .hero-setup p { margin: 0 0 10px; }
+    .quick-goals { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+    .my-path-card.has-list { display: block; }
+    .mp-head { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
+    .mp-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; counter-reset: mp; }
+    .mp-list li { counter-increment: mp; }
+    .mp-list a, .mp-list .mp-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--card); color: inherit; text-decoration: none; height: 100%; box-sizing: border-box; }
+    .mp-list a:hover { box-shadow: inset 0 0 0 1.5px var(--accent); }
+    .mp-list i { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 13px; font-weight: 600; box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
+    .mp-list i::before { content: counter(mp); }
+    .mp-list b { display: block; font-family: var(--serif); font-weight: 500; font-size: 17px; line-height: 1.25; color: var(--ink); }
+    .mp-list small { color: var(--ink-3); font-size: 13px; }
+    .mp-list .done i { background: var(--accent); color: var(--on-color); box-shadow: none; }
+    .mp-list .next a { box-shadow: inset 0 0 0 2px var(--accent); }
+    .mp-list .next small { color: var(--accent); font-weight: 600; }
+    .mp-list .soon .mp-row { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+    .mp-list .soon i { box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
+    .mp-list .soon b { color: var(--ink-2); }
+    .mp-list .known { opacity: .6; }
+    .mp-more { margin-top: 10px; font-size: 14px; }
+    @media (max-width: 640px) { .mp-head { flex-direction: column; align-items: stretch; } .mp-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 18px; } }
     .unit .path-tag { display: inline-block; vertical-align: middle; font-family: var(--sans); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); position: relative; top: -3px; }
     .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
     .unit.off-path { opacity: .55; }
@@ -140,9 +168,9 @@
   <a href="#top"><i></i><span>Start</span></a>
   <a href="#styles"><i></i><span>How you learn best</span></a>
   <a href="#my-path"><i></i><span>Your path</span></a>
-  <a href="#part-1"><i></i><span>Part 1 · Foundations</span></a>
-  <a href="#part-2"><i></i><span>Part 2 · Your money</span></a>
-  <a href="#part-3"><i></i><span>Part 3 · Your business</span></a>
+  <a href="#part-1"><i></i><span>Part 1 · Money basics</span></a>
+  <a href="#part-2"><i></i><span>Part 2 · The economy</span></a>
+  <a href="#part-3"><i></i><span>Part 3 · Business</span></a>
   <a href="#part-4"><i></i><span>Part 4 · Wall Street</span></a>
   <a href="#part-5"><i></i><span>Part 5 · Career launch</span></a>
 </nav>
@@ -150,9 +178,9 @@
   <section class="fold home-fold" id="top">
     <div>
       <h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>
-      <p class="lead reveal">One story, from your first paycheck to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
-      <div class="continue reveal"><a class="btn" href="lessons/scarcity/" id="continue"><span>Start Unit 1 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Every choice has a price tag</small></div>
-      <p class="hero-setup reveal" id="hero-setup">New here? <a href="start/">Build your own path</a> in about a minute.</p>
+      <p class="lead reveal">One story, from your first bank account to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
+      <div class="continue reveal"><a class="btn" href="lessons/budgeting/" id="continue"><span>Start Unit 3 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Give every dollar a job</small></div>
+      <div class="hero-setup reveal" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
     </div>
     <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
       <div class="lp-kicker">Make it yours</div>
@@ -167,43 +195,7 @@
 
   <div class="my-path-card reveal" id="my-path"></div>
   <div class="path-wrap">
-  <div class="path">
-    <div class="part-name reveal" id="part-1" data-part="1">Part 1 · Foundations</div>
-    <div class="unit live open reveal"><div class="n">1</div><div><h3>How the money system works</h3><p>4 lessons are open. Start here.</p>
-      <ol class="lessons">
-        <li><a href="lessons/scarcity/" data-unit="1" data-n="1" data-lesson="u1-scarcity"><span class="dot"></span><b>Every choice has a price tag</b><small>Scarcity and trade-offs · Ten Free Hours</small></a></li>
-        <li><a href="lessons/supply-demand/" data-unit="1" data-n="2" data-lesson="u1-supply-demand"><span class="dot"></span><b>Why prices are what they are</b><small>Supply and demand · Market Stall</small></a></li>
-        <li><a href="lessons/inflation/" data-unit="1" data-n="3" data-lesson="u1-inflation"><span class="dot"></span><b>Why your money shrinks</b><small>Inflation and GDP · Beat Inflation</small></a></li>
-        <li><a href="lessons/interest-rates/" data-unit="1" data-n="4" data-lesson="u1-interest-rates"><span class="dot"></span><b>Who sets the price of money?</b><small>Interest rates and the Fed · Rate Dial</small></a></li>
-      </ol>
-    </div></div>
-    <div class="unit reveal"><div class="n">2</div><div><h3>Money mindset and math toolkit</h3><p>Coming soon</p></div></div>
-
-    <div class="part-name reveal" id="part-2" data-part="2">Part 2 · Your money</div>
-    <div class="unit reveal"><div class="n">3</div><div><h3>Earning and taxes</h3><p>Coming soon</p></div></div>
-    <div class="unit live open reveal"><div class="n">4</div><div><h3>Budgeting and banking</h3><p>1 lesson is open.</p>
-      <ol class="lessons">
-        <li><a href="lessons/budgeting/" data-unit="4" data-n="1" data-lesson="u4-budgeting-frameworks"><span class="dot"></span><b>Give every dollar a job</b><small>Budgeting frameworks · Month Survivor</small></a></li>
-      </ol>
-    </div></div>
-    <div class="unit reveal"><div class="n">5</div><div><h3>Credit and debt</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">6</div><div><h3>Protection</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">7</div><div><h3>Investing and retirement</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">8</div><div><h3>Big purchases</h3><p>Coming soon</p></div></div>
-
-    <div class="part-name reveal" id="part-3" data-part="3">Part 3 · Your business</div>
-    <div class="unit reveal"><div class="n">9</div><div><h3>Starting a business</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">10</div><div><h3>Accounting</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">11</div><div><h3>Corporate finance</h3><p>Coming soon</p></div></div>
-
-    <div class="part-name reveal" id="part-4" data-part="4">Part 4 · Markets and Wall Street</div>
-    <div class="unit reveal"><div class="n">12</div><div><h3>Investments and portfolios</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">13</div><div><h3>Valuation and modeling</h3><p>Coming soon</p></div></div>
-    <div class="unit reveal"><div class="n">14</div><div><h3>Macro, markets and institutions</h3><p>Coming soon</p></div></div>
-
-    <div class="part-name reveal" id="part-5" data-part="5">Part 5 · Career launch</div>
-    <div class="unit reveal"><div class="n">15</div><div><h3>Excel, Python, SQL and recruiting</h3><p>Coming soon</p></div></div>
-  </div>
+  <div class="path" id="course-map"></div>
   <aside class="road side-scene" aria-hidden="true">
   <div class="ss-art">
   <svg viewBox="0 0 280 260">
@@ -242,7 +234,7 @@
     </g>
   </svg>
   </div>
-  <p class="ss-cap"><small id="ss-kick">Part 1 · Foundations</small><b id="ss-title">Where prices meet</b></p>
+  <p class="ss-cap"><small id="ss-kick">Part 1 · Money basics</small><b id="ss-title">Give every dollar a job</b></p>
   </aside>
   </div>
 </main>
@@ -254,24 +246,49 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610270017"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610270017"></script>
-<script src="assets/js/auth.js?v=202610270017"></script>
-<script src="assets/js/site.js?v=202610270017"></script>
+<script src="assets/js/save.js?v=202610270047"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610270047"></script>
+<script src="assets/js/auth.js?v=202610270047"></script>
+<script src="assets/js/site.js?v=202610270047"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
-// Lesson list: mark finished lessons and point the main button at the next one.
-const links = [...document.querySelectorAll(".lessons a")];
-links.forEach((a) => {
-  const l = FH.state.lessons[a.dataset.lesson];
-  if (l && l.completedAt) { a.classList.add("done"); a.querySelector("small").textContent += T(" · done", " · hecha"); }
+// Course map: every part, unit and lesson, drawn from the catalog in save.js.
+const map = document.getElementById("course-map");
+const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
+map.innerHTML = FH.PARTS.map((p) => `<div class="part-name reveal" id="part-${p.n}" data-part="${p.n}">${T("Part", "Parte")} ${p.n} · ${p.name}</div>` +
+  p.units.map((u) => {
+    const ls = unitLessons(u), open = ls.filter((l) => l.href).length;
+    const status = !ls.length ? T("Coming soon", "Muy pronto")
+      : open ? T(`${open} of ${ls.length} lessons open`, `${open} de ${ls.length} lecciones abiertas`)
+      : T(`${ls.length} lessons planned`, `${ls.length} lecciones planeadas`);
+    const list = !ls.length ? "" : `<ol class="lessons">${ls.map((l) => l.href
+      ? `<li><a href="${l.href}" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub}</small></a></li>`
+      : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
+    return `<div class="unit${open ? " live open" : ls.length ? " planned" : ""} reveal" data-unit="${u}"><div class="n">${u}</div><div><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${status}</p>${list}</div></div>`;
+  }).join("")).join("");
+if (window.FHReveal) FHReveal(map);
+
+// One tap on a goal builds a path without the full setup.
+const quick = document.getElementById("quick-goals");
+FH.GOALS.forEach((g) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.textContent = g.label;
+  b.addEventListener("click", () => {
+    FH.setProfile({ goals: [g.id], level: "new", known: {}, quiz: null, done: true });
+    FH.toast(T("Your path is ready.", "Tu camino está listo."));
+    document.getElementById("my-path").scrollIntoView({ behavior: "smooth" });
+  });
+  quick.appendChild(b);
 });
-// Your path: mark units your goals skip or you already know, and point the main button at the next lesson.
+
+// Your path: the lessons in order, units your goals skip marked Extra, and the main button on the next lesson.
+let showAll = false;
 const paintPath = () => {
-  const { on, known, setUp } = FH.path;
-  document.querySelectorAll(".path .unit").forEach((u) => {
-    const n = Number(u.querySelector(".n").textContent);
+  const { items, on, known, setUp } = FH.path;
+  const onIds = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id));
+  map.querySelectorAll(".unit").forEach((u) => {
+    const n = Number(u.dataset.unit);
     u.classList.toggle("off-path", setUp && !on.has(n));
     u.classList.toggle("known", known.has(n));
     let tag = u.querySelector(".path-tag");
@@ -280,32 +297,65 @@ const paintPath = () => {
     if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
     tag.textContent = text;
   });
+  map.querySelectorAll("[data-lesson]").forEach((el) => {
+    const id = el.dataset.lesson, done = FH.done(id), sm = el.querySelector("small");
+    el.classList.toggle("done", done);
+    el.classList.toggle("off-path", setUp && !onIds.has(id));
+    sm.dataset.base = sm.dataset.base || sm.textContent;
+    sm.textContent = sm.dataset.base + (done ? T(" · done", " · hecha") : "");
+  });
   const next = FH.nextLesson();
-  const started = links.some((a) => FH.state.lessons[a.dataset.lesson]);
+  const started = Object.values(FH.state.lessons).some((l) => l && Object.keys(l.sections || {}).length);
   if (next) {
     const c = document.getElementById("continue");
     c.href = next.href;
-    c.querySelector("span").textContent = T(`${started ? "Continue" : "Start"} Unit ${next.unit} · Lesson ${next.n}`, `${started ? "Continuar" : "Empezar"} Unidad ${next.unit} · Lección ${next.n}`);
-    document.getElementById("continue-title").textContent = next.title;
+    const verb = next.why === "review" ? T("Review", "Repasar") : next.why === "extra" ? T("Extra:", "Extra:") : started ? T("Continue", "Continuar") : T("Start", "Empezar");
+    c.querySelector("span").textContent = `${verb} ${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n}`;
+    // When the path's open lessons are done, say which path lesson is on the way.
+    const soon = next.why === "extra" && setUp && items.find((x) => x.lesson && !x.lesson.href && !known.has(x.lesson.unit));
+    document.getElementById("continue-title").textContent = next.title + (soon ? T(`. Your next path lesson, "${soon.lesson.title}", is being built.`, `. Tu siguiente lección del camino, "${soon.lesson.title}", se está construyendo.`) : "");
   }
   document.getElementById("hero-setup").hidden = setUp;
   const card = document.getElementById("my-path");
   const p = FH.state.profile;
-  if (setUp) {
-    const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
-    const todo = [...on].filter((n) => !known.has(n)).length;
+  if (!setUp) {
     card.innerHTML = T(
-      `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b>, plus <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a><button class="text-link" type="button" id="clear-path">Clear my path</button></div>`,
-      `<div><p class="kicker">Tu camino</p><p class="mp-text">Hecho para <b>${goals.join("</b>, además de <b>")}</b>. ${todo} unidades por aprender${known.size ? `, ${known.size} que ya sabes` : ""}. Las unidades marcadas como Extra no son necesarias para tu meta, pero siempre están abiertas.</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a><button class="text-link" type="button" id="clear-path">Quitar mi camino</button></div>`);
-    document.getElementById("clear-path").addEventListener("click", () => {
-      FH.clearPath();
-      FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
-    });
-  } else {
-    card.innerHTML = T(
-      `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`,
-      `<div><p class="kicker">¿No sabes por dónde empezar?</p><p class="mp-text">Cuéntanos por qué estás aprendiendo y qué ya sabes. En más o menos un minuto tendrás un camino que se salta lo que no necesitas.</p></div><a class="btn sm" href="start/">Crear mi camino</a>`);
+      `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path with only the lessons you need, in order.</p></div><a class="btn sm" href="start/">Build my path</a>`,
+      `<div><p class="kicker">¿No sabes por dónde empezar?</p><p class="mp-text">Cuéntanos por qué estás aprendiendo y qué ya sabes. En más o menos un minuto tendrás un camino solo con las lecciones que necesitas, en orden.</p></div><a class="btn sm" href="start/">Crear mi camino</a>`);
+    card.classList.remove("has-list");
+    return;
   }
+  const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
+  const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
+  const units = items.filter((x) => x.unit).length;
+  const doneN = lessons.filter((l) => FH.done(l.id)).length, openN = lessons.filter((l) => l.href).length;
+  const skipN = lessons.filter((l) => known.has(l.unit) && !FH.done(l.id)).length;
+  const startAt = known.size ? items.map((x) => (x.lesson ? x.lesson.unit : x.unit)).find((u) => !known.has(u)) : 0;
+  const sum = T(
+    `Built for <b>${goals.join("</b>, plus <b>")}</b>. ${lessons.length} lessons${units ? `, plus ${units} units still being planned` : ""}. ${openN} ${openN === 1 ? "is" : "are"} open now${doneN ? `, ${doneN} done` : ""}${skipN ? `, and ${skipN} you can skip because you know them` : ""}.${startAt ? ` You start at <b>Unit ${startAt}</b>.` : ""}`,
+    `Hecho para <b>${goals.join("</b>, además de <b>")}</b>. ${lessons.length} lecciones${units ? `, más ${units} unidades que todavía se están planeando` : ""}. ${openN} ${openN === 1 ? "está abierta" : "están abiertas"} ya${doneN ? `, ${doneN} hechas` : ""}${skipN ? `, y ${skipN} que puedes saltar porque ya las sabes` : ""}.${startAt ? ` Empiezas en la <b>Unidad ${startAt}</b>.` : ""}`);
+  const row = (x) => {
+    if (x.unit) return `<li class="soon"><i></i><span><b>${T("Unit", "Unidad")} ${x.unit} · ${FH.UNIT_NAMES[x.unit - 1]}</b><small>${T("Being planned", "Se está planeando")}</small></span></li>`;
+    const l = x.lesson, done = FH.done(l.id), isNext = next && next.id === l.id, kn = known.has(l.unit);
+    const state = done ? T("Done", "Hecha") : isNext ? T(next.why === "review" ? "Up next, to review" : "Up next", next.why === "review" ? "Sigue, para repasar" : "Sigue") : kn ? T("You know this", "Ya lo sabes") : !l.href ? T("Coming soon", "Muy pronto") : T("Open", "Abierta");
+    const inner = `<i></i><span><b>${l.title}</b><small>${T("Unit", "Unidad")} ${l.unit} · ${state}</small></span>`;
+    const cls = done ? "done" : isNext ? "next" : kn ? "known" + (l.href ? "" : " soon") : !l.href ? "soon" : "";
+    return `<li class="${cls}">${l.href ? `<a href="${l.href}">${inner}</a>` : `<span class="mp-row">${inner}</span>`}</li>`;
+  };
+  const LIMIT = 9, more = items.length - LIMIT;
+  const shown = showAll || more <= 0 ? items : items.slice(0, LIMIT);
+  card.classList.add("has-list");
+  card.innerHTML = T(
+    `<div class="mp-head"><div><p class="kicker">Your path</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="text-link" href="start/#check">Take the placement check</a>`}<button class="text-link" type="button" id="clear-path">Clear my path</button></div></div>`,
+    `<div class="mp-head"><div><p class="kicker">Tu camino</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="text-link" href="start/#check">Hacer la prueba de nivel</a>`}<button class="text-link" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
+    + `<ol class="mp-list">${shown.map(row).join("")}</ol>`
+    + (more > 0 ? `<button class="text-link mp-more" type="button" id="mp-more">${showAll ? T("Show less", "Mostrar menos") : T(`Show all ${items.length}`, `Mostrar las ${items.length}`)}</button>` : "");
+  document.getElementById("clear-path").addEventListener("click", () => {
+    FH.clearPath();
+    FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
+  });
+  const mb = document.getElementById("mp-more");
+  if (mb) mb.addEventListener("click", () => { showAll = !showAll; paintPath(); });
 };
 paintPath();
 document.addEventListener("fh:save", paintPath);
@@ -345,16 +395,16 @@ paintStyles();
 // Right-margin scene follows the part you're reading.
 const SCENES = FH.lang === "es" ? [
   null,
-  ["Parte 1 · Fundamentos", "Donde se encuentran los precios"],
-  ["Parte 2 · Tu dinero", "Dale un trabajo a cada dólar"],
-  ["Parte 3 · Tu negocio", "Haz crecer tus ventas"],
+  ["Parte 1 · Lo básico del dinero", "Dale un trabajo a cada dólar"],
+  ["Parte 2 · Cómo funciona la economía", "Donde se encuentran los precios"],
+  ["Parte 3 · Negocios", "Haz crecer tus ventas"],
   ["Parte 4 · Wall Street", "Lee el mercado"],
   ["Parte 5 · Tu carrera", "Consigue el trabajo"],
 ] : [
   null,
-  ["Part 1 · Foundations", "Where prices meet"],
-  ["Part 2 · Your money", "Give every dollar a job"],
-  ["Part 3 · Your business", "Grow your revenue"],
+  ["Part 1 · Money basics", "Give every dollar a job"],
+  ["Part 2 · How the economy works", "Where prices meet"],
+  ["Part 3 · Business", "Grow your revenue"],
   ["Part 4 · Wall Street", "Read the market"],
   ["Part 5 · Career launch", "Get hired"],
 ];
@@ -362,7 +412,8 @@ let sceneNow = -1;
 const showScene = (n) => {
   if (n === sceneNow) return;
   sceneNow = n;
-  document.querySelectorAll(".side-scene .scene").forEach((g) => g.classList.toggle("on", parseInt(g.dataset.s, 10) === n));
+  const art = [0, 2, 1, 3, 4, 5][n]; // part 1 uses the budget drawing, part 2 the market one
+  document.querySelectorAll(".side-scene .scene").forEach((g) => g.classList.toggle("on", parseInt(g.dataset.s, 10) === art));
   const cap = document.querySelector(".ss-cap");
   cap.classList.add("swap");
   setTimeout(() => { document.getElementById("ss-kick").textContent = SCENES[n][0]; document.getElementById("ss-title").textContent = SCENES[n][1]; cap.classList.remove("swap"); }, 250);

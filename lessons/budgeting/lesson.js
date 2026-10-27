@@ -65,7 +65,7 @@
     { id: "fun", label: T("Fun and eating out", "Diversión y comer fuera"), kind: "wants", value: 0, max: 800, hint: T("Too little and you'll be tempted to blow the budget.", "Si es muy poco, te tentará romper el presupuesto.") },
     { id: "subs", label: T("Subscriptions", "Suscripciones"), kind: "wants", value: 0, max: 150, hint: T("Streaming, games, music.", "Streaming, juegos, música.") },
     { id: "ef", label: T("Emergency fund", "Fondo de emergencia"), kind: "savings", value: 0, max: 1200, hint: T("Pays for surprises so they don't land on the card.", "Paga las sorpresas para que no acaben en la tarjeta.") },
-    { id: "invest", label: T("Investing", "Inversión"), kind: "savings", value: 0, max: 1200, hint: T("Grows for future you. You'll learn how in Unit 7.", "Crece para tu yo del futuro. Aprenderás cómo en la Unidad 7.") },
+    { id: "invest", label: T("Investing", "Inversión"), kind: "savings", value: 0, max: 1200, hint: T("Grows for future you. You'll learn how in Unit 5.", "Crece para tu yo del futuro. Aprenderás cómo en la Unidad 5.") },
   ];
   const cat = (id) => CATS.find((c) => c.id === id).value;
   const KIND_COLOR = { needs: "var(--needs)", wants: "var(--wants)", savings: "var(--savings)" };
@@ -423,13 +423,13 @@
       why: "It's applied to after-tax income, the money that actually reaches your account. Taxes are gone before you can budget them." },
     { q: "You put a $250 surprise bill on a card at 24% APR and carry it for 3 months. Using simple interest, about how much interest do you pay?",
       opts: ["$6", "$15", "$60", "$24"], a: 1,
-      why: "Interest ≈ principal × rate × time = 250 × 0.24 × (3 ÷ 12) = $15. Real cards compound daily, so it's a bit more. That's Unit 5." },
+      why: "Interest ≈ principal × rate × time = 250 × 0.24 × <span class='frac'><span>3</span><span>12</span></span> = $15. Real cards compound daily, so it's a bit more. That's Unit 4." },
     { q: "Why does an emergency fund usually lower your long-run costs?",
       opts: ["It earns more than stocks", "It covers surprises without borrowing at high interest", "It lowers your taxes", "It raises your credit score"], a: 1,
       why: "Its job isn't returns. It's avoiding high-interest debt when surprises hit. Credit scores can't see your savings balance at all." },
     { q: "A company budgeted $10,000 for marketing this quarter and spent $12,500. How would an FP&A analyst describe it?",
       opts: ["$2,500 favorable variance", "$2,500 unfavorable variance", "25% favorable variance", "No variance"], a: 1,
-      why: "Variance = actual − budget = $2,500. Spending more than planned is unfavorable. You'll do this for your own company in Unit 10." },
+      why: "Variance = actual − budget = $2,500. Spending more than planned is unfavorable. You'll do this for your own company in Unit 12." },
   ];
 
   const QUIZ_ES = [
@@ -447,13 +447,13 @@
       why: "Se aplica a los ingresos después de impuestos, el dinero que de verdad llega a tu cuenta. Los impuestos se van antes de que puedas presupuestarlos." },
     { q: "Pones una factura sorpresa de $250 en una tarjeta al 24% de interés anual y la arrastras 3 meses. Con interés simple, ¿cuánto interés pagas más o menos?",
       opts: ["$6", "$15", "$60", "$24"], a: 1,
-      why: "Interés ≈ capital × tasa × tiempo = 250 × 0.24 × (3 ÷ 12) = $15. Las tarjetas reales componen a diario, así que es un poco más. Eso es la Unidad 5." },
+      why: "Interés ≈ capital × tasa × tiempo = 250 × 0.24 × <span class='frac'><span>3</span><span>12</span></span> = $15. Las tarjetas reales componen a diario, así que es un poco más. Eso es la Unidad 4." },
     { q: "¿Por qué un fondo de emergencia suele bajar tus costos a largo plazo?",
       opts: ["Gana más que las acciones", "Cubre las sorpresas sin pedir prestado a interés alto", "Baja tus impuestos", "Sube tu puntaje de crédito"], a: 1,
       why: "Su trabajo no es dar rendimiento. Es evitar deudas caras cuando llegan sorpresas. El puntaje de crédito ni siquiera ve tu saldo de ahorros." },
     { q: "Una empresa presupuestó $10,000 para marketing este trimestre y gastó $12,500. ¿Cómo lo describiría un analista de FP&A?",
       opts: ["Variación favorable de $2,500", "Variación desfavorable de $2,500", "Variación favorable del 25%", "Sin variación"], a: 1,
-      why: "Variación = real − presupuesto = $2,500. Gastar más de lo planeado es desfavorable. Lo harás para tu propia empresa en la Unidad 10." },
+      why: "Variación = real − presupuesto = $2,500. Gastar más de lo planeado es desfavorable. Lo harás para tu propia empresa en la Unidad 12." },
   ];
 
   FHLesson.init({ id: LESSON, short: "budgeting", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN, passMark: 6 });

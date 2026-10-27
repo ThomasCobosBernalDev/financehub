@@ -245,7 +245,7 @@
       why: "Demand exceeds supply by 300 − 180 = 120. In a shortage, buyers compete and push the price up toward equilibrium." },
     { q: "Raising the price of a good from $10 to $11 cuts quantity demanded from 100 to 80. Demand for this good is:",
       opts: ["Inelastic, since buyers barely react", "Elastic, since quantity falls 20% on a 10% price rise", "Perfectly inelastic", "Upward sloping"], a: 1,
-      why: "Elasticity = −20% ÷ 10% = −2. A magnitude above 1 means elastic: buyers react strongly, so the price rise lowers total revenue." },
+      why: "Elasticity = <span class='frac'><span>−20%</span><span>10%</span></span> = −2. A magnitude above 1 means elastic: buyers react strongly, so the price rise lowers total revenue." },
   ];
 
   const QUIZ_ES = [
@@ -269,7 +269,7 @@
       why: "La demanda supera a la oferta en 300 − 180 = 120. Con escasez, los compradores compiten y empujan el precio hacia el equilibrio." },
     { q: "Subir el precio de un bien de $10 a $11 baja la cantidad demandada de 100 a 80. La demanda de este bien es:",
       opts: ["Inelástica, porque los compradores apenas reaccionan", "Elástica, porque la cantidad baja un 20% con una subida del 10% en el precio", "Perfectamente inelástica", "Con pendiente positiva"], a: 1,
-      why: "Elasticidad = −20% ÷ 10% = −2. Un valor mayor que 1 significa elástica: los compradores reaccionan mucho, así que la subida de precio baja el ingreso total." },
+      why: "Elasticidad = <span class='frac'><span>−20%</span><span>10%</span></span> = −2. Un valor mayor que 1 significa elástica: los compradores reaccionan mucho, así que la subida de precio baja el ingreso total." },
   ];
 
   FHLesson.init({ id: LESSON, short: "supply-demand", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });

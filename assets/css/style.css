@@ -579,8 +579,10 @@ details.deeper > div { padding-top: 12px; color: var(--ink-2); }
 .toast { bottom: max(28px, calc(env(safe-area-inset-bottom) + 12px)); }
 .foot { padding-bottom: max(28px, calc(env(safe-area-inset-bottom) + 16px)); }
 
-/* Header never wraps. */
+/* Header never wraps or squeezes its round buttons; on phones the xp count steps aside to make room. */
 .topbar .btn, .xp, .logo { white-space: nowrap; }
+.topbar .icon-btn, .topbar .btn { flex: none; }
+@media (max-width: 430px) { .topbar .wrap { gap: 10px; } .xp { display: none; } }
 html { -webkit-tap-highlight-color: transparent; }
 img, svg, video { max-width: 100%; }
 
@@ -867,6 +869,7 @@ body:has(.notice) .style-filter { display: none; }
 .my-path small { color: var(--ink-3); font-size: 14px; }
 .my-path li.known .n { background: var(--paper); color: var(--ink-3); box-shadow: inset 0 0 0 2px var(--line); }
 .my-path li.known b { color: var(--ink-3); }
+.my-path li.soon .n { background: var(--paper); color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 @media (max-width: 640px) {
   .setup-steps span { display: none; }
   .setup-steps li.on span { display: block; position: absolute; }

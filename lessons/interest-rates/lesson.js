@@ -204,7 +204,7 @@
       why: "Interest = principal × rate × time = 5,000 × 0.07 × 3 = $1,050." },
     { q: "The Fed raises rates sharply. All else equal, what happens to the price of existing bonds that pay a fixed 3%?",
       opts: ["They rise", "They fall", "They don't change", "They stop trading"], a: 1,
-      why: "New bonds now pay more, so nobody pays full price for an old 3% bond. Its price falls until a buyer of the old bond earns about what a new one pays. You'll go deep on this in Unit 12." },
+      why: "New bonds now pay more, so nobody pays full price for an old 3% bond. Its price falls until a buyer of the old bond earns about what a new one pays. You'll go deep on this in Unit 14." },
   ];
 
   const QUIZ_ES = [
@@ -228,7 +228,7 @@
       why: "Interés = capital × tasa × tiempo = 5,000 × 0.07 × 3 = $1,050." },
     { q: "La Fed sube mucho las tasas. Si todo lo demás sigue igual, ¿qué pasa con el precio de los bonos existentes que pagan un 3% fijo?",
       opts: ["Sube", "Baja", "No cambia", "Dejan de negociarse"], a: 1,
-      why: "Los bonos nuevos ahora pagan más, así que nadie paga el precio completo por un bono viejo al 3%. Su precio baja hasta que quien lo compre gane más o menos lo que paga uno nuevo. Lo verás a fondo en la Unidad 12." },
+      why: "Los bonos nuevos ahora pagan más, así que nadie paga el precio completo por un bono viejo al 3%. Su precio baja hasta que quien lo compre gane más o menos lo que paga uno nuevo. Lo verás a fondo en la Unidad 14." },
   ];
 
   FHLesson.init({ id: LESSON, short: "interest-rates", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });

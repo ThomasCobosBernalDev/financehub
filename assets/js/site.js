@@ -43,7 +43,10 @@
   window.FHStagger = stagger;
 
   // Units on the course path slide in from alternating sides.
-  document.querySelectorAll(".path .unit").forEach((u, i) => u.classList.add(i % 2 ? "from-right" : "from-left"));
+  const sides = (r) => r.querySelectorAll(".path .unit").forEach((u, i) => u.classList.add(i % 2 ? "from-right" : "from-left"));
+  sides(document);
+  // For parts of a page drawn by its own script after this file runs.
+  window.FHReveal = (r) => { sides(r.parentNode || r); r.querySelectorAll(".reveal:not(.in)").forEach(watch); stagger(); };
 
   // Thin reading-progress line under the header.
   const bar = document.querySelector(".read-progress");

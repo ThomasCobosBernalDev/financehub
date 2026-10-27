@@ -13,7 +13,7 @@
     preferredStyle: null,
     styles: null, // learning styles the learner picked; null means show everything
     lang: null, // "en" or "es" once picked; pages also remember it in localStorage "fh-lang"
-    profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt }
+    profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt, map: 2 }
     character: {
       name: "You",
       age: 18,
@@ -68,25 +68,108 @@
     { id: "solitary", label: t("Thinking on my own", "Pensando por mi cuenta"), chapter: t("On your own", "Por tu cuenta"), desc: t("Private questions about your own life", "Preguntas privadas sobre tu propia vida") },
   ];
 
-  // Why people learn here, and the units each goal needs (numbers match the course map).
-  const GOALS = [
-    { id: "money", label: t("Understand how money works", "Entender cómo funciona el dinero"), aim: t("understanding how money works", "entender cómo funciona el dinero"), desc: t("Budgeting, credit, taxes, insurance and the economy around you", "Presupuesto, crédito, impuestos, seguros y la economía a tu alrededor"), units: [1, 2, 3, 4, 5, 6, 7, 8] },
-    { id: "invest", label: t("Save more and start investing", "Ahorrar más y empezar a invertir"), aim: t("saving more and starting to invest", "ahorrar más y empezar a invertir"), desc: t("Build an emergency fund, beat inflation and grow your money", "Crear un fondo de emergencia, ganarle a la inflación y hacer crecer tu dinero"), units: [1, 2, 4, 5, 7, 8, 12, 14] },
-    { id: "business", label: t("Start or run a business", "Empezar o manejar un negocio"), aim: t("starting or running a business", "empezar o manejar un negocio"), desc: t("Pricing, accounting, cash flow and raising money", "Precios, contabilidad, flujo de caja y conseguir inversión"), units: [1, 2, 3, 4, 9, 10, 11] },
-    { id: "career", label: t("Study finance and get hired", "Estudiar finanzas y conseguir trabajo"), aim: t("studying finance and getting hired", "estudiar finanzas y conseguir trabajo"), desc: t("Everything, through valuation, deals and interviews", "Todo, hasta valuación, transacciones y entrevistas"), units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
+  // The course: 5 parts, 18 units, from a first bank account to Wall Street.
+  const PARTS = [
+    { n: 1, name: t("Money basics", "Lo básico del dinero"), units: [1, 2, 3, 4, 5, 6, 7] },
+    { n: 2, name: t("How the economy works", "Cómo funciona la economía"), units: [8, 9, 10] },
+    { n: 3, name: t("Business", "Negocios"), units: [11, 12, 13] },
+    { n: 4, name: t("Markets and Wall Street", "Mercados y Wall Street"), units: [14, 15, 16] },
+    { n: 5, name: t("Career launch", "Lanza tu carrera"), units: [17, 18] },
   ];
   const UNIT_NAMES = LANG === "es"
-    ? ["Cómo funciona el sistema del dinero", "Mentalidad y matemáticas del dinero", "Ingresos e impuestos", "Presupuesto y bancos", "Crédito y deudas", "Protección", "Inversión y jubilación", "Compras grandes", "Empezar un negocio", "Contabilidad", "Finanzas corporativas", "Inversiones y portafolios", "Valuación y modelos", "Macroeconomía, mercados e instituciones", "Excel, Python, SQL y reclutamiento"]
-    : ["How the money system works", "Money mindset and math toolkit", "Earning and taxes", "Budgeting and banking", "Credit and debt", "Protection", "Investing and retirement", "Big purchases", "Starting a business", "Accounting", "Corporate finance", "Investments and portfolios", "Valuation and modeling", "Macro, markets and institutions", "Excel, Python, SQL and recruiting"];
-  // Lessons that are open so far, in course order. Paths are from this language's site root.
-  const OPEN = [
-    { unit: 1, n: 1, id: "u1-scarcity", href: "lessons/scarcity/", title: t("Every choice has a price tag", "Cada decisión tiene un precio") },
-    { unit: 1, n: 2, id: "u1-supply-demand", href: "lessons/supply-demand/", title: t("Why prices are what they are", "Por qué los precios son lo que son") },
-    { unit: 1, n: 3, id: "u1-inflation", href: "lessons/inflation/", title: t("Why your money shrinks", "Por qué tu dinero se encoge") },
-    { unit: 1, n: 4, id: "u1-interest-rates", href: "lessons/interest-rates/", title: t("Who sets the price of money?", "¿Quién pone el precio del dinero?") },
-    { unit: 4, n: 1, id: "u4-budgeting-frameworks", href: "lessons/budgeting/", title: t("Give every dollar a job", "Dale un trabajo a cada dólar") },
-  ];
+    ? ["Tu primera cuenta de banco", "Tu sueldo y tus impuestos", "Presupuesto y ahorro", "Crédito y préstamos", "Lo básico de invertir", "Protege tu dinero", "Compras grandes",
+      "Decisiones y mercados", "Inflación, tasas y la Fed", "Matemáticas y mentalidad del dinero",
+      "Empezar un negocio", "Contabilidad", "Finanzas corporativas",
+      "Inversiones y portafolios", "Valuación y modelos", "Mercados e instituciones",
+      "Excel, Python y SQL", "Reclutamiento y entrevistas"]
+    : ["Your first bank account", "Your paycheck and taxes", "Budgeting and saving", "Credit and borrowing", "Investing basics", "Protecting your money", "Big purchases",
+      "Choices and markets", "Inflation, rates and the Fed", "Money math and mindset",
+      "Starting a business", "Accounting", "Corporate finance",
+      "Investments and portfolios", "Valuation and modeling", "Markets and institutions",
+      "Excel, Python and SQL", "Recruiting and interviews"];
   const UNITS = UNIT_NAMES.length;
+  const partOf = (unit) => PARTS.find((p) => p.units.includes(unit));
+
+  // Every lesson in course order, built or planned. `href` (from this language's site root) means it's open.
+  // `needs` lists lessons it builds on; a path adds any the learner skipped.
+  const L = (unit, n, id, title, sub, extra) => Object.assign({ unit, n, id, title, sub }, extra);
+  const CATALOG = [
+    L(1, 1, "u1-checking-savings", t("Where your money lives", "Dónde vive tu dinero"), t("Checking vs. savings", "Cuenta de cheques vs. de ahorro")),
+    L(1, 2, "u1-open-account", t("Open your first account", "Abre tu primera cuenta"), t("Banks, credit unions and FDIC insurance", "Bancos, cooperativas y el seguro de la FDIC")),
+    L(1, 3, "u1-bank-fees", t("Dodge the fees", "Evita las comisiones"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones")),
+    L(1, 4, "u1-moving-money", t("Move money safely", "Mueve tu dinero con seguridad"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago")),
+    L(2, 1, "u2-pay-stub", t("Read your first pay stub", "Lee tu primer talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto")),
+    L(2, 2, "u2-taxes", t("Where your taxes go", "A dónde van tus impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4")),
+    L(2, 3, "u2-file-taxes", t("File your first tax return", "Presenta tu primera declaración"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
+    L(3, 1, "u4-budgeting-frameworks", t("Give every dollar a job", "Dale un trabajo a cada dólar"), t("Budgeting frameworks · Month Survivor", "Métodos de presupuesto · Sobrevive el mes"), { href: "lessons/budgeting/" }),
+    L(3, 2, "u3-emergency-fund", t("Build an emergency fund", "Arma un fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { needs: ["u4-budgeting-frameworks"] }),
+    L(3, 3, "u3-high-yield", t("Make your savings earn more", "Haz que tus ahorros ganen más"), t("High-yield savings and APY", "Ahorro de alto rendimiento y APY"), { needs: ["u1-checking-savings"] }),
+    L(4, 1, "u4-credit-scores", t("How credit scores work", "Cómo funciona el puntaje de crédito"), t("Reports, scores and what moves them", "Reportes, puntajes y qué los mueve")),
+    L(4, 2, "u4-credit-cards", t("Use a card without getting burned", "Usa una tarjeta sin quemarte"), t("Credit cards and interest", "Tarjetas de crédito e intereses"), { needs: ["u4-credit-scores"] }),
+    L(4, 3, "u4-loans", t("Loans and the traps to avoid", "Préstamos y las trampas que debes evitar"), t("Car, student and payday loans", "Préstamos de carro, estudiantiles y de día de pago"), { needs: ["u4-credit-cards"] }),
+    L(5, 1, "u5-why-invest", t("Why invest at all?", "¿Por qué invertir?"), t("Inflation shrinks cash, compounding grows it", "La inflación encoge el efectivo y el interés compuesto lo hace crecer")),
+    L(5, 2, "u5-stocks", t("What a stock is", "Qué es una acción"), t("Owning a slice of a company", "Ser dueño de un pedazo de una empresa"), { needs: ["u5-why-invest"] }),
+    L(5, 3, "u5-index-funds", t("Index funds and the S&P 500", "Los fondos indexados y el S&P 500"), t("One fund, 500 companies", "Un fondo, 500 empresas"), { needs: ["u5-stocks"] }),
+    L(5, 4, "u5-brokerage", t("Open a brokerage account", "Abre una cuenta de inversión"), t("What you need and the fees to watch", "Qué necesitas y las comisiones que debes vigilar"), { needs: ["u1-checking-savings"] }),
+    L(5, 5, "u5-first-trade", t("Buy your first $10", "Compra tus primeros $10"), t("Fractional shares and placing an order", "Acciones fraccionadas y cómo hacer una orden"), { needs: ["u5-index-funds", "u5-brokerage"] }),
+    L(5, 6, "u5-market-drops", t("When the market drops", "Cuando el mercado cae"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { needs: ["u5-first-trade"] }),
+    L(5, 7, "u5-retirement", t("401(k) and Roth IRA", "El 401(k) y la Roth IRA"), t("Retirement accounts and the employer match", "Cuentas para el retiro y la aportación del empleador"), { needs: ["u5-index-funds"] }),
+    L(6, 1, "u6-insurance", t("Insurance, explained", "Los seguros, explicados"), t("Health, car and renters insurance", "Seguro médico, de carro y de inquilino")),
+    L(6, 2, "u6-scams", t("Spot scams and protect your identity", "Detecta estafas y protege tu identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad")),
+    L(7, 1, "u7-renting", t("Rent your first place", "Renta tu primer lugar"), t("Leases, deposits and roommates", "Contratos, depósitos y compañeros de cuarto")),
+    L(7, 2, "u7-car", t("Buy a car without overpaying", "Compra un carro sin pagar de más"), t("New vs. used, loans and total cost", "Nuevo vs. usado, préstamos y costo total"), { needs: ["u4-loans"] }),
+    L(7, 3, "u7-home", t("Rent or buy a home?", "¿Rentar o comprar casa?"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"] }),
+    L(8, 1, "u1-scarcity", t("Every choice has a price tag", "Cada decisión tiene un precio"), t("Scarcity and trade-offs · Ten Free Hours", "Escasez y renuncias · Diez horas libres"), { href: "lessons/scarcity/" }),
+    L(8, 2, "u1-supply-demand", t("Why prices are what they are", "Por qué los precios son lo que son"), t("Supply and demand · Market Stall", "Oferta y demanda · Puesto en el mercado"), { href: "lessons/supply-demand/", needs: ["u1-scarcity"] }),
+    L(9, 1, "u1-inflation", t("Why your money shrinks", "Por qué tu dinero se encoge"), t("Inflation and GDP · Beat Inflation", "Inflación y PIB · Gánale a la inflación"), { href: "lessons/inflation/", needs: ["u1-supply-demand"] }),
+    L(9, 2, "u1-interest-rates", t("Who sets the price of money?", "¿Quién pone el precio del dinero?"), t("Interest rates and the Fed · Rate Dial", "Tasas de interés y la Fed · La perilla de tasas"), { href: "lessons/interest-rates/", needs: ["u1-inflation"] }),
+    L(9, 3, "u9-business-cycle", t("Booms and recessions", "Auges y recesiones"), t("The business cycle", "El ciclo económico"), { needs: ["u1-interest-rates"] }),
+    L(10, 1, "u10-percent-growth", t("Percentages and growth", "Porcentajes y crecimiento"), t("The math behind every money question", "Las matemáticas detrás de cada pregunta de dinero")),
+    L(10, 2, "u10-time-value", t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), t("The time value of money", "El valor del dinero en el tiempo"), { needs: ["u10-percent-growth"] }),
+    L(10, 3, "u10-money-mind", t("Why we make bad money choices", "Por qué tomamos malas decisiones con el dinero"), t("Behavioral finance", "Finanzas conductuales")),
+  ];
+  // Lessons that are open so far, in course order.
+  const OPEN = CATALOG.filter((l) => l.href);
+  const byId = Object.fromEntries(CATALOG.map((l) => [l.id, l]));
+
+  // Why people learn here. A goal is either an ordered list of lessons or a set of whole units.
+  const GOALS = [
+    { id: "invest", label: t("Save more and start investing", "Ahorrar más y empezar a invertir"), aim: t("saving more and starting to invest", "ahorrar más y empezar a invertir"), desc: t("From a savings account to your first $10 in an index fund", "Desde una cuenta de ahorro hasta tus primeros $10 en un fondo indexado"),
+      lessons: ["u1-checking-savings", "u4-budgeting-frameworks", "u5-why-invest", "u5-stocks", "u5-index-funds", "u5-brokerage", "u5-first-trade", "u5-market-drops", "u5-retirement"] },
+    { id: "money", label: t("Understand how money works", "Entender cómo funciona el dinero"), aim: t("understanding how money works", "entender cómo funciona el dinero"), desc: t("Banking, paychecks, budgeting, credit, investing, insurance and big purchases", "Bancos, sueldo, presupuesto, crédito, inversión, seguros y compras grandes"), units: [1, 2, 3, 4, 5, 6, 7] },
+    { id: "business", label: t("Start or run a business", "Empezar o manejar un negocio"), aim: t("starting or running a business", "empezar o manejar un negocio"), desc: t("Money basics, pricing, accounting, cash flow and raising money", "Lo básico del dinero, precios, contabilidad, flujo de caja y conseguir inversión"),
+      lessons: ["u1-checking-savings", "u1-open-account", "u2-pay-stub", "u2-taxes", "u4-budgeting-frameworks", "u1-supply-demand"], units: [11, 12, 13] },
+    { id: "career", label: t("Study finance and get hired", "Estudiar finanzas y conseguir trabajo"), aim: t("studying finance and getting hired", "estudiar finanzas y conseguir trabajo"), desc: t("The whole course, from the basics through valuation and interviews. The check finds where you start.", "Todo el curso, desde lo básico hasta valuación y entrevistas. La prueba encuentra dónde empiezas."), units: Array.from({ length: UNITS }, (_, i) => i + 1) },
+  ];
+
+  // A learner's path: the goals' lessons (whole units become every lesson in them, or one "coming soon" stop
+  // when none are planned yet), plus any lessons they build on, in course order with no repeats.
+  // Items: { lesson } for a lesson, { unit } for a unit with no lessons planned yet.
+  const buildPath = (goalIds) => {
+    const goals = GOALS.filter((g) => goalIds.includes(g.id));
+    const ids = new Set(), units = new Set();
+    goals.forEach((g) => {
+      (g.lessons || []).forEach((id) => ids.add(id));
+      (g.units || []).forEach((u) => { const ls = CATALOG.filter((l) => l.unit === u); ls.length ? ls.forEach((l) => ids.add(l.id)) : units.add(u); });
+    });
+    const add = (id) => { (byId[id].needs || []).forEach((n) => { if (!ids.has(n)) { ids.add(n); add(n); } }); };
+    [...ids].forEach(add);
+    const order = (x) => (x.lesson ? x.lesson.unit * 100 + x.lesson.n : x.unit * 100);
+    return [...[...ids].map((id) => ({ lesson: byId[id] })), ...[...units].map((u) => ({ unit: u }))].sort((a, b) => order(a) - order(b));
+  };
+
+  // Saves from before the 18-unit course used the old unit numbers for "known". Move them over once.
+  const OLD_UNITS = { 1: [8, 9], 2: [10], 3: [2], 4: [1, 3], 5: [4], 6: [6], 7: [5], 8: [7], 9: [11], 10: [12], 11: [13], 12: [14], 13: [15], 14: [16], 15: [17, 18] };
+  const upgrade = (st) => {
+    const p = st.profile;
+    if (p && !p.map) {
+      const known = {};
+      Object.keys(p.known || {}).forEach((u) => (OLD_UNITS[u] || []).forEach((n) => (known[n] = true)));
+      st.profile = Object.assign({}, p, { known, map: 2 });
+    }
+    return st;
+  };
+  upgrade(state);
 
   // Line icons for the style cards (24px grid, stroked).
   const ICONS = {
@@ -156,25 +239,38 @@
     },
     STYLES,
     GOALS,
+    PARTS,
     UNIT_NAMES,
+    CATALOG,
     OPEN,
+    partOf,
+    lessonById: (id) => byId[id],
+    buildPath,
+    done: (id) => !!(state.lessons[id] && state.lessons[id].completedAt),
     // The next open lesson to take: on the path, not known, not finished. Falls back to any unfinished one.
+    // The lesson the main button should open, with why: "new" (next on the path), "review" (on the path,
+    // but in a unit they know) or "extra" (every open path lesson is done, so one from outside the path).
     nextLesson() {
-      const { on, known } = this.path;
-      const todo = OPEN.filter((l) => !(state.lessons[l.id] && state.lessons[l.id].completedAt));
-      return todo.find((l) => on.has(l.unit) && !known.has(l.unit)) || todo.find((l) => on.has(l.unit)) || todo[0] || null;
+      const { items, known } = this.path;
+      const todo = (l) => l.href && !this.done(l.id);
+      const onPath = items.filter((x) => x.lesson).map((x) => x.lesson);
+      const pick = (l, why) => l && Object.assign({}, l, { why });
+      return pick(onPath.find((l) => todo(l) && !known.has(l.unit)), "new") || pick(onPath.find(todo), "review")
+        || pick(OPEN.find((l) => todo(l) && !known.has(l.unit)) || OPEN.find(todo), "extra") || null;
     },
     setProfile(patch) {
-      state.profile = Object.assign({}, state.profile, patch, { setAt: new Date().toISOString() });
+      state.profile = Object.assign({}, state.profile, patch, { setAt: new Date().toISOString(), map: 2 });
       persist();
       emit();
     },
-    // Unit numbers on the learner's path, and the ones they already know. No setup means everything.
+    // The learner's path (see buildPath), the units it touches, and the units they already know.
+    // No goals means the whole course.
     get path() {
       const p = state.profile;
       const goals = (p && p.goals && p.goals.length) ? p.goals : null;
-      const on = new Set(goals ? GOALS.filter((g) => goals.includes(g.id)).flatMap((g) => g.units) : Array.from({ length: UNITS }, (_, i) => i + 1));
-      return { on, known: new Set(Object.keys((p && p.known) || {}).map(Number)), setUp: !!(p && p.done && goals) };
+      const items = buildPath(goals || GOALS.map((g) => g.id));
+      const on = new Set(items.map((x) => (x.lesson ? x.lesson.unit : x.unit)));
+      return { items, on, known: new Set(Object.keys((p && p.known) || {}).map(Number)), setUp: !!(p && p.done && goals) };
     },
     // Drop the goals and placement results so the whole course shows again. `done` stays so setup isn't forced again.
     clearPath() {
@@ -188,7 +284,7 @@
     save() { persist(); emit(); },
     // Swap in a save that came from the learner's account.
     replace(next) {
-      state = Object.assign(fresh(), next);
+      state = upgrade(Object.assign(fresh(), next));
       // A language saved on the account wins in this browser too.
       if (state.lang) try { localStorage.setItem("fh-lang", state.lang); } catch (e) { /* storage blocked */ }
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }

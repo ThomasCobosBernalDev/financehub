@@ -206,7 +206,7 @@
   const QUIZ_EN = [
     { q: "The CPI rises from 250 to 265 over a year. What was the inflation rate?",
       opts: ["5%", "6%", "15%", "2.65%"], a: 1,
-      why: "(265 − 250) ÷ 250 = 15 ÷ 250 = 0.06, or 6%." },
+      why: "<span class='frac'><span>265 − 250</span><span>250</span></span> = <span class='frac'><span>15</span><span>250</span></span> = 0.06, or 6%." },
     { q: "Your savings account pays 2% while inflation is 5%. Your approximate real return is:",
       opts: ["+7%", "+3%", "−3%", "−2.5%"], a: 2,
       why: "Real ≈ nominal − inflation = 2% − 5% = −3%. Your balance grows, but its buying power shrinks." },
@@ -218,19 +218,19 @@
       why: "Real growth ≈ nominal growth − price growth = 6% − 4% = 2%." },
     { q: "A movie ticket cost $4 when the CPI was 130. The CPI is now 310. What's that ticket in today's dollars?",
       opts: ["$5.20", "$7.75", "$9.54", "$12.40"], a: 2,
-      why: "Today's price = 4 × (310 ÷ 130) = 4 × 2.385 ≈ $9.54." },
+      why: "Today's price = 4 × <span class='frac'><span>310</span><span>130</span></span> = 4 × 2.385 ≈ $9.54." },
     { q: "Who is hurt most by unexpectedly high inflation?",
       opts: ["Borrowers with fixed-rate loans", "Savers holding cash and lenders at fixed rates", "Homeowners with fixed-rate mortgages", "Companies that can raise prices easily"], a: 1,
       why: "Inflation shrinks the real value of money owed and money held. Lenders and cash savers get paid back in cheaper dollars; fixed-rate borrowers benefit." },
     { q: "Using the rule of 70, if inflation runs at 3.5% a year, how long until prices double?",
       opts: ["About 10 years", "About 20 years", "About 35 years", "About 70 years"], a: 1,
-      why: "70 ÷ 3.5 = 20 years. The rule of 70 works for anything growing at a steady percentage." },
+      why: "<span class='frac'><span>70</span><span>3.5</span></span> = 20 years. The rule of 70 works for anything growing at a steady percentage." },
   ];
 
   const QUIZ_ES = [
     { q: "El IPC sube de 250 a 265 en un año. ¿Cuál fue la tasa de inflación?",
       opts: ["5%", "6%", "15%", "2.65%"], a: 1,
-      why: "(265 − 250) ÷ 250 = 15 ÷ 250 = 0.06, o sea 6%." },
+      why: "<span class='frac'><span>265 − 250</span><span>250</span></span> = <span class='frac'><span>15</span><span>250</span></span> = 0.06, o sea 6%." },
     { q: "Tu cuenta de ahorros paga 2% mientras la inflación es 5%. Tu rendimiento real aproximado es:",
       opts: ["+7%", "+3%", "−3%", "−2.5%"], a: 2,
       why: "Real ≈ nominal − inflación = 2% − 5% = −3%. Tu saldo crece, pero su poder de compra se encoge." },
@@ -242,13 +242,13 @@
       why: "Crecimiento real ≈ crecimiento nominal − subida de precios = 6% − 4% = 2%." },
     { q: "Una entrada de cine costaba $4 cuando el IPC era 130. Ahora el IPC es 310. ¿Cuánto es esa entrada en dólares de hoy?",
       opts: ["$5.20", "$7.75", "$9.54", "$12.40"], a: 2,
-      why: "Precio de hoy = 4 × (310 ÷ 130) = 4 × 2.385 ≈ $9.54." },
+      why: "Precio de hoy = 4 × <span class='frac'><span>310</span><span>130</span></span> = 4 × 2.385 ≈ $9.54." },
     { q: "¿A quién perjudica más una inflación inesperadamente alta?",
       opts: ["A quienes piden préstamos a tasa fija", "A quienes ahorran en efectivo y a quienes prestan a tasa fija", "A los dueños de casa con hipoteca a tasa fija", "A las empresas que pueden subir precios fácilmente"], a: 1,
       why: "La inflación encoge el valor real del dinero que se debe y del que se guarda. Los prestamistas y quienes ahorran en efectivo reciben dólares más baratos; quienes deben a tasa fija salen ganando." },
     { q: "Con la regla del 70, si la inflación es del 3.5% al año, ¿cuánto tardan los precios en duplicarse?",
       opts: ["Unos 10 años", "Unos 20 años", "Unos 35 años", "Unos 70 años"], a: 1,
-      why: "70 ÷ 3.5 = 20 años. La regla del 70 sirve para cualquier cosa que crezca a un porcentaje constante." },
+      why: "<span class='frac'><span>70</span><span>3.5</span></span> = 20 años. La regla del 70 sirve para cualquier cosa que crezca a un porcentaje constante." },
   ];
 
   FHLesson.init({ id: LESSON, short: "inflation", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });

@@ -209,7 +209,7 @@
             const ok = pos === answerPos;
             b.classList.add(ok ? "right" : "wrong");
             $$(".opt", div)[answerPos].classList.add("right");
-            $(".why", div).textContent = (ok ? T("Right. ", "Correcto. ") : T("Not quite. ", "No exactamente. ")) + item.why;
+            $(".why", div).innerHTML = (ok ? T("Right. ", "Correcto. ") : T("Not quite. ", "No exactamente. ")) + item.why;
             answered++;
             if (ok) { correct++; FH.addXP(10, T("Correct", "Correcto")); }
             if (answered === quiz.length) {
