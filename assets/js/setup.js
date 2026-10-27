@@ -207,10 +207,10 @@
     });
     if (window.FHStagger) FHStagger();
     const extra = FH.UNIT_NAMES.length - on.size;
-    const gl = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
+    const gl = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
     $("#path-sum").textContent = T(
-      `Built for: ${gl.join(" and ")}. ${todo} unit${todo === 1 ? "" : "s"} to learn${kn.size ? `, ${kn.size} you already know` : ""}${extra ? `, and ${extra} extra unit${extra === 1 ? "" : "s"} you can still open anytime` : ""}.` + (p.quiz ? ` You got ${p.quiz.right} of ${p.quiz.of} on the check.` : ""),
-      `Hecho para: ${gl.join(" y ")}. ${todo} ${todo === 1 ? "unidad" : "unidades"} por aprender${kn.size ? `, ${kn.size} que ya sabes` : ""}${extra ? `, y ${extra} ${extra === 1 ? "unidad extra" : "unidades extra"} que puedes abrir cuando quieras` : ""}.` + (p.quiz ? ` Sacaste ${p.quiz.right} de ${p.quiz.of} en la prueba.` : ""));
+      `Built for ${gl.join(", plus ")}. ${todo} unit${todo === 1 ? "" : "s"} to learn${kn.size ? `, ${kn.size} you already know` : ""}${extra ? `, and ${extra} extra unit${extra === 1 ? "" : "s"} you can still open anytime` : ""}.` + (p.quiz ? ` You got ${p.quiz.right} of ${p.quiz.of} on the check.` : ""),
+      `Hecho para ${gl.join(", además de ")}. ${todo} ${todo === 1 ? "unidad" : "unidades"} por aprender${kn.size ? `, ${kn.size} que ya sabes` : ""}${extra ? `, y ${extra} ${extra === 1 ? "unidad extra" : "unidades extra"} que puedes abrir cuando quieras` : ""}.` + (p.quiz ? ` Sacaste ${p.quiz.right} de ${p.quiz.of} en la prueba.` : ""));
     const next = FH.nextLesson();
     const go = $("#path-go");
     if (next) {

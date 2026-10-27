@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primer sueldo hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610270001">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610270017">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -52,6 +52,8 @@
     .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
     .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
     .my-path-card .btn { flex: none; }
+    .mp-actions { flex: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .mp-actions .text-link { font-size: 14px; color: var(--ink-3); }
     .unit .path-tag { display: inline-block; vertical-align: middle; font-family: var(--sans); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); position: relative; top: -3px; }
     .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
     .unit.off-path { opacity: .55; }
@@ -252,10 +254,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202610270001"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610270001"></script>
-<script src="../assets/js/auth.js?v=202610270001"></script>
-<script src="../assets/js/site.js?v=202610270001"></script>
+<script src="../assets/js/save.js?v=202610270017"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610270017"></script>
+<script src="../assets/js/auth.js?v=202610270017"></script>
+<script src="../assets/js/site.js?v=202610270017"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -290,11 +292,15 @@ const paintPath = () => {
   const card = document.getElementById("my-path");
   const p = FH.state.profile;
   if (setUp) {
-    const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.label.toLowerCase());
+    const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
     const todo = [...on].filter((n) => !known.has(n)).length;
     card.innerHTML = T(
-      `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b> and <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><a class="btn sm line" href="start/">Change my path</a>`,
-      `<div><p class="kicker">Tu camino</p><p class="mp-text">Hecho para <b>${goals.join("</b> y <b>")}</b>. ${todo} unidades por aprender${known.size ? `, ${known.size} que ya sabes` : ""}. Las unidades marcadas como Extra no son necesarias para tu meta, pero siempre están abiertas.</p></div><a class="btn sm line" href="start/">Cambiar mi camino</a>`);
+      `<div><p class="kicker">Your path</p><p class="mp-text">Built for <b>${goals.join("</b>, plus <b>")}</b>. ${todo} units to learn${known.size ? `, ${known.size} you already know` : ""}. Units marked Extra aren't needed for your goal, but they're always open.</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a><button class="text-link" type="button" id="clear-path">Clear my path</button></div>`,
+      `<div><p class="kicker">Tu camino</p><p class="mp-text">Hecho para <b>${goals.join("</b>, además de <b>")}</b>. ${todo} unidades por aprender${known.size ? `, ${known.size} que ya sabes` : ""}. Las unidades marcadas como Extra no son necesarias para tu meta, pero siempre están abiertas.</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a><button class="text-link" type="button" id="clear-path">Quitar mi camino</button></div>`);
+    document.getElementById("clear-path").addEventListener("click", () => {
+      FH.clearPath();
+      FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
+    });
   } else {
     card.innerHTML = T(
       `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path that skips what you don't need.</p></div><a class="btn sm" href="start/">Build my path</a>`,

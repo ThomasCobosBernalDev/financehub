@@ -70,10 +70,10 @@
 
   // Why people learn here, and the units each goal needs (numbers match the course map).
   const GOALS = [
-    { id: "money", label: t("Understand how money works", "Entender cómo funciona el dinero"), desc: t("Budgeting, credit, taxes, insurance and the economy around you", "Presupuesto, crédito, impuestos, seguros y la economía a tu alrededor"), units: [1, 2, 3, 4, 5, 6, 7, 8] },
-    { id: "invest", label: t("Save more and start investing", "Ahorrar más y empezar a invertir"), desc: t("Build an emergency fund, beat inflation and grow your money", "Crear un fondo de emergencia, ganarle a la inflación y hacer crecer tu dinero"), units: [1, 2, 4, 5, 7, 8, 12, 14] },
-    { id: "business", label: t("Start or run a business", "Empezar o manejar un negocio"), desc: t("Pricing, accounting, cash flow and raising money", "Precios, contabilidad, flujo de caja y conseguir inversión"), units: [1, 2, 3, 4, 9, 10, 11] },
-    { id: "career", label: t("Study finance and get hired", "Estudiar finanzas y conseguir trabajo"), desc: t("Everything, through valuation, deals and interviews", "Todo, hasta valuación, transacciones y entrevistas"), units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
+    { id: "money", label: t("Understand how money works", "Entender cómo funciona el dinero"), aim: t("understanding how money works", "entender cómo funciona el dinero"), desc: t("Budgeting, credit, taxes, insurance and the economy around you", "Presupuesto, crédito, impuestos, seguros y la economía a tu alrededor"), units: [1, 2, 3, 4, 5, 6, 7, 8] },
+    { id: "invest", label: t("Save more and start investing", "Ahorrar más y empezar a invertir"), aim: t("saving more and starting to invest", "ahorrar más y empezar a invertir"), desc: t("Build an emergency fund, beat inflation and grow your money", "Crear un fondo de emergencia, ganarle a la inflación y hacer crecer tu dinero"), units: [1, 2, 4, 5, 7, 8, 12, 14] },
+    { id: "business", label: t("Start or run a business", "Empezar o manejar un negocio"), aim: t("starting or running a business", "empezar o manejar un negocio"), desc: t("Pricing, accounting, cash flow and raising money", "Precios, contabilidad, flujo de caja y conseguir inversión"), units: [1, 2, 3, 4, 9, 10, 11] },
+    { id: "career", label: t("Study finance and get hired", "Estudiar finanzas y conseguir trabajo"), aim: t("studying finance and getting hired", "estudiar finanzas y conseguir trabajo"), desc: t("Everything, through valuation, deals and interviews", "Todo, hasta valuación, transacciones y entrevistas"), units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
   ];
   const UNIT_NAMES = LANG === "es"
     ? ["Cómo funciona el sistema del dinero", "Mentalidad y matemáticas del dinero", "Ingresos e impuestos", "Presupuesto y bancos", "Crédito y deudas", "Protección", "Inversión y jubilación", "Compras grandes", "Empezar un negocio", "Contabilidad", "Finanzas corporativas", "Inversiones y portafolios", "Valuación y modelos", "Macroeconomía, mercados e instituciones", "Excel, Python, SQL y reclutamiento"]
@@ -174,7 +174,11 @@
       const p = state.profile;
       const goals = (p && p.goals && p.goals.length) ? p.goals : null;
       const on = new Set(goals ? GOALS.filter((g) => goals.includes(g.id)).flatMap((g) => g.units) : Array.from({ length: UNITS }, (_, i) => i + 1));
-      return { on, known: new Set(Object.keys((p && p.known) || {}).map(Number)), setUp: !!(p && p.done) };
+      return { on, known: new Set(Object.keys((p && p.known) || {}).map(Number)), setUp: !!(p && p.done && goals) };
+    },
+    // Drop the goals and placement results so the whole course shows again. `done` stays so setup isn't forced again.
+    clearPath() {
+      this.setProfile({ goals: [], known: {}, level: null, quiz: null, done: true });
     },
     updateCharacter(patch) {
       Object.assign(state.character, patch);
