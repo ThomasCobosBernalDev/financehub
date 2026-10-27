@@ -1,0 +1,21 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P",
+    "IPO": "I P O",
+    "RBIK": "R B I K"
+  },
+  "lines": [
+    "What is a stock, really? It's a small piece of ownership in a company. Owning one share makes you a part owner.",
+    "Picture Rosa's bike shop. She figures it's worth a hundred and sixty thousand dollars and splits it into a thousand shares, so each share is worth a hundred and sixty dollars.",
+    "To raise forty thousand dollars for a second shop, she sells two hundred and fifty new shares to her cousin Luis. Now there are twelve hundred and fifty shares, and Luis owns twenty percent.",
+    "That's why companies sell stock. They get money to grow without borrowing it. In return, the new owners share in the profits.",
+    "Big companies do this on a giant scale. The first time a company sells shares to the public is its IPO. After that, investors buy and sell the shares with each other on a stock exchange.",
+    "A share can pay you in two ways. The company can pay out part of its profit as a dividend, a set amount for every share. Or the share price can rise, which is a capital gain.",
+    "A share's price is whatever buyers and sellers agree on right now. Good news about future profits pushes it up. Bad news pushes it down, often within seconds.",
+    "Here's the catch. A company can fail, and its shares can go to zero. Blockbuster and Sears both went bankrupt.",
+    "One famous study looked at nearly twenty-six thousand U.S. stocks from 1926 to 2016. Fifty-eight percent did worse than safe Treasury bills. About four percent created all of the market's net gains.",
+    "So betting everything on one company is like a squirrel burying its whole winter supply in one hole. Spreading your money across many companies means one bad pick costs you one nut, not the whole stash."
+  ]
+}

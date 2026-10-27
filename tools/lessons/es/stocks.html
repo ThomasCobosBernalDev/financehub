@@ -1,0 +1,330 @@
+<!-- title: Qué es una acción -->
+<!-- description: Unidad 5, Lección 2: qué es una acción, por qué las empresas las venden, cómo te pagan (dividendos y subidas de precio), cómo leer una cotización y por qué una sola acción es riesgosa. Juégalo: ¿una acción o las diez? -->
+<!-- kicker: Unidad 5 · Lección 2 -->
+<!-- topic: Acciones -->
+
+<!-- @start -->
+        <h1 class="reveal">Qué es <em>de verdad una acción.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Rosa, la dueña del taller de bicicletas donde trabajas, quiere abrir un segundo taller al otro lado de la ciudad. Cuesta <span class="mark">$40,000</span> y no los tiene. Podría pedirlos prestados a un banco y pagar intereses. O podría venderle una parte de su negocio a alguien que pague $40,000 por un pedazo. A su primo Luis le interesa, y Rosa te pide ayuda para calcular qué tan grande debe ser su pedazo. Resulta que esto es exactamente lo que hicieron las 500 empresas del S&amp;P 500 de Dee, solo que a una escala mucho más grande.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Una <dfn class="term" data-def="Una de las partes iguales en que se divide la propiedad de una empresa. Tener una te hace dueño de una parte de la empresa.">acción</dfn> es un pequeño pedazo de la propiedad de una empresa.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Las empresas venden acciones para conseguir dinero y crecer sin pedirlo prestado. A cambio, los nuevos dueños comparten las ganancias de la empresa.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Compras acciones, casi siempre en una app. Ganas dinero si el precio de la acción sube y si la empresa reparte parte de sus ganancias.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>banqueros de inversión</b> ayudan a las empresas a vender acciones al público por primera vez. Los <b>analistas de acciones</b> estudian empresas y calculan cuánto valen sus acciones.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una empresa dibujada como un pastel cortado en 8 rebanadas, con una rebanada separada para mostrar una acción. Abajo pasa una cinta de cotizaciones.">
+          <g stroke="var(--card)" stroke-width="3">
+            <path d="M260 210 L260 70 A140 140 0 0 1 359 111Z" fill="var(--needs)"/>
+            <path d="M260 210 L400 210 A140 140 0 0 1 359 309Z" fill="var(--needs)" opacity=".8"/>
+            <path d="M260 210 L359 309 A140 140 0 0 1 260 350Z" fill="var(--needs)"/>
+            <path d="M260 210 L260 350 A140 140 0 0 1 161 309Z" fill="var(--needs)" opacity=".8"/>
+            <path d="M260 210 L161 309 A140 140 0 0 1 120 210Z" fill="var(--needs)"/>
+            <path d="M260 210 L120 210 A140 140 0 0 1 161 111Z" fill="var(--needs)" opacity=".8"/>
+            <path d="M260 210 L161 111 A140 140 0 0 1 260 70Z" fill="var(--needs)"/>
+            <g class="st-slice"><path d="M260 210 L359 111 A140 140 0 0 1 400 210Z" fill="var(--wants)" transform="translate(26 -11)"/></g>
+          </g>
+          <circle cx="260" cy="210" r="58" fill="var(--card)"/>
+          <g transform="translate(0 -8)" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="240" cy="210" r="13"/><circle cx="280" cy="210" r="13"/><path d="M240 210 L252 192 H272 L280 210 M252 192 L262 210 H240 M266 186 h10"/></g>
+          <text x="260" y="238" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-2)">Rosa's Bike Co.</text>
+          <path d="M402 120 C 420 100, 430 90, 440 78" stroke="var(--ink-3)" stroke-width="1.5" fill="none"/>
+          <text x="448" y="50" text-anchor="middle" font-family="Fraunces, serif" font-size="27" fill="var(--ink)">1 acción</text>
+          <text x="448" y="74" text-anchor="middle" font-size="17" fill="var(--ink-2)">una rebanada</text>
+          <defs><clipPath id="st-tape"><rect x="20" y="400" width="480" height="48" rx="12"/></clipPath></defs>
+          <rect x="20" y="400" width="480" height="48" rx="12" fill="var(--ink)"/>
+          <g clip-path="url(#st-tape)" font-family="JetBrains Mono, ui-monospace, monospace" font-size="19" font-weight="700">
+            <g class="st-tape">
+              <text x="40" y="431" fill="var(--paper)">RBIK <tspan fill="#6cc3a5">$54.00 ▲2.04%</tspan><tspan dx="30">BEAN</tspan> <tspan fill="#ef7a6c">$31.20 ▼0.85%</tspan><tspan dx="30">SUNG</tspan> <tspan fill="#6cc3a5">$12.75 ▲4.10%</tspan></text>
+            </g>
+          </g>
+          <text x="260" y="500" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">ten un pedazo, comparte las ganancias</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo, no datos reales. El pastel completo es una empresa, Rosa's Bike Co., cortada en rebanadas iguales llamadas acciones. Tener una rebanada te hace dueño de una parte. La franja de abajo es una cinta de cotizaciones, la lista de precios que pasa en las noticias, con empresas inventadas.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Una empresa, <em>cortada en rebanadas.</em></h2>
+      <p class="lead reveal">Toda empresa tiene dueños. Las acciones son la forma de dividir una empresa para que tenga muchos dueños a la vez, desde un primo hasta millones de desconocidos.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Acciones y accionistas</h3>
+      <p class="reveal">La propiedad de una empresa se divide en partes iguales llamadas <dfn class="term" data-def="Una de las partes iguales en que se divide la propiedad de una empresa. Tener una te hace dueño de una parte de la empresa.">acciones</dfn>. Quien tiene acciones es un <dfn class="term" data-def="Una persona (o un fondo) que tiene acciones de una empresa, lo que la hace dueña de una parte.">accionista</dfn>, dueño de una parte de la empresa. Qué tan grande es tu parte depende de cuántas acciones tienes del total.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Acciones</dt><dd>Rosa calcula que su taller vale <b>$160,000</b> y lo divide en <b>1,000</b> acciones. Cada acción vale <span class="frac"><span>$160,000</span><span>1,000</span></span> = <b>$160</b>.</dd></div><div><dt>Accionista</dt><dd>Rosa tiene las 1,000 acciones, así que es la única accionista y es dueña del <b>100%</b> del taller.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Vender pedazos para conseguir dinero</h3>
+      <p class="reveal">Para conseguir $40,000, Rosa puede crear acciones nuevas y vendérselas a Luis a $160 cada una. Necesita <span class="frac"><span>$40,000</span><span>$160</span></span> = 250 acciones nuevas. Ahora hay 1,250 acciones, y Luis tiene 250: <span class="frac"><span>250</span><span>1,250</span></span> = 20% de la empresa. Las 1,000 acciones de Rosa ahora son el 80%. Cuando las acciones nuevas hacen que cada acción vieja sea un pedazo más chico, eso se llama <dfn class="term" data-def="Cuando una empresa crea acciones nuevas, cada acción que ya existía se vuelve un pedazo más chico de la empresa.">dilución</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Dilución</dt><dd>Rosa pasa de ser dueña del <b>100%</b> al <b>80%</b>. Su pedazo es más chico, pero es un pedazo de una empresa que ahora tiene <b>$40,000</b> más para abrir el segundo taller.</dd></div></dl></div>
+      <p class="reveal">Mueve el control para probar otros tratos con Luis.</p>
+      <div class="deal reveal" id="deal">
+        <div class="deal-top"><span class="small muted">Luis invierte</span><b id="d-amt">$40,000</b></div>
+        <input type="range" id="d-range" min="0" max="200000" step="8000" value="40000" aria-label="Cuánto invierte Luis">
+        <div class="deal-body">
+          <svg class="deal-pie" viewBox="0 0 220 220" role="img" aria-label="Gráfica de pastel de quién es dueño de la empresa">
+            <circle cx="110" cy="110" r="96" fill="var(--needs)"/>
+            <path id="d-slice" fill="var(--wants)" stroke="var(--card)" stroke-width="3"/>
+            <circle cx="110" cy="110" r="42" fill="var(--card)"/>
+            <text x="110" y="106" text-anchor="middle" font-size="13" fill="var(--ink-2)">acciones</text>
+            <text x="110" y="128" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)" id="d-total">1,250</text>
+          </svg>
+          <div class="deal-nums">
+            <div><i class="sw rosa"></i><span>Rosa</span><b id="d-rosa">80%</b><small>1,000 acciones</small></div>
+            <div><i class="sw luis"></i><span>Luis</span><b id="d-luis">20%</b><small id="d-luis-sh">250 acciones nuevas</small></div>
+          </div>
+        </div>
+        <p class="split-msg" id="d-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una gráfica de pastel de quién es dueño de Rosa's Bike Co. El control decide cuánto invierte Luis, de $0 a $200,000, siempre a $160 por acción. El azul son las 1,000 acciones de Rosa y el naranja son las acciones nuevas que compra Luis. El número del centro es el total de acciones.</p>
+
+      <h3 class="reveal" style="margin-top:56px">De un taller de bicicletas a la bolsa</h3>
+      <p class="reveal">Las empresas grandes hacen lo mismo a una escala gigante. La primera vez que una empresa vende acciones al público se llama <dfn class="term" data-def="Oferta pública inicial (IPO, por sus siglas en inglés): la primera vez que una empresa vende sus acciones al público. Después, cualquiera puede comprarlas y venderlas.">oferta pública inicial</dfn>, o IPO por sus siglas en inglés. Después, la gente compra y vende las acciones entre sí en una <dfn class="term" data-def="Un mercado donde compradores y vendedores intercambian acciones, como la Bolsa de Nueva York o el Nasdaq. Hoy casi todo pasa por computadora.">bolsa de valores</dfn>, como la Bolsa de Nueva York (NYSE) o el Nasdaq. Cada empresa tiene un código corto llamado <dfn class="term" data-def="El código corto de las acciones de una empresa en la bolsa, como AAPL para Apple. También se le dice ticker.">símbolo bursátil</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>IPO</dt><dd>Si Rosa's Bike Co. creciera mucho y vendiera <b>10,000,000</b> de acciones al público por primera vez, esa sería su IPO, y ese dinero iría a la empresa.</dd></div><div><dt>Bolsa de valores</dt><dd>Después de la IPO, cuando compras una acción en una app, se la compras a <b>otro inversionista</b> que quiere vender. El vendedor recibe tu dinero, no la empresa.</dd></div><div><dt>Símbolo bursátil</dt><dd>Apple es <b>AAPL</b>, Coca-Cola es <b>KO</b> y Walmart es <b>WMT</b>. Nuestra empresa inventada, Rosa's Bike Co., sería <b>RBIK</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Dos formas en que te paga una acción</h3>
+      <p class="reveal">La <dfn class="term" data-def="El dinero que le queda a una empresa después de pagar todos sus costos. También se le dice utilidad.">ganancia</dfn> de una empresa es el dinero que le queda después de pagar todos sus costos. Puede repartir parte de esa ganancia a sus dueños como <dfn class="term" data-def="Efectivo que una empresa les paga a sus accionistas de sus ganancias, una cantidad fija por cada acción que tienen.">dividendo</dfn>, una cantidad fija por cada acción. También puede quedarse con la ganancia para hacer crecer el negocio, lo que puede hacer que cada acción valga más. Cuando el precio de una acción sube por encima de lo que pagaste, esa subida es una <dfn class="term" data-def="El dinero que ganas cuando algo que tienes sube de precio por encima de lo que pagaste.">ganancia de capital</dfn>. Tu rendimiento total cuenta las dos.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ganancia</dt><dd>Con dos talleres, Rosa's Bike Co. gana <b>$25,000</b> en un año. Eso es <span class="frac"><span>$25,000</span><span>1,250 acciones</span></span> = <b>$20</b> por acción.</dd></div><div><dt>Dividendo</dt><dd>Reparte <b>$10,000</b> en dividendos: <span class="frac"><span>$10,000</span><span>1,250</span></span> = <b>$8</b> por acción. Luis recibe 250 × $8 = <b>$2,000</b>.</dd></div><div><dt>Ganancia de capital</dt><dd>Se queda con los otros $15,000 para crecer. Un año después, un comprador pagaría <b>$172</b> por una acción en vez de $160, una ganancia de capital de <b>$12</b> por acción.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Cómo leer una cotización</h3>
+      <p class="reveal">Imagina que Rosa's Bike Co. ya cotiza en la bolsa. En una app de inversión, su cotización se vería así. Dos números necesitan nombre. La <dfn class="term" data-def="El precio de una acción por el número de acciones. Es lo que vale toda la empresa al precio de hoy.">capitalización de mercado</dfn> es el precio por el número de acciones: lo que vale toda la empresa al precio de hoy. El <dfn class="term" data-def="Un año de dividendos como porcentaje del precio de la acción.">rendimiento por dividendo</dfn> es un año de dividendos como porcentaje del precio. Toca cada parte de la cotización.</p>
+      <div class="quote reveal" id="quote">
+        <div class="q-card">
+          <div class="q-head"><button type="button" class="q-hit" data-p="ticker">RBIK</button><span>Rosa's Bike Co. · empresa inventada</span></div>
+          <button type="button" class="q-hit q-price" data-p="price">$54.00</button>
+          <button type="button" class="q-hit q-chg" data-p="change">▲ +$1.08 (+2.04%) hoy</button>
+          <svg class="q-spark" viewBox="0 0 300 70" aria-hidden="true"><path d="M0 50 L30 46 L60 52 L90 40 L120 44 L150 36 L180 41 L210 30 L240 34 L270 22 L300 14" fill="none" stroke="var(--savings)" stroke-width="3" stroke-linejoin="round"/></svg>
+          <div class="q-stats">
+            <button type="button" class="q-hit" data-p="prev"><small>Cierre anterior</small><b>$52.92</b></button>
+            <button type="button" class="q-hit" data-p="cap"><small>Cap. de mercado</small><b>$540M</b></button>
+            <button type="button" class="q-hit" data-p="yield"><small>Rend. por dividendo</small><b>1.85%</b></button>
+          </div>
+        </div>
+        <div class="q-explain" id="q-explain" aria-live="polite"><b>Toca cualquier parte de la cotización</b><p>Cada parte de una cotización responde una pregunta distinta sobre la acción.</p></div>
+      </div>
+
+      <h3 class="reveal" style="margin-top:56px">Por qué se mueven los precios</h3>
+      <p class="reveal">El precio de una acción es lo que acuerdan los compradores y los vendedores en este momento. Si más gente quiere comprar que vender, el precio sube hasta que aparecen suficientes vendedores. Eso es oferta y demanda. Y lo que hace que la gente quiera una acción es, sobre todo, lo que espera que sean las ganancias futuras de la empresa. Las buenas noticias sobre las ganancias futuras suben el precio y las malas lo bajan, muchas veces en segundos.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Un cambio de precio</dt><dd>RBIK cerró ayer en <b>$52.92</b>. Esta mañana anunció ventas récord de bicicletas, llegaron muchos compradores y el precio subió a <b>$54.00</b>, o sea $54.00 − $52.92 = <b>$1.08</b> más.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El problema: una empresa puede fracasar</h3>
+      <p class="reveal">Si una empresa quiebra, sus acciones pueden quedarse sin valor. Blockbuster quebró en 2010 y Sears en 2018, y sus accionistas se quedaron casi sin nada. Incluso entre las empresas que sobreviven, a la mayoría no le va muy bien a largo plazo. El profesor Hendrik Bessembinder, de la Universidad Estatal de Arizona, estudió casi 26,000 acciones de Estados Unidos de 1926 a 2016 y encontró esto:</p>
+      <div class="waffle-wrap reveal">
+        <svg class="waffle" id="waffle" viewBox="0 0 330 330" role="img" aria-label="100 cuadros: 58 naranjas de acciones a las que les fue peor que a los bonos del Tesoro, 38 azul claro que les ganaron pero solo compensaron a las perdedoras, y 4 azul oscuro que crearon todas las ganancias netas."></svg>
+        <ul class="waffle-key">
+          <li><i class="w-lose"></i>Al <b>58%</b> le fue peor en toda su vida que a los bonos del Tesoro, el ahorro seguro de la Lección 1.</li>
+          <li><i class="w-mid"></i>El <b>38%</b> les ganó a los bonos del Tesoro, pero, todas juntas, sus ganancias extra solo compensaron lo que perdieron las perdedoras.</li>
+          <li><i class="w-star"></i><b>Más o menos el 4%</b> de las empresas creó <b>todas</b> las ganancias netas del mercado por encima de los bonos del Tesoro, unos 35 billones de dólares (35 millones de millones).</li>
+        </ul>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una investigación real, dibujada como 100 cuadros donde cada cuadro es el 1% de todas las acciones de Estados Unidos de 1926 a 2016. A los cuadros naranjas les fue peor que a los bonos del Tesoro, los azul claro les ganaron y los 4 azul oscuro son las grandes ganadoras. Fuente: Hendrik Bessembinder, "Do Stocks Outperform Treasury Bills?" (Journal of Financial Economics, 2018).</p>
+      <p class="reveal">Así que elegir una sola acción es apostar a caer en ese 4%. Al mercado en conjunto le ha ido bien porque esas pocas ganadoras gigantes compensaron con creces a todas las demás. El juego de abajo te muestra cómo se siente eso, y la siguiente lección te muestra la solución: tenerlas todas a la vez.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">¿Una acción o <em>las diez?</em></h2>
+      <p class="lead reveal">Diez empresas inventadas, veinte años. En cada ronda eliges una empresa y le pones $1,000. Al mismo tiempo, otros $1,000 van a las diez empresas a la vez, $100 en cada una. Luego pasan veinte años. Juega tres rondas y mira cuántas veces tu elección le gana a tener las diez.</p>
+
+      <div class="pick-game reveal" id="game">
+        <div class="pg-head">
+          <div><span class="small muted" id="p-round">Ronda 1 de 3</span><div class="left-big" id="p-title">Elige una empresa</div></div>
+          <div class="pg-score"><small>Tu elección les ganó a las diez</small><b id="p-score">0 de 0 rondas</b></div>
+        </div>
+        <p class="split-note" id="p-hint">Lee las diez empresas y elige en la que apostarías $1,000 durante los próximos 20 años.</p>
+        <div class="pg-cards" id="p-cards" role="group" aria-label="Empresas"></div>
+        <div class="pg-go"><button class="btn" type="button" id="p-go" disabled>Jugar 20 años <span class="arrow">→</span></button></div>
+        <svg class="pg-chart" id="p-chart" viewBox="0 0 900 340" role="img" aria-label="Dos líneas: $1,000 en tu empresa y $1,000 repartidos entre las diez, durante 20 años">
+          <g id="p-grid" font-size="13" fill="var(--ink-3)"></g>
+          <path id="p-all" fill="none" stroke="var(--needs)" stroke-width="4" stroke-linejoin="round"/>
+          <path id="p-one" fill="none" stroke="var(--wants)" stroke-width="4" stroke-linejoin="round"/>
+          <g id="p-dots"></g>
+        </svg>
+        <div class="pg-out">
+          <div class="go-card one"><small id="p-one-name">Tu elección</small><b id="p-one-v">$1,000</b></div>
+          <div class="go-card all"><small>Las diez, $100 en cada una</small><b id="p-all-v">$1,000</b></div>
+          <div class="go-card yr"><small>Año</small><b id="p-year">0 de 20</b></div>
+        </div>
+        <ul class="pg-feed" id="p-feed" aria-live="polite"></ul>
+        <div id="p-rank" class="hidden"></div>
+        <div id="p-result" class="hidden"></div>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una simulación, no empresas reales. Los años van abajo, de 0 a 20, y en el lado está cuánto vale cada grupo de $1,000. La línea naranja es tu empresa y la azul son $100 en cada una de las diez. En cada ronda, el juego reparte en secreto una mezcla de resultados parecida a la investigación de arriba: 1 gran ganadora, 2 empresas fuertes, 1 estable, 2 lentas, 2 que se encogen y 2 que quiebran. Así, a 6 de las 10 les va peor que a los bonos del Tesoro, cerca del 58% real. Qué empresa recibe qué resultado es al azar, así que las descripciones no lo delatan.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Cinco fórmulas cubren todo lo de esta lección. Cada una es una sola división o multiplicación.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Precio por acción</h3>
+      <p class="reveal">Divide lo que vale la empresa entre cuántas acciones tiene.</p>
+      <div class="formula reveal">Precio por acción <span class="op">=</span> <span class="frac"><span>valor de la empresa</span><span>número de acciones</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El taller de Rosa</dt><dd><span class="frac"><span>$160,000</span><span>1,000</span></span> = <b>$160</b> por acción.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Cuánto es tuyo</h3>
+      <p class="reveal">Divide tus acciones entre todas las acciones. Multiplica por 100 para tener un porcentaje.</p>
+      <div class="formula reveal">Propiedad <span class="op">=</span> <span class="frac"><span>tus acciones</span><span>total de acciones</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Luis</dt><dd><span class="frac"><span>250</span><span>1,250</span></span> = 0.20, o sea <b>20%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Capitalización de mercado</h3>
+      <p class="reveal">Multiplica el precio de una acción por el número de acciones.</p>
+      <div class="formula reveal">Capitalización de mercado <span class="op">=</span> precio <span class="op">×</span> número de acciones</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>RBIK</dt><dd>$54 × 10,000,000 de acciones = <b>$540,000,000</b>, que las apps escriben como $540M.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Rendimiento por dividendo</h3>
+      <p class="reveal">Divide un año de dividendos por acción entre el precio de la acción.</p>
+      <div class="formula reveal">Rendimiento por dividendo <span class="op">=</span> <span class="frac"><span>dividendo anual por acción</span><span>precio</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>RBIK</dt><dd>Paga <b>$1.00</b> por acción cada año. <span class="frac"><span>$1.00</span><span>$54.00</span></span> ≈ 0.0185, o sea <b>1.85%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 5: Rendimiento total</h3>
+      <p class="reveal">Suma el cambio de precio y los dividendos, y luego divide entre lo que pagaste.</p>
+      <div class="formula reveal">Rendimiento total <span class="op">=</span> <span class="frac"><span>cambio de precio + dividendos</span><span>precio que pagaste</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Las acciones de Luis</dt><dd>El precio pasó de $160 a $172, una ganancia de $12, más un dividendo de $8. <span class="frac"><span>$12 + $8</span><span>$160</span></span> = <span class="frac"><span>$20</span><span>$160</span></span> = 0.125, o sea <b>12.5%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: 10 acciones de RBIK</h3>
+      <ol class="steps reveal">
+        <li><b>Compras.</b> 10 acciones a $50 cada una cuestan 10 × $50 = <b>$500</b>.</li>
+        <li><b>Un año después.</b> El precio es $54 y la empresa pagó $1 por acción en dividendos.</li>
+        <li><b>Ganancia de capital.</b> 10 × ($54 − $50) = <b>$40</b>.</li>
+        <li><b>Dividendos.</b> 10 × $1 = <b>$10</b>.</li>
+        <li><b>Rendimiento total.</b> <span class="frac"><span>$40 + $10</span><span>$500</span></span> = <span class="frac"><span>$50</span><span>$500</span></span> = <b>10%</b>.</li>
+      </ol>
+
+      <h3 class="reveal">¿Por qué no elegir simplemente la mejor empresa?</h3>
+      <p class="reveal">Porque todos los demás están intentando lo mismo. Si una empresa es obviamente buena, los compradores ya subieron su precio, así que la buena noticia ya está en el precio. Lo que mueve el precio después son las noticias que nadie conoce todavía. Por eso hasta a los profesionales les cuesta trabajo encontrar a tiempo ese 4%.</p>
+
+<!-- @nature -->
+      <h2 class="reveal">Las ardillas no entierran <em>todo en un solo hoyo.</em></h2>
+      <p class="lead reveal">Las ardillas grises se preparan para el invierno escondiendo sus nueces una por una en lugares distintos, cientos o hasta miles de escondites por todo su territorio. Esto se llama almacenamiento disperso. Si otro animal desentierra un escondite, la ardilla pierde una nuez, no todo su invierno.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Una ardilla junto a muchas bellotas pequeñas enterradas por todo el suelo. Un arrendajo desenterró un escondite, pero los demás están a salvo.">
+        <path d="M0 210 C 200 196, 420 220, 900 204 V340 H0Z" fill="#c9b48a" opacity=".55"/>
+        <path d="M0 210 C 200 196, 420 220, 900 204" fill="none" stroke="#7a5a3a" stroke-width="3"/>
+        <g class="st-squirrel" transform="translate(150 150)">
+          <path d="M-36 40 C -80 30, -84 -40, -40 -50 C -10 -56, -6 -20, -30 -12 C -50 -6, -46 20, -20 24" fill="#a7774a" stroke="var(--ink)" stroke-width="2.5"/>
+          <ellipse cx="0" cy="22" rx="26" ry="32" fill="#b98a5a" stroke="var(--ink)" stroke-width="2.5"/>
+          <circle cx="14" cy="-14" r="17" fill="#b98a5a" stroke="var(--ink)" stroke-width="2.5"/>
+          <path d="M6 -28 L10 -40 L16 -29" fill="#b98a5a" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="20" cy="-17" r="2.6" fill="var(--ink)"/>
+          <ellipse cx="22" cy="8" rx="7" ry="9" fill="#7a5a3a" stroke="var(--ink)" stroke-width="1.5"/>
+        </g>
+        <g fill="#7a5a3a" stroke="var(--ink)" stroke-width="1.5">
+          <g transform="translate(290 262)"><ellipse rx="9" ry="11"/></g><g transform="translate(370 290)"><ellipse rx="9" ry="11"/></g>
+          <g transform="translate(450 255)"><ellipse rx="9" ry="11"/></g><g transform="translate(520 300)"><ellipse rx="9" ry="11"/></g>
+          <g transform="translate(600 262)"><ellipse rx="9" ry="11"/></g><g transform="translate(680 296)"><ellipse rx="9" ry="11"/></g>
+          <g transform="translate(760 258)"><ellipse rx="9" ry="11"/></g><g transform="translate(830 300)"><ellipse rx="9" ry="11"/></g>
+          <g transform="translate(230 305)"><ellipse rx="9" ry="11"/></g>
+        </g>
+        <g stroke="var(--ink)" stroke-width="1.2" fill="none" opacity=".5"><path d="M276 250 h28 M356 278 h28 M436 243 h28 M506 288 h28 M586 250 h28 M666 284 h28 M746 246 h28 M816 288 h28 M216 293 h28"/></g>
+        <g transform="translate(600 262)"><circle r="20" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="5 5"/></g>
+        <g transform="translate(640 150)">
+          <path d="M-24 0 C -20 -22, 18 -24, 26 -4 L 44 -10 L 30 6 C 20 22, -18 22, -24 0Z" fill="#6d8fc6" stroke="var(--ink)" stroke-width="2.5"/>
+          <circle cx="16" cy="-8" r="2.4" fill="var(--ink)"/>
+          <path d="M-6 -16 L -2 -28 L 6 -17" fill="#6d8fc6" stroke="var(--ink)" stroke-width="2"/>
+        </g>
+        <g font-size="16" fill="var(--ink-2)">
+          <text x="560" y="80" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Un arrendajo saquea un escondite</text><text x="560" y="104">y se lleva una nuez, no toda la reserva</text>
+          <text x="40" y="40" font-family="Fraunces, serif" font-size="20" fill="var(--ink)">Una nuez por hoyo,</text><text x="40" y="64">repartidas por todo el terreno</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Cada bellota bajo la tierra está enterrada en su propio lugar. El círculo rojo punteado es el único escondite que encontró y desenterró un arrendajo, un pájaro. Los demás siguen a salvo.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Poner todo en una sola empresa es como enterrar toda la comida del invierno en un solo hoyo: si saquean ese hoyo, se pierde todo. Repartir tu dinero entre muchas empresas es almacenamiento disperso. Una quiebra te cuesta una nuez. Y algunas de las nueces que las ardillas olvidan se convierten en robles, igual que unas pocas empresas se vuelven gigantes.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Acción:</b> una parte igual de la propiedad de una empresa. <b>Accionista:</b> dueño de una parte. Propiedad = <span class="frac"><span>tus acciones</span><span>total de acciones</span></span>.</li>
+          <li><b>Dilución:</b> las acciones nuevas hacen que cada acción vieja sea un pedazo más chico. Las empresas venden acciones para conseguir dinero sin pedirlo prestado.</li>
+          <li><b>IPO (oferta pública inicial):</b> la primera venta de acciones al público. Después, las acciones se intercambian entre inversionistas en una <b>bolsa de valores</b> (NYSE, Nasdaq). <b>Símbolo bursátil:</b> un código corto, como KO.</li>
+          <li><b>Dos formas de ganar:</b> <b>dividendos</b> (efectivo de las ganancias) y <b>ganancias de capital</b> (subidas de precio). Rendimiento total = <span class="frac"><span>cambio de precio + dividendos</span><span>precio que pagaste</span></span>.</li>
+          <li><b>Capitalización de mercado</b> = precio × acciones. <b>Rendimiento por dividendo</b> = <span class="frac"><span>dividendo anual</span><span>precio</span></span>.</li>
+          <li><b>Riesgo:</b> una empresa puede llegar a $0. De 1926 a 2016, al 58% de las acciones de Estados Unidos les fue peor que a los bonos del Tesoro, y más o menos el 4% creó todas las ganancias netas.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Cada una de las partes iguales en que se divide la propiedad de una empresa se llama <input type="text" class="blank" data-answer="accion|acción|acciones|una accion|una acción" aria-label="Espacio 1">.</div>
+        <div>2. Una empresa tiene 2,000 acciones y tú tienes 100. Eres dueño del <input type="text" class="blank" data-answer="5|cinco|5%" inputmode="numeric" aria-label="Espacio 2">% de la empresa.</div>
+        <div>3. Una acción cuesta $40 y paga $2 al año en dividendos. Su rendimiento por dividendo es de <input type="text" class="blank" data-answer="5|cinco|5%" inputmode="numeric" aria-label="Espacio 3">%.</div>
+        <div>4. Compras una acción en $20, la vendes en $23 y recibiste $1 en dividendos. Tu rendimiento total es de <input type="text" class="blank" data-answer="20|veinte|20%" inputmode="numeric" aria-label="Espacio 4">%.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Adivina el símbolo</h3>
+          <p>Cada persona busca el símbolo bursátil de tres empresas a las que les compra (una marca de celulares, un restaurante, una tienda). Lean los símbolos en voz alta y que los demás adivinen la empresa.</p>
+        </div>
+        <div class="reveal">
+          <h3>Repartan el puesto de limonada</h3>
+          <p>Imaginen que su grupo empieza un negocio que vale $1,000 dividido en 100 acciones. Una persona quiere invertir $250. ¿Cuántas acciones nuevas recibe y qué porcentaje tiene cada quien después?</p>
+        </div>
+        <div class="reveal">
+          <h3>Lean una cotización real</h3>
+          <p>Abran juntos la cotización de una acción real. Encuentren el precio, el cambio de hoy, la capitalización de mercado y el rendimiento por dividendo. Si la app muestra el número de acciones, comprueben la capitalización multiplicando el precio por ese número.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Nombra tres empresas en las que gastas dinero cada mes. ¿Te gustaría ser dueño de un pedazo de ellas? ¿Por qué sí o por qué no?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">En el juego, ¿cómo elegiste tu empresa? ¿Ese método funcionaría con dinero real?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Si fueras Rosa, ¿preferirías pedir prestados $40,000 o ceder el 20% de tu taller? ¿Por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el analista de acciones</h3>
+      <div class="reveal">
+        <p>Tu firma está estudiando una empresa inventada, Harbor Bank. Tiene <b>4,000,000</b> de acciones, y cada acción cuesta <b>$30</b>. Este año ganó <b>$12,000,000</b> y pagó un dividendo de <b>$0.60</b> por acción.</p>
+        <p><b>Tu tarea:</b> calcula la capitalización de mercado de Harbor Bank, su ganancia por acción (en Wall Street se le dice EPS, por sus siglas en inglés) y su rendimiento por dividendo. Luego una clienta te pregunta si debería poner todos sus ahorros en Harbor Bank. ¿Qué le dices?</p>
+        <textarea id="job-answer" placeholder="Escribe tus notas para la clienta…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Capitalización de mercado:</b> $30 × 4,000,000 = <b>$120,000,000</b> ($120M).</p>
+            <p><b>Ganancia por acción:</b> <span class="frac"><span>$12,000,000</span><span>4,000,000</span></span> = <b>$3</b> por acción.</p>
+            <p><b>Rendimiento por dividendo:</b> <span class="frac"><span>$0.60</span><span>$30</span></span> = 0.02, o sea <b>2%</b>.</p>
+            <p><b>Para la clienta:</b> no. Hasta una empresa rentable puede tropezar o quebrar, y a la mayoría de las acciones individuales les termina yendo peor que a los bonos del Tesoro, que son seguros. Si le gusta Harbor Bank, que sea una parte pequeña de su dinero, y que la mayoría esté repartida entre muchas empresas.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">De un pedazo <em>a todo el mercado.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en por qué invertir, y lleva a los fondos indexados, abrir una cuenta de inversión, las caídas del mercado y la oferta y la demanda">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 50, 680 50"/><path d="M520 170 C 600 170, 610 130, 680 130"/>
+          <path d="M520 170 C 600 170, 610 210, 680 210"/><path d="M520 170 C 600 170, 610 290, 680 290"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../why-invest/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">¿Por qué invertir?</text><text x="20" y="186">Unidad 5 · Lección 1</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Acciones</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="46" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Fondos indexados y el S&amp;P 500</text><text x="690" y="66">Siguiente lección · tenerlas todas</text>
+          <text x="690" y="126" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Abre una cuenta de inversión</text><text x="690" y="146">Unidad 5 · dónde compras acciones</text>
+          <text x="690" y="206" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Cuando el mercado cae</text><text x="690" y="226">Unidad 5 · aguantar los baches</text>
+          <a href="../supply-demand/"><text x="690" y="286" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Oferta y demanda</text><text x="690" y="306">Unidad 8 · por qué se mueven los precios</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: la lección que va antes, esta lección en el centro y las lecciones posteriores que se basan en ella.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 5</span><b>¿Por qué invertir?</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Acciones</b></li>
+        <li><span class="muted small">Siguiente · Unidad 5</span><b>Fondos indexados y el S&amp;P 500</b></li>
+        <li><span class="muted small">Después · Unidad 5</span><b>Abre una cuenta de inversión</b></li>
+        <li><span class="muted small">Después · Unidad 5</span><b>Cuando el mercado cae</b></li>
+        <li><span class="muted small">Después · Unidad 8</span><b>Oferta y demanda</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../supply-demand/">Siguiente lección abierta: Por qué los precios son lo que son <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>

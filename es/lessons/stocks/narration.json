@@ -1,0 +1,22 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "S&P": "ese y pe",
+    "IPO": "i pe o",
+    "RBIK": "erre be i ka"
+  },
+  "lines": [
+    "¿Qué es de verdad una acción? Es un pequeño pedazo de la propiedad de una empresa. Tener una acción te hace dueño de una parte.",
+    "Imagina el taller de bicicletas de Rosa. Ella calcula que vale ciento sesenta mil dólares y lo divide en mil acciones, así que cada acción vale ciento sesenta dólares.",
+    "Para conseguir cuarenta mil dólares para un segundo taller, le vende doscientas cincuenta acciones nuevas a su primo Luis. Ahora hay mil doscientas cincuenta acciones, y Luis es dueño del veinte por ciento.",
+    "Por eso las empresas venden acciones. Consiguen dinero para crecer sin pedirlo prestado. A cambio, los nuevos dueños comparten las ganancias.",
+    "Las empresas grandes hacen esto a una escala gigante. La primera vez que una empresa vende acciones al público es su oferta pública inicial, o IPO. Después, los inversionistas compran y venden las acciones entre sí en una bolsa de valores.",
+    "Una acción te puede pagar de dos formas. La empresa puede repartir parte de su ganancia como dividendo, una cantidad fija por cada acción. O el precio de la acción puede subir, y eso es una ganancia de capital.",
+    "El precio de una acción es lo que acuerdan los compradores y los vendedores en este momento. Las buenas noticias sobre las ganancias futuras lo suben. Las malas lo bajan, muchas veces en segundos.",
+    "Aquí está el problema. Una empresa puede fracasar, y sus acciones pueden llegar a cero. Blockbuster y Sears quebraron.",
+    "Un estudio famoso revisó casi veintiséis mil acciones de Estados Unidos de 1926 a 2016. Al cincuenta y ocho por ciento le fue peor que a los bonos del Tesoro, que son seguros. Más o menos el cuatro por ciento creó todas las ganancias netas del mercado.",
+    "Así que apostar todo a una sola empresa es como una ardilla que entierra toda su comida del invierno en un solo hoyo. Repartir tu dinero entre muchas empresas significa que una mala elección te cuesta una nuez, no toda la reserva."
+  ]
+}

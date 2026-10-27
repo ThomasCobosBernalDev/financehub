@@ -108,7 +108,7 @@
     L(4, 2, "u4-credit-cards", t("Use a card without getting burned", "Usa una tarjeta sin quemarte"), t("Credit cards and interest", "Tarjetas de crédito e intereses"), { needs: ["u4-credit-scores"] }),
     L(4, 3, "u4-loans", t("Loans and the traps to avoid", "Préstamos y las trampas que debes evitar"), t("Car, student and payday loans", "Préstamos de carro, estudiantiles y de día de pago"), { needs: ["u4-credit-cards"] }),
     L(5, 1, "u5-why-invest", t("Why invest at all?", "¿Por qué invertir?"), t("Inflation shrinks cash, compounding grows it", "La inflación encoge el efectivo y el interés compuesto lo hace crecer"), { href: "lessons/why-invest/" }),
-    L(5, 2, "u5-stocks", t("What a stock is", "Qué es una acción"), t("Owning a slice of a company", "Ser dueño de un pedazo de una empresa"), { needs: ["u5-why-invest"] }),
+    L(5, 2, "u5-stocks", t("What a stock is", "Qué es una acción"), t("Owning a slice of a company", "Ser dueño de un pedazo de una empresa"), { href: "lessons/stocks/", needs: ["u5-why-invest"] }),
     L(5, 3, "u5-index-funds", t("Index funds and the S&P 500", "Los fondos indexados y el S&P 500"), t("One fund, 500 companies", "Un fondo, 500 empresas"), { needs: ["u5-stocks"] }),
     L(5, 4, "u5-brokerage", t("Open a brokerage account", "Abre una cuenta de inversión"), t("What you need and the fees to watch", "Qué necesitas y las comisiones que debes vigilar"), { needs: ["u1-checking-savings"] }),
     L(5, 5, "u5-first-trade", t("Buy your first $10", "Compra tus primeros $10"), t("Fractional shares and placing an order", "Acciones fraccionadas y cómo hacer una orden"), { needs: ["u5-index-funds", "u5-brokerage"] }),
