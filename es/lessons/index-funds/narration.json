@@ -1,0 +1,22 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "S&P": "ese y pe",
+    "ETF": "e te efe",
+    "SPIVA": "espiva"
+  },
+  "lines": [
+    "Un fondo indexado te deja ser dueño de cientos de empresas con una sola compra, aunque sea con diez dólares.",
+    "Todo empieza con un índice, una lista de empresas que mide una parte del mercado. El S&P 500 es una lista de unas quinientas de las empresas más grandes de Estados Unidos.",
+    "Un fondo junta el dinero de muchos inversionistas. Un fondo indexado usa ese dinero para comprar todas las empresas de la lista en vez de elegir algunas. Así, una acción del fondo es un pedacito de todas.",
+    "El S&P 500 les da pedazos más grandes a las empresas más grandes. A principios de octubre de 2026, unos ochenta y seis centavos de cada diez dólares iban a Nvidia, y las diez empresas más grandes se llevaban más o menos el treinta y nueve por ciento.",
+    "Los fondos indexados vienen como ETF, que se compran y venden todo el día como una acción, o como fondos mutuos, que tienen un precio al día. Muchas apps venden pedazos de una acción de un ETF, así que con diez dólares alcanza para empezar.",
+    "Todos los fondos cobran una comisión al año llamada tasa de gastos. Un fondo barato del S&P 500 cobra tres centésimas de un por ciento, o sea tres dólares al año sobre diez mil dólares.",
+    "Suena a muy poco, pero las comisiones también se acumulan en tu contra. Con doscientos dólares al mes de 1995 a 2024, las mismas acciones crecieron a unos cuatrocientos treinta mil dólares con esa comisión baja, y solo a unos trescientos cincuenta y cuatro mil con una comisión de uno punto uno por ciento.",
+    "Los fondos activos tienen administradores que eligen acciones para intentar ganarle al índice. En los veinte años hasta 2024, a más o menos el noventa y dos por ciento de ellos les fue peor que al S&P 500.",
+    "No es mala suerte. Antes de comisiones, todos los inversionistas juntos ganan el rendimiento del mercado. Después de sus comisiones más altas, el que elige promedio tiene que quedar atrás.",
+    "Así que la receta es sencilla. Elige un fondo indexado amplio con una tasa de gastos baja, y déjalo crecer. Después vas a abrir la cuenta donde lo comprarías."
+  ]
+}

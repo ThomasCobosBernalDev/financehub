@@ -1,0 +1,101 @@
+/* Unit 5, Lesson 3: where your money goes, fee bars, shop for a fund. */
+#if-dots circle { animation: if-in .6s var(--ease) backwards; animation-delay: var(--d); }
+@keyframes if-in { from { opacity: 0; transform: scale(.2); } }
+#if-dots circle { transform-box: fill-box; transform-origin: center; }
+.if-bill { animation: if-bob 4s ease-in-out infinite; }
+@keyframes if-bob { 50% { transform: translateY(-5px); } }
+.if-sun { animation: if-pulse 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes if-pulse { 50% { transform: scale(1.08); } }
+
+.split-msg[data-tone="good"], .shop-why[data-tone="good"] { border-color: var(--good); }
+.split-msg[data-tone="warn"], .shop-why[data-tone="warn"] { border-color: var(--wants); }
+.where .split-msg, .fees .split-msg { margin: 18px 0 0; font-size: 17px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+
+/* Where your money goes */
+.where, .fees, .shop { background: var(--card); border-radius: 24px; padding: clamp(18px, 3.5vw, 32px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); margin-top: 20px; }
+.where-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.where-top b { font-family: var(--serif); font-weight: 500; font-size: 32px; color: var(--savings); font-variant-numeric: tabular-nums; }
+.where input[type=range] { width: 100%; margin: 10px 0 0; }
+.where-bar { display: flex; height: 34px; border-radius: 10px; overflow: hidden; margin-top: 18px; gap: 2px; }
+.where-bar i { display: block; height: 100%; }
+.where-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 2px; }
+.where-list li { display: grid; grid-template-columns: 16px 1fr auto 96px; gap: 12px; align-items: center; padding: 8px 4px; border-top: 1px solid var(--line); font-size: 16px; }
+.where-list li i { width: 14px; height: 14px; border-radius: 4px; }
+.where-list small { color: var(--ink-3); font-size: 14px; font-variant-numeric: tabular-nums; }
+.where-list b { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* What fees cost */
+.fee-ctrl { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
+.fee-ctrl label { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 12px; }
+.fee-ctrl label b { font-family: var(--serif); font-weight: 500; font-size: 30px; color: var(--needs); font-variant-numeric: tabular-nums; }
+.fee-ctrl input[type=range] { grid-column: 1 / -1; margin: 6px 0 0; }
+.fee-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: 20px; }
+.fee-chips .chip { font-size: 14px; padding: 8px 14px; }
+.fee-chips .small { margin-right: 4px; }
+.fee-bars { margin-top: 18px; display: grid; gap: 12px; }
+.fee-row { display: grid; grid-template-columns: 120px 1fr 110px; gap: 14px; align-items: center; }
+.fee-row > span { font-weight: 700; font-size: 15px; }
+.fee-row b { text-align: right; font-family: var(--serif); font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; }
+.fee-track { display: flex; height: 26px; background: var(--paper-2); border-radius: 8px; overflow: hidden; }
+.fee-track i { display: block; height: 100%; transition: width .4s var(--ease); }
+.fee-in { background: var(--ink-3); }
+.cheap .fee-grow { background: var(--savings); }
+.pricey .fee-grow { background: var(--wants); }
+.fee-key { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); }
+.fee-key i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.fee-key .fee-grow { background: linear-gradient(90deg, var(--savings) 50%, var(--wants) 50%); }
+
+/* Shop for a fund */
+.shop { margin-top: 28px; }
+.shop-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 24px; flex-wrap: wrap; }
+.pg-score { text-align: right; }
+.pg-score small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.pg-score b { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--accent); }
+.shop-goal { margin: 14px 0 0; font-size: 18px; line-height: 1.5; padding: 12px 16px; background: var(--highlight); border-radius: 14px; color: var(--ink); }
+.shop-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.fund-card { font: inherit; color: var(--ink); text-align: left; border: 0; background: var(--paper-2); border-radius: 18px; padding: 14px 16px; cursor: pointer; box-shadow: inset 0 0 0 1.5px var(--line); display: flex; flex-direction: column; gap: 6px; transition: box-shadow .2s, background .2s, opacity .3s; }
+.fund-card:hover:not(:disabled) { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.fc-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.fc-tk { font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 700; font-size: 15px; background: var(--ink); color: var(--paper); border-radius: 6px; padding: 2px 7px; }
+.fc-type { font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); text-align: right; }
+.fc-name { font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; }
+.fc-tag { align-self: flex-start; font-size: 12.5px; font-weight: 700; color: var(--wants); background: color-mix(in srgb, var(--wants) 14%, transparent); border-radius: 999px; padding: 3px 10px; }
+.fc-stats { display: grid; gap: 6px; margin-top: 4px; border-top: 1px solid var(--line); padding-top: 8px; font-size: 14.5px; line-height: 1.35; }
+.fc-stats small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+.fund-card:disabled { cursor: default; }
+.fund-card.wrong { opacity: .55; box-shadow: inset 0 0 0 2px var(--danger); }
+.fund-card.right { box-shadow: inset 0 0 0 3px var(--good); background: color-mix(in srgb, var(--good) 12%, var(--card)); }
+.shop-cards:has(.right) .fund-card:not(.right):not(.wrong) { opacity: .55; }
+.shop-why { margin-top: 16px; padding: 4px 0 4px 16px; border-left: 4px solid var(--line); }
+.shop-why p { margin: 0; font-size: 17px; line-height: 1.55; }
+.shop-why h4 { margin: 16px 0 8px; font-size: 15px; }
+.sb-rows { display: grid; gap: 8px; }
+.sb-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr) 96px; gap: 12px; align-items: center; font-size: 15px; }
+.sb-row small { color: var(--ink-3); }
+.sb-track { height: 14px; background: var(--paper-2); border-radius: 7px; overflow: hidden; }
+.sb-track i { display: block; height: 100%; background: var(--ink-3); border-radius: 7px; }
+.sb-row.ok .sb-track i { background: var(--good); }
+.sb-row.ok > span:first-child { font-weight: 700; }
+.sb-row b { text-align: right; font-variant-numeric: tabular-nums; }
+.sb-list { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.sb-list li.ok { color: var(--good); }
+.shop-why .small { margin: 10px 0 0; }
+.pg-go { display: flex; justify-content: flex-end; margin-top: 16px; }
+#s-result .result-grade { margin-bottom: 0; }
+
+@media (max-width: 800px) {
+  .shop-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .fee-ctrl { grid-template-columns: 1fr; }
+  .fee-row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .fee-track { grid-column: 1 / -1; grid-row: 2; }
+  .fee-row b { font-size: 20px; }
+  .where-list li { grid-template-columns: 16px 1fr auto; }
+  .where-list li small { display: none; }
+  .sb-row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .sb-track { grid-column: 1 / -1; grid-row: 2; }
+  .pg-score { text-align: left; }
+  .fee-ctrl label b { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { #if-dots circle, .if-bill, .if-sun { animation: none; } }

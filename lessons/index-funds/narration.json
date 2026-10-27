@@ -1,0 +1,21 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "S&P": "S and P",
+    "ETF": "E T F",
+    "SPIVA": "spiva"
+  },
+  "lines": [
+    "An index fund lets you own hundreds of companies with one purchase, even with ten dollars.",
+    "It starts with an index, a list of companies that measures part of the market. The S&P 500 is a list of about five hundred of the biggest U.S. companies.",
+    "A fund pools money from many investors. An index fund uses that pool to buy every company on the list instead of picking some. So one share of the fund is a tiny slice of all of them.",
+    "The S&P 500 gives bigger companies bigger slices. In early October 2026, about eighty-six cents of every ten dollars went to Nvidia, and the ten biggest companies got about thirty-nine percent.",
+    "Index funds come as ETFs, which trade all day like a stock, or as mutual funds, which are priced once a day. Many apps sell pieces of an ETF share, so ten dollars is enough to start.",
+    "Every fund charges a yearly fee called the expense ratio. A cheap S&P 500 fund charges three hundredths of a percent, which is three dollars a year on ten thousand dollars.",
+    "That sounds tiny, but fees compound against you. With two hundred dollars a month from 1995 to 2024, the same stocks grew to about four hundred thirty thousand dollars at that low fee, and only about three hundred fifty-four thousand at a one point one percent fee.",
+    "Active funds have managers who pick stocks to try to beat the index. Over the twenty years through 2024, about ninety-two percent of them did worse than the S&P 500.",
+    "It's not bad luck. Before fees, all investors together earn the market's return. After their higher fees, the average picker has to fall behind.",
+    "So the recipe is simple. Pick a broad index fund with a low expense ratio, and let it ride. Next, you'll open the account you'd buy it in."
+  ]
+}
