@@ -1,0 +1,22 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "NSF": "N S F",
+    "CFPB": "C F P B",
+    "ATM": "A T M",
+    "APR": "A P R",
+    "U.S.": "U S"
+  },
+  "lines": [
+    "A debit card spends straight out of your checking account. That's simple, until you spend money you don't have. Then the fees start.",
+    "Your banking app shows two numbers. Your current balance, and your available balance. Pending charges, like a gas pump hold, already lower what's available. So always spend from the available balance, the smaller one.",
+    "An overdraft happens when the bank pays for something you couldn't cover, and your balance drops below zero. For that, it charges an overdraft fee, which averaged about 27 dollars in 2025. If it sends a bill payment back unpaid instead, it may charge an NSF fee, about 17 dollars.",
+    "Since 2010, a bank can't charge an overdraft fee on a debit card purchase or an ATM withdrawal unless you opt in. If you don't, the card is simply declined, for free. But automatic bill payments and checks can still overdraw your account either way.",
+    "Fees stack. Start a day with 50 dollars, and one 45 dollar phone bill can set off a chain of three overdrafts: 81 dollars of fees. Some banks used to post the biggest charge first, which made it even worse.",
+    "Think of an overdraft as a loan. The CFPB found that most were for 24 dollars or less and paid back within three days. With a 34 dollar fee, that works out to an interest rate of about 17,000 percent a year.",
+    "If your card is stolen, speed matters. On a credit card, you owe at most 50 dollars. On a debit card, it's 50 dollars if you report it within two business days, but up to 500 dollars if you wait, and it's your own money that's missing.",
+    "Five shields stop most fees. A low balance alert. A cushion of about 100 dollars. Overdraft protection from savings at the same bank. Choosing your overdraft setting on purpose. And bill due dates set for right after payday.",
+    "Be like a hummingbird. It never lets its fuel run out overnight, because no one will cover the gap. When your reserves run low, slow your spending way down, and let payday refill the tank."
+  ]
+}

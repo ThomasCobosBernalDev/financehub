@@ -1,0 +1,20 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "CFPB": "ce efe pe be",
+    "17,000%": "diecisiete mil por ciento"
+  },
+  "lines": [
+    "Una tarjeta de débito gasta directo de tu cuenta de cheques. Es sencillo, hasta que gastas dinero que no tienes. Ahí empiezan las comisiones.",
+    "Tu app del banco muestra dos números: tu saldo actual y tu saldo disponible. Los cargos pendientes, como una retención en la gasolinera, ya bajan lo disponible. Así que siempre gasta según el saldo disponible, el más chico.",
+    "Un sobregiro pasa cuando el banco paga algo que no podías cubrir, y tu saldo queda abajo de cero. Por eso cobra una comisión por sobregiro, que en 2025 promedió unos 27 dólares. Si en cambio devuelve un pago sin pagar, puede cobrar una comisión por fondos insuficientes, de unos 17 dólares.",
+    "Desde 2010, un banco no puede cobrarte una comisión por sobregiro en una compra con tarjeta de débito o un retiro de cajero si no aceptas la cobertura. Si no la aceptas, la tarjeta solo se rechaza, gratis. Pero los pagos automáticos y los cheques todavía pueden sobregirar tu cuenta.",
+    "Las comisiones se acumulan. Empieza un día con 50 dólares, y una sola factura de teléfono de 45 dólares puede desatar tres sobregiros: 81 dólares de comisiones. Algunos bancos registraban primero el cargo más grande, y eso lo empeoraba.",
+    "Piensa en un sobregiro como un préstamo. La CFPB encontró que la mayoría eran de 24 dólares o menos y se pagaban en tres días. Con una comisión de 34 dólares, eso equivale a una tasa de interés de unos 17,000% al año.",
+    "Si te roban la tarjeta, la rapidez importa. Con tarjeta de crédito, debes como máximo 50 dólares. Con tarjeta de débito, son 50 dólares si lo reportas en dos días hábiles, pero hasta 500 si esperas, y lo que falta es tu propio dinero.",
+    "Cinco escudos evitan la mayoría de las comisiones. Una alerta de saldo bajo. Un colchón de unos 100 dólares. Protección contra sobregiros con ahorro en el mismo banco. Decidir sobre la cobertura a propósito. Y fechas de pago justo después del día de pago.",
+    "Sé como un colibrí. Nunca deja que su combustible se acabe en la noche, porque nadie va a cubrir lo que falte. Cuando tus reservas estén bajas, frena mucho tus gastos y deja que el día de pago llene el tanque."
+  ]
+}
