@@ -80,7 +80,7 @@
     return top;
   };
   const pathOf = (vals, top) => vals.map((v, i) => `${i ? "L" : "M"}${(W.x0 + (i / (vals.length - 1)) * (W.x1 - W.x0)).toFixed(1)} ${(W.y0 - (v / top) * (W.y0 - W.y1)).toFixed(1)}`).join(" ");
-  const drawIn = (el, d) => {
+  const drawIn = (el, d, ease = "stroke-dashoffset .7s cubic-bezier(.22,.8,.24,1)") => {
     el.setAttribute("d", d);
     if (matchMedia("(prefers-reduced-motion: reduce)").matches || !el.getTotalLength) return;
     const len = el.getTotalLength();
@@ -88,8 +88,51 @@
     el.style.strokeDasharray = `${len} ${len}`;
     el.style.strokeDashoffset = len;
     void el.getBoundingClientRect();
-    el.style.transition = "stroke-dashoffset .7s cubic-bezier(.22,.8,.24,1)";
+    el.style.transition = ease;
     el.style.strokeDashoffset = 0;
+  };
+
+  // The S&P line draws in with a glowing tip, a tag riding along with the running total, and a big
+  // faded counter behind the chart that climbs with it. The fill under the line fades out downward.
+  let growRun = 0;
+  const growFx = (vals, top, animate) => {
+    const sp = $("#gr-sp"), d = pathOf(vals, top), n = vals.length - 1, run = ++growRun;
+    sp.setAttribute("d", d);
+    $("#gr-sp-area").setAttribute("d", `${d} L${W.x1} ${W.y0} L${W.x0} ${W.y0} Z`);
+    const big = $("#gr-big"), head = $("#gr-head"), tip = $("#gr-tip"), clip = $("#gr-clip-r");
+    const [tk, tv] = tip.querySelectorAll("text");
+    tk.textContent = T("S&P 500 fund buys", "El fondo S&P 500 compra");
+    big.setAttribute("x", (W.x0 + W.x1) / 2);
+    big.setAttribute("y", (W.y0 + W.y1) / 2 + (W.narrow ? 60 : 40));
+    const len = sp.getTotalLength();
+    const valAt = (x) => {
+      const f = Math.max(0, Math.min(1, (x - W.x0) / (W.x1 - W.x0))) * n, i = Math.floor(f);
+      return i >= n ? vals[n] : vals[i] + (vals[i + 1] - vals[i]) * (f - i);
+    };
+    const frame = (t) => {
+      const pt = sp.getPointAtLength(len * t), v = money(Math.round(valAt(pt.x)));
+      sp.style.strokeDasharray = `${len} ${len}`;
+      sp.style.strokeDashoffset = len * (1 - t);
+      clip.setAttribute("width", pt.x);
+      head.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+      big.textContent = v; tv.textContent = v;
+      const w = Math.max(tk.getComputedTextLength(), tv.getComputedTextLength()) + 24;
+      tip.querySelector("rect").setAttribute("width", w);
+      let x = pt.x - w - 18, y = pt.y - 62;
+      if (x < W.x0) x = pt.x + 18;
+      if (y < 0) y = pt.y + 18;
+      tip.setAttribute("transform", `translate(${x} ${y})`);
+    };
+    sp.style.transition = "none";
+    if (!animate || matchMedia("(prefers-reduced-motion: reduce)").matches) { frame(1); return; }
+    const t0 = performance.now(), dur = 2400;
+    const step = (now) => {
+      if (run !== growRun) return; // a newer draw took over
+      const p = Math.min(1, (now - t0) / dur);
+      frame(p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   };
 
   const grAmt = $("#gr-amt"), grYrs = $("#gr-yrs");
@@ -111,9 +154,9 @@
     for (let t = 0; t <= n; t += every) ticks.push([W.x0 + (t / n) * (W.x1 - W.x0), t === 0 ? T("now", "hoy") : t]);
     if (n % every) ticks.push([W.x1, n, "end"]);
     const top = drawGrid($("#gr-grid"), Math.max(spv[n], paid[n]) * 1.05, ticks);
-    const set = (id, vals) => (animate ? drawIn($(id), pathOf(vals, top)) : $(id).setAttribute("d", pathOf(vals, top)));
+    const set = (id, vals) => (animate ? drawIn($(id), pathOf(vals, top), "stroke-dashoffset 2.4s cubic-bezier(.45,0,.55,1)") : $(id).setAttribute("d", pathOf(vals, top)));
     $("#gr-in").setAttribute("d", pathOf(paid, top));
-    set("#gr-cash", cash); set("#gr-sav", sav); set("#gr-sp", spv);
+    set("#gr-cash", cash); set("#gr-sav", sav); growFx(spv, top, animate);
     const key = $("#gr-grid");
     const ly = W.narrow ? 30 : W.y1 + 16, lx = W.narrow ? 0 : W.x0 + 14, gap = W.narrow ? 38 : 26;
     key.appendChild(svgEl("text", { x: lx, y: ly, "font-weight": 700, fill: "var(--ink-2)" }, T("What it buys, in today's dollars", "Lo que compra, en dólares de hoy")));

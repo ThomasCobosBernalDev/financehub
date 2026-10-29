@@ -6,8 +6,8 @@
   <title>Why Invest at All? · FinanceHub</title>
   <meta name="description" content="Unit 5, Lesson 1: why cash loses buying power to inflation, how compounding grows invested money, and which money to invest. Test it on 98 years of real market history.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../assets/css/style.css?v=202610292319">
-  <link rel="stylesheet" href="lesson.css?v=202610292319">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610292347">
+  <link rel="stylesheet" href="lesson.css?v=202610292347">
 </head>
 <body data-root="../../">
 <a class="skip" href="#main">Skip to the lesson</a>
@@ -162,11 +162,16 @@
           <label><span class="small muted">For this many years</span><b id="gr-yrs-v">40 years</b><input type="range" id="gr-yrs" min="1" max="45" step="1" value="40" aria-label="Number of years"></label>
         </div>
         <svg class="grow-chart" id="gr-chart" viewBox="0 0 900 330" role="img" aria-label="Lines showing what money in a drawer, a savings account and an S&amp;P 500 index fund would buy over the years">
+          <defs><linearGradient id="gr-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--needs)" stop-opacity=".42"/><stop offset="1" stop-color="var(--needs)" stop-opacity="0"/></linearGradient><clipPath id="gr-clip"><rect id="gr-clip-r" x="0" y="0" width="900" height="700"/></clipPath></defs>
+          <text id="gr-big" class="gr-big" x="484" y="190" text-anchor="middle"></text>
           <g id="gr-grid" font-size="13" fill="var(--ink-3)"></g>
+          <path id="gr-sp-area" fill="url(#gr-fade)" clip-path="url(#gr-clip)"/>
           <path id="gr-in" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 6"/>
           <path id="gr-cash" fill="none" stroke="var(--wants)" stroke-width="3.5" stroke-linejoin="round"/>
           <path id="gr-sav" fill="none" stroke="var(--savings)" stroke-width="3.5" stroke-linejoin="round"/>
           <path id="gr-sp" fill="none" stroke="var(--needs)" stroke-width="4" stroke-linejoin="round"/>
+          <g id="gr-head" class="gr-head"><circle r="16" class="gr-halo"/><circle r="6.5" class="gr-dot"/></g>
+          <g id="gr-tip" class="gr-tip"><rect rx="8" height="48"/><text class="gr-tip-k" x="12" y="19"></text><text class="gr-tip-v" x="12" y="39"></text></g>
         </svg>
         <div class="grow-out">
           <div class="go-card cash"><small>Drawer</small><b id="gr-cash-v">$0</b><span id="gr-cash-n"></span></div>
@@ -485,11 +490,11 @@
   </div>
 </footer>
 
-<script src="../../assets/js/save.js?v=202610292319"></script>
-<script src="../../assets/vendor/supabase-2.45.4.js?v=202610292319"></script>
-<script src="../../assets/js/auth.js?v=202610292319"></script>
-<script src="../../assets/js/site.js?v=202610292319"></script>
-<script src="../../assets/js/lesson-kit.js?v=202610292319"></script>
-<script src="lesson.js?v=202610292319"></script>
+<script src="../../assets/js/save.js?v=202610292347"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610292347"></script>
+<script src="../../assets/js/auth.js?v=202610292347"></script>
+<script src="../../assets/js/site.js?v=202610292347"></script>
+<script src="../../assets/js/lesson-kit.js?v=202610292347"></script>
+<script src="lesson.js?v=202610292347"></script>
 </body>
 </html>

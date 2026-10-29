@@ -85,4 +85,13 @@
   .missions { grid-template-columns: 1fr; }
   .grow-chart text, .hist-chart text { font-size: 28px; }
 }
+/* S&P growth line (see growFx in lesson.js) */
+.gr-big { font-family: var(--sans); font-weight: 700; font-size: 132px; letter-spacing: -.03em; fill: var(--ink); opacity: .07; font-variant-numeric: tabular-nums; }
+.gr-halo { fill: var(--needs); opacity: .22; }
+.gr-dot { fill: var(--needs); stroke: var(--card); stroke-width: 2; }
+.gr-head { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--needs) 80%, transparent)); }
+.gr-tip rect { fill: var(--ink); }
+.gr-tip-k { font-size: 12px; fill: var(--paper); opacity: .7; }
+.gr-tip-v { font-size: 17px; font-weight: 700; fill: var(--paper); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .gr-big { font-size: 190px; } .grow-chart .gr-tip-k { font-size: 24px; } .grow-chart .gr-tip-v { font-size: 32px; } .gr-tip rect { height: 84px; } .gr-tip-k { transform: translateY(8px); } .gr-tip-v { transform: translateY(32px); } }
 @media (prefers-reduced-motion: reduce) { .wi-sway, .wi-shrink, .missions li.pop { animation: none; } }
