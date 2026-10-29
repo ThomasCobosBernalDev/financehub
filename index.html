@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610292242">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610292257">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -40,11 +40,6 @@
     .hs-line { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .4; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sky-draw 2.4s var(--ease) .2s forwards; }
     @keyframes sky-draw { to { stroke-dashoffset: 0; } }
     @media (prefers-reduced-motion: reduce) { .hs-line { animation: none; stroke-dashoffset: 0; } }
-    /* Wide header on the home page: logo hugs the left edge, account the right, the menu sits in the middle. */
-    .topbar .wrap.wide { max-width: none; display: grid; grid-template-columns: 1fr auto 1fr; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
-    .wrap.wide .topnav { margin: 0; }
-    .top-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
-    @media (max-width: 720px) { .topbar .wrap.wide { grid-template-columns: auto 1fr; } }
     /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
     .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 170px; }
     .hero h1 { font-size: clamp(44px, 5vw, 70px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 20px; max-width: 11ch; }
@@ -339,10 +334,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610292242"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610292242"></script>
-<script src="assets/js/auth.js?v=202610292242"></script>
-<script src="assets/js/site.js?v=202610292242"></script>
+<script src="assets/js/save.js?v=202610292257"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610292257"></script>
+<script src="assets/js/auth.js?v=202610292257"></script>
+<script src="assets/js/site.js?v=202610292257"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;

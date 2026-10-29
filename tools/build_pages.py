@@ -16,23 +16,23 @@ SHELL = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{title} · FinanceHub</title>
   <meta name="description" content="{description}">
-  <script>try {{ var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; }} catch (e) {{}}</script>
+  <script>try {{ var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; }} catch (e) {{}}</script>
   <link rel="stylesheet" href="{a}assets/css/style.css">
 </head>
 <body data-root="{r}">
 <a class="skip" href="#main">{skip}</a>
 <header class="topbar">
-  <div class="wrap">
+  <div class="wrap wide">
     <a class="logo" href="{r}">Finance<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="{r}">{course}</a><a href="{r}about.html">{about}</a></nav>
-    <div class="spacer"></div>
-    <a class="lang-switch" href="{alt}" data-set-lang="{lang_code}" hreflang="{lang_code}" aria-label="{lang_aria}"><span class="ls-long">{lang_label}</span><span class="ls-short">{lang_short}</span></a>
+    <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
     </button>
     <a class="btn sm" href="{r}account/">{sign_in}</a>
+    </div>
   </div>
 </header>
 <main id="main" class="{main_class}">
@@ -41,6 +41,7 @@ SHELL = """<!doctype html>
 <footer class="foot">
   <div class="wrap">
     <nav aria-label="{foot_nav}"><a href="{r}about.html">{f_about}</a><a href="{r}legal/privacy.html">{f_privacy}</a><a href="{r}legal/terms.html">{f_terms}</a><a href="{r}legal/cookies.html">{f_cookies}</a><a href="{r}legal/privacy.html#delete">{f_delete}</a><a href="{r}credits.html">{f_credits}</a></nav>
+    <p><a class="foot-lang" href="{alt}" data-set-lang="{lang_code}" hreflang="{lang_code}" lang="{lang_code}">{lang_aria}</a></p>
     <p class="disclaimer">{disclaimer}</p>
     <p>© 2026 FinanceHub</p>
   </div>
