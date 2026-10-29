@@ -1,0 +1,20 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "FICA": "fica",
+    "401(k)": "cuatro cero uno ka"
+  },
+  "lines": [
+    "Tu trabajo en el campus paga 16 dólares con 25 centavos la hora. Cuarenta horas en dos semanas son 650 dólares. Pero a tu cuenta solo llegan 597 dólares con 19 centavos. Tu talón de pago explica la diferencia.",
+    "Arriba del talón está el sueldo bruto: horas por tu tarifa, antes de que te quiten algo.",
+    "Después viene la retención: impuestos que tu empleador te quita y manda al gobierno por ti.",
+    "El impuesto federal sobre la renta se calcula sobre lo que ganas al año por encima de la deducción estándar, 16,100 dólares en 2026. Con 650 dólares cada dos semanas, solo 800 dólares al año pagan impuesto. El diez por ciento de eso son 80 dólares, unos 3 dólares por cheque.",
+    "Luego el FICA. El Seguro Social se lleva el 6.2 por ciento, 40 dólares con 30 centavos. Medicare se lleva el 1.45 por ciento, 9 dólares con 43 centavos. Estos empiezan desde tu primer dólar, y tu empleador paga la misma cantidad aparte.",
+    "Lo que queda es el sueldo neto, lo que te llevas a casa. 650, menos 3.08, menos 40.30, menos 9.43, son 597 dólares con 19 centavos. Ese es el número para tu presupuesto.",
+    "Una deducción antes de impuestos, como un 401(k), sale antes de calcular el impuesto sobre la renta, así que pagas menos. El Seguro Social y Medicare se siguen cobrando.",
+    "Revisa cada talón en orden: horas, tarifa, sueldo bruto, cada impuesto, y que el neto coincida con tu depósito. Los errores de nómina pasan, y tú eres quien mejor los puede encontrar.",
+    "Un árbol de arce produce unos 40 galones de savia por cada galón de jarabe. El sueldo bruto es la savia. El neto es el jarabe que de verdad puedes servir."
+  ]
+}

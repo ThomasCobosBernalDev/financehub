@@ -98,7 +98,7 @@
     L(1, 2, "u1-open-account", t("Open your first account", "Abre tu primera cuenta"), t("Banks, credit unions and FDIC insurance", "Bancos, cooperativas y el seguro de la FDIC"), { href: "lessons/open-account/" }),
     L(1, 3, "u1-bank-fees", t("Dodge the fees", "Evita las comisiones"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones"), { href: "lessons/bank-fees/" }),
     L(1, 4, "u1-moving-money", t("Move money safely", "Mueve tu dinero con seguridad"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago"), { href: "lessons/moving-money/" }),
-    L(2, 1, "u2-pay-stub", t("Read your first pay stub", "Lee tu primer talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto")),
+    L(2, 1, "u2-pay-stub", t("Read your first pay stub", "Lee tu primer talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto"), { href: "lessons/pay-stub/" }),
     L(2, 2, "u2-taxes", t("Where your taxes go", "A dónde van tus impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4")),
     L(2, 3, "u2-file-taxes", t("File your first tax return", "Presenta tu primera declaración"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
     L(3, 1, "u4-budgeting-frameworks", t("Give every dollar a job", "Dale un trabajo a cada dólar"), t("Budgeting frameworks · Month Survivor", "Métodos de presupuesto · Sobrevive el mes"), { href: "lessons/budgeting/" }),

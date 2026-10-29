@@ -1,0 +1,20 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "FICA": "FY-kuh",
+    "YTD": "year to date",
+    "401(k)": "four oh one K"
+  },
+  "lines": [
+    "Your campus job pays 16 dollars and 25 cents an hour. Forty hours in two weeks is 650 dollars. But only 597 dollars and 19 cents lands in your account. Your pay stub explains the difference.",
+    "The top of the stub is gross pay: hours times your rate, before anything is taken out.",
+    "Next comes withholding: taxes your employer takes out and sends to the government for you.",
+    "Federal income tax is figured on your yearly pay above the standard deduction, 16,100 dollars in 2026. At 650 dollars every other week, only 800 dollars a year is taxed. Ten percent of that is 80 dollars, or about 3 dollars a paycheck.",
+    "Then FICA. Social Security takes 6.2 percent, 40 dollars and 30 cents. Medicare takes 1.45 percent, 9 dollars and 43 cents. These start with your very first dollar, and your employer pays the same amount again on top.",
+    "What's left is net pay, your take-home pay. 650, minus 3.08, minus 40.30, minus 9.43, is 597 dollars and 19 cents. That's the number to budget with.",
+    "A pre-tax deduction, like a 401(k), comes out before income tax is figured, so you pay less income tax. Social Security and Medicare still apply.",
+    "Check every stub in order: hours, rate, gross pay, each tax, and that net pay matches your deposit. Payroll mistakes happen, and you're the best person to catch them.",
+    "A maple tree makes about 40 gallons of sap for every gallon of syrup. Gross pay is the sap. Net pay is the syrup you can actually pour."
+  ]
+}
