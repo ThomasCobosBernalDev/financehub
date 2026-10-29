@@ -1,0 +1,21 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "ACH": "a ce ache",
+    "FDIC": "efe de i ce",
+    "P2P": "pe dos pe"
+  },
+  "lines": [
+    "El dinero viaja por distintas vías: el depósito directo y las transferencias entre bancos, las transferencias urgentes, apps como Zelle y Venmo, y los cheques de papel. Cada una equilibra rapidez, costo y seguridad.",
+    "Con el depósito directo, tu empleador manda tu pago directo a tu cuenta. Das dos números: el número de ruta, nueve dígitos que dicen a qué banco, y tu número de cuenta, que dice cuál cuenta es la tuya.",
+    "El depósito directo viaja por la red ACH, que mueve dinero entre bancos en lotes. En 2024 movió 33.6 mil millones de pagos. Una transferencia ACH normal es gratis y tarda de uno a tres días hábiles, de lunes a viernes, sin contar feriados.",
+    "Una transferencia urgente llega el mismo día hábil, pero normalmente cuesta de 25 a 35 dólares, y es casi imposible recuperarla.",
+    "Zelle manda dinero entre cuentas bancarias en minutos, gratis. Venmo y Cash App primero guardan el dinero en un saldo de la app. Pasarlo a tu banco es gratis si esperas de uno a tres días hábiles, o cuesta 1.75 por ciento en Venmo si lo quieres al instante.",
+    "Si depositas un cheque con una foto, el banco puede retener una parte. Los primeros 275 dólares suelen estar disponibles el siguiente día hábil, y el resto para el segundo.",
+    "Las tarjetas se pueden disputar. Zelle, las transferencias urgentes y los pagos de amigos y familia funcionan como efectivo. Cuando llegan, son de la otra persona. Por eso los estafadores los piden.",
+    "Así que sigue cinco reglas. Manda dinero rápido solo a gente que conoces. Prueba con un dólar. Revisa el nombre antes de tocar enviar. Llama para confirmar datos bancarios nuevos. Y empieza las transferencias tres días hábiles antes, para nunca pagar por rapidez.",
+    "Las abejas revisan muchas veces un nuevo hogar antes de que el enjambre se mueva, porque una mudanza no se puede deshacer. Haz lo mismo con tu dinero: revisa dos veces y envía una."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "ACH": "A C H",
+    "P2P": "peer to peer",
+    "FDIC": "F D I C"
+  },
+  "lines": [
+    "Money moves on rails: direct deposit and bank transfers, wires, apps like Zelle and Venmo, and paper checks. Each one trades off speed, cost and safety.",
+    "With direct deposit, your employer sends your pay straight into your account. You give two numbers: the routing number, nine digits that say which bank, and your account number, which says which account is yours.",
+    "Direct deposit runs on the ACH network, which moves money between banks in batches. In 2024 it moved 33.6 billion payments. A regular ACH transfer is free, and takes one to three business days, Monday to Friday, not counting holidays.",
+    "A wire transfer arrives the same business day, but usually costs 25 to 35 dollars, and it's almost impossible to pull back.",
+    "Zelle sends money between bank accounts in minutes, for free. Venmo and Cash App hold money in an app balance first. Moving it to your bank is free if you wait one to three business days, or 1.75 percent on Venmo if you want it instantly.",
+    "Deposit a check with a photo, and the bank may hold part of it. The first 275 dollars is usually available the next business day, and the rest by the second.",
+    "Cards can be disputed. Zelle, wires and friends-and-family app payments work like cash. Once they arrive, they belong to the other person. That's why scammers ask for them.",
+    "So follow five rules. Only send fast money to people you know. Test with one dollar. Check the name before you tap send. Call to confirm any new bank details. And start transfers three business days early, so you never pay for speed.",
+    "Honeybees check a new home many times before the swarm moves, because a move can't be undone. Do the same with your money: check twice, then send once."
+  ]
+}
