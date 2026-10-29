@@ -32,13 +32,13 @@
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --paper: #16150f;
-  --paper-2: #1e1d17;
-  --card: #22211b;
+  --paper: #1f1e1a;
+  --paper-2: #282722;
+  --card: #2c2b26;
   --ink: #efe9dc;
   --ink-2: #b4ad9f;
   --ink-3: #958e81;
-  --line: #34322a;
+  --line: #3d3b33;
   --accent: #6cc3a5;
   --accent-soft: #23362f;
   --needs: #7f9fe6;
@@ -47,7 +47,7 @@
   --danger: #ef7a6c;
   --good: #5cc49a;
   --highlight: #6b5a1e;
-  --on-color: #16150f;
+  --on-color: #1f1e1a;
   --grain-opacity: 0;
   --glow-a: rgba(108, 195, 165, .09);
   --glow-b: rgba(214, 160, 70, .07);
@@ -122,11 +122,11 @@ b, strong { font-weight: 650; }
 .xp { font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .xp b { color: var(--ink); }
 .icon-btn {
-  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  width: 40px; height: 40px; border-radius: 50%; border: 0;
   background: transparent; color: var(--ink); cursor: pointer; display: grid; place-items: center;
   transition: background .2s, transform .3s var(--ease);
 }
-.icon-btn:hover { background: var(--paper-2); }
+.icon-btn:hover { color: var(--accent); }
 .icon-btn:active { transform: rotate(30deg); }
 .icon-btn svg { width: 18px; height: 18px; }
 .theme-toggle .moon { display: none; }

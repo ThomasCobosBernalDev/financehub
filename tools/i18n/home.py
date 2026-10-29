@@ -27,7 +27,7 @@ PAIRS = [
     ('<b>How credit and credit cards work</b><small>Build a good score without falling into debt. Lessons coming soon.</small></span><i>Know the basics</i>', '<b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i>'),
     ('<b>How to get hired in finance</b><small>Ace college finance, then interview at a bank or on Wall Street.</small></span><i>Career</i>', '<b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i>'),
     ("<p class=\"for-you-foot\">Not sure? <a href=\"start/\">Answer a few quick questions</a> and we'll line up your lessons.</p>", '<p class="for-you-foot">¿No estás seguro? <a href="start/">Responde unas preguntas rápidas</a> y ordenamos tus lecciones.</p>'),
-    ('aria-label="The course"', 'aria-label="El curso"'),
+    ('<h2 id="shape-h">Where the course takes you</h2>', '<h2 id="shape-h">A dónde te lleva el curso</h2>'),
     ('<figcaption id="climb-cap">The whole course in 5 parts, from your first bank account to your first finance job. Each part builds on the last.</figcaption>',
      '<figcaption id="climb-cap">Todo el curso en 5 partes, desde tu primera cuenta de banco hasta tu primer trabajo en finanzas. Cada parte se apoya en la anterior.</figcaption>'),
     ('aria-label="Switch light or dark mode"', 'aria-label="Cambiar entre modo claro y oscuro"'),

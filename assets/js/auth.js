@@ -67,7 +67,7 @@
   document.addEventListener("fh:save", push);
 
   // Header button reads "Account" once signed in.
-  const paintHeader = () => document.querySelectorAll('a[href$="account/"]').forEach((a) => {
+  const paintHeader = () => document.querySelectorAll('.topbar a[href$="account/"]').forEach((a) => {
     if (!a.classList.contains("btn")) return;
     const name = user && ((user.user_metadata || {}).username || user.email.split("@")[0]);
     a.classList.toggle("signed-in", !!user);
