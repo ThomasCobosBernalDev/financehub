@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610292310">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610292319">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -83,6 +83,7 @@
     .climb-bracket { margin: 10px 0 0 calc((100% - 40px) / 5 + 10px); width: calc((100% - 40px) * 3 / 5 + 20px); height: 26px; border: 1.5px solid var(--ink-3); border-top: 0; border-radius: 0 0 8px 8px; position: relative; }
     .climb-bracket span { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px); white-space: nowrap; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
     .climb figcaption { margin-top: 44px; font-size: 14px; color: var(--ink-3); }
+    .reveal:not(.in) .climb .cbar, .reveal:not(.in) .climb .cl { animation-play-state: paused; }
     @keyframes climb-up { from { transform: scaleY(0); } }
     @keyframes climb-in { from { opacity: 0; transform: translateY(6px); } }
     @media (prefers-reduced-motion: reduce) { .climb .cbar, .climb .cl { animation: none; } }
@@ -112,7 +113,7 @@
     .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
     .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
     .my-path-card .btn { flex: none; }
-    .mp-actions { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .mp-actions { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 8px; }
     .mp-actions .text-link { font-size: 14px; color: var(--ink-3); }
     .unit.planned h3 { color: var(--ink-2); }
     .unit.planned > div:last-child { flex: 1; padding: 6px 0 0; }
@@ -141,7 +142,7 @@
     .mp-list .soon b { color: var(--ink-2); }
     .mp-list .known { opacity: .6; }
     .mp-more { margin-top: 10px; font-size: 14px; }
-    @media (max-width: 640px) { .mp-head { flex-direction: column; align-items: stretch; } .mp-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 18px; } }
+    @media (max-width: 640px) { .mp-head { flex-direction: column; align-items: stretch; } .mp-actions { justify-content: flex-start; } }
     .unit .path-tag { display: inline-block; vertical-align: middle; font-family: var(--sans); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); position: relative; top: -3px; }
     .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
     .unit.off-path { opacity: .55; }
@@ -338,10 +339,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202610292310"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610292310"></script>
-<script src="../assets/js/auth.js?v=202610292310"></script>
-<script src="../assets/js/site.js?v=202610292310"></script>
+<script src="../assets/js/save.js?v=202610292319"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610292319"></script>
+<script src="../assets/js/auth.js?v=202610292319"></script>
+<script src="../assets/js/site.js?v=202610292319"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -442,8 +443,8 @@ const paintPath = () => {
   const shown = showAll || more <= 0 ? items : items.slice(0, LIMIT);
   card.classList.add("has-list");
   card.innerHTML = T(
-    `<div class="mp-head"><div><p class="kicker">Your path</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="text-link" href="start/#check">Take the placement check</a>`}<button class="text-link" type="button" id="clear-path">Clear my path</button></div></div>`,
-    `<div class="mp-head"><div><p class="kicker">Tu camino</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="text-link" href="start/#check">Hacer la prueba de nivel</a>`}<button class="text-link" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
+    `<div class="mp-head"><div><p class="kicker">Your path</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Take the placement check</a>`}<button class="btn sm line" type="button" id="clear-path">Clear my path</button></div></div>`,
+    `<div class="mp-head"><div><p class="kicker">Tu camino</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Hacer la prueba de nivel</a>`}<button class="btn sm line" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
     + `<ol class="mp-list">${shown.map(row).join("")}</ol>`
     + (more > 0 ? `<button class="text-link mp-more" type="button" id="mp-more">${showAll ? T("Show less", "Mostrar menos") : T(`Show all ${items.length}`, `Mostrar las ${items.length}`)}</button>` : "");
   document.getElementById("clear-path").addEventListener("click", () => {
