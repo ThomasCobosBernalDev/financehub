@@ -1,0 +1,24 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "FDIC": "F D I C",
+    "NCUA": "N C U A",
+    "APY": "A P Y",
+    "ATM": "A T M",
+    "SIPC": "sipick",
+    "ITIN": "I tin",
+    "U.S.": "U S"
+  },
+  "lines": [
+    "Before you hand a place your paycheck, find out who's really holding it. Banks, credit unions and online banks all hold money. Not every money app does.",
+    "A bank is owned by shareholders, who keep its profits. A credit union is a not-for-profit owned by its members, the customers, so profits come back as lower fees and better rates. An online bank is a real bank with no branches, which often means higher savings rates.",
+    "From 1930 to 1933, about 9,000 American banks failed, and many families lost their savings. So in 1934 the government created deposit insurance. Today the FDIC insures banks and the NCUA insures credit unions, up to 250,000 dollars per depositor, per bank, per ownership category.",
+    "The FDIC says no one has lost a penny of insured deposits since it began. When Washington Mutual failed in 2008, the biggest bank failure in American history, another bank took it over and customers kept using their accounts.",
+    "Coverage depends on how the account is owned. An account in just your name is covered up to 250,000 dollars. A joint account covers each owner up to 250,000. Anything above the limit is uninsured.",
+    "Deposit insurance covers deposits, not investments. Stocks, funds and crypto aren't covered, even at a bank. And many apps aren't banks at all. They keep your money at a partner bank, so you're covered if that bank fails, not if the app does. When a company called Synapse collapsed in 2024, up to 96 million dollars of customers' money went missing.",
+    "Once your money is protected, compare the whole account: the monthly fee and how to get it waived, ATM fees, which averaged 4 dollars and 86 cents in 2025, and the interest rate on savings.",
+    "To open an account, bring a photo ID, your Social Security number or an ITIN, your address and date of birth, and a small opening deposit. If you're under 18, a parent usually opens it with you.",
+    "Think of deposit insurance like emperor penguins in a huddle. Every insured bank pays into one shared fund, and when one fails, the fund keeps its depositors warm. Before you deposit, look for the sign: Member FDIC, or Federally insured by NCUA."
+  ]
+}

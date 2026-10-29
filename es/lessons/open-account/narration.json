@@ -1,0 +1,24 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "FDIC": "efe de i ce",
+    "NCUA": "ene ce u a",
+    "APY": "a pe ye",
+    "ITIN": "i tin",
+    "SIPC": "sipic",
+    "EE. UU.": "Estados Unidos"
+  },
+  "lines": [
+    "Antes de darle tu sueldo a un lugar, averigua quién lo tiene en realidad. Los bancos, las cooperativas de crédito y los bancos en línea guardan dinero. No todas las apps de dinero lo hacen.",
+    "Un banco pertenece a accionistas, que se quedan con sus ganancias. Una cooperativa de crédito es una organización sin fines de lucro que pertenece a sus socios, los clientes, así que las ganancias regresan como comisiones más bajas y mejores tasas. Un banco en línea es un banco de verdad sin sucursales, y eso muchas veces significa tasas de ahorro más altas.",
+    "De 1930 a 1933, cerca de 9,000 bancos de Estados Unidos quebraron, y muchas familias perdieron sus ahorros. Por eso, en 1934, el gobierno creó el seguro de depósitos. Hoy la FDIC asegura a los bancos y la NCUA a las cooperativas, hasta 250,000 dólares por depositante, por banco, por categoría de propiedad.",
+    "La FDIC dice que nadie ha perdido un centavo de depósitos asegurados desde que empezó. Cuando quebró Washington Mutual en 2008, la mayor quiebra bancaria en la historia de Estados Unidos, otro banco se quedó con él y los clientes siguieron usando sus cuentas.",
+    "La cobertura depende de quién es dueño de la cuenta. Una cuenta solo a tu nombre está cubierta hasta 250,000 dólares. Una cuenta conjunta cubre a cada dueño hasta 250,000. Lo que pase del límite no está asegurado.",
+    "El seguro de depósitos cubre depósitos, no inversiones. Las acciones, los fondos y las criptomonedas no están cubiertos, aunque estén en un banco. Y muchas apps ni siquiera son bancos. Guardan tu dinero en un banco asociado, así que estás cubierto si quiebra ese banco, no si quiebra la app. Cuando una empresa llamada Synapse quebró en 2024, desaparecieron hasta 96 millones de dólares de los clientes.",
+    "Cuando tu dinero esté protegido, compara la cuenta completa: la comisión mensual y cómo evitarla, las comisiones de cajero, que en 2025 fueron de 4 dólares con 86 centavos en promedio, y la tasa de interés del ahorro.",
+    "Para abrir una cuenta, lleva una identificación con foto, tu número de Seguro Social o un ITIN, tu dirección y fecha de nacimiento, y un depósito inicial pequeño. Si tienes menos de 18 años, normalmente uno de tus papás la abre contigo.",
+    "Piensa en el seguro de depósitos como pingüinos emperador acurrucados. Cada banco asegurado aporta a un mismo fondo, y cuando uno quiebra, el fondo protege a sus depositantes. Antes de depositar, busca el letrero: Miembro de la FDIC, o Asegurada federalmente por la NCUA."
+  ]
+}
