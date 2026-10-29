@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>FinanceHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
-  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610292226">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610292242">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -34,8 +34,19 @@
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
     body { overflow-x: clip; }
+    .hero { position: relative; isolation: isolate; }
+    .hero-sky { position: absolute; z-index: -1; left: 50%; bottom: 0; width: 100vw; max-width: none; height: 200px; transform: translateX(-50%); pointer-events: none; }
+    .hs-area { fill: var(--accent); opacity: .07; }
+    .hs-line { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .4; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sky-draw 2.4s var(--ease) .2s forwards; }
+    @keyframes sky-draw { to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: reduce) { .hs-line { animation: none; stroke-dashoffset: 0; } }
+    /* Wide header on the home page: logo hugs the left edge, account the right, the menu sits in the middle. */
+    .topbar .wrap.wide { max-width: none; display: grid; grid-template-columns: 1fr auto 1fr; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
+    .wrap.wide .topnav { margin: 0; }
+    .top-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+    @media (max-width: 720px) { .topbar .wrap.wide { grid-template-columns: auto 1fr; } }
     /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
-    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 56px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 170px; }
     .hero h1 { font-size: clamp(44px, 5vw, 70px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 20px; max-width: 11ch; }
     .hero .lead { font-size: 18px; max-width: 34em; margin: 0 0 28px; }
     .hero .nw { white-space: nowrap; }
@@ -48,6 +59,19 @@
     .ways ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
     .ways li { display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
     .ways svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+    .for-you { padding: clamp(20px, 2.4vw, 28px); background: var(--card); border-radius: 22px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+    .for-you h2 { font-size: clamp(24px, 2.2vw, 30px); margin: 0 0 14px; }
+    .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+    .for-you li a { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 14px 14px; margin: 0 -14px; border-radius: 14px; color: inherit; text-decoration: none; transition: background .2s; }
+    .for-you li a:hover { background: var(--paper-2); }
+    .for-you li + li { border-top: 1px solid var(--line); }
+    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; }
+    .for-you small { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.4; color: var(--ink-3); }
+    .for-you i { flex: none; font-style: normal; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+    .for-you-foot { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); }
+    .for-you-foot a { color: var(--accent); font-weight: 600; }
+    .course-shape { padding: 40px 0 48px; border-top: 1px solid var(--line); }
+    .course-shape .climb { max-width: 720px; }
     .climb { margin: 0; position: relative; }
     .climb ol { list-style: none; margin: 0; padding: 0; height: clamp(300px, 46svh, 440px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; border-bottom: 2px solid var(--ink-2); }
     .climb li { position: relative; }
@@ -63,7 +87,13 @@
     @keyframes climb-up { from { transform: scaleY(0); } }
     @keyframes climb-in { from { opacity: 0; transform: translateY(6px); } }
     @media (prefers-reduced-motion: reduce) { .climb .cbar, .climb .cl { animation: none; } }
-    @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; min-height: 0; padding-bottom: 32px; } .climb { max-width: 620px; } }
+    @media (max-width: 1024px) {
+      /* Phones and tablets: "What do you want to learn?" comes right after the pitch, before the buttons. */
+      .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-bottom: 130px; }
+      .hero-sky { height: 120px; }
+      .hero-copy { display: contents; }
+      .hero h1 { order: 1; } .hero .lead { order: 2; } .for-you { order: 3; margin-bottom: 24px; } .hero-cta, .hero-note { order: 4; } .ways { order: 5; }
+    }
     @media (max-width: 560px) {
       .climb ol { gap: 6px; height: 280px; }
       .climb b { font-family: var(--sans); font-size: 12.5px; font-weight: 600; }
@@ -181,17 +211,17 @@
 <body data-root="./">
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="topbar">
-  <div class="wrap">
+  <div class="wrap wide">
     <a class="logo" href="./">Finance<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Curso</a><a href="about.html">Acerca de</a></nav>
-    <div class="spacer"></div>
+    <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
-    <div class="lang-toggle" role="group" aria-label="Idioma"><a href="../" data-set-lang="en" hreflang="en" lang="en" aria-label="View in English">EN</a><span aria-current="true">ES</span></div>
     <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
     </button>
     <a class="btn sm" href="account/">Entrar</a>
+    </div>
   </div>
 </header>
 
@@ -207,17 +237,31 @@
 </nav>
 <main class="wrap" id="main">
   <section class="hero" id="top">
+    <svg class="hero-sky" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true"><path class="hs-area" d="M0 322 L25 309 L50 322 L75 305 L100 313 L125 311 L150 295 L175 303 L200 287 L225 294 L250 281 L275 272 L300 280 L325 302 L350 285 L375 276 L400 288 L425 308 L450 304 L475 292 L500 308 L525 277 L550 291 L575 274 L600 255 L625 240 L650 237 L675 256 L700 239 L725 245 L750 249 L775 239 L800 238 L825 215 L850 198 L875 192 L900 208 L925 205 L950 197 L975 202 L1000 197 L1025 186 L1050 199 L1075 201 L1100 181 L1125 181 L1150 177 L1175 188 L1200 187 L1225 165 L1250 180 L1275 149 L1300 141 L1325 148 L1350 125 L1375 123 L1400 99 L1425 110 L1450 119 L1475 115 L1500 124 L1525 103 L1550 104 L1575 98 L1600 92 L1600 400 L0 400 Z"/><path class="hs-line" d="M0 322 L25 309 L50 322 L75 305 L100 313 L125 311 L150 295 L175 303 L200 287 L225 294 L250 281 L275 272 L300 280 L325 302 L350 285 L375 276 L400 288 L425 308 L450 304 L475 292 L500 308 L525 277 L550 291 L575 274 L600 255 L625 240 L650 237 L675 256 L700 239 L725 245 L750 249 L775 239 L800 238 L825 215 L850 198 L875 192 L900 208 L925 205 L950 197 L975 202 L1000 197 L1025 186 L1050 199 L1075 201 L1100 181 L1125 181 L1150 177 L1175 188 L1200 187 L1225 165 L1250 180 L1275 149 L1300 141 L1325 148 L1350 125 L1375 123 L1400 99 L1425 110 L1450 119 L1475 115 L1500 124 L1525 103 L1550 104 L1575 98 L1600 92" pathLength="1"/></svg>
     <div class="hero-copy">
-      <h1>Aprende de dinero desde cero hasta <span class="nw">conseguir trabajo.</span></h1>
-      <p class="lead">Lecciones gratis y sencillas que empiezan con tu primera cuenta de banco y llegan hasta lo que te piden en una clase de finanzas en la universidad y en un trabajo de finanzas. Cada lección se enseña de 8 maneras distintas, para que la entiendas como mejor aprendes.</p>
+      <h1>Aprende finanzas gratis, a tu nivel.</h1>
+      <p class="lead">Empieza con cómo funciona una cuenta de ahorro, o salta a invertir, al crédito o a conseguir un trabajo de finanzas en un banco o en Wall Street. Cada lección se enseña de 8 maneras, para que la entiendas como mejor aprendes.</p>
       <div class="hero-cta when-out">
         <a class="btn" href="account/#create">Crear mi cuenta gratis</a>
         <a class="btn line" href="account/#login">Iniciar sesión</a>
       </div>
-      <p class="hero-note when-out">Gratis y sin tarjeta. Tu cuenta guarda tu progreso en todos tus dispositivos. ¿Solo quieres ver? <a href="lessons/checking-savings/">Prueba la primera lección</a>.</p>
+      <p class="hero-note when-out">Gratis y sin tarjeta. Tu cuenta guarda tu progreso en todos tus dispositivos.</p>
       <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Empezar Unidad 1 · Lección 1</span></a><small id="continue-title">Dónde vive tu dinero</small></div></div>
       <div class="ways"><p>Cada lección, de 8 maneras:</p><ul id="ways"></ul></div>
     </div>
+    <nav class="for-you" aria-labelledby="for-you-h">
+      <h2 id="for-you-h">¿Qué quieres aprender?</h2>
+      <ul>
+        <li><a href="lessons/checking-savings/"><span><b>Cómo funciona una cuenta de ahorro</b><small>¿Nunca has tenido cuenta de banco? Empieza aquí.</small></span><i>Principiante</i></a></li>
+        <li><a href="lessons/why-invest/"><span><b>Cómo invertir tu primer dólar</b><small>Conoces tu cuenta de cheques, pero nunca has comprado una acción.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="#part-1"><span><b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="start/"><span><b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i></a></li>
+      </ul>
+      <p class="for-you-foot">¿No estás seguro? <a href="start/">Responde unas preguntas rápidas</a> y ordenamos tus lecciones.</p>
+    </nav>
+  </section>
+
+  <section class="course-shape reveal" aria-label="El curso">
     <figure class="climb" aria-labelledby="climb-cap">
       <ol>
         <li style="--h:22%"><span class="cbar"></span><span class="cl"><b>Lo básico</b><small>Banco, sueldo, presupuesto, crédito</small></span></li>
@@ -227,7 +271,7 @@
         <li style="--h:94%" class="goal"><span class="cbar"></span><span class="cl"><b>Tu primer trabajo</b><small>Entrevistas y la oferta</small></span></li>
       </ol>
       <p class="climb-bracket"><span>Lo que cubren las finanzas en la universidad</span></p>
-      <figcaption id="climb-cap">Todo el curso en 5 partes. Cada barra es una parte, y cada una se apoya en la anterior.</figcaption>
+      <figcaption id="climb-cap">Todo el curso en 5 partes, desde tu primera cuenta de banco hasta tu primer trabajo en finanzas. Cada parte se apoya en la anterior.</figcaption>
     </figure>
   </section>
 
@@ -289,15 +333,16 @@
 <footer class="foot">
   <div class="wrap">
     <nav aria-label="Información legal"><a href="about.html">Acerca de y contacto</a><a href="legal/privacy.html">Privacidad</a><a href="legal/terms.html">Términos</a><a href="legal/cookies.html">Cookies y almacenamiento</a><a href="legal/privacy.html#delete">Borrar mis datos</a><a href="credits.html">Créditos</a></nav>
+    <p><a class="foot-lang" href="../" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
     <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202610292226"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610292226"></script>
-<script src="../assets/js/auth.js?v=202610292226"></script>
-<script src="../assets/js/site.js?v=202610292226"></script>
+<script src="../assets/js/save.js?v=202610292242"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610292242"></script>
+<script src="../assets/js/auth.js?v=202610292242"></script>
+<script src="../assets/js/site.js?v=202610292242"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
