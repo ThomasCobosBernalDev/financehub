@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l && l !== h.lang) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610291703">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610292226">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -33,19 +33,51 @@
     .unit .lessons small { color: var(--ink-3); font-size: 14px; }
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
-    .home-fold { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 40px; min-height: calc(100svh / var(--z, 1) - 64px); padding: 24px 0 64px; }
-    .home-fold { position: relative; isolation: isolate; }
     body { overflow-x: clip; }
-    .home-fold h1 { font-size: clamp(42px, 4.4vw, 62px); }
-    .home-fold .lead { font-size: 18px; }
-    .home-fold .lead b { color: var(--accent); font-weight: 600; }
-    .learn-pick { padding: clamp(20px, 2.4vw, 28px); background: color-mix(in srgb, var(--card) 70%, transparent); backdrop-filter: blur(6px); border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 70px -40px rgba(60, 40, 20, .5); }
-    .lp-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 6px; }
-    .learn-pick h2 { margin: 0 0 6px; font-size: clamp(28px, 2.6vw, 36px); }
-    .learn-pick > p { margin: 0 0 16px; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+    /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 56px; }
+    .hero h1 { font-size: clamp(44px, 5vw, 70px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 20px; max-width: 11ch; }
+    .hero .lead { font-size: 18px; max-width: 34em; margin: 0 0 28px; }
+    .hero .nw { white-space: nowrap; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .hero-note { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); max-width: 34em; }
+    .hero-note a { color: var(--accent); font-weight: 600; }
+    .hero:not(.in) .when-in, .hero.in .when-out { display: none; }
+    .ways { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .ways p { margin: 0 0 10px; font-size: 14px; color: var(--ink-3); }
+    .ways ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ways li { display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
+    .ways svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+    .climb { margin: 0; position: relative; }
+    .climb ol { list-style: none; margin: 0; padding: 0; height: clamp(300px, 46svh, 440px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; border-bottom: 2px solid var(--ink-2); }
+    .climb li { position: relative; }
+    .climb .cbar { position: absolute; inset: auto 0 0; height: var(--h); border-radius: 10px 10px 0 0; background: color-mix(in srgb, var(--accent) calc(30% + var(--i) * 15%), var(--paper-2)); transform-origin: bottom; animation: climb-up .9s var(--ease) both; animation-delay: calc(var(--i) * 110ms + 150ms); }
+    .climb li.goal .cbar { background: #e0b24a; }
+    .climb .cl { position: absolute; left: 0; right: -4px; bottom: calc(var(--h) + 10px); display: grid; gap: 3px; animation: climb-in .5s ease both; animation-delay: calc(var(--i) * 110ms + 600ms); }
+    .climb b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.15; color: var(--ink); }
+    .climb small { font-size: 12.5px; line-height: 1.3; color: var(--ink-3); }
+    .climb li:nth-child(1) { --i: 0; } .climb li:nth-child(2) { --i: 1; } .climb li:nth-child(3) { --i: 2; } .climb li:nth-child(4) { --i: 3; } .climb li:nth-child(5) { --i: 4; }
+    .climb-bracket { margin: 10px 0 0 calc((100% - 40px) / 5 + 10px); width: calc((100% - 40px) * 3 / 5 + 20px); height: 26px; border: 1.5px solid var(--ink-3); border-top: 0; border-radius: 0 0 8px 8px; position: relative; }
+    .climb-bracket span { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px); white-space: nowrap; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+    .climb figcaption { margin-top: 44px; font-size: 14px; color: var(--ink-3); }
+    @keyframes climb-up { from { transform: scaleY(0); } }
+    @keyframes climb-in { from { opacity: 0; transform: translateY(6px); } }
+    @media (prefers-reduced-motion: reduce) { .climb .cbar, .climb .cl { animation: none; } }
+    @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; min-height: 0; padding-bottom: 32px; } .climb { max-width: 620px; } }
+    @media (max-width: 560px) {
+      .climb ol { gap: 6px; height: 280px; }
+      .climb b { font-family: var(--sans); font-size: 12.5px; font-weight: 600; }
+      .climb small { display: none; }
+      .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
+    }
+    .learn-pick { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px 56px; align-items: start; padding: 48px 0; margin-bottom: 32px; border-top: 1px solid var(--line); }
+    .learn-pick h2 { margin: 0 0 10px; font-size: clamp(28px, 2.8vw, 38px); }
+    .learn-pick p { margin: 0 0 18px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+    .learn-pick .lp-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    @media (max-width: 860px) { .learn-pick { grid-template-columns: 1fr; } }
     .path-wrap { overflow-x: clip; overflow-clip-margin: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 48px; }
     .path { margin-top: 0; }
-    .hero-setup { margin: 20px 0 0; font-size: 15px; color: var(--ink-3); }
+    .hero-setup { margin: 0 0 24px; font-size: 15px; color: var(--ink-3); }
     .hero-setup a { color: var(--accent); font-weight: 600; }
     .my-path-card { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 20px 24px; margin: 8px 0 16px; border-radius: 20px; background: var(--accent-soft); }
     .my-path-card .kicker { margin: 0 0 4px; color: var(--accent); }
@@ -94,7 +126,6 @@
     .road .ss-cap small { font-size: 12px; }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
     @media (max-width: 1024px) {
-      .home-fold { grid-template-columns: 1fr; min-height: 0; gap: 32px; padding-bottom: 32px; }
         .path-wrap { grid-template-columns: 1fr; }
       .road { display: none; }
     }
@@ -154,8 +185,8 @@
     <a class="logo" href="./">Finance<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Course</a><a href="about.html">About</a></nav>
     <div class="spacer"></div>
-    <a class="lang-switch" href="es/" data-set-lang="es" hreflang="es" aria-label="Ver en español"><span class="ls-long">Español</span><span class="ls-short">ES</span></a>
     <span class="xp"><b id="xp">0</b> xp</span>
+    <div class="lang-toggle" role="group" aria-label="Language"><span aria-current="true">EN</span><a href="es/" data-set-lang="es" hreflang="es" lang="es" aria-label="Ver en español">ES</a></div>
     <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
@@ -175,24 +206,41 @@
   <a href="#part-5"><i></i><span>Part 5 · Career launch</span></a>
 </nav>
 <main class="wrap" id="main">
-  <section class="fold home-fold" id="top">
-    <div>
-      <h1 class="reveal">Learn money<br><em>the way you learn.</em></h1>
-      <p class="lead reveal">One story, from your first bank account to a Wall Street deal. Every lesson is taught eight different ways, and <b>you choose how you learn</b>: see it, hear it, play it, break down the logic, and more. Each one shows you what you're doing, why it matters, how it works and who does it for a living. And every lesson has something to play.</p>
-      <div class="continue reveal"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Start Unit 1 · Lesson 1</span> <span class="arrow">→</span></a><small id="continue-title">Where your money lives</small></div>
-      <div class="hero-setup reveal" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <h1>Learn money from zero to <span class="nw">job-ready.</span></h1>
+      <p class="lead">Free, simple lessons that start with your first bank account and build up to what a college finance class and a finance job expect you to know. Every lesson is taught 8 different ways, so it clicks however you learn.</p>
+      <div class="hero-cta when-out">
+        <a class="btn" href="account/#create">Create my free account</a>
+        <a class="btn line" href="account/#login">Log in</a>
+      </div>
+      <p class="hero-note when-out">Free, no card needed. Your account saves your progress on every device. Just looking? <a href="lessons/checking-savings/">Try the first lesson</a>.</p>
+      <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Start Unit 1 · Lesson 1</span></a><small id="continue-title">Where your money lives</small></div></div>
+      <div class="ways"><p>Every lesson, 8 ways:</p><ul id="ways"></ul></div>
     </div>
-    <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
-      <div class="lp-kicker">Make it yours</div>
-      <h2 id="styles-h">How do you <em>learn best?</em></h2>
-      <p>Pick as many as you like. Your picks open first in every lesson, and the rest fold away until you want them.</p>
-      <div class="lp-grid" id="lp-grid"></div>
-      <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
-    </section>
+    <figure class="climb" aria-labelledby="climb-cap">
+      <ol>
+        <li style="--h:22%"><span class="cbar"></span><span class="cl"><b>Money basics</b><small>Bank, paycheck, budget, credit</small></span></li>
+        <li style="--h:40%"><span class="cbar"></span><span class="cl"><b>The economy</b><small>Prices, rates, inflation</small></span></li>
+        <li style="--h:58%"><span class="cbar"></span><span class="cl"><b>Business</b><small>How a company makes money</small></span></li>
+        <li style="--h:76%"><span class="cbar"></span><span class="cl"><b>Wall Street</b><small>Stocks, deals, valuation</small></span></li>
+        <li style="--h:94%" class="goal"><span class="cbar"></span><span class="cl"><b>Your first job</b><small>Interviews and the offer</small></span></li>
+      </ol>
+      <p class="climb-bracket"><span>What college finance covers</span></p>
+      <figcaption id="climb-cap">The whole course in 5 parts. Each bar is one part, and each one builds on the last.</figcaption>
+    </figure>
   </section>
 
+  <section class="learn-pick reveal" id="styles" aria-labelledby="styles-h">
+    <div>
+      <h2 id="styles-h">How do you learn best?</h2>
+      <p>Pick as many as you like. Your picks open first in every lesson, and the rest fold away until you want them.</p>
+      <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
+    </div>
+    <div class="lp-grid" id="lp-grid"></div>
+  </section>
 
-
+  <div class="hero-setup reveal" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
   <div class="my-path-card reveal" id="my-path"></div>
   <div class="path-wrap">
   <div class="path" id="course-map"></div>
@@ -246,13 +294,17 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610291703"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610291703"></script>
-<script src="assets/js/auth.js?v=202610291703"></script>
-<script src="assets/js/site.js?v=202610291703"></script>
+<script src="assets/js/save.js?v=202610292226"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610292226"></script>
+<script src="assets/js/auth.js?v=202610292226"></script>
+<script src="assets/js/site.js?v=202610292226"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
+// The 8 ways every lesson is taught, from the same list the lessons use.
+document.getElementById("ways").innerHTML = FH.STYLES.map((st) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg>${st.chapter}</li>`).join("");
+// Signed in: the hero's sign-up buttons give way to "Continue".
+if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classList.toggle("in", !!u));
 // Course map: every part, unit and lesson, drawn from the catalog in save.js.
 const map = document.getElementById("course-map");
 const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
