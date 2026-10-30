@@ -277,9 +277,9 @@
       const back = step(i, -1), next = step(i, 1);
       $(".pager", c).innerHTML =
         (back >= 0 ? `<button class="btn line pg-back" type="button" data-go="${back}"><span class="arrow">←</span> ${name(chapters[back]) || T("Back", "Atrás")}</button>` : "<span></span>")
-        + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}${usable(j) ? "" : " folded"}" data-go="${j}" title="${name(c)}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i></button>`).join("")}</div>`
+        + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}${usable(j) ? "" : " folded"}" data-go="${j}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i><span class="pg-tip">${name(c)}</span></button>`).join("")}</div>`
         + `<span class="pg-name">${name(c)} <small>· ${i + 1} ${T("of", "de")} ${chapters.length}</small></span></div>`
-        + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}">${T("Next", "Siguiente")}<span class="pg-label">: ${name(chapters[next])}</span> <span class="arrow">→</span></button>`
+        + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}"><span>${T("Next", "Siguiente")}<span class="pg-label">: ${name(chapters[next])}</span></span> <span class="arrow">→</span></button>`
           : `<a class="btn pg-next" href="${root}course/">${T("Back to the course", "Volver al curso")} <span class="arrow">→</span></a>`);
     });
     const show = (i, target) => {
