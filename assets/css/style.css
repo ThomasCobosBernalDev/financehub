@@ -4,13 +4,13 @@
 @font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-latin-full-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 @font-face { font-family: "Instrument Sans"; src: url("../fonts/instrument-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
 :root {
-  --paper: #f1e9db;
-  --paper-2: #eae0cd;
-  --card: #faf4e9;
+  --paper: #f8f7f5;
+  --paper-2: #efede9;
+  --card: #ffffff;
   --ink: #1d1c19;
   --ink-2: #605b52;
   --ink-3: #6e675b;
-  --line: #d9ccb5;
+  --line: #e2ded7;
   --accent: #1f6f5c;
   --accent-soft: #d3e3d6;
   --needs: #3357a3;
@@ -20,10 +20,10 @@
   --good: #237a5a;
   --on-color: #ffffff;
   --grain-opacity: 0;
-  --glow-a: rgba(31, 111, 92, .16);
-  --glow-b: rgba(214, 150, 50, .18);
+  --glow-a: rgba(31, 111, 92, .05);
+  --glow-b: rgba(214, 150, 50, .04);
   --dot: rgba(90, 70, 40, .13);
-  --shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 40px -24px rgba(70, 45, 15, .35);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 40px -24px rgba(40, 35, 25, .25);
   --highlight: #f6dd8b;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
