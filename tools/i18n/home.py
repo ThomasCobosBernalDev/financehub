@@ -36,8 +36,6 @@ PAIRS = [
     ('<span>The course</span>', '<span>El curso</span>'),
     ('<span>Start Unit 1 · Lesson 1</span>', '<span>Empezar Unidad 1 · Lección 1</span>'),
     ('<small id="continue-title">Where your money lives</small>', '<small id="continue-title">Dónde vive tu dinero</small>'),
-    ('<p>New here? Pick what you came for, and your lessons line up in order:</p>', '<p>¿Eres nuevo aquí? Elige a qué vienes y tus lecciones se ordenan solas:</p>'),
-    ('<p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p>', '<p><a href="start/">O haz la configuración completa</a>, con una prueba rápida de lo que ya sabes.</p>'),
     ('<nav aria-label="Legal and info"><a href="about.html">About and contact</a><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/cookies.html">Cookies and storage</a><a href="legal/privacy.html#delete">Delete my data</a><a href="credits.html">Credits</a></nav>',
      '<nav aria-label="Información legal"><a href="about.html">Acerca de y contacto</a><a href="legal/privacy.html">Privacidad</a><a href="legal/terms.html">Términos</a><a href="legal/cookies.html">Cookies y almacenamiento</a><a href="legal/privacy.html#delete">Borrar mis datos</a><a href="credits.html">Créditos</a></nav>'),
     ("<p class=\"disclaimer\">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>",

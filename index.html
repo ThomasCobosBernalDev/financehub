@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301940">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301948">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
@@ -82,8 +82,6 @@
       .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
     }
     @media (max-width: 960px) { .course-shape { grid-template-columns: 1fr; } }
-    .hero-setup { margin: 0 0 24px; font-size: 15px; color: var(--ink-3); }
-    .hero-setup a { color: var(--accent); font-weight: 600; }
     .my-path-card { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 20px 24px; margin: 8px 0 16px; border-radius: 20px; background: var(--accent-soft); }
     .my-path-card .kicker { margin: 0 0 4px; color: var(--accent); }
     .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
@@ -91,8 +89,6 @@
     .my-path-card .btn { flex: none; }
     .mp-actions { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 8px; }
     .mp-actions .text-link { font-size: 14px; color: var(--ink-3); }
-    .hero-setup p { margin: 0 0 10px; }
-    .quick-goals { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
     .my-path-card.has-list { display: block; }
     .mp-head { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
     .mp-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; counter-reset: mp; }
@@ -118,7 +114,16 @@
     .explorer { padding: 56px 0 24px; border-top: 1px solid var(--line); margin-top: 24px; }
     .ex-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
     .ex-head h2 { margin: 0; font-size: clamp(28px, 2.6vw, 36px); }
-    .ex-head p { margin: 0; color: var(--ink-3); font-size: 15px; }
+    .ex-head { align-items: center; }
+    .ex-tools { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; justify-content: flex-end; }
+    .ex-tools p { margin: 0; color: var(--ink-3); font-size: 15px; }
+    .ex-tools p b { color: var(--ink); }
+    .mp-bar { border-radius: 6px; background: color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; }
+    .mp-bar i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+    .ex-tools .mp-bar { width: 90px; height: 6px; margin: 0; flex: none; }
+    .ex-tools .btn { flex: none; }
+    .ex-tools .linkish { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--ink-3); text-decoration: underline; cursor: pointer; }
+    @media (max-width: 760px) { .ex-tools { justify-content: flex-start; } }
     .ex-tabs { display: flex; gap: 6px; padding: 5px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); overflow-x: auto; scrollbar-width: none; }
     .ex-tabs::-webkit-scrollbar { display: none; }
     .ex-tab { flex: 1 0 auto; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 10px 14px; border: 0; border-radius: 99px; background: none; color: var(--ink-2); font: inherit; font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer; scroll-margin-top: 96px; transition: background .25s var(--ease), color .25s, box-shadow .25s; }
@@ -127,7 +132,7 @@
     .ex-tab:hover { color: var(--ink); }
     .ex-tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
     .ex-tab[aria-selected="true"] b { background: var(--accent); color: var(--on-color); box-shadow: none; }
-    .ex-body { display: grid; grid-template-columns: minmax(240px, 290px) minmax(0, 1fr) minmax(0, 320px); gap: 28px; margin-top: 24px; align-items: start; }
+    .ex-body { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
     .ex-units { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
     .unit { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .2s, box-shadow .2s, opacity .2s; }
     .unit .n { grid-row: span 3; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 16px; box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
@@ -135,29 +140,16 @@
     .unit h3 { margin: 0; font-family: var(--sans); font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--ink-2); }
     .unit.live h3 { color: var(--ink); }
     .unit p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
-    .unit .bar { height: 4px; margin-top: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
+    .unit .bar { grid-column: 2; height: 4px; margin-top: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
     .unit .bar i { display: block; height: 100%; width: var(--p, 0%); background: var(--accent); border-radius: inherit; transition: width .6s var(--ease); }
     .unit:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
     .unit[aria-selected="true"] { background: var(--card); box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); opacity: 1; }
     .unit[aria-selected="true"] .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
     .unit .path-tag { display: inline-block; vertical-align: 1px; margin-left: 6px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 7px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); }
     .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
-    .unit.off-path { opacity: .55; }
-    .unit.off-path:hover { opacity: 1; }
+    .unit .pd { grid-column: 2; margin-top: 3px; font-size: 12px; font-weight: 600; color: var(--accent); }
+    .unit .pd::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
     .ex-lessons { min-width: 0; }
-    /* Your path lives in the explorer's right column. */
-    .ex-path .my-path-card { display: block; margin: 0; padding: 22px; }
-    .ex-path .my-path-card[hidden] { display: none; }
-    .ex-path .mp-head { display: block; }
-    .ex-path .mp-actions { justify-content: flex-start; margin-top: 14px; }
-    .ex-path .mp-text { font-size: 15px; line-height: 1.5; }
-    .ex-path .mp-list { grid-template-columns: 1fr; margin-top: 16px; }
-    .ex-path .mp-list b { font-size: 16px; }
-    .ex-path .my-path-card:not(.has-list) .btn { margin-top: 14px; }
-    .mp-bar { height: 6px; border-radius: 6px; background: color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; margin: 12px 0 4px; }
-    .mp-bar i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
-    .mp-count { font-size: 13px; font-weight: 600; color: var(--accent); }
-    .ex-path .hero-setup { padding: 22px; border-radius: 20px; background: var(--accent-soft); margin: 0 0 12px; }
     .ex-group[hidden] { display: none; }
     .ex-group { animation: ex-in .35s var(--ease); }
     @keyframes ex-in { from { opacity: 0; transform: translateY(8px); } }
@@ -175,10 +167,12 @@
     .ex-ls b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink); }
     .ex-ls .soon b { color: var(--ink-3); }
     .ex-ls small { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; margin-top: 3px; }
-    .ex-ls .off-path { opacity: .5; }
-    .ex-ls .off-path:hover { opacity: 1; }
+    .ex-ls .on-path { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 55%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
+    .ex-ls .is-next { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
+    .ex-ls .pt { grid-column: 2; justify-self: start; margin-top: 8px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+    .ex-ls .is-next .pt { background: var(--accent); color: var(--on-color); }
     .ex-empty { padding: 28px; border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-3); }
-    @media (max-width: 1180px) { .ex-body { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); } .ex-path { grid-column: 1 / -1; } }
+    
     @media (max-width: 760px) {
       /* Phones: units become a swipeable strip, and the chosen unit's lessons sit right under it. */
       .ex-body { grid-template-columns: 1fr; gap: 18px; }
@@ -261,15 +255,11 @@
   </div>
 
   <section class="explorer" id="course-map" aria-labelledby="ex-h">
-  <div class="ex-head"><h2 id="ex-h"></h2><p id="ex-sub"></p></div>
+  <div class="ex-head"><h2 id="ex-h"></h2><div class="ex-tools" id="my-path"></div></div>
   <div class="ex-tabs" role="tablist" id="ex-tabs"></div>
   <div class="ex-body">
   <ol class="ex-units" id="ex-units" role="tablist" aria-orientation="vertical"></ol>
   <div class="ex-lessons" id="ex-lessons"></div>
-  <aside class="ex-path" aria-label="Your path">
-  <div class="hero-setup" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
-  <div class="my-path-card" id="my-path"></div>
-  </aside>
   </div>
   </section>
 </main>
@@ -282,10 +272,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610301940"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610301940"></script>
-<script src="assets/js/auth.js?v=202610301940"></script>
-<script src="assets/js/site.js?v=202610301940"></script>
+<script src="assets/js/save.js?v=202610301948"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610301948"></script>
+<script src="assets/js/auth.js?v=202610301948"></script>
+<script src="assets/js/site.js?v=202610301948"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -297,7 +287,6 @@ if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classLi
 const map = document.getElementById("course-map");
 const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
 document.getElementById("ex-h").textContent = T("The whole course", "Todo el curso");
-document.getElementById("ex-sub").textContent = T("Pick a part, then a unit, to see its lessons.", "Elige una parte y luego una unidad para ver sus lecciones.");
 const tabs = document.getElementById("ex-tabs"), unitList = document.getElementById("ex-units"), lessonBox = document.getElementById("ex-lessons");
 tabs.innerHTML = FH.PARTS.map((p) => `<button class="ex-tab" role="tab" id="part-${p.n}" data-part="${p.n}" aria-selected="false"><b>${p.n}</b>${p.name} <small>${p.units.length} ${T("units", "unidades")}</small></button>`).join("");
 const unitStatus = (u) => {
@@ -338,44 +327,43 @@ tabs.querySelectorAll(".ex-tab").forEach((b) => b.addEventListener("click", () =
 const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash); if (m && FH.PARTS.some((p) => p.n === +m[1])) { pickPart(+m[1]); map.scrollIntoView({ behavior: "smooth" }); } };
 addEventListener("hashchange", fromHash);
 
-// One tap on a goal builds a path without the full setup.
-const quick = document.getElementById("quick-goals");
-FH.GOALS.forEach((g) => {
-  const b = document.createElement("button");
-  b.type = "button"; b.className = "chip"; b.textContent = g.label;
-  b.addEventListener("click", () => {
-    FH.setProfile({ goals: [g.id], level: "new", known: {}, quiz: null, done: true });
-    FH.toast(T("Your path is ready.", "Tu camino está listo."));
-    document.getElementById("my-path").scrollIntoView({ behavior: "smooth" });
-  });
-  quick.appendChild(b);
-});
 
 // Your path: the lessons in order, units your goals skip marked Extra, and the main button on the next lesson.
-let showAll = false;
 const paintPath = () => {
   const { items, on, known, setUp } = FH.path;
   const onIds = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id));
   map.querySelectorAll(".unit").forEach((u) => {
     const n = Number(u.dataset.unit);
-    u.classList.toggle("off-path", setUp && !on.has(n));
     u.classList.toggle("known", known.has(n));
     const ls = unitLessons(n), doneN = ls.filter((l) => FH.done(l.id)).length;
     u.querySelector(".bar i").style.setProperty("--p", ls.length ? (doneN / ls.length) * 100 + "%" : "0%");
+    const pathN = ls.filter((l) => onIds.has(l.id)).length;
+    let pd = u.querySelector(".pd");
+    if (setUp && pathN && !known.has(n)) {
+      if (!pd) { pd = document.createElement("span"); pd.className = "pd"; u.querySelector(".bar").before(pd); }
+      pd.textContent = T(`${pathN} on your path`, `${pathN} en tu camino`);
+    } else if (pd) pd.remove();
     let tag = u.querySelector(".path-tag");
-    const text = known.has(n) ? T("You know this", "Ya lo sabes") : setUp && !on.has(n) ? T("Extra", "Extra") : "";
+    const text = known.has(n) ? T("You know this", "Ya lo sabes") : "";
     if (!text) { if (tag) tag.remove(); return; }
     if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
     tag.textContent = text;
   });
+  const next = FH.nextLesson();
   map.querySelectorAll("[data-lesson]").forEach((el) => {
     const id = el.dataset.lesson, done = FH.done(id), sm = el.querySelector("small");
+    const onIt = setUp && onIds.has(id), isNext = setUp && next && next.id === id && !done;
     el.classList.toggle("done", done);
-    el.classList.toggle("off-path", setUp && !onIds.has(id));
+    el.classList.toggle("on-path", onIt);
+    el.classList.toggle("is-next", !!isNext);
+    let pt = el.querySelector(".pt");
+    if (onIt) {
+      if (!pt) { pt = document.createElement("span"); pt.className = "pt"; el.append(pt); }
+      pt.textContent = isNext ? T("Up next", "Sigue") : done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino");
+    } else if (pt) pt.remove();
     sm.dataset.base = sm.dataset.base || sm.textContent;
     sm.textContent = sm.dataset.base + (done ? T(" · done", " · hecha") : "");
   });
-  const next = FH.nextLesson();
   const started = Object.values(FH.state.lessons).some((l) => l && Object.keys(l.sections || {}).length);
   if (next) {
     const c = document.getElementById("continue");
@@ -386,47 +374,25 @@ const paintPath = () => {
     const soon = next.why === "extra" && setUp && items.find((x) => x.lesson && !x.lesson.href && !known.has(x.lesson.unit));
     document.getElementById("continue-title").textContent = next.title + (soon ? T(`. Your next path lesson, "${soon.lesson.title}", is being built.`, `. Tu siguiente lección del camino, "${soon.lesson.title}", se está construyendo.`) : "");
   }
-  document.getElementById("hero-setup").hidden = setUp;
-  const card = document.getElementById("my-path");
+  const tools = document.getElementById("my-path");
   const p = FH.state.profile;
-  card.hidden = !setUp;
   if (!setUp) {
-    card.classList.remove("has-list");
+    tools.innerHTML = T(
+      `<p>Pick a part, then a unit, to see its lessons.</p><a class="btn sm" href="start/">Build my path</a>`,
+      `<p>Elige una parte y luego una unidad para ver sus lecciones.</p><a class="btn sm" href="start/">Crear mi camino</a>`);
     return;
   }
-  const goals = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
   const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
-  const units = items.filter((x) => x.unit).length;
-  const doneN = lessons.filter((l) => FH.done(l.id)).length, openN = lessons.filter((l) => l.href).length;
-  const skipN = lessons.filter((l) => known.has(l.unit) && !FH.done(l.id)).length;
-  const startAt = known.size ? items.map((x) => (x.lesson ? x.lesson.unit : x.unit)).find((u) => !known.has(u)) : 0;
-  const sum = T(
-    `Built for <b>${goals.join("</b>, plus <b>")}</b>. ${lessons.length} lessons${units ? `, plus ${units} units still being planned` : ""}. ${openN} ${openN === 1 ? "is" : "are"} open now${doneN ? `, ${doneN} done` : ""}${skipN ? `, and ${skipN} you can skip because you know them` : ""}.${startAt ? ` You start at <b>Unit ${startAt}</b>.` : ""}`,
-    `Hecho para <b>${goals.join("</b>, además de <b>")}</b>. ${lessons.length} lecciones${units ? `, más ${units} unidades que todavía se están planeando` : ""}. ${openN} ${openN === 1 ? "está abierta" : "están abiertas"} ya${doneN ? `, ${doneN} hechas` : ""}${skipN ? `, y ${skipN} que puedes saltar porque ya las sabes` : ""}.${startAt ? ` Empiezas en la <b>Unidad ${startAt}</b>.` : ""}`);
-  const row = (x) => {
-    if (x.unit) return `<li class="soon"><i></i><span><b>${T("Unit", "Unidad")} ${x.unit} · ${FH.UNIT_NAMES[x.unit - 1]}</b><small>${T("Being planned", "Se está planeando")}</small></span></li>`;
-    const l = x.lesson, done = FH.done(l.id), isNext = next && next.id === l.id, kn = known.has(l.unit);
-    const state = done ? T("Done", "Hecha") : isNext ? T(next.why === "review" ? "Up next, to review" : "Up next", next.why === "review" ? "Sigue, para repasar" : "Sigue") : kn ? T("You know this", "Ya lo sabes") : !l.href ? T("Coming soon", "Muy pronto") : T("Open", "Abierta");
-    const inner = `<i></i><span><b>${l.title}</b><small>${T("Unit", "Unidad")} ${l.unit} · ${state}</small></span>`;
-    const cls = done ? "done" : isNext ? "next" : kn ? "known" + (l.href ? "" : " soon") : !l.href ? "soon" : "";
-    return `<li class="${cls}">${l.href ? `<a href="${l.href}">${inner}</a>` : `<span class="mp-row">${inner}</span>`}</li>`;
-  };
-  const bar = `<div class="mp-bar"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div><p class="mp-count">${T(`${doneN} of ${lessons.length} lessons done`, `${doneN} de ${lessons.length} lecciones hechas`)}</p>`;
-  const LIMIT = 4, more = items.length - LIMIT;
-  const shown = showAll || more <= 0 ? items : items.slice(0, LIMIT);
-  card.classList.add("has-list");
-  card.hidden = false;
-  card.innerHTML = T(
-    `<div class="mp-head"><div><p class="kicker">Your path</p>${bar}<p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Take the placement check</a>`}<button class="btn sm line" type="button" id="clear-path">Clear my path</button></div></div>`,
-    `<div class="mp-head"><div><p class="kicker">Tu camino</p>${bar}<p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Hacer la prueba de nivel</a>`}<button class="btn sm line" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
-    + `<ol class="mp-list">${shown.map(row).join("")}</ol>`
-    + (more > 0 ? `<button class="text-link mp-more" type="button" id="mp-more">${showAll ? T("Show less", "Mostrar menos") : T(`Show all ${items.length}`, `Mostrar las ${items.length}`)}</button>` : "");
+  const doneN = lessons.filter((l) => FH.done(l.id)).length;
+  tools.innerHTML = `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
+    + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>. Path lessons are highlighted.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>. Las lecciones de tu camino están resaltadas.</p>`)
+    + `<a class="btn sm line" href="start/">${T("Change my path", "Cambiar mi camino")}</a>`
+    + (p.quiz ? "" : `<a class="btn sm line" href="start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
+    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button>`;
   document.getElementById("clear-path").addEventListener("click", () => {
     FH.clearPath();
     FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
   });
-  const mb = document.getElementById("mp-more");
-  if (mb) mb.addEventListener("click", () => { showAll = !showAll; paintPath(); });
 };
 paintPath();
 document.addEventListener("fh:save", paintPath);
