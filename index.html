@@ -6,53 +6,49 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610302209">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610302215">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
     body { overflow-x: clip; }
     .hero { position: relative; isolation: isolate; }
-    /* Sits on the bottom edge of the first screen at any size; the fill fades out downward instead of ending in a hard edge. */
-    .hero-sky { --sky: clamp(170px, 30svh, 320px); position: absolute; z-index: -1; left: 50%; top: calc(100svh / var(--z, 1) - 64px - var(--sky)); width: 100vw; max-width: none; height: var(--sky); transform: translateX(-50%); pointer-events: none; color: var(--accent); }
-    .hs-line { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .4; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: sky-draw 2.4s var(--ease) .2s forwards; }
-    @keyframes sky-draw { to { stroke-dashoffset: 0; } }
-    @media (prefers-reduced-motion: reduce) { .hs-line { animation: none; stroke-dashoffset: 0; } }
     /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
-    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: 32px 0 120px; }
-    .hero h1 { font-size: clamp(44px, 5vw, 70px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 20px; max-width: 11ch; }
-    .hero .lead { font-size: 18px; max-width: 34em; margin: 0 0 28px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-rows: 1fr auto; gap: clamp(20px, 3svh, 40px) clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0 clamp(16px, 3svh, 32px); }
+    .hero-climb { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); gap: 24px clamp(32px, 5vw, 72px); align-items: end; padding-top: clamp(14px, 2.4svh, 24px); border-top: 1px solid var(--line); }
+    .hero-climb h2 { margin: 0 0 6px; font-size: 22px; }
+    .hero-climb p { margin: 0; color: var(--ink-3); font-size: 15px; line-height: 1.5; }
+    .hero-climb .cs-text { align-self: center; padding-bottom: 30px; }
+    .cs-link { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
+    .cs-link:hover { text-decoration: underline; }
+    .hero-climb .climb ol { height: clamp(110px, 20svh, 220px); padding-top: 46px; }
+    .hero-climb .climb b { font-size: 16px; }
+    .hero-climb .climb small { font-size: 12px; }
+    .hero-climb .climb-bracket { height: 16px; margin-top: 6px; }
+    .hero-climb .climb-bracket span { font-size: 12.5px; transform: translate(-50%, 3px); }
+    .hero-climb .climb { padding-bottom: 22px; }
+    .hero h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 14px; max-width: 14ch; }
+    .hero .lead { font-size: 18px; max-width: 30em; margin: 0 0 24px; }
     .hero .nw { white-space: nowrap; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .hero-note { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); max-width: 34em; }
     .hero-note a { color: var(--accent); font-weight: 600; }
     .hero:not(.in) .when-in, .hero.in .when-out { display: none; }
-    .ways { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .ways { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--line); }
     .ways p { margin: 0 0 10px; font-size: 14px; color: var(--ink-3); }
     .ways ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
     .ways li { display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
     .ways svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
-    .for-you { padding: clamp(20px, 2.4vw, 28px); background: var(--card); border-radius: 22px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
-    .for-you h2 { font-size: clamp(24px, 2.2vw, 30px); margin: 0 0 14px; }
+    .for-you { padding: clamp(18px, 2vw, 24px) clamp(20px, 2.4vw, 28px); background: var(--card); border-radius: 22px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
+    .for-you h2 { font-size: clamp(22px, 2vw, 28px); margin: 0 0 8px; }
     .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-    .for-you li a { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 14px 14px; margin: 0 -14px; border-radius: 14px; color: inherit; text-decoration: none; transition: background .2s; }
+    .for-you li a { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 8px 14px; margin: 0 -14px; border-radius: 14px; color: inherit; text-decoration: none; transition: background .2s; }
     .for-you li a:hover { background: var(--paper-2); }
     .for-you li + li { border-top: 1px solid var(--line); }
-    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; }
-    .for-you small { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.4; color: var(--ink-3); }
+    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.2; }
+    .for-you small { display: block; margin-top: 2px; font-size: 14px; line-height: 1.4; color: var(--ink-3); }
     .for-you i { flex: none; font-style: normal; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-    .for-you-foot { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); }
+    .for-you-foot { margin: 8px 0 0; font-size: 14.5px; color: var(--ink-3); }
     .for-you-foot a { color: var(--accent); font-weight: 600; }
-    /* Where the course goes: the words on the left, the climb chart wide on the right. */
-    .duo { padding: 64px 0 56px; margin-bottom: 32px; border-top: 1px solid var(--line); }
-    .course-shape { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 40px clamp(40px, 6vw, 96px); align-items: end; }
-    .cs-text { align-self: center; }
-    .cs-link { margin-top: 20px; }
-    .cs-text p { margin: 0; color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 34ch; }
-    .course-shape .climb { padding-bottom: 36px; }
-    .duo h2 { margin: 0 0 10px; font-size: clamp(28px, 2.6vw, 36px); }
-    .course-shape h2 { margin-bottom: 28px; }
-    .course-shape .climb ol { height: clamp(320px, 42svh, 420px); padding-top: 80px; }
-    .duo { scroll-margin-top: 80px; }
     .climb { margin: 0; position: relative; }
     .climb ol { list-style: none; margin: 0; padding: 0; height: clamp(300px, 46svh, 440px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; border-bottom: 2px solid var(--ink-2); }
     .climb li { position: relative; }
@@ -71,10 +67,9 @@
     @media (prefers-reduced-motion: reduce) { .climb .cbar, .climb .cl { animation: none; } }
     @media (max-width: 1024px) {
       /* Phones and tablets: "What do you want to learn?" comes right after the pitch, before the buttons. */
-      .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-bottom: 130px; }
-      .hero-sky { --sky: 120px; top: auto; bottom: 0; }
+      .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-bottom: 32px; }
       .hero-copy { display: contents; }
-      .hero h1 { order: 1; } .hero .lead { order: 2; } .for-you { order: 3; margin-bottom: 24px; } .hero-cta, .hero-note { order: 4; } .ways { order: 5; }
+      .hero h1 { order: 1; } .hero .lead { order: 2; } .for-you { order: 3; margin-bottom: 24px; } .hero-cta { order: 4; } .ways { order: 5; } .hero-climb { order: 6; margin-top: 36px; }
     }
     @media (max-width: 560px) {
       .climb ol { gap: 6px; height: 280px; }
@@ -82,7 +77,7 @@
       .climb small { display: none; }
       .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
     }
-    @media (max-width: 960px) { .course-shape { grid-template-columns: 1fr; } }
+    @media (max-width: 960px) { .hero-climb { grid-template-columns: 1fr; } .hero-climb .cs-text { padding-bottom: 0; } }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
 
 
@@ -106,20 +101,15 @@
   </div>
 </header>
 
-<nav class="rail" data-own aria-label="Page sections">
-  <a href="#top"><i></i><span>Start</span></a>
-</nav>
 <main class="wrap" id="main">
   <section class="hero" id="top">
-    <svg class="hero-sky" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hs-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".16"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs><path class="hs-area" fill="url(#hs-fade)" d="M0 322 L25 309 L50 322 L75 305 L100 313 L125 311 L150 295 L175 303 L200 287 L225 294 L250 281 L275 272 L300 280 L325 302 L350 285 L375 276 L400 288 L425 308 L450 304 L475 292 L500 308 L525 277 L550 291 L575 274 L600 255 L625 240 L650 237 L675 256 L700 239 L725 245 L750 249 L775 239 L800 238 L825 215 L850 198 L875 192 L900 208 L925 205 L950 197 L975 202 L1000 197 L1025 186 L1050 199 L1075 201 L1100 181 L1125 181 L1150 177 L1175 188 L1200 187 L1225 165 L1250 180 L1275 149 L1300 141 L1325 148 L1350 125 L1375 123 L1400 99 L1425 110 L1450 119 L1475 115 L1500 124 L1525 103 L1550 104 L1575 98 L1600 92 L1600 400 L0 400 Z"/><path class="hs-line" d="M0 322 L25 309 L50 322 L75 305 L100 313 L125 311 L150 295 L175 303 L200 287 L225 294 L250 281 L275 272 L300 280 L325 302 L350 285 L375 276 L400 288 L425 308 L450 304 L475 292 L500 308 L525 277 L550 291 L575 274 L600 255 L625 240 L650 237 L675 256 L700 239 L725 245 L750 249 L775 239 L800 238 L825 215 L850 198 L875 192 L900 208 L925 205 L950 197 L975 202 L1000 197 L1025 186 L1050 199 L1075 201 L1100 181 L1125 181 L1150 177 L1175 188 L1200 187 L1225 165 L1250 180 L1275 149 L1300 141 L1325 148 L1350 125 L1375 123 L1400 99 L1425 110 L1450 119 L1475 115 L1500 124 L1525 103 L1550 104 L1575 98 L1600 92" pathLength="1"/></svg>
     <div class="hero-copy">
-      <h1>Free finance lessons for every level.</h1>
-      <p class="lead">Start with how a savings account works, or skip ahead to investing, credit, or landing a finance job at a bank or on Wall Street. Every lesson is taught 8 ways, so it clicks however you learn.</p>
+      <h1>Learn money from zero to Wall Street.</h1>
+      <p class="lead">Free lessons on banking, credit, investing and finance jobs. Each one is taught 8 ways, so it sticks.</p>
       <div class="hero-cta when-out">
         <a class="btn" href="account/#create">Create my free account</a>
         <a class="btn line" href="account/#login">Log in</a>
       </div>
-      <p class="hero-note when-out">Free, no card needed. Your account saves your progress on every device.</p>
       <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Start Unit 1 · Lesson 1</span></a><small id="continue-title">Where your money lives</small></div></div>
       <div class="ways"><p>Every lesson, 8 ways:</p><ul id="ways"></ul></div>
     </div>
@@ -133,17 +123,14 @@
       </ul>
       <p class="for-you-foot">Not sure? <a href="start/">Answer a few quick questions</a> and we'll line up your lessons.</p>
     </nav>
-  </section>
-
-  <div class="duo reveal">
-  <section class="course-shape" aria-labelledby="shape-h">
-    <div class="cs-text">
-    <h2 id="shape-h">Where the course takes you</h2>
-    <p id="climb-cap">The whole course in 5 parts, from your first bank account to your first finance job. Each part builds on the last.</p>
-    <a class="btn sm line cs-link" href="course/">See every lesson <span class="arrow">→</span></a>
-    </div>
-    <figure class="climb" aria-labelledby="climb-cap">
-      <ol>
+    <div class="hero-climb">
+      <div class="cs-text">
+        <h2 id="shape-h">Where the course takes you</h2>
+        <p id="climb-cap">5 parts, from your first bank account to your first finance job.</p>
+        <a class="cs-link" href="course/">See every lesson <span class="arrow">→</span></a>
+      </div>
+      <figure class="climb" aria-labelledby="climb-cap">
+        <ol>
         <li style="--h:22%"><span class="cbar"></span><span class="cl"><b>Money basics</b><small>Bank, paycheck, budget, credit</small></span></li>
         <li style="--h:40%"><span class="cbar"></span><span class="cl"><b>The economy</b><small>Prices, rates, inflation</small></span></li>
         <li style="--h:58%"><span class="cbar"></span><span class="cl"><b>Business</b><small>How a company makes money</small></span></li>
@@ -152,9 +139,9 @@
       </ol>
       <p class="climb-bracket"><span>What college finance covers</span></p>
     </figure>
+    </div>
   </section>
 
-  </div>
 
 </main>
 <footer class="foot">
@@ -166,10 +153,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610302209"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610302209"></script>
-<script src="assets/js/auth.js?v=202610302209"></script>
-<script src="assets/js/site.js?v=202610302209"></script>
+<script src="assets/js/save.js?v=202610302215"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610302215"></script>
+<script src="assets/js/auth.js?v=202610302215"></script>
+<script src="assets/js/site.js?v=202610302215"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -198,20 +185,6 @@ const paintContinue = () => {
 paintContinue();
 document.addEventListener("fh:save", paintContinue);
 
-// Side rail: light up the section you're looking at.
-const railLinks = [...document.querySelectorAll(".rail a")];
-const targets = railLinks.map((a) => document.querySelector(a.getAttribute("href")));
-const track = () => {
-  const mid = innerHeight * 0.45;
-  let cur = 0;
-  if (scrollY > innerHeight * 0.25) targets.forEach((t, i) => { if (t.getBoundingClientRect().top < mid) cur = i; });
-  // The last part can't reach the middle of the screen, so the very bottom counts as it.
-  if (scrollY + innerHeight >= document.documentElement.scrollHeight - 4) cur = targets.length - 1;
-  railLinks.forEach((a, i) => { a.classList.toggle("current", i === cur); a.classList.toggle("seen", i < cur); });
-};
-let ticking = false;
-addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
-track();
 </script>
 </body>
 </html>
