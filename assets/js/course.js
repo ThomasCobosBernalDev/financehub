@@ -68,7 +68,7 @@ const paintPath = () => {
     let tag = u.querySelector(".path-tag");
     const text = known.has(n) ? T("You know this", "Ya lo sabes") : "";
     if (!text) { if (tag) tag.remove(); return; }
-    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
+    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").after(tag); }
     tag.textContent = text;
   });
   const next = FH.nextLesson();
@@ -84,7 +84,7 @@ const paintPath = () => {
       pt.textContent = isNext ? T("Up next", "Sigue") : done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino");
     } else if (pt) pt.remove();
     sm.dataset.base = sm.dataset.base || sm.textContent;
-    sm.textContent = sm.dataset.base + (done ? T(" · done", " · hecha") : "");
+    sm.textContent = sm.dataset.base + (done && !onIt ? T(" · done", " · hecha") : "");
   });
   const tools = document.getElementById("my-path");
   const p = FH.state.profile;
@@ -97,7 +97,7 @@ const paintPath = () => {
   const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
   tools.innerHTML = `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
-    + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>. Path lessons are highlighted.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>. Las lecciones de tu camino están resaltadas.</p>`)
+    + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>.</p>`)
     + `<a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
     + (p.quiz ? "" : `<a class="btn sm line" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
     + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button>`;

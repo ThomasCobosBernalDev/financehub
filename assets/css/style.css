@@ -1271,3 +1271,6 @@ body.paged .rail { display: none !important; }
 .path-set .unit.off-path { opacity: .4; }
 .path-set .unit.off-path .n { box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
 .path-set .unit.off-path:hover { opacity: .75; }
+.unit .n { grid-row: span 5; }
+.unit .path-tag { grid-column: 2; justify-self: start; margin: 4px 0 1px; }
+.course-page .ex-head { flex-direction: column; align-items: flex-start; } .course-page .ex-tools { justify-content: flex-start; }
