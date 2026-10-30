@@ -253,45 +253,36 @@
   };
   const paintPath = () => {
     const { items, known: kn } = FH.path;
-    const p = FH.state.profile;
     const next = FH.nextLesson();
+    // The whole course as numbered squares, 10 to a row like lines in a book. Lessons on the path light up.
     const list = $("#my-path"); list.innerHTML = "";
-    items.forEach((x, i) => {
+    const onPath = new Map(items.filter((x) => x.lesson).map((x) => [x.lesson.id, x.lesson]));
+    const label = $("#path-pick");
+    const tell = (l) => { label.innerHTML = `<b>${l.unit}.${l.n}</b> ${l.title} <small>${!onPath.has(l.id) ? T("Not on your path", "No está en tu camino") : kn.has(l.unit) ? T("You know this. It's there to review.", "Ya lo sabes. Está ahí para repasar.") : l.href ? T("On your path", "En tu camino") : T("On your path · coming soon", "En tu camino · muy pronto")}</small>`; };
+    FH.CATALOG.forEach((l, i) => {
       const li = document.createElement("li");
-      if (x.unit) {
-        li.className = "soon";
-        li.innerHTML = `<span class="n">${i + 1}</span><b>${T("Unit", "Unidad")} ${x.unit} · ${FH.UNIT_NAMES[x.unit - 1]}</b><small>${T("Being planned", "Se está planeando")}</small>`;
-      } else {
-        const l = x.lesson, k = kn.has(l.unit);
-        li.className = k ? "known" : !l.href ? "soon" : "";
-        li.innerHTML = `<span class="n">${i + 1}</span><b>${l.title}</b><small>${T("Unit", "Unidad")} ${l.unit} · ${k ? T("You know this. It's there to review.", "Ya lo sabes. Está ahí para repasar.") : l.href ? T("Open now", "Abierta ya") : T("Coming soon", "Muy pronto")}</small>`;
-      }
+      const on = onPath.has(l.id);
+      li.className = [on ? (kn.has(l.unit) ? "known" : "on") : "off", next && next.id === l.id ? "next" : "", !l.href ? "soon" : ""].join(" ").trim();
+      li.innerHTML = l.href ? `<a href="../${l.href}" aria-label="${i + 1}. ${l.title}">${i + 1}</a>` : `<span tabindex="0" aria-label="${i + 1}. ${l.title}">${i + 1}</span>`;
+      li.firstChild.addEventListener("mouseenter", () => tell(l));
+      li.firstChild.addEventListener("focus", () => tell(l));
       list.appendChild(li);
     });
-    if (window.FHStagger) FHStagger();
+    tell(next ? FH.CATALOG.find((l) => l.id === next.id) || FH.CATALOG[0] : FH.CATALOG[0]);
     const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
-    const units = items.filter((x) => x.unit).length;
     const skip = lessons.filter((l) => kn.has(l.unit)).length;
-    const gl = FH.GOALS.filter((g) => p.goals.includes(g.id)).map((g) => g.aim);
     $("#path-sum").textContent = T(
-      `Built for ${gl.join(", plus ")}. ${lessons.length} lesson${lessons.length === 1 ? "" : "s"} in order${units ? `, plus ${units} unit${units === 1 ? "" : "s"} still being planned` : ""}${skip && skip < lessons.length ? `. You can skip ${skip} because you already know them` : ""}.` + (p.quiz ? ` You got ${p.quiz.right} of ${p.quiz.of} on the check.` : ""),
-      `Hecho para ${gl.join(", además de ")}. ${lessons.length} ${lessons.length === 1 ? "lección" : "lecciones"} en orden${units ? `, más ${units} ${units === 1 ? "unidad que todavía se está planeando" : "unidades que todavía se están planeando"}` : ""}${skip && skip < lessons.length ? `. Te puedes saltar ${skip} porque ya las sabes` : ""}.` + (p.quiz ? ` Sacaste ${p.quiz.right} de ${p.quiz.of} en la prueba.` : ""));
-    // Where the check puts them: the first unit on the path they don't know yet.
+      `${lessons.length} lesson${lessons.length === 1 ? "" : "s"} on your path${skip && skip < lessons.length ? `, and you already know ${skip}` : ""}.`,
+      `${lessons.length} ${lessons.length === 1 ? "lección" : "lecciones"} en tu camino${skip && skip < lessons.length ? `, y ya sabes ${skip}` : ""}.`);
     if (kn.size) {
       const startAt = items.map((x) => (x.lesson ? x.lesson.unit : x.unit)).find((u) => !kn.has(u));
-      $("#path-sum").textContent += startAt
-        ? T(` You start at Unit ${startAt} · ${FH.UNIT_NAMES[startAt - 1]}.`, ` Empiezas en la Unidad ${startAt} · ${FH.UNIT_NAMES[startAt - 1]}.`)
-        : T(" You already know every unit on your path, so it's all review.", " Ya sabes todas las unidades de tu camino, así que todo es repaso.");
+      if (startAt) $("#path-sum").textContent += T(` You start at Unit ${startAt}: ${FH.UNIT_NAMES[startAt - 1]}.`, ` Empiezas en la Unidad ${startAt}: ${FH.UNIT_NAMES[startAt - 1]}.`);
     }
     const go = $("#path-go");
     if (next) {
       const verb = next.why === "review" ? T("Review", "Repasar") : next.why === "extra" ? T("Try an extra lesson:", "Prueba una lección extra:") : T("Start", "Empezar");
       go.href = "../" + next.href;
       go.firstChild.textContent = `${verb} ${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n} `;
-      const first = lessons.find((l) => !kn.has(l.unit) && !FH.done(l.id));
-      if (first && !first.href) $("#path-sum").textContent += next.why === "extra"
-        ? T(` Your next lesson, "${first.title}", is being built now. Until it's ready, "${next.title}" is open as an extra.`, ` Tu siguiente lección, "${first.title}", se está construyendo. Mientras llega, "${next.title}" está abierta como extra.`)
-        : T(` Your first lesson, "${first.title}", is being built now, so start with "${next.title}" while it's on the way.`, ` Tu primera lección, "${first.title}", se está construyendo, así que empieza con "${next.title}" mientras llega.`);
     }
   };
   $("#redo").addEventListener("click", () => { at = 0; show(0); });

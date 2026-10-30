@@ -16,8 +16,8 @@ const unitStatus = (u) => {
 lessonBox.innerHTML = FH.PARTS.flatMap((p) => p.units).map((u) => {
   const ls = unitLessons(u);
   const list = !ls.length ? `<p class="ex-empty">${T("The lessons for this unit are being planned.", "Las lecciones de esta unidad se están planeando.")}</p>` : `<ol class="ex-ls">${ls.map((l) => l.href
-    ? `<li><a href="${root}${l.href}" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub}</small></a></li>`
-    : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
+    ? `<li><a href="${root}${l.href}" data-lesson="${l.id}"><span class="dot"></span><b><span class="ln">${l.unit}.${l.n}</span>${l.title}</b><small>${l.sub}</small></a></li>`
+    : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b><span class="ln">${l.unit}.${l.n}</span>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
   return `<div class="ex-group" data-for="${u}" role="tabpanel" hidden><p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p>${list}</div>`;
 }).join("");
 let curPart = 0, curUnit = 0;
@@ -73,6 +73,7 @@ const paintPath = () => {
     el.classList.toggle("done", done);
     el.classList.toggle("on-path", onIt);
     el.classList.toggle("is-next", !!isNext);
+    el.classList.toggle("off-path", setUp && !onIt);
     let pt = el.querySelector(".pt");
     if (onIt) {
       if (!pt) { pt = document.createElement("span"); pt.className = "pt"; el.append(pt); }
