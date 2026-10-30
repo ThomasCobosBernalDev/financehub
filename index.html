@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610300142">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301929">
   <style>
     .path { position: relative; margin-top: 40px; }
     .path::before { content: ""; position: absolute; left: 23px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
@@ -65,8 +65,12 @@
     .for-you i { flex: none; font-style: normal; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
     .for-you-foot { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); }
     .for-you-foot a { color: var(--accent); font-weight: 600; }
-    /* Course shape and learning styles side by side: where you're going, and how you'll learn it. */
-    .duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(40px, 5vw, 80px); padding: 56px 0 48px; margin-bottom: 32px; border-top: 1px solid var(--line); }
+    /* Where the course goes: the words on the left, the climb chart wide on the right. */
+    .duo { padding: 64px 0 56px; margin-bottom: 32px; border-top: 1px solid var(--line); }
+    .course-shape { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 40px clamp(40px, 6vw, 96px); align-items: end; }
+    .cs-text { align-self: center; }
+    .cs-text p { margin: 0; color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 34ch; }
+    .course-shape .climb { padding-bottom: 36px; }
     .duo h2 { margin: 0 0 10px; font-size: clamp(28px, 2.6vw, 36px); }
     .course-shape h2 { margin-bottom: 28px; }
     .course-shape .climb ol { height: clamp(320px, 42svh, 420px); padding-top: 80px; }
@@ -100,10 +104,7 @@
       .climb small { display: none; }
       .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
     }
-    .learn-pick p { margin: 0 0 18px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
-    .duo .learn-pick { border: 0; padding: 0; margin: 0; background: none; box-shadow: none; }
-    .learn-pick .lp-foot { margin-top: 14px; }
-    @media (max-width: 960px) { .duo { grid-template-columns: 1fr; } }
+    @media (max-width: 960px) { .course-shape { grid-template-columns: 1fr; } }
     .path-wrap { overflow-x: clip; overflow-clip-margin: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 48px; }
     .path { margin-top: 0; }
     .hero-setup { margin: 0 0 24px; font-size: 15px; color: var(--ink-3); }
@@ -148,7 +149,7 @@
     .unit.off-path { opacity: .55; }
     .unit.off-path:hover { opacity: 1; }
     @media (max-width: 640px) { .my-path-card { flex-direction: column; align-items: stretch; } }
-    .part-name, #styles, #my-path { scroll-margin-top: 88px; }
+    .part-name, #my-path { scroll-margin-top: 88px; }
     .road { position: sticky; top: calc(50svh / var(--z, 1) - 230px); align-self: start; padding-top: 48px; text-align: center; }
     .road .ss-art { max-width: 380px; margin: 0 auto; }
     .road .ss-cap b { font-size: 26px; }
@@ -158,7 +159,6 @@
         .path-wrap { grid-template-columns: 1fr; }
       .road { display: none; }
     }
-    @media (max-width: 420px) { .lp-grid { grid-template-columns: 1fr; } }
 
     /* Right-margin scene: one drawing per part of the course, swapped as you scroll. */
     .ss-art svg { width: 100%; height: auto; display: block; overflow: visible; }
@@ -226,7 +226,6 @@
 
 <nav class="rail" data-own aria-label="Page sections">
   <a href="#top"><i></i><span>Start</span></a>
-  <a href="#styles"><i></i><span>How you learn best</span></a>
   <a href="#my-path"><i></i><span>Your path</span></a>
   <a href="#part-1"><i></i><span>Part 1 · Money basics</span></a>
   <a href="#part-2"><i></i><span>Part 2 · The economy</span></a>
@@ -262,7 +261,10 @@
 
   <div class="duo reveal">
   <section class="course-shape" aria-labelledby="shape-h">
+    <div class="cs-text">
     <h2 id="shape-h">Where the course takes you</h2>
+    <p id="climb-cap">The whole course in 5 parts, from your first bank account to your first finance job. Each part builds on the last.</p>
+    </div>
     <figure class="climb" aria-labelledby="climb-cap">
       <ol>
         <li style="--h:22%"><span class="cbar"></span><span class="cl"><b>Money basics</b><small>Bank, paycheck, budget, credit</small></span></li>
@@ -272,16 +274,9 @@
         <li style="--h:94%" class="goal"><span class="cbar"></span><span class="cl"><b>Your first job</b><small>Interviews and the offer</small></span></li>
       </ol>
       <p class="climb-bracket"><span>What college finance covers</span></p>
-      <figcaption id="climb-cap">The whole course in 5 parts, from your first bank account to your first finance job. Each part builds on the last.</figcaption>
     </figure>
   </section>
 
-  <section class="learn-pick" id="styles" aria-labelledby="styles-h">
-    <h2 id="styles-h">How do you learn best?</h2>
-    <p>Pick as many as you like. Your picks open first in every lesson, and the rest fold away until you want them.</p>
-    <div class="lp-grid" id="lp-grid"></div>
-    <div class="lp-foot"><button class="btn sm line" type="button" id="lp-all">Select all</button><span class="small muted" id="lp-status" aria-live="polite"></span></div>
-  </section>
   </div>
 
   <div class="hero-setup reveal" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
@@ -339,10 +334,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610300142"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610300142"></script>
-<script src="assets/js/auth.js?v=202610300142"></script>
-<script src="assets/js/site.js?v=202610300142"></script>
+<script src="assets/js/save.js?v=202610301929"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610301929"></script>
+<script src="assets/js/auth.js?v=202610301929"></script>
+<script src="assets/js/site.js?v=202610301929"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -456,38 +451,6 @@ const paintPath = () => {
 };
 paintPath();
 document.addEventListener("fh:save", paintPath);
-
-// How do you learn best? Multi-select, saved to the save file (and the account, if signed in).
-const grid = document.getElementById("lp-grid");
-FH.STYLES.forEach((st) => {
-  const b = document.createElement("button");
-  b.type = "button";
-  b.className = "lp-card";
-  b.dataset.id = st.id;
-  b.setAttribute("aria-pressed", "false");
-  b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
-  b.addEventListener("click", () => {
-    const cur = new Set(FH.state.styles || []);
-    cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);
-    FH.setStyles([...cur]);
-    paintStyles();
-  });
-  grid.appendChild(b);
-});
-const paintStyles = () => {
-  const picks = FH.state.styles || [];
-  grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
-  const all = picks.length === FH.STYLES.length;
-  document.getElementById("lp-all").textContent = all ? T("Clear all", "Quitar todos") : T("Select all", "Elegir todos");
-  document.getElementById("lp-status").textContent = !picks.length ? T("Nothing picked yet, so lessons show every part.", "Todavía no eliges nada, así que las lecciones muestran todas las partes.")
-    : all ? T("All eight picked. Lessons show every part.", "Elegiste los ocho. Las lecciones muestran todas las partes.") : T(`${picks.length} picked. Lessons will open these first.`, `${picks.length} elegidos. Las lecciones abrirán estos primero.`);
-};
-document.getElementById("lp-all").addEventListener("click", () => {
-  FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id));
-  paintStyles();
-});
-document.addEventListener("fh:save", paintStyles);
-paintStyles();
 
 // Right-margin scene follows the part you're reading.
 const SCENES = FH.lang === "es" ? [
