@@ -1262,8 +1262,12 @@ body.paged .rail { display: none !important; }
 @media (max-width: 560px) { .my-path { gap: 5px; } .my-path a, .my-path span { font-size: 14px; border-radius: 8px; } }
 
 .ex-ls .ln { margin-right: 8px; font-family: var(--sans); font-size: .78em; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-/* With a path set: units on the path get a filled number, the open unit a bold border, the rest are grayed out. */
-.unit.on-path .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
-.unit.off-path { opacity: .45; }
-.unit.off-path:hover { opacity: .8; }
+/* With a path set: units on the path get a green outlined number (filled once all its lessons are done), the rest are grayed out. The open unit gets a bold border. */
 .unit[aria-selected="true"] { box-shadow: inset 0 0 0 2.5px var(--accent), var(--shadow); }
+.path-set .unit[aria-selected="true"] .n { background: none; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+.path-set .unit.on-path .n { background: none; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+.path-set .unit.on-path h3 { color: var(--ink); }
+.path-set .unit.on-path.all-done .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
+.path-set .unit.off-path { opacity: .4; }
+.path-set .unit.off-path .n { box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
+.path-set .unit.off-path:hover { opacity: .75; }

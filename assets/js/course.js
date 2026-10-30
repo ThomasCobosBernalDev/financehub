@@ -49,6 +49,7 @@ addEventListener("hashchange", fromHash);
 const paintPath = () => {
   const { items, on, known, setUp } = FH.path;
   const onIds = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id));
+  map.classList.toggle("path-set", setUp);
   map.querySelectorAll(".unit").forEach((u) => {
     const n = Number(u.dataset.unit);
     u.classList.toggle("known", known.has(n));
@@ -56,6 +57,7 @@ const paintPath = () => {
     u.classList.toggle("on-path", inPath);
     u.classList.toggle("off-path", setUp && !inPath);
     const ls = unitLessons(n), doneN = ls.filter((l) => FH.done(l.id)).length;
+    u.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
     u.querySelector(".bar i").style.setProperty("--p", ls.length ? (doneN / ls.length) * 100 + "%" : "0%");
     const pathN = ls.filter((l) => onIds.has(l.id)).length;
     let pd = u.querySelector(".pd");
