@@ -1245,3 +1245,34 @@ body:has(.help-hero) { overflow-x: clip; }
 .lang-pick select:focus { outline: none; }
 .lang-pick select option { color: #1f1e1a; background: #fff; }
 @media (max-width: 760px) { .lang-pick { position: static; justify-self: center; margin: 0; } }
+
+/* ---------- Lessons: one section at a time ---------- */
+body.paged main .chapter:not(.pg-on) { display: none; }
+body.paged main .chapter.tint { margin: 0; }
+body.paged main .chapter.tint::before, body.paged main .chapter.tint::after { display: none; }
+body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px); box-sizing: border-box; }
+body.paged main .chapter.is-folded { min-height: 0; }
+.pager { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+.pager .pg-back { justify-self: start; }
+.pager .pg-next { justify-self: end; }
+.pager .pg-count { font-size: 13px; font-weight: 600; color: var(--ink-3); letter-spacing: .06em; }
+@media (max-width: 640px) {
+  .pager { grid-template-columns: 1fr 1fr; }
+  .pager .pg-count { display: none; }
+  .pager .btn { font-size: 14px; padding-left: 14px; padding-right: 14px; }
+}
+.chapter h3[style*="margin-top"] { margin-top: 32px !important; }
+.chapter > .wrap > svg[viewBox], .chapter > .wrap > figure > svg[viewBox] { max-height: 56svh; }
+
+/* "In this example" beside the text it explains. */
+.ex-pair { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, 1fr); gap: 14px 32px; align-items: start; margin: 0 0 28px; }
+.ex-pair > :not(.in-example) { grid-column: 1; margin-top: 0; }
+.ex-pair > .lead { max-width: none; }
+.ex-pair > .in-example { grid-column: 2; grid-row: 1 / span 3; margin: 0; padding: 18px 20px; border-left: 0; border-radius: 22px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--card)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, var(--line)), var(--shadow, none); }
+.ex-pair > .in-example dl { gap: 12px; }
+.ex-pair > .in-example dl > div { grid-template-columns: 1fr; gap: 2px; }
+.ex-pair > .in-example dl > div + div { padding-top: 12px; border-top: 1px dashed color-mix(in srgb, var(--accent) 25%, var(--line)); }
+.ex-pair > .in-example dt { font-size: 15px; }
+.ex-pair > .in-example dd { font-size: 15.5px; line-height: 1.5; }
+@media (max-width: 860px) { .ex-pair { grid-template-columns: 1fr; } .ex-pair > .in-example { grid-column: 1; grid-row: auto; } }

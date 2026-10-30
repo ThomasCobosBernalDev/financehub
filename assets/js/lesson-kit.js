@@ -233,6 +233,81 @@
 
     applyStyle();
     renderProgress();
+    pairExamples();
+    paginate(id, chapters);
+  }
+
+  // "In this example" boxes sit beside the text they explain instead of under it.
+  function pairExamples() {
+    $$("main .in-example").forEach((ex) => {
+      if (ex.closest(".ex-pair, details")) return;
+      const before = [];
+      let el = ex.previousElementSibling;
+      while (el && before.length < 2 && (el.matches("p:not(.small), .formula"))) { before.unshift(el); el = el.previousElementSibling; }
+      if (!before.length) return;
+      const pair = document.createElement("div");
+      pair.className = "ex-pair";
+      before[0].before(pair);
+      pair.append(...before, ex);
+    });
+  }
+
+  // One section at a time: each chapter ends with Back / Next, and the rail jumps between them.
+  // Everything is laid out first (charts measure themselves), then the other chapters are hidden.
+  function paginate(id, chapters) {
+    if (chapters.length < 2) return;
+    const T = FH.t;
+    const root = document.body.dataset.root || "../../";
+    const name = (c) => { const s = $(`.rail a[href="#${c.id}"] span`); return s ? s.textContent : ""; };
+    const usable = (i) => !chapters[i].classList.contains("is-folded");
+    const step = (from, dir) => { for (let i = from + dir; i >= 0 && i < chapters.length; i += dir) if (usable(i)) return i; return -1; };
+    let at = 0;
+    chapters.forEach((c, i) => {
+      const nav = document.createElement("nav");
+      nav.className = "pager";
+      nav.setAttribute("aria-label", T("Lesson steps", "Pasos de la lección"));
+      (c.querySelector(":scope > .wrap") || c).appendChild(nav);
+      nav.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-go]");
+        if (b) show(+b.dataset.go);
+      });
+    });
+    const paint = () => chapters.forEach((c, i) => {
+      const back = step(i, -1), next = step(i, 1);
+      $(".pager", c).innerHTML =
+        (back >= 0 ? `<button class="btn line pg-back" type="button" data-go="${back}"><span class="arrow">←</span> ${name(chapters[back]) || T("Back", "Atrás")}</button>` : "<span></span>")
+        + `<span class="pg-count">${i + 1} / ${chapters.length}</span>`
+        + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}">${T("Next", "Siguiente")}: ${name(chapters[next])} <span class="arrow">→</span></button>`
+          : `<a class="btn pg-next" href="${root}course/">${T("Back to the course", "Volver al curso")} <span class="arrow">→</span></a>`);
+    });
+    const show = (i, target) => {
+      if (i < 0 || i >= chapters.length) return;
+      at = i;
+      chapters.forEach((c, j) => c.classList.toggle("pg-on", j === i));
+      $$(".rail a").forEach((a) => a.classList.toggle("current", a.getAttribute("href") === `#${chapters[i].id}`));
+      if (FH.markSection(id, chapters[i].id)) FH.addXP(5);
+      try { history.replaceState(null, "", `#${chapters[i].id}`); } catch (e) { /* file:// or sandboxed */ }
+      dispatchEvent(new Event("resize"));
+      if (target && target !== chapters[i]) target.scrollIntoView({ block: "start" });
+      else scrollTo({ top: 0 });
+    };
+    // Any same-page link (the rail, "see the quiz" links) opens the step that holds its target.
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.getAttribute("href").length < 2) return;
+      const t = document.getElementById(a.getAttribute("href").slice(1));
+      const c = t && t.closest("main .chapter");
+      if (!c) return;
+      e.preventDefault();
+      if (c.classList.contains("is-folded")) c.querySelector(".unfold") && c.querySelector(".unfold").click();
+      show(chapters.indexOf(c), t);
+    });
+    document.addEventListener("fh:save", paint);
+    paint();
+    document.body.classList.add("paged");
+    const fromHash = document.getElementById(location.hash.slice(1));
+    const start = fromHash && fromHash.closest("main .chapter");
+    show(start ? chapters.indexOf(start) : 0, fromHash || null);
   }
 
   // Chart touches shared by the money charts: a glowing dot for the tip of a line, and a tag that rides
