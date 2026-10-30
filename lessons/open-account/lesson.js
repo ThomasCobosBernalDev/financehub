@@ -57,8 +57,11 @@
   let flSel = 2008 - F0;
   const showFail = (i) => {
     flSel = Math.max(0, Math.min(FAILS.length - 1, i));
-    flBars.forEach((b, k) => b.classList.toggle("dim", k !== flSel));
+    flBars.forEach((b, k) => { b.classList.toggle("dim", k !== flSel); b.classList.toggle("fx-bar", k === flSel); b.style.setProperty("--glow", "var(--wants)"); });
     const y = F0 + flSel, n = FAILS[flSel];
+    // A tag rides above the picked bar.
+    const tip = flSvg.querySelector(".fx-tip") || FHLesson.fx.tip(flSvg, "var(--ink)");
+    FHLesson.fx.place(tip, FX(flSel) + 4, FY(n), String(y), n === 1 ? T("1 failure", "1 quiebra") : T(`${n} failures`, `${n} quiebras`), { x0: 50, y0: 262, big: .9 });
     $("#fl-out").innerHTML = `<b>${y}</b> <span class="down">${n === 1 ? T("1 failure", "1 quiebra") : T(`${n} failures`, `${n} quiebras`)}</span>${NOTE[y] ? `<span>${NOTE[y]}</span>` : ""}`;
   };
   const pickFail = (e) => {

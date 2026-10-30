@@ -5,6 +5,7 @@
   const money = FH.money;
   const T = FH.t;
   const NS = "http://www.w3.org/2000/svg";
+  const fx = FHLesson.fx;
   const svgEl = (tag, attrs, text) => {
     const el = document.createElementNS(NS, tag);
     Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
@@ -213,14 +214,24 @@
     dots.innerHTML = "";
     if (G.pick === null || !G.paths) {
       $("#p-one").setAttribute("d", ""); $("#p-all").setAttribute("d", "");
-      dots.appendChild(svgEl("circle", { cx: X(0), cy: Y(1000), r: 6, fill: "var(--needs)", stroke: "var(--card)", "stroke-width": 2 }));
+      fx.head(dots, "var(--needs)", 6).setAttribute("transform", `translate(${X(0)} ${Y(1000)})`);
       return;
     }
-    const one = G.paths[G.pick];
+    const one = G.paths[G.pick], chart = $("#p-chart");
     $("#p-all").setAttribute("d", pathOf(G.all, G.t));
     $("#p-one").setAttribute("d", pathOf(one, G.t));
-    [[G.all, "var(--needs)"], [one, "var(--wants)"]].forEach(([vals, c]) =>
-      dots.appendChild(svgEl("circle", { cx: X(G.t), cy: Y(vals[G.t]), r: 6, fill: c, stroke: "var(--card)", "stroke-width": 2 })));
+    // Fills that fade out downward under each line, then a glowing tip and a riding tag on each.
+    const area = (vals, c, id) => svgEl("path", { d: `${pathOf(vals, G.t)} L${X(G.t)} ${C.y0} L${X(0)} ${C.y0} Z`, fill: fx.fade(chart, id, c, .3) });
+    dots.appendChild(area(G.all, "var(--needs)", "p-fade-all"));
+    dots.appendChild(area(one, "var(--wants)", "p-fade-one"));
+    const big = C.x0 > 100 ? 2 : 1, box = { x0: C.x0, y0: C.y0, big };
+    const oneHigher = one[G.t] >= G.all[G.t];
+    [[G.all, "var(--needs)", T("All ten", "Las diez"), !oneHigher], [one, "var(--wants)", CO[G.pick].n, oneHigher]].forEach(([vals, c, label, top]) => {
+      const x = X(G.t), y = Y(vals[G.t]);
+      fx.head(dots, c, 6 * big).setAttribute("transform", `translate(${x} ${y})`);
+      // Only your pick gets a tag; the two would overlap when the lines run close, and the cards below show both.
+      if (vals === one) fx.place(fx.tip(dots, c), x, y, label, money(Math.round(vals[G.t])), box, false);
+    });
   };
 
   const showValues = () => {

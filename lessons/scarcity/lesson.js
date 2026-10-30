@@ -56,7 +56,19 @@
     const d = pathFor(bikeHours);
     $("#ppf-line").setAttribute("d", d);
     $("#ppf-area").setAttribute("d", `${d} L${X(0)} ${Y(0)} Z`);
+    // The area under the frontier fades out downward instead of a flat tint.
+    $("#ppf-area").setAttribute("fill", FHLesson.fx.fade($("#ppf"), "ppf-fade", "var(--savings)", .3));
+    $("#ppf-area").setAttribute("opacity", 1);
   };
+  // The frontier draws itself in, with a glowing tip, the first time it scrolls into view.
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((en) => {
+      if (!en[0].isIntersecting) return;
+      io.disconnect();
+      FHLesson.fx.run($("#ppf"), { lines: [{ el: $("#ppf-line"), color: "var(--savings)", r: 6 }], dur: 1800 });
+    }, { threshold: 0.4 });
+    io.observe($("#ppf"));
+  }
   const ticks = $("#ppf-ticks");
   for (let l = 0; l <= 10; l += 2) { const t = document.createElementNS(NS, "text"); t.setAttribute("x", X(l)); t.setAttribute("y", 380); t.setAttribute("text-anchor", "middle"); t.textContent = l; ticks.appendChild(t); }
   for (let b = 1; b <= 5; b++) { const t = document.createElementNS(NS, "text"); t.setAttribute("x", 66); t.setAttribute("y", Y(b) + 4); t.setAttribute("text-anchor", "end"); t.textContent = b; ticks.appendChild(t); }

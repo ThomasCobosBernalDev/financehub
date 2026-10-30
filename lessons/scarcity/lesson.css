@@ -64,3 +64,6 @@
 }
 @media (pointer: coarse) { .stepper button { width: 44px; height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .sway, .hour-strip span.spent { animation: none; } }
+/* Glow on the frontier and the point you pick */
+#ppf-line { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--savings) 60%, transparent)); }
+#ppf-pin { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 80%, transparent)); }

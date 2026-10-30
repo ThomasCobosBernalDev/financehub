@@ -124,7 +124,14 @@
     $("#b-real").setAttribute("d", line("r"));
     const dots = $("#b-dots");
     dots.innerHTML = "";
-    h.forEach((p, i) => el("circle", { cx: X(i), cy: Y(p.r), r: 5, fill: "var(--savings)", stroke: "var(--card)", "stroke-width": 2 }, dots));
+    h.slice(0, -1).forEach((p, i) => el("circle", { cx: X(i), cy: Y(p.r), r: 4, fill: "var(--savings)", stroke: "var(--card)", "stroke-width": 2 }, dots));
+    // Glowing tips on both lines, a tag with today's buying power, and a fill that fades out under it.
+    FHLesson.fx.run($("#b-chart"), {
+      lines: [{ el: $("#b-nom"), color: "var(--ink-3)", r: 4, dashed: true }, { el: $("#b-real"), color: "var(--savings)", r: 5 }],
+      tag: { line: 1, label: T("Buying power", "Poder de compra"), value: () => money(h[h.length - 1].r), box: { x0: 60, y0: 190, big: .85 } },
+      area: { line: 1, baseY: 190, strength: .3 },
+      animate: false,
+    });
   };
 
   $("#b-go").addEventListener("click", async () => {

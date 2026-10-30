@@ -97,7 +97,8 @@
   // ---------- See it: start early ----------
   const stAge = $("#st-age"), stChart = $("#st-chart");
   const YEARLY = 2400;
-  const drawStart = () => {
+  let stSeen = false;
+  const drawStart = (animate) => {
     const a = +stAge.value, n = 67 - a, end = fv(YEARLY, n);
     $("#st-age-v").textContent = a;
     $("#st-big").textContent = money(end);
@@ -116,13 +117,24 @@
     const ages = Array.from({ length: n + 1 }, (_, k) => a + k);
     const bal = ages.map((_, k) => fv(YEARLY, k)), put = ages.map((_, k) => YEARLY * k);
     const area = (vals) => `M${X(a)},${Y(0)} ` + ages.map((age, k) => `L${X(age)},${Y(vals[k])}`).join(" ") + ` L${X(67)},${Y(0)}Z`;
-    stChart.appendChild(svgEl("path", { d: area(bal), fill: "color-mix(in srgb, var(--savings) 45%, transparent)" }));
     stChart.appendChild(svgEl("path", { d: area(put), fill: "color-mix(in srgb, var(--ink-3) 45%, transparent)" }));
-    stChart.appendChild(svgEl("polyline", { points: ages.map((age, k) => `${X(age)},${Y(bal[k])}`).join(" "), fill: "none", stroke: "var(--savings)", "stroke-width": 3 }));
-    stChart.appendChild(svgEl("circle", { cx: X(67), cy: Y(end), r: 5, fill: "var(--savings)" }));
+    const line = svgEl("path", { d: "M" + ages.map((age, k) => `${X(age)} ${Y(bal[k])}`).join(" L"), fill: "none", stroke: "var(--savings)", "stroke-width": 3 });
+    stChart.appendChild(line);
+    // The balance draws in with a glowing tip and a tag counting up; the fill under it fades out downward.
+    const balAt = (x) => {
+      const f = Math.max(0, Math.min(1, (x - X(a)) / (X(67) - X(a)))) * n, k = Math.floor(f);
+      return k >= n ? bal[n] : bal[k] + (bal[k + 1] - bal[k]) * (f - k);
+    };
+    const runFx = (animate) => FHLesson.fx.run(stChart, {
+      lines: [{ el: line, color: "var(--savings)", r: 5 }],
+      tag: { line: 0, label: T("Your balance", "Tu saldo"), value: (x) => money(Math.round(balAt(x))), box: { x0: L, y0: H - B, big: W < 600 ? 1.3 : .85 } },
+      area: { line: 0, baseY: Y(0), strength: .5 },
+      animate, dur: 2000,
+    });
     if (a > 18) stChart.appendChild(svgEl("line", { x1: X(a), x2: X(a), y1: Tp, y2: H - B, stroke: "var(--ink-3)", "stroke-dasharray": "3 4" }));
     const lab = svgEl("text", { x: X(a) + 6, y: Tp + 14, "font-size": W < 600 ? 14 : 13, "font-weight": 700, fill: "var(--ink-2)" }, T(`start at ${a}`, `empiezas a los ${a}`));
     stChart.appendChild(lab);
+    runFx(animate === true && stSeen);
     const m = $("#st-msg"), growth = end - YEARLY * n;
     const share = Math.round((growth / end) * 100);
     if (a <= 35) {
@@ -136,10 +148,15 @@
     }
     fillRange(stAge);
   };
-  stAge.addEventListener("input", drawStart);
+  stAge.addEventListener("input", () => drawStart(false));
   let rz;
-  addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(drawStart, 150); });
-  drawStart();
+  addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => drawStart(false), 150); });
+  drawStart(false);
+  // Draw the balance in when the chart first scrolls into view.
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((en) => { if (en[0].isIntersecting) { io.disconnect(); stSeen = true; drawStart(true); } }, { threshold: 0.4 });
+    io.observe(stChart);
+  }
 
   // ---------- Play it: benefits day ----------
   const SAL = 50000;

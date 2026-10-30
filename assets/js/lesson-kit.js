@@ -235,5 +235,113 @@
     renderProgress();
   }
 
-  window.FHLesson = { init, shuffle, fillRange, $, $$, wait: (ms) => new Promise((r) => setTimeout(r, ms)) };
+  // Chart touches shared by the money charts: a glowing dot for the tip of a line, and a tag that rides
+  // next to it with a label and a running value. Colors come from --c (set per line).
+  const NS = "http://www.w3.org/2000/svg";
+  const mk = (tag, attrs, parent) => {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    if (parent) parent.appendChild(el);
+    return el;
+  };
+  const fx = {
+    head(parent, color, r = 6) {
+      const g = mk("g", { class: "fx-head", style: `--c: ${color}` }, parent);
+      mk("circle", { r: r * 2.4, class: "fx-halo" }, g);
+      mk("circle", { r, class: "fx-dot" }, g);
+      return g;
+    },
+    tip(parent, color) {
+      const g = mk("g", { class: "fx-tip", style: `--c: ${color}` }, parent);
+      mk("rect", { rx: 8 }, g);
+      mk("text", { x: 12, class: "fx-tip-k" }, g);
+      mk("text", { x: 12, class: "fx-tip-v" }, g);
+      return g;
+    },
+    // Put a tag beside (x, y): to the left and above by default, flipped to stay inside the chart.
+    place(tip, x, y, label, value, box, below) {
+      const [k, v] = tip.querySelectorAll("text"), svg = tip.ownerSVGElement;
+      // Same on-screen size in every chart: scale by how much this SVG is shrunk or stretched.
+      const vb = svg.viewBox.baseVal, big = vb && vb.width && svg.clientWidth ? vb.width / svg.clientWidth : box.big || 1;
+      k.textContent = label; v.textContent = value;
+      k.setAttribute("y", 19 * big); v.setAttribute("y", 39 * big);
+      k.style.fontSize = 12 * big + "px"; v.style.fontSize = 17 * big + "px";
+      const w = Math.max(k.getComputedTextLength(), v.getComputedTextLength()) + 24 * big, h = 48 * big;
+      const r = tip.querySelector("rect");
+      r.setAttribute("width", w); r.setAttribute("height", h);
+      let tx = x - w - 16 * big, ty = below ? y + 14 * big : y - h - 14 * big;
+      if (tx < box.x0) tx = x + 16 * big;
+      if (ty < 0) ty = y + 14 * big;
+      if (ty + h > box.y0) ty = y - h - 14 * big;
+      tip.setAttribute("transform", `translate(${tx} ${ty})`);
+    },
+    // A gradient that fades a fill from the line's color down to nothing.
+    fade(svg, id, color, strength = .38) {
+      let defs = svg.querySelector("defs") || mk("defs", {}, null);
+      if (!defs.parentNode) svg.prepend(defs);
+      const old = defs.querySelector("#" + id);
+      if (old) old.remove();
+      const gr = mk("linearGradient", { id, x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+      mk("stop", { offset: 0, "stop-color": color, "stop-opacity": strength }, gr);
+      mk("stop", { offset: 1, "stop-color": color, "stop-opacity": 0 }, gr);
+      return `url(#${id})`;
+    },
+    ease: (p) => (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2),
+    // Draw lines in left to right with a glowing tip on each. Optional: a tag riding one line
+    // ({ line, label, value: (x) => text, box }) and a fading fill under one line ({ line, baseY }).
+    run(svg, { lines, tag, area, dur = 2400, animate = true, heads: withHeads = true }) {
+      const run = (svg._fxRun || 0) + 1;
+      svg._fxRun = run;
+      let layer = svg.querySelector(":scope > .fx-layer");
+      if (layer) layer.innerHTML = ""; else layer = mk("g", { class: "fx-layer" }, svg);
+      const L = lines.filter((l) => l.el && l.el.getAttribute("d") !== "" && l.el.getTotalLength).map((l) => ({ ...l, len: l.el.getTotalLength() }));
+      if (!L.length) return;
+      let fill = null, clip = null;
+      if (area && L[area.line]) {
+        const a = L[area.line], p0 = a.el.getPointAtLength(0), p1 = a.el.getPointAtLength(a.len);
+        const cid = (svg.id || "fx") + "-clip";
+        let defs = svg.querySelector("defs");
+        if (!defs) { defs = mk("defs", {}, null); svg.prepend(defs); }
+        const oldClip = defs.querySelector("#" + cid);
+        if (oldClip) oldClip.remove();
+        const cp = mk("clipPath", { id: cid }, defs);
+        clip = mk("rect", { x: 0, y: -2000, width: 0, height: 6000 }, cp);
+        const d = a.el.getAttribute("d") || "M" + a.el.getAttribute("points");
+        fill = mk("path", { d: `${d} L${p1.x} ${area.baseY} L${p0.x} ${area.baseY} Z`, fill: fx.fade(svg, (svg.id || "fx") + "-fade", a.color, area.strength || .34), "clip-path": `url(#${cid})` }, null);
+        a.el.parentNode.insertBefore(fill, a.el);
+        if (svg._fxFill && svg._fxFill !== fill) svg._fxFill.remove();
+        svg._fxFill = fill;
+      }
+      const heads = L.map((l) => (withHeads ? fx.head(layer, l.color, l.r || 6) : null));
+      const t1 = tag && L[tag.line] ? fx.tip(layer, L[tag.line].color) : null;
+      const frame = (t) => {
+        L.forEach((l, i) => {
+          const pt = l.el.getPointAtLength(l.len * t);
+          if (!l.dashed) {
+            l.el.style.transition = "none";
+            l.el.style.strokeDasharray = `${l.len} ${l.len}`;
+            l.el.style.strokeDashoffset = l.len * (1 - t);
+          }
+          if (heads[i]) heads[i].setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+          l.pt = pt;
+        });
+        if (clip) clip.setAttribute("width", L[area.line].pt.x);
+        if (t1) { const pt = L[tag.line].pt; fx.place(t1, pt.x, pt.y, tag.label, tag.value(pt.x), tag.box, tag.below); }
+      };
+      // Once drawn, drop the dash trick so later edits to the line (new data, dragging) show in full.
+      const done = () => L.forEach((l) => { if (!l.dashed) { l.el.style.strokeDasharray = ""; l.el.style.strokeDashoffset = ""; } });
+      if (!animate || fx.still()) { frame(1); done(); return; }
+      const t0 = performance.now();
+      const step = (now) => {
+        if (svg._fxRun !== run) return;
+        const p = Math.min(1, (now - t0) / dur);
+        frame(fx.ease(p));
+        if (p < 1) requestAnimationFrame(step); else done();
+      };
+      requestAnimationFrame(step);
+    },
+    still: () => matchMedia("(prefers-reduced-motion: reduce)").matches,
+  };
+
+  window.FHLesson = { init, shuffle, fillRange, $, $$, fx, wait: (ms) => new Promise((r) => setTimeout(r, ms)) };
 })();

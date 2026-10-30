@@ -234,9 +234,23 @@
       chart.appendChild(svgEl("text", { x: 58, y: Y(extra.lim) + 16, fill: "var(--accent)", "font-size": 12, "font-weight": 700 }, T(`your limit ${price(extra.lim)}`, `tu límite ${price(extra.lim)}`)));
     }
     const pts = ms.path.slice(0, upTo + 1).map((p, m) => `${X(m).toFixed(1)},${Y(p).toFixed(1)}`).join(" ");
-    chart.appendChild(svgEl("polyline", { points: pts, fill: "none", stroke: "var(--ink)", "stroke-width": 2.2, "stroke-linejoin": "round", id: "dk-line" }));
     chart.appendChild(svgEl("line", { x1: X(ms.now), x2: X(ms.now), y1: 20, y2: H - 30, stroke: "var(--ink-3)", "stroke-width": 1, "stroke-dasharray": "2 4" }));
     chart.appendChild(svgEl("text", { x: X(ms.now) + 4, y: 30, "font-size": 12, fill: "var(--ink-3)" }, T("now", "ahora")));
+    // The price line draws in up to "now", with a glowing live tip, a price tag riding it, and a fill that fades out below.
+    const line = svgEl("path", { d: "M" + pts.replace(/ /g, " L").replace(/,/g, " "), fill: "none", stroke: "var(--accent)", "stroke-width": 2.4, "stroke-linejoin": "round", id: "dk-line" });
+    chart.appendChild(line);
+    // Re-run on each step of a price move too (see animateTo), so the tip and tag follow the new price.
+    chart._tip = (n, animate) => {
+      const at = (x) => ms.path[Math.max(0, Math.min(n, Math.round(((x - 52) / (W - 68)) * 390)))];
+      FHLesson.fx.run(chart, {
+        lines: [{ el: line, color: "var(--accent)", r: 5 }],
+        tag: { line: 0, label: ms.quote.sym, value: (x) => price(at(x)), box: { x0: 52, y0: H - 34, big: narrow ? 1.1 : .9 } },
+        area: { line: 0, baseY: H - 34, strength: .28 },
+        animate, dur: 1600,
+      });
+      chart.querySelector(".fx-layer").classList.add("fx-live");
+    };
+    chart._tip(upTo, !(extra && extra.lim != null));
   };
   const dot = (m, p, label) => {
     chart.appendChild(svgEl("circle", { cx: X(m), cy: Y(p), r: 7, fill: "var(--savings)", stroke: "var(--card)", "stroke-width": 3, class: "dk-dot" }));
@@ -326,13 +340,13 @@
 
   const animateTo = async (ms, from, to, fillAt, lim) => {
     const line = $("#dk-line");
-    const pts = (n) => ms.path.slice(0, n + 1).map((p, m) => `${X(m).toFixed(1)},${Y(p).toFixed(1)}`).join(" ");
-    if (reduced) { line.setAttribute("points", pts(to)); return; }
+    const show = (n) => { line.setAttribute("d", "M" + ms.path.slice(0, n + 1).map((p, m) => `${X(m).toFixed(1)} ${Y(p).toFixed(1)}`).join(" L")); chart._tip(n, false); };
+    if (reduced) { show(to); return; }
     const dur = 1800, start = performance.now();
     await new Promise((res) => {
       const step = (t) => {
         const k = Math.min(1, (t - start) / dur);
-        line.setAttribute("points", pts(Math.round(from + (to - from) * k)));
+        show(Math.round(from + (to - from) * k));
         if (k < 1) requestAnimationFrame(step); else res();
       };
       requestAnimationFrame(step);

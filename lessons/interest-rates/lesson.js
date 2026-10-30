@@ -121,6 +121,12 @@
     $("#f-pi").setAttribute("d", line("pi"));
     $("#f-u").setAttribute("d", line("u"));
     $("#f-i").setAttribute("d", line("i"));
+    const last = F.hist[F.hist.length - 1];
+    FHLesson.fx.run($("#f-chart"), {
+      lines: [{ el: $("#f-i"), color: "var(--ink-3)", r: 4, dashed: true }, { el: $("#f-u"), color: "var(--needs)", r: 5 }, { el: $("#f-pi"), color: "var(--wants)", r: 5 }],
+      tag: { line: 2, label: T("Inflation", "Inflación"), value: () => `${last.pi.toFixed(1)}%`, box: { x0: 60, y0: 230, big: .85 } },
+      animate: false,
+    });
   };
 
   $("#f-go").addEventListener("click", async () => {

@@ -273,4 +273,13 @@
   ];
 
   FHLesson.init({ id: LESSON, short: "supply-demand", quiz: FH.lang === "es" ? QUIZ_ES : QUIZ_EN });
+  // Both curves draw themselves in the first time the chart scrolls into view.
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((en) => {
+      if (!en[0].isIntersecting) return;
+      io.disconnect();
+      FHLesson.fx.run($("#sd-chart"), { lines: [{ el: $("#sd-d"), color: "var(--needs)" }, { el: $("#sd-s"), color: "var(--wants)" }], heads: false, dur: 1600 });
+    }, { threshold: 0.4 });
+    io.observe($("#sd-chart"));
+  }
 })();

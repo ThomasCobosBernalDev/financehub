@@ -307,12 +307,17 @@
     ticks.push([W.x1, T(`end of ${e}`, `fin de ${e}`), "end"]);
     const top = drawGrid($("#h-grid"), Math.max(1100, ...series.flat()) * 1.06, ticks);
     $("#h-base").setAttribute("d", pathOf(r.cash.map(() => 1000), top));
-    ["#h-cash", "#h-sav", "#h-sp"].forEach((id, j) => (animate ? drawIn($(id), pathOf(series[j], top)) : $(id).setAttribute("d", pathOf(series[j], top))));
-    const dots = $("#h-dots");
-    dots.innerHTML = "";
-    [["cash", "var(--wants)"], ["sav", "var(--savings)"], ["sp", "var(--needs)"]].forEach(([k, c], j) => {
-      const v = series[j][H.n];
-      dots.appendChild(svgEl("circle", { cx: W.x1, cy: W.y0 - (v / top) * (W.y0 - W.y1), r: 6, fill: c, stroke: "var(--card)", "stroke-width": 2 }));
+    ["#h-cash", "#h-sav", "#h-sp"].forEach((id, j) => $(id).setAttribute("d", pathOf(series[j], top)));
+    $("#h-dots").innerHTML = "";
+    const spv = series[2], at = (x) => {
+      const f = Math.max(0, Math.min(1, (x - W.x0) / (W.x1 - W.x0))) * H.n, i = Math.floor(f);
+      return i >= H.n ? spv[H.n] : spv[i] + (spv[i + 1] - spv[i]) * (f - i);
+    };
+    FHLesson.fx.run($("#h-chart"), {
+      lines: [{ el: $("#h-cash"), color: "var(--wants)" }, { el: $("#h-sav"), color: "var(--savings)" }, { el: $("#h-sp"), color: "var(--needs)" }],
+      tag: { line: 2, label: T("S&P 500 fund", "Fondo S&P 500"), value: (x) => money(Math.round(at(x))), box: { x0: W.x0, y0: W.y0, big: W.narrow ? 2 : 1 } },
+      area: { line: 2, baseY: W.y0 },
+      animate,
     });
     const fmt = (k) => {
       const nom = r[k][H.n], buys = nom / r.pg[H.n];

@@ -32,3 +32,9 @@
 
 @media (max-width: 860px) { .sd-wrap { grid-template-columns: 1fr; gap: 8px; } .sd-msg { min-height: 0; } }
 @media (max-width: 720px) { @media (prefers-reduced-motion: reduce) { .bee, .tag-slide, .pulse-ring { animation: none; } }
+/* Glow on the curves and the points that matter */
+#sd-d { filter: drop-shadow(0 0 9px color-mix(in srgb, var(--needs) 85%, transparent)); }
+#sd-s { filter: drop-shadow(0 0 9px color-mix(in srgb, var(--wants) 85%, transparent)); }
+#sd-eq { filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 90%, transparent)); }
+#sd-qd { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--needs) 90%, transparent)); }
+#sd-qs { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--wants) 90%, transparent)); }

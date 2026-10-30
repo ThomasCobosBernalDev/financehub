@@ -61,8 +61,12 @@
   let yrSel = 2008 - Y0;
   const showYear = (i) => {
     yrSel = Math.max(0, Math.min(SP.length - 1, i));
-    bars.forEach((b, k) => b.classList.toggle("dim", k !== yrSel));
+    bars.forEach((b, k) => { b.classList.toggle("dim", k !== yrSel); b.classList.toggle("fx-bar", k === yrSel); b.style.setProperty("--glow", SP[k] >= 0 ? "var(--savings)" : "var(--wants)"); });
     const y = Y0 + yrSel, r = SP[yrSel];
+    // A tag rides above (or below, for a loss) the picked bar.
+    const tip = yrSvg.querySelector(".fx-tip") || FHLesson.fx.tip(yrSvg, "var(--ink)");
+    const bx = YX(yrSel) + 3.8;
+    FHLesson.fx.place(tip, bx, r >= 0 ? YY(r) : YY(r), String(y), sign(r), { x0: 46, y0: 262, big: .9 }, r < 0);
     $("#yr-out").innerHTML = `<b>${y}</b> <span class="${r >= 0 ? "up" : "down"}">${sign(r)}</span>${NOTE[y] ? `<span>${NOTE[y]}</span>` : ""}`;
   };
   const pickYear = (e) => {
@@ -213,7 +217,8 @@
       const hl = svgEl("text", { x: X(n) - 4, y: Y(hold[n]) - 10, "text-anchor": "end", "font-size": 13, fill: "var(--ink-2)", "font-weight": 700 }, T("stayed invested", "sin vender"));
       chartEl.appendChild(hl);
     }
-    chartEl.appendChild(svgEl("polyline", { points: G.path.map((v, i) => `${X(i)},${Y(v)}`).join(" "), fill: "none", stroke: "var(--accent)", "stroke-width": 3.5, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    const line = svgEl("path", { d: "M" + G.path.map((v, i) => `${X(i)} ${Y(v)}`).join(" L"), fill: "none", stroke: "var(--accent)", "stroke-width": 3.5, "stroke-linejoin": "round", "stroke-linecap": "round" });
+    chartEl.appendChild(line);
     G.path.forEach((v, i) => {
       if (i === 0) return;
       const inFund = G.plan[i - 1] === "S";
@@ -223,6 +228,13 @@
       const x = (X(i) + X(i + 1)) / 2;
       chartEl.appendChild(svgEl("text", { x, y: Tp + 12, "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: kind === "sell" ? "var(--wants)" : "var(--savings)" }, kind === "sell" ? T("sold", "vendiste") : T("back in", "regresaste")));
       chartEl.appendChild(svgEl("line", { x1: X(i), x2: X(i), y1: Tp + 18, y2: H - B, stroke: kind === "sell" ? "var(--wants)" : "var(--savings)", "stroke-width": 1.5, "stroke-dasharray": "3 4" }));
+    });
+    // Glowing tip on your money, a tag with the total, and a fill that fades out below the line.
+    FHLesson.fx.run(chartEl, {
+      lines: [{ el: line, color: "var(--accent)", r: 6 }],
+      tag: { line: 0, label: T("Your money", "Tu dinero"), value: () => money(G.v), box: { x0: L, y0: H - B, big: .95 } },
+      area: { line: 0, baseY: H - B, strength: .3 },
+      animate: false,
     });
   };
 
