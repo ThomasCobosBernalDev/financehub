@@ -1262,15 +1262,8 @@ body.paged .rail { display: none !important; }
 @media (max-width: 560px) { .my-path { gap: 5px; } .my-path a, .my-path span { font-size: 14px; border-radius: 8px; } }
 
 .ex-ls .ln { margin-right: 8px; font-family: var(--sans); font-size: .78em; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-/* With a path set: path lessons are filled in, the next one gets a bold ring, everything else is grayed out. */
-.ex-ls .on-path { background: var(--accent); box-shadow: none; }
-.ex-ls .on-path b, .ex-ls .on-path .ln { color: var(--on-color); }
-.ex-ls .on-path small { color: color-mix(in srgb, var(--on-color) 80%, transparent); }
-.ex-ls .on-path .dot { box-shadow: inset 0 0 0 2px var(--on-color); }
-.ex-ls .on-path.done .dot { background: var(--on-color); }
-.ex-ls .on-path .pt { background: color-mix(in srgb, var(--on-color) 20%, transparent); color: var(--on-color); }
-.ex-ls .on-path.is-next { box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px var(--accent), var(--shadow); }
-.ex-ls .on-path.is-next .pt { background: var(--on-color); color: var(--accent); }
-.ex-ls a.on-path:hover { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--accent), var(--shadow); }
-.ex-ls .off-path { opacity: .45; filter: grayscale(1); }
-.ex-ls .off-path:hover { opacity: .8; }
+/* With a path set: units on the path get a filled number, the open unit a bold border, the rest are grayed out. */
+.unit.on-path .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
+.unit.off-path { opacity: .45; }
+.unit.off-path:hover { opacity: .8; }
+.unit[aria-selected="true"] { box-shadow: inset 0 0 0 2.5px var(--accent), var(--shadow); }

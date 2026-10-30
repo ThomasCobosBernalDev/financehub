@@ -52,6 +52,9 @@ const paintPath = () => {
   map.querySelectorAll(".unit").forEach((u) => {
     const n = Number(u.dataset.unit);
     u.classList.toggle("known", known.has(n));
+    const inPath = setUp && on.has(n);
+    u.classList.toggle("on-path", inPath);
+    u.classList.toggle("off-path", setUp && !inPath);
     const ls = unitLessons(n), doneN = ls.filter((l) => FH.done(l.id)).length;
     u.querySelector(".bar i").style.setProperty("--p", ls.length ? (doneN / ls.length) * 100 + "%" : "0%");
     const pathN = ls.filter((l) => onIds.has(l.id)).length;
@@ -73,7 +76,6 @@ const paintPath = () => {
     el.classList.toggle("done", done);
     el.classList.toggle("on-path", onIt);
     el.classList.toggle("is-next", !!isNext);
-    el.classList.toggle("off-path", setUp && !onIt);
     let pt = el.querySelector(".pt");
     if (onIt) {
       if (!pt) { pt = document.createElement("span"); pt.className = "pt"; el.append(pt); }
