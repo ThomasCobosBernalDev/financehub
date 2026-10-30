@@ -36,7 +36,7 @@ TEXT = {
         "badges": "badges earned. Your numbers carry into every lesson.",
         "who": "You", "who_sub": "Your money, lesson by lesson",
         "play_btn": "Play narration", "speed": "Playback speed",
-        "foot_nav": "Legal and info", "f_about": "About and contact", "f_privacy": "Privacy", "f_terms": "Terms",
+        "foot_nav": "Legal and info", "f_about": "About", "f_contact": "Contact", "f_privacy": "Privacy", "f_terms": "Terms",
         "f_cookies": "Cookies and storage", "f_delete": "Delete my data", "f_credits": "Credits",
         "disclaimer": "FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.",
         "lang_label": "Español", "lang_short": "ES", "lang_code": "es", "lang_aria": "Ver en español",
@@ -52,7 +52,7 @@ TEXT = {
         "badges": "insignias ganadas. Tus números pasan a cada lección.",
         "who": "Tú", "who_sub": "Tu dinero, lección por lección",
         "play_btn": "Reproducir narración", "speed": "Velocidad",
-        "foot_nav": "Información legal", "f_about": "Acerca de y contacto", "f_privacy": "Privacidad", "f_terms": "Términos",
+        "foot_nav": "Información legal", "f_about": "Acerca de", "f_contact": "Contacto", "f_privacy": "Privacidad", "f_terms": "Términos",
         "f_cookies": "Cookies y almacenamiento", "f_delete": "Borrar mis datos", "f_credits": "Créditos",
         "disclaimer": "FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.",
         "lang_label": "English", "lang_short": "EN", "lang_code": "en", "lang_aria": "View in English",
@@ -128,7 +128,7 @@ PAGE = """<!doctype html>
 
 <footer class="foot">
   <div class="wrap">
-    <nav aria-label="{foot_nav}"><a href="{r}about.html">{f_about}</a><a href="{r}legal/privacy.html">{f_privacy}</a><a href="{r}legal/terms.html">{f_terms}</a><a href="{r}legal/cookies.html">{f_cookies}</a><a href="{r}legal/privacy.html#delete">{f_delete}</a><a href="{r}credits.html">{f_credits}</a></nav>
+    <nav aria-label="{foot_nav}"><a href="{r}about.html">{f_about}</a><a href="{r}contact.html">{f_contact}</a><a href="{r}legal/privacy.html">{f_privacy}</a><a href="{r}legal/terms.html">{f_terms}</a><a href="{r}legal/cookies.html">{f_cookies}</a><a href="{r}credits.html">{f_credits}</a></nav>
     <p><a class="foot-lang" href="{alt}" data-set-lang="{lang_code}" hreflang="{lang_code}" lang="{lang_code}">{lang_aria}</a></p>
     <p class="disclaimer">{disclaimer}</p>
     <p>© 2026 FinanceHub</p>

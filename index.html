@@ -6,28 +6,30 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610302228">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610302237">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
     body { overflow-x: clip; }
     .hero { position: relative; isolation: isolate; }
-    /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
     .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-rows: 1fr auto; gap: clamp(20px, 3svh, 40px) clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0 clamp(16px, 3svh, 32px); }
-    .hero-climb { grid-column: 2; grid-row: 1; display: grid; gap: 14px; align-self: center; }
-    .hero-climb h2 { margin: 0 0 6px; font-size: 22px; }
-    .hero-climb p { margin: 0; color: var(--ink-3); font-size: 15px; line-height: 1.5; }
-    .hero-climb .cs-text { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
-    .hero-climb .cs-text p { flex-basis: 100%; }
-    .hero-climb .cs-link { margin-top: 0; }
-    .cs-link { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
-    .cs-link:hover { text-decoration: underline; }
-    .hero-climb .climb ol { height: clamp(220px, 40svh, 400px); padding-top: 56px; }
-    .hero-climb .climb b { font-size: 16px; }
-    .hero-climb .climb small { font-size: 12px; }
-    .hero-climb .climb-bracket { height: 16px; margin-top: 6px; }
-    .hero-climb .climb-bracket span { font-size: 12.5px; transform: translate(-50%, 3px); }
-    .hero-climb .climb { padding-bottom: 22px; }
+    /* Home hero: the pitch on the left (with a rotating "Wondering how...?" line), four doors into the course on the right. */
+    .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px clamp(32px, 5vw, 88px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0; }
+    .wonder { font-family: var(--serif); font-size: clamp(21px, 1.9vw, 28px); line-height: 1.3; letter-spacing: -.01em; margin: 0 0 12px; max-width: 24em; min-height: 3.9em; color: var(--ink); }
+    .wonder #wq { color: var(--accent); transition: opacity .3s ease; }
+    .wonder #wq.fade { opacity: 0; }
+    .wonder .perfect { display: block; color: var(--ink-2); }
+    .for-you { display: grid; gap: 14px; }
+    .for-you h2 { margin: 0; font-size: 22px; }
+    .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .for-you li a { display: grid; gap: 12px; align-content: space-between; height: 100%; box-sizing: border-box; padding: 18px 20px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); color: inherit; text-decoration: none; transition: box-shadow .25s, transform .25s var(--ease), background .25s; }
+    .for-you li a:hover, .for-you li a.on { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
+    .for-you li a.on { background: color-mix(in srgb, var(--accent-soft) 45%, var(--card)); }
+    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; margin-bottom: 6px; }
+    .for-you small { display: block; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+    .for-you i { justify-self: start; font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+    .for-you-foot { margin: 0; font-size: 14px; color: var(--ink-3); }
+    @media (max-width: 560px) { .for-you ul { grid-template-columns: 1fr; } }
     .hero h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 14px; max-width: 14ch; }
     .hero .lead { font-size: 18px; max-width: 30em; margin: 0 0 24px; }
     .hero .nw { white-space: nowrap; }
@@ -40,45 +42,12 @@
     .ways ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
     .ways li { display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
     .ways svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
-    /* "What do you want to learn?": four quick doors in one row along the bottom of the hero. */
-    .for-you { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 28px; align-items: center; padding-top: clamp(14px, 2.4svh, 24px); border-top: 1px solid var(--line); }
-    .for-you h2 { margin: 0; font-size: 20px; max-width: 7em; line-height: 1.2; }
-    .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-    .for-you li a { display: grid; gap: 8px; align-content: space-between; height: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 16px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); color: inherit; text-decoration: none; transition: box-shadow .2s, transform .25s var(--ease); }
-    .for-you li a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
-    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; }
-    .for-you small { display: none; }
-    .for-you i { justify-self: start; font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-    .for-you-foot { grid-column: 2; margin: 0; font-size: 14px; color: var(--ink-3); }
-    .climb { margin: 0; position: relative; }
-    .climb ol { list-style: none; margin: 0; padding: 0; height: clamp(300px, 46svh, 440px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; border-bottom: 2px solid var(--ink-2); }
-    .climb li { position: relative; }
-    .climb .cbar { position: absolute; inset: auto 0 0; height: var(--h); border-radius: 10px 10px 0 0; background: color-mix(in srgb, var(--accent) calc(30% + var(--i) * 15%), var(--paper-2)); transform-origin: bottom; animation: climb-up .9s var(--ease) both; animation-delay: calc(var(--i) * 110ms + 150ms); }
-    .climb li.goal .cbar { background: #e0b24a; }
-    .climb .cl { position: absolute; left: 0; right: -4px; bottom: calc(var(--h) + 10px); display: grid; gap: 3px; animation: climb-in .5s ease both; animation-delay: calc(var(--i) * 110ms + 600ms); }
-    .climb b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.15; color: var(--ink); }
-    .climb small { font-size: 12.5px; line-height: 1.3; color: var(--ink-3); }
-    .climb li:nth-child(1) { --i: 0; } .climb li:nth-child(2) { --i: 1; } .climb li:nth-child(3) { --i: 2; } .climb li:nth-child(4) { --i: 3; } .climb li:nth-child(5) { --i: 4; }
-    .climb-bracket { margin: 10px 0 0 calc((100% - 40px) / 5 + 10px); width: calc((100% - 40px) * 3 / 5 + 20px); height: 26px; border: 1.5px solid var(--ink-3); border-top: 0; border-radius: 0 0 8px 8px; position: relative; }
-    .climb-bracket span { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 6px); white-space: nowrap; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
-    .climb figcaption { margin-top: 44px; font-size: 14px; color: var(--ink-3); }
-    .reveal:not(.in) .climb .cbar, .reveal:not(.in) .climb .cl { animation-play-state: paused; }
-    @keyframes climb-up { from { transform: scaleY(0); } }
-    @keyframes climb-in { from { opacity: 0; transform: translateY(6px); } }
-    @media (prefers-reduced-motion: reduce) { .climb .cbar, .climb .cl { animation: none; } }
     @media (max-width: 1024px) {
       /* Phones and tablets: "What do you want to learn?" comes right after the pitch, before the buttons. */
       .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-bottom: 32px; }
       .hero-copy { display: contents; }
-      .hero h1 { order: 1; } .hero .lead { order: 2; } .hero-cta { order: 3; } .ways { order: 4; } .for-you { order: 5; margin-top: 28px; } .hero-climb { order: 6; margin-top: 32px; }
+      .hero h1 { order: 1; } .wonder, .hero .lead { order: 2; } .hero-cta { order: 3; } .ways { order: 4; } .for-you { order: 5; margin-top: 28px; }
     }
-    @media (max-width: 560px) {
-      .climb ol { gap: 6px; height: 280px; }
-      .climb b { font-family: var(--sans); font-size: 12.5px; font-weight: 600; }
-      .climb small { display: none; }
-      .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
-    }
-    @media (max-width: 1024px) { .for-you { grid-template-columns: 1fr; } .for-you-foot { grid-column: 1; } .for-you ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
 
 
@@ -106,6 +75,7 @@
   <section class="hero" id="top">
     <div class="hero-copy">
       <h1>Learn money from zero to Wall Street.</h1>
+      <p class="wonder" aria-live="polite">Wondering <span id="wq">how a savings account works</span>? <span class="perfect">Perfect, this is the site for you.</span></p>
       <p class="lead">Free lessons on banking, credit, investing and finance jobs. Each one is taught 8 ways, so it sticks.</p>
       <div class="hero-cta when-out">
         <a class="btn" href="account/#create">Create my free account</a>
@@ -113,23 +83,6 @@
       </div>
       <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Start Unit 1 · Lesson 1</span></a><small id="continue-title">Where your money lives</small></div></div>
       <div class="ways"><p>Every lesson, 8 ways:</p><ul id="ways"></ul></div>
-    </div>
-    <div class="hero-climb">
-      <div class="cs-text">
-        <h2 id="shape-h">Where the course takes you</h2>
-        <p id="climb-cap">5 parts, from your first bank account to your first finance job.</p>
-        <a class="cs-link" href="course/">See every lesson <span class="arrow">→</span></a>
-      </div>
-      <figure class="climb" aria-labelledby="climb-cap">
-        <ol>
-        <li style="--h:22%"><span class="cbar"></span><span class="cl"><b>Money basics</b><small>Bank, paycheck, budget, credit</small></span></li>
-        <li style="--h:40%"><span class="cbar"></span><span class="cl"><b>The economy</b><small>Prices, rates, inflation</small></span></li>
-        <li style="--h:58%"><span class="cbar"></span><span class="cl"><b>Business</b><small>How a company makes money</small></span></li>
-        <li style="--h:76%"><span class="cbar"></span><span class="cl"><b>Wall Street</b><small>Stocks, deals, valuation</small></span></li>
-        <li style="--h:94%" class="goal"><span class="cbar"></span><span class="cl"><b>Your first job</b><small>Interviews and the offer</small></span></li>
-      </ol>
-      <p class="climb-bracket"><span>What college finance covers</span></p>
-    </figure>
     </div>
     <nav class="for-you" aria-labelledby="for-you-h">
       <h2 id="for-you-h">What do you want to learn?</h2>
@@ -145,17 +98,17 @@
 </main>
 <footer class="foot">
   <div class="wrap">
-    <nav aria-label="Legal and info"><a href="about.html">About and contact</a><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/cookies.html">Cookies and storage</a><a href="legal/privacy.html#delete">Delete my data</a><a href="credits.html">Credits</a></nav>
+    <nav aria-label="Legal and info"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="legal/privacy.html">Privacy</a><a href="legal/terms.html">Terms</a><a href="legal/cookies.html">Cookies and storage</a><a href="credits.html">Credits</a></nav>
     <p><a class="foot-lang" href="es/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
     <p class="disclaimer">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610302228"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610302228"></script>
-<script src="assets/js/auth.js?v=202610302228"></script>
-<script src="assets/js/site.js?v=202610302228"></script>
+<script src="assets/js/save.js?v=202610302237"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610302237"></script>
+<script src="assets/js/auth.js?v=202610302237"></script>
+<script src="assets/js/site.js?v=202610302237"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -165,6 +118,17 @@ document.getElementById("ways").innerHTML = FH.STYLES.map((st) => `<li><svg view
 if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classList.toggle("in", !!u));
 
 
+
+// "Wondering how...?" cycles through the four doors on the right and lights up the matching one.
+(() => {
+  const wq = document.getElementById("wq"), doors = [...document.querySelectorAll(".for-you li a")];
+  const q = (a) => { const t = a.querySelector("b").textContent; return t[0].toLowerCase() + t.slice(1); };
+  let i = 0, timer;
+  const show = (n) => { i = n; doors.forEach((d, k) => d.classList.toggle("on", k === n)); wq.classList.add("fade"); setTimeout(() => { wq.textContent = q(doors[n]); wq.classList.remove("fade"); }, 300); };
+  const start = () => { clearInterval(timer); if (!FH.still()) timer = setInterval(() => show((i + 1) % doors.length), 3200); };
+  doors.forEach((d, k) => { d.addEventListener("mouseenter", () => { clearInterval(timer); if (k !== i) show(k); }); d.addEventListener("mouseleave", start); });
+  doors[0].classList.add("on"); start();
+})();
 
 // The main button points at the next lesson on the learner's path.
 const paintContinue = () => {
