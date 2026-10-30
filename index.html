@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301948">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610302209">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
@@ -46,6 +46,7 @@
     .duo { padding: 64px 0 56px; margin-bottom: 32px; border-top: 1px solid var(--line); }
     .course-shape { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 40px clamp(40px, 6vw, 96px); align-items: end; }
     .cs-text { align-self: center; }
+    .cs-link { margin-top: 20px; }
     .cs-text p { margin: 0; color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 34ch; }
     .course-shape .climb { padding-bottom: 36px; }
     .duo h2 { margin: 0 0 10px; font-size: clamp(28px, 2.6vw, 36px); }
@@ -82,105 +83,6 @@
       .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
     }
     @media (max-width: 960px) { .course-shape { grid-template-columns: 1fr; } }
-    .my-path-card { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 20px 24px; margin: 8px 0 16px; border-radius: 20px; background: var(--accent-soft); }
-    .my-path-card .kicker { margin: 0 0 4px; color: var(--accent); }
-    .my-path-card .mp-text { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 640px; }
-    .my-path-card .mp-text b { color: var(--ink); font-weight: 600; }
-    .my-path-card .btn { flex: none; }
-    .mp-actions { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 8px; }
-    .mp-actions .text-link { font-size: 14px; color: var(--ink-3); }
-    .my-path-card.has-list { display: block; }
-    .mp-head { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
-    .mp-list { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; counter-reset: mp; }
-    .mp-list li { counter-increment: mp; }
-    .mp-list a, .mp-list .mp-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--card); color: inherit; text-decoration: none; height: 100%; box-sizing: border-box; }
-    .mp-list a:hover { box-shadow: inset 0 0 0 1.5px var(--accent); }
-    .mp-list i { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 13px; font-weight: 600; box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
-    .mp-list i::before { content: counter(mp); }
-    .mp-list b { display: block; font-family: var(--serif); font-weight: 500; font-size: 17px; line-height: 1.25; color: var(--ink); }
-    .mp-list small { color: var(--ink-3); font-size: 13px; }
-    .mp-list .done i { background: var(--accent); color: var(--on-color); box-shadow: none; }
-    .mp-list .next a { box-shadow: inset 0 0 0 2px var(--accent); }
-    .mp-list .next small { color: var(--accent); font-weight: 600; }
-    .mp-list .soon .mp-row { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
-    .mp-list .soon i { box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
-    .mp-list .soon b { color: var(--ink-2); }
-    .mp-list .known { opacity: .6; }
-    .mp-more { margin-top: 10px; font-size: 14px; }
-    @media (max-width: 640px) { .mp-head { flex-direction: column; align-items: stretch; } .mp-actions { justify-content: flex-start; } }
-    @media (max-width: 640px) { .my-path-card { flex-direction: column; align-items: stretch; } }
-    #course-map, #my-path { scroll-margin-top: 88px; }
-    /* The course explorer: pick a part, then a unit, and its lessons show beside it. One screen, no long scroll. */
-    .explorer { padding: 56px 0 24px; border-top: 1px solid var(--line); margin-top: 24px; }
-    .ex-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
-    .ex-head h2 { margin: 0; font-size: clamp(28px, 2.6vw, 36px); }
-    .ex-head { align-items: center; }
-    .ex-tools { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; justify-content: flex-end; }
-    .ex-tools p { margin: 0; color: var(--ink-3); font-size: 15px; }
-    .ex-tools p b { color: var(--ink); }
-    .mp-bar { border-radius: 6px; background: color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; }
-    .mp-bar i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
-    .ex-tools .mp-bar { width: 90px; height: 6px; margin: 0; flex: none; }
-    .ex-tools .btn { flex: none; }
-    .ex-tools .linkish { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--ink-3); text-decoration: underline; cursor: pointer; }
-    @media (max-width: 760px) { .ex-tools { justify-content: flex-start; } }
-    .ex-tabs { display: flex; gap: 6px; padding: 5px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); overflow-x: auto; scrollbar-width: none; }
-    .ex-tabs::-webkit-scrollbar { display: none; }
-    .ex-tab { flex: 1 0 auto; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 10px 14px; border: 0; border-radius: 99px; background: none; color: var(--ink-2); font: inherit; font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer; scroll-margin-top: 96px; transition: background .25s var(--ease), color .25s, box-shadow .25s; }
-    .ex-tab b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; box-shadow: inset 0 0 0 1.5px currentColor; }
-    .ex-tab small { display: none; }
-    .ex-tab:hover { color: var(--ink); }
-    .ex-tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
-    .ex-tab[aria-selected="true"] b { background: var(--accent); color: var(--on-color); box-shadow: none; }
-    .ex-body { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
-    .ex-units { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-    .unit { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .2s, box-shadow .2s, opacity .2s; }
-    .unit .n { grid-row: span 3; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 16px; box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
-    .unit.live .n { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
-    .unit h3 { margin: 0; font-family: var(--sans); font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--ink-2); }
-    .unit.live h3 { color: var(--ink); }
-    .unit p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
-    .unit .bar { grid-column: 2; height: 4px; margin-top: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
-    .unit .bar i { display: block; height: 100%; width: var(--p, 0%); background: var(--accent); border-radius: inherit; transition: width .6s var(--ease); }
-    .unit:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
-    .unit[aria-selected="true"] { background: var(--card); box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); opacity: 1; }
-    .unit[aria-selected="true"] .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
-    .unit .path-tag { display: inline-block; vertical-align: 1px; margin-left: 6px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 7px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); }
-    .unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
-    .unit .pd { grid-column: 2; margin-top: 3px; font-size: 12px; font-weight: 600; color: var(--accent); }
-    .unit .pd::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
-    .ex-lessons { min-width: 0; }
-    .ex-group[hidden] { display: none; }
-    .ex-group { animation: ex-in .35s var(--ease); }
-    @keyframes ex-in { from { opacity: 0; transform: translateY(8px); } }
-    .ex-group .kicker { margin: 4px 0 4px; color: var(--accent); }
-    .ex-group h3 { margin: 0 0 4px; font-size: clamp(24px, 2.4vw, 30px); }
-    .ex-group > p { margin: 0 0 16px; color: var(--ink-3); font-size: 15px; }
-    .ex-ls { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
-    .ex-ls a, .ex-ls .soon { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; height: 100%; box-sizing: border-box; padding: 14px 16px 14px 12px; border-radius: 16px; color: inherit; text-decoration: none; }
-    .ex-ls a { background: var(--card); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
-    .ex-ls a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
-    .ex-ls .soon { box-shadow: inset 0 0 0 1px var(--line); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent); }
-    .ex-ls .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
-    .ex-ls .done .dot { background: var(--accent); box-shadow: none; }
-    .ex-ls .soon .dot { box-shadow: inset 0 0 0 2px var(--line); }
-    .ex-ls b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink); }
-    .ex-ls .soon b { color: var(--ink-3); }
-    .ex-ls small { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; margin-top: 3px; }
-    .ex-ls .on-path { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 55%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
-    .ex-ls .is-next { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
-    .ex-ls .pt { grid-column: 2; justify-self: start; margin-top: 8px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-    .ex-ls .is-next .pt { background: var(--accent); color: var(--on-color); }
-    .ex-empty { padding: 28px; border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-3); }
-    
-    @media (max-width: 760px) {
-      /* Phones: units become a swipeable strip, and the chosen unit's lessons sit right under it. */
-      .ex-body { grid-template-columns: 1fr; gap: 18px; }
-      .ex-units { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px; }
-      .ex-units li { flex: 0 0 74%; scroll-snap-align: start; }
-      .unit { height: 100%; background: var(--paper-2); }
-      .ex-ls { grid-template-columns: 1fr; }
-    }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
 
 
@@ -192,7 +94,7 @@
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="./">Finance<span>Hub</span></a>
-    <nav class="topnav" aria-label="Site"><a href="./" aria-current="page">Course</a><a href="about.html">About</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="course/">Course</a><a href="about.html">About</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
@@ -206,7 +108,6 @@
 
 <nav class="rail" data-own aria-label="Page sections">
   <a href="#top"><i></i><span>Start</span></a>
-  <a href="#course-map"><i></i><span>The course</span></a>
 </nav>
 <main class="wrap" id="main">
   <section class="hero" id="top">
@@ -227,7 +128,7 @@
       <ul>
         <li><a href="lessons/checking-savings/"><span><b>How a savings account works</b><small>Never had a bank account? Start here.</small></span><i>Beginner</i></a></li>
         <li><a href="lessons/why-invest/"><span><b>How to invest your first dollar</b><small>You know your checking account, but you've never bought a stock.</small></span><i>Know the basics</i></a></li>
-        <li><a href="#part-1"><span><b>How credit and credit cards work</b><small>Build a good score without falling into debt. Lessons coming soon.</small></span><i>Know the basics</i></a></li>
+        <li><a href="course/#part-1"><span><b>How credit and credit cards work</b><small>Build a good score without falling into debt. Lessons coming soon.</small></span><i>Know the basics</i></a></li>
         <li><a href="start/"><span><b>How to get hired in finance</b><small>Ace college finance, then interview at a bank or on Wall Street.</small></span><i>Career</i></a></li>
       </ul>
       <p class="for-you-foot">Not sure? <a href="start/">Answer a few quick questions</a> and we'll line up your lessons.</p>
@@ -239,6 +140,7 @@
     <div class="cs-text">
     <h2 id="shape-h">Where the course takes you</h2>
     <p id="climb-cap">The whole course in 5 parts, from your first bank account to your first finance job. Each part builds on the last.</p>
+    <a class="btn sm line cs-link" href="course/">See every lesson <span class="arrow">→</span></a>
     </div>
     <figure class="climb" aria-labelledby="climb-cap">
       <ol>
@@ -254,14 +156,6 @@
 
   </div>
 
-  <section class="explorer" id="course-map" aria-labelledby="ex-h">
-  <div class="ex-head"><h2 id="ex-h"></h2><div class="ex-tools" id="my-path"></div></div>
-  <div class="ex-tabs" role="tablist" id="ex-tabs"></div>
-  <div class="ex-body">
-  <ol class="ex-units" id="ex-units" role="tablist" aria-orientation="vertical"></ol>
-  <div class="ex-lessons" id="ex-lessons"></div>
-  </div>
-  </section>
 </main>
 <footer class="foot">
   <div class="wrap">
@@ -272,10 +166,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610301948"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610301948"></script>
-<script src="assets/js/auth.js?v=202610301948"></script>
-<script src="assets/js/site.js?v=202610301948"></script>
+<script src="assets/js/save.js?v=202610302209"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610302209"></script>
+<script src="assets/js/auth.js?v=202610302209"></script>
+<script src="assets/js/site.js?v=202610302209"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -283,87 +177,13 @@ const T = FH.t;
 document.getElementById("ways").innerHTML = FH.STYLES.map((st) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg>${st.chapter}</li>`).join("");
 // Signed in: the hero's sign-up buttons give way to "Continue".
 if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classList.toggle("in", !!u));
-// Course explorer: part tabs, that part's units, and the chosen unit's lessons. Drawn from the catalog in save.js.
-const map = document.getElementById("course-map");
-const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
-document.getElementById("ex-h").textContent = T("The whole course", "Todo el curso");
-const tabs = document.getElementById("ex-tabs"), unitList = document.getElementById("ex-units"), lessonBox = document.getElementById("ex-lessons");
-tabs.innerHTML = FH.PARTS.map((p) => `<button class="ex-tab" role="tab" id="part-${p.n}" data-part="${p.n}" aria-selected="false"><b>${p.n}</b>${p.name} <small>${p.units.length} ${T("units", "unidades")}</small></button>`).join("");
-const unitStatus = (u) => {
-  const ls = unitLessons(u), open = ls.filter((l) => l.href).length;
-  return !ls.length ? T("Coming soon", "Muy pronto")
-    : open ? T(`${open} of ${ls.length} lessons open`, `${open} de ${ls.length} lecciones abiertas`)
-    : T(`${ls.length} lessons planned`, `${ls.length} lecciones planeadas`);
-};
-lessonBox.innerHTML = FH.PARTS.flatMap((p) => p.units).map((u) => {
-  const ls = unitLessons(u);
-  const list = !ls.length ? `<p class="ex-empty">${T("The lessons for this unit are being planned.", "Las lecciones de esta unidad se están planeando.")}</p>` : `<ol class="ex-ls">${ls.map((l) => l.href
-    ? `<li><a href="${l.href}" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub}</small></a></li>`
-    : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
-  return `<div class="ex-group" data-for="${u}" role="tabpanel" hidden><p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p>${list}</div>`;
-}).join("");
-let curPart = 0, curUnit = 0;
-const pickUnit = (u) => {
-  curUnit = u;
-  unitList.querySelectorAll(".unit").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.unit === u)));
-  lessonBox.querySelectorAll(".ex-group").forEach((g) => { g.hidden = +g.dataset.for !== u; });
-  const sel = unitList.querySelector(`.unit[data-unit="${u}"]`);
-  if (sel && unitList.scrollWidth > unitList.clientWidth) unitList.scrollTo({ left: sel.parentNode.offsetLeft - 16, behavior: "smooth" });
-};
-const pickPart = (n, unit) => {
-  const part = FH.PARTS.find((p) => p.n === n);
-  curPart = n;
-  tabs.querySelectorAll(".ex-tab").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.part === n)));
-  unitList.innerHTML = part.units.map((u) => {
-    const ls = unitLessons(u), open = ls.filter((l) => l.href).length;
-    return `<li><button class="unit${open ? " live" : ""}" role="tab" data-unit="${u}" aria-selected="false"><span class="n">${u}</span><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p><span class="bar"><i></i></span></button></li>`;
-  }).join("");
-  unitList.querySelectorAll(".unit").forEach((b) => b.addEventListener("click", () => pickUnit(+b.dataset.unit)));
-  pickUnit(unit || part.units[0]);
-  if (typeof paintPath === "function") paintPath();
-};
-tabs.querySelectorAll(".ex-tab").forEach((b) => b.addEventListener("click", () => pickPart(+b.dataset.part)));
-// Links like #part-3 open that part.
-const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash); if (m && FH.PARTS.some((p) => p.n === +m[1])) { pickPart(+m[1]); map.scrollIntoView({ behavior: "smooth" }); } };
-addEventListener("hashchange", fromHash);
 
 
-// Your path: the lessons in order, units your goals skip marked Extra, and the main button on the next lesson.
-const paintPath = () => {
-  const { items, on, known, setUp } = FH.path;
-  const onIds = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id));
-  map.querySelectorAll(".unit").forEach((u) => {
-    const n = Number(u.dataset.unit);
-    u.classList.toggle("known", known.has(n));
-    const ls = unitLessons(n), doneN = ls.filter((l) => FH.done(l.id)).length;
-    u.querySelector(".bar i").style.setProperty("--p", ls.length ? (doneN / ls.length) * 100 + "%" : "0%");
-    const pathN = ls.filter((l) => onIds.has(l.id)).length;
-    let pd = u.querySelector(".pd");
-    if (setUp && pathN && !known.has(n)) {
-      if (!pd) { pd = document.createElement("span"); pd.className = "pd"; u.querySelector(".bar").before(pd); }
-      pd.textContent = T(`${pathN} on your path`, `${pathN} en tu camino`);
-    } else if (pd) pd.remove();
-    let tag = u.querySelector(".path-tag");
-    const text = known.has(n) ? T("You know this", "Ya lo sabes") : "";
-    if (!text) { if (tag) tag.remove(); return; }
-    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").append(" ", tag); }
-    tag.textContent = text;
-  });
+
+// The main button points at the next lesson on the learner's path.
+const paintContinue = () => {
+  const { items, known, setUp } = FH.path;
   const next = FH.nextLesson();
-  map.querySelectorAll("[data-lesson]").forEach((el) => {
-    const id = el.dataset.lesson, done = FH.done(id), sm = el.querySelector("small");
-    const onIt = setUp && onIds.has(id), isNext = setUp && next && next.id === id && !done;
-    el.classList.toggle("done", done);
-    el.classList.toggle("on-path", onIt);
-    el.classList.toggle("is-next", !!isNext);
-    let pt = el.querySelector(".pt");
-    if (onIt) {
-      if (!pt) { pt = document.createElement("span"); pt.className = "pt"; el.append(pt); }
-      pt.textContent = isNext ? T("Up next", "Sigue") : done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino");
-    } else if (pt) pt.remove();
-    sm.dataset.base = sm.dataset.base || sm.textContent;
-    sm.textContent = sm.dataset.base + (done ? T(" · done", " · hecha") : "");
-  });
   const started = Object.values(FH.state.lessons).some((l) => l && Object.keys(l.sections || {}).length);
   if (next) {
     const c = document.getElementById("continue");
@@ -374,28 +194,9 @@ const paintPath = () => {
     const soon = next.why === "extra" && setUp && items.find((x) => x.lesson && !x.lesson.href && !known.has(x.lesson.unit));
     document.getElementById("continue-title").textContent = next.title + (soon ? T(`. Your next path lesson, "${soon.lesson.title}", is being built.`, `. Tu siguiente lección del camino, "${soon.lesson.title}", se está construyendo.`) : "");
   }
-  const tools = document.getElementById("my-path");
-  const p = FH.state.profile;
-  if (!setUp) {
-    tools.innerHTML = T(
-      `<p>Pick a part, then a unit, to see its lessons.</p><a class="btn sm" href="start/">Build my path</a>`,
-      `<p>Elige una parte y luego una unidad para ver sus lecciones.</p><a class="btn sm" href="start/">Crear mi camino</a>`);
-    return;
-  }
-  const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
-  const doneN = lessons.filter((l) => FH.done(l.id)).length;
-  tools.innerHTML = `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
-    + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>. Path lessons are highlighted.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>. Las lecciones de tu camino están resaltadas.</p>`)
-    + `<a class="btn sm line" href="start/">${T("Change my path", "Cambiar mi camino")}</a>`
-    + (p.quiz ? "" : `<a class="btn sm line" href="start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
-    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button>`;
-  document.getElementById("clear-path").addEventListener("click", () => {
-    FH.clearPath();
-    FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
-  });
 };
-paintPath();
-document.addEventListener("fh:save", paintPath);
+paintContinue();
+document.addEventListener("fh:save", paintContinue);
 
 // Side rail: light up the section you're looking at.
 const railLinks = [...document.querySelectorAll(".rail a")];
@@ -411,10 +212,6 @@ const track = () => {
 let ticking = false;
 addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { track(); ticking = false; }); } }, { passive: true });
 track();
-// Open the explorer on the part and unit of the next lesson.
-const first = FH.nextLesson();
-pickPart(first ? FH.partOf(first.unit).n : 1, first ? first.unit : 0);
-fromHash();
 </script>
 </body>
 </html>

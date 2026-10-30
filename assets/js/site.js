@@ -21,6 +21,21 @@
     })
   );
 
+  // Footer language picker: a globe, the current language and a caret, bottom left. The plain link stays as a fallback without JS.
+  document.querySelectorAll(".foot-lang").forEach((link) => {
+    if (!window.FH) return;
+    const wrap = document.createElement("label");
+    wrap.className = "lang-pick";
+    wrap.innerHTML = `<svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg>
+      <select aria-label="${FH.t("Language", "Idioma")}"><option value="en">English</option><option value="es">Español</option></select>
+      <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`;
+    const sel = wrap.querySelector("select");
+    sel.value = FH.lang;
+    sel.addEventListener("change", () => FH.setLang(sel.value));
+    const holder = link.closest("p") || link;
+    holder.replaceWith(wrap);
+  });
+
   // Fade elements up as they scroll into view. Lists and grids come in one item at a time.
   const io = "IntersectionObserver" in window ? new IntersectionObserver(
     (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
@@ -245,7 +260,7 @@
           : `<li><span class="soon">${esc(l.title)} <i>${t("soon", "pronto")}</i></span></li>`).join("")
           || `<li><span class="soon">${t("Lessons coming", "Lecciones en camino")} <i>${t("soon", "pronto")}</i></span></li>`}</ul></div>`;
       }).join("")}</div>
-      <a class="mm-all" href="${root}#course-map">${t("See the full course map →", "Ver el mapa completo del curso →")}</a>`;
+      <a class="mm-all" href="${root}course/">${t("See the whole course →", "Ver todo el curso →")}</a>`;
   };
 
   // Open on the part the reader is in: this lesson's part, or the first part.

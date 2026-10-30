@@ -24,7 +24,7 @@ SHELL = """<!doctype html>
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="{r}">Finance<span>Hub</span></a>
-    <nav class="topnav" aria-label="Site"><a href="{r}">{course}</a><a href="{r}about.html">{about}</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}about.html">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">

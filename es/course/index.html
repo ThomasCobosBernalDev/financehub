@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" data-alt="../../course/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Todo el curso · FinanceHub</title>
+  <meta name="description" content="Cada parte, unidad y lección de FinanceHub, desde tu primera cuenta de banco hasta un trabajo en finanzas.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610302209">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../">Finance<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../course/">Curso</a><a href="../about.html">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Entrar</a>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap course-page">
+<section class="explorer" id="course-map" aria-labelledby="ex-h">
+  <div class="ex-head"><h1 id="ex-h">Todo el curso</h1><div class="ex-tools" id="my-path"></div></div>
+  <div class="ex-tabs" role="tablist" id="ex-tabs"></div>
+  <div class="ex-body">
+  <ol class="ex-units" id="ex-units" role="tablist" aria-orientation="vertical"></ol>
+  <div class="ex-lessons" id="ex-lessons"></div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../about.html">Acerca de y contacto</a><a href="../legal/privacy.html">Privacidad</a><a href="../legal/terms.html">Términos</a><a href="../legal/cookies.html">Cookies y almacenamiento</a><a href="../legal/privacy.html#delete">Borrar mis datos</a><a href="../credits.html">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../course/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinanceHub</p>
+  </div>
+</footer>
+<script src="../../assets/js/save.js?v=202610302209"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610302209"></script>
+<script src="../../assets/js/auth.js?v=202610302209"></script>
+<script src="../../assets/js/site.js?v=202610302209"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+<script src="../../assets/js/course.js?v=202610302209"></script>
+</body>
+</html>
