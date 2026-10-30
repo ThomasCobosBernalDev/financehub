@@ -6,21 +6,23 @@
   <title>FinanceHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610302218">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610302228">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
     body { overflow-x: clip; }
     .hero { position: relative; isolation: isolate; }
     /* Home hero: the pitch on the left, the whole course as a rising bar chart on the right. */
-    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-rows: 1fr auto; gap: clamp(20px, 3svh, 40px) clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0 clamp(16px, 3svh, 32px); }
-    .hero-climb { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); gap: 24px clamp(32px, 5vw, 72px); align-items: end; padding-top: clamp(14px, 2.4svh, 24px); border-top: 1px solid var(--line); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-rows: 1fr auto; gap: clamp(20px, 3svh, 40px) clamp(32px, 5vw, 80px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0 clamp(16px, 3svh, 32px); }
+    .hero-climb { grid-column: 2; grid-row: 1; display: grid; gap: 14px; align-self: center; }
     .hero-climb h2 { margin: 0 0 6px; font-size: 22px; }
     .hero-climb p { margin: 0; color: var(--ink-3); font-size: 15px; line-height: 1.5; }
-    .hero-climb .cs-text { align-self: center; padding-bottom: 30px; }
+    .hero-climb .cs-text { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+    .hero-climb .cs-text p { flex-basis: 100%; }
+    .hero-climb .cs-link { margin-top: 0; }
     .cs-link { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
     .cs-link:hover { text-decoration: underline; }
-    .hero-climb .climb ol { height: clamp(110px, 20svh, 220px); padding-top: 46px; }
+    .hero-climb .climb ol { height: clamp(220px, 40svh, 400px); padding-top: 56px; }
     .hero-climb .climb b { font-size: 16px; }
     .hero-climb .climb small { font-size: 12px; }
     .hero-climb .climb-bracket { height: 16px; margin-top: 6px; }
@@ -38,17 +40,16 @@
     .ways ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
     .ways li { display: inline-flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
     .ways svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
-    .for-you { padding: clamp(18px, 2vw, 24px) clamp(20px, 2.4vw, 28px); background: var(--card); border-radius: 22px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
-    .for-you h2 { font-size: clamp(22px, 2vw, 28px); margin: 0 0 8px; }
-    .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-    .for-you li a { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 8px 14px; margin: 0 -14px; border-radius: 14px; color: inherit; text-decoration: none; transition: background .2s; }
-    .for-you li a:hover { background: var(--paper-2); }
-    .for-you li + li { border-top: 1px solid var(--line); }
-    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.2; }
-    .for-you small { display: block; margin-top: 2px; font-size: 14px; line-height: 1.4; color: var(--ink-3); }
-    .for-you i { flex: none; font-style: normal; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-    .for-you-foot { margin: 8px 0 0; font-size: 14.5px; color: var(--ink-3); }
-    .for-you-foot a { color: var(--accent); font-weight: 600; }
+    /* "What do you want to learn?": four quick doors in one row along the bottom of the hero. */
+    .for-you { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 28px; align-items: center; padding-top: clamp(14px, 2.4svh, 24px); border-top: 1px solid var(--line); }
+    .for-you h2 { margin: 0; font-size: 20px; max-width: 7em; line-height: 1.2; }
+    .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .for-you li a { display: grid; gap: 8px; align-content: space-between; height: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 16px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); color: inherit; text-decoration: none; transition: box-shadow .2s, transform .25s var(--ease); }
+    .for-you li a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
+    .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 16px; line-height: 1.25; }
+    .for-you small { display: none; }
+    .for-you i { justify-self: start; font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+    .for-you-foot { grid-column: 2; margin: 0; font-size: 14px; color: var(--ink-3); }
     .climb { margin: 0; position: relative; }
     .climb ol { list-style: none; margin: 0; padding: 0; height: clamp(300px, 46svh, 440px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; border-bottom: 2px solid var(--ink-2); }
     .climb li { position: relative; }
@@ -69,7 +70,7 @@
       /* Phones and tablets: "What do you want to learn?" comes right after the pitch, before the buttons. */
       .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; gap: 0; padding-bottom: 32px; }
       .hero-copy { display: contents; }
-      .hero h1 { order: 1; } .hero .lead { order: 2; } .for-you { order: 3; margin-bottom: 24px; } .hero-cta { order: 4; } .ways { order: 5; } .hero-climb { order: 6; margin-top: 36px; }
+      .hero h1 { order: 1; } .hero .lead { order: 2; } .hero-cta { order: 3; } .ways { order: 4; } .for-you { order: 5; margin-top: 28px; } .hero-climb { order: 6; margin-top: 32px; }
     }
     @media (max-width: 560px) {
       .climb ol { gap: 6px; height: 280px; }
@@ -77,7 +78,7 @@
       .climb small { display: none; }
       .climb-bracket { margin-left: calc((100% - 24px) / 5 + 6px); width: calc((100% - 24px) * 3 / 5 + 12px); }
     }
-    @media (max-width: 960px) { .hero-climb { grid-template-columns: 1fr; } .hero-climb .cs-text { padding-bottom: 0; } }
+    @media (max-width: 1024px) { .for-you { grid-template-columns: 1fr; } .for-you-foot { grid-column: 1; } .for-you ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
 
 
@@ -113,16 +114,6 @@
       <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Empezar Unidad 1 · Lección 1</span></a><small id="continue-title">Dónde vive tu dinero</small></div></div>
       <div class="ways"><p>Cada lección, de 8 maneras:</p><ul id="ways"></ul></div>
     </div>
-    <nav class="for-you" aria-labelledby="for-you-h">
-      <h2 id="for-you-h">¿Qué quieres aprender?</h2>
-      <ul>
-        <li><a href="lessons/checking-savings/"><span><b>Cómo funciona una cuenta de ahorro</b><small>¿Nunca has tenido cuenta de banco? Empieza aquí.</small></span><i>Principiante</i></a></li>
-        <li><a href="lessons/why-invest/"><span><b>Cómo invertir tu primer dólar</b><small>Conoces tu cuenta de cheques, pero nunca has comprado una acción.</small></span><i>Ya sé lo básico</i></a></li>
-        <li><a href="course/#part-1"><span><b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i></a></li>
-        <li><a href="start/"><span><b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i></a></li>
-      </ul>
-      <p class="for-you-foot">¿No estás seguro? <a href="start/">Responde unas preguntas rápidas</a> y ordenamos tus lecciones.</p>
-    </nav>
     <div class="hero-climb">
       <div class="cs-text">
         <h2 id="shape-h">A dónde te lleva el curso</h2>
@@ -140,9 +131,17 @@
       <p class="climb-bracket"><span>Lo que cubren las finanzas en la universidad</span></p>
     </figure>
     </div>
+    <nav class="for-you" aria-labelledby="for-you-h">
+      <h2 id="for-you-h">¿Qué quieres aprender?</h2>
+      <ul>
+        <li><a href="lessons/checking-savings/"><span><b>Cómo funciona una cuenta de ahorro</b><small>¿Nunca has tenido cuenta de banco? Empieza aquí.</small></span><i>Principiante</i></a></li>
+        <li><a href="lessons/why-invest/"><span><b>Cómo invertir tu primer dólar</b><small>Conoces tu cuenta de cheques, pero nunca has comprado una acción.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="course/#part-1"><span><b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="start/"><span><b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i></a></li>
+      </ul>
+      <p class="for-you-foot">¿No estás seguro? <a href="start/">Responde unas preguntas rápidas</a> y ordenamos tus lecciones.</p>
+    </nav>
   </section>
-
-
 </main>
 <footer class="foot">
   <div class="wrap">
@@ -153,10 +152,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202610302218"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610302218"></script>
-<script src="../assets/js/auth.js?v=202610302218"></script>
-<script src="../assets/js/site.js?v=202610302218"></script>
+<script src="../assets/js/save.js?v=202610302228"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610302228"></script>
+<script src="../assets/js/auth.js?v=202610302228"></script>
+<script src="../assets/js/site.js?v=202610302228"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;

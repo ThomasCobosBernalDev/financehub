@@ -273,15 +273,19 @@
       });
     });
     const paint = () => chapters.forEach((c, i) => {
+      const seen = FH.lesson(id).sections;
       const back = step(i, -1), next = step(i, 1);
       $(".pager", c).innerHTML =
         (back >= 0 ? `<button class="btn line pg-back" type="button" data-go="${back}"><span class="arrow">←</span> ${name(chapters[back]) || T("Back", "Atrás")}</button>` : "<span></span>")
-        + `<span class="pg-count">${i + 1} / ${chapters.length}</span>`
-        + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}">${T("Next", "Siguiente")}: ${name(chapters[next])} <span class="arrow">→</span></button>`
+        + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}${usable(j) ? "" : " folded"}" data-go="${j}" title="${name(c)}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i></button>`).join("")}</div>`
+        + `<span class="pg-name">${name(c)} <small>· ${i + 1} ${T("of", "de")} ${chapters.length}</small></span></div>`
+        + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}">${T("Next", "Siguiente")}<span class="pg-label">: ${name(chapters[next])}</span> <span class="arrow">→</span></button>`
           : `<a class="btn pg-next" href="${root}course/">${T("Back to the course", "Volver al curso")} <span class="arrow">→</span></a>`);
     });
     const show = (i, target) => {
       if (i < 0 || i >= chapters.length) return;
+      const fold = chapters[i].classList.contains("is-folded") && chapters[i].querySelector(".unfold");
+      if (fold) fold.click();
       at = i;
       chapters.forEach((c, j) => c.classList.toggle("pg-on", j === i));
       $$(".rail a").forEach((a) => a.classList.toggle("current", a.getAttribute("href") === `#${chapters[i].id}`));

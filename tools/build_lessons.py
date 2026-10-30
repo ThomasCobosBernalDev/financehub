@@ -110,19 +110,6 @@ PAGE = """<!doctype html>
 {rail}
 </nav>
 
-<aside class="companion" aria-label="{companion}">
-  <div class="who">
-    {face}
-    <div><b>{who}</b>{who_sub}</div>
-  </div>
-  <dl>
-    <dt>{savings}</dt><dd data-k="cash">$0</dd>
-    <dt>{lessons_done}</dt><dd data-k="lessons">0</dd>
-    <dt>XP</dt><dd data-k="xp">0</dd>
-  </dl>
-  <div class="badges"><b data-k="badges">0</b> {badges}</div>
-</aside>
-
 <main id="main">
 
   <section class="chapter" id="start">
