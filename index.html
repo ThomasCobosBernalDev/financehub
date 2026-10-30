@@ -6,7 +6,7 @@
   <title>FinanceHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610301933">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610301940">
   <style>
     .continue { display: inline-flex; flex-direction: column; gap: 8px; }
     .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
@@ -127,7 +127,7 @@
     .ex-tab:hover { color: var(--ink); }
     .ex-tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
     .ex-tab[aria-selected="true"] b { background: var(--accent); color: var(--on-color); box-shadow: none; }
-    .ex-body { display: grid; grid-template-columns: minmax(250px, 320px) minmax(0, 1fr) minmax(0, 300px); gap: 28px; margin-top: 24px; align-items: start; }
+    .ex-body { display: grid; grid-template-columns: minmax(240px, 290px) minmax(0, 1fr) minmax(0, 320px); gap: 28px; margin-top: 24px; align-items: start; }
     .ex-units { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
     .unit { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .2s, box-shadow .2s, opacity .2s; }
     .unit .n { grid-row: span 3; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 16px; box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
@@ -145,84 +145,51 @@
     .unit.off-path { opacity: .55; }
     .unit.off-path:hover { opacity: 1; }
     .ex-lessons { min-width: 0; }
+    /* Your path lives in the explorer's right column. */
+    .ex-path .my-path-card { display: block; margin: 0; padding: 22px; }
+    .ex-path .my-path-card[hidden] { display: none; }
+    .ex-path .mp-head { display: block; }
+    .ex-path .mp-actions { justify-content: flex-start; margin-top: 14px; }
+    .ex-path .mp-text { font-size: 15px; line-height: 1.5; }
+    .ex-path .mp-list { grid-template-columns: 1fr; margin-top: 16px; }
+    .ex-path .mp-list b { font-size: 16px; }
+    .ex-path .my-path-card:not(.has-list) .btn { margin-top: 14px; }
+    .mp-bar { height: 6px; border-radius: 6px; background: color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; margin: 12px 0 4px; }
+    .mp-bar i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+    .mp-count { font-size: 13px; font-weight: 600; color: var(--accent); }
+    .ex-path .hero-setup { padding: 22px; border-radius: 20px; background: var(--accent-soft); margin: 0 0 12px; }
     .ex-group[hidden] { display: none; }
     .ex-group { animation: ex-in .35s var(--ease); }
     @keyframes ex-in { from { opacity: 0; transform: translateY(8px); } }
     .ex-group .kicker { margin: 4px 0 4px; color: var(--accent); }
     .ex-group h3 { margin: 0 0 4px; font-size: clamp(24px, 2.4vw, 30px); }
     .ex-group > p { margin: 0 0 16px; color: var(--ink-3); font-size: 15px; }
-    .lessons { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
-    .lessons a, .lessons .soon { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; height: 100%; box-sizing: border-box; padding: 14px 16px 14px 12px; border-radius: 16px; color: inherit; text-decoration: none; }
-    .lessons a { background: var(--card); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
-    .lessons a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
-    .lessons .soon { box-shadow: inset 0 0 0 1px var(--line); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent); }
-    .lessons .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
-    .lessons .done .dot { background: var(--accent); box-shadow: none; }
-    .lessons .soon .dot { box-shadow: inset 0 0 0 2px var(--line); }
-    .lessons b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink); }
-    .lessons .soon b { color: var(--ink-3); }
-    .lessons small { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; margin-top: 3px; }
-    .lessons .off-path { opacity: .5; }
-    .lessons .off-path:hover { opacity: 1; }
+    .ex-ls { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+    .ex-ls a, .ex-ls .soon { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; height: 100%; box-sizing: border-box; padding: 14px 16px 14px 12px; border-radius: 16px; color: inherit; text-decoration: none; }
+    .ex-ls a { background: var(--card); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
+    .ex-ls a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
+    .ex-ls .soon { box-shadow: inset 0 0 0 1px var(--line); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent); }
+    .ex-ls .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+    .ex-ls .done .dot { background: var(--accent); box-shadow: none; }
+    .ex-ls .soon .dot { box-shadow: inset 0 0 0 2px var(--line); }
+    .ex-ls b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink); }
+    .ex-ls .soon b { color: var(--ink-3); }
+    .ex-ls small { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; margin-top: 3px; }
+    .ex-ls .off-path { opacity: .5; }
+    .ex-ls .off-path:hover { opacity: 1; }
     .ex-empty { padding: 28px; border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-3); }
-    .road { text-align: center; }
-    .road .ss-art { max-width: 300px; margin: 0 auto; }
-    @media (max-width: 1180px) { .ex-body { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); } .road { display: none; } }
+    @media (max-width: 1180px) { .ex-body { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); } .ex-path { grid-column: 1 / -1; } }
     @media (max-width: 760px) {
       /* Phones: units become a swipeable strip, and the chosen unit's lessons sit right under it. */
       .ex-body { grid-template-columns: 1fr; gap: 18px; }
       .ex-units { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px; }
       .ex-units li { flex: 0 0 74%; scroll-snap-align: start; }
       .unit { height: 100%; background: var(--paper-2); }
-      .lessons { grid-template-columns: 1fr; }
+      .ex-ls { grid-template-columns: 1fr; }
     }
     @media (max-width: 1439px) { .rail a.current span { opacity: 0; } .rail:hover a span { opacity: 1; } }
 
 
-    /* Right-margin scene: one drawing per part of the course, swapped as you scroll. */
-    .ss-art svg { width: 100%; height: auto; display: block; overflow: visible; }
-    .ss-disk { fill: var(--paper-2); stroke: var(--line); stroke-width: 1.5; }
-    .ss-cap { margin: 10px 0 0; display: grid; gap: 2px; transition: opacity .3s; }
-    .ss-cap small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); }
-    .ss-cap b { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.2; color: var(--ink); }
-    .ss-cap.swap { opacity: 0; }
-    .scene { opacity: 0; transition: opacity .5s var(--ease); }
-    .scene.on { opacity: 1; }
-    .scene .axis { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linecap: round; opacity: .6; }
-    .scene .lbl { font-family: var(--sans); font-size: 12px; fill: var(--ink-3); }
-    .scene .big { font-family: var(--serif); font-size: 19px; fill: var(--ink); }
-    .scene .draw { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s var(--ease) .2s; }
-    .scene.on .draw { stroke-dashoffset: 0; }
-    .demand { stroke: var(--accent); stroke-width: 5; }
-    .supply { stroke: #d9822b; stroke-width: 5; }
-    .guide { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 1; opacity: .5; }
-    .meet { fill: var(--card); stroke: var(--ink); stroke-width: 3; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s var(--ease) 1.2s; }
-    .scene.on .meet { transform: scale(1); }
-    .slice { fill: none; stroke-width: 34; stroke-dasharray: 0 100; transition: stroke-dasharray 1s var(--ease), stroke-dashoffset 1s var(--ease); }
-    .s1 { stroke: var(--needs); } .s2 { stroke: var(--wants); } .s3 { stroke: var(--savings); }
-    .scene.on .s1 { stroke-dasharray: 49 51; }
-    .scene.on .s2 { stroke-dasharray: 29 71; stroke-dashoffset: -50; transition-delay: .25s; }
-    .scene.on .s3 { stroke-dasharray: 19 81; stroke-dashoffset: -80; transition-delay: .5s; }
-    .bar { fill: var(--accent); opacity: .85; transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); transition: transform .7s var(--ease); transition-delay: calc(var(--i) * 90ms); }
-    .bar:nth-of-type(n+5) { fill: #e0b24a; }
-    .scene.on .bar { transform: none; }
-    .trend { stroke: var(--ink); stroke-width: 3; transition-delay: .6s; }
-    .trend-head { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .3s 1.6s; }
-    .scene.on .trend-head { opacity: 1; }
-    .candle path { stroke-width: 2; }
-    .candle.up rect { fill: var(--good); } .candle.up path { stroke: var(--good); }
-    .candle.down rect { fill: var(--danger); } .candle.down path { stroke: var(--danger); }
-    .candle { opacity: 0; transform: translateY(14px); transition: opacity .4s, transform .5s var(--ease); transition-delay: calc(var(--i) * 100ms); }
-    .scene.on .candle { opacity: 1; transform: none; }
-    .price { stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 1; opacity: .7; transition-delay: .7s; }
-    .case { fill: #8a5a34; stroke: #5e3b20; stroke-width: 3; }
-    .case-h { fill: none; stroke: #5e3b20; stroke-width: 8; stroke-linecap: round; }
-    .case-l { stroke: #5e3b20; stroke-width: 3; }
-    .case-lock { fill: #e0b24a; stroke: #a87b12; stroke-width: 2; }
-    [data-s="5"] .case, [data-s="5"] .case-h, [data-s="5"] .case-l, [data-s="5"] .case-lock { transform-box: view-box; transform-origin: 140px 200px; transform: scale(.8) translateY(20px); transition: transform .7s var(--ease); }
-    .scene.on[data-s="5"] .case, .scene.on[data-s="5"] .case-h, .scene.on[data-s="5"] .case-l, .scene.on[data-s="5"] .case-lock { transform: none; }
-    .badge { fill: var(--accent); transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s var(--ease) .6s; }
-    .scene.on .badge { transform: scale(1); }
     .tick { stroke: var(--on-color); stroke-width: 4; transition-delay: 1s; }
   </style>
 </head>
@@ -245,7 +212,6 @@
 
 <nav class="rail" data-own aria-label="Page sections">
   <a href="#top"><i></i><span>Start</span></a>
-  <a href="#my-path"><i></i><span>Your path</span></a>
   <a href="#course-map"><i></i><span>The course</span></a>
 </nav>
 <main class="wrap" id="main">
@@ -294,53 +260,15 @@
 
   </div>
 
-  <div class="hero-setup reveal" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
-  <div class="my-path-card reveal" id="my-path"></div>
   <section class="explorer" id="course-map" aria-labelledby="ex-h">
   <div class="ex-head"><h2 id="ex-h"></h2><p id="ex-sub"></p></div>
   <div class="ex-tabs" role="tablist" id="ex-tabs"></div>
   <div class="ex-body">
   <ol class="ex-units" id="ex-units" role="tablist" aria-orientation="vertical"></ol>
   <div class="ex-lessons" id="ex-lessons"></div>
-  <aside class="road side-scene" aria-hidden="true">
-  <div class="ss-art">
-  <svg viewBox="0 0 280 260">
-    <circle cx="140" cy="130" r="118" class="ss-disk"/>
-    <g class="scene" data-s="1">
-      <path class="axis" d="M50 40V210H240"/>
-      <path class="draw demand" pathLength="1" d="M62 58 C 110 110, 170 160, 228 196"/>
-      <path class="draw supply" pathLength="1" d="M62 196 C 120 160, 170 110, 228 58"/>
-      <path class="guide draw" pathLength="1" d="M145 127V210M145 127H50"/>
-      <circle class="meet" cx="145" cy="127" r="8"/>
-      <text x="232" y="214" class="lbl" text-anchor="end">quantity</text><text x="56" y="36" class="lbl">price</text>
-    </g>
-    <g class="scene" data-s="2" transform="rotate(-90 140 130)">
-      <circle class="slice s1" cx="140" cy="130" r="68" pathLength="100"/>
-      <circle class="slice s2" cx="140" cy="130" r="68" pathLength="100"/>
-      <circle class="slice s3" cx="140" cy="130" r="68" pathLength="100"/>
-    </g>
-    <g class="scene" data-s="2b"><text x="140" y="130" text-anchor="middle" class="big">50/30/20</text><text x="140" y="150" text-anchor="middle" class="lbl">budget</text></g>
-    <g class="scene" data-s="3">
-      <path class="axis" d="M50 210H240"/>
-      <rect class="bar" style="--i:0" x="62" y="170" width="20" height="40" rx="4"/><rect class="bar" style="--i:1" x="92" y="148" width="20" height="62" rx="4"/><rect class="bar" style="--i:2" x="122" y="156" width="20" height="54" rx="4"/><rect class="bar" style="--i:3" x="152" y="122" width="20" height="88" rx="4"/><rect class="bar" style="--i:4" x="182" y="98" width="20" height="112" rx="4"/><rect class="bar" style="--i:5" x="212" y="64" width="20" height="146" rx="4"/>
-      <path class="draw trend" pathLength="1" d="M66 152 L 98 132 L 128 140 L 160 104 L 190 82 L 226 50"/>
-      <path class="trend-head" d="M214 48 L 228 48 L 228 62"/>
-    </g>
-    <g class="scene" data-s="4">
-      <path class="axis" d="M50 210H240"/>
-      <g class="candle down" style="--i:0"><path d="M70 150V200"/><rect x="62" y="160" width="16" height="30" rx="2"/></g><g class="candle up" style="--i:1"><path d="M98 130V190"/><rect x="90" y="140" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:2"><path d="M126 120V176"/><rect x="118" y="130" width="16" height="30" rx="2"/></g><g class="candle down" style="--i:3"><path d="M154 128V180"/><rect x="146" y="140" width="16" height="26" rx="2"/></g><g class="candle up" style="--i:4"><path d="M182 92V150"/><rect x="174" y="100" width="16" height="36" rx="2"/></g><g class="candle up" style="--i:5"><path d="M210 62V128"/><rect x="202" y="72" width="16" height="40" rx="2"/></g>
-      <path class="draw price" pathLength="1" d="M70 175 L 98 158 L 126 145 L 154 153 L 182 118 L 210 92"/>
-    </g>
-    <g class="scene" data-s="5">
-      <rect class="case" x="62" y="88" width="156" height="112" rx="14"/>
-      <path class="case-h" d="M112 88V72a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v16"/>
-      <path class="case-l" d="M62 132h156"/>
-      <rect class="case-lock" x="128" y="122" width="24" height="20" rx="4"/>
-      <circle class="badge" cx="210" cy="84" r="24"/><path class="draw tick" pathLength="1" d="M199 84l8 8 14-16"/>
-    </g>
-  </svg>
-  </div>
-  <p class="ss-cap"><small id="ss-kick">Part 1 · Money basics</small><b id="ss-title">Give every dollar a job</b></p>
+  <aside class="ex-path" aria-label="Your path">
+  <div class="hero-setup" id="hero-setup"><p>New here? Pick what you came for, and your lessons line up in order:</p><div class="quick-goals" id="quick-goals"></div><p><a href="start/">Or take the full setup</a>, with a quick check of what you already know.</p></div>
+  <div class="my-path-card" id="my-path"></div>
   </aside>
   </div>
   </section>
@@ -354,10 +282,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202610301933"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202610301933"></script>
-<script src="assets/js/auth.js?v=202610301933"></script>
-<script src="assets/js/site.js?v=202610301933"></script>
+<script src="assets/js/save.js?v=202610301940"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202610301940"></script>
+<script src="assets/js/auth.js?v=202610301940"></script>
+<script src="assets/js/site.js?v=202610301940"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -380,7 +308,7 @@ const unitStatus = (u) => {
 };
 lessonBox.innerHTML = FH.PARTS.flatMap((p) => p.units).map((u) => {
   const ls = unitLessons(u);
-  const list = !ls.length ? `<p class="ex-empty">${T("The lessons for this unit are being planned.", "Las lecciones de esta unidad se están planeando.")}</p>` : `<ol class="lessons">${ls.map((l) => l.href
+  const list = !ls.length ? `<p class="ex-empty">${T("The lessons for this unit are being planned.", "Las lecciones de esta unidad se están planeando.")}</p>` : `<ol class="ex-ls">${ls.map((l) => l.href
     ? `<li><a href="${l.href}" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub}</small></a></li>`
     : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
   return `<div class="ex-group" data-for="${u}" role="tabpanel" hidden><p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p>${list}</div>`;
@@ -404,7 +332,6 @@ const pickPart = (n, unit) => {
   unitList.querySelectorAll(".unit").forEach((b) => b.addEventListener("click", () => pickUnit(+b.dataset.unit)));
   pickUnit(unit || part.units[0]);
   if (typeof paintPath === "function") paintPath();
-  if (typeof showScene === "function") showScene(n);
 };
 tabs.querySelectorAll(".ex-tab").forEach((b) => b.addEventListener("click", () => pickPart(+b.dataset.part)));
 // Links like #part-3 open that part.
@@ -462,10 +389,8 @@ const paintPath = () => {
   document.getElementById("hero-setup").hidden = setUp;
   const card = document.getElementById("my-path");
   const p = FH.state.profile;
+  card.hidden = !setUp;
   if (!setUp) {
-    card.innerHTML = T(
-      `<div><p class="kicker">Not sure where to start?</p><p class="mp-text">Tell us why you're learning and what you already know. In about a minute you'll get a path with only the lessons you need, in order.</p></div><a class="btn sm" href="start/">Build my path</a>`,
-      `<div><p class="kicker">¿No sabes por dónde empezar?</p><p class="mp-text">Cuéntanos por qué estás aprendiendo y qué ya sabes. En más o menos un minuto tendrás un camino solo con las lecciones que necesitas, en orden.</p></div><a class="btn sm" href="start/">Crear mi camino</a>`);
     card.classList.remove("has-list");
     return;
   }
@@ -486,12 +411,14 @@ const paintPath = () => {
     const cls = done ? "done" : isNext ? "next" : kn ? "known" + (l.href ? "" : " soon") : !l.href ? "soon" : "";
     return `<li class="${cls}">${l.href ? `<a href="${l.href}">${inner}</a>` : `<span class="mp-row">${inner}</span>`}</li>`;
   };
-  const LIMIT = 9, more = items.length - LIMIT;
+  const bar = `<div class="mp-bar"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div><p class="mp-count">${T(`${doneN} of ${lessons.length} lessons done`, `${doneN} de ${lessons.length} lecciones hechas`)}</p>`;
+  const LIMIT = 4, more = items.length - LIMIT;
   const shown = showAll || more <= 0 ? items : items.slice(0, LIMIT);
   card.classList.add("has-list");
+  card.hidden = false;
   card.innerHTML = T(
-    `<div class="mp-head"><div><p class="kicker">Your path</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Take the placement check</a>`}<button class="btn sm line" type="button" id="clear-path">Clear my path</button></div></div>`,
-    `<div class="mp-head"><div><p class="kicker">Tu camino</p><p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Hacer la prueba de nivel</a>`}<button class="btn sm line" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
+    `<div class="mp-head"><div><p class="kicker">Your path</p>${bar}<p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Change my path</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Take the placement check</a>`}<button class="btn sm line" type="button" id="clear-path">Clear my path</button></div></div>`,
+    `<div class="mp-head"><div><p class="kicker">Tu camino</p>${bar}<p class="mp-text">${sum}</p></div><div class="mp-actions"><a class="btn sm line" href="start/">Cambiar mi camino</a>${p.quiz ? "" : `<a class="btn sm line" href="start/#check">Hacer la prueba de nivel</a>`}<button class="btn sm line" type="button" id="clear-path">Quitar mi camino</button></div></div>`)
     + `<ol class="mp-list">${shown.map(row).join("")}</ol>`
     + (more > 0 ? `<button class="text-link mp-more" type="button" id="mp-more">${showAll ? T("Show less", "Mostrar menos") : T(`Show all ${items.length}`, `Mostrar las ${items.length}`)}</button>` : "");
   document.getElementById("clear-path").addEventListener("click", () => {
@@ -504,33 +431,7 @@ const paintPath = () => {
 paintPath();
 document.addEventListener("fh:save", paintPath);
 
-// Right-margin scene follows the part you're reading.
-const SCENES = FH.lang === "es" ? [
-  null,
-  ["Parte 1 · Lo básico del dinero", "Dale un trabajo a cada dólar"],
-  ["Parte 2 · Cómo funciona la economía", "Donde se encuentran los precios"],
-  ["Parte 3 · Negocios", "Haz crecer tus ventas"],
-  ["Parte 4 · Wall Street", "Lee el mercado"],
-  ["Parte 5 · Tu carrera", "Consigue el trabajo"],
-] : [
-  null,
-  ["Part 1 · Money basics", "Give every dollar a job"],
-  ["Part 2 · How the economy works", "Where prices meet"],
-  ["Part 3 · Business", "Grow your revenue"],
-  ["Part 4 · Wall Street", "Read the market"],
-  ["Part 5 · Career launch", "Get hired"],
-];
-let sceneNow = -1;
-const showScene = (n) => {
-  if (n === sceneNow) return;
-  sceneNow = n;
-  const art = [0, 2, 1, 3, 4, 5][n]; // part 1 uses the budget drawing, part 2 the market one
-  document.querySelectorAll(".side-scene .scene").forEach((g) => g.classList.toggle("on", parseInt(g.dataset.s, 10) === art));
-  const cap = document.querySelector(".ss-cap");
-  cap.classList.add("swap");
-  setTimeout(() => { document.getElementById("ss-kick").textContent = SCENES[n][0]; document.getElementById("ss-title").textContent = SCENES[n][1]; cap.classList.remove("swap"); }, 250);
-};
-// Side rail and scene: light up the section you're looking at.
+// Side rail: light up the section you're looking at.
 const railLinks = [...document.querySelectorAll(".rail a")];
 const targets = railLinks.map((a) => document.querySelector(a.getAttribute("href")));
 const track = () => {

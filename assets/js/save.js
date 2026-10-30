@@ -57,6 +57,14 @@
   };
 
   // The eight ways every lesson teaches. `chapter` is the lesson section each one maps to.
+  const applyMotion = () => {
+    let pick = null;
+    try { pick = localStorage.getItem("fh-motion"); } catch (e) { /* storage blocked */ }
+    const reduce = pick ? pick === "reduce" : matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) document.documentElement.dataset.motion = "reduce"; else delete document.documentElement.dataset.motion;
+  };
+  applyMotion();
+
   const STYLES = [
     { id: "visual", label: t("Seeing", "Viendo"), chapter: t("See it", "Míralo"), desc: t("Diagrams and charts you can drag and poke", "Diagramas y gráficas que puedes mover y tocar") },
     { id: "auditory", label: t("Listening", "Escuchando"), chapter: t("Hear it", "Escúchalo"), desc: t("A short narrated walkthrough", "Un recorrido corto narrado") },
@@ -229,6 +237,12 @@
     lang: LANG,
     t,
     // Remember the reader's language (this browser and their account) and go to that version of the page.
+    // Reduce motion: the reader's own pick, or their device setting.
+    setMotion(on) {
+      try { localStorage.setItem("fh-motion", on ? "reduce" : "full"); } catch (e) { /* storage blocked */ }
+      applyMotion();
+    },
+    still: () => document.documentElement.dataset.motion === "reduce",
     setLang(lang, go = true) {
       state.lang = lang;
       try { localStorage.setItem("fh-lang", lang); } catch (e) { /* storage blocked */ }

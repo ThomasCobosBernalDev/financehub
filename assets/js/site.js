@@ -120,7 +120,7 @@
 (() => {
   const maps = document.querySelectorAll("svg.connect-map");
   if (!maps.length) return;
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const still = window.FH ? FH.still() : matchMedia("(prefers-reduced-motion: reduce)").matches;
   const NS = "http://www.w3.org/2000/svg";
   const num = (el, a) => parseFloat(el.getAttribute(a)) || 0;
   maps.forEach((svg) => {
@@ -256,6 +256,8 @@
     trigger.setAttribute("aria-expanded", String(open));
   };
   trigger.addEventListener("click", () => setOpen(!panel.classList.contains("open")));
+  // Any link in the menu closes it, so a jump on this same page (like the course map) is visible.
+  panel.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
   panel.querySelectorAll(".mm-part").forEach((b) => {
     b.addEventListener("click", () => showPart(+b.dataset.part));
     b.addEventListener("mouseenter", () => showPart(+b.dataset.part));

@@ -6,7 +6,7 @@
   <title>Tu cuenta · FinanceHub</title>
   <meta name="description" content="Inicia sesión para guardar tu progreso de FinanceHub en todos tus dispositivos.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../assets/css/style.css?v=202610301933">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202610301940">
 </head>
 <body data-root="../">
 <a class="skip" href="#main">Saltar al contenido</a>
@@ -115,27 +115,57 @@
       <p class="auth-msg" id="sent-msg" role="status" aria-live="polite"></p>
     </section>
 
-    <section id="acct-in" class="hidden">
-      <h1 id="acct-hello">Tu cuenta</h1>
-      <p class="muted">Sesión iniciada como <b id="acct-email"></b>. Tu progreso se guarda solo.</p>
-      <form id="form-name" class="auth-form name-form hidden" novalidate>
-        <label><span>Elige un nombre de usuario</span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
-        <button class="btn sm" type="submit">Guardar</button>
+<section id="acct-in" class="hidden settings">
+      <header class="set-head"><h1 id="acct-hello">Ajustes</h1><p class="muted">Sesión iniciada como <b id="acct-email"></b></p></header>
+      <div class="set-grid">
+      <form class="set-card" id="form-name" novalidate>
+        <h2>Lo básico</h2><p class="set-p">Cómo apareces en FinanceHub.</p>
+        <label class="set-field"><span>Nombre de usuario</span><small>De 3 a 20 letras, números, puntos o guiones bajos.</small><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
+        <div class="set-field"><span>Correo</span><small>Solo lo usamos para que inicies sesión.</small><p class="set-static" id="acct-email-2"></p></div>
+        <label class="set-field"><span>Idioma</span><select name="lang" id="set-lang"><option value="en">English</option><option value="es">Español</option></select></label>
+        <button class="btn sm" type="submit">Guardar cambios</button>
       </form>
-      <dl class="acct-stats">
-        <div><dt>XP</dt><dd id="acct-xp"></dd></div>
-        <div><dt>Insignias</dt><dd id="acct-badges"></dd></div>
-        <div><dt>Lecciones hechas</dt><dd id="acct-lessons"></dd></div>
-      </dl>
-      <div class="acct-actions"><a class="btn" href="../">Seguir aprendiendo <span class="arrow">→</span></a><button class="btn line" id="sign-out">Cerrar sesión</button></div>
 
-      <details class="acct-danger">
-        <summary>Borrar tu cuenta</summary>
-        <p>Esto borra para siempre tu cuenta y todo el progreso guardado en ella. El progreso guardado en este navegador se queda hasta que lo <a href="../legal/privacy.html#delete">borres</a>.</p>
+      <div class="set-card">
+        <h2>Tu progreso</h2><p class="set-p">Se guarda en tu cuenta automáticamente.</p>
+        <dl class="acct-stats">
+          <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+          <div><dt>Insignias</dt><dd id="acct-badges"></dd></div>
+          <div><dt>Lecciones hechas</dt><dd id="acct-lessons"></dd></div>
+        </dl>
+        <div class="acct-actions"><a class="btn sm" href="../">Seguir aprendiendo <span class="arrow">→</span></a><button class="btn sm line" type="button" id="sign-out">Cerrar sesión</button></div>
+        <h3 class="set-sub">Tu camino</h3><p class="set-p">Cambia por qué estás aprendiendo o vuelve a hacer la prueba rápida de lo que ya sabes.</p>
+        <a class="btn sm line" href="../start/">Cambiar mi camino</a>
+      </div>
+
+      <div class="set-card set-wide">
+        <h2>Aprendizaje</h2><p class="set-p">Elige cómo aprendes mejor. Lo que elijas se abre primero en cada lección, y lo demás se pliega hasta que lo quieras.</p>
+        <div class="set-styles" id="set-styles"></div>
+      </div>
+
+      <div class="set-card">
+        <h2>Apariencia y accesibilidad</h2><p class="set-p">Elige cómo se ve y se mueve el sitio.</p>
+        <div class="set-field"><span>Tema</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Claro</span></label><label><input type="radio" name="theme" value="dark"><span>Oscuro</span></label></div></div>
+        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reducir movimiento y animaciones<small>Las gráficas aparecen terminadas en vez de dibujarse.</small></span></label>
+      </div>
+
+      <form class="set-card auth-form" id="form-pw" novalidate>
+        <h2>Contraseña</h2><p class="set-p">Cambia la contraseña con la que inicias sesión.</p>
+        <label>Nueva contraseña<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">Al menos 8 caracteres</li><li data-rule="special">Al menos un carácter especial, como ! ? # o @</li></ul>
+        <label>Escribe otra vez la nueva contraseña<input type="password" name="again" autocomplete="new-password" required></label>
+        <button class="btn sm" type="submit">Cambiar contraseña</button>
+        <p class="auth-msg" id="pw-msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="set-card set-wide set-danger">
+        <h2>Eliminar cuenta</h2>
+        <p class="set-p">Esto elimina para siempre tu cuenta y todo el progreso guardado en ella. El progreso guardado en este navegador se queda hasta que lo <a href="../legal/privacy.html#delete">borres</a>.</p>
         <div class="auth-form"><label>Escribe BORRAR para confirmar<input type="text" id="delete-confirm" autocomplete="off"></label>
-        <button class="btn line danger" id="delete-account" disabled>Borrar mi cuenta</button></div>
+        <button class="btn sm danger-fill" id="delete-account" disabled>Eliminar mi cuenta</button></div>
         <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
-      </details>
+      </div>
+      </div>
     </section>
   </div>
 </div>
@@ -148,11 +178,11 @@
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
-<script src="../../assets/js/save.js?v=202610301933"></script>
-<script src="../../assets/vendor/supabase-2.45.4.js?v=202610301933"></script>
-<script src="../../assets/js/auth.js?v=202610301933"></script>
-<script src="../../assets/js/site.js?v=202610301933"></script>
+<script src="../../assets/js/save.js?v=202610301940"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202610301940"></script>
+<script src="../../assets/js/auth.js?v=202610301940"></script>
+<script src="../../assets/js/site.js?v=202610301940"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../../assets/js/account.js?v=202610301933"></script>
+<script src="../../assets/js/account.js?v=202610301940"></script>
 </body>
 </html>

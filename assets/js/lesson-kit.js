@@ -340,7 +340,7 @@
       };
       requestAnimationFrame(step);
     },
-    still: () => matchMedia("(prefers-reduced-motion: reduce)").matches,
+    still: () => FH.still(),
   };
 
   window.FHLesson = { init, shuffle, fillRange, $, $$, fx, wait: (ms) => new Promise((r) => setTimeout(r, ms)) };

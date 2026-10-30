@@ -6,7 +6,7 @@
   <title>Your account · FinanceHub</title>
   <meta name="description" content="Sign in to save your FinanceHub progress across devices.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610301933">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610301940">
 </head>
 <body data-root="../">
 <a class="skip" href="#main">Skip to content</a>
@@ -115,27 +115,57 @@
       <p class="auth-msg" id="sent-msg" role="status" aria-live="polite"></p>
     </section>
 
-    <section id="acct-in" class="hidden">
-      <h1 id="acct-hello">Your account</h1>
-      <p class="muted">Signed in as <b id="acct-email"></b>. Progress saves automatically.</p>
-      <form id="form-name" class="auth-form name-form hidden" novalidate>
-        <label><span>Pick a username</span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
-        <button class="btn sm" type="submit">Save</button>
+<section id="acct-in" class="hidden settings">
+      <header class="set-head"><h1 id="acct-hello">Settings</h1><p class="muted">Signed in as <b id="acct-email"></b></p></header>
+      <div class="set-grid">
+      <form class="set-card" id="form-name" novalidate>
+        <h2>Basics</h2><p class="set-p">How you show up on FinanceHub.</p>
+        <label class="set-field"><span>Username</span><small>3 to 20 letters, numbers, dots or underscores.</small><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
+        <div class="set-field"><span>Email</span><small>Used only to sign you in.</small><p class="set-static" id="acct-email-2"></p></div>
+        <label class="set-field"><span>Language</span><select name="lang" id="set-lang"><option value="en">English</option><option value="es">Español</option></select></label>
+        <button class="btn sm" type="submit">Save changes</button>
       </form>
-      <dl class="acct-stats">
-        <div><dt>XP</dt><dd id="acct-xp"></dd></div>
-        <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
-        <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
-      </dl>
-      <div class="acct-actions"><a class="btn" href="../">Keep learning <span class="arrow">→</span></a><button class="btn line" id="sign-out">Sign out</button></div>
 
-      <details class="acct-danger">
-        <summary>Delete your account</summary>
-        <p>This permanently deletes your account and all progress saved to it. Progress saved in this browser stays until you <a href="../legal/privacy.html#delete">erase it</a>.</p>
+      <div class="set-card">
+        <h2>Your progress</h2><p class="set-p">Saved to your account automatically.</p>
+        <dl class="acct-stats">
+          <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+          <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
+          <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
+        </dl>
+        <div class="acct-actions"><a class="btn sm" href="../">Keep learning <span class="arrow">→</span></a><button class="btn sm line" type="button" id="sign-out">Log out</button></div>
+        <h3 class="set-sub">Your path</h3><p class="set-p">Change why you're learning or retake the quick check of what you already know.</p>
+        <a class="btn sm line" href="../start/">Change my path</a>
+      </div>
+
+      <div class="set-card set-wide">
+        <h2>Learning</h2><p class="set-p">Pick how you learn best. Your picks open first in every lesson, and the rest fold away until you want them.</p>
+        <div class="set-styles" id="set-styles"></div>
+      </div>
+
+      <div class="set-card">
+        <h2>Appearance and accessibility</h2><p class="set-p">Choose how the site looks and moves.</p>
+        <div class="set-field"><span>Theme</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></div>
+        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reduce motion and animations<small>Charts appear finished instead of drawing in.</small></span></label>
+      </div>
+
+      <form class="set-card auth-form" id="form-pw" novalidate>
+        <h2>Password</h2><p class="set-p">Change the password you use to sign in.</p>
+        <label>New password<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
+        <ul class="pw-rules" aria-live="polite"><li data-rule="len">At least 8 characters</li><li data-rule="special">At least one special character, like ! ? # or @</li></ul>
+        <label>Re-enter new password<input type="password" name="again" autocomplete="new-password" required></label>
+        <button class="btn sm" type="submit">Change password</button>
+        <p class="auth-msg" id="pw-msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="set-card set-wide set-danger">
+        <h2>Delete account</h2>
+        <p class="set-p">This permanently deletes your account and all progress saved to it. Progress saved in this browser stays until you <a href="../legal/privacy.html#delete">erase it</a>.</p>
         <div class="auth-form"><label>Type DELETE to confirm<input type="text" id="delete-confirm" autocomplete="off"></label>
-        <button class="btn line danger" id="delete-account" disabled>Delete my account</button></div>
+        <button class="btn sm danger-fill" id="delete-account" disabled>Delete my account</button></div>
         <p class="auth-msg" id="delete-msg" role="status" aria-live="polite"></p>
-      </details>
+      </div>
+      </div>
     </section>
   </div>
 </div>
@@ -148,11 +178,11 @@
     <p>© 2026 FinanceHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202610301933"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610301933"></script>
-<script src="../assets/js/auth.js?v=202610301933"></script>
-<script src="../assets/js/site.js?v=202610301933"></script>
+<script src="../assets/js/save.js?v=202610301940"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610301940"></script>
+<script src="../assets/js/auth.js?v=202610301940"></script>
+<script src="../assets/js/site.js?v=202610301940"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../assets/js/account.js?v=202610301933"></script>
+<script src="../assets/js/account.js?v=202610301940"></script>
 </body>
 </html>

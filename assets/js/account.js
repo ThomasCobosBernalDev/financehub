@@ -83,13 +83,50 @@
     $("#sent-msg").textContent = error ? friendly(error) : T("Sent again. It can take a minute to arrive.", "Enviado otra vez. Puede tardar un minuto en llegar.");
   });
 
+  // Settings: username and language.
   $("#form-name").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = e.target.username.value.trim();
+    const f = e.target, name = f.username.value.trim();
     if (!USERNAME.test(name)) return FH.toast(T("Usernames are 3 to 20 letters, numbers, dots or underscores.", "El nombre de usuario debe tener de 3 a 20 letras, números, puntos o guiones bajos."));
-    const { data, error } = await FHAuth.setUsername(name);
-    if (error) return FH.toast(friendly(error));
-    render(data.user);
+    if (name !== ((FHAuth.user.user_metadata || {}).username || "")) {
+      const { data, error } = await FHAuth.setUsername(name);
+      if (error) return FH.toast(friendly(error));
+      render(data.user);
+    }
+    if (f.lang.value !== FH.lang) return FH.setLang(f.lang.value);
+    FH.toast(T("Saved.", "Guardado."));
+  });
+
+  // Settings: how you learn best, saved right away.
+  const styleBox = $("#set-styles");
+  FH.STYLES.forEach((st) => {
+    const l = document.createElement("label");
+    l.className = "check set-style";
+    l.innerHTML = `<input type="checkbox" value="${st.id}"><span>${st.label}<small>${st.desc}</small></span>`;
+    l.querySelector("input").addEventListener("change", () => FH.setStyles([...styleBox.querySelectorAll("input:checked")].map((i) => i.value)));
+    styleBox.append(l);
+  });
+
+  // Settings: theme and motion.
+  document.querySelectorAll('input[name="theme"]').forEach((r) => r.addEventListener("change", () => {
+    const dark = r.value === "dark";
+    if (dark) document.documentElement.dataset.theme = "dark"; else delete document.documentElement.dataset.theme;
+    try { localStorage.setItem("fh-theme", dark ? "dark" : "light"); } catch (err) { /* storage blocked */ }
+  }));
+  $("#set-motion").addEventListener("change", (e) => FH.setMotion(e.target.checked));
+
+  // Settings: change password.
+  $("#form-pw").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, out = $("#pw-msg");
+    const say = (t, bad) => { out.textContent = t; out.classList.toggle("bad", !!bad); };
+    if (!pwOk(f.password.value)) return say(T("Use at least 8 characters and one special character.", "Usa al menos 8 caracteres y un carácter especial."), true);
+    if (f.password.value !== f.again.value) return say(T("The two passwords don't match.", "Las dos contraseñas no coinciden."), true);
+    const { error } = await FHAuth.setPassword(f.password.value);
+    if (error) return say(friendly(error), true);
+    f.reset();
+    f.querySelectorAll(".pw-rules li").forEach((li) => li.classList.remove("ok"));
+    say(T("Password changed.", "Contraseña cambiada."));
   });
 
   $("#form-reset").addEventListener("submit", async (e) => {
@@ -127,13 +164,20 @@
     if (!user) { if (!$("#acct-sent").classList.contains("hidden")) return; show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
     show("#acct-in");
     $("#acct-email").textContent = user.email;
-    const name = (user.user_metadata || {}).username;
-    $("#acct-hello").textContent = name ? T(`Hi, ${name}`, `Hola, ${name}`) : T("Your account", "Tu cuenta");
-    $("#form-name").classList.toggle("hidden", !!name);
+    $("#acct-email-2").textContent = user.email;
+    const name = (user.user_metadata || {}).username || "";
+    const f = $("#form-name");
+    if (document.activeElement !== f.username) f.username.value = name;
+    f.lang.value = FH.lang;
     const s = FH.state;
     $("#acct-xp").textContent = s.xp;
     $("#acct-badges").textContent = s.badges.length;
     $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
+    const picks = s.styles || [];
+    $("#set-styles").querySelectorAll("input").forEach((i) => { i.checked = picks.includes(i.value); });
+    const dark = document.documentElement.dataset.theme === "dark";
+    document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
+    $("#set-motion").checked = FH.still();
   };
   FHAuth.onChange(render);
   document.addEventListener("fh:save", () => FHAuth.user && render(FHAuth.user));
