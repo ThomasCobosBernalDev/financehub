@@ -180,7 +180,35 @@
     if (user && user.id !== was) pull().catch((e) => console.warn("Sync failed", e)).finally(() => { notify(); afterSignIn(); });
     else notify();
     if (event === "PASSWORD_RECOVERY") document.dispatchEvent(new CustomEvent("fh:recovery"));
+    if (event === "INITIAL_SESSION" && !session) oneTap();
   });
+
+  // Google One Tap: the "Sign in as …" card in the top corner for signed-out visitors who are
+  // signed in to Google in their browser. Google decides when to show it and backs off after a dismissal.
+  const GOOGLE_CLIENT_ID = "896630006184-jtlr9juo9m6qsn6binb4dhnq32m9fjd9.apps.googleusercontent.com";
+  const oneTap = async () => {
+    if (onAccount() || /\/start\/?$/.test(location.pathname) || !window.crypto || !crypto.subtle) return;
+    const providers = await FHAuth.providers();
+    if (!providers.google || user) return;
+    // Google signs a hashed nonce into its token; Supabase checks it against the raw one.
+    const raw = [...crypto.getRandomValues(new Uint8Array(16))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const hashed = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw)))].map((b) => b.toString(16).padStart(2, "0")).join("");
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client?hl=" + FH.lang;
+    script.async = true;
+    script.onload = () => {
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID, nonce: hashed, context: "signin", itp_support: true, use_fedcm_for_prompt: true,
+        callback: async (r) => {
+          try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (e) { /* storage blocked */ }
+          const { error } = await client.auth.signInWithIdToken({ provider: "google", token: r.credential, nonce: raw });
+          if (error) FH.toast(FH.t("Google sign-in didn't work. Try the Sign in button instead.", "No se pudo iniciar sesión con Google. Usa el botón Entrar."));
+        },
+      });
+      google.accounts.id.prompt();
+    };
+    document.head.appendChild(script);
+  };
 
   window.FHAuth = {
     client,
