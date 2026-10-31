@@ -1402,7 +1402,9 @@ body.paged .rail { display: none !important; }
 .cx-table td:nth-child(3) { min-width: 120px; }
 @media (max-width: 760px) { .cx-kinds { border-radius: 18px; } }
 /* Social links: centered between the disclaimer and the copyright. */
-.socials { display: flex; justify-content: center; gap: 6px; margin: 4px 0 2px; }
+.socials { display: flex; justify-content: center; gap: 6px; margin: -8px 0 -6px; }
 .socials a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; color: var(--ink-2); transition: background .2s, color .2s; }
 .socials a:hover, .socials a:focus-visible { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
 .socials svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+/* The plain "Ver en español" link is swapped for the language picker by site.js; keep it hidden so it doesn't flash on load. */
+.foot-lang { visibility: hidden; }
