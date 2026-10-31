@@ -58,6 +58,9 @@
     wallstreet: '<path d="M4 20V10M9 20V6M14 20v-8M19 20V4"/>',
     career: '<path d="M3 9l9-4 9 4-9 4z"/><path d="M7 11v4.5c1.4 1.3 3 2 5 2s3.6-.7 5-2V11M21 9v5"/>',
   };
+  // The everyday-money topics; "money" (All of the above) stands for all of them. Older saves stored "money" itself.
+  const LIFE = FH.GOALS.filter((g) => g.group === "life" && g.id !== "money").map((g) => g.id);
+  if (goals.delete("money")) LIFE.forEach((id) => goals.add(id));
   // Pick as many as you like: everyday-money topics first, then the bigger goals.
   const gg = $("#goal-grid");
   [["life", T("Everyday money", "El dinero de todos los días")], ["big", T("Bigger goals", "Metas más grandes")]].forEach(([grp, title]) => {
@@ -67,12 +70,19 @@
       b.type = "button"; b.className = "goal-card"; b.dataset.id = g.id;
       const n = FH.buildPath([g.id]).length;
       b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[g.id]}</svg><b>${g.label}</b><small>${g.desc}</small><span class="units">${g.id === "career" ? T("The whole course", "Todo el curso") : T(`${n} lessons`, `${n} lecciones`)}</span><i class="tick" aria-hidden="true"></i>`;
-      b.addEventListener("click", () => { goals.has(g.id) ? goals.delete(g.id) : goals.add(g.id); paintGoals(); });
+      b.addEventListener("click", () => {
+        if (g.id === "money") {
+          // "All of the above" just ticks (or unticks) every everyday-money topic.
+          const all = LIFE.every((id) => goals.has(id));
+          LIFE.forEach((id) => (all ? goals.delete(id) : goals.add(id)));
+        } else goals.has(g.id) ? goals.delete(g.id) : goals.add(g.id);
+        paintGoals();
+      });
       gg.appendChild(b);
     });
   });
   const paintGoals = () => {
-    gg.querySelectorAll(".goal-card").forEach((b) => { const on = goals.has(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
+    gg.querySelectorAll(".goal-card").forEach((b) => { const on = b.dataset.id === "money" ? LIFE.every((id) => goals.has(id)) : goals.has(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
     $("#goal-next").disabled = !goals.size;
     $("#goal-count").textContent = goals.size ? T(`${goals.size} picked`, `${goals.size} ${goals.size === 1 ? "elegida" : "elegidas"}`) : "";
   };
