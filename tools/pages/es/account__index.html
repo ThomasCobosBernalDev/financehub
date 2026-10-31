@@ -110,8 +110,26 @@
     </section>
 
 <section id="acct-in" class="hidden settings">
-      <header class="set-head"><h1 id="acct-hello">Ajustes</h1><p class="muted">Sesión iniciada como <b id="acct-email"></b></p></header>
-      <div class="set-grid">
+      <header class="set-head view-settings"><div><h1 id="acct-hello">Ajustes</h1><p class="muted">Sesión iniciada como <b id="acct-email"></b></p></div><button class="btn sm line" type="button" id="sign-out">Cerrar sesión</button></header>
+      <div class="profile-view view-profile">
+        <div class="prof-card">
+          <span class="prof-avatar" id="prof-avatar"></span>
+          <div><h1 id="prof-name">Tu perfil</h1><p class="muted" id="prof-email"></p></div>
+          <a class="text-link prof-set" href="./">Ajustes <span class="arrow">→</span></a>
+        </div>
+        <div class="set-card">
+          <h2>Tu progreso</h2>
+          <dl class="acct-stats">
+            <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+            <div><dt>Insignias</dt><dd id="acct-badges"></dd></div>
+            <div><dt>Lecciones hechas</dt><dd id="acct-lessons"></dd></div>
+          </dl>
+          <div class="acct-actions"><a class="btn sm" href="../">Seguir aprendiendo <span class="arrow">→</span></a></div>
+          <h3 class="set-sub">Tu camino</h3><p class="set-p">Cambia por qué estás aprendiendo o vuelve a hacer la prueba rápida de lo que ya sabes.</p>
+          <a class="btn sm line" href="../start/">Cambiar mi camino</a>
+        </div>
+      </div>
+      <div class="set-grid view-settings">
       <form class="set-card" id="form-name" novalidate>
         <h2>Lo básico</h2><p class="set-p">Cómo apareces en FinancedHub.</p>
         <label class="set-field"><span>Nombre de usuario</span><small>De 3 a 20 letras, números, puntos o guiones bajos.</small><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
@@ -120,24 +138,8 @@
         <button class="btn sm" type="submit">Guardar cambios</button>
       </form>
 
-      <div class="set-card">
-        <h2>Tu progreso</h2><p class="set-p">Se guarda en tu cuenta automáticamente.</p>
-        <dl class="acct-stats">
-          <div><dt>XP</dt><dd id="acct-xp"></dd></div>
-          <div><dt>Insignias</dt><dd id="acct-badges"></dd></div>
-          <div><dt>Lecciones hechas</dt><dd id="acct-lessons"></dd></div>
-        </dl>
-        <div class="acct-actions"><a class="btn sm" href="../">Seguir aprendiendo <span class="arrow">→</span></a><button class="btn sm line" type="button" id="sign-out">Cerrar sesión</button></div>
-        <h3 class="set-sub">Tu camino</h3><p class="set-p">Cambia por qué estás aprendiendo o vuelve a hacer la prueba rápida de lo que ya sabes.</p>
-        <a class="btn sm line" href="../start/">Cambiar mi camino</a>
-      </div>
 
 
-      <div class="set-card">
-        <h2>Apariencia y accesibilidad</h2><p class="set-p">Elige cómo se ve y se mueve el sitio.</p>
-        <div class="set-field"><span>Tema</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Claro</span></label><label><input type="radio" name="theme" value="dark"><span>Oscuro</span></label></div></div>
-        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reducir movimiento y animaciones<small>Las gráficas aparecen terminadas en vez de dibujarse.</small></span></label>
-      </div>
 
       <form class="set-card auth-form" id="form-pw" novalidate>
         <h2>Contraseña</h2><p class="set-p">Cambia la contraseña con la que inicias sesión.</p>
@@ -147,6 +149,12 @@
         <button class="btn sm" type="submit">Cambiar contraseña</button>
         <p class="auth-msg" id="pw-msg" role="status" aria-live="polite"></p>
       </form>
+
+      <div class="set-card set-wide">
+        <h2>Apariencia y accesibilidad</h2><p class="set-p">Elige cómo se ve y se mueve el sitio.</p>
+        <div class="set-field"><span>Tema</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Claro</span></label><label><input type="radio" name="theme" value="dark"><span>Oscuro</span></label></div></div>
+        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reducir movimiento y animaciones<small>Las gráficas aparecen terminadas en vez de dibujarse.</small></span></label>
+      </div>
 
       <div class="set-card set-wide set-danger">
         <h2>Eliminar cuenta</h2>

@@ -167,6 +167,9 @@
   });
 
   $("#sign-out").addEventListener("click", () => FHAuth.signOut());
+  const pickView = () => $("#acct-in").classList.toggle("is-profile", location.hash === "#profile");
+  addEventListener("hashchange", pickView);
+  pickView();
   $("#delete-confirm").addEventListener("input", (e) => ($("#delete-account").disabled = e.target.value.trim().toUpperCase() !== T("DELETE", "BORRAR")));
   $("#delete-account").addEventListener("click", async () => {
     $("#delete-account").disabled = true;
@@ -195,6 +198,11 @@
     $("#acct-email").textContent = user.email;
     $("#acct-email-2").textContent = user.email;
     const name = (user.user_metadata || {}).username || "";
+    // Profile view (account/#profile): avatar, name and progress. Everything else is Settings.
+    const nm = name || user.email.split("@")[0];
+    $("#prof-avatar").textContent = nm[0].toUpperCase();
+    $("#prof-name").textContent = nm;
+    $("#prof-email").textContent = user.email;
     const f = $("#form-name");
     if (document.activeElement !== f.username) f.username.value = name;
     f.lang.value = FH.lang;

@@ -1406,3 +1406,15 @@ body.paged .rail { display: none !important; }
 .oauth .or { display: flex; align-items: center; gap: 14px; margin: 20px 0 0; color: var(--ink-3); font-size: 14px; }
 .oauth .or::before, .oauth .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .oauth + .auth-form { margin-top: 16px; }
+/* Account page has two views: Settings (default) and Profile (#profile: avatar, name, progress). */
+#acct-in:not(.is-profile) .view-profile, #acct-in.is-profile .view-settings { display: none; }
+.set-head.view-settings { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.profile-view { display: grid; gap: 16px; max-width: 760px; }
+.prof-card { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.prof-avatar { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: var(--on-color); font-family: var(--serif); font-size: 32px; flex: none; }
+.prof-card h1 { margin: 0 0 2px; font-size: clamp(30px, 3vw, 40px); }
+.prof-card p { margin: 0; }
+.prof-set { margin-left: auto; }
+a.acct-who { color: inherit; text-decoration: none; border-radius: 10px; }
+a.acct-who:hover, a.acct-who:focus-visible { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.set-grid > .set-card { margin-top: 0; }

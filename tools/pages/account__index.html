@@ -110,8 +110,26 @@
     </section>
 
 <section id="acct-in" class="hidden settings">
-      <header class="set-head"><h1 id="acct-hello">Settings</h1><p class="muted">Signed in as <b id="acct-email"></b></p></header>
-      <div class="set-grid">
+      <header class="set-head view-settings"><div><h1 id="acct-hello">Settings</h1><p class="muted">Signed in as <b id="acct-email"></b></p></div><button class="btn sm line" type="button" id="sign-out">Log out</button></header>
+      <div class="profile-view view-profile">
+        <div class="prof-card">
+          <span class="prof-avatar" id="prof-avatar"></span>
+          <div><h1 id="prof-name">Your profile</h1><p class="muted" id="prof-email"></p></div>
+          <a class="text-link prof-set" href="./">Settings <span class="arrow">→</span></a>
+        </div>
+        <div class="set-card">
+          <h2>Your progress</h2>
+          <dl class="acct-stats">
+            <div><dt>XP</dt><dd id="acct-xp"></dd></div>
+            <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
+            <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
+          </dl>
+          <div class="acct-actions"><a class="btn sm" href="../">Keep learning <span class="arrow">→</span></a></div>
+          <h3 class="set-sub">Your path</h3><p class="set-p">Change why you're learning or retake the quick check of what you already know.</p>
+          <a class="btn sm line" href="../start/">Change my path</a>
+        </div>
+      </div>
+      <div class="set-grid view-settings">
       <form class="set-card" id="form-name" novalidate>
         <h2>Basics</h2><p class="set-p">How you show up on FinancedHub.</p>
         <label class="set-field"><span>Username</span><small>3 to 20 letters, numbers, dots or underscores.</small><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
@@ -120,24 +138,8 @@
         <button class="btn sm" type="submit">Save changes</button>
       </form>
 
-      <div class="set-card">
-        <h2>Your progress</h2><p class="set-p">Saved to your account automatically.</p>
-        <dl class="acct-stats">
-          <div><dt>XP</dt><dd id="acct-xp"></dd></div>
-          <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
-          <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
-        </dl>
-        <div class="acct-actions"><a class="btn sm" href="../">Keep learning <span class="arrow">→</span></a><button class="btn sm line" type="button" id="sign-out">Log out</button></div>
-        <h3 class="set-sub">Your path</h3><p class="set-p">Change why you're learning or retake the quick check of what you already know.</p>
-        <a class="btn sm line" href="../start/">Change my path</a>
-      </div>
 
 
-      <div class="set-card">
-        <h2>Appearance and accessibility</h2><p class="set-p">Choose how the site looks and moves.</p>
-        <div class="set-field"><span>Theme</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></div>
-        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reduce motion and animations<small>Charts appear finished instead of drawing in.</small></span></label>
-      </div>
 
       <form class="set-card auth-form" id="form-pw" novalidate>
         <h2>Password</h2><p class="set-p">Change the password you use to sign in.</p>
@@ -147,6 +149,12 @@
         <button class="btn sm" type="submit">Change password</button>
         <p class="auth-msg" id="pw-msg" role="status" aria-live="polite"></p>
       </form>
+
+      <div class="set-card set-wide">
+        <h2>Appearance and accessibility</h2><p class="set-p">Choose how the site looks and moves.</p>
+        <div class="set-field"><span>Theme</span><div class="seg" role="radiogroup"><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></div>
+        <label class="check set-check"><input type="checkbox" id="set-motion"><span>Reduce motion and animations<small>Charts appear finished instead of drawing in.</small></span></label>
+      </div>
 
       <div class="set-card set-wide set-danger">
         <h2>Delete account</h2>
