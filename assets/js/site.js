@@ -45,7 +45,7 @@
     ];
     const nav = document.createElement("nav");
     nav.className = "socials";
-    nav.setAttribute("aria-label", window.FH ? FH.t("FinanceHub on social media", "FinanceHub en redes sociales") : "FinanceHub on social media");
+    nav.setAttribute("aria-label", window.FH ? FH.t("FinancedHub on social media", "FinancedHub en redes sociales") : "FinancedHub on social media");
     nav.innerHTML = links.map(([name, href, icon]) => `<a href="${href}" target="_blank" rel="noopener" aria-label="${name}" title="${name}"><svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg></a>`).join("");
     foot.appendChild(nav);
   });
