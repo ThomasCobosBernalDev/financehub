@@ -1287,3 +1287,117 @@ body.paged .rail { display: none !important; }
 .pg-tip::before { content: ""; position: absolute; bottom: 100%; left: 50%; margin-left: -5px; border: 5px solid transparent; border-bottom-color: var(--ink); }
 .pg-dot:hover .pg-tip, .pg-dot:focus-visible .pg-tip { opacity: 1; transform: translate(-50%, 0); }
 .pg-name { transition: opacity .15s; } .pg-steps:has(.pg-dot:hover) .pg-name { opacity: 0; }
+
+/* ---------- Certifications page ---------- */
+/* Jobs on the left; the chosen job's four-stage road, tiles for each certificate, and the picked one's details on the right. */
+.cert-page .cx { padding: clamp(24px, 4vw, 48px) 0 56px; }
+.cx-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; margin-bottom: 24px; }
+.cx-head h1 { margin: 0 0 6px; font-size: clamp(32px, 3.4vw, 44px); }
+.cx-head p { margin: 0; max-width: 40em; color: var(--ink-2); font-size: 16.5px; }
+.cx-me { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 5px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); }
+.cx-me span { padding: 0 8px 0 10px; font-size: 13px; font-weight: 600; color: var(--ink-3); }
+.cx-me button { border: 0; border-radius: 99px; padding: 8px 13px; background: none; color: var(--ink-2); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .25s var(--ease), color .25s, box-shadow .25s; }
+.cx-me button:hover { color: var(--ink); }
+.cx-me button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
+.cx-body { display: grid; grid-template-columns: minmax(200px, 250px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.cx-jobs { list-style: none; margin: 0; padding: 0; position: sticky; top: 84px; }
+.cx-group { margin: 14px 0 4px 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+.cx-group:first-child { margin-top: 0; }
+.cx-group:empty { height: 1px; margin: 12px 12px 8px; background: var(--line); }
+.cx-job { display: block; width: 100%; padding: 7px 12px; border: 0; border-radius: 10px; background: none; color: var(--ink-2); font: inherit; font-size: 15px; font-weight: 500; line-height: 1.3; text-align: left; cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
+.cx-job:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); color: var(--ink); }
+.cx-job[aria-selected="true"] { background: var(--card); color: var(--ink); font-weight: 600; box-shadow: inset 3px 0 0 var(--accent), inset 0 0 0 1px var(--line); }
+.cx-all { color: var(--accent); font-weight: 600; }
+.cx-panel { min-width: 0; }
+.cx-pane { animation: ex-in .35s var(--ease); }
+.cx-pane > .kicker { margin: 0 0 4px; color: var(--accent); }
+.cx-pane > h2 { margin: 0 0 6px; font-size: clamp(26px, 2.6vw, 34px); }
+.cx-does { margin: 0 0 20px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
+/* The road: four stages joined by a line, the learner's stage tinted. */
+.cx-road { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; position: relative; }
+.cx-stage { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 14px 12px 12px; border-radius: 18px; transition: background .3s var(--ease), box-shadow .3s; }
+.cx-stage.here { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 45%, transparent); }
+.cx-s-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.cx-n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 15px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); position: relative; z-index: 1; }
+.here .cx-n { background: var(--accent); color: var(--on-color); box-shadow: none; }
+.cx-stage:not(:last-child)::before { content: ""; position: absolute; left: 50px; right: -16px; top: 28px; height: 2px; background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 11px); opacity: .45; }
+.cx-s-head b { display: block; font-size: 14.5px; line-height: 1.3; }
+.cx-s-head small { display: block; font-size: 12.5px; line-height: 1.35; color: var(--ink-3); margin-top: 2px; }
+.cx-s-head em { margin-top: -2px; font-style: normal; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: var(--accent); color: var(--on-color); }
+.cx-tiles { display: grid; gap: 8px; }
+.cx-tile { display: grid; gap: 2px; width: 100%; padding: 11px 12px; border: 0; border-radius: 14px; background: var(--card); color: inherit; font: inherit; text-align: left; cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
+.cx-tile:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
+.cx-tile[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
+.cx-tile b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.2; }
+.cx-tile small { font-size: 12.5px; line-height: 1.35; color: var(--ink-3); }
+.cx-tile .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.cx-tile .tags:empty { display: none; }
+.cx-tile i { font-style: normal; font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 99px; background: var(--paper-2); color: var(--ink-2); }
+.cx-tile .t-must { background: var(--ink); color: var(--paper); }
+.cx-tile .t-free { background: var(--accent-soft); color: var(--accent); }
+.cx-none { margin: 0; padding: 10px 12px; border-radius: 14px; font-size: 13px; line-height: 1.4; color: var(--ink-3); box-shadow: inset 0 0 0 1px dashed; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 80%, transparent); }
+.cx-tip { display: flex; gap: 12px; align-items: baseline; margin: 18px 0; padding: 12px 16px; border-radius: 14px; background: var(--paper-2); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.cx-tip b { flex: none; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--wants); }
+/* The picked certificate. */
+.cx-detail { padding: 20px 22px; border-radius: 22px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); animation: ex-in .3s var(--ease); }
+.cx-d-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.cx-d-head .kicker { margin: 0 0 2px; color: var(--accent); }
+.cx-d-head h3 { margin: 0; font-size: clamp(21px, 2vw, 26px); }
+.cx-d-head .btn { flex: none; }
+.cx-what { margin: 10px 0 14px; font-size: 16px; color: var(--ink-2); }
+.cx-detail dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px 20px; margin: 0; }
+.cx-detail dl div { padding-top: 10px; border-top: 1px solid var(--line); }
+.cx-detail dt { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+.cx-detail dd { margin: 3px 0 0; font-size: 14.5px; line-height: 1.45; }
+.cx-units { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0 0; font-size: 13.5px; }
+.cx-units span { color: var(--ink-3); margin-right: 4px; }
+.cx-units a { padding: 4px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); font-weight: 600; text-decoration: none; }
+.cx-units a:hover { background: var(--accent); color: var(--on-color); }
+/* All certificates in one table. */
+.cx-scroll { overflow-x: auto; border-radius: 18px; box-shadow: inset 0 0 0 1px var(--line); background: var(--card); }
+.cx-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.45; margin: 0; }
+.cx-table th, .cx-table td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.cx-table thead th { position: sticky; top: 0; background: var(--paper-2); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.cx-table tbody th { min-width: 150px; }
+.cx-table tbody th a { font-family: var(--serif); font-weight: 500; font-size: 16px; color: var(--ink); text-decoration: none; }
+.cx-table tbody th a:hover { color: var(--accent); }
+.cx-table small { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); }
+.cx-table tr.free th { box-shadow: inset 3px 0 0 var(--accent); }
+.cx-table td:nth-child(2) { min-width: 170px; }
+.cx-table td:last-child a { color: var(--ink-2); }
+.cx-table tbody tr:last-child > * { border-bottom: 0; }
+.cx-foot { margin: 28px 0 0; font-size: 13.5px; color: var(--ink-3); max-width: 60em; }
+@media (max-width: 1100px) {
+  .cx-road { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cx-stage:nth-child(2)::before { display: none; }
+}
+@media (max-width: 760px) {
+  /* Phones: jobs become a swipeable strip; the road becomes a vertical timeline. */
+  .cx-body { grid-template-columns: 1fr; gap: 18px; }
+  .cx-jobs { position: static; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px; }
+  .cx-jobs::-webkit-scrollbar { display: none; }
+  .cx-group { display: none; }
+  .cx-job { white-space: nowrap; padding: 9px 14px; border-radius: 99px; background: var(--paper-2); }
+  .cx-job[aria-selected="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .cx-me { border-radius: 18px; }
+  .cx-me span { width: 100%; padding: 4px 8px 0; }
+  .cx-road { grid-template-columns: 1fr; gap: 4px; }
+  .cx-stage { padding: 12px; }
+  .cx-stage::before { display: none; }
+  .cx-s-head { display: grid; grid-template-columns: 30px 1fr; column-gap: 10px; }
+  .cx-s-head em { grid-column: 2; }
+  .cx-stage:not(:last-child)::after { content: ""; position: absolute; left: 26px; top: 46px; bottom: -6px; width: 2px; background: repeating-linear-gradient(180deg, var(--accent) 0 6px, transparent 6px 11px); opacity: .45; }
+  .cx-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 40px; }
+  .cx-none { grid-column: 1 / -1; }
+  .cx-tip { flex-direction: column; gap: 4px; }
+  .cx-d-head { flex-direction: column; gap: 10px; }
+  .cx-detail { padding: 18px; }
+}
+.ex-certs { display: inline-block; margin-top: 6px; font-size: 14.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.ex-certs:hover { text-decoration: underline; }
+.cx-kinds { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 5px; margin: 0 0 14px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); }
+.cx-kinds button { border: 0; border-radius: 99px; padding: 8px 14px; background: none; color: var(--ink-2); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.cx-kinds button small { margin-left: 4px; font-size: 12px; color: var(--ink-3); }
+.cx-kinds button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
+.cx-table td:nth-child(3) { min-width: 120px; }
+@media (max-width: 760px) { .cx-kinds { border-radius: 18px; } }
