@@ -30,7 +30,7 @@ TEXT = {
                      "logic": ("Break it down", "Break it down"), "nature": ("Nature", "Nature link"), "notes": ("Notes", "Notes"),
                      "together": ("Together", "Together"), "solo": ("On your own", "On your own"), "check": ("Check", "Check"),
                      "connects": ("Where it leads", "Where it leads")},
-        "your_style": "your style", "skip": "Skip to the lesson", "course": "Course", "about": "About",
+        "your_style": "your style", "skip": "Skip to the lesson", "course": "Course", "certs": "Certifications", "about": "About",
         "theme": "Switch light or dark mode", "sign_in": "Sign in", "rail": "Lesson chapters", "start": "Start",
         "companion": "Your character so far", "savings": "Savings", "lessons_done": "Lessons done",
         "badges": "badges earned. Your numbers carry into every lesson.",
@@ -46,7 +46,7 @@ TEXT = {
                      "logic": ("Paso a paso", "Paso a paso"), "nature": ("Naturaleza", "Conexión con la naturaleza"), "notes": ("Apuntes", "Apuntes"),
                      "together": ("En grupo", "En grupo"), "solo": ("Por tu cuenta", "Por tu cuenta"), "check": ("Ponte a prueba", "Ponte a prueba"),
                      "connects": ("Hacia dónde va", "Hacia dónde va")},
-        "your_style": "tu estilo", "skip": "Saltar a la lección", "course": "Curso", "about": "Acerca de",
+        "your_style": "tu estilo", "skip": "Saltar a la lección", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
         "theme": "Cambiar entre modo claro y oscuro", "sign_in": "Entrar", "rail": "Capítulos de la lección", "start": "Inicio",
         "companion": "Tu personaje hasta ahora", "savings": "Ahorros", "lessons_done": "Lecciones hechas",
         "badges": "insignias ganadas. Tus números pasan a cada lección.",
@@ -95,7 +95,7 @@ PAGE = """<!doctype html>
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="{r}"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg>Financed<span>Hub</span></a>
-    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}about.html">{about}</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about.html">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">

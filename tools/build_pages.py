@@ -27,7 +27,7 @@ SHELL = """<!doctype html>
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="{r}"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg>Financed<span>Hub</span></a>
-    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}about.html">{about}</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about.html">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">
@@ -60,12 +60,12 @@ SHELL = """<!doctype html>
 """
 
 TEXT = {
-    "en": dict(skip="Skip to content", course="Course", about="About", theme="Switch light or dark mode", sign_in="Sign in",
+    "en": dict(skip="Skip to content", course="Course", certs="Certifications", about="About", theme="Switch light or dark mode", sign_in="Sign in",
                foot_nav="Legal and info", f_about="About", f_contact="Contact", f_privacy="Privacy", f_terms="Terms",
                f_cookies="Cookies and storage", f_delete="Delete my data", f_credits="Credits",
                disclaimer="FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.",
                lang_label="Español", lang_short="ES", lang_code="es", lang_aria="Ver en español"),
-    "es": dict(skip="Saltar al contenido", course="Curso", about="Acerca de", theme="Cambiar entre modo claro y oscuro", sign_in="Entrar",
+    "es": dict(skip="Saltar al contenido", course="Curso", certs="Certificaciones", about="Acerca de", theme="Cambiar entre modo claro y oscuro", sign_in="Entrar",
                foot_nav="Información legal", f_about="Acerca de", f_contact="Contacto", f_privacy="Privacidad", f_terms="Términos",
                f_cookies="Cookies y almacenamiento", f_delete="Borrar mis datos", f_credits="Créditos",
                disclaimer="FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.",

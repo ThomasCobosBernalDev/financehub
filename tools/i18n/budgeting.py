@@ -4,7 +4,7 @@ PAIRS = [
     ('<title>Give Every Dollar a Job · FinancedHub</title>', '<title>Dale un trabajo a cada dólar · FinancedHub</title>'),
     ('content="Unit 3, Lesson 1: zero-based budgeting and the 50/30/20 rule. See it, hear it, play it."', 'content="Unidad 3, Lección 1: presupuesto base cero y la regla 50/30/20. Míralo, escúchalo, juégalo."'),
     ('<a class="skip" href="#main">Skip to the lesson</a>', '<a class="skip" href="#main">Saltar a la lección</a>'),
-    ('aria-label="Site"><a href="../../course/">Course</a><a href="../../about.html">About</a>', 'aria-label="Sitio"><a href="../../course/">Curso</a><a href="../../about.html">Acerca de</a>'),
+    ('aria-label="Site"><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about.html">About</a>', 'aria-label="Sitio"><a href="../../course/">Curso</a><a href="../../certifications/">Certificaciones</a><a href="../../about.html">Acerca de</a>'),
     ('<p><a class="foot-lang" href="../../es/lessons/budgeting/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>',
      '<p><a class="foot-lang" href="../../../lessons/budgeting/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>'),
     ('aria-label="Switch light or dark mode"', 'aria-label="Cambiar entre modo claro y oscuro"'),
