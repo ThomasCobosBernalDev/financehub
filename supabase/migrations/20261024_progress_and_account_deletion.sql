@@ -1,4 +1,4 @@
--- FinanceHub: per-user progress with row level security, plus self-service account deletion.
+-- FinancedHub: per-user progress with row level security, plus self-service account deletion.
 create table public.progress (
   user_id uuid primary key references auth.users (id) on delete cascade,
   save jsonb not null default '{}'::jsonb,

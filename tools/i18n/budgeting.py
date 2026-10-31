@@ -1,7 +1,7 @@
 # English -> Spanish for the budgeting lesson (lessons/budgeting/index.html -> es/lessons/budgeting/index.html).
 PAIRS = [
     ('<html lang="en" data-alt="../../es/lessons/budgeting/">', '<html lang="es" data-alt="../../../lessons/budgeting/">'),
-    ('<title>Give Every Dollar a Job · FinanceHub</title>', '<title>Dale un trabajo a cada dólar · FinanceHub</title>'),
+    ('<title>Give Every Dollar a Job · FinancedHub</title>', '<title>Dale un trabajo a cada dólar · FinancedHub</title>'),
     ('content="Unit 3, Lesson 1: zero-based budgeting and the 50/30/20 rule. See it, hear it, play it."', 'content="Unidad 3, Lección 1: presupuesto base cero y la regla 50/30/20. Míralo, escúchalo, juégalo."'),
     ('<a class="skip" href="#main">Skip to the lesson</a>', '<a class="skip" href="#main">Saltar a la lección</a>'),
     ('aria-label="Site"><a href="../../course/">Course</a><a href="../../about.html">About</a>', 'aria-label="Sitio"><a href="../../course/">Curso</a><a href="../../about.html">Acerca de</a>'),
@@ -178,8 +178,8 @@ PAIRS = [
     ('href="../../">Back to the course map <span class="arrow">', 'href="../../">Volver al mapa del curso <span class="arrow">'),
     ('<nav aria-label="Legal and info"><a href="../../about.html">About</a><a href="../../contact.html">Contact</a><a href="../../legal/privacy.html">Privacy</a><a href="../../legal/terms.html">Terms</a><a href="../../legal/cookies.html">Cookies and storage</a><a href="../../credits.html">Credits</a></nav>',
      '<nav aria-label="Legal e información"><a href="../../about.html">Acerca de</a><a href="../../contact.html">Contacto</a><a href="../../legal/privacy.html">Privacidad</a><a href="../../legal/terms.html">Términos</a><a href="../../legal/cookies.html">Cookies y almacenamiento</a><a href="../../credits.html">Créditos</a></nav>'),
-    ("<p class=\"disclaimer\">FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>",
-     '<p class="disclaimer">FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>'),
+    ("<p class=\"disclaimer\">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>",
+     '<p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>'),
     # Chart captions
     ('<p class="chart-cap"><b>What you\'re looking at:</b> a sketch of one $2,400 paycheck splitting into three streams with the 50/30/20 rule: $1,200 for needs, $720 for wants and $480 for savings. Each stream\'s width matches its share.</p>',
      '<p class="chart-cap"><b>Qué estás viendo:</b> un dibujo de un sueldo de $2,400 que se divide en tres corrientes con la regla 50/30/20: $1,200 para necesidades, $720 para deseos y $480 para ahorro. El ancho de cada corriente va con su parte.</p>'),

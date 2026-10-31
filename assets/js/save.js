@@ -1,4 +1,4 @@
-// FinanceHub save file: one record for the learner's character, company and progress.
+// FinancedHub save file: one record for the learner's character, company and progress.
 // Always kept in this browser; auth.js also syncs it to the learner's account when signed in.
 (function () {
   const KEY = "financehub-save-v1";

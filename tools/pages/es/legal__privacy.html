@@ -1,16 +1,16 @@
 <!-- title: Política de privacidad -->
-<!-- description: Qué recopila FinanceHub, por qué, quién lo ve y cómo borrarlo. -->
+<!-- description: Qué recopila FinancedHub, por qué, quién lo ve y cómo borrarlo. -->
 <h1>Política de privacidad</h1>
 <p class="updated">Última actualización: 24 de octubre de 2026</p>
 
-<div class="callout"><b>En corto:</b> FinanceHub no tiene anuncios, ni analítica, ni rastreo. Sin cuenta, tu progreso vive solo en tu propio navegador. Si creas una cuenta, guardamos tu correo y tu progreso para que puedas seguir en cualquier dispositivo, y nada más. Nunca vendemos tus datos.</div>
+<div class="callout"><b>En corto:</b> FinancedHub no tiene anuncios, ni analítica, ni rastreo. Sin cuenta, tu progreso vive solo en tu propio navegador. Si creas una cuenta, guardamos tu correo y tu progreso para que puedas seguir en cualquier dispositivo, y nada más. Nunca vendemos tus datos.</div>
 <p class="small muted">Esta es una traducción de la <a href="../../legal/privacy.html" data-set-lang="en">versión en inglés</a>. Si hay alguna diferencia, vale la versión en inglés.</p>
 
 <h2>Quiénes somos</h2>
-<p>FinanceHub es un sitio gratuito e independiente que enseña finanzas personales y negocios, a cargo de Thomas Cobos en Texas, Estados Unidos. Para cualquier cosa sobre tus datos, escribe a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>.</p>
+<p>FinancedHub es un sitio gratuito e independiente que enseña finanzas personales y negocios, a cargo de Thomas Cobos en Texas, Estados Unidos. Para cualquier cosa sobre tus datos, escribe a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>.</p>
 
 <h2>Sin cuenta</h2>
-<p>Si no inicias sesión, FinanceHub no nos manda nada sobre ti. Tu progreso en las lecciones, XP, insignias, tema elegido y reflexiones privadas se guardan en el almacenamiento local de tu navegador, en tu dispositivo. Nosotros no podemos verlos. La <a href="cookies.html">página de cookies y almacenamiento</a> enumera cada cosa.</p>
+<p>Si no inicias sesión, FinancedHub no nos manda nada sobre ti. Tu progreso en las lecciones, XP, insignias, tema elegido y reflexiones privadas se guardan en el almacenamiento local de tu navegador, en tu dispositivo. Nosotros no podemos verlos. La <a href="cookies.html">página de cookies y almacenamiento</a> enumera cada cosa.</p>
 <p>El sitio está alojado en GitHub Pages. Como la mayoría de los servicios de alojamiento, GitHub puede registrar detalles técnicos como tu dirección IP para mantener el servicio seguro. Consulta la <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">declaración de privacidad de GitHub</a>. Nuestras fuentes y audios de narración se sirven desde nuestro propio sitio, así que ningún servicio de fuentes o audio ve tu visita.</p>
 
 <h2>Con cuenta</h2>
@@ -35,11 +35,11 @@
 <p>Solo te escribiremos sobre tu cuenta, por ejemplo para confirmar tu correo o restablecer tu contraseña. No mandamos correos de publicidad. Si algún día lo hacemos, tendrás que aceptarlo primero, y cada uno tendrá un enlace para darte de baja.</p>
 
 <h2>Menores de edad</h2>
-<p>FinanceHub no es para menores de 13 años, y necesitas tener 13 años o más para crear una cuenta. No recopilamos a sabiendas información personal de menores de 13 años. Si crees que un menor de 13 años nos dio información, escribe a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a> y la borraremos.</p>
+<p>FinancedHub no es para menores de 13 años, y necesitas tener 13 años o más para crear una cuenta. No recopilamos a sabiendas información personal de menores de 13 años. Si crees que un menor de 13 años nos dio información, escribe a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a> y la borraremos.</p>
 
 <h2 id="delete">Tus opciones y cómo borrar tus datos</h2>
-<p><b>Datos en este dispositivo:</b> puedes borrar ahora mismo todo lo que FinanceHub guardó en este navegador.</p>
-<p><button class="btn sm line" id="reset-device">Borrar mis datos de FinanceHub en este dispositivo</button> <span class="small" id="reset-msg" aria-live="polite"></span></p>
+<p><b>Datos en este dispositivo:</b> puedes borrar ahora mismo todo lo que FinancedHub guardó en este navegador.</p>
+<p><button class="btn sm line" id="reset-device">Borrar mis datos de FinancedHub en este dispositivo</button> <span class="small" id="reset-msg" aria-live="polite"></span></p>
 <p><b>Datos de tu cuenta:</b> puedes borrar tu cuenta y todo su progreso tú mismo desde tu <a href="../account/">página de cuenta</a>. También puedes pedirnos en cualquier momento ver, corregir o borrar tus datos escribiendo a <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>. Responderemos en un máximo de 30 días. Según dónde vivas (por ejemplo, California o la Unión Europea), puedes tener derechos adicionales bajo leyes como la CCPA o el RGPD, y respetaremos esas solicitudes.</p>
 
 <h2>Seguridad</h2>
@@ -50,10 +50,10 @@
 
 <script>
 document.getElementById("reset-device").addEventListener("click", () => {
-  if (!confirm("¿Borrar todo el progreso, la configuración y las reflexiones de FinanceHub guardados en este navegador? No se puede deshacer.")) return;
+  if (!confirm("¿Borrar todo el progreso, la configuración y las reflexiones de FinancedHub guardados en este navegador? No se puede deshacer.")) return;
   try {
     Object.keys(localStorage).filter((k) => k.startsWith("fh-") || k.startsWith("financehub-")).forEach((k) => localStorage.removeItem(k));
-    document.getElementById("reset-msg").textContent = "Listo. Se borró todo lo que FinanceHub guardó aquí.";
+    document.getElementById("reset-msg").textContent = "Listo. Se borró todo lo que FinancedHub guardó aquí.";
   } catch (e) {
     document.getElementById("reset-msg").textContent = "Tu navegador bloqueó el acceso al almacenamiento, así que no había nada que borrar.";
   }

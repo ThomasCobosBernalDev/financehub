@@ -1,15 +1,15 @@
 <!-- title: Privacy policy -->
-<!-- description: What FinanceHub collects, why, who sees it, and how to delete it. -->
+<!-- description: What FinancedHub collects, why, who sees it, and how to delete it. -->
 <h1>Privacy policy</h1>
 <p class="updated">Last updated October 24, 2026</p>
 
-<div class="callout"><b>Short version:</b> FinanceHub has no ads, no analytics and no tracking. Without an account, your progress lives only in your own browser. If you create an account, we store your email and your progress so you can pick up on any device, and nothing else. We never sell your data.</div>
+<div class="callout"><b>Short version:</b> FinancedHub has no ads, no analytics and no tracking. Without an account, your progress lives only in your own browser. If you create an account, we store your email and your progress so you can pick up on any device, and nothing else. We never sell your data.</div>
 
 <h2>Who we are</h2>
-<p>FinanceHub is a free, independent website that teaches personal finance and business, run by Thomas Cobos in Texas, United States. For anything about your data, email <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>.</p>
+<p>FinancedHub is a free, independent website that teaches personal finance and business, run by Thomas Cobos in Texas, United States. For anything about your data, email <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>.</p>
 
 <h2>Without an account</h2>
-<p>If you don't sign in, FinanceHub doesn't send anything about you to us. Your lesson progress, XP, badges, theme choice and private reflections are saved in your browser's local storage on your device. We can't see them. The <a href="cookies.html">cookies and storage page</a> lists every item.</p>
+<p>If you don't sign in, FinancedHub doesn't send anything about you to us. Your lesson progress, XP, badges, theme choice and private reflections are saved in your browser's local storage on your device. We can't see them. The <a href="cookies.html">cookies and storage page</a> lists every item.</p>
 <p>The site is hosted on GitHub Pages. Like most web hosts, GitHub may log technical details such as your IP address to keep the service secure. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. Our fonts and narration audio are served from our own site, so no font or audio service sees your visit.</p>
 
 <h2>With an account</h2>
@@ -34,11 +34,11 @@
 <p>We'll only email you about your account, such as confirming your email or resetting your password. We don't send marketing emails. If we ever do, you'll have to opt in, and every one will have an unsubscribe link.</p>
 
 <h2>Children</h2>
-<p>FinanceHub isn't for children under 13, and you must be 13 or older to create an account. We don't knowingly collect personal information from children under 13. If you think a child under 13 has given us information, email <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a> and we'll delete it.</p>
+<p>FinancedHub isn't for children under 13, and you must be 13 or older to create an account. We don't knowingly collect personal information from children under 13. If you think a child under 13 has given us information, email <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a> and we'll delete it.</p>
 
 <h2 id="delete">Your choices and deleting your data</h2>
-<p><b>Data on this device:</b> you can erase everything FinanceHub has saved in this browser right now.</p>
-<p><button class="btn sm line" id="reset-device">Erase my FinanceHub data on this device</button> <span class="small" id="reset-msg" aria-live="polite"></span></p>
+<p><b>Data on this device:</b> you can erase everything FinancedHub has saved in this browser right now.</p>
+<p><button class="btn sm line" id="reset-device">Erase my FinancedHub data on this device</button> <span class="small" id="reset-msg" aria-live="polite"></span></p>
 <p><b>Account data:</b> you can delete your account and all its progress yourself from your <a href="../account/">account page</a>. You can also ask us to see, correct or delete your data at any time by emailing <a href="mailto:thancobe@gmail.com">thancobe@gmail.com</a>. We'll respond within 30 days. Depending on where you live (for example California or the EU), you may have extra rights under laws like the CCPA or GDPR, and we'll honor those requests.</p>
 
 <h2>Security</h2>
@@ -49,10 +49,10 @@
 
 <script>
 document.getElementById("reset-device").addEventListener("click", () => {
-  if (!confirm("Erase all FinanceHub progress, settings and reflections saved in this browser? This can't be undone.")) return;
+  if (!confirm("Erase all FinancedHub progress, settings and reflections saved in this browser? This can't be undone.")) return;
   try {
     Object.keys(localStorage).filter((k) => k.startsWith("fh-") || k.startsWith("financehub-")).forEach((k) => localStorage.removeItem(k));
-    document.getElementById("reset-msg").textContent = "Done. Everything FinanceHub saved here has been erased.";
+    document.getElementById("reset-msg").textContent = "Done. Everything FinancedHub saved here has been erased.";
   } catch (e) {
     document.getElementById("reset-msg").textContent = "Your browser blocked access to storage, so there was nothing to erase.";
   }

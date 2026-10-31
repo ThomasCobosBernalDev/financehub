@@ -38,7 +38,7 @@ TEXT = {
         "play_btn": "Play narration", "speed": "Playback speed",
         "foot_nav": "Legal and info", "f_about": "About", "f_contact": "Contact", "f_privacy": "Privacy", "f_terms": "Terms",
         "f_cookies": "Cookies and storage", "f_delete": "Delete my data", "f_credits": "Credits",
-        "disclaimer": "FinanceHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.",
+        "disclaimer": "FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.",
         "lang_label": "Español", "lang_short": "ES", "lang_code": "es", "lang_aria": "Ver en español",
     },
     "es": {
@@ -54,7 +54,7 @@ TEXT = {
         "play_btn": "Reproducir narración", "speed": "Velocidad",
         "foot_nav": "Información legal", "f_about": "Acerca de", "f_contact": "Contacto", "f_privacy": "Privacidad", "f_terms": "Términos",
         "f_cookies": "Cookies y almacenamiento", "f_delete": "Borrar mis datos", "f_credits": "Créditos",
-        "disclaimer": "FinanceHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.",
+        "disclaimer": "FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.",
         "lang_label": "English", "lang_short": "EN", "lang_code": "en", "lang_aria": "View in English",
     },
 }
@@ -80,7 +80,7 @@ PAGE = """<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{title} · FinanceHub</title>
+  <title>{title} · FinancedHub</title>
   <meta name="description" content="{description}">
   <script>try {{ var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; }} catch (e) {{}}</script>
   <link rel="stylesheet" href="{a}assets/css/style.css">
@@ -91,7 +91,7 @@ PAGE = """<!doctype html>
 
 <header class="topbar">
   <div class="wrap wide">
-    <a class="logo" href="{r}">Finance<span>Hub</span></a>
+    <a class="logo" href="{r}">Financed<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}about.html">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
@@ -131,7 +131,7 @@ PAGE = """<!doctype html>
     <nav aria-label="{foot_nav}"><a href="{r}about.html">{f_about}</a><a href="{r}contact.html">{f_contact}</a><a href="{r}legal/privacy.html">{f_privacy}</a><a href="{r}legal/terms.html">{f_terms}</a><a href="{r}legal/cookies.html">{f_cookies}</a><a href="{r}credits.html">{f_credits}</a></nav>
     <p><a class="foot-lang" href="{alt}" data-set-lang="{lang_code}" hreflang="{lang_code}" lang="{lang_code}">{lang_aria}</a></p>
     <p class="disclaimer">{disclaimer}</p>
-    <p>© 2026 FinanceHub</p>
+    <p>© 2026 FinancedHub</p>
   </div>
 </footer>
 
