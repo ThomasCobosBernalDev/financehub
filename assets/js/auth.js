@@ -150,9 +150,15 @@
   // short setup the first time for a save that has none.
   const fromEmailLink = /access_token|type=signup|type=magiclink/.test(location.hash);
   let recovering = false;
+  // Google sign-ups arrive without a username or the age and terms consent, so they
+  // finish on the account page before anything else.
+  const needsFinish = (u) => { const m = (u && u.user_metadata) || {}; return !!u && !(m.username && m.terms_accepted_at); };
+  const onAccount = () => /\/account\/?$/.test(location.pathname);
   const afterSignIn = () => {
-    if (!user || recovering || /\/start\/?$/.test(location.pathname)) return;
+    if (!user || recovering) return;
     const root = document.body.dataset.root || "./";
+    if (needsFinish(user)) { if (!onAccount()) location.href = root + "account/"; return; }
+    if (/\/start\/?$/.test(location.pathname)) return;
     let asked = false, justIn = fromEmailLink;
     try {
       asked = !!sessionStorage.getItem("fh-setup-asked");
@@ -162,7 +168,7 @@
     if (!(FH.state.profile && FH.state.profile.done) && !asked) {
       try { sessionStorage.setItem("fh-setup-asked", "1"); } catch (e) { /* storage blocked */ }
       location.href = root + "start/";
-    } else if (justIn && /\/account\/?$/.test(location.pathname)) location.href = root;
+    } else if (justIn && onAccount()) location.href = root;
   };
 
   client.auth.onAuthStateChange((event, session) => {
@@ -186,6 +192,26 @@
       options: { emailRedirectTo: location.origin + location.pathname, data: consents },
     }),
     signIn: (email, password) => client.auth.signInWithPassword({ email, password }),
+    signInWithGoogle: () => {
+      try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (e) { /* storage blocked */ }
+      return client.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } });
+    },
+    // Which sign-in providers are switched on in Supabase, so the Google button only shows once it works.
+    providers: () => fetch(SUPABASE_URL + "/auth/v1/settings", { headers: { apikey: SUPABASE_KEY } })
+      .then((r) => (r.ok ? r.json() : {})).then((j) => j.external || {}).catch(() => ({})),
+    needsFinish,
+    // Save the username and consent a Google sign-up skipped, then carry on to setup or the course.
+    finishSignup: async (username) => {
+      const consent = { age_confirmed: true, terms_accepted_at: new Date().toISOString() };
+      const { data, error } = await client.auth.updateUser({ data: Object.assign({ username }, consent) });
+      if (error) throw error;
+      user = data.user;
+      const up = await client.from("progress").upsert(Object.assign({ user_id: user.id, save: FH.state, updated_at: new Date().toISOString() }, consent));
+      if (up.error) throw up.error;
+      paintHeader();
+      try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (e) { /* storage blocked */ }
+      afterSignIn();
+    },
     signOut: () => client.auth.signOut(),
     resetPassword: (email) => client.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }),
     setPassword: (password) => client.auth.updateUser({ password }),

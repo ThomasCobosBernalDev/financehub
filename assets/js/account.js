@@ -3,7 +3,7 @@
 (function () {
   const $ = (s) => document.querySelector(s);
   const T = FH.t;
-  const show = (id) => ["#acct-loading", "#acct-out", "#acct-sent", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
+  const show = (id) => ["#acct-loading", "#acct-out", "#acct-sent", "#acct-finish", "#acct-in"].forEach((x) => $(x).classList.toggle("hidden", x !== id));
   // Password rules: 8+ characters and at least one special character.
   const RULES = { len: (p) => p.length >= 8, special: (p) => /[^A-Za-z0-9]/.test(p) };
   const pwOk = (p) => Object.values(RULES).every((r) => r(p));
@@ -18,6 +18,7 @@
     $("#tab-in").setAttribute("aria-selected", id === "#form-in");
     $("#tab-up").setAttribute("aria-selected", id === "#form-up");
     $(".auth-tabs").classList.toggle("hidden", id === "#form-reset" || id === "#form-newpw");
+    $("#oauth").classList.toggle("off", id === "#form-reset" || id === "#form-newpw");
     $("#acct-title").textContent = id === "#form-up" ? T("Create your account", "Crea tu cuenta") : id === "#form-in" ? T("Sign in", "Iniciar sesión") : T("Reset your password", "Restablece tu contraseña");
     msg("");
   };
@@ -70,6 +71,35 @@
       $(".auth-card").scrollIntoView({ block: "start", behavior: "smooth" });
     }
   });
+
+  // Google: the button only appears once Google is switched on in Supabase.
+  FHAuth.providers().then((p) => $("#oauth").classList.toggle("hidden", !p.google));
+  $("#google").addEventListener("click", async () => {
+    msg(T("Opening Google…", "Abriendo Google…"));
+    const { error } = await FHAuth.signInWithGoogle();
+    if (error) msg(friendly(error), true);
+  });
+  // Coming back from Google with an error (for example, the learner pressed Cancel).
+  const back = new URLSearchParams(location.hash.slice(1) || location.search.slice(1));
+  if (back.get("error")) {
+    history.replaceState(null, "", location.pathname);
+    setTimeout(() => msg(back.get("error") === "access_denied" ? T("Google sign-in was cancelled.", "Se canceló el inicio de sesión con Google.") : T("Google sign-in didn't work. Try again, or use your email.", "No se pudo iniciar sesión con Google. Inténtalo de nuevo o usa tu correo."), true));
+  }
+
+  // Finish a Google sign-up: username plus the same age and terms boxes as the email form.
+  $("#form-finish").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, out = $("#finish-msg");
+    const say = (t, bad) => { out.textContent = t; out.classList.toggle("bad", !!bad); };
+    const username = f.username.value.trim();
+    if (!USERNAME.test(username)) return say(T("Usernames are 3 to 20 letters, numbers, dots or underscores.", "El nombre de usuario debe tener de 3 a 20 letras, números, puntos o guiones bajos."), true);
+    if (!f.age.checked) return say(T("You need to be 13 or older to create an account.", "Necesitas tener 13 años o más para crear una cuenta."), true);
+    if (!f.terms.checked) return say(T("Please agree to the terms and privacy policy to continue.", "Para continuar, acepta los términos y la política de privacidad."), true);
+    say(T("Saving…", "Guardando…"));
+    try { await FHAuth.finishSignup(username); say(T("All set. Taking you to your course…", "Listo. Te llevamos a tu curso…")); }
+    catch (err) { say(friendly(err), true); }
+  });
+  $("#finish-out").addEventListener("click", () => FHAuth.signOut());
 
   $("#sent-signin").addEventListener("click", () => {
     show("#acct-out");
@@ -150,7 +180,16 @@
   });
 
   const render = (user) => {
-    $(".auth-shell").classList.toggle("signed-in", !!user);
+    const finishing = FHAuth.needsFinish(user);
+    $(".auth-shell").classList.toggle("signed-in", !!user && !finishing);
+    if (finishing) {
+      show("#acct-finish");
+      $("#finish-email").textContent = user.email;
+      const f = $("#form-finish"), meta = user.user_metadata || {};
+      // Suggest a username from the Google name, e.g. "Ana María López" becomes "AnaMariaLopez".
+      if (!f.username.value) f.username.value = meta.username || (meta.full_name || meta.name || "").normalize("NFD").replace(/[^A-Za-z0-9_.]/g, "").slice(0, 20);
+      return;
+    }
     if (!user) { if (!$("#acct-sent").classList.contains("hidden")) return; show("#acct-out"); if ($("#form-newpw").classList.contains("hidden")) showForm(location.hash === "#create" ? "#form-up" : "#form-in"); return; }
     show("#acct-in");
     $("#acct-email").textContent = user.email;
