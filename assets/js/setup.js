@@ -45,22 +45,36 @@
 
   // ---------- Step 1: goals ----------
   const ICON = {
-    money: '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.6 0-2.6.8-2.6 2s1 1.7 2.6 2c1.6.3 2.6.8 2.6 2s-1 2-2.6 2c-1.2 0-2.1-.5-2.6-1.3M12 6.5v11"/>',
+    bank: '<path d="M3 10h18L12 4zM5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
+    paycheck: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    budget: '<path d="M12 3v9l7.5 4.5A9 9 0 1 1 12 3z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/>',
+    credit: '<rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/>',
     invest: '<path d="M4 18l5-5 4 3 7-8"/><path d="M15 8h5v5"/>',
+    protect: '<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/>',
+    big: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10M10 20v-5h4v5"/>',
+    money: '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.6 0-2.6.8-2.6 2s1 1.7 2.6 2c1.6.3 2.6.8 2.6 2s-1 2-2.6 2c-1.2 0-2.1-.5-2.6-1.3M12 6.5v11"/>',
+    economy: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.2 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.2-3.5-8.5S9.6 5.9 12 3.5z"/>',
     business: '<path d="M4 9h16l-1.5-4h-13zM5 9v10h14V9M10 19v-5h4v5"/>',
+    wallstreet: '<path d="M4 20V10M9 20V6M14 20v-8M19 20V4"/>',
     career: '<path d="M3 9l9-4 9 4-9 4z"/><path d="M7 11v4.5c1.4 1.3 3 2 5 2s3.6-.7 5-2V11M21 9v5"/>',
   };
+  // Pick as many as you like: everyday-money topics first, then the bigger goals.
   const gg = $("#goal-grid");
-  FH.GOALS.forEach((g) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "goal-card"; b.dataset.id = g.id;
-    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[g.id]}</svg><b>${g.label}</b><small>${g.desc}</small><span class="units">${g.id === "career" ? T("The whole course", "Todo el curso") : T(`${FH.buildPath([g.id]).length} lessons`, `${FH.buildPath([g.id]).length} lecciones`)}</span><i class="tick" aria-hidden="true"></i>`;
-    b.addEventListener("click", () => { goals.has(g.id) ? goals.delete(g.id) : goals.add(g.id); paintGoals(); });
-    gg.appendChild(b);
+  [["life", T("Everyday money", "El dinero de todos los días")], ["big", T("Bigger goals", "Metas más grandes")]].forEach(([grp, title]) => {
+    const h = document.createElement("h3"); h.className = "goal-group"; h.textContent = title; gg.appendChild(h);
+    FH.GOALS.filter((g) => g.group === grp).forEach((g) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "goal-card"; b.dataset.id = g.id;
+      const n = FH.buildPath([g.id]).length;
+      b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[g.id]}</svg><b>${g.label}</b><small>${g.desc}</small><span class="units">${g.id === "career" ? T("The whole course", "Todo el curso") : T(`${n} lessons`, `${n} lecciones`)}</span><i class="tick" aria-hidden="true"></i>`;
+      b.addEventListener("click", () => { goals.has(g.id) ? goals.delete(g.id) : goals.add(g.id); paintGoals(); });
+      gg.appendChild(b);
+    });
   });
   const paintGoals = () => {
     gg.querySelectorAll(".goal-card").forEach((b) => { const on = goals.has(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
     $("#goal-next").disabled = !goals.size;
+    $("#goal-count").textContent = goals.size ? T(`${goals.size} picked`, `${goals.size} ${goals.size === 1 ? "elegida" : "elegidas"}`) : "";
   };
   paintGoals();
 

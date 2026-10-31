@@ -1369,3 +1369,23 @@ body.paged .rail { display: none !important; }
 .socials svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 /* The plain "Ver en español" link is swapped for the language picker by site.js; keep it hidden so it doesn't flash on load. */
 .foot-lang { visibility: hidden; }
+/* Setup goals: two groups of compact cards; the square tick says "pick as many as you like". */
+#goal-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.goal-group { grid-column: 1 / -1; margin: 14px 0 0; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.goal-group:first-child { margin-top: 0; }
+#goal-grid .goal-card { padding: 16px 16px 14px; gap: 4px; border-radius: 16px; }
+#goal-grid .goal-card svg { width: 24px; height: 24px; margin-bottom: 4px; }
+#goal-grid .goal-card b { font-size: 17.5px; }
+#goal-grid .goal-card small { font-size: 13.5px; }
+#goal-grid .goal-card .units { margin-top: 4px; font-size: 11px; }
+#goal-grid .goal-card .tick { top: 14px; right: 14px; width: 20px; height: 20px; border-radius: 6px; }
+#goal-grid .goal-card.on .tick { background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 14px no-repeat; box-shadow: none; }
+.goal-count { margin-left: auto; margin-right: 14px; font-size: 14px; font-weight: 600; color: var(--accent); }
+@media (max-width: 900px) { #goal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { #goal-grid { grid-template-columns: 1fr; } }
+#goal-grid .goal-card { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; row-gap: 3px; align-content: start; padding: 14px 40px 12px 14px; }
+#goal-grid .goal-card svg { width: 22px; height: 22px; margin: 1px 0 0; }
+#goal-grid .goal-card b { padding-right: 0; }
+#goal-grid .goal-card small, #goal-grid .goal-card .units { grid-column: 2; }
+#goal-grid .goal-card .tick { top: 12px; right: 12px; }
+@media (max-width: 520px) { #goal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } #goal-grid .goal-card { grid-template-columns: 1fr; padding: 12px 34px 10px 12px; } #goal-grid .goal-card small { display: none; } #goal-grid .goal-card .units { grid-column: 1; } #goal-grid .goal-card b { font-size: 16px; } }
