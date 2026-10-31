@@ -84,6 +84,9 @@ PAGE = """<!doctype html>
   <meta name="description" content="{description}">
   <script>try {{ var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; }} catch (e) {{}}</script>
   <link rel="stylesheet" href="{a}assets/css/style.css">
+  <link rel="icon" href="{a}favicon.ico" sizes="32x32">
+  <link rel="icon" href="{a}favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{a}apple-touch-icon.png">
   <link rel="stylesheet" href="{own}lesson.css">
 </head>
 <body data-root="{r}">
@@ -91,7 +94,7 @@ PAGE = """<!doctype html>
 
 <header class="topbar">
   <div class="wrap wide">
-    <a class="logo" href="{r}">Financed<span>Hub</span></a>
+    <a class="logo" href="{r}"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg>Financed<span>Hub</span></a>
     <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}about.html">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
