@@ -6,7 +6,7 @@
   <title>Set up your path · FinancedHub</title>
   <meta name="description" content="Tell FinancedHub how you learn, why you're here and what you already know, and get a course path built around you.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202610310330">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202610310338">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -30,49 +30,24 @@
 <main id="main" class="wrap setup-page">
 <div class="setup">
   <ol class="setup-steps" aria-label="Setup steps">
-    <li data-for="0"><i></i><span>Language</span></li>
-    <li data-for="1"><i></i><span>How you learn</span></li>
-    <li data-for="2"><i></i><span>Why you're here</span></li>
-    <li data-for="3"><i></i><span>What you know</span></li>
-    <li data-for="4"><i></i><span>Your path</span></li>
+    <li data-for="goal"><i></i><span>Why you're here</span></li>
+    <li data-for="level"><i></i><span>What you know</span></li>
+    <li data-for="ways"><i></i><span>How you learn</span></li>
+    <li data-for="path"><i></i><span>Your path</span></li>
   </ol>
 
-  <section class="step" data-step="0">
-    <p class="kicker">Step 1 of 4 · Paso 1 de 4</p>
-    <h1>Which language? <em>¿Qué idioma?</em></h1>
-    <p class="lead">Every lesson, game and quiz comes in both. You can switch anytime from the top of the page.<br><span lang="es">Cada lección, juego y examen está en los dos. Puedes cambiar cuando quieras desde arriba.</span></p>
-    <div class="goal-grid lang-grid">
-      <button type="button" class="goal-card" data-lang-pick="en" lang="en"><b>English</b><small>Learn in English</small><i class="tick" aria-hidden="true"></i></button>
-      <button type="button" class="goal-card" data-lang-pick="es" lang="es"><b>Español</b><small>Aprende en español</small><i class="tick" aria-hidden="true"></i></button>
-    </div>
-    <div class="step-nav"><a class="text-link" href="../">Skip setup</a></div>
-  </section>
-
-  <section class="step" data-step="1" hidden>
-    <p class="kicker">Step 2 of 4</p>
-    <h1>Every lesson, <em>eight ways</em></h1>
-    <p class="lead">That's the whole idea of FinancedHub. Each lesson teaches the same idea all eight of these ways, every time, so it sticks however your brain works.</p>
-    <div class="name-ask" id="name-ask" hidden>
-      <label for="setup-name">Pick a username first</label>
-      <input id="setup-name" autocomplete="username" maxlength="20" placeholder="e.g. thomas_c">
-      <small>3 to 20 letters, numbers, dots or underscores. It shows in the corner when you're signed in.</small>
-    </div>
-    <ul class="lp-grid" id="lp-grid" aria-label="The eight ways"></ul>
-    <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" data-next>Next <span class="arrow">→</span></button></div>
-  </section>
-
-  <section class="step" data-step="2" hidden>
-    <p class="kicker">Step 3 of 4</p>
+  <section class="step" data-step="goal">
+    <p class="kicker">Step 1 of 3</p>
     <h1>Why are you <em>learning?</em></h1>
     <p class="lead">Pick one or more. Your path holds only the lessons your goal needs, in order, so you won't sit through economics theory if all you want is to start investing. Everything else stays open as extra.</p>
     <div class="goal-grid" id="goal-grid"></div>
-    <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" data-next id="goal-next" disabled>Next <span class="arrow">→</span></button></div>
+    <div class="step-nav"><a class="text-link" href="../">Skip setup</a><button class="btn" type="button" data-next id="goal-next" disabled>Next <span class="arrow">→</span></button></div>
   </section>
 
-  <section class="step" data-step="3" hidden>
-    <p class="kicker">Step 4 of 4</p>
+  <section class="step" data-step="level" hidden>
+    <p class="kicker">Step 2 of 3</p>
     <h1>How much do you <em>already know?</em></h1>
-    <p class="lead">Be honest. Nothing gets locked, and you can change this anytime. If you know some of it, a check finds which units you can skip. It goes one part of the course at a time and stops once it reaches things you haven't learned yet.</p>
+    <p class="lead">Be honest. Nothing gets locked, and you can change this anytime. If you already know some of it, a short check finds what you can skip.</p>
     <div class="level-grid" id="level-grid"></div>
     <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" id="level-next" disabled>Next <span class="arrow">→</span></button></div>
   </section>
@@ -86,7 +61,20 @@
     <div class="step-nav"><button class="text-link" type="button" id="q-skip">Skip the check</button><button class="text-link" type="button" id="q-idk">I don't know this one</button></div>
   </section>
 
-  <section class="step" data-step="4" hidden>
+  <section class="step" data-step="ways" hidden>
+    <p class="kicker">Step 3 of 3</p>
+    <h1>Every lesson, <em>eight ways</em></h1>
+    <p class="lead">That's the whole idea of FinancedHub. Each lesson teaches the same idea all eight of these ways, every time, so it sticks however your brain works.</p>
+    <div class="name-ask" id="name-ask" hidden>
+      <label for="setup-name">Pick a username first</label>
+      <input id="setup-name" autocomplete="username" maxlength="20" placeholder="e.g. thomas_c">
+      <small>3 to 20 letters, numbers, dots or underscores. It shows in the corner when you're signed in.</small>
+    </div>
+    <ul class="lp-grid" id="lp-grid" aria-label="The eight ways"></ul>
+    <div class="step-nav"><button class="text-link" type="button" data-back>← Back</button><button class="btn" type="button" id="ways-next">See my path <span class="arrow">→</span></button></div>
+  </section>
+
+  <section class="step" data-step="path" hidden>
     <p class="kicker">All set</p>
     <h1>Here's <em>your path.</em></h1>
     <p class="lead" id="path-sum"></p>
@@ -105,11 +93,11 @@
     <p>© 2026 FinancedHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202610310330"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202610310330"></script>
-<script src="../assets/js/auth.js?v=202610310330"></script>
-<script src="../assets/js/site.js?v=202610310330"></script>
+<script src="../assets/js/save.js?v=202610310338"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202610310338"></script>
+<script src="../assets/js/auth.js?v=202610310338"></script>
+<script src="../assets/js/site.js?v=202610310338"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../assets/js/setup.js?v=202610310330"></script>
+<script src="../assets/js/setup.js?v=202610310338"></script>
 </body>
 </html>

@@ -9,32 +9,24 @@
   let known = {};
 
   // ---------- Steps ----------
+  // Why you're here, then what you know (plus the optional check), then the eight ways, then the path.
+  // No language step: the site already opens in the reader's language, and the footer switch changes it.
+  const ORDER = ["goal", "level", "ways", "path"];
   const steps = [...document.querySelectorAll(".step")];
   const show = (id) => {
-    steps.forEach((s) => (s.hidden = s.dataset.step !== String(id)));
-    const n = id === "quiz" ? 3 : Number(id);
+    steps.forEach((s) => (s.hidden = s.dataset.step !== id));
+    const n = ORDER.indexOf(id === "quiz" ? "level" : id);
     document.querySelectorAll(".setup-steps li").forEach((li) => {
-      li.classList.toggle("on", Number(li.dataset.for) === n);
-      li.classList.toggle("done", Number(li.dataset.for) < n);
+      const k = ORDER.indexOf(li.dataset.for);
+      li.classList.toggle("on", k === n);
+      li.classList.toggle("done", k < n);
     });
     scrollTo({ top: 0, behavior: "smooth" });
   };
-  let at = 0;
-  // ---------- Step 1: language ----------
-  // Picking the other language reopens this page in it, on the next step.
-  document.querySelectorAll("[data-lang-pick]").forEach((b) => {
-    b.classList.toggle("on", b.dataset.langPick === FH.lang && !!FH.state.lang);
-    b.addEventListener("click", () => {
-      const lang = b.dataset.langPick;
-      if (lang !== FH.lang) { location.hash = "styles"; FH.setLang(lang); return; }
-      FH.setLang(lang, false);
-      show(++at);
-    });
-  });
-  document.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => { saveName(); show(++at); }));
-  document.querySelectorAll("[data-back]").forEach((b) => b.addEventListener("click", () => show(--at)));
+  document.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => show(ORDER[ORDER.indexOf(b.closest(".step").dataset.step) + 1])));
+  document.querySelectorAll("[data-back]").forEach((b) => b.addEventListener("click", () => show(ORDER[ORDER.indexOf(b.closest(".step").dataset.step) - 1])));
 
-  // ---------- Step 2: the eight ways every lesson teaches (and a username for new accounts) ----------
+  // ---------- Step 3: the eight ways every lesson teaches (and a username for new accounts) ----------
   const grid = $("#lp-grid");
   FH.STYLES.forEach((st) => {
     const li = document.createElement("li");
@@ -51,7 +43,7 @@
     FHAuth.setUsername(v).then(() => { nameAsk.hidden = true; });
   };
 
-  // ---------- Step 3: goals ----------
+  // ---------- Step 1: goals ----------
   const ICON = {
     money: '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.6 0-2.6.8-2.6 2s1 1.7 2.6 2c1.6.3 2.6.8 2.6 2s-1 2-2.6 2c-1.2 0-2.1-.5-2.6-1.3M12 6.5v11"/>',
     invest: '<path d="M4 18l5-5 4 3 7-8"/><path d="M15 8h5v5"/>',
@@ -72,12 +64,12 @@
   };
   paintGoals();
 
-  // ---------- Step 4: level ----------
+  // ---------- Step 2: level ----------
   const LEVELS = [
-    { id: "new", label: T("Brand new", "Desde cero"), desc: T("Start from the very beginning.", "Empezar desde el principio.") },
-    { id: "basics", label: T("I know the basics", "Sé lo básico"), desc: T("Budgets and bank accounts make sense to me.", "Entiendo los presupuestos y las cuentas de banco.") },
-    { id: "confident", label: T("Pretty confident", "Bastante seguro"), desc: T("I've taken a class or I invest already.", "Ya tomé una clase o ya invierto.") },
-    { id: "unsure", label: T("Not sure", "No estoy seguro"), desc: T("Give me the quick check to find out.", "Dame la prueba rápida para saberlo.") },
+    { id: "new", label: T("Brand new", "Desde cero"), desc: T("Never had a bank account, or not sure what a credit score is? Perfect. We start at zero, no experience needed.", "¿Nunca has tenido cuenta de banco o no sabes qué es un puntaje de crédito? Perfecto. Empezamos desde cero, sin experiencia.") },
+    { id: "basics", label: T("I know the basics", "Sé lo básico"), desc: T("I have a bank account and get paid, but I've never really budgeted, used credit on purpose or invested.", "Tengo cuenta de banco y me pagan, pero nunca he hecho un presupuesto en serio, usado el crédito con un plan ni invertido.") },
+    { id: "confident", label: T("Pretty confident", "Bastante seguro"), desc: T("I budget, I use credit wisely and I know what a stock or index fund is. Maybe I've taken a finance class.", "Hago presupuesto, uso bien el crédito y sé qué es una acción o un fondo indexado. Tal vez ya tomé una clase de finanzas.") },
+    { id: "unsure", label: T("Not sure", "No estoy seguro"), desc: T("Take a short quiz and we'll tell you where to start.", "Haz una prueba corta y te decimos dónde empezar.") },
   ];
   const lg = $("#level-grid");
   LEVELS.forEach((l, i) => {
@@ -94,7 +86,7 @@
   };
   paintLevel();
   $("#level-next").addEventListener("click", () => {
-    if (level === "new") { known = {}; finish(); } else startQuiz();
+    if (level === "new") { known = {}; checked(); } else startQuiz();
   });
 
   // ---------- Placement check: two questions per unit on the path, one part of the course at a time ----------
@@ -187,7 +179,7 @@
     show("quiz"); startPart();
   };
   const startPart = () => {
-    if (pi >= parts.length) return finish();
+    if (pi >= parts.length) return checked();
     qs = parts[pi].flatMap((u) => QS[u].map((q) => ({ unit: u, q: q[0], a: q.slice(1) })));
     qi = 0; partMiss = 0;
     askQ();
@@ -200,7 +192,7 @@
     qi++;
     if (qi < qs.length) return askQ();
     // End of a part: missing more than half of it means the learner starts here, so stop.
-    if (partMiss * 2 > qs.length) return finish();
+    if (partMiss * 2 > qs.length) return checked();
     pi++; startPart();
   };
   const askQ = () => {
@@ -227,15 +219,20 @@
   $("#q-skip").addEventListener("click", () => {
     // No check: lean on what they told us.
     known = level === "confident" ? { 1: true, 2: true, 3: true, 5: true } : level === "basics" ? { 1: true, 3: true } : {};
-    finish(true);
+    checked(true);
   });
 
   // ---------- Result ----------
-  const finish = (skipped) => {
-    FH.setProfile({ goals: [...goals], level, known, quiz: asked && !skipped ? { right, of: asked } : null, done: true });
+  // After the level step (and the check, if taken), show the eight ways; "See my path" saves and shows the path.
+  let skippedCheck = false;
+  const checked = (skipped) => { skippedCheck = !!skipped; show("ways"); };
+  const finish = () => {
+    saveName();
+    FH.setProfile({ goals: [...goals], level, known, quiz: asked && !skippedCheck ? { right, of: asked } : null, done: true });
     paintPath();
-    at = 4; show(4);
+    show("path");
   };
+  $("#ways-next").addEventListener("click", finish);
   const paintPath = () => {
     const { items, known: kn } = FH.path;
     const next = FH.nextLesson();
@@ -270,12 +267,10 @@
       go.firstChild.textContent = `${verb} ${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n} `;
     }
   };
-  $("#redo").addEventListener("click", () => { at = 0; show(0); });
+  $("#redo").addEventListener("click", () => show("goal"));
 
   // Coming back to edit: start on step 1 with the old answers filled in.
-  // "#styles" means the learner just switched language on step 1, so carry on from step 2.
-  if (location.hash === "#path" && prof.done) { paintPath(); at = 4; show(4); }
-  else if (location.hash === "#check" && goals.size) { level = level || "unsure"; at = 3; startQuiz(); }
-  else if (location.hash === "#styles") { at = 1; show(1); }
-  else show(0);
+  if (location.hash === "#path" && prof.done) { paintPath(); show("path"); }
+  else if (location.hash === "#check" && goals.size) { level = level || "unsure"; startQuiz(); }
+  else show("goal");
 })();
