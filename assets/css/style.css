@@ -1284,3 +1284,9 @@ body.paged .rail { display: none !important; }
 .pg-tip::before { content: ""; position: absolute; bottom: 100%; left: 50%; margin-left: -5px; border: 5px solid transparent; border-bottom-color: var(--ink); }
 .pg-dot:hover .pg-tip, .pg-dot:focus-visible .pg-tip { opacity: 1; transform: translate(-50%, 0); }
 .pg-name { transition: opacity .15s; } .pg-steps:has(.pg-dot:hover) .pg-name { opacity: 0; }
+/* Social links: bottom right of the footer, mirroring the language picker on the left. */
+.socials { position: absolute; right: clamp(20px, 3vw, 48px); bottom: max(26px, calc(env(safe-area-inset-bottom) + 14px)); display: flex; gap: 6px; }
+.socials a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; color: var(--ink-2); transition: background .2s, color .2s; }
+.socials a:hover, .socials a:focus-visible { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
+.socials svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 760px) { .socials { position: static; justify-content: center; margin-top: 12px; } }

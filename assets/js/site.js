@@ -36,6 +36,20 @@
     holder.replaceWith(wrap);
   });
 
+  // Our socials, bottom right of every footer.
+  document.querySelectorAll(".foot").forEach((foot) => {
+    const links = [
+      ["TikTok", "https://www.tiktok.com/@financedhub", '<path fill="currentColor" stroke="none" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/>'],
+      ["Instagram", "https://www.instagram.com/financed.hub/", '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>'],
+      ["YouTube", "https://www.youtube.com/@FinancedHub", '<path fill="currentColor" stroke="none" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.1V8.9l5.2 3.1Z"/>'],
+    ];
+    const nav = document.createElement("nav");
+    nav.className = "socials";
+    nav.setAttribute("aria-label", window.FH ? FH.t("FinanceHub on social media", "FinanceHub en redes sociales") : "FinanceHub on social media");
+    nav.innerHTML = links.map(([name, href, icon]) => `<a href="${href}" target="_blank" rel="noopener" aria-label="${name}" title="${name}"><svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg></a>`).join("");
+    foot.appendChild(nav);
+  });
+
   // Fade elements up as they scroll into view. Lists and grids come in one item at a time.
   const io = "IntersectionObserver" in window ? new IntersectionObserver(
     (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
