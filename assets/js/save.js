@@ -76,23 +76,24 @@
 
   // The course: 5 parts, 18 units, from a first bank account to Wall Street.
   const PARTS = [
-    { n: 1, name: t("Money basics", "Lo básico del dinero"), units: [1, 2, 3, 4, 5, 6, 7] },
-    { n: 2, name: t("How the economy works", "Cómo funciona la economía"), units: [8, 9, 10] },
+    { n: 1, name: t("Personal finance", "Finanzas personales"), units: [1, 2, 3, 4, 5, 6, 7] },
+    { n: 2, name: t("Economics", "Economía"), units: [8, 9, 10] },
     { n: 3, name: t("Business", "Negocios"), units: [11, 12, 13] },
-    { n: 4, name: t("Markets and Wall Street", "Mercados y Wall Street"), units: [14, 15, 16] },
-    { n: 5, name: t("Career launch", "Lanza tu carrera"), units: [17, 18] },
+    { n: 4, name: t("Wall Street and investing", "Wall Street e inversiones"), units: [14, 15, 16] },
+    { n: 5, name: t("Finance careers", "Carreras en finanzas"), units: [17, 18] },
   ];
+  // Plain topic names, so a learner can tell at a glance what each unit teaches.
   const UNIT_NAMES = LANG === "es"
-    ? ["Tu primera cuenta de banco", "Tu sueldo y tus impuestos", "Presupuesto y ahorro", "Crédito y préstamos", "Lo básico de invertir", "Protege tu dinero", "Compras grandes",
-      "Decisiones y mercados", "Inflación, tasas y la Fed", "Matemáticas y mentalidad del dinero",
+    ? ["Cuentas de banco", "Sueldo e impuestos", "Presupuesto y ahorro", "Crédito y préstamos", "Invertir", "Seguros y estafas", "Rentar, carros y casas",
+      "Oferta y demanda", "Inflación y tasas de interés", "Matemáticas del dinero",
       "Empezar un negocio", "Contabilidad", "Finanzas corporativas",
-      "Inversiones y portafolios", "Valuación y modelos", "Mercados e instituciones",
-      "Excel, Python y SQL", "Reclutamiento y entrevistas"]
-    : ["Your first bank account", "Your paycheck and taxes", "Budgeting and saving", "Credit and borrowing", "Investing basics", "Protecting your money", "Big purchases",
-      "Choices and markets", "Inflation, rates and the Fed", "Money math and mindset",
+      "Armar un portafolio", "Valuar una empresa", "Bancos y mercados",
+      "Excel, Python y SQL", "Entrevistas y contratación"]
+    : ["Bank accounts", "Paychecks and taxes", "Budgeting and saving", "Credit and loans", "Investing", "Insurance and scams", "Renting, cars and homes",
+      "Supply and demand", "Inflation and interest rates", "Money math",
       "Starting a business", "Accounting", "Corporate finance",
-      "Investments and portfolios", "Valuation and modeling", "Markets and institutions",
-      "Excel, Python and SQL", "Recruiting and interviews"];
+      "Building a portfolio", "Valuing a company", "Banks and markets",
+      "Excel, Python and SQL", "Interviews and getting hired"];
   const UNITS = UNIT_NAMES.length;
   const partOf = (unit) => PARTS.find((p) => p.units.includes(unit));
 
@@ -100,39 +101,39 @@
   // `needs` lists lessons it builds on; a path adds any the learner skipped.
   const L = (unit, n, id, title, sub, extra) => Object.assign({ unit, n, id, title, sub }, extra);
   const CATALOG = [
-    L(1, 1, "u1-checking-savings", t("Where your money lives", "Dónde vive tu dinero"), t("Checking vs. savings · Run your bank app", "Cheques vs. ahorro · Maneja la app de tu banco"), { href: "lessons/checking-savings/" }),
-    L(1, 2, "u1-open-account", t("Open your first account", "Abre tu primera cuenta"), t("Banks, credit unions and FDIC insurance", "Bancos, cooperativas y el seguro de la FDIC"), { href: "lessons/open-account/" }),
-    L(1, 3, "u1-bank-fees", t("Dodge the fees", "Evita las comisiones"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones"), { href: "lessons/bank-fees/" }),
-    L(1, 4, "u1-moving-money", t("Move money safely", "Mueve tu dinero con seguridad"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago"), { href: "lessons/moving-money/" }),
-    L(2, 1, "u2-pay-stub", t("Read your first pay stub", "Lee tu primer talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto"), { href: "lessons/pay-stub/" }),
-    L(2, 2, "u2-taxes", t("Where your taxes go", "A dónde van tus impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4")),
-    L(2, 3, "u2-file-taxes", t("File your first tax return", "Presenta tu primera declaración"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
-    L(3, 1, "u4-budgeting-frameworks", t("Give every dollar a job", "Dale un trabajo a cada dólar"), t("Budgeting frameworks · Month Survivor", "Métodos de presupuesto · Sobrevive el mes"), { href: "lessons/budgeting/" }),
-    L(3, 2, "u3-emergency-fund", t("Build an emergency fund", "Arma un fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { needs: ["u4-budgeting-frameworks"] }),
-    L(3, 3, "u3-high-yield", t("Make your savings earn more", "Haz que tus ahorros ganen más"), t("High-yield savings and APY", "Ahorro de alto rendimiento y APY"), { needs: ["u1-checking-savings"] }),
-    L(4, 1, "u4-credit-scores", t("How credit scores work", "Cómo funciona el puntaje de crédito"), t("Reports, scores and what moves them", "Reportes, puntajes y qué los mueve")),
-    L(4, 2, "u4-credit-cards", t("Use a card without getting burned", "Usa una tarjeta sin quemarte"), t("Credit cards and interest", "Tarjetas de crédito e intereses"), { needs: ["u4-credit-scores"] }),
-    L(4, 3, "u4-loans", t("Loans and the traps to avoid", "Préstamos y las trampas que debes evitar"), t("Car, student and payday loans", "Préstamos de carro, estudiantiles y de día de pago"), { needs: ["u4-credit-cards"] }),
-    L(5, 1, "u5-why-invest", t("Why invest at all?", "¿Por qué invertir?"), t("Inflation shrinks cash, compounding grows it", "La inflación encoge el efectivo y el interés compuesto lo hace crecer"), { href: "lessons/why-invest/" }),
-    L(5, 2, "u5-stocks", t("What a stock is", "Qué es una acción"), t("Owning a slice of a company", "Ser dueño de un pedazo de una empresa"), { href: "lessons/stocks/", needs: ["u5-why-invest"] }),
+    L(1, 1, "u1-checking-savings", t("Checking vs. savings accounts", "Cuentas de cheques vs. de ahorro"), t("Where your money lives · Run your bank app", "Dónde vive tu dinero · Maneja la app de tu banco"), { href: "lessons/checking-savings/" }),
+    L(1, 2, "u1-open-account", t("Opening a bank account", "Abrir una cuenta de banco"), t("Banks, credit unions and FDIC insurance", "Bancos, cooperativas y el seguro de la FDIC"), { href: "lessons/open-account/" }),
+    L(1, 3, "u1-bank-fees", t("Bank fees and debit cards", "Comisiones del banco y tarjetas de débito"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones"), { href: "lessons/bank-fees/" }),
+    L(1, 4, "u1-moving-money", t("Transfers and payment apps", "Transferencias y apps de pago"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago"), { href: "lessons/moving-money/" }),
+    L(2, 1, "u2-pay-stub", t("Reading a pay stub", "Leer un talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto"), { href: "lessons/pay-stub/" }),
+    L(2, 2, "u2-taxes", t("How taxes work", "Cómo funcionan los impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4")),
+    L(2, 3, "u2-file-taxes", t("Filing a tax return", "Presentar tu declaración de impuestos"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
+    L(3, 1, "u4-budgeting-frameworks", t("Making a budget", "Hacer un presupuesto"), t("Give every dollar a job · Month Survivor", "Dale un trabajo a cada dólar · Sobrevive el mes"), { href: "lessons/budgeting/" }),
+    L(3, 2, "u3-emergency-fund", t("Emergency funds", "El fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { needs: ["u4-budgeting-frameworks"] }),
+    L(3, 3, "u3-high-yield", t("High-yield savings", "Ahorro de alto rendimiento"), t("Make your savings earn more", "Haz que tus ahorros ganen más"), { needs: ["u1-checking-savings"] }),
+    L(4, 1, "u4-credit-scores", t("Credit scores", "El puntaje de crédito"), t("Reports, scores and what moves them", "Reportes, puntajes y qué los mueve")),
+    L(4, 2, "u4-credit-cards", t("Credit cards", "Tarjetas de crédito"), t("Use a card without getting burned", "Usa una tarjeta sin quemarte"), { needs: ["u4-credit-scores"] }),
+    L(4, 3, "u4-loans", t("Loans", "Préstamos"), t("Car, student and payday loans", "Préstamos de carro, estudiantiles y de día de pago"), { needs: ["u4-credit-cards"] }),
+    L(5, 1, "u5-why-invest", t("Why invest?", "¿Por qué invertir?"), t("Inflation shrinks cash, compounding grows it", "La inflación encoge el efectivo y el interés compuesto lo hace crecer"), { href: "lessons/why-invest/" }),
+    L(5, 2, "u5-stocks", t("Stocks", "Acciones"), t("Owning a slice of a company", "Ser dueño de un pedazo de una empresa"), { href: "lessons/stocks/", needs: ["u5-why-invest"] }),
     L(5, 3, "u5-index-funds", t("Index funds and the S&P 500", "Los fondos indexados y el S&P 500"), t("One fund, 500 companies", "Un fondo, 500 empresas"), { href: "lessons/index-funds/", needs: ["u5-stocks"] }),
-    L(5, 4, "u5-brokerage", t("Open a brokerage account", "Abre una cuenta de inversión"), t("What you need and the fees to watch", "Qué necesitas y las comisiones que debes vigilar"), { href: "lessons/brokerage/", needs: ["u1-checking-savings"] }),
-    L(5, 5, "u5-first-trade", t("Buy your first $10", "Compra tus primeros $10"), t("Fractional shares and placing an order", "Acciones fraccionadas y cómo hacer una orden"), { href: "lessons/first-trade/", needs: ["u5-index-funds", "u5-brokerage"] }),
-    L(5, 6, "u5-market-drops", t("When the market drops", "Cuando el mercado cae"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { href: "lessons/market-drops/", needs: ["u5-first-trade"] }),
+    L(5, 4, "u5-brokerage", t("Brokerage accounts", "Cuentas de inversión"), t("What you need and the fees to watch", "Qué necesitas y las comisiones que debes vigilar"), { href: "lessons/brokerage/", needs: ["u1-checking-savings"] }),
+    L(5, 5, "u5-first-trade", t("Buying your first stock", "Comprar tu primera acción"), t("Fractional shares and placing an order", "Acciones fraccionadas y cómo hacer una orden"), { href: "lessons/first-trade/", needs: ["u5-index-funds", "u5-brokerage"] }),
+    L(5, 6, "u5-market-drops", t("Market drops and risk", "Caídas del mercado y riesgo"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { href: "lessons/market-drops/", needs: ["u5-first-trade"] }),
     L(5, 7, "u5-retirement", t("401(k) and Roth IRA", "El 401(k) y la Roth IRA"), t("Retirement accounts and the employer match", "Cuentas para el retiro y la aportación del empleador"), { href: "lessons/retirement/", needs: ["u5-index-funds"] }),
-    L(6, 1, "u6-insurance", t("Insurance, explained", "Los seguros, explicados"), t("Health, car and renters insurance", "Seguro médico, de carro y de inquilino")),
-    L(6, 2, "u6-scams", t("Spot scams and protect your identity", "Detecta estafas y protege tu identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad")),
-    L(7, 1, "u7-renting", t("Rent your first place", "Renta tu primer lugar"), t("Leases, deposits and roommates", "Contratos, depósitos y compañeros de cuarto")),
-    L(7, 2, "u7-car", t("Buy a car without overpaying", "Compra un carro sin pagar de más"), t("New vs. used, loans and total cost", "Nuevo vs. usado, préstamos y costo total"), { needs: ["u4-loans"] }),
-    L(7, 3, "u7-home", t("Rent or buy a home?", "¿Rentar o comprar casa?"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"] }),
-    L(8, 1, "u1-scarcity", t("Every choice has a price tag", "Cada decisión tiene un precio"), t("Scarcity and trade-offs · Ten Free Hours", "Escasez y renuncias · Diez horas libres"), { href: "lessons/scarcity/" }),
-    L(8, 2, "u1-supply-demand", t("Why prices are what they are", "Por qué los precios son lo que son"), t("Supply and demand · Market Stall", "Oferta y demanda · Puesto en el mercado"), { href: "lessons/supply-demand/", needs: ["u1-scarcity"] }),
-    L(9, 1, "u1-inflation", t("Why your money shrinks", "Por qué tu dinero se encoge"), t("Inflation and GDP · Beat Inflation", "Inflación y PIB · Gánale a la inflación"), { href: "lessons/inflation/", needs: ["u1-supply-demand"] }),
-    L(9, 2, "u1-interest-rates", t("Who sets the price of money?", "¿Quién pone el precio del dinero?"), t("Interest rates and the Fed · Rate Dial", "Tasas de interés y la Fed · La perilla de tasas"), { href: "lessons/interest-rates/", needs: ["u1-inflation"] }),
-    L(9, 3, "u9-business-cycle", t("Booms and recessions", "Auges y recesiones"), t("The business cycle", "El ciclo económico"), { needs: ["u1-interest-rates"] }),
+    L(6, 1, "u6-insurance", t("Insurance", "Seguros"), t("Health, car and renters insurance", "Seguro médico, de carro y de inquilino")),
+    L(6, 2, "u6-scams", t("Scams and identity theft", "Estafas y robo de identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad")),
+    L(7, 1, "u7-renting", t("Renting an apartment", "Rentar un departamento"), t("Leases, deposits and roommates", "Contratos, depósitos y compañeros de cuarto")),
+    L(7, 2, "u7-car", t("Buying a car", "Comprar un carro"), t("New vs. used, loans and total cost", "Nuevo vs. usado, préstamos y costo total"), { needs: ["u4-loans"] }),
+    L(7, 3, "u7-home", t("Renting vs. buying a home", "Rentar vs. comprar casa"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"] }),
+    L(8, 1, "u1-scarcity", t("Scarcity and trade-offs", "Escasez y renuncias"), t("Every choice has a price tag · Ten Free Hours", "Cada decisión tiene un precio · Diez horas libres"), { href: "lessons/scarcity/" }),
+    L(8, 2, "u1-supply-demand", t("Supply and demand", "Oferta y demanda"), t("Why prices are what they are · Market Stall", "Por qué los precios son lo que son · Puesto en el mercado"), { href: "lessons/supply-demand/", needs: ["u1-scarcity"] }),
+    L(9, 1, "u1-inflation", t("Inflation", "Inflación"), t("Why your money shrinks · Beat Inflation", "Por qué tu dinero se encoge · Gánale a la inflación"), { href: "lessons/inflation/", needs: ["u1-supply-demand"] }),
+    L(9, 2, "u1-interest-rates", t("Interest rates and the Fed", "Las tasas de interés y la Fed"), t("Who sets the price of money? · Rate Dial", "¿Quién pone el precio del dinero? · La perilla de tasas"), { href: "lessons/interest-rates/", needs: ["u1-inflation"] }),
+    L(9, 3, "u9-business-cycle", t("The business cycle", "El ciclo económico"), t("Booms and recessions", "Auges y recesiones"), { needs: ["u1-interest-rates"] }),
     L(10, 1, "u10-percent-growth", t("Percentages and growth", "Porcentajes y crecimiento"), t("The math behind every money question", "Las matemáticas detrás de cada pregunta de dinero")),
-    L(10, 2, "u10-time-value", t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), t("The time value of money", "El valor del dinero en el tiempo"), { needs: ["u10-percent-growth"] }),
-    L(10, 3, "u10-money-mind", t("Why we make bad money choices", "Por qué tomamos malas decisiones con el dinero"), t("Behavioral finance", "Finanzas conductuales")),
+    L(10, 2, "u10-time-value", t("The time value of money", "El valor del dinero en el tiempo"), t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), { needs: ["u10-percent-growth"] }),
+    L(10, 3, "u10-money-mind", t("Money psychology", "Psicología del dinero"), t("Behavioral finance", "Finanzas conductuales")),
   ];
   // Lessons that are open so far, in course order.
   const OPEN = CATALOG.filter((l) => l.href);
