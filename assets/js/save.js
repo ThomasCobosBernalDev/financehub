@@ -106,7 +106,7 @@
     L(1, 3, "u1-bank-fees", t("Bank fees and debit cards", "Comisiones del banco y tarjetas de débito"), t("Debit cards, overdrafts and fees", "Tarjetas de débito, sobregiros y comisiones"), { href: "lessons/bank-fees/" }),
     L(1, 4, "u1-moving-money", t("Transfers and payment apps", "Transferencias y apps de pago"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago"), { href: "lessons/moving-money/" }),
     L(2, 1, "u2-pay-stub", t("Reading a pay stub", "Leer un talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto"), { href: "lessons/pay-stub/" }),
-    L(2, 2, "u2-taxes", t("How taxes work", "Cómo funcionan los impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4")),
+    L(2, 2, "u2-taxes", t("How taxes work", "Cómo funcionan los impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4"), { href: "lessons/taxes/", needs: ["u2-pay-stub"] }),
     L(2, 3, "u2-file-taxes", t("Filing a tax return", "Presentar tu declaración de impuestos"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
     L(3, 1, "u4-budgeting-frameworks", t("Making a budget", "Hacer un presupuesto"), t("Give every dollar a job · Month Survivor", "Dale un trabajo a cada dólar · Sobrevive el mes"), { href: "lessons/budgeting/" }),
     L(3, 2, "u3-emergency-fund", t("Emergency funds", "El fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { needs: ["u4-budgeting-frameworks"] }),

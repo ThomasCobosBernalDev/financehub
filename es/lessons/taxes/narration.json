@@ -1,0 +1,20 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "W-4": "doble u cuatro",
+    "IRS": "i erre ese"
+  },
+  "lines": [
+    "Tu primera oferta de trabajo paga 55,000 dólares al año. ¿Cuánto de eso se va al impuesto federal sobre la renta? Menos de lo que mucha gente cree, porque el impuesto se calcula por capas.",
+    "Primero, la deducción estándar. En 2026, los primeros 16,100 dólares que gana una persona soltera no pagan impuesto. 55,000 menos 16,100 deja 38,900 dólares de ingreso gravable.",
+    "Luego, las categorías. Imagina cubetas. Tus dólares llenan primero la cubeta del 10 por ciento, hasta 12,400 dólares. Eso son 1,240 dólares de impuesto.",
+    "El resto pasa a la cubeta del 12 por ciento: 26,500 dólares al 12 por ciento son 3,180 dólares. Súmalos: 4,420 dólares en el año.",
+    "Tu tasa marginal es la de tu siguiente dólar: 12 por ciento. Tu tasa efectiva es tu impuesto total entre tu ingreso: 4,420 entre 55,000, cerca del 8 por ciento.",
+    "Por eso un aumento nunca baja lo que te llevas a casa. Si un aumento llega a la cubeta del 22 por ciento, solo los dólares nuevos pagan 22 por ciento. Todo lo de abajo conserva su tasa más baja.",
+    "Tu W-4 le dice a tu empleador cuánto retener de cada cheque. Con un trabajo, llenas los pasos 1 y 5. Con dos trabajos, marca la casilla del paso 2.",
+    "En abril, comparas. Si te retuvieron más de lo que debías, recibes un reembolso: tu propio dinero de regreso. Si te retuvieron menos, debes la diferencia.",
+    "Piensa en las terrazas de arroz en una montaña. El agua llena la terraza de arriba y luego pasa a la siguiente. Llenar un escalón más abajo nunca vacía los de arriba. Las categorías funcionan igual."
+  ]
+}

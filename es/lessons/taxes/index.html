@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/taxes/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cómo funcionan los impuestos · FinancedHub</title>
+  <meta name="description" content="Unidad 2, Lección 2: ingreso gravable, la deducción estándar, las categorías de impuestos, tasa marginal vs. tasa efectiva, por qué un aumento nunca baja tu sueldo, el formulario W-4, reembolso vs. deber y a dónde van los impuestos federales. Juego: Reparte el sueldo, encuentra la categoría y predice si hay reembolso o deuda.">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202610311906">
+  <link rel="icon" href="../../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../../lessons/taxes/lesson.css?v=202610311906">
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg>Financed<span>Hub</span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../course/">Curso</a><a href="../../certifications/">Certificaciones</a><a href="../../about.html">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 2 · Lección 2</span> Sueldo e impuestos</div>
+        <h1 class="reveal">"Un aumento me va a subir de categoría." <em>¿Eso es malo?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Tu trabajo en el campus paga <span class="mark">$650 cada dos semanas</span>, y tu talón mostró solo <span class="mark">$3.08</span> de impuesto federal. Ahora miras hacia adelante. Tu primera oferta de tiempo completo después de la universidad paga <span class="mark">$55,000 al año</span>. Tu amiga Maya acaba de rechazar un aumento porque oyó que la "subiría a la categoría del 22%" y se llevaría menos a casa. ¿Tenía razón? Esta lección te muestra exactamente cómo se calcula el impuesto sobre la renta, para que nunca te creas ese mito.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Las <b>categorías de impuestos</b> dividen tu ingreso en capas. Cada capa paga su propia tasa, empezando en 10%.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Saber cómo funcionan te deja comparar ofertas de trabajo, juzgar un aumento y llenar tu <b>W-4</b> para que abril no traiga sorpresas.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Resta la deducción estándar, llena cada categoría en orden y suma el impuesto de cada una.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>preparadores de impuestos</b> y los <b>contadores públicos (CPA)</b> hacen esto todo el día. Los <b>especialistas en nómina</b> usan tu W-4 para fijar tu retención. El <b>IRS</b> lo cobra.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Cuatro cubetas en escalones, marcadas 10%, 12%, 22% y 24%. El agua cae en la primera, la llena y pasa a la siguiente.">
+          <g transform="translate(20 60)">
+            <path d="M0 380 H120 V300 H230 V220 H340 V140 H480" fill="none" stroke="var(--line)" stroke-width="3"/>
+            <g class="tx-pour"><path d="M60 0 V 210" stroke="#7fb3c9" stroke-width="10" stroke-linecap="round"/></g>
+            <g>
+              <path d="M20 250 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <path d="M24 262 h72 l-7 106 h-58 Z" fill="#7fb3c9" opacity=".8"/>
+              <text x="60" y="320" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink)">10%</text>
+            </g>
+            <g>
+              <path d="M130 170 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <path d="M136 230 h68 l-4 58 h-60 Z" fill="#7fb3c9" opacity=".8"/>
+              <text x="170" y="240" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink)">12%</text>
+            </g>
+            <g>
+              <path d="M240 90 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <text x="280" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink-3)">22%</text>
+            </g>
+            <g>
+              <path d="M350 10 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <text x="390" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink-3)">24%</text>
+            </g>
+            <path d="M100 256 C 116 250, 122 236, 132 232" stroke="#7fb3c9" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+          <text x="260" y="532" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">cada cubeta se llena antes que la otra</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un dibujo de cómo funcionan las categorías de impuestos. Tu ingreso es el agua. Llena primero la cubeta del 10%, luego pasa a la del 12% y después a la del 22%. Los dólares de cada cubeta pagan solo la tasa de esa cubeta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo</div>
+      <h2 class="reveal">El impuesto sobre la renta se cobra <em>por capas.</em></h2>
+      <p class="lead reveal">Tres ideas explican cualquier cuenta de impuesto sobre la renta en EE. UU.: la parte que no paga impuesto, las categorías y las dos "tasas" que la gente confunde. Usaremos tu oferta de $55,000 para todas.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Paso 1: la parte que no paga impuesto</h3>
+      <p class="reveal">Conociste la <dfn class="term" data-def="La parte de tu ingreso del año que no paga impuesto. Para una persona soltera en 2026 son $16,100.">deducción estándar</dfn> en la lección pasada: los primeros $16,100 que gana una persona soltera en 2026 no pagan impuesto. Lo que queda después de restarla es tu <dfn class="term" data-def="La parte de tu ingreso sobre la que de verdad se calcula el impuesto: ingreso bruto menos la deducción estándar (y cualquier ahorro antes de impuestos, como un 401(k)).">ingreso gravable</dfn>. Es el único número que les importa a las categorías.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ingreso bruto</dt><dd>Tu oferta: <b>$55,000</b> al año.</dd></div><div><dt>Deducción estándar</dt><dd><b>$16,100</b> nunca pagan impuesto.</dd></div><div><dt>Ingreso gravable</dt><dd>$55,000 − $16,100 = <b>$38,900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Paso 2: las categorías se llenan en orden</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Un rango de ingreso gravable que paga una sola tasa. En 2026 los primeros $12,400 de ingreso gravable de una persona soltera pagan 10%, los siguientes dólares hasta $50,400 pagan 12%, luego 22%, y así.">categoría de impuestos</dfn> es un rango de ingreso gravable con su propia tasa. Piensa en cada una como una cubeta. Tus dólares llenan primero la cubeta del 10%. Solo cuando está llena, los dólares nuevos pasan a la del 12%, y así. Estas son las cubetas de 2026 para una persona soltera:</p>
+      <div class="tx-table reveal" role="table" aria-label="Categorías del impuesto federal 2026, persona soltera">
+        <div role="row" class="hd"><span role="columnheader">Tasa</span><span role="columnheader">Ingreso gravable en esta cubeta</span><span role="columnheader">Tamaño</span></div>
+        <div role="row"><b role="cell">10%</b><span role="cell">$0 a $12,400</span><span role="cell">$12,400</span></div>
+        <div role="row"><b role="cell">12%</b><span role="cell">$12,400 a $50,400</span><span role="cell">$38,000</span></div>
+        <div role="row"><b role="cell">22%</b><span role="cell">$50,400 a $105,700</span><span role="cell">$55,300</span></div>
+        <div role="row"><b role="cell">24%</b><span role="cell">$105,700 a $201,775</span><span role="cell">$96,075</span></div>
+        <div role="row"><b role="cell">32 a 37%</b><span role="cell">más de $201,775</span><span role="cell">tres cubetas más</span></div>
+      </div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Cubeta del 10%</dt><dd>Los primeros <b>$12,400</b> de tus $38,900 la llenan: 10% × $12,400 = <b>$1,240</b>.</dd></div><div><dt>Cubeta del 12%</dt><dd>El resto pasa ahí: $38,900 − $12,400 = $26,500. 12% × $26,500 = <b>$3,180</b>.</dd></div><div><dt>Tu impuesto</dt><dd>$1,240 + $3,180 = <b>$4,420</b> en el año. Nada llegó a la cubeta del 22%.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="tx">
+        <label class="md-lab" for="tx-pay">Sueldo bruto del año <b id="tx-pay-v">$55,000</b></label><input type="range" id="tx-pay" min="0" max="150000" step="500" value="55000">
+        <div class="tx-buckets" id="tx-buckets" aria-hidden="true"></div>
+        <div class="ps-lines" id="tx-lines"></div>
+        <p class="split-msg" id="tx-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una calculadora del impuesto federal sobre la renta para una persona soltera en 2026, con las categorías reales del IRS y la deducción estándar de $16,100. La cubeta gris es la parte sin impuesto; cada cubeta de color se llena antes que la siguiente. La altura del agua muestra qué tan llena está cada cubeta. No incluye Seguro Social, Medicare ni impuesto estatal.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Paso 3: dos "tasas" diferentes</h3>
+      <p class="reveal">Tu <dfn class="term" data-def="La tasa de impuesto sobre tu siguiente dólar de ingreso: la tasa de la categoría más alta a la que llega tu ingreso gravable.">tasa marginal</dfn> es la tasa de tu <i>siguiente</i> dólar: la de la cubeta más alta a la que llega tu ingreso. Tu <dfn class="term" data-def="La parte de todo tu ingreso que se va al impuesto: impuesto total dividido entre ingreso bruto. Siempre es menor que tu tasa marginal.">tasa efectiva</dfn> es la parte de todo tu ingreso que se va al impuesto: tu impuesto total dividido entre tu ingreso bruto. Cuando alguien dice "estoy en la categoría del 12%", habla de su tasa marginal.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tasa marginal</dt><dd>Tu último dólar cayó en la cubeta del 12%, así que tu tasa marginal es <b>12%</b>. Un dólar más que ganes paga 12 centavos de impuesto.</dd></div><div><dt>Tasa efectiva</dt><dd><span class="frac"><span>$4,420</span><span>$55,000</span></span> = 0.080, cerca del <b>8.0%</b> de tu sueldo.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Entonces, ¿Maya debía aceptar el aumento?</h3>
+      <p class="reveal">Sí. Una categoría más alta solo cobra a los dólares que caen <i>dentro</i> de ella. Los dólares que ya están en las cubetas de abajo conservan sus tasas más bajas, así que un aumento nunca puede achicar lo que te llevas a casa.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Antes</dt><dd>Maya gana $66,500. Gravable: $66,500 − $16,100 = $50,400, justo el tope de la cubeta del 12%. Impuesto: $1,240 + 12% × $38,000 = <b>$5,800</b>.</dd></div><div><dt>Con un aumento de $3,500</dt><dd>Gravable: $53,900. Solo los $3,500 arriba de $50,400 caen en la cubeta del 22%: 22% × $3,500 = <b>$770</b> más de impuesto.</dd></div><div><dt>Lo que se queda</dt><dd>$3,500 − $770 = <b>$2,730</b> más al año (antes del Seguro Social y Medicare). Rechazarlo le costó $2,730.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El W-4: decirle a tu empleador cuánto retener</h3>
+      <p class="reveal">Tu empleador no puede saber todo tu año, así que se lo dices en un <dfn class="term" data-def="El formulario del IRS que llenas al empezar un trabajo. Le dice a tu empleador cuánto impuesto federal retener de cada cheque.">W-4</dfn>, el formulario que llenas tu primer día. Tiene cinco pasos. Con un trabajo y sin hijos, solo llenas los pasos 1 y 5.</p>
+      <ol class="steps reveal">
+        <li><b>Paso 1: tus datos y tu estado civil para impuestos.</b> Nombre, número de Seguro Social y si eres soltero o casado. Una persona soltera tiene la deducción estándar de $16,100; una pareja casada que declara junta tiene $32,200.</li>
+        <li><b>Paso 2: más de un trabajo.</b> Marca la casilla si tienes dos trabajos (o tu pareja también trabaja). Si no, cada empleador cree que es tu único trabajo y te da la deducción estándar completa dos veces.</li>
+        <li><b>Paso 3: dependientes.</b> Los hijos o familiares que mantienes bajan tu impuesto.</li>
+        <li><b>Paso 4: otros cambios.</b> Ingresos extra, deducciones extra o una cantidad extra para retener de cada cheque.</li>
+        <li><b>Paso 5: firma.</b> El formulario no vale sin ella.</li>
+      </ol>
+      <p class="reveal">Al final del año comparas lo que te retuvieron con lo que de verdad debías. Si te retuvieron más, recibes un <dfn class="term" data-def="Dinero que el IRS te regresa cuando durante el año te retuvieron más impuesto del que debías. Es tu propio dinero, no un regalo.">reembolso de impuestos</dfn>: tu propio dinero de regreso, no un regalo. Si te retuvieron menos, <b>debes</b> la diferencia para el Día de los Impuestos, el 15 de abril, y deber $1,000 o más puede sumar una pequeña multa.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Reembolso</dt><dd>Solo trabajaste en el campus medio año: 13 cheques × $650 = $8,450. Eso está debajo de $16,100, así que debes <b>$0</b>. Pero a cada cheque le retuvieron $3.08, como si trabajaras todo el año: 13 × $3.08 = <b>$40.04</b> te regresan como reembolso.</dd></div><div><dt>Debes</dt><dd>Agregas un segundo trabajo de $500 cada dos semanas y dejas el Paso 2 en blanco. El trabajo 2 cree que $13,000 al año es todo lo que ganas, así que retiene $0. Tu impuesto real sobre $29,900: gravable $13,800, así que $1,240 + 12% × $1,400 = $1,408. Solo te retuvieron $80.08, así que <b>debes $1,327.92</b> en abril.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">A dónde van tus impuestos federales</h3>
+      <p class="reveal">El impuesto sobre la renta es la fuente de dinero más grande del gobierno: cerca de la mitad de todo lo que cobra. Así gastó el gobierno federal cada $100 en el año fiscal 2025.</p>
+      <div class="tx-spend reveal" id="tx-spend" role="img" aria-label="De cada 100 dólares de gasto federal en 2025: salud 26 dólares, Seguro Social 23, intereses de la deuda 14, defensa 13, todo lo demás 24."></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> datos reales, redondeados. La barra son $100 de gasto federal en el año fiscal 2025 (cerca de $7.0 billones en total), divididos según a dónde fueron. "Salud" incluye Medicare y Medicaid. "Todo lo demás" cubre cosas como carreteras, escuelas, ayuda alimentaria, ciencia y veteranos. El gobierno gastó más de lo que cobró, por eso los intereses del dinero prestado son una parte aparte.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo</div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo</div>
+      <h2 class="reveal">Reparte <em>el sueldo.</em></h2>
+      <p class="lead reveal">Seis rondas. En las primeras cuatro, un sueldo cae en las cubetas: toca la cubeta donde cae su <b>último dólar</b>. En las últimas dos, lees una historia del W-4 y decides: reembolso, debes o casi parejo. Un intento por ronda.</p>
+
+      <div class="fd reveal rr-wide" id="pp">
+        <div class="fd-top">
+          <div><small id="pp-round">Ronda 1 de 6</small><b id="pp-ask">¿Dónde cae el último dólar?</b></div>
+          <div class="pg-score"><small>Correctas</small><b id="pp-score">0 de 0</b></div>
+        </div>
+        <div class="rr-scene" id="pp-scene"></div>
+        <div class="pp-buckets" id="pp-buckets" role="group" aria-label="Cubetas"></div>
+        <div class="fd-opts rr-opts" id="pp-opts" role="group" aria-label="Respuestas"></div>
+        <div class="fd-why hidden" id="pp-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="pp-next" disabled>Siguiente ronda <span class="arrow">→</span></button>
+      </div>
+      <div id="pp-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> sueldos inventados de una persona soltera, con las categorías reales de 2026 y la deducción estándar de $16,100. "Sin impuesto" es la deducción estándar.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso</div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Cuatro cálculos te llevan de un sueldo a tu impuesto y tus dos tasas.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Ingreso gravable</h3>
+      <div class="formula reveal">Ingreso gravable <span class="op">=</span> ingreso bruto <span class="op">−</span> deducción estándar</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu oferta</dt><dd>$55,000 − $16,100 = <b>$38,900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: El impuesto de cada cubeta</h3>
+      <p class="reveal">Llena cada cubeta en orden. Multiplica lo que tiene por su tasa.</p>
+      <div class="formula reveal">Impuesto de la cubeta <span class="op">=</span> dólares en la cubeta <span class="op">×</span> su tasa</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>10%</dt><dd>$12,400 × 0.10 = <b>$1,240</b>.</dd></div><div><dt>12%</dt><dd>($38,900 − $12,400) × 0.12 = $26,500 × 0.12 = <b>$3,180</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Impuesto total</h3>
+      <div class="formula reveal">Impuesto total <span class="op">=</span> la suma del impuesto de cada cubeta</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Año</dt><dd>$1,240 + $3,180 = <b>$4,420</b>.</dd></div><div><dt>Por cheque</dt><dd>Cobrando cada dos semanas: <span class="frac"><span>$4,420</span><span>26</span></span> = <b>$170</b> retenidos de cada cheque.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Tasa marginal y tasa efectiva</h3>
+      <div class="formula reveal">Tasa marginal <span class="op">=</span> tasa de la cubeta más alta alcanzada &nbsp;·&nbsp; Tasa efectiva <span class="op">=</span> <span class="frac"><span>impuesto total</span><span>ingreso bruto</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Marginal</dt><dd>Cubeta más alta alcanzada: <b>12%</b>.</dd></div><div><dt>Efectiva</dt><dd><span class="frac"><span>$4,420</span><span>$55,000</span></span> = <b>8.0%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 5: Reembolso o deuda</h3>
+      <div class="formula reveal">Reembolso <span class="op">=</span> impuesto retenido <span class="op">−</span> impuesto debido &nbsp;·&nbsp; si sale negativo, debes esa cantidad</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Medio año en el campus</dt><dd>$40.04 retenidos − $0 debidos = <b>$40.04 de reembolso</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: un sueldo de $90,000</h3>
+      <ol class="steps reveal">
+        <li><b>Gravable.</b> $90,000 − $16,100 = $73,900.</li>
+        <li><b>Cubeta del 10%.</b> $12,400 × 0.10 = $1,240.</li>
+        <li><b>Cubeta del 12%.</b> Llena: $38,000 × 0.12 = $4,560.</li>
+        <li><b>Cubeta del 22%.</b> $73,900 − $50,400 = $23,500. × 0.22 = $5,170.</li>
+        <li><b>Total y tasas.</b> $1,240 + $4,560 + $5,170 = <b>$10,970</b>. Tasa marginal 22%. Efectiva: <span class="frac"><span>$10,970</span><span>$90,000</span></span> = <b>12.2%</b>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza</div>
+      <h2 class="reveal">Las terrazas de arroz <em>se llenan un escalón a la vez.</em></h2>
+      <p class="lead reveal">En las montañas de Filipinas, Bali y el sur de China, los agricultores cortan las laderas en escalones planos llamados terrazas de arroz. El agua de un arroyo entra a la terraza de arriba. Solo cuando está llena, el agua se desborda al escalón de abajo, y luego al siguiente.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Cuatro terrazas de arroz bajando por una colina. El agua entra a la de arriba, que está llena, pasa a la segunda, que está llena, y la tercera está a medias.">
+        <path d="M0 40 C 60 30, 90 34, 120 40 V 100 H 0 Z" fill="#8a9b6a" opacity=".6"/>
+        <path d="M120 70 H 320 V 130 H 120 Z" fill="#7a6a52"/>
+        <path d="M124 74 H 316 V 96 H 124 Z" fill="#7fb3c9"/>
+        <path d="M320 140 H 520 V 200 H 320 Z" fill="#7a6a52"/>
+        <path d="M324 144 H 516 V 166 H 324 Z" fill="#7fb3c9"/>
+        <path d="M520 210 H 720 V 270 H 520 Z" fill="#7a6a52"/>
+        <path d="M524 228 H 716 V 236 H 524 Z" fill="#7fb3c9"/>
+        <path d="M720 280 H 900 V 340 H 720 Z" fill="#7a6a52"/>
+        <g stroke="#7fb3c9" stroke-width="7" fill="none" stroke-linecap="round" class="tx-spill">
+          <path d="M70 46 C 100 50, 110 66, 126 76"/>
+          <path d="M316 80 C 334 90, 330 124, 330 146"/>
+          <path d="M516 150 C 534 164, 530 200, 530 226"/>
+        </g>
+        <g stroke="#6d8f4e" stroke-width="3" stroke-linecap="round">
+          <path d="M150 74 v-16 M180 74 v-16 M210 74 v-16 M240 74 v-16 M270 74 v-16 M300 74 v-16"/>
+          <path d="M350 144 v-16 M380 144 v-16 M410 144 v-16 M440 144 v-16 M470 144 v-16 M500 144 v-16"/>
+          <path d="M550 214 v-16 M580 214 v-16 M610 214 v-16 M640 214 v-16 M670 214 v-16 M700 214 v-16"/>
+        </g>
+        <text x="220" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">10%: llena</text>
+        <text x="420" y="230" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">12%: llena</text>
+        <text x="620" y="300" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">22%: a medias</text>
+        <text x="220" y="182" text-anchor="middle" font-size="15" fill="var(--ink-2)">primeros $12,400</text>
+        <text x="420" y="252" text-anchor="middle" font-size="15" fill="var(--ink-2)">siguientes $38,000</text>
+        <text x="620" y="322" text-anchor="middle" font-size="15" fill="var(--ink-2)">solo los dólares nuevos</text>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. El agua llena la terraza de arriba, pasa a la siguiente y la tercera está solo a medias.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Cuando la tercera terraza empieza a llenarse, el agua de las dos primeras no cambia. Las categorías de impuestos funcionan igual: cuando tu ingreso llega a la cubeta del 22%, los dólares que ya están en las cubetas del 10% y 12% siguen pagando 10% y 12%. Un arroyo más grande nunca vacía la terraza de arriba.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes</div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Deducción estándar:</b> la parte sin impuesto, $16,100 para una persona soltera en 2026 ($32,200 casados declarando juntos).</li>
+          <li><b>Ingreso gravable</b> = ingreso bruto − deducción estándar. $55,000 → $38,900.</li>
+          <li><b>Categorías de impuestos</b> (soltero, 2026): 10% hasta $12,400, 12% hasta $50,400, 22% hasta $105,700, 24% hasta $201,775, luego 32 a 37%. Se llenan en orden.</li>
+          <li>Los dólares de cada cubeta pagan solo la tasa de esa cubeta. $38,900 → $1,240 + $3,180 = $4,420.</li>
+          <li><b>Tasa marginal:</b> la de tu siguiente dólar (la cubeta más alta alcanzada). <b>Tasa efectiva</b> = <span class="frac"><span>impuesto total</span><span>ingreso bruto</span></span>, siempre menor.</li>
+          <li>Un aumento no puede bajar lo que te llevas a casa: solo los dólares nuevos pagan la tasa más alta.</li>
+          <li><b>W-4:</b> le dice a tu empleador cuánto retener. Un trabajo, sin hijos: pasos 1 y 5. Dos trabajos: marca el Paso 2.</li>
+          <li>Te retuvieron más de lo que debes → <b>reembolso</b> (tu propio dinero de regreso). Menos → <b>debes</b> para el 15 de abril.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. En 2026, la deducción estándar para una persona soltera es $<input type="text" class="blank" data-answer="16100|16,100|$16,100|$16100|dieciséis mil cien|dieciseis mil cien" inputmode="numeric" aria-label="Espacio 1">.</div>
+        <div>2. La tasa de impuesto sobre tu siguiente dólar es tu tasa <input type="text" class="blank" data-answer="marginal|tasa marginal" aria-label="Espacio 2">.</div>
+        <div>3. El formulario que le dice a tu empleador cuánto impuesto retener es el <input type="text" class="blank" data-answer="W-4|W4|w-4|w4|W 4" aria-label="Espacio 3">.</div>
+        <div>4. Si te retuvieron más impuesto del que debías, recibes un <input type="text" class="blank" data-answer="reembolso|reembolso de impuestos" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo</div>
+      <h2 class="reveal">Busca a un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Rompe el mito</h3>
+          <p>Pregunta a tres personas: "¿Un aumento puede hacer que te lleves menos a casa por subir de categoría?" Explícale las cubetas a quien diga que sí, con el aumento de $3,500 de Maya.</p>
+        </div>
+        <div class="reveal">
+          <h3>Carrera de categorías</h3>
+          <p>Alguien dice un sueldo. Todos compiten por encontrar el ingreso gravable, la tasa marginal y el impuesto total. Revisen con la calculadora.</p>
+        </div>
+        <div class="reveal">
+          <h3>Gasta $100</h3>
+          <p>Cada quien reparte $100 de gasto federal como le gustaría. Compárenlo con el reparto real: salud $26, Seguro Social $23, intereses $14, defensa $13, lo demás $24.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta</div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Elige un sueldo que te gustaría ganar algún día. ¿Cuál es tu ingreso gravable, tu tasa marginal y tu tasa efectiva?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Creías el mito de "subir de categoría" antes de esta lección? ¿Quién te lo dijo y cómo lo explicarías ahora?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Prefieres recibir un reembolso cada abril o tener ese dinero en tus cheques durante el año? ¿Por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres el preparador de impuestos</h3>
+      <div class="reveal">
+        <p>Jordan, estudiante universitario, se sienta en tu escritorio molesto: "Tengo dos trabajos de medio tiempo, de $650 y $500 cada dos semanas. Siempre recibía un reembolso pequeño. ¡Este año debo $1,327.92! ¿Me subieron los impuestos?"</p>
+        <p><b>Tu tarea:</b> explícale a Jordan por qué debe, muéstrale la cuenta y dile qué cambiar para que el próximo abril no haya sorpresa.</p>
+        <textarea id="job-answer" placeholder="Escribe lo que dirías…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Tus tasas no subieron. Te retuvieron muy poco.</b> Los dos W-4 tenían el Paso 2 en blanco, así que cada empleador creyó que era tu único trabajo y te dio la deducción estándar completa de $16,100. El trabajo de $500 calculó que ganarías $13,000 al año, menos de $16,100, así que retuvo $0.</p>
+            <p><b>La cuenta real:</b> $16,900 + $13,000 = $29,900. Gravable: $29,900 − $16,100 = $13,800. Impuesto: 10% × $12,400 = $1,240, más 12% × $1,400 = $168, o sea $1,408. Solo te retuvieron $80.08, así que debes $1,408 − $80.08 = $1,327.92.</p>
+            <p><b>Qué cambiar:</b> llena un W-4 nuevo en los dos trabajos y marca la casilla del Paso 2 en cada uno, o agrega una cantidad extra en el Paso 4(c). Así te retienen más de cada cheque y el próximo abril sale casi parejo.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">De las categorías <em>a presentar tu propia declaración.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en leer tu talón de pago, y lleva a presentar tu primera declaración, hacer un presupuesto y la lección de 401(k) y Roth IRA">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../pay-stub/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Lee tu talón de pago</text><text x="20" y="186">Unidad 2 · Lección 1</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Los impuestos</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Presenta tu primera declaración</text><text x="690" y="86">Siguiente · reembolsos y formularios</text>
+          <a href="../budgeting/"><text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Haz un presupuesto</text><text x="690" y="186">Unidad 3 · planea con tu sueldo neto</text></a>
+          <a href="../retirement/"><text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">401(k) y Roth IRA</text><text x="690" y="286">Unidad 5 · paga menos impuestos</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: la lección que viene antes, esta lección en medio y las lecciones que se basan en ella.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 2</span><b>Lee tu primer talón de pago</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Cómo funcionan los impuestos</b></li>
+        <li><span class="muted small">Siguiente · Unidad 2</span><b>Presenta tu primera declaración</b></li>
+        <li><span class="muted small">Después · Unidad 3</span><b>Haz un presupuesto</b></li>
+        <li><span class="muted small">Después · Unidad 5</span><b>401(k) y Roth IRA</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../budgeting/">Siguiente lección abierta: Dale un trabajo a cada dólar <span class="arrow">→</span></a><a class="btn line" href="../../">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about.html">Acerca de</a><a href="../../contact.html">Contacto</a><a href="../../legal/privacy.html">Privacidad</a><a href="../../legal/terms.html">Términos</a><a href="../../legal/cookies.html">Cookies y almacenamiento</a><a href="../../credits.html">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../../lessons/taxes/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202610311906"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202610311906"></script>
+<script src="../../../assets/js/auth.js?v=202610311906"></script>
+<script src="../../../assets/js/site.js?v=202610311906"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202610311906"></script>
+<script src="../../../lessons/taxes/lesson.js?v=202610311906"></script>
+</body>
+</html>

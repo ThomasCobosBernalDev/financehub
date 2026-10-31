@@ -1,0 +1,19 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "W-4": "W 4",
+    "IRS": "I R S"
+  },
+  "lines": [
+    "Your first job offer pays 55,000 dollars a year. How much of that goes to federal income tax? Less than most people think, because income tax is figured in layers.",
+    "First, the standard deduction. In 2026, the first 16,100 dollars a single person earns isn't taxed. 55,000 minus 16,100 leaves 38,900 dollars of taxable income.",
+    "Next, the brackets. Picture buckets. Your dollars fill the 10 percent bucket first, up to 12,400 dollars. That's 1,240 dollars of tax.",
+    "The rest spills into the 12 percent bucket: 26,500 dollars, taxed at 12 percent, is 3,180 dollars. Add them up: 4,420 dollars for the year.",
+    "Your marginal rate is the rate on your next dollar: 12 percent. Your effective rate is your total tax divided by your income: 4,420 over 55,000, about 8 percent.",
+    "That's why a raise never lowers your take-home pay. If a raise reaches the 22 percent bucket, only the new dollars pay 22 percent. Everything below keeps its lower rate.",
+    "Your W-4 tells your employer how much to withhold from each check. With one job, fill in Steps 1 and 5. With two jobs, check the box in Step 2.",
+    "In April, you compare. If more was withheld than you owed, you get a refund: your own money back. If less was withheld, you owe the difference.",
+    "Think of rice terraces on a hillside. Water fills the top terrace, then spills to the next. Filling a lower step never empties the ones above. Brackets work the same way."
+  ]
+}

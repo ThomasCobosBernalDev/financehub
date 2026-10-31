@@ -1,0 +1,286 @@
+<!-- title: How Taxes Work -->
+<!-- description: Unit 2, Lesson 2: taxable income, the standard deduction, tax brackets, marginal vs. effective tax rate, why a raise never lowers your pay, the W-4 form, refunds vs. owing, and where federal taxes go. Play: Pour the paycheck, find the bracket and predict refund or owe. -->
+<!-- kicker: Unit 2 · Lesson 2 -->
+<!-- topic: Paychecks and taxes -->
+
+<!-- @start -->
+        <h1 class="reveal">"A raise will push me into a higher bracket." <em>Is that bad?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Your campus job pays <span class="mark">$650 every other week</span>, and your pay stub showed just <span class="mark">$3.08</span> of federal income tax. Now you're looking ahead. Your first full-time offer after college pays <span class="mark">$55,000 a year</span>. Your friend Maya just turned down a raise because she heard it would "put her in the 22% bracket" and she'd take home less. Was she right? This lesson shows exactly how income tax is figured, so you'll never fall for that myth.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Tax brackets</b> split your income into layers. Each layer is taxed at its own rate, starting at 10%.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Knowing how brackets work lets you compare job offers, judge a raise, and fill out your <b>W-4</b> so April has no surprises.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Subtract the standard deduction, fill each bracket in order, add up the tax from each one.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Tax preparers</b> and <b>CPAs</b> do this all day. <b>Payroll specialists</b> use your W-4 to set your withholding. The <b>IRS</b> collects it.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Four buckets on steps, labeled 10%, 12%, 22% and 24%. Water pours into the first, fills it, and spills into the next.">
+          <g transform="translate(20 60)">
+            <path d="M0 380 H120 V300 H230 V220 H340 V140 H480" fill="none" stroke="var(--line)" stroke-width="3"/>
+            <g class="tx-pour"><path d="M60 0 V 210" stroke="#7fb3c9" stroke-width="10" stroke-linecap="round"/></g>
+            <g>
+              <path d="M20 250 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <path d="M24 262 h72 l-7 106 h-58 Z" fill="#7fb3c9" opacity=".8"/>
+              <text x="60" y="320" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink)">10%</text>
+            </g>
+            <g>
+              <path d="M130 170 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <path d="M136 230 h68 l-4 58 h-60 Z" fill="#7fb3c9" opacity=".8"/>
+              <text x="170" y="240" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink)">12%</text>
+            </g>
+            <g>
+              <path d="M240 90 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <text x="280" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink-3)">22%</text>
+            </g>
+            <g>
+              <path d="M350 10 h80 l-8 120 h-64 Z" fill="var(--card)" stroke="var(--ink-3)" stroke-width="2"/>
+              <text x="390" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="24" fill="var(--ink-3)">24%</text>
+            </g>
+            <path d="M100 256 C 116 250, 122 236, 132 232" stroke="#7fb3c9" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+          <text x="260" y="532" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">each bucket fills before the next</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a sketch of how tax brackets work. Your income is the water. It fills the 10% bucket first, then spills into 12%, then 22%. Each bucket's dollars are taxed at that bucket's rate only.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Income tax is taxed <em>in layers.</em></h2>
+      <p class="lead reveal">Three ideas explain every income tax bill in the U.S.: the part that isn't taxed, the brackets, and the two "rates" people mix up. We'll use your $55,000 offer for all of them.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Step 1: the part that isn't taxed</h3>
+      <p class="reveal">You met the <dfn class="term" data-def="The part of your yearly income that isn't taxed at all. For a single person in 2026 it's $16,100.">standard deduction</dfn> in the last lesson: the first $16,100 a single person earns in 2026 isn't taxed. What's left after you subtract it is your <dfn class="term" data-def="The part of your income that income tax is actually figured on: gross income minus the standard deduction (and any pre-tax savings like a 401(k)).">taxable income</dfn>. That's the only number brackets care about.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Gross income</dt><dd>Your offer: <b>$55,000</b> a year.</dd></div><div><dt>Standard deduction</dt><dd><b>$16,100</b> is never taxed.</dd></div><div><dt>Taxable income</dt><dd>$55,000 − $16,100 = <b>$38,900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Step 2: brackets fill in order</h3>
+      <p class="reveal">A <dfn class="term" data-def="A range of taxable income that is taxed at one rate. In 2026 a single person's first $12,400 of taxable income is taxed at 10%, the next dollars up to $50,400 at 12%, then 22%, and so on.">tax bracket</dfn> is a range of taxable income with its own rate. Think of each one as a bucket. Your dollars fill the 10% bucket first. Only once it's full do new dollars spill into the 12% bucket, and so on. Here are the 2026 buckets for a single person:</p>
+      <div class="tx-table reveal" role="table" aria-label="2026 federal tax brackets, single filer">
+        <div role="row" class="hd"><span role="columnheader">Rate</span><span role="columnheader">Taxable income in this bucket</span><span role="columnheader">Bucket size</span></div>
+        <div role="row"><b role="cell">10%</b><span role="cell">$0 to $12,400</span><span role="cell">$12,400</span></div>
+        <div role="row"><b role="cell">12%</b><span role="cell">$12,400 to $50,400</span><span role="cell">$38,000</span></div>
+        <div role="row"><b role="cell">22%</b><span role="cell">$50,400 to $105,700</span><span role="cell">$55,300</span></div>
+        <div role="row"><b role="cell">24%</b><span role="cell">$105,700 to $201,775</span><span role="cell">$96,075</span></div>
+        <div role="row"><b role="cell">32 to 37%</b><span role="cell">above $201,775</span><span role="cell">three more buckets</span></div>
+      </div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>10% bucket</dt><dd>The first <b>$12,400</b> of your $38,900 fills it: 10% × $12,400 = <b>$1,240</b>.</dd></div><div><dt>12% bucket</dt><dd>The rest spills in: $38,900 − $12,400 = $26,500. 12% × $26,500 = <b>$3,180</b>.</dd></div><div><dt>Your tax</dt><dd>$1,240 + $3,180 = <b>$4,420</b> for the year. Nothing reached the 22% bucket.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="tx">
+        <label class="md-lab" for="tx-pay">Yearly gross pay <b id="tx-pay-v">$55,000</b></label><input type="range" id="tx-pay" min="0" max="150000" step="500" value="55000">
+        <div class="tx-buckets" id="tx-buckets" aria-hidden="true"></div>
+        <div class="ps-lines" id="tx-lines"></div>
+        <p class="split-msg" id="tx-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a federal income tax calculator for a single person in 2026, using the real IRS brackets and the $16,100 standard deduction. The gray bucket is the untaxed part; each colored bucket fills before the next. The height of the water shows how full each bucket is. It leaves out Social Security, Medicare and state tax.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Step 3: two different "rates"</h3>
+      <p class="reveal">Your <dfn class="term" data-def="The tax rate on your next dollar of income: the rate of the highest bracket your taxable income reaches.">marginal tax rate</dfn> is the rate on your <i>next</i> dollar: the rate of the highest bucket your income reaches. Your <dfn class="term" data-def="The share of your whole income that goes to income tax: total tax divided by gross income. Always lower than your marginal rate.">effective tax rate</dfn> is the share of your whole income that goes to income tax: your total tax divided by your gross income. When people say "I'm in the 12% bracket," they mean their marginal rate.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Marginal rate</dt><dd>Your last dollar landed in the 12% bucket, so your marginal rate is <b>12%</b>. One more dollar earned costs 12 cents of income tax.</dd></div><div><dt>Effective rate</dt><dd><span class="frac"><span>$4,420</span><span>$55,000</span></span> = 0.080, about <b>8.0%</b> of your pay.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">So, should Maya take the raise?</h3>
+      <p class="reveal">Yes. A higher bracket only taxes the dollars <i>inside</i> it. The dollars already sitting in the lower buckets keep their lower rates, so a raise can never shrink your take-home pay.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Before</dt><dd>Maya earns $66,500. Taxable: $66,500 − $16,100 = $50,400, exactly the top of the 12% bucket. Tax: $1,240 + 12% × $38,000 = <b>$5,800</b>.</dd></div><div><dt>After a $3,500 raise</dt><dd>Taxable: $53,900. Only the $3,500 above $50,400 lands in the 22% bucket: 22% × $3,500 = <b>$770</b> more tax.</dd></div><div><dt>What she keeps</dt><dd>$3,500 − $770 = <b>$2,730</b> more a year (before Social Security and Medicare). Turning it down cost her $2,730.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The W-4: telling your employer what to withhold</h3>
+      <p class="reveal">Your employer can't know your whole year, so you tell them on a <dfn class="term" data-def="The IRS form you fill out when you start a job. It tells your employer how much federal income tax to withhold from each paycheck.">W-4</dfn>, the form you fill out on your first day. It has five steps. With one job and no kids, you only fill in Steps 1 and 5.</p>
+      <ol class="steps reveal">
+        <li><b>Step 1: your info and filing status.</b> Name, Social Security number, and single or married. Single people get the $16,100 standard deduction; married couples filing together get $32,200.</li>
+        <li><b>Step 2: more than one job.</b> Check the box if you have two jobs (or a working spouse). Otherwise each employer thinks it's your only job and gives you the full standard deduction twice.</li>
+        <li><b>Step 3: dependents.</b> Children or relatives you support lower your tax.</li>
+        <li><b>Step 4: other changes.</b> Extra income, extra deductions, or an extra amount to withhold from every check.</li>
+        <li><b>Step 5: sign.</b> The form isn't valid without it.</li>
+      </ol>
+      <p class="reveal">At the end of the year you compare what was withheld with what you really owed. If more was withheld, you get a <dfn class="term" data-def="Money the IRS pays back when more tax was withheld from you during the year than you owed. It's your own money, not a bonus.">tax refund</dfn>: your own money coming back, not a bonus. If less was withheld, you <b>owe</b> the difference by Tax Day, April 15, and owing $1,000 or more can add a small penalty.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Refund</dt><dd>You only worked the campus job for half the year: 13 checks × $650 = $8,450. That's under $16,100, so you owe <b>$0</b>. But each check withheld $3.08, as if you'd work all year: 13 × $3.08 = <b>$40.04</b> comes back as a refund.</dd></div><div><dt>Owe</dt><dd>You add a second job at $500 every other week and leave Step 2 blank. Job 2 thinks $13,000 a year is all you make, so it withholds $0. Your real tax on $29,900: taxable $13,800, so $1,240 + 12% × $1,400 = $1,408. Only $80.08 was withheld, so you <b>owe $1,327.92</b> in April.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Where your federal taxes go</h3>
+      <p class="reveal">Income tax is the government's biggest source of money: about half of everything it collects. Here's how the federal government spent each $100 in the 2025 budget year.</p>
+      <div class="tx-spend reveal" id="tx-spend" role="img" aria-label="Of every 100 dollars of federal spending in 2025: health programs 26 dollars, Social Security 23, interest on the debt 14, defense 13, everything else 24."></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> real data, rounded. The bar is $100 of federal spending in fiscal year 2025 (about $7.0 trillion in total), split by where it went. "Health" includes Medicare and Medicaid. "Everything else" covers things like roads, schools, food aid, science and veterans. The government spent more than it collected, which is why interest on borrowed money is its own slice.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Pour the <em>paycheck.</em></h2>
+      <p class="lead reveal">Six rounds. In the first four, a salary pours into the buckets: tap the bucket where its <b>last dollar</b> lands. In the last two, you read a W-4 story and call it: refund, owe, or about even. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="pp">
+        <div class="fd-top">
+          <div><small id="pp-round">Round 1 of 6</small><b id="pp-ask">Where does the last dollar land?</b></div>
+          <div class="pg-score"><small>Right</small><b id="pp-score">0 of 0</b></div>
+        </div>
+        <div class="rr-scene" id="pp-scene"></div>
+        <div class="pp-buckets" id="pp-buckets" role="group" aria-label="Buckets"></div>
+        <div class="fd-opts rr-opts" id="pp-opts" role="group" aria-label="Answers"></div>
+        <div class="fd-why hidden" id="pp-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="pp-next" disabled>Next round <span class="arrow">→</span></button>
+      </div>
+      <div id="pp-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up salaries for a single person, taxed with the real 2026 brackets and $16,100 standard deduction. "Untaxed" is the standard deduction.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Four calculations take you from a salary to your tax bill and your two rates.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Taxable income</h3>
+      <div class="formula reveal">Taxable income <span class="op">=</span> gross income <span class="op">−</span> standard deduction</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your offer</dt><dd>$55,000 − $16,100 = <b>$38,900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Tax from each bucket</h3>
+      <p class="reveal">Fill each bucket in order. Multiply what's in it by its rate.</p>
+      <div class="formula reveal">Bucket tax <span class="op">=</span> dollars in the bucket <span class="op">×</span> its rate</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>10%</dt><dd>$12,400 × 0.10 = <b>$1,240</b>.</dd></div><div><dt>12%</dt><dd>($38,900 − $12,400) × 0.12 = $26,500 × 0.12 = <b>$3,180</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Total tax</h3>
+      <div class="formula reveal">Total tax <span class="op">=</span> the sum of every bucket's tax</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Year</dt><dd>$1,240 + $3,180 = <b>$4,420</b>.</dd></div><div><dt>Per paycheck</dt><dd>Paid every other week: <span class="frac"><span>$4,420</span><span>26</span></span> = <b>$170</b> withheld from each check.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Marginal and effective rate</h3>
+      <div class="formula reveal">Marginal rate <span class="op">=</span> rate of the highest bucket reached &nbsp;·&nbsp; Effective rate <span class="op">=</span> <span class="frac"><span>total tax</span><span>gross income</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Marginal</dt><dd>Highest bucket reached: <b>12%</b>.</dd></div><div><dt>Effective</dt><dd><span class="frac"><span>$4,420</span><span>$55,000</span></span> = <b>8.0%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 5: Refund or owe</h3>
+      <div class="formula reveal">Refund <span class="op">=</span> tax withheld <span class="op">−</span> tax owed &nbsp;·&nbsp; if it's negative, you owe that much</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Half-year campus job</dt><dd>$40.04 withheld − $0 owed = <b>$40.04 refund</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: a $90,000 salary</h3>
+      <ol class="steps reveal">
+        <li><b>Taxable.</b> $90,000 − $16,100 = $73,900.</li>
+        <li><b>10% bucket.</b> $12,400 × 0.10 = $1,240.</li>
+        <li><b>12% bucket.</b> Full: $38,000 × 0.12 = $4,560.</li>
+        <li><b>22% bucket.</b> $73,900 − $50,400 = $23,500. × 0.22 = $5,170.</li>
+        <li><b>Total and rates.</b> $1,240 + $4,560 + $5,170 = <b>$10,970</b>. Marginal rate 22%. Effective: <span class="frac"><span>$10,970</span><span>$90,000</span></span> = <b>12.2%</b>.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Rice terraces <em>fill one step at a time.</em></h2>
+      <p class="lead reveal">In the mountains of the Philippines, Bali and southern China, farmers cut hillsides into flat steps called rice terraces. Water from a stream flows into the top terrace. Only once it's full does the water spill over the edge into the next step down, then the next.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 340" role="img" aria-label="Four rice terraces stepping down a hill. Water flows into the top one, which is full, spills into the second, which is full, and the third is partly full.">
+        <path d="M0 40 C 60 30, 90 34, 120 40 V 100 H 0 Z" fill="#8a9b6a" opacity=".6"/>
+        <path d="M120 70 H 320 V 130 H 120 Z" fill="#7a6a52"/>
+        <path d="M124 74 H 316 V 96 H 124 Z" fill="#7fb3c9"/>
+        <path d="M320 140 H 520 V 200 H 320 Z" fill="#7a6a52"/>
+        <path d="M324 144 H 516 V 166 H 324 Z" fill="#7fb3c9"/>
+        <path d="M520 210 H 720 V 270 H 520 Z" fill="#7a6a52"/>
+        <path d="M524 228 H 716 V 236 H 524 Z" fill="#7fb3c9"/>
+        <path d="M720 280 H 900 V 340 H 720 Z" fill="#7a6a52"/>
+        <g stroke="#7fb3c9" stroke-width="7" fill="none" stroke-linecap="round" class="tx-spill">
+          <path d="M70 46 C 100 50, 110 66, 126 76"/>
+          <path d="M316 80 C 334 90, 330 124, 330 146"/>
+          <path d="M516 150 C 534 164, 530 200, 530 226"/>
+        </g>
+        <g stroke="#6d8f4e" stroke-width="3" stroke-linecap="round">
+          <path d="M150 74 v-16 M180 74 v-16 M210 74 v-16 M240 74 v-16 M270 74 v-16 M300 74 v-16"/>
+          <path d="M350 144 v-16 M380 144 v-16 M410 144 v-16 M440 144 v-16 M470 144 v-16 M500 144 v-16"/>
+          <path d="M550 214 v-16 M580 214 v-16 M610 214 v-16 M640 214 v-16 M670 214 v-16 M700 214 v-16"/>
+        </g>
+        <text x="220" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">10%: full</text>
+        <text x="420" y="230" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">12%: full</text>
+        <text x="620" y="300" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">22%: filling</text>
+        <text x="220" y="182" text-anchor="middle" font-size="15" fill="var(--ink-2)">first $12,400</text>
+        <text x="420" y="252" text-anchor="middle" font-size="15" fill="var(--ink-2)">next $38,000</text>
+        <text x="620" y="322" text-anchor="middle" font-size="15" fill="var(--ink-2)">only the newest dollars</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Water fills the top terrace, spills into the next, and the third is only partly full.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> When the third terrace starts filling, the water in the first two doesn't change. Tax brackets work the same way: when your income reaches the 22% bucket, the dollars already in the 10% and 12% buckets stay taxed at 10% and 12%. A bigger stream never drains the top terrace.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Standard deduction:</b> the untaxed part, $16,100 for a single person in 2026 ($32,200 married filing together).</li>
+          <li><b>Taxable income</b> = gross income − standard deduction. $55,000 → $38,900.</li>
+          <li><b>Tax brackets</b> (single, 2026): 10% to $12,400, 12% to $50,400, 22% to $105,700, 24% to $201,775, then 32 to 37%. They fill in order.</li>
+          <li>Each bucket's dollars are taxed at that bucket's rate only. $38,900 → $1,240 + $3,180 = $4,420.</li>
+          <li><b>Marginal rate:</b> the rate on your next dollar (highest bucket reached). <b>Effective rate</b> = <span class="frac"><span>total tax</span><span>gross income</span></span>, always lower.</li>
+          <li>A raise can't lower your take-home pay: only the new dollars are taxed at the higher rate.</li>
+          <li><b>W-4:</b> tells your employer how much to withhold. One job, no kids: Steps 1 and 5. Two jobs: check Step 2.</li>
+          <li>Withheld more than you owe → <b>refund</b> (your own money back). Less → you <b>owe</b> by April 15.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. In 2026, the standard deduction for a single person is $<input type="text" class="blank" data-answer="16100|16,100|$16,100|$16100|sixteen thousand one hundred" inputmode="numeric" aria-label="Blank 1">.</div>
+        <div>2. The tax rate on your next dollar of income is your <input type="text" class="blank" data-answer="marginal|marginal rate|marginal tax rate" aria-label="Blank 2"> rate.</div>
+        <div>3. The form that tells your employer how much tax to withhold is the <input type="text" class="blank" data-answer="W-4|W4|w-4|w4|W 4" aria-label="Blank 3">.</div>
+        <div>4. If more tax was withheld than you owed, you get a <input type="text" class="blank" data-answer="refund|tax refund" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Bust the myth</h3>
+          <p>Ask three people: "Can a raise make you take home less because of a higher bracket?" Explain the buckets to anyone who says yes, using Maya's $3,500 raise.</p>
+        </div>
+        <div class="reveal">
+          <h3>Bracket race</h3>
+          <p>One person names a salary. Everyone races to find the taxable income, the marginal rate and the total tax. Check with the calculator.</p>
+        </div>
+        <div class="reveal">
+          <h3>Spend $100</h3>
+          <p>Each person splits $100 of federal spending the way they'd want it. Compare with the real split: health $26, Social Security $23, interest $14, defense $13, other $24.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Pick a salary you'd like to earn one day. What's your taxable income, marginal rate and effective rate?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Did you believe the "raise into a higher bracket" myth before this lesson? Who told you, and how would you explain it now?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Would you rather get a refund every April or get that money in your paychecks during the year? Why?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the tax preparer</h3>
+      <div class="reveal">
+        <p>Jordan, a college student, sits down at your desk upset: "I have two part-time jobs, $650 and $500 every other week. I've always gotten a small refund. This year I owe $1,327.92! Did my taxes go up?"</p>
+        <p><b>Your task:</b> explain why Jordan owes, show the math, and tell Jordan what to change so next April isn't a surprise.</p>
+        <textarea id="job-answer" placeholder="Write what you'd say…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Your tax rates didn't go up. Too little was withheld.</b> Each job's W-4 had Step 2 blank, so each employer thought it was your only job and gave you the full $16,100 standard deduction. The $500 job figured you'd earn $13,000 a year, under $16,100, so it withheld $0.</p>
+            <p><b>The real math:</b> $16,900 + $13,000 = $29,900. Taxable: $29,900 − $16,100 = $13,800. Tax: 10% × $12,400 = $1,240, plus 12% × $1,400 = $168, for $1,408. Only $80.08 was withheld, so you owe $1,408 − $80.08 = $1,327.92.</p>
+            <p><b>What to change:</b> fill out a new W-4 at both jobs and check the Step 2 box on each, or add an extra amount in Step 4(c). Then more is withheld from each check, and next April comes out close to even.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">From brackets <em>to filing your own return.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on reading your pay stub, and leads to filing your first tax return, making a budget, and the 401(k) and Roth IRA lesson">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../pay-stub/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Read your pay stub</text><text x="20" y="186">Unit 2 · Lesson 1</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">How taxes work</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">File your first tax return</text><text x="690" y="86">Next · refunds and forms</text>
+          <a href="../budgeting/"><text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Make a budget</text><text x="690" y="186">Unit 3 · plan with net pay</text></a>
+          <a href="../retirement/"><text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">401(k) and Roth IRA</text><text x="690" y="286">Unit 5 · pay less tax</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lesson that comes before, this lesson in the middle, and the later lessons that build on it.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 2</span><b>Read your first pay stub</b></li>
+        <li class="here"><span class="small">You are here</span><b>How taxes work</b></li>
+        <li><span class="muted small">Next · Unit 2</span><b>File your first tax return</b></li>
+        <li><span class="muted small">Later · Unit 3</span><b>Make a budget</b></li>
+        <li><span class="muted small">Later · Unit 5</span><b>401(k) and Roth IRA</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../budgeting/">Next open lesson: Give every dollar a job <span class="arrow">→</span></a><a class="btn line" href="../../">Course map</a></div>
