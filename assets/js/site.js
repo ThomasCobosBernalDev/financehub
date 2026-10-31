@@ -36,7 +36,7 @@
     holder.replaceWith(wrap);
   });
 
-  // Our socials, bottom right of every footer.
+  // Our socials, centered between the disclaimer and the copyright.
   document.querySelectorAll(".foot").forEach((foot) => {
     const links = [
       ["TikTok", "https://www.tiktok.com/@financedhub", '<path fill="currentColor" stroke="none" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/>'],
@@ -47,7 +47,8 @@
     nav.className = "socials";
     nav.setAttribute("aria-label", window.FH ? FH.t("FinancedHub on social media", "FinancedHub en redes sociales") : "FinancedHub on social media");
     nav.innerHTML = links.map(([name, href, icon]) => `<a href="${href}" target="_blank" rel="noopener" aria-label="${name}" title="${name}"><svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg></a>`).join("");
-    foot.appendChild(nav);
+    const disc = foot.querySelector(".disclaimer");
+    if (disc) disc.after(nav); else foot.appendChild(nav);
   });
 
   // Fade elements up as they scroll into view. Lists and grids come in one item at a time.
