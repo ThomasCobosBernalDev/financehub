@@ -1,4 +1,4 @@
-// Setup page (start/): language, learning styles, goals, level and a quick placement check.
+// Setup page (start/): language, the eight ways lessons teach, goals, level and a quick placement check.
 // Shared by the English and Spanish pages; text comes from FH.t.
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -34,29 +34,14 @@
   document.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => { saveName(); show(++at); }));
   document.querySelectorAll("[data-back]").forEach((b) => b.addEventListener("click", () => show(--at)));
 
-  // ---------- Step 2: styles (and a username for new accounts) ----------
+  // ---------- Step 2: the eight ways every lesson teaches (and a username for new accounts) ----------
   const grid = $("#lp-grid");
   FH.STYLES.forEach((st) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "lp-card"; b.dataset.id = st.id; b.setAttribute("aria-pressed", "false");
-    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="tick" aria-hidden="true"></i>`;
-    b.addEventListener("click", () => {
-      const cur = new Set(FH.state.styles || []);
-      cur.has(st.id) ? cur.delete(st.id) : cur.add(st.id);
-      FH.setStyles([...cur]);
-    });
-    grid.appendChild(b);
+    const li = document.createElement("li");
+    li.className = "lp-card";
+    li.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg><b>${st.label}</b><small>${st.desc}</small><i class="ch">${st.chapter}</i>`;
+    grid.appendChild(li);
   });
-  const paintStyles = () => {
-    const picks = FH.state.styles || [];
-    grid.querySelectorAll(".lp-card").forEach((b) => { const on = picks.includes(b.dataset.id); b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
-    const all = picks.length === FH.STYLES.length;
-    $("#lp-all").textContent = all ? T("Clear all", "Quitar todos") : T("Select all", "Elegir todos");
-    $("#lp-status").textContent = !picks.length ? T("Nothing picked yet, so lessons show every part.", "Todavía no eliges nada, así que las lecciones muestran todas las partes.") : all ? T("All eight. Lessons show every part.", "Los ocho. Las lecciones muestran todas las partes.") : T(`${picks.length} picked.`, `${picks.length} elegidos.`);
-  };
-  $("#lp-all").addEventListener("click", () => FH.setStyles((FH.state.styles || []).length === FH.STYLES.length ? null : FH.STYLES.map((x) => x.id)));
-  document.addEventListener("fh:save", paintStyles);
-  paintStyles();
 
   const nameAsk = $("#name-ask"), nameIn = $("#setup-name");
   if (window.FHAuth) FHAuth.onChange((u) => { nameAsk.hidden = !u || !!(u.user_metadata || {}).username; });

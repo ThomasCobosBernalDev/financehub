@@ -30,7 +30,7 @@ TEXT = {
                      "logic": ("Break it down", "Break it down"), "nature": ("Nature", "Nature link"), "notes": ("Notes", "Notes"),
                      "together": ("Together", "Together"), "solo": ("On your own", "On your own"), "check": ("Check", "Check"),
                      "connects": ("Where it leads", "Where it leads")},
-        "your_style": "your style", "skip": "Skip to the lesson", "course": "Course", "certs": "Certifications", "about": "About",
+        "skip": "Skip to the lesson", "course": "Course", "certs": "Certifications", "about": "About",
         "theme": "Switch light or dark mode", "sign_in": "Sign in", "rail": "Lesson chapters", "start": "Start",
         "companion": "Your character so far", "savings": "Savings", "lessons_done": "Lessons done",
         "badges": "badges earned. Your numbers carry into every lesson.",
@@ -46,7 +46,7 @@ TEXT = {
                      "logic": ("Paso a paso", "Paso a paso"), "nature": ("Naturaleza", "Conexión con la naturaleza"), "notes": ("Apuntes", "Apuntes"),
                      "together": ("En grupo", "En grupo"), "solo": ("Por tu cuenta", "Por tu cuenta"), "check": ("Ponte a prueba", "Ponte a prueba"),
                      "connects": ("Hacia dónde va", "Hacia dónde va")},
-        "your_style": "tu estilo", "skip": "Saltar a la lección", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
+        "skip": "Saltar a la lección", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
         "theme": "Cambiar entre modo claro y oscuro", "sign_in": "Entrar", "rail": "Capítulos de la lección", "start": "Inicio",
         "companion": "Tu personaje hasta ahora", "savings": "Ahorros", "lessons_done": "Lecciones hechas",
         "badges": "insignias ganadas. Tus números pasan a cada lección.",
@@ -162,14 +162,13 @@ def build(src, lang):
         n += 1
         ds = f' data-style="{style}"' if style else ""
         rail.append(f'  <a href="#{cid}"{ds}><i></i><span>{label}</span></a>')
-        tag = f' <span class="pref-tag">{T["your_style"]}</span>' if style else ""
         body = parts[cid].rstrip()
         if cid == "hear":
             body = body.replace("<!-- player -->", HEAR_PLAYER.format(**T))
         chapters.append(
             f'\n  <section class="chapter{" tint" if tint else ""}" id="{cid}"{ds}>\n'
             f'    <div class="wrap{" narrow" if narrow else ""}">\n'
-            f'      <div class="kicker reveal"><span class="num">{n:02d}</span> {kick}{tag}</div>\n'
+            f'      <div class="kicker reveal"><span class="num">{n:02d}</span> {kick}</div>\n'
             f'{body}\n    </div>\n  </section>\n'
         )
     slug = os.path.splitext(os.path.basename(src))[0]

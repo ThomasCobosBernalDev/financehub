@@ -97,16 +97,6 @@
     FH.toast(T("Saved.", "Guardado."));
   });
 
-  // Settings: how you learn best, saved right away.
-  const styleBox = $("#set-styles");
-  FH.STYLES.forEach((st) => {
-    const l = document.createElement("label");
-    l.className = "check set-style";
-    l.innerHTML = `<input type="checkbox" value="${st.id}"><span>${st.label}<small>${st.desc}</small></span>`;
-    l.querySelector("input").addEventListener("change", () => FH.setStyles([...styleBox.querySelectorAll("input:checked")].map((i) => i.value)));
-    styleBox.append(l);
-  });
-
   // Settings: theme and motion.
   document.querySelectorAll('input[name="theme"]').forEach((r) => r.addEventListener("change", () => {
     const dark = r.value === "dark";
@@ -173,8 +163,6 @@
     $("#acct-xp").textContent = s.xp;
     $("#acct-badges").textContent = s.badges.length;
     $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
-    const picks = s.styles || [];
-    $("#set-styles").querySelectorAll("input").forEach((i) => { i.checked = picks.includes(i.value); });
     const dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
     $("#set-motion").checked = FH.still();

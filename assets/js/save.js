@@ -10,8 +10,6 @@
     version: 1,
     xp: 0,
     badges: [],
-    preferredStyle: null,
-    styles: null, // learning styles the learner picked; null means show everything
     lang: null, // "en" or "es" once picked; pages also remember it in localStorage "fh-lang"
     profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt, map: 2 }
     character: {
@@ -217,22 +215,6 @@
       persist();
       emit();
       return true;
-    },
-    setPreferredStyle(style) {
-      state.preferredStyle = style;
-      persist();
-      emit();
-    },
-    // Picked learning styles (ids from FH.STYLES). An empty or full list means "show everything".
-    get styles() {
-      const s = state.styles || (state.preferredStyle ? [state.preferredStyle] : null);
-      return s && s.length && s.length < STYLES.length ? s : null;
-    },
-    setStyles(list) {
-      state.styles = list && list.length ? [...new Set(list)] : null;
-      state.preferredStyle = null; // the old single pick would otherwise come back as a filter
-      persist();
-      emit();
     },
     lang: LANG,
     t,

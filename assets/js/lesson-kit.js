@@ -12,75 +12,13 @@
     const chapters = $$("main .chapter");
     const slug = short || id;
 
-    // ---------- XP, rail and learning style ----------
+    // ---------- XP and rail ----------
     const renderProgress = () => {
       const xp = $("#xp"); if (xp) xp.textContent = FH.state.xp;
       const seen = FH.lesson(id).sections;
       $$(".rail a").forEach((a) => a.classList.toggle("seen", !!seen[a.getAttribute("href").slice(1)]));
     };
     document.addEventListener("fh:save", renderProgress);
-
-    // ---------- Learning-style filter ----------
-    // Chapters outside the learner's picked styles fold down to one line; "Show anyway" opens them.
-    const opened = new Set();
-    chapters.forEach((c) => {
-      if (!c.dataset.style) return;
-      const k = c.querySelector(".kicker");
-      const b = document.createElement("button");
-      b.className = "unfold";
-      b.type = "button";
-      b.textContent = T("Show anyway", "Mostrar igual");
-      b.addEventListener("click", () => { opened.add(c.id); applyStyle(); });
-      k.appendChild(b);
-    });
-    const applyStyle = () => {
-      const picks = FH.styles;
-      chapters.forEach((c) => {
-        const st = c.dataset.style;
-        const mine = !!picks && !!st && picks.includes(st);
-        c.classList.toggle("is-preferred", mine);
-        c.classList.toggle("is-folded", !!picks && !!st && !mine && !opened.has(c.id));
-      });
-      $$(".rail a").forEach((a) => {
-        const st = a.dataset.style;
-        a.classList.toggle("pref", !!picks && !!st && picks.includes(st));
-        a.classList.toggle("folded", !!picks && !!st && !picks.includes(st) && !opened.has(a.getAttribute("href").slice(1)));
-      });
-      renderFilter();
-    };
-    $$(".rail a").forEach((a) => a.addEventListener("click", () => {
-      const id = a.getAttribute("href").slice(1);
-      if (a.classList.contains("folded")) { opened.add(id); applyStyle(); }
-    }));
-
-    const filter = document.createElement("div");
-    filter.className = "style-filter";
-    filter.innerHTML = `<button class="sf-toggle" type="button" aria-expanded="false" aria-controls="sf-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span></span></button>
-      <div class="sf-panel" id="sf-panel" hidden>
-        <b>${T("How you learn best", "Cómo aprendes mejor")}</b>
-        <p>${T("Your picks stay open. The rest fold down so you can skip them.", "Lo que elegiste queda abierto. Lo demás se pliega para que puedas saltarlo.")}</p>
-        <div class="sf-opts">${FH.STYLES.map((x) => `<label><input type="checkbox" value="${x.id}"><span>${x.label}<small>${x.chapter}</small></span></label>`).join("")}</div>
-        <button class="btn sm line sf-all" type="button">${T("Show every part", "Mostrar todas las partes")}</button>
-      </div>`;
-    document.body.appendChild(filter);
-    const toggle = $(".sf-toggle", filter), panel = $(".sf-panel", filter);
-    const renderFilter = () => {
-      const picks = FH.styles;
-      $("span", toggle).textContent = picks ? T(`Your styles · ${picks.length} of 8`, `Tus estilos · ${picks.length} de 8`) : T("All learning styles", "Todos los estilos");
-      $$("input", filter).forEach((i) => { i.checked = !picks || picks.includes(i.value); });
-    };
-    toggle.addEventListener("click", () => {
-      panel.hidden = !panel.hidden;
-      toggle.setAttribute("aria-expanded", String(!panel.hidden));
-    });
-    document.addEventListener("click", (e) => { if (!filter.contains(e.target) && !panel.hidden) { panel.hidden = true; toggle.setAttribute("aria-expanded", "false"); } });
-    $$("input", filter).forEach((i) => i.addEventListener("change", () => {
-      const list = $$("input", filter).filter((x) => x.checked).map((x) => x.value);
-      FH.setStyles(list);
-      opened.clear();
-      applyStyle();
-    }));
-    $(".sf-all", filter).addEventListener("click", () => { FH.setStyles(FH.STYLES.map((x) => x.id)); opened.clear(); applyStyle(); });
 
     const seenIO = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting && FH.markSection(id, e.target.id)) FH.addXP(5); }),
@@ -231,7 +169,6 @@
       });
     }
 
-    applyStyle();
     renderProgress();
     pairExamples();
     paginate(id, chapters);
@@ -259,8 +196,7 @@
     const T = FH.t;
     const root = document.body.dataset.root || "../../";
     const name = (c) => { const s = $(`.rail a[href="#${c.id}"] span`); return s ? s.textContent : ""; };
-    const usable = (i) => !chapters[i].classList.contains("is-folded");
-    const step = (from, dir) => { for (let i = from + dir; i >= 0 && i < chapters.length; i += dir) if (usable(i)) return i; return -1; };
+    const step = (from, dir) => { const i = from + dir; return i >= 0 && i < chapters.length ? i : -1; };
     let at = 0;
     chapters.forEach((c, i) => {
       const nav = document.createElement("nav");
@@ -277,15 +213,13 @@
       const back = step(i, -1), next = step(i, 1);
       $(".pager", c).innerHTML =
         (back >= 0 ? `<button class="btn line pg-back" type="button" data-go="${back}"><span class="arrow">←</span> ${name(chapters[back]) || T("Back", "Atrás")}</button>` : "<span></span>")
-        + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}${usable(j) ? "" : " folded"}" data-go="${j}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i><span class="pg-tip">${name(c)}</span></button>`).join("")}</div>`
+        + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}" data-go="${j}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i><span class="pg-tip">${name(c)}</span></button>`).join("")}</div>`
         + `<span class="pg-name">${name(c)} <small>· ${i + 1} ${T("of", "de")} ${chapters.length}</small></span></div>`
         + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}"><span>${T("Next", "Siguiente")}<span class="pg-label">: ${name(chapters[next])}</span></span> <span class="arrow">→</span></button>`
           : `<a class="btn pg-next" href="${root}course/">${T("Back to the course", "Volver al curso")} <span class="arrow">→</span></a>`);
     });
     const show = (i, target) => {
       if (i < 0 || i >= chapters.length) return;
-      const fold = chapters[i].classList.contains("is-folded") && chapters[i].querySelector(".unfold");
-      if (fold) fold.click();
       at = i;
       chapters.forEach((c, j) => c.classList.toggle("pg-on", j === i));
       $$(".rail a").forEach((a) => a.classList.toggle("current", a.getAttribute("href") === `#${chapters[i].id}`));
@@ -303,7 +237,6 @@
       const c = t && t.closest("main .chapter");
       if (!c) return;
       e.preventDefault();
-      if (c.classList.contains("is-folded")) c.querySelector(".unfold") && c.querySelector(".unfold").click();
       show(chapters.indexOf(c), t);
     });
     document.addEventListener("fh:save", paint);
