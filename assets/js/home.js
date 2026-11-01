@@ -61,7 +61,7 @@ const paint = () => {
   const earned = s.badges.map(FH.badgeInfo).filter(Boolean).reverse().slice(0, 6);
   $("#hm-badges").innerHTML = (earned.length ? `<ul class="badge-wall">${earned.map((b) => `<li class="got">${FH.medal(b)}<b>${b.name}</b></li>`).join("")}</ul>`
     : `<p class="hm-none">${T("Finish a lesson to earn your first achievement.", "Termina una lección para ganar tu primer logro.")}</p>`)
-    + `<a class="linkish hm-all" href="${root}account/#profile">${T("See all achievements →", "Ver todos los logros →")}</a>`;
+    + `<a class="linkish hm-all" href="${root}account/#achievements">${T("See all achievements →", "Ver todos los logros →")}</a>`;
 };
 paint();
 document.addEventListener("fh:save", paint);

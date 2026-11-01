@@ -210,7 +210,7 @@
   notes.className = "notes";
   notes.innerHTML = `<button class="icon-btn bell" type="button" aria-haspopup="true" aria-expanded="false" aria-label="${T("Notifications", "Notificaciones")}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="dot" hidden></i></button>
     <div class="notes-pop" hidden><p class="np-head">${T("Notifications", "Notificaciones")}</p><ul></ul>
-      <div class="np-foot"><a href="${root}account/#profile">${T("See all achievements →", "Ver todos los logros →")}</a></div></div>`;
+      <div class="np-foot"><a href="${root}account/#achievements">${T("See all achievements →", "Ver todos los logros →")}</a></div></div>`;
   xp.after(notes);
   const bell = notes.querySelector(".bell"), pop = notes.querySelector(".notes-pop");
   const ago = (iso) => {

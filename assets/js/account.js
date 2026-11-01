@@ -165,9 +165,11 @@
   });
 
   $("#sign-out").addEventListener("click", () => FHAuth.signOut());
-  // account/#profile shows the profile, plain account/ shows Settings.
-  const pickView = () => $("#acct-in").classList.toggle("is-profile", location.hash === "#profile");
-  addEventListener("hashchange", pickView);
+  // account/#profile shows the profile (#achievements too, scrolled down to them); plain account/ shows Settings.
+  let jumped = false;
+  const pickView = () => { $("#acct-in").classList.toggle("is-profile", location.hash === "#profile" || location.hash === "#achievements"); jumped = false; };
+  const jump = () => { if (location.hash === "#achievements" && !jumped && !$("#acct-in").classList.contains("hidden")) { jumped = true; $("#achievements").scrollIntoView({ behavior: FH.still() ? "auto" : "smooth" }); } };
+  addEventListener("hashchange", () => { pickView(); jump(); });
   pickView();
   $("#delete-confirm").addEventListener("input", (e) => ($("#delete-account").disabled = e.target.value.trim().toUpperCase() !== T("DELETE", "BORRAR")));
   $("#delete-account").addEventListener("click", async () => {
@@ -219,6 +221,7 @@
       : T("No path yet. Answer a few quick questions and we'll pick only the lessons you need.", "Aún no tienes camino. Responde unas preguntas rápidas y elegimos solo las lecciones que necesitas.");
     $("#prof-path-bar").style.width = `${pathLessons.length ? (pathDone / pathLessons.length) * 100 : 0}%`;
     paintBadges();
+    requestAnimationFrame(jump);
     const dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
     $("#set-motion").checked = FH.still();
