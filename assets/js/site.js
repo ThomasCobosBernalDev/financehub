@@ -276,9 +276,14 @@
   });
   window.FHShareStreak = async () => {
     const d = FH.streak();
-    const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥 financedhub.com`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥 financedhub.com`);
+    const url = "https://financedhub.com/";
+    const line = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥`);
+    const text = `${line} ${url}`;
     const blob = await streakCard(d), file = new File([blob], "financedhub-streak.png", { type: "image/png" });
+    // The picture, the line and the link together, so the message shows the card and the site's link preview.
     try {
+      const data = { files: [file], text: line, url };
+      if (navigator.canShare && navigator.canShare(data)) return await navigator.share(data);
       if (navigator.canShare && navigator.canShare({ files: [file] })) return await navigator.share({ files: [file], text });
     } catch (e) { if (e.name === "AbortError") return; }
     const a = document.createElement("a");
