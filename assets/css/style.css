@@ -936,8 +936,6 @@ details .in-example { margin: 10px 0 20px; }
 .acct-row svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--ink-2); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .acct-row span { flex: 1; }
 .acct-row svg:last-child:not(:first-child) { width: 16px; stroke: var(--ink-3); transition: transform .2s var(--ease); }
-.acct-notes[aria-expanded="true"] svg:last-child { transform: rotate(90deg); }
-.acct-empty { margin: 0 10px 6px 40px; color: var(--ink-3); font-size: 14px; }
 .acct-pop hr { border: 0; border-top: 1px solid var(--line); margin: 6px 4px; }
 .acct-out span { color: var(--ink-2); }
 @media (max-width: 420px) { .acct-btn .uname { display: none; } }
@@ -1386,3 +1384,61 @@ body { overflow-x: clip; }
 .about-stand li { padding: 16px 18px; border-radius: 16px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); line-height: 1.5; color: var(--ink-2); }
 .about-stand b { display: block; margin-bottom: 4px; font-family: var(--serif); font-size: 18px; color: var(--ink); }
 @media (max-width: 560px) { .about-stand { grid-template-columns: 1fr; } }
+/* Header streak and notifications bell (site.js), and the pop-up when a badge is earned. */
+.notes { position: relative; display: flex; align-items: center; gap: 8px; }
+.streak { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.streak svg { width: 17px; height: 17px; fill: currentColor; opacity: .5; }
+.streak.lit { color: var(--ink); }
+.streak.lit svg { fill: #d0602a; opacity: 1; }
+.bell { position: relative; }
+.bell:active { transform: none; }
+.bell .dot { position: absolute; top: 7px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: #d0602a; box-shadow: 0 0 0 2px var(--paper); }
+.notes-pop { position: absolute; top: calc(100% + 10px); right: -8px; z-index: 40; width: min(340px, calc(100vw - 24px)); padding: 10px; border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -16px rgba(0,0,0,.35); text-shadow: none; }
+.notes-pop[hidden] { display: none; }
+.np-head { margin: 4px 6px 8px; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.notes-pop ul { list-style: none; margin: 0; padding: 0; max-height: 300px; overflow-y: auto; }
+.notes-pop li { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-radius: 10px; }
+.notes-pop li.new { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.notes-pop li .medal { width: 36px; height: 36px; flex: none; }
+.notes-pop li b { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; }
+.notes-pop li small { font-size: 12.5px; color: var(--ink-3); }
+.np-empty { color: var(--ink-3); font-size: 14px; }
+.np-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 8px; padding: 10px 6px 2px; border-top: 1px solid var(--line); font-size: 13.5px; }
+.np-streak { flex: 1 0 100%; margin: 0; color: var(--ink-2); }
+.np-foot a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.badge-pop { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; align-items: center; gap: 14px; max-width: min(360px, calc(100vw - 40px)); padding: 14px 18px 14px 14px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), 0 20px 50px -18px rgba(0,0,0,.45); opacity: 0; transform: translateY(16px) scale(.96); pointer-events: none; transition: opacity .35s, transform .45s var(--ease); }
+.badge-pop.show { opacity: 1; transform: none; }
+.badge-pop .medal { width: 56px; height: 56px; flex: none; }
+.badge-pop.show .medal { animation: medal-in .7s var(--ease); }
+@keyframes medal-in { from { transform: rotate(-200deg) scale(.4); } }
+.badge-pop small { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.badge-pop b { display: block; font-family: var(--serif); font-size: 19px; font-weight: 500; }
+.badge-pop em { display: block; font-style: normal; font-size: 13px; color: var(--ink-3); }
+.avatar.has-pic, .prof-avatar.has-pic { background-size: cover; background-position: center; }
+@media (max-width: 560px) { .top-right .xp { display: none; } .notes { gap: 2px; } }
+/* Profile: tap your avatar to change it; your streak; the badge wall (gray until earned). */
+.prof-pic { display: grid; justify-items: center; gap: 4px; }
+button.prof-avatar { border: 0; padding: 0; cursor: pointer; font-family: var(--serif); transition: box-shadow .2s; }
+button.prof-avatar:hover, button.prof-avatar:focus-visible { box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--accent); }
+.prof-pic-acts { display: flex; gap: 10px; margin: 0; font-size: 13px; }
+.prof-pic-acts .linkish { font-size: inherit; }
+.streak-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.streak-row > div { flex: 1 1 220px; }
+
+.streak-row .set-p { margin: 0; }
+.streak-big { display: inline-flex; align-items: center; gap: 4px; font-family: var(--serif); font-size: 40px; line-height: 1; color: var(--ink-3); }
+.streak-big svg { width: 38px; height: 38px; fill: currentColor; opacity: .4; }
+.streak-big.lit { color: var(--ink); }
+.streak-big.lit svg { fill: #d0602a; opacity: 1; }
+.badge-wall { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 18px 12px; }
+.badge-wall li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; }
+.badge-wall .medal { width: 64px; height: 64px; margin-bottom: 6px; }
+.badge-wall .medal.locked { opacity: .7; }
+.badge-wall b { font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--ink-3); }
+.badge-wall .got b { color: var(--ink); }
+.badge-wall small { font-size: 12px; line-height: 1.35; color: var(--ink-3); }
+.badge-wall .got small { color: var(--accent); font-weight: 600; }
+.streak-row .set-sub { margin-top: 0; padding-top: 0; border-top: 0; }
+.ex-tiles .cx-tile.done { padding-right: 36px; }
+.streak svg { flex: none; }
+@media (max-width: 560px) { .notes-pop { position: fixed; top: 62px; left: 12px; right: 12px; width: auto; } }

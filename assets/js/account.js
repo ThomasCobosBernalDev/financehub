@@ -198,7 +198,8 @@
     const name = (user.user_metadata || {}).username || "";
     // Profile view (account/#profile): avatar, name and progress. Everything else is Settings.
     const nm = name || user.email.split("@")[0];
-    $("#prof-avatar").textContent = nm[0].toUpperCase();
+    FHAuth.paintAvatar($("#prof-avatar"), nm);
+    $("#pic-remove").hidden = !FH.state.avatar;
     $("#prof-name").textContent = nm;
     $("#prof-email").textContent = user.email;
     const f = $("#form-name");
@@ -208,10 +209,41 @@
     $("#acct-xp").textContent = s.xp;
     $("#acct-badges").textContent = s.badges.length;
     $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
+    // Streak and the badge wall: every course badge (gray until earned), then any earned inside lessons.
+    $("#streak-days").textContent = FH.streak();
+    $("#streak-best").textContent = s.streak.best || 0;
+    $(".streak-big").classList.toggle("lit", FH.streak() > 0);
+    const extra = s.badges.filter((id) => !FH.ACHIEVEMENTS.some((a) => a.id === id)).map(FH.badgeInfo);
+    $("#badge-wall").innerHTML = [...FH.ACHIEVEMENTS, ...extra].map((b) => {
+      const got = s.badges.includes(b.id);
+      return `<li class="${got ? "got" : ""}">${FH.medal(b, got)}<b>${b.name}</b><small>${got ? FH.t("Earned", "Ganada") : b.how}</small></li>`;
+    }).join("");
     const dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
     $("#set-motion").checked = FH.still();
   };
+  // Profile picture: pick a photo, crop it to a centered square and shrink it so it's small enough to save with your progress.
+  const pickPic = () => $("#pic-file").click();
+  $("#prof-avatar").addEventListener("click", pickPic);
+  $("#pic-change").addEventListener("click", pickPic);
+  $("#pic-file").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    e.target.value = "";
+    if (!file || !file.type.startsWith("image/")) return;
+    const img = new Image();
+    img.onload = () => {
+      const size = 192, c = document.createElement("canvas"), side = Math.min(img.width, img.height);
+      c.width = c.height = size;
+      c.getContext("2d").drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, size, size);
+      URL.revokeObjectURL(img.src);
+      FH.setAvatar(c.toDataURL("image/jpeg", .82));
+      FH.toast(FH.t("Profile picture updated.", "Foto de perfil actualizada."));
+    };
+    img.onerror = () => FH.toast(FH.t("That file couldn't be opened. Try a JPG or PNG.", "No se pudo abrir ese archivo. Prueba con JPG o PNG."));
+    img.src = URL.createObjectURL(file);
+  });
+  $("#pic-remove").addEventListener("click", () => FH.setAvatar(null));
+  $("#streak-share").addEventListener("click", () => window.FHShareStreak && window.FHShareStreak());
   FHAuth.onChange(render);
   document.addEventListener("fh:save", () => FHAuth.user && render(FHAuth.user));
 })();

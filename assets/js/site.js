@@ -188,3 +188,69 @@
     paint();
   });
 })();
+
+// Header: your streak (a flame and the days in a row) and a bell with your notifications.
+// New badges also pop up in the corner for a few seconds.
+(() => {
+  const T = FH.t, root = document.body.dataset.root || "./";
+  const right = document.querySelector(".topbar .top-right");
+  if (!right) return;
+  const flame = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/></svg>';
+  const wrap = document.createElement("div");
+  wrap.className = "notes";
+  wrap.innerHTML = `<span class="streak" title="${T("Days in a row you've shown up", "Días seguidos que has entrado")}">${flame}<b></b></span>
+    <button class="icon-btn bell" type="button" aria-haspopup="true" aria-expanded="false" aria-label="${T("Notifications", "Notificaciones")}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="dot" hidden></i></button>
+    <div class="notes-pop" hidden><p class="np-head">${T("Notifications", "Notificaciones")}</p><ul></ul>
+      <div class="np-foot"><p class="np-streak"></p><button class="btn sm line" type="button" data-share>${T("Share my streak", "Compartir mi racha")}</button><a href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a></div></div>`;
+  right.prepend(wrap);
+  const bell = wrap.querySelector(".bell"), pop = wrap.querySelector(".notes-pop");
+  const ago = (iso) => {
+    const m = Math.round((Date.now() - new Date(iso)) / 60000);
+    return m < 1 ? T("just now", "ahora") : m < 60 ? T(`${m} min ago`, `hace ${m} min`) : m < 1440 ? T(`${Math.round(m / 60)} h ago`, `hace ${Math.round(m / 60)} h`) : T(`${Math.round(m / 1440)} d ago`, `hace ${Math.round(m / 1440)} d`);
+  };
+  const paint = () => {
+    const days = FH.streak(), notes = FH.state.notes || [];
+    wrap.querySelector(".streak b").textContent = days;
+    wrap.querySelector(".streak").classList.toggle("lit", days > 0);
+    wrap.querySelector(".dot").hidden = !notes.some((n) => !n.read);
+    pop.querySelector("ul").innerHTML = notes.length ? notes.slice().reverse().slice(0, 8).map((n) => {
+      const b = FH.badgeInfo(n.id);
+      return `<li class="${n.read ? "" : "new"}">${FH.medal(b)}<span><b>${T("Badge earned:", "Insignia ganada:")} ${b.name}</b><small>${b.how} · ${ago(n.at)}</small></span></li>`;
+    }).join("") : `<li class="np-empty">${T("Nothing yet. Finish a lesson to earn your first badge.", "Nada todavía. Termina una lección para ganar tu primera insignia.")}</li>`;
+    pop.querySelector(".np-streak").innerHTML = T(`<b>${days}-day streak</b> · best ${FH.state.streak.best || days}`, `<b>Racha de ${days} ${days === 1 ? "día" : "días"}</b> · mejor ${FH.state.streak.best || days}`);
+  };
+  const close = () => { pop.hidden = true; bell.setAttribute("aria-expanded", "false"); };
+  bell.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = pop.hidden;
+    pop.hidden = !open;
+    bell.setAttribute("aria-expanded", String(open));
+    if (open) FH.readNotes();
+  });
+  document.addEventListener("click", (e) => { if (!pop.hidden && !e.target.closest(".notes")) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pop.hidden) { close(); bell.focus(); } });
+  // Share the streak: the phone's share sheet, or copy the text on a computer.
+  window.FHShareStreak = async () => {
+    const d = FH.streak();
+    const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥`);
+    const url = "https://financedhub.com/";
+    try {
+      if (navigator.share) await navigator.share({ title: "FinancedHub", text, url });
+      else { await navigator.clipboard.writeText(`${text} ${url}`); FH.toast(T("Copied. Paste it anywhere to share.", "Copiado. Pégalo donde quieras compartirlo.")); }
+    } catch (e) { /* they closed the share sheet */ }
+  };
+  pop.querySelector("[data-share]").addEventListener("click", () => window.FHShareStreak());
+  document.addEventListener("fh:save", paint);
+  paint();
+
+  // The pop-up for a new badge.
+  let card;
+  document.addEventListener("fh:badge", (e) => {
+    const b = e.detail;
+    if (!card) { card = document.createElement("div"); card.className = "badge-pop"; card.setAttribute("role", "status"); document.body.append(card); }
+    card.innerHTML = `${FH.medal(b)}<span><small>${T("Badge unlocked", "Insignia desbloqueada")}</small><b>${b.name}</b><em>${b.how}</em></span>`;
+    card.classList.remove("show"); void card.offsetWidth; card.classList.add("show");
+    clearTimeout(card._t);
+    card._t = setTimeout(() => card.classList.remove("show"), 4200);
+  });
+})();

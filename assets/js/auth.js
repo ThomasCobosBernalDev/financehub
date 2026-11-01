@@ -22,6 +22,11 @@
     const out = JSON.parse(JSON.stringify(newer));
     out.xp = Math.max(a.xp || 0, b.xp || 0);
     out.badges = [...new Set([...(a.badges || []), ...(b.badges || [])])];
+    out.badgeNames = Object.assign({}, a.badgeNames, b.badgeNames);
+    // Streak: the save that showed up most recently, keeping the best run from either.
+    const sa = a.streak || {}, sb = b.streak || {};
+    out.streak = Object.assign({}, (sa.last || "") >= (sb.last || "") ? sa : sb, { best: Math.max(sa.best || 0, sb.best || 0) });
+    out.avatar = newer.avatar || a.avatar || b.avatar || null;
     const pa = a.profile, pb = b.profile;
     out.profile = !pa ? pb || null : !pb ? pa : (pa.setAt || "") >= (pb.setAt || "") ? pa : pb;
     out.lessons = {};
@@ -69,12 +74,10 @@
   // Header button reads "Account" once signed in.
   // Signed in, the header button opens an account menu; signed out, it stays a Sign in link.
   const ico = {
-    bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/>',
     gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
     out: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
-    chev: '<path d="m9 18 6-6-6-6"/>',
   };
   const svg = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
   const closeMenus = () => document.querySelectorAll(".acct-menu.open").forEach((m) => {
@@ -99,8 +102,6 @@
       </button>
       <div class="acct-pop" role="menu">
         <a class="acct-who" role="menuitem" href="${base}account/#profile"><span class="avatar"></span><span><b class="uname"></b><small></small></span></a>
-        <button class="acct-row acct-notes" type="button" role="menuitem" aria-expanded="false">${svg(ico.bell)}<span>${FH.t("Notifications", "Notificaciones")}</span>${svg(ico.chev)}</button>
-        <p class="acct-empty" hidden>${FH.t("You're all caught up.", "Estás al día.")}</p>
         <hr>
         <a class="acct-row" role="menuitem" href="${base}account/#profile">${svg(ico.user)}<span>${FH.t("Your profile", "Tu perfil")}</span></a>
         <a class="acct-row" role="menuitem" href="${base}account/">${svg(ico.gear)}<span>${FH.t("Settings", "Ajustes")}</span></a>
@@ -108,7 +109,7 @@
         <hr>
         <button class="acct-row acct-out" type="button" role="menuitem">${svg(ico.out)}<span>${FH.t("Log out", "Cerrar sesión")}</span></button>
       </div>`;
-    wrap.querySelectorAll(".avatar").forEach((el) => { el.textContent = name[0].toUpperCase(); });
+    wrap.querySelectorAll(".avatar").forEach((el) => FHAuth.paintAvatar(el, name));
     wrap.querySelectorAll(".uname").forEach((el) => { el.textContent = name; });
     wrap.querySelector(".acct-who small").textContent = user.email;
     const btn = wrap.querySelector(".acct-btn");
@@ -119,12 +120,6 @@
       wrap.classList.toggle("open", open);
       btn.setAttribute("aria-expanded", String(open));
       if (open) wrap.querySelector(".acct-row").focus();
-    });
-    const notes = wrap.querySelector(".acct-notes");
-    notes.addEventListener("click", () => {
-      const empty = wrap.querySelector(".acct-empty");
-      empty.hidden = !empty.hidden;
-      notes.setAttribute("aria-expanded", String(!empty.hidden));
     });
     wrap.querySelector(".acct-out").addEventListener("click", () => { closeMenus(); FHAuth.signOut(); });
     // Arrow keys move through the rows.
@@ -158,6 +153,7 @@
   const onAccount = () => /\/account\/?$/.test(location.pathname);
   const afterSignIn = () => {
     if (!user || recovering) return;
+    FH.award("account");
     const root = document.body.dataset.root || "./";
     if (needsFinish(user)) { if (!onAccount()) location.href = root + "account/"; return; }
     if (/\/start\/?$/.test(location.pathname)) return;
@@ -173,7 +169,11 @@
     } else if (justIn && onAccount()) location.href = root;
   };
 
-  client.auth.onAuthStateChange((event, session) => {
+  document.addEventListener("fh:save", () => {
+    const name = user && ((user.user_metadata || {}).username || user.email.split("@")[0]);
+    if (name) document.querySelectorAll(".acct-menu .avatar").forEach((el) => FHAuth.paintAvatar(el, name));
+  });
+    client.auth.onAuthStateChange((event, session) => {
     const was = user && user.id;
     user = session ? session.user : null;
     if (event === "PASSWORD_RECOVERY") recovering = true;
@@ -214,6 +214,13 @@
 
   window.FHAuth = {
     client,
+    // An avatar circle: the learner's own photo if they added one, else the first letter of their name.
+    paintAvatar(el, name) {
+      const pic = FH.state.avatar;
+      el.style.backgroundImage = pic ? `url("${pic}")` : "";
+      el.classList.toggle("has-pic", !!pic);
+      el.textContent = pic ? "" : (name || "?")[0].toUpperCase();
+    },
     get user() { return user; },
     onChange(fn) { listeners.push(fn); fn(user); },
     redirect: () => location.origin + location.pathname,

@@ -10,6 +10,10 @@
     version: 1,
     xp: 0,
     badges: [],
+    badgeNames: {}, // names for badges earned inside lessons (the course-wide ones are in ACHIEVEMENTS)
+    notes: [], // notifications, newest last: { id, at, read }
+    streak: { days: 0, best: 0, last: null }, // days in a row the learner showed up
+    avatar: null, // their own profile picture, a small square JPEG data URL
     lang: null, // "en" or "es" once picked; pages also remember it in localStorage "fh-lang"
     profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt, map: 2 }
     character: {
@@ -202,7 +206,72 @@
   };
   STYLES.forEach((st) => { st.icon = ICONS[st.id]; });
 
-  const emit = () => document.dispatchEvent(new CustomEvent("fh:save", { detail: state }));
+  // ---------- Badges, streaks and notifications ----------
+  // Course-wide badges, checked after every save. Badges earned inside a lesson use FH.badge(id, name) instead.
+  const ICON = {
+    coin: '<circle cx="12" cy="12" r="8"/><circle cx="11" cy="13" r="4"/>',
+    chart: '<path d="M4 18l5-5 4 3 7-8"/><path d="M15 8h5v5"/>',
+    books: '<path d="M5 4h4v16H5zM10 4h4v16h-4zM15 5.5l3.6-1 3.4 14.6-3.6 1z"/>',
+    check: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
+    trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/>',
+    route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h5"/>',
+    compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+    clip: '<rect x="6" y="5" width="12" height="16" rx="2"/><path d="M9 5V3h6v2M9 13l2 2 4-4"/>',
+    shield: '<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="m9 12 2 2 4-4"/>',
+    flame: '<path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/>',
+    star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  };
+  const doneCount = () => Object.values(state.lessons).filter((l) => l.completedAt).length;
+  const ACHIEVEMENTS = [
+    { id: "first-lesson", tier: "bronze", icon: "coin", name: t("First Deposit", "Primer depósito"), how: t("Finish your first lesson.", "Termina tu primera lección."), test: () => doneCount() >= 1 },
+    { id: "five-lessons", tier: "silver", icon: "chart", name: t("Building Interest", "Generando intereses"), how: t("Finish 5 lessons.", "Termina 5 lecciones."), test: () => doneCount() >= 5 },
+    { id: "fifteen-lessons", tier: "gold", icon: "books", name: t("Blue Chip", "Acción de primera"), how: t("Finish 15 lessons.", "Termina 15 lecciones."), test: () => doneCount() >= 15 },
+    { id: "full-unit", tier: "green", icon: "check", name: t("Unit Closed", "Unidad cerrada"), how: t("Finish every lesson in a unit.", "Termina todas las lecciones de una unidad."),
+      test: () => PARTS.flatMap((p) => p.units).some((u) => { const ls = CATALOG.filter((l) => l.unit === u); return ls.length && ls.every((l) => FH.done(l.id)); }) },
+    { id: "whole-course", tier: "gold", icon: "trophy", name: t("Wall Street Ready", "Listo para Wall Street"), how: t("Finish every lesson in the course.", "Termina todas las lecciones del curso."), test: () => CATALOG.every((l) => FH.done(l.id)) },
+    { id: "path-set", tier: "green", icon: "route", name: t("Mapped Out", "Camino trazado"), how: t("Choose your path.", "Elige tu camino."), test: () => FH.path.setUp },
+    { id: "placement", tier: "silver", icon: "clip", name: t("Know Your Worth", "Sabes lo que vales"), how: t("Take the placement check.", "Haz la prueba de nivel."), test: () => !!(state.profile && state.profile.quiz) },
+    { id: "explorer", tier: "bronze", icon: "compass", name: t("Off the Beaten Path", "Fuera del camino"), how: t("Finish a lesson that isn't on your path.", "Termina una lección que no está en tu camino."),
+      test: () => { const { items, setUp } = FH.path; if (!setUp) return false; const on = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id)); return CATALOG.some((l) => FH.done(l.id) && !on.has(l.id)); } },
+    { id: "account", tier: "green", icon: "shield", name: t("Vault Secured", "Bóveda asegurada"), how: t("Create your free account.", "Crea tu cuenta gratis."), test: () => false },
+    { id: "streak-3", tier: "flame", icon: "flame", name: t("On a Roll", "En racha"), how: t("Show up 3 days in a row.", "Entra 3 días seguidos."), test: () => state.streak.best >= 3 },
+    { id: "streak-7", tier: "flame", icon: "flame", name: t("Week Strong", "Semana completa"), how: t("Show up 7 days in a row.", "Entra 7 días seguidos."), test: () => state.streak.best >= 7 },
+    { id: "streak-30", tier: "gold", icon: "flame", name: t("Habit Formed", "Hábito formado"), how: t("Show up 30 days in a row.", "Entra 30 días seguidos."), test: () => state.streak.best >= 30 },
+  ];
+  const TIERS = { bronze: "#b0793f", silver: "#7f8c99", gold: "#c3952a", green: "#1f6f5a", flame: "#d0602a" };
+  // A badge as a round medal: tier color, a ring like the logo's, and its icon. Locked badges are gray.
+  const medal = (b, earned = true) => `<svg class="medal${earned ? "" : " locked"}" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="${earned ? TIERS[b.tier] || TIERS.green : "var(--line)"}"/><circle cx="32" cy="32" r="25" fill="none" stroke="${earned ? "rgba(255,255,255,.4)" : "var(--paper)"}" stroke-width="2"/><g transform="translate(18 18) scale(1.17)" fill="none" stroke="${earned ? "#fff" : "var(--ink-3)"}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[b.icon] || ICON.star}</g></svg>`;
+  const info = (id) => ACHIEVEMENTS.find((a) => a.id === id) || { id, tier: "bronze", icon: "star", name: state.badgeNames[id] || id, how: t("Earned inside a lesson.", "Ganada dentro de una lección.") };
+  const award = (id) => {
+    if (state.badges.includes(id)) return false;
+    state.badges.push(id);
+    state.notes.push({ id, at: new Date().toISOString(), read: false });
+    if (state.notes.length > 40) state.notes = state.notes.slice(-40);
+    return true;
+  };
+  // Show off a new badge for a few seconds (site.js draws it; this just asks).
+  const celebrate = (id) => document.dispatchEvent(new CustomEvent("fh:badge", { detail: info(id) }));
+  const checkBadges = () => {
+    const fresh = ACHIEVEMENTS.filter((a) => !state.badges.includes(a.id) && a.test()).map((a) => a.id);
+    fresh.forEach(award);
+    if (fresh.length) { persist(); celebrate(fresh[fresh.length - 1]); }
+  };
+  // Today's date on the learner's own clock, like 2026-11-01.
+  const day = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const touchStreak = () => {
+    const st = state.streak || (state.streak = { days: 0, best: 0, last: null });
+    const today = day();
+    if (st.last === today) return;
+    const y = new Date(); y.setDate(y.getDate() - 1);
+    st.days = st.last === day(y) ? st.days + 1 : 1;
+    st.best = Math.max(st.best || 0, st.days);
+    st.last = today;
+    persist();
+  };
+  // The streak still counts if they came yesterday; after that it's broken.
+  const liveStreak = () => { const st = state.streak || {}; const y = new Date(); y.setDate(y.getDate() - 1); return st.last === day() || st.last === day(y) ? st.days : 0; };
+
+  const emit = () => { checkBadges(); document.dispatchEvent(new CustomEvent("fh:save", { detail: state })); };
 
   window.FH = {
     get state() { return state; },
@@ -213,13 +282,24 @@
       emit();
       if (why) toast(`+${n} XP · ${why}`);
     },
+    // A badge earned inside a lesson (a perfect quiz, a game won). It also lands in notifications.
     badge(id, label) {
       if (state.badges.includes(id)) return;
-      state.badges.push(id);
+      state.badgeNames[id] = label;
+      award(id);
       persist();
       emit();
-      toast(t(`Badge unlocked: ${label}`, `Insignia desbloqueada: ${label}`));
+      celebrate(id);
     },
+    // A course-wide badge that can't be checked from the save alone (like creating an account).
+    award(id) { if (award(id)) { persist(); emit(); celebrate(id); } },
+    ACHIEVEMENTS,
+    badgeInfo: info,
+    medal,
+    streak: liveStreak,
+    // Mark every notification as seen.
+    readNotes() { if (state.notes.some((n) => !n.read)) { state.notes.forEach((n) => { n.read = true; }); persist(); emit(); } },
+    setAvatar(dataUrl) { state.avatar = dataUrl; persist(); emit(); },
     markSection(lessonId, sectionId) {
       const l = lesson(lessonId);
       if (l.sections[sectionId]) return false;
@@ -289,6 +369,7 @@
     // Swap in a save that came from the learner's account.
     replace(next) {
       state = upgrade(Object.assign(fresh(), next));
+      touchStreak();
       // A language saved on the account wins in this browser too.
       if (state.lang) try { localStorage.setItem("fh-lang", state.lang); } catch (e) { /* storage blocked */ }
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
@@ -297,4 +378,7 @@
     toast,
     money: (n) => (n < 0 ? "-$" : "$") + Math.abs(Math.round(n)).toLocaleString("en-US"),
   };
+  // Every visit counts toward the streak; then catch up on any badges this save already qualifies for.
+  touchStreak();
+  setTimeout(checkBadges, 600); // after site.js is listening, so a new badge gets its pop-up
 })();
