@@ -202,6 +202,7 @@
     FHAuth.paintAvatar($("#prof-avatar"), nm);
     $("#pic-remove").hidden = !FH.state.avatar;
     $("#prof-name").textContent = nm;
+    paintBanner();
     $("#prof-since").textContent = user.created_at ? T("Learning since ", "Aprendiendo desde ") + new Date(user.created_at).toLocaleDateString(FH.lang === "es" ? "es-MX" : "en-US", { month: "long", year: "numeric" }) : "";
     const f = $("#form-name");
     if (document.activeElement !== f.username) f.username.value = name;
@@ -239,6 +240,19 @@
     $("#badge-wall").innerHTML = `<p class="set-p">${note}</p>` + (list.length ? `<ul class="badge-wall">${list.map(tile).join("")}</ul>` : "");
   };
   $("#badge-tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; paintBadges(); } });
+  // Profile banner: the skyline by default, or one of these photos. Saved with your progress.
+  const BANNERS = ["1486406146926-c627a92ad1ab", "1534469650761-fce6cc26ac0d", "1556742031-c6961e8560b0", "1460925895917-afdab827c52f",
+    "1611974789855-9c2a0a7236a3", "1633158829556-6ea20ad39b4f", "1745270917233-65e776a47547", "1457369804613-52c61a468e7d"];
+  const bannerUrl = (id, w, h) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
+  const paintBanner = () => {
+    const cur = BANNERS.includes(FH.state.banner) ? FH.state.banner : BANNERS[0];
+    $("#prof-banner").src = bannerUrl(cur, 1400, 420);
+    $("#banner-list").innerHTML = BANNERS.map((id, i) => `<li><button type="button" data-banner="${id}" aria-pressed="${id === cur}" aria-label="${T("Banner", "Portada")} ${i + 1}"><img src="${bannerUrl(id, 320, 120)}" alt="" loading="lazy"></button></li>`).join("");
+  };
+  const toggleBanners = (open) => { $("#banner-pick").hidden = !open; $("#banner-btn").setAttribute("aria-expanded", String(open)); };
+  $("#banner-btn").addEventListener("click", () => toggleBanners($("#banner-pick").hidden));
+  $("#banner-done").addEventListener("click", () => toggleBanners(false));
+  $("#banner-list").addEventListener("click", (e) => { const b = e.target.closest("[data-banner]"); if (b) FH.setBanner(b.dataset.banner === BANNERS[0] ? null : b.dataset.banner); });
   // Profile picture: pick a photo, crop it to a centered square and shrink it so it's small enough to save with your progress.
   const pickPic = () => $("#pic-file").click();
   $("#prof-avatar").addEventListener("click", pickPic);

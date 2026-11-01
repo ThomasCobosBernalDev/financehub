@@ -13,6 +13,7 @@
     notes: [], // notifications, newest last: { id, at, read }
     streak: { days: 0, best: 0, last: null }, // days in a row the learner showed up
     avatar: null, // their own profile picture, a small square JPEG data URL
+    banner: null, // the Unsplash photo id behind their profile (null = the default skyline)
     lang: null, // "en" or "es" once picked; pages also remember it in localStorage "fh-lang"
     profile: null, // from the setup: { goals: [], level, known: {unit: true}, quiz, done, setAt, map: 2 }
     character: {
@@ -238,7 +239,7 @@
       test: () => PARTS.flatMap((p) => p.units).some((u) => { const ls = CATALOG.filter((l) => l.unit === u); return ls.length && ls.every((l) => FH.done(l.id)); }) },
     { id: "whole-course", tier: "gold", icon: "trophy", name: t("Wall Street Ready", "Listo para Wall Street"), how: t("Finish every lesson in the course.", "Termina todas las lecciones del curso."), test: () => CATALOG.every((l) => FH.done(l.id)) },
     { id: "path-set", tier: "green", icon: "route", name: t("Mapped Out", "Camino trazado"), how: t("Choose your path.", "Elige tu camino."), test: () => FH.path.setUp },
-    { id: "placement", tier: "silver", icon: "clip", name: t("Know Your Worth", "Sabes lo que vales"), how: t("Take the placement check.", "Haz la prueba de nivel."), test: () => !!(state.profile && state.profile.quiz) },
+    { id: "placement", tier: "silver", icon: "clip", name: t("Know Your Worth", "Sabes lo que vales"), how: t("Take the quick quiz of what you know.", "Haz la prueba rápida de lo que sabes."), test: () => !!(state.profile && state.profile.quiz) },
     { id: "explorer", tier: "bronze", icon: "compass", name: t("Off the Beaten Path", "Fuera del camino"), how: t("Finish a lesson that isn't on your path.", "Termina una lección que no está en tu camino."),
       test: () => { const { items, setUp } = FH.path; if (!setUp) return false; const on = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id)); return CATALOG.some((l) => FH.done(l.id) && !on.has(l.id)); } },
     { id: "account", tier: "green", icon: "shield", name: t("Vault Secured", "Bóveda asegurada"), how: t("Create your free account.", "Crea tu cuenta gratis."), test: () => false },
@@ -349,6 +350,7 @@
     // Mark every notification as seen.
     readNotes() { if (state.notes.some((n) => !n.read)) { state.notes.forEach((n) => { n.read = true; }); persist(); emit(); } },
     setAvatar(dataUrl) { state.avatar = dataUrl; persist(); emit(); },
+    setBanner(id) { state.banner = id; persist(); emit(); },
     markSection(lessonId, sectionId) {
       const l = lesson(lessonId);
       if (l.sections[sectionId]) return false;
@@ -406,7 +408,7 @@
       const on = new Set(items.map((x) => (x.lesson ? x.lesson.unit : x.unit)));
       return { items, on, known: new Set(Object.keys((p && p.known) || {}).map(Number)), setUp: !!(p && p.done && goals) };
     },
-    // Drop the goals and placement results so the whole course shows again. `done` stays so setup isn't forced again.
+    // Drop the goals and quiz results so the whole course shows again. `done` stays so setup isn't forced again.
     clearPath() {
       this.setProfile({ goals: [], known: {}, level: null, quiz: null, done: true });
     },

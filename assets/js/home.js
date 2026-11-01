@@ -44,7 +44,7 @@ const paint = () => {
       <p>${T(`${days === 1 ? "day" : "days"} in a row · best ${Math.max(s.streak.best || 0, days)}`, `${days === 1 ? "día seguido" : "días seguidos"} · mejor ${Math.max(s.streak.best || 0, days)}`)}</p>
       <button class="linkish" type="button" id="hm-share">${T("Share my streak", "Compartir mi racha")}</button></div>
     <div class="hm-stat"><p class="cx-col">XP</p><p class="hm-big"><b>${s.xp}</b></p>
-      <p>${goal ? T(`Next badge: <b>${goal.name}</b>. ${goal.how}`, `Siguiente insignia: <b>${goal.name}</b>. ${goal.how}`) : T("You've earned every course badge.", "Ganaste todas las insignias del curso.")}</p></div>
+      <p>${goal ? T(`Next achievement: <b>${goal.name}</b>. ${goal.how}`, `Siguiente logro: <b>${goal.name}</b>. ${goal.how}`) : T("You've earned every course achievement.", "Ganaste todos los logros del curso.")}</p></div>
     <div class="hm-stat"><p class="cx-col">${T("Your path", "Tu camino")}</p>${setUp
       ? `<p class="hm-big"><b>${pathDone}</b><small>/ ${pathLessons.length}</small></p><div class="mp-bar" aria-hidden="true"><i style="width:${pathLessons.length ? (pathDone / pathLessons.length) * 100 : 0}%"></i></div>
         <p>${T("lessons done", "lecciones hechas")} · <a class="linkish" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a></p>`
@@ -60,8 +60,8 @@ const paint = () => {
   // Recent badges, newest first.
   const earned = s.badges.map(FH.badgeInfo).filter(Boolean).reverse().slice(0, 6);
   $("#hm-badges").innerHTML = (earned.length ? `<ul class="badge-wall">${earned.map((b) => `<li class="got">${FH.medal(b)}<b>${b.name}</b></li>`).join("")}</ul>`
-    : `<p class="hm-none">${T("Finish a lesson to earn your first badge.", "Termina una lección para ganar tu primera insignia.")}</p>`)
-    + `<a class="linkish hm-all" href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a>`;
+    : `<p class="hm-none">${T("Finish a lesson to earn your first achievement.", "Termina una lección para ganar tu primer logro.")}</p>`)
+    + `<a class="linkish hm-all" href="${root}account/#profile">${T("See all achievements →", "Ver todos los logros →")}</a>`;
 };
 paint();
 document.addEventListener("fh:save", paint);

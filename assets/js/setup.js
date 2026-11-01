@@ -1,4 +1,4 @@
-// Setup page (start/): language, the eight ways lessons teach, goals, level and a quick placement check.
+// Setup page (start/): language, the eight ways lessons teach, goals, level and a quick quiz of what you know.
 // Shared by the English and Spanish pages; text comes from FH.t.
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -109,14 +109,14 @@
   const paintLevel = () => {
     lg.querySelectorAll(".level-card").forEach((b) => { const on = b.dataset.id === level; b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); });
     $("#level-next").disabled = !level;
-    $("#level-next").firstChild.textContent = level && level !== "new" ? T("Start the quick check ", "Empezar la prueba rápida ") : T("Next ", "Siguiente ");
+    $("#level-next").firstChild.textContent = level && level !== "new" ? T("Start the quick quiz ", "Empezar la prueba rápida ") : T("Next ", "Siguiente ");
   };
   paintLevel();
   $("#level-next").addEventListener("click", () => {
     if (level === "new") { known = {}; checked(); } else startQuiz();
   });
 
-  // ---------- Placement check: two questions per unit on the path, one part of the course at a time ----------
+  // ---------- Quick quiz: two questions per unit on the path, one part of the course at a time ----------
   // The first answer of each question is the right one; they're shuffled on screen.
   const QS_EN = {
     1: [["What's the main difference between a checking account and a savings account?", "Checking is for spending; savings is for money you set aside", "Savings is for daily purchases; checking is for big bills", "Checking pays more interest because you use it more", "Only checking is insured; savings is at your own risk"],
@@ -224,7 +224,7 @@
   };
   const askQ = () => {
     const q = qs[qi], part = FH.partOf(q.unit);
-    $("#q-count").textContent = T(`Placement check · Part ${part.n}, question ${qi + 1} of ${qs.length}`, `Prueba de nivel · Parte ${part.n}, pregunta ${qi + 1} de ${qs.length}`);
+    $("#q-count").textContent = T(`Quick quiz · Part ${part.n}, question ${qi + 1} of ${qs.length}`, `Prueba rápida · Parte ${part.n}, pregunta ${qi + 1} de ${qs.length}`);
     $("#q-bar").style.width = `${(asked / maxQs) * 100}%`;
     $("#q-unit").textContent = `${T("Unit", "Unidad")} ${q.unit} · ${FH.UNIT_NAMES[q.unit - 1]}`;
     $("#q-stem").textContent = q.q;

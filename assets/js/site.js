@@ -210,7 +210,7 @@
   notes.className = "notes";
   notes.innerHTML = `<button class="icon-btn bell" type="button" aria-haspopup="true" aria-expanded="false" aria-label="${T("Notifications", "Notificaciones")}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="dot" hidden></i></button>
     <div class="notes-pop" hidden><p class="np-head">${T("Notifications", "Notificaciones")}</p><ul></ul>
-      <div class="np-foot"><a href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a></div></div>`;
+      <div class="np-foot"><a href="${root}account/#profile">${T("See all achievements →", "Ver todos los logros →")}</a></div></div>`;
   xp.after(notes);
   const bell = notes.querySelector(".bell"), pop = notes.querySelector(".notes-pop");
   const ago = (iso) => {
@@ -226,8 +226,8 @@
     notes.querySelector(".dot").hidden = !list.some((n) => !n.read);
     pop.querySelector("ul").innerHTML = list.length ? list.slice().reverse().slice(0, 8).map((n) => {
       const b = FH.badgeInfo(n.id);
-      return `<li class="${n.read ? "" : "new"}">${FH.medal(b)}<span><b>${T("Badge earned:", "Insignia ganada:")} ${b.name}</b><small>${b.how} · ${ago(n.at)}</small></span></li>`;
-    }).join("") : `<li class="np-empty">${T("Nothing yet. Finish a lesson to earn your first badge.", "Nada todavía. Termina una lección para ganar tu primera insignia.")}</li>`;
+      return `<li class="${n.read ? "" : "new"}">${FH.medal(b)}<span><b>${T("Achievement earned:", "Logro ganado:")} ${b.name}</b><small>${b.how} · ${ago(n.at)}</small></span></li>`;
+    }).join("") : `<li class="np-empty">${T("Nothing yet. Finish a lesson to earn your first achievement.", "Nada todavía. Termina una lección para ganar tu primer logro.")}</li>`;
   };
   const close = () => { pop.hidden = true; bell.setAttribute("aria-expanded", "false"); };
   bell.addEventListener("click", (e) => {
@@ -284,7 +284,7 @@
   document.addEventListener("fh:badge", (e) => {
     const b = e.detail;
     if (!card) { card = document.createElement("div"); card.className = "badge-pop"; card.setAttribute("role", "status"); document.body.append(card); }
-    card.innerHTML = `${FH.medal(b)}<span><small>${T("Badge unlocked", "Insignia desbloqueada")}</small><b>${b.name}</b><em>${b.how}</em></span>`;
+    card.innerHTML = `${FH.medal(b)}<span><small>${T("Achievement unlocked", "Logro desbloqueado")}</small><b>${b.name}</b><em>${b.how}</em></span>`;
     card.classList.remove("show"); void card.offsetWidth; card.classList.add("show");
     clearTimeout(card._t);
     card._t = setTimeout(() => card.classList.remove("show"), 4200);

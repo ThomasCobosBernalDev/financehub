@@ -92,7 +92,6 @@ const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash), p = m && 
 addEventListener("hashchange", fromHash);
 
 // Your path: units on it get an outlined number (filled once all done), units you know a soft fill, the rest are grayed out.
-// Its progress, buttons and a color key sit at the top of the left column.
 const key = (setUp) => `<ul class="ex-key">${(setUp ? [["on", T("On your path", "En tu camino")], ["done", T("Finished", "Terminada")], ["known", T("You already know it", "Ya lo sabes")], ["next", T("Up next", "Sigue")], ["off", T("Not on your path", "No está en tu camino")]]
   : [["live", T("Lessons open", "Lecciones abiertas")], ["done", T("Finished", "Terminada")], ["off", T("Coming soon", "Muy pronto")]]).map(([k, t]) => `<li><span class="k ${k}"></span>${t}</li>`).join("")}</ul>`;
 const paintPath = () => {
@@ -106,18 +105,20 @@ const paintPath = () => {
     b.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
   });
   if (curUnit) renderPane();
+  // Your path card, between the title and the course: progress, a color key and plain buttons to change it.
   const tools = document.getElementById("my-path");
   if (!setUp) {
-    tools.innerHTML = `<p class="mp-line">${T("No path yet.", "Aún no tienes camino.")} <a class="linkish" href="${root}start/">${T("Build my path", "Crear mi camino")}</a></p>` + key(false);
+    tools.innerHTML = `<div class="mp-main"><h2>${T("Your path", "Tu camino")}</h2><p class="mp-line">${T("You don't have a path yet. Answer a few quick questions and we'll highlight only the lessons you need.", "Aún no tienes camino. Responde unas preguntas rápidas y marcamos solo las lecciones que necesitas.")}</p>${key(false)}</div>`
+      + `<div class="mp-acts"><a class="btn sm" href="${root}start/">${T("Build my path", "Crear mi camino")} <span class="arrow">→</span></a></div>`;
     return;
   }
   const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
-  tools.innerHTML = `<p class="mp-line"><span>${T(`Your path: <b>${doneN} of ${lessons.length}</b> done`, `Tu camino: <b>${doneN} de ${lessons.length}</b> hechas`)}</span>`
-    + `<a class="linkish" href="${root}start/">${T("Change", "Cambiar")}</a>`
-    + (FH.state.profile.quiz ? "" : `<a class="linkish" href="${root}start/#check">${T("Placement check", "Prueba de nivel")}</a>`)
-    + `<button class="linkish" type="button" id="clear-path">${T("Clear", "Quitar")}</button></p>`
-    + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>` + key(true);
+  tools.innerHTML = `<div class="mp-main"><h2>${T("Your path", "Tu camino")}</h2><p class="mp-line">${T(`<b>${doneN} of ${lessons.length}</b> lessons done. Lessons on your path are outlined below.`, `<b>${doneN} de ${lessons.length}</b> lecciones hechas. Las lecciones de tu camino están marcadas abajo.`)}</p>`
+    + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>${key(true)}</div>`
+    + `<div class="mp-acts"><a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
+    + `<a class="linkish" href="${root}start/#check">${FH.state.profile.quiz ? T("Retake the quick quiz", "Repetir la prueba rápida") : T("Take the quick quiz", "Hacer la prueba rápida")}</a>`
+    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button></div>`;
   document.getElementById("clear-path").addEventListener("click", () => {
     FH.clearPath();
     FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
