@@ -294,6 +294,10 @@
       go.href = "../" + next.href;
       go.firstChild.textContent = `${verb} ${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n} `;
     }
+    // Not signed in yet: offer a free account so this path isn't lost.
+    if (!$('[data-step="path"] .save-nudge')) FHSaveNudge($('[data-step="path"] .step-nav'), "beforebegin", {
+      title: T("Save your path", "Guarda tu camino"),
+      text: T("Create a free account so your path, XP and streak are saved and follow you to any device. Takes 30 seconds.", "Crea una cuenta gratis para guardar tu camino, tu XP y tu racha en cualquier dispositivo. Toma 30 segundos.") });
   };
   $("#redo").addEventListener("click", () => show("goal"));
 

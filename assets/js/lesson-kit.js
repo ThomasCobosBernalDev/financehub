@@ -24,6 +24,7 @@
     // How much XP this lesson is worth, under its title, so it's clear where XP comes from.
     const max = chapters.length * 5 + quiz.length * 10 + 25 + 50;
     const kick = $("#start .kicker");
+    FHSaveNudge(document.querySelector("#start .fold-text"), "beforeend", { compact: true });
     if (kick) kick.insertAdjacentHTML("afterend", `<p class="xp-chip reveal in"><b>${T(`Up to ${max} XP`, `Hasta ${max} XP`)}</b> ${T(`+5 per section, +10 per right quiz answer, +25 for finishing, +50 for your first game`, `+5 por sección, +10 por respuesta correcta, +25 por terminar, +50 por tu primer juego`)}</p>`);
 
     // ---------- Hear it: recorded narration ----------
@@ -161,6 +162,7 @@
               done.textContent = T(`${correct} of ${quiz.length}. ${correct >= pass ? "You're ready for the next lesson." : "Look back at Break it down, then reload to try again."}`,
                 `${correct} de ${quiz.length}. ${correct >= pass ? "Ya puedes pasar a la siguiente lección." : "Repasa Paso a paso y recarga la página para intentarlo de nuevo."}`);
               quizEl.appendChild(done);
+              FHSaveNudge(done, "afterend");
             }
           });
           $(".opts", div).appendChild(b);
