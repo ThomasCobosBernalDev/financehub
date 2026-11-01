@@ -1171,16 +1171,12 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .pg-name { transition: opacity .15s; } .pg-steps:has(.pg-dot:hover) .pg-name { opacity: 0; }
 
 /* ---------- Certifications page ---------- */
-/* Jobs on the left; the chosen job's four-stage road, tiles for each certificate, and the picked one's details on the right. */
+/* Jobs on the left; then the chosen job's four-stage road, with the picked certificate's details (and photo) beside it. */
 .cert-page .cx { padding: clamp(24px, 4vw, 48px) 0 56px; }
+.wrap.cert-page { max-width: 1320px; }
 .cx-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; margin-bottom: 24px; }
 .cx-head h1 { margin: 0 0 6px; font-size: clamp(32px, 3.4vw, 44px); }
 .cx-head p { margin: 0; max-width: 40em; color: var(--ink-2); font-size: 16.5px; }
-.cx-me { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; padding: 5px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); }
-.cx-me span { padding: 0 8px 0 10px; font-size: 13px; font-weight: 600; color: var(--ink-3); }
-.cx-me button { border: 0; border-radius: 99px; padding: 8px 13px; background: none; color: var(--ink-2); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .25s var(--ease), color .25s, box-shadow .25s; }
-.cx-me button:hover { color: var(--ink); }
-.cx-me button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
 .cx-body { display: grid; grid-template-columns: minmax(200px, 250px) minmax(0, 1fr); gap: 32px; align-items: start; }
 .cx-jobs { list-style: none; margin: 0; padding: 0; position: sticky; top: 84px; }
 .cx-group { margin: 14px 0 4px 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
@@ -1195,19 +1191,19 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-pane > .kicker { margin: 0 0 4px; color: var(--accent); }
 .cx-pane > h2 { margin: 0 0 6px; font-size: clamp(26px, 2.6vw, 34px); }
 .cx-does { margin: 0 0 20px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
-/* The road: one row per stage (number and name on the left, its certificates on the right); the learner's stage is tinted. */
+/* Road and details side by side; the details stay in view while you scroll the road. */
+.cx-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); gap: 24px; align-items: start; }
+#cx-detail { position: sticky; top: 84px; }
+/* The road: one block per stage (number and name, then its certificates). */
 .cx-road { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.cx-stage { position: relative; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 20px; align-items: start; padding: 14px 14px 16px 0; }
+.cx-stage { position: relative; display: grid; gap: 10px; padding: 14px 0 16px; }
 .cx-stage + .cx-stage { border-top: 1px solid var(--line); }
-.cx-stage.here { border-radius: 16px; background: color-mix(in srgb, var(--accent-soft) 40%, transparent); border-top-color: transparent; padding-left: 12px; margin-left: -12px; }
-.cx-stage.here + .cx-stage { border-top-color: transparent; }
+.cx-stage:first-child { padding-top: 0; }
 .cx-s-head { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: start; }
 .cx-n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 14px; box-shadow: inset 0 0 0 1.5px var(--accent); color: var(--accent); }
-.here .cx-n { background: var(--accent); color: var(--on-color); box-shadow: none; }
 .cx-s-head b { display: block; font-size: 15px; line-height: 1.3; margin-top: 3px; }
 .cx-s-head small { display: block; font-size: 13px; line-height: 1.35; color: var(--ink-3); margin-top: 2px; }
-.cx-s-head em { grid-column: 2; justify-self: start; margin-top: 6px; font-style: normal; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: var(--accent); color: var(--on-color); }
-.cx-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.cx-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; padding-left: 38px; }
 .cx-tile { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 12px; border: 0; border-radius: 12px; background: var(--card); color: inherit; font: inherit; text-align: left; cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
 .cx-tile:hover { box-shadow: inset 0 0 0 1.5px var(--accent); transform: translateY(-1px); }
 .cx-tile[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
@@ -1219,15 +1215,19 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-tile .t-must { background: var(--ink); color: var(--paper); }
 .cx-tile .t-free { background: var(--accent-soft); color: var(--accent); }
 .cx-none { grid-column: 1 / -1; margin: 0; padding: 9px 0; font-size: 14px; color: var(--ink-3); }
-.cx-tip { display: flex; gap: 12px; align-items: baseline; margin: 18px 0; padding: 12px 16px; border-radius: 14px; background: var(--paper-2); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.cx-tip { display: flex; gap: 12px; align-items: baseline; margin: 22px 0 0; padding: 12px 16px; border-radius: 14px; background: var(--paper-2); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
 .cx-tip b { flex: none; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--wants); }
 /* The picked certificate. */
-.cx-detail { padding: 20px 22px; border-radius: 22px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); animation: ex-in .3s var(--ease); }
-.cx-d-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-.cx-d-head .kicker { margin: 0 0 2px; color: var(--accent); }
-.cx-d-head h3 { margin: 0; font-size: clamp(21px, 2vw, 26px); }
-.cx-d-head .btn { flex: none; }
-.cx-what { margin: 10px 0 14px; font-size: 16px; color: var(--ink-2); }
+.cx-detail { padding: 0 20px 20px; border-radius: 22px; overflow: hidden; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); animation: ex-in .3s var(--ease); }
+/* Photo header: the certificate's photo with its name over a dark fade (a plain dark panel if the photo can't load). */
+.cx-d-photo { position: relative; display: flex; align-items: flex-end; min-height: 190px; margin: 0 -20px; padding: 18px 20px; background: linear-gradient(135deg, #1d3a33, #10201c); color: #fff; }
+.cx-d-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cx-d-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8, 14, 12, .88), rgba(8, 14, 12, .25) 60%, rgba(8, 14, 12, .05)); }
+.cx-d-photo > div { position: relative; z-index: 1; }
+.cx-d-photo .kicker { margin: 0 0 4px; color: rgba(255, 255, 255, .78); font-size: 11.5px; }
+.cx-d-photo h3 { margin: 0; color: #fff; font-size: clamp(21px, 2vw, 25px); line-height: 1.2; }
+.cx-d-head { margin: 14px 0 0; }
+.cx-what { margin: 10px 0 14px; font-size: 15.5px; color: var(--ink-2); }
 .cx-detail dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px 20px; margin: 0; }
 .cx-detail dl div { padding-top: 10px; border-top: 1px solid var(--line); }
 .cx-detail dt { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
@@ -1250,22 +1250,23 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-table td:last-child a { color: var(--ink-2); }
 .cx-table tbody tr:last-child > * { border-bottom: 0; }
 .cx-foot { margin: 28px 0 0; font-size: 13.5px; color: var(--ink-3); max-width: 60em; }
-@media (max-width: 1100px) { .cx-stage { grid-template-columns: 200px minmax(0, 1fr); } }
+@media (max-width: 1180px) {
+  /* Details drop below the road; tapping a certificate scrolls to them. */
+  .cx-split { grid-template-columns: 1fr; }
+  #cx-detail { position: static; }
+}
 @media (max-width: 760px) {
-  /* Phones: jobs become a swipeable strip; the road becomes a vertical timeline. */
+  /* Phones: jobs become a swipeable strip. */
   .cx-body { grid-template-columns: 1fr; gap: 18px; }
   .cx-jobs { position: static; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px; }
   .cx-jobs::-webkit-scrollbar { display: none; }
   .cx-group { display: none; }
   .cx-job { white-space: nowrap; padding: 9px 14px; border-radius: 99px; background: var(--paper-2); }
   .cx-job[aria-selected="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
-  .cx-me { border-radius: 18px; }
-  .cx-me span { width: 100%; padding: 4px 8px 0; }
-  .cx-stage { grid-template-columns: 1fr; gap: 10px; }
-  .cx-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 38px; }
+  .cx-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 0; }
   .cx-tip { flex-direction: column; gap: 4px; }
-  .cx-d-head { flex-direction: column; gap: 10px; }
-  .cx-detail { padding: 18px; }
+  .cx-detail { padding: 0 18px 18px; }
+  .cx-d-photo { margin: 0 -18px; min-height: 160px; padding: 16px 18px; }
 }
 .ex-certs { display: inline-block; margin-top: 6px; font-size: 14.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .ex-certs:hover { text-decoration: underline; }

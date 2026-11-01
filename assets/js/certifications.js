@@ -4,7 +4,7 @@
 const T = FH.t;
 const root = document.body.dataset.root || "./";
 const box = document.getElementById("cert-map");
-const rail = document.getElementById("cx-jobs"), panel = document.getElementById("cx-panel"), stagePick = document.getElementById("cx-stage");
+const rail = document.getElementById("cx-jobs"), panel = document.getElementById("cx-panel");
 
 // Every certificate. cost/time/exam/need are short, plain lines. sponsor: a firm must sign you up, so you take it after you're hired.
 // units: FinancedHub units that teach what it tests.
@@ -110,12 +110,12 @@ const KINDS = [
 ];
 let kind = 0;
 
-// Four stages, in order. The "Where are you now?" picker lights one up.
+// Four stages, in order: who each one is for and when you take it.
 const STAGES = [
-  { name: T("Learn the basics", "Aprende lo básico"), sub: T("Free or cheap online courses anyone can take, even in high school. They show you what the job is really like.", "Cursos en línea gratis o baratos que cualquiera puede tomar, incluso en la prepa. Te muestran cómo es el trabajo de verdad."), me: T("New to finance", "Nuevo en finanzas") },
-  { name: T("Stand out when you apply", "Destaca al aplicar"), sub: T("For college students. Add these to your résumé before you apply, so employers see you already have the skills.", "Para estudiantes universitarios. Agrégalos a tu currículum antes de aplicar, para que vean que ya tienes las habilidades."), me: T("In college", "En la universidad") },
-  { name: T("Required for the job", "Obligatorio para el trabajo"), sub: T("Licenses the law requires for this job. You take them after you're hired, and the company usually pays.", "Licencias que la ley exige para este trabajo. Las presentas después de que te contratan y casi siempre paga la empresa."), me: T("Just hired", "Recién contratado") },
-  { name: T("Grow your career", "Crece en tu carrera"), sub: T("Big titles people earn after a few years of working. Months of study, but they lead to promotions and higher pay.", "Títulos importantes que se ganan después de unos años de trabajo. Meses de estudio, pero llevan a ascensos y mejor sueldo."), me: T("A few years in", "Con unos años") },
+  { name: T("Learn the basics", "Aprende lo básico"), sub: T("Free or cheap online courses anyone can take, even in high school. They show you what the job is really like.", "Cursos en línea gratis o baratos que cualquiera puede tomar, incluso en la prepa. Te muestran cómo es el trabajo de verdad.") },
+  { name: T("Stand out when you apply", "Destaca al aplicar"), sub: T("For college students. Add these to your résumé before you apply, so employers see you already have the skills.", "Para estudiantes universitarios. Agrégalos a tu currículum antes de aplicar, para que vean que ya tienes las habilidades.") },
+  { name: T("Required for the job", "Obligatorio para el trabajo"), sub: T("Licenses the law requires for this job. You take them after you're hired, and the company usually pays.", "Licencias que la ley exige para este trabajo. Las presentas después de que te contratan y casi siempre paga la empresa.") },
+  { name: T("Grow your career", "Crece en tu carrera"), sub: T("Big titles people earn after a few years of working. Months of study, but they lead to promotions and higher pay.", "Títulos importantes que se ganan después de unos años de trabajo. Meses de estudio, pero llevan a ascensos y mejor sueldo.") },
 ];
 
 // Jobs. stages: 4 lists of [certId, note?]; a "!" before the id marks a must-have.
@@ -175,18 +175,28 @@ rail.innerHTML = GROUPS.map((g, gi) => `<li class="cx-group">${g}</li>` + JOBS.f
   `<li><button class="cx-job" role="tab" data-job="${j.id}" aria-selected="false">${j.name}</button></li>`).join("")).join("")
   + `<li class="cx-group"></li><li><button class="cx-job cx-all" role="tab" data-job="all" aria-selected="false">${T("All certificates side by side", "Todos los certificados lado a lado")}</button></li>`;
 
-// "Where are you now?" lights up one stage. Remembered in this browser only.
-let me = 0;
-try { me = Math.min(3, Math.max(0, +localStorage.getItem("fh-cert-stage") || 0)); } catch (e) {}
-stagePick.innerHTML = `<span>${T("Where are you now?", "¿Dónde estás ahora?")}</span>` + STAGES.map((s, i) => `<button type="button" data-me="${i}" aria-pressed="false">${s.me}</button>`).join("");
+// A real photo for each certificate (Unsplash, free to use), shown behind its details.
+const PHOTO = {
+  forage: "1515378960530-7c0da6231fb1", bmc: "1611974789855-9c2a0a7236a3", yale: "1501504905252-473c47e087f8",
+  excel: "1529078155058-5d716f45d604", model: "1460925895917-afdab827c52f", sie: "1434030216411-0b793f4b4173",
+  s6: "1633158829875-e5316a358c6f", s7: "1560221328-12fe60f83ab8", s57: "1649003515353-c58a239cf662",
+  s63: "1589829545856-d10d557cf95f", s65: "1551836022-d5d88e9218df", s66: "1505664194779-8beaceb93744",
+  s79: "1486406146926-c627a92ad1ab", s86: "1579532537598-459ecdaf39cc", cfa: "1457369804613-52c61a468e7d",
+  caia: "1501324682324-0d8d7c4b9706", frm: "1526628953301-3e589a6a8b74", cpa: "1554224155-6726b3ff858f",
+  cma: "1517048676732-d65bc937f952", cfp: "1508963493744-76fce69379c0", ins: "1450101499163-c8848c66ca85",
+  nmls: "1560518883-ce09059eeffa",
+};
+const photo = (id) => PHOTO[id] ? `https://images.unsplash.com/photo-${PHOTO[id]}?auto=format&fit=crop&w=900&h=420&q=70` : "";
 
 let curJob = null, curCert = null;
 const tile = (e, i) => `<button type="button" class="cx-tile${e.must ? " must" : ""}${e.c.free ? " free" : ""}" data-cert="${e.c.id}" data-stage="${i}">
   <b>${e.c.short}</b><small>${e.note ? esc(e.note) : e.c.org.split(" · ")[0].split(" (")[0]}</small>
   <span class="tags">${e.must ? `<i class="t-must">${T("Must-have", "Obligatorio")}</i>` : ""}${e.c.sponsor ? `<i>${T("Firm signs you up", "La empresa te inscribe")}</i>` : ""}${e.c.free ? `<i class="t-free">${T("Free option", "Opción gratis")}</i>` : ""}</span></button>`;
 
-const detail = (c) => !c ? "" : `<div class="cx-detail" aria-live="polite">
-  <div class="cx-d-head"><div><p class="kicker">${esc(c.org)}</p><h3>${c.name}</h3></div><a class="btn line sm" href="${c.url}" target="_blank" rel="noopener">${T("Official site", "Sitio oficial")}</a></div>
+const detail = (c, stage) => !c ? "" : `<div class="cx-detail" aria-live="polite">
+  <div class="cx-d-photo">${photo(c.id) ? `<img src="${photo(c.id)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+    <div><p class="kicker">${stage != null ? `${stage + 1}. ${STAGES[stage].name} · ` : ""}${esc(c.org)}</p><h3>${c.name}</h3></div></div>
+  <div class="cx-d-head"><a class="btn line sm" href="${c.url}" target="_blank" rel="noopener">${T("Official site", "Sitio oficial")} <span class="arrow">↗</span></a></div>
   <p class="cx-what">${c.what}</p>
   <dl>
     <div><dt>${T("Cost", "Costo")}</dt><dd>${c.cost}</dd></div>
@@ -207,27 +217,28 @@ const showJob = (id) => {
   if (id === "all") return showTable();
   const j = job[id];
   const stages = j.stages.map((list) => list.map(entry));
-  // Open on the must-have closest to where the learner is, so the details match their stage.
-  const order = [me, me + 1, me + 2, me + 3, me - 1, me - 2, me - 3].filter((i) => i >= 0 && i < 4);
-  const firstMust = order.map((i) => stages[i].find((e) => e.must)).find(Boolean);
-  const first = firstMust || order.map((i) => stages[i][0]).find(Boolean);
+  // Open on the first certificate on the road.
+  const first = stages.flat()[0];
   curCert = first && first.c.id;
   panel.innerHTML = `<div class="cx-pane">
     <p class="kicker">${GROUPS[j.group]}</p><h2>${j.name}</h2><p class="cx-does">${j.does}</p>
-    <ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage${i === me ? " here" : ""}" style="--i:${i}">
-      <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div>${i === me ? `<em>${T("You're here", "Estás aquí")}</em>` : ""}</div>
+    <div class="cx-split"><ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
+      <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div></div>
       <div class="cx-tiles">${list.length ? list.map((e) => tile(e, i)).join("") : `<p class="cx-none">${i === 2 ? T("Nothing required. You learn on the job.", "Nada obligatorio. Aprendes en el trabajo.") : T("Nothing needed yet.", "Nada todavía.")}</p>`}</div></li>`).join("")}</ol>
-    <p class="cx-tip"><b>${T("Real talk", "La verdad")}</b>${j.tip}</p>
-    <div id="cx-detail"></div></div>`;
-  panel.querySelectorAll(".cx-tile").forEach((b) => b.addEventListener("click", () => showCert(b.dataset.cert, true)));
+    <div id="cx-detail"></div></div>
+    <p class="cx-tip"><b>${T("Real talk", "La verdad")}</b>${j.tip}</p></div>`;
+  panel.querySelectorAll(".cx-tile").forEach((b) => b.addEventListener("click", () => showCert(b.dataset.cert, true, +b.dataset.stage)));
   showCert(curCert);
 };
-const showCert = (id, scroll) => {
+const showCert = (id, scroll, stage) => {
   curCert = id;
-  panel.querySelectorAll(".cx-tile").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cert === id)));
+  const tiles = [...panel.querySelectorAll(".cx-tile")];
+  if (stage == null) stage = +((tiles.find((b) => b.dataset.cert === id) || {}).dataset || {}).stage || 0;
+  tiles.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cert === id && +b.dataset.stage === stage)));
   const d = document.getElementById("cx-detail");
-  d.innerHTML = detail(cert[id]);
-  if (scroll && innerWidth <= 760) d.scrollIntoView({ behavior: FH.still() ? "auto" : "smooth", block: "nearest" });
+  d.innerHTML = detail(cert[id], stage);
+  // Side by side on wide screens; below the road on narrower ones, so bring it into view.
+  if (scroll && getComputedStyle(d).position !== "sticky") d.scrollIntoView({ behavior: FH.still() ? "auto" : "smooth", block: "nearest" });
 };
 
 // Every certificate in one table, cheapest first within each kind. Click a name to see which jobs use it.
@@ -241,20 +252,9 @@ const showTable = () => {
   panel.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = +b.dataset.kind; showTable(); }));
 };
 
-const paintMe = () => {
-  stagePick.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.me === me)));
-  if (curJob && curJob !== "all") showJob(curJob);
-};
-stagePick.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-  me = +b.dataset.me;
-  try { localStorage.setItem("fh-cert-stage", me); } catch (e) {}
-  paintMe();
-}));
-
 // Links like #ib or #all open that job; the rail updates the hash so a job can be shared.
 rail.querySelectorAll(".cx-job").forEach((b) => b.addEventListener("click", () => history.replaceState(null, "", "#" + b.dataset.job) || showJob(b.dataset.job)));
 const fromHash = () => { const id = location.hash.slice(1); showJob(job[id] || id === "all" ? id : curJob || JOBS[0].id); };
 addEventListener("hashchange", fromHash);
-paintMe();
 fromHash();
 })();
