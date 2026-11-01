@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es" data-alt="../../home/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tu inicio · FinancedHub</title>
+  <meta name="description" content="Tu inicio en FinancedHub: tu siguiente lección, racha, XP, camino e insignias.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Tu inicio">
+  <meta property="og:description" content="Tu inicio en FinancedHub: tu siguiente lección, racha, XP, camino e insignias.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611011835">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+</head>
+<body data-root="../">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../course/">Curso</a><a href="../certifications/">Certificaciones</a><a href="../about">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../account/">Entrar</a>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap home-page">
+<section class="hm" aria-labelledby="hm-h">
+  <div class="hm-head"><p class="cx-col" id="hm-date"></p><h1 id="hm-h">Qué bueno verte</h1><p class="hm-sub" id="hm-sub"></p></div>
+  <p class="cx-col">Sigue donde te quedaste</p>
+  <div id="hm-next"></div>
+  <div class="hm-stats" id="hm-stats"></div>
+  <div class="hm-cols">
+    <div><p class="cx-col">Lo que sigue en tu camino</p><ol class="ex-tiles" id="hm-up"></ol></div>
+    <div><p class="cx-col">Tus insignias</p><div class="hm-badges" id="hm-badges"></div></div>
+  </div>
+  <p class="cx-col">Sigue explorando</p>
+  <div class="hm-more">
+    <a class="hm-card" href="../course/"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.remove()"><span><b>Todo el curso</b><small>Cada parte, unidad y lección</small></span></a>
+    <a class="hm-card" href="../certifications/"><img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.remove()"><span><b>Certificaciones</b><small>Qué sacar para cada trabajo en finanzas</small></span></a>
+    <a class="hm-card" href="../about"><img src="https://images.unsplash.com/photo-1758518731706-be5d5230e5a5?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.remove()"><span><b>Nosotros</b><small>Por qué creamos FinancedHub</small></span></a>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../about">Acerca de</a><a href="../contact">Contacto</a><a href="../legal/privacy">Privacidad</a><a href="../legal/terms">Términos</a><a href="../legal/cookies">Cookies y almacenamiento</a><a href="../credits">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../home/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+<script src="../../assets/js/save.js?v=202611011835"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611011835"></script>
+<script src="../../assets/js/auth.js?v=202611011835"></script>
+<script src="../../assets/js/site.js?v=202611011835"></script>
+<script>document.getElementById("xp").textContent = FH.state.xp;</script>
+<script src="../../assets/js/home.js?v=202611011835"></script>
+</body>
+</html>

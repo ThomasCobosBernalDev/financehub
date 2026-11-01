@@ -8,13 +8,6 @@ const unitList = document.getElementById("ex-units"), panel = document.getElemen
 const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
 const lessonById = (id) => FH.CATALOG.find((l) => l.id === id);
 
-// One Unsplash photo per unit.
-const PHOTO = ["1601597111158-2fceff292cdc", "1554224154-26032ffc0d07", "1554224155-8d04cb21cd6c", "1556742502-ec7c0e9f34b1",
-  "1611974789855-9c2a0a7236a3", "1585914641050-fa9883c4e21c", "1741156386380-0236c72eb6f9", "1526399743290-f73cb4022f48",
-  "1553729459-efe14ef6055d", "1626266061368-46a8f578ddd6", "1556742049-0cfed4f6a45d", "1772588627327-1eeddcf73c11",
-  "1542744173-8e7e53415bb0", "1648275913341-7973ae7bc9b3", "1707157284454-553ef0a4ed0d", "1770461846516-b7e5993a8e4f",
-  "1629654297299-c8506221ca97", "1758520144437-f068ecaf0d83"];
-const photo = (u) => `https://images.unsplash.com/photo-${PHOTO[u - 1]}?auto=format&fit=crop&w=900&h=420&q=70`;
 const icon = (st) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg>`;
 
 unitList.innerHTML = FH.PARTS.map((p) => `<li class="cx-group">${T("Part", "Parte")} ${p.n} · ${p.name}</li>`
@@ -32,7 +25,7 @@ const stateOf = (l, pi) => {
 };
 
 const banner = (u, l, pi) => {
-  const top = `<div class="cx-d-photo"><img src="${photo(u)}" alt="" onerror="this.remove()"><div>`;
+  const top = `<div class="cx-d-photo"><img src="${FH.unitPhoto(u)}" alt="" onerror="this.remove()"><div>`;
   if (!l) return `<div class="cx-detail" aria-live="polite">${top}<p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3></div></div>
     <div class="cx-d-info"><p class="cx-what">${T("The lessons for this unit are being planned. Every one will teach its topic eight ways, like the open lessons do.", "Las lecciones de esta unidad se están planeando. Cada una enseñará su tema de ocho formas, como las lecciones abiertas.")}</p></div></div>`;
   const s = stateOf(l, pi);

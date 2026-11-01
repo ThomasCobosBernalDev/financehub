@@ -98,6 +98,13 @@
       "Starting a business", "Accounting", "Corporate finance",
       "Building a portfolio", "Valuing a company", "Banks and markets",
       "Excel, Python and SQL", "Interviews and getting hired"];
+  // One Unsplash photo per unit (course page and home page banners).
+  const UNIT_PHOTO = ["1601597111158-2fceff292cdc", "1554224154-26032ffc0d07", "1554224155-8d04cb21cd6c", "1556742502-ec7c0e9f34b1",
+    "1611974789855-9c2a0a7236a3", "1585914641050-fa9883c4e21c", "1741156386380-0236c72eb6f9", "1526399743290-f73cb4022f48",
+    "1553729459-efe14ef6055d", "1626266061368-46a8f578ddd6", "1556742049-0cfed4f6a45d", "1772588627327-1eeddcf73c11",
+    "1542744173-8e7e53415bb0", "1648275913341-7973ae7bc9b3", "1707157284454-553ef0a4ed0d", "1770461846516-b7e5993a8e4f",
+    "1629654297299-c8506221ca97", "1758520144437-f068ecaf0d83"];
+  const unitPhoto = (u) => `https://images.unsplash.com/photo-${UNIT_PHOTO[u - 1]}?auto=format&fit=crop&w=900&h=420&q=70`;
   const UNITS = UNIT_NAMES.length;
   const partOf = (unit) => PARTS.find((p) => p.units.includes(unit));
 
@@ -370,6 +377,7 @@
     GOALS,
     PARTS,
     UNIT_NAMES,
+    unitPhoto,
     CATALOG,
     partOf,
     buildPath,

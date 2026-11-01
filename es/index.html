@@ -10,14 +10,15 @@
   <meta property="og:description" content="Lecciones gratis de bancos, crédito, inversiones y trabajos en finanzas, cada una enseñada de 8 formas.">
   <meta property="og:image" content="https://financedhub.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611011827">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash);
+    // Returning learners (signed in, or setup done) land on their home. ?landing shows this page anyway.
+    else if (!/[?&]landing/.test(location.search)) { var sv = JSON.parse(localStorage.getItem("financehub-save-v1") || "{}"); if ((sv.profile && sv.profile.done) || Object.keys(localStorage).some(function (k) { return /^sb-.*-auth-token$/.test(k); })) location.replace("home/"); }
+    if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611011835">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <style>
-    .continue { display: inline-flex; flex-direction: column; gap: 8px; }
-    .continue small { color: var(--ink-3); font-size: 15px; padding-left: 4px; }
     /* Home hero: the pitch on the left (with a rotating "Wondering how...?" line), four doors into the course on the right. */
     .hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px clamp(32px, 5vw, 88px); align-items: center; min-height: calc(100svh / var(--z, 1) - 64px); padding: clamp(16px, 3svh, 40px) 0; }
     .wonder { font-family: var(--serif); font-size: clamp(21px, 1.9vw, 28px); line-height: 1.3; letter-spacing: -.01em; margin: 0 0 12px; max-width: 24em; min-height: 3.9em; color: var(--ink); }
@@ -105,16 +106,16 @@
         <a class="btn" href="account/#create">Crear mi cuenta gratis</a>
         <a class="btn line" href="account/#login">Iniciar sesión</a>
       </div>
-      <div class="hero-cta when-in"><div class="continue"><a class="btn" href="lessons/checking-savings/" id="continue"><span>Empezar Unidad 1 · Lección 1</span></a><small id="continue-title">Dónde vive tu dinero</small></div></div>
+      <div class="hero-cta when-in"><a class="btn" href="home/">Ir a mi inicio <span class="arrow">→</span></a></div>
       <div class="ways"><p>Cada lección, de 8 maneras:</p><ul id="ways"></ul></div>
     </div>
     <nav class="for-you" aria-labelledby="for-you-h">
       <h2 id="for-you-h">¿Qué quieres aprender?</h2>
       <ul>
-        <li><a href="start/?goal=bank" data-go="lessons/checking-savings/"><span><b>Cómo funciona una cuenta de ahorro</b><small>¿Nunca has tenido cuenta de banco? Empieza aquí.</small></span><i>Principiante</i></a></li>
-        <li><a href="start/?goal=invest" data-go="lessons/why-invest/"><span><b>Cómo invertir tu primer dólar</b><small>Conoces tu cuenta de cheques, pero nunca has comprado una acción.</small></span><i>Ya sé lo básico</i></a></li>
-        <li><a href="start/?goal=credit" data-go="course/#part-1"><span><b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i></a></li>
-        <li><a href="start/?goal=career" data-go="course/#part-5"><span><b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i></a></li>
+        <li><a href="start/?goal=bank"><span><b>Cómo funciona una cuenta de ahorro</b><small>¿Nunca has tenido cuenta de banco? Empieza aquí.</small></span><i>Principiante</i></a></li>
+        <li><a href="start/?goal=invest"><span><b>Cómo invertir tu primer dólar</b><small>Conoces tu cuenta de cheques, pero nunca has comprado una acción.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="start/?goal=credit"><span><b>Cómo funcionan el crédito y las tarjetas</b><small>Construye un buen puntaje sin caer en deudas. Lecciones muy pronto.</small></span><i>Ya sé lo básico</i></a></li>
+        <li><a href="start/?goal=career"><span><b>Cómo conseguir trabajo en finanzas</b><small>Saca buenas notas en finanzas en la universidad y luego haz entrevistas en un banco o en Wall Street.</small></span><i>Carrera</i></a></li>
       </ul>
       <p class="for-you-foot"><span>¿Buscas un trabajo en finanzas? <a href="certifications/">Mira qué certificaciones sacar</a></span></p>
     </nav>
@@ -129,16 +130,16 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202611011827"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611011827"></script>
-<script src="../assets/js/auth.js?v=202611011827"></script>
-<script src="../assets/js/site.js?v=202611011827"></script>
+<script src="../assets/js/save.js?v=202611011835"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611011835"></script>
+<script src="../assets/js/auth.js?v=202611011835"></script>
+<script src="../assets/js/site.js?v=202611011835"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
 // The 8 ways every lesson is taught, from the same list the lessons use.
 document.getElementById("ways").innerHTML = FH.STYLES.map((st) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg>${st.chapter}</li>`).join("");
-// Signed in: the hero's sign-up buttons give way to "Continue".
+// Signed in (seen only via ?landing): the sign-up buttons give way to a link home.
 if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classList.toggle("in", !!u));
 
 // "Wondering how...?" cycles through the four doors on the right, lighting up the matching door and photo.
@@ -150,27 +151,8 @@ if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classLi
   const start = () => { clearInterval(timer); if (!FH.still()) timer = setInterval(() => show((i + 1) % doors.length), 6000); };
   doors.forEach((d, k) => { d.addEventListener("mouseenter", () => { clearInterval(timer); if (k !== i) show(k); }); d.addEventListener("mouseleave", start); });
   doors[0].classList.add("on"); start();
-  // New visitors: each door opens the setup with that goal already picked. With a path set, it goes straight to the lessons.
-  if (FH.path.setUp) doors.forEach((d) => { d.href = d.dataset.go; });
 })();
 
-// The main button points at the next lesson on the learner's path.
-const paintContinue = () => {
-  const { items, known, setUp } = FH.path;
-  const next = FH.nextLesson();
-  const started = Object.values(FH.state.lessons).some((l) => l && Object.keys(l.sections || {}).length);
-  if (next) {
-    const c = document.getElementById("continue");
-    c.href = next.href;
-    const verb = next.why === "review" ? T("Review", "Repasar") : next.why === "extra" ? T("Extra:", "Extra:") : started ? T("Continue", "Continuar") : T("Start", "Empezar");
-    c.querySelector("span").textContent = `${verb} ${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n}`;
-    // When the path's open lessons are done, say which path lesson is on the way.
-    const soon = next.why === "extra" && setUp && items.find((x) => x.lesson && !x.lesson.href && !known.has(x.lesson.unit));
-    document.getElementById("continue-title").textContent = next.title + (soon ? T(`. Your next path lesson, "${soon.lesson.title}", is being built.`, `. Tu siguiente lección del camino, "${soon.lesson.title}", se está construyendo.`) : "");
-  }
-};
-paintContinue();
-document.addEventListener("fh:save", paintContinue);
 
 </script>
 </body>

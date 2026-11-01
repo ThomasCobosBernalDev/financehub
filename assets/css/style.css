@@ -1362,15 +1362,16 @@ a.acct-who:hover, a.acct-who:focus-visible { background: color-mix(in srgb, var(
 .doc > .page-hero:first-child { margin-top: -72px; }
 @keyframes page-hero-in { from { opacity: 0; transform: scale(1.03); } }
 :root[data-motion="reduce"] .page-hero img { animation: none; }
-/* Certifications, course and setup pages: a faint photo behind the top of the page, washing into the page color. */
-.cert-page, .units-page, .setup-page { position: relative; isolation: isolate; --top-photo: url("https://images.unsplash.com/photo-1617375819318-67968e5b25c3?auto=format&fit=crop&w=1800&q=60"); }
+/* Certifications, course, setup and home pages: a faint photo behind the top of the page, washing into the page color. */
+.cert-page, .units-page, .setup-page, .home-page { position: relative; isolation: isolate; --top-photo: url("https://images.unsplash.com/photo-1617375819318-67968e5b25c3?auto=format&fit=crop&w=1800&q=60"); }
+.home-page { --top-photo: url("https://images.unsplash.com/photo-1534469650761-fce6cc26ac0d?auto=format&fit=crop&w=1800&q=60"); }
 .setup-page { --top-photo: url("https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1800&q=60"); }
 .units-page { --top-photo: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=60"); }
-.cert-page::before, .units-page::before, .setup-page::before { content: ""; position: absolute; z-index: -1; top: 0; left: 50%; width: 100vw; height: 620px; transform: translateX(-50%); pointer-events: none;
+.cert-page::before, .units-page::before, .setup-page::before, .home-page::before { content: ""; position: absolute; z-index: -1; top: 0; left: 50%; width: 100vw; height: 620px; transform: translateX(-50%); pointer-events: none;
   background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 78%, transparent), color-mix(in srgb, var(--paper) 88%, transparent) 55%, var(--paper) 100%),
               var(--top-photo) center 30% / cover no-repeat; }
-/* The course and setup pages blur their photo more, so the text stays easy to read over it. */
-.units-page::before, .setup-page::before { filter: blur(10px); background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 80%, transparent), color-mix(in srgb, var(--paper) 90%, transparent) 55%, var(--paper) 100%), var(--top-photo) center 30% / cover no-repeat; }
+/* The course, setup and home pages blur their photo more, so the text stays easy to read over it. */
+.units-page::before, .setup-page::before, .home-page::before { filter: blur(10px); background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 80%, transparent), color-mix(in srgb, var(--paper) 90%, transparent) 55%, var(--paper) 100%), var(--top-photo) center 30% / cover no-repeat; }
 /* Full-width photo bands use 100vw; never let that add a sideways scroll. */
 body { overflow-x: clip; }
 
@@ -1457,3 +1458,38 @@ button.prof-avatar:hover, button.prof-avatar:focus-visible { box-shadow: 0 0 0 3
 .xp-chip b { color: var(--accent); font-weight: 700; }
 #badge-wall .set-sub small { margin-left: 6px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
 #badge-wall .badge-wall { margin-bottom: 8px; }
+
+/* ---------- Home for returning learners (home/) ---------- */
+/* Same look as Course and Certifications: column labels, a photo banner for the next lesson, then cards. */
+.wrap.home-page { max-width: 1320px; padding-top: clamp(18px, 3vw, 32px); padding-bottom: 56px; }
+.hm-head { margin-bottom: 22px; }
+.hm-head .cx-col { margin-bottom: 4px; }
+.hm-head h1 { margin: 0; font-size: clamp(32px, 3.4vw, 44px); }
+.hm-sub { margin: 6px 0 0; font-size: 17px; color: var(--ink-2); }
+#hm-next { margin-bottom: 18px; }
+#hm-next .cx-d-foot .btn { margin-top: 4px; }
+.hm-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+.hm-stat { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 18px 20px; border-radius: 20px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+.hm-stat .cx-col { margin: 0; }
+.hm-stat > p:not(.cx-col):not(.hm-big) { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.hm-stat a, .hm-stat .linkish { color: var(--accent); font-weight: 600; font-size: 14px; }
+.hm-big { display: flex; align-items: baseline; gap: 6px; margin: 0; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--ink); }
+.hm-big small { font-size: 22px; color: var(--ink-3); }
+.hm-big.streak-big { align-items: center; }
+.hm-stat .mp-bar { width: 100%; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.hm-stat .mp-bar i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+.hm-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 28px; margin-bottom: 30px; }
+a.cx-tile { color: inherit; text-decoration: none; }
+.hm-badges .badge-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0; }
+.hm-badges .badge-wall .medal { width: 56px; height: 56px; }
+.hm-all { display: inline-block; margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.hm-none { margin: 0; font-size: 14.5px; color: var(--ink-3); list-style: none; }
+.hm-more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.hm-card { position: relative; isolation: isolate; display: flex; align-items: flex-end; min-height: 190px; padding: 18px 20px; border-radius: 20px; overflow: hidden; background: #14201c; color: #fff; text-decoration: none; }
+.hm-card img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.hm-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(8, 14, 12, .88), rgba(8, 14, 12, .2)); }
+.hm-card:hover img { transform: scale(1.04); }
+.hm-card b { display: block; font-family: var(--serif); font-size: 22px; font-weight: 500; }
+.hm-card small { font-size: 14px; color: rgba(255, 255, 255, .8); }
+@media (max-width: 980px) { .hm-cols { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .hm-stats, .hm-more { grid-template-columns: 1fr; } .hm-card { min-height: 150px; } }
