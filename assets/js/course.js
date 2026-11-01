@@ -105,7 +105,7 @@ const paintPath = () => {
     b.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
   });
   if (curUnit) renderPane();
-  // Your path card, between the title and the course: progress, a color key and plain buttons to change it.
+  // Your path, beside the course title: progress, a color key and plain links to change it.
   const tools = document.getElementById("my-path");
   if (!setUp) {
     tools.innerHTML = `<div class="mp-main"><h2>${T("Your path", "Tu camino")}</h2><p class="mp-line">${T("You don't have a path yet. Answer a few quick questions and we'll highlight only the lessons you need.", "Aún no tienes camino. Responde unas preguntas rápidas y marcamos solo las lecciones que necesitas.")}</p>${key(false)}</div>`
@@ -116,7 +116,7 @@ const paintPath = () => {
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
   tools.innerHTML = `<div class="mp-main"><h2>${T("Your path", "Tu camino")}</h2><p class="mp-line">${T(`<b>${doneN} of ${lessons.length}</b> lessons done. Lessons on your path are outlined below.`, `<b>${doneN} de ${lessons.length}</b> lecciones hechas. Las lecciones de tu camino están marcadas abajo.`)}</p>`
     + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>${key(true)}</div>`
-    + `<div class="mp-acts"><a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
+    + `<div class="mp-acts"><a class="linkish" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
     + `<a class="linkish" href="${root}start/#check">${FH.state.profile.quiz ? T("Retake the quick quiz", "Repetir la prueba rápida") : T("Take the quick quiz", "Hacer la prueba rápida")}</a>`
     + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button></div>`;
   document.getElementById("clear-path").addEventListener("click", () => {

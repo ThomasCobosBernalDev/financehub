@@ -255,8 +255,11 @@
   $("#banner-list").addEventListener("click", (e) => { const b = e.target.closest("[data-banner]"); if (b) FH.setBanner(b.dataset.banner === BANNERS[0] ? null : b.dataset.banner); });
   // Profile picture: pick a photo, crop it to a centered square and shrink it so it's small enough to save with your progress.
   const pickPic = () => $("#pic-file").click();
-  $("#prof-avatar").addEventListener("click", pickPic);
-  $("#pic-change").addEventListener("click", pickPic);
+  // Tapping your picture opens a small menu: upload a new photo, or remove the one you have.
+  const picMenu = (open) => { $("#pic-menu").hidden = !open; $("#prof-avatar").setAttribute("aria-expanded", String(open)); };
+  $("#prof-avatar").addEventListener("click", (e) => { e.stopPropagation(); picMenu($("#pic-menu").hidden); });
+  document.addEventListener("click", (e) => { if (!e.target.closest("#pic-menu")) picMenu(false); });
+  $("#pic-change").addEventListener("click", () => { picMenu(false); pickPic(); });
   $("#pic-file").addEventListener("change", (e) => {
     const file = e.target.files[0];
     e.target.value = "";
@@ -273,7 +276,7 @@
     img.onerror = () => FH.toast(FH.t("That file couldn't be opened. Try a JPG or PNG.", "No se pudo abrir ese archivo. Prueba con JPG o PNG."));
     img.src = URL.createObjectURL(file);
   });
-  $("#pic-remove").addEventListener("click", () => FH.setAvatar(null));
+  $("#pic-remove").addEventListener("click", () => { picMenu(false); FH.setAvatar(null); });
   $("#streak-share").addEventListener("click", () => window.FHShareStreak && window.FHShareStreak());
   FHAuth.onChange(render);
   document.addEventListener("fh:save", () => FHAuth.user && render(FHAuth.user));

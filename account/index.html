@@ -11,7 +11,7 @@
   <meta property="og:image" content="https://financedhub.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611012256">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611012303">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -135,10 +135,10 @@
       <div class="profile-view view-profile">
         <div class="prof-hero">
           <img id="prof-banner" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&h=420&q=70" alt="">
-          <button class="prof-avatar" id="prof-avatar" type="button" aria-label="Change photo"></button><input type="file" id="pic-file" accept="image/*" hidden>
-          <div class="prof-id"><p class="kicker" id="prof-since"></p><h1 id="prof-name">Your profile</h1>
-            <p class="prof-pic-acts"><button class="linkish" type="button" id="pic-change">Change photo</button><button class="linkish" type="button" id="pic-remove" hidden>Remove</button></p></div>
-          <div class="prof-hero-acts"><button class="btn sm line" type="button" id="banner-btn" aria-expanded="false" aria-controls="banner-pick">Change banner</button><a class="btn sm line" href="./">Settings</a></div>
+          <div class="prof-pic"><button class="prof-avatar" id="prof-avatar" type="button" aria-label="Your profile photo" aria-haspopup="menu" aria-expanded="false"></button><span class="prof-cam" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span><input type="file" id="pic-file" accept="image/*" hidden>
+            <div class="pic-menu" id="pic-menu" role="menu" hidden><button type="button" role="menuitem" id="pic-change">Upload a new photo</button><button type="button" role="menuitem" id="pic-remove" hidden>Remove photo</button></div></div>
+          <div class="prof-id"><p class="kicker" id="prof-since"></p><h1 id="prof-name">Your profile</h1></div>
+          <button class="prof-banner-btn" id="banner-btn" type="button" aria-expanded="false" aria-controls="banner-pick" title="Change banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-8 8"/></svg><span>Change banner</span></button>
         </div>
         <div class="set-card banner-pick" id="banner-pick" hidden><div class="prof-bh"><h2>Pick a banner</h2><button class="linkish" type="button" id="banner-done">Done</button></div><ul id="banner-list"></ul></div>
         <div class="hm-stats prof-stats">
@@ -203,11 +203,11 @@
     <p>© 2026 FinancedHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202611012256"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611012256"></script>
-<script src="../assets/js/auth.js?v=202611012256"></script>
-<script src="../assets/js/site.js?v=202611012256"></script>
+<script src="../assets/js/save.js?v=202611012303"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611012303"></script>
+<script src="../assets/js/auth.js?v=202611012303"></script>
+<script src="../assets/js/site.js?v=202611012303"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../assets/js/account.js?v=202611012256"></script>
+<script src="../assets/js/account.js?v=202611012303"></script>
 </body>
 </html>
