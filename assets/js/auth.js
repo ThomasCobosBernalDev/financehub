@@ -104,7 +104,7 @@
         <hr>
         <a class="acct-row" role="menuitem" href="${base}account/#profile">${svg(ico.user)}<span>${FH.t("Your profile", "Tu perfil")}</span></a>
         <a class="acct-row" role="menuitem" href="${base}account/">${svg(ico.gear)}<span>${FH.t("Settings", "Ajustes")}</span></a>
-        <a class="acct-row" role="menuitem" href="${base}help.html">${svg(ico.help)}<span>${FH.t("Help", "Ayuda")}</span></a>
+        <a class="acct-row" role="menuitem" href="${base}help">${svg(ico.help)}<span>${FH.t("Help", "Ayuda")}</span></a>
         <hr>
         <button class="acct-row acct-out" type="button" role="menuitem">${svg(ico.out)}<span>${FH.t("Log out", "Cerrar sesión")}</span></button>
       </div>`;

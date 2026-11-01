@@ -89,7 +89,7 @@ PAGE = """<!doctype html>
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="{r}"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg>Financed<span>Hub</span></a>
-    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about.html">{about}</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">
@@ -125,7 +125,7 @@ PAGE = """<!doctype html>
 
 <footer class="foot">
   <div class="wrap">
-    <nav aria-label="{foot_nav}"><a href="{r}about.html">{f_about}</a><a href="{r}contact.html">{f_contact}</a><a href="{r}legal/privacy.html">{f_privacy}</a><a href="{r}legal/terms.html">{f_terms}</a><a href="{r}legal/cookies.html">{f_cookies}</a><a href="{r}credits.html">{f_credits}</a></nav>
+    <nav aria-label="{foot_nav}"><a href="{r}about">{f_about}</a><a href="{r}contact">{f_contact}</a><a href="{r}legal/privacy">{f_privacy}</a><a href="{r}legal/terms">{f_terms}</a><a href="{r}legal/cookies">{f_cookies}</a><a href="{r}credits">{f_credits}</a></nav>
     <p><a class="foot-lang" href="{alt}" data-set-lang="{lang_code}" hreflang="{lang_code}" lang="{lang_code}">{lang_aria}</a></p>
     <p class="disclaimer">{disclaimer}</p>
     <p>© 2026 FinancedHub</p>

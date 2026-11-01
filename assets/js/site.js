@@ -100,8 +100,8 @@
     const es = root.lang === "es";
     n.setAttribute("aria-label", es ? "Cómo guarda datos este sitio" : "How this site stores data");
     n.innerHTML = es
-      ? `<p>Aquí no hay cookies de rastreo ni de anuncios. Tu progreso se guarda en este navegador para que no lo pierdas. <a href="${base}legal/cookies.html">Detalles</a></p><button class="btn sm">Entendido</button>`
-      : `<p>No tracking or ad cookies here. Your progress is saved in this browser so you don't lose it. <a href="${base}legal/cookies.html">Details</a></p><button class="btn sm">Got it</button>`;
+      ? `<p>Aquí no hay cookies de rastreo ni de anuncios. Tu progreso se guarda en este navegador para que no lo pierdas. <a href="${base}legal/cookies">Detalles</a></p><button class="btn sm">Entendido</button>`
+      : `<p>No tracking or ad cookies here. Your progress is saved in this browser so you don't lose it. <a href="${base}legal/cookies">Details</a></p><button class="btn sm">Got it</button>`;
     n.querySelector("button").addEventListener("click", () => {
       try { localStorage.setItem("fh-notice-ok", "1"); } catch (e) { /* storage blocked */ }
       n.remove();
