@@ -861,6 +861,8 @@ details .in-example { margin: 10px 0 20px; }
 /* Full-width header: logo hugs the left edge, account the right, the menu sits in the middle. */
 .topbar .wrap.wide { max-width: none; display: grid; grid-template-columns: 1fr auto 1fr; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
 .wrap.wide .topnav { margin: 0; }
+/* Only the logo itself is a link, not the empty space beside it. */
+.wrap.wide .logo { justify-self: start; }
 .top-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; min-width: 0; }
 @media (max-width: 720px) { .topbar .wrap.wide { grid-template-columns: auto 1fr; } .top-right { gap: 10px; } }
 
