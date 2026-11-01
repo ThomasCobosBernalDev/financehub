@@ -55,8 +55,7 @@
     if (!USERNAME.test(username)) return msg(T("Usernames are 3 to 20 letters, numbers, dots or underscores.", "El nombre de usuario debe tener de 3 a 20 letras, números, puntos o guiones bajos."), true);
     if (!f.email.value.includes("@")) return msg(T("Enter a valid email address.", "Escribe un correo válido."), true);
     if (!pwOk(f.password.value)) return msg(T("Your password needs at least 8 characters and one special character.", "Tu contraseña necesita al menos 8 caracteres y un carácter especial."), true);
-    if (!f.age.checked) return msg(T("You need to be 13 or older to create an account.", "Necesitas tener 13 años o más para crear una cuenta."), true);
-    if (!f.terms.checked) return msg(T("Please agree to the terms and privacy policy to continue.", "Para continuar, acepta los términos y la política de privacidad."), true);
+    if (!f.terms.checked) return msg(T("Please agree to the terms and privacy policy to continue (you need to be 13 or older).", "Para continuar, acepta los términos y la política de privacidad (necesitas tener 13 años o más)."), true);
     msg(T("Creating your account…", "Creando tu cuenta…"));
     const { data, error } = await FHAuth.signUp(f.email.value.trim(), f.password.value, {
       username, age_confirmed: true, terms_accepted_at: new Date().toISOString(),
@@ -93,8 +92,7 @@
     const say = (t, bad) => { out.textContent = t; out.classList.toggle("bad", !!bad); };
     const username = f.username.value.trim();
     if (!USERNAME.test(username)) return say(T("Usernames are 3 to 20 letters, numbers, dots or underscores.", "El nombre de usuario debe tener de 3 a 20 letras, números, puntos o guiones bajos."), true);
-    if (!f.age.checked) return say(T("You need to be 13 or older to create an account.", "Necesitas tener 13 años o más para crear una cuenta."), true);
-    if (!f.terms.checked) return say(T("Please agree to the terms and privacy policy to continue.", "Para continuar, acepta los términos y la política de privacidad."), true);
+    if (!f.terms.checked) return say(T("Please agree to the terms and privacy policy to continue (you need to be 13 or older).", "Para continuar, acepta los términos y la política de privacidad (necesitas tener 13 años o más)."), true);
     say(T("Saving…", "Guardando…"));
     try { await FHAuth.finishSignup(username); say(T("All set. Taking you to your course…", "Listo. Te llevamos a tu curso…")); }
     catch (err) { say(friendly(err), true); }

@@ -6,7 +6,7 @@
   <title>Tu cuenta · FinancedHub</title>
   <meta name="description" content="Inicia sesión para guardar tu progreso de FinancedHub en todos tus dispositivos.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../../assets/css/style.css?v=202611010303">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611010305">
   <link rel="icon" href="../../favicon.ico" sizes="32x32">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -82,7 +82,6 @@
         <label>Correo<input type="email" name="email" autocomplete="email" required></label>
         <label>Contraseña<input type="password" name="password" autocomplete="new-password" minlength="8" required data-rules></label>
         <ul class="pw-rules" aria-live="polite"><li data-rule="len">Al menos 8 caracteres</li><li data-rule="special">Al menos un carácter especial, como ! ? # o @</li></ul>
-        <label class="check"><input type="checkbox" name="age" required><span>Tengo 13 años o más.</span></label>
         <label class="check"><input type="checkbox" name="terms" required><span>Acepto los <a href="../legal/terms.html" target="_blank">términos de uso</a> y leí la <a href="../legal/privacy.html" target="_blank">política de privacidad</a>.</span></label>
         <button class="btn" type="submit">Crear cuenta</button>
         <p class="small muted">Solo usamos tu correo para iniciar tu sesión. Nunca te mandaremos publicidad.</p>
@@ -109,7 +108,6 @@
       <p class="muted">Iniciaste sesión con Google como <b id="finish-email"></b>. Elige un nombre de usuario y listo.</p>
       <form id="form-finish" class="auth-form" novalidate>
         <label><span>Nombre de usuario <span class="small muted">(cómo te vamos a llamar)</span></span><input type="text" name="username" autocomplete="username" maxlength="20" required></label>
-        <label class="check"><input type="checkbox" name="age" required><span>Tengo 13 años o más.</span></label>
         <label class="check"><input type="checkbox" name="terms" required><span>Acepto los <a href="../legal/terms.html" target="_blank">términos de uso</a> y leí la <a href="../legal/privacy.html" target="_blank">política de privacidad</a>.</span></label>
         <button class="btn" type="submit">Terminar y empezar a aprender <span class="arrow">→</span></button>
         <button class="linkish" type="button" id="finish-out">Usar otra cuenta</button>
@@ -203,11 +201,11 @@
     <p>© 2026 FinancedHub</p>
   </div>
 </footer>
-<script src="../../assets/js/save.js?v=202611010303"></script>
-<script src="../../assets/vendor/supabase-2.45.4.js?v=202611010303"></script>
-<script src="../../assets/js/auth.js?v=202611010303"></script>
-<script src="../../assets/js/site.js?v=202611010303"></script>
+<script src="../../assets/js/save.js?v=202611010305"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611010305"></script>
+<script src="../../assets/js/auth.js?v=202611010305"></script>
+<script src="../../assets/js/site.js?v=202611010305"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../../assets/js/account.js?v=202611010303"></script>
+<script src="../../assets/js/account.js?v=202611010305"></script>
 </body>
 </html>
