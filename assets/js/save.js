@@ -54,7 +54,7 @@
     toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2200);
   };
 
-  // The eight ways every lesson teaches. `chapter` is the lesson section each one maps to.
+  // Reduce motion: the reader's own pick in Settings, or their device setting.
   const applyMotion = () => {
     let pick = null;
     try { pick = localStorage.getItem("fh-motion"); } catch (e) { /* storage blocked */ }
@@ -63,6 +63,7 @@
   };
   applyMotion();
 
+  // The eight ways every lesson teaches. `chapter` is the lesson section each one maps to.
   const STYLES = [
     { id: "visual", label: t("Seeing", "Viendo"), chapter: t("See it", "Míralo"), desc: t("Diagrams and charts you can drag and poke", "Diagramas y gráficas que puedes mover y tocar") },
     { id: "auditory", label: t("Listening", "Escuchando"), chapter: t("Hear it", "Escúchalo"), desc: t("A short narrated walkthrough", "Un recorrido corto narrado") },
@@ -229,13 +230,12 @@
     },
     lang: LANG,
     t,
-    // Remember the reader's language (this browser and their account) and go to that version of the page.
-    // Reduce motion: the reader's own pick, or their device setting.
     setMotion(on) {
       try { localStorage.setItem("fh-motion", on ? "reduce" : "full"); } catch (e) { /* storage blocked */ }
       applyMotion();
     },
     still: () => document.documentElement.dataset.motion === "reduce",
+    // Remember the reader's language (this browser and their account) and go to that version of the page.
     setLang(lang, go = true) {
       state.lang = lang;
       try { localStorage.setItem("fh-lang", lang); } catch (e) { /* storage blocked */ }
@@ -249,12 +249,9 @@
     PARTS,
     UNIT_NAMES,
     CATALOG,
-    OPEN,
     partOf,
-    lessonById: (id) => byId[id],
     buildPath,
     done: (id) => !!(state.lessons[id] && state.lessons[id].completedAt),
-    // The next open lesson to take: on the path, not known, not finished. Falls back to any unfinished one.
     // The lesson the main button should open, with why: "new" (next on the path), "review" (on the path,
     // but in a unit they know) or "extra" (every open path lesson is done, so one from outside the path).
     nextLesson() {
@@ -297,7 +294,6 @@
       try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
       document.dispatchEvent(new CustomEvent("fh:save", { detail: state, bubbles: false }));
     },
-    reset() { state = fresh(); persist(); emit(); },
     toast,
     money: (n) => (n < 0 ? "-$" : "$") + Math.abs(Math.round(n)).toLocaleString("en-US"),
   };

@@ -1,5 +1,4 @@
 /* Lesson-specific visuals: hero ribbons, the Month Survivor town, coins. */
-.hero-art { width: 100%; height: auto; display: block; margin: 56px 0 8px; }
 
 .scene { position: relative; margin: -8px -8px 24px; }
 .scene svg { width: 100%; height: auto; display: block; overflow: visible; }
@@ -49,5 +48,4 @@
   .nature-art text { font-size: 30px; }
   .connect-map { display: none; }
   .connect-list { display: block; }
-  .hero-art { margin-top: 36px; }
 }

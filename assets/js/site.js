@@ -1,4 +1,4 @@
-// Shared page behavior: theme toggle, scroll reveals, reading progress, section rail.
+// Shared page behavior: theme toggle, scroll reveals, reading progress, header menus, footer.
 (function () {
   const root = document.documentElement;
 
@@ -108,40 +108,6 @@
     });
     document.body.appendChild(n);
   }
-
-  // Companion panel in the right margin: your character's numbers, live.
-  const comp = document.querySelector(".companion");
-  if (comp && window.FH) {
-    const render = () => {
-      const s = FH.state, c = s.character, m = FH.money;
-      const set = (k, v) => { const el = comp.querySelector(`[data-k=${k}]`); if (el) el.textContent = v; return el; };
-      set("pay", m(c.monthlyTakeHome));
-      set("ef", m(c.emergencyFund));
-      set("inv", m(c.investments));
-      set("cash", m(c.checking));
-      const debt = set("debt", m(c.creditCardDebt));
-      if (debt) debt.classList.toggle("bad", c.creditCardDebt > 0);
-      set("xp", s.xp);
-      set("badges", s.badges.length);
-      set("lessons", Object.values(s.lessons).filter((l) => l.completedAt).length);
-    };
-    document.addEventListener("fh:save", render);
-    render();
-  }
-
-  // Section rail: highlight the chapter currently on screen.
-  const rail = document.querySelector(".rail");
-  if (rail && !rail.hasAttribute("data-own")) {
-    const links = [...rail.querySelectorAll("a")];
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        links.forEach((a) => a.classList.toggle("current", a.getAttribute("href") === `#${e.target.id}`));
-      }),
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    links.forEach((a) => { const t = document.querySelector(a.getAttribute("href")); if (t) io.observe(t); });
-  }
 })();
 
 // "Where it leads" maps: build up as you scroll, like a wiring diagram. The lesson before connects in,
@@ -181,8 +147,9 @@
     outs.forEach((p, i) => { const [x, y] = end(p); const at = .46 + i * .13; steps.push([[p], at, "wire"]); steps.push([[port(x, y)], at + .08, "node"]); });
     after.forEach((n, i) => steps.push([n.els, .54 + i * .13, "node"]));
     // The flowing route: into this lesson, then out to the first lesson after it.
-    const flows = [ins[0], outs[0]].filter(Boolean).map((p) => {
-      const f = p.cloneNode(); f.setAttribute("class", "cm-flow"); p.parentNode.appendChild(f); return f;
+    // A copy of the first wire in and out carries the flowing dashes.
+    [ins[0], outs[0]].filter(Boolean).forEach((p) => {
+      const f = p.cloneNode(); f.setAttribute("class", "cm-flow"); p.parentNode.appendChild(f);
     });
     svg.classList.add("cm-live");
     steps.forEach(([els, , kind]) => els.forEach((el) => {

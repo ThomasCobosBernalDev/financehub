@@ -1,14 +1,10 @@
 // Unit 4, Lesson 1: Budgeting frameworks
 (function () {
   const LESSON = "u4-budgeting-frameworks";
-  const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const { $, $$, wait, shuffle, fillRange } = FHLesson;
   const money = FH.money;
   const T = FH.t;
   const KIND_NAME = { needs: T("needs", "necesidades"), wants: T("wants", "deseos"), savings: T("savings", "ahorro") };
-  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const fillRange = (r) => r.style.setProperty("--fill", `${((r.value - r.min) / (r.max - r.min)) * 100}%`);
 
   // ---------- See it: live 50/30/20 ----------
   const slider = $("#pay-slider");

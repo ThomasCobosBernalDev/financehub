@@ -255,7 +255,6 @@
   renderTrip();
 
   // ---------- Check ----------
-  const F = (a, b) => `<span class='frac'><span>${a}</span><span>${b}</span></span>`;
   const QUIZ_EN = [
     { q: "What does one share of an S&P 500 index fund give you?",
       opts: ["A tiny slice of all of the roughly 500 companies", "One share of each of the 500 companies", "A share of whichever company is biggest that day", "A loan to the 500 companies, paid back with interest"], a: 0,

@@ -1,4 +1,4 @@
-// Shared lesson behavior: progress rail, learning-style picker, narration player,
+// Shared lesson behavior: one-step-at-a-time pager, XP, narration player,
 // fill-in-the-blanks, private reflections and the exam-style quiz.
 // Each lesson calls FHLesson.init({ id, title, quiz }) after its own lesson.js setup.
 (function () {
@@ -12,12 +12,8 @@
     const chapters = $$("main .chapter");
     const slug = short || id;
 
-    // ---------- XP and rail ----------
-    const renderProgress = () => {
-      const xp = $("#xp"); if (xp) xp.textContent = FH.state.xp;
-      const seen = FH.lesson(id).sections;
-      $$(".rail a").forEach((a) => a.classList.toggle("seen", !!seen[a.getAttribute("href").slice(1)]));
-    };
+    // ---------- XP ----------
+    const renderProgress = () => { const xp = $("#xp"); if (xp) xp.textContent = FH.state.xp; };
     document.addEventListener("fh:save", renderProgress);
 
     const seenIO = new IntersectionObserver(
@@ -189,7 +185,7 @@
     });
   }
 
-  // One section at a time: each chapter ends with Back / Next, and the rail jumps between them.
+  // One section at a time: each chapter ends with Back / Next and a row of step dots.
   // Everything is laid out first (charts measure themselves), then the other chapters are hidden.
   function paginate(id, chapters) {
     if (chapters.length < 2) return;
@@ -222,14 +218,13 @@
       if (i < 0 || i >= chapters.length) return;
       at = i;
       chapters.forEach((c, j) => c.classList.toggle("pg-on", j === i));
-      $$(".rail a").forEach((a) => a.classList.toggle("current", a.getAttribute("href") === `#${chapters[i].id}`));
       if (FH.markSection(id, chapters[i].id)) FH.addXP(5);
       try { history.replaceState(null, "", `#${chapters[i].id}`); } catch (e) { /* file:// or sandboxed */ }
       dispatchEvent(new Event("resize"));
       if (target && target !== chapters[i]) target.scrollIntoView({ block: "start" });
       else scrollTo({ top: 0 });
     };
-    // Any same-page link (the rail, "see the quiz" links) opens the step that holds its target.
+    // Any same-page link ("see the quiz" links and the like) opens the step that holds its target.
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (!a || a.getAttribute("href").length < 2) return;

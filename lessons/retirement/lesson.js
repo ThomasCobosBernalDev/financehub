@@ -357,7 +357,6 @@
   startMission();
 
   // ---------- Check ----------
-  const F = (a, b) => `<span class='frac'><span>${a}</span><span>${b}</span></span>`;
   const QUIZ_EN = [
     { q: "Your salary is $60,000. Your employer matches 100% of what you put in, up to 5% of pay. You contribute 3%. How much does your employer add in a year?",
       opts: ["$1,800", "$3,000", "$1,200", "$900"], a: 0,
