@@ -6,7 +6,7 @@
   <title>FinancedHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202611010305">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611010307">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,8 +20,8 @@
     .wonder #wq { color: var(--accent); transition: opacity .3s ease; }
     .wonder #wq.fade { opacity: 0; }
     .wonder .perfect { display: block; color: var(--ink-2); }
-    /* Frosted panel so the doors stay readable over the photo. */
-    .for-you { display: grid; gap: 14px; padding: 22px; border-radius: 28px; background: rgba(12, 18, 16, .42); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent), 0 30px 60px -40px rgba(0, 0, 0, .45); }
+    /* Solid dark panel so the doors stay readable over the photo (no blur: blurring over the photo flickered while scrolling). */
+    .for-you { display: grid; gap: 14px; padding: 22px; border-radius: 28px; background: rgba(12, 18, 16, .8); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent), 0 30px 60px -40px rgba(0, 0, 0, .45); }
     .for-you h2 { margin: 0; font-size: 22px; }
     .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .for-you li a { display: grid; gap: 12px; align-content: space-between; height: 100%; box-sizing: border-box; padding: 18px 20px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); color: inherit; text-decoration: none; transition: box-shadow .25s, transform .25s var(--ease), background .25s; }
@@ -55,14 +55,17 @@
     /* Behind the hero, full width and full height: a real photo for each door, crossfading with the "Wondering" line.
        A dark tint (stronger on the left, behind the text) keeps the white text readable in both themes. */
     .hero-photos { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none; background: #14201c; }
-    .hero-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 7s linear; }
-    .hero-photos img.on { opacity: 1; transform: scale(1); }
-    .hero-photos::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 16, 14, .82) 0%, rgba(10, 16, 14, .62) 45%, rgba(10, 16, 14, .3) 100%); }
-    :root[data-motion="reduce"] .hero-photos img { transition: opacity .3s; transform: none; }
-    @media (max-width: 1024px) { .hero-photos::after { background: rgba(10, 16, 14, .66); } }
-    /* Over the photo the hero uses light text, whatever the site theme. */
+    .hero-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; opacity: 0; transition: opacity 1.1s ease; }
+    .hero-photos img.on { opacity: 1; }
+    .hero-photos::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 16, 14, .88) 0%, rgba(10, 16, 14, .74) 48%, rgba(10, 16, 14, .45) 100%); }
+    :root[data-motion="reduce"] .hero-photos img { transition: opacity .3s; }
+    @media (max-width: 1024px) { .hero-photos::after { background: rgba(10, 16, 14, .78); } }
+    /* Home: solid header, so nothing blurs over the photo as it scrolls underneath. */
+    .topbar { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
+    /* Over the photo the hero uses light text, whatever the site theme, with a soft shadow for contrast. */
+    .hero h1, .hero .wonder, .hero .lead, .ways { text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
     .hero { --ink: #fbf8f2; --ink-2: rgba(251, 248, 242, .86); --ink-3: rgba(251, 248, 242, .72); --line: rgba(255, 255, 255, .22); --accent: #8fdcbf; --accent-soft: rgba(143, 220, 191, .18); --card: rgba(18, 26, 23, .55); --paper: #121a17; color: var(--ink); }
-    .hero .btn.line { background: rgba(255, 255, 255, .1); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .55); }
+    .hero .btn.line { background: rgba(12, 18, 16, .55); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6); }
     .hero .btn.line:hover { background: rgba(255, 255, 255, .18); }
 
 
@@ -125,10 +128,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202611010305"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202611010305"></script>
-<script src="assets/js/auth.js?v=202611010305"></script>
-<script src="assets/js/site.js?v=202611010305"></script>
+<script src="assets/js/save.js?v=202611010307"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202611010307"></script>
+<script src="assets/js/auth.js?v=202611010307"></script>
+<script src="assets/js/site.js?v=202611010307"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
