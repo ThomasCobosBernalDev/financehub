@@ -6,7 +6,7 @@
   <title>FinancedHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611010400">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611010406">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -124,10 +124,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202611010400"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611010400"></script>
-<script src="../assets/js/auth.js?v=202611010400"></script>
-<script src="../assets/js/site.js?v=202611010400"></script>
+<script src="../assets/js/save.js?v=202611010406"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611010406"></script>
+<script src="../assets/js/auth.js?v=202611010406"></script>
+<script src="../assets/js/site.js?v=202611010406"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -142,7 +142,7 @@ if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classLi
   const q = (a) => { const t = a.querySelector("b").textContent; return t[0].toLowerCase() + t.slice(1); };
   let i = 0, timer;
   const show = (n) => { i = n; doors.forEach((d, k) => d.classList.toggle("on", k === n)); photos.forEach((p, k) => p.classList.toggle("on", k === n)); wq.classList.add("fade"); setTimeout(() => { wq.textContent = q(doors[n]); wq.classList.remove("fade"); }, 300); };
-  const start = () => { clearInterval(timer); if (!FH.still()) timer = setInterval(() => show((i + 1) % doors.length), 3200); };
+  const start = () => { clearInterval(timer); if (!FH.still()) timer = setInterval(() => show((i + 1) % doors.length), 6000); };
   doors.forEach((d, k) => { d.addEventListener("mouseenter", () => { clearInterval(timer); if (k !== i) show(k); }); d.addEventListener("mouseleave", start); });
   doors[0].classList.add("on"); start();
 })();
