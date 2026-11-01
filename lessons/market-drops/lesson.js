@@ -319,7 +319,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 3) * 100));
     if (first) FH.addXP(50, T("Rode out real market history", "Aguantaste la historia real del mercado"));
-    if (G.totalSells === 0) FH.badge("steady-hands", T("Steady Hands", "Pulso firme"));
+    if (G.totalSells === 0) FH.badge("steady-hands");
     FH.save();
   };
 

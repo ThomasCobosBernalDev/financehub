@@ -22,7 +22,6 @@
     const out = JSON.parse(JSON.stringify(newer));
     out.xp = Math.max(a.xp || 0, b.xp || 0);
     out.badges = [...new Set([...(a.badges || []), ...(b.badges || [])])];
-    out.badgeNames = Object.assign({}, a.badgeNames, b.badgeNames);
     // Streak: the save that showed up most recently, keeping the best run from either.
     const sa = a.streak || {}, sb = b.streak || {};
     out.streak = Object.assign({}, (sa.last || "") >= (sb.last || "") ? sa : sb, { best: Math.max(sa.best || 0, sb.best || 0) });

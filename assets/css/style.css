@@ -1385,7 +1385,19 @@ body { overflow-x: clip; }
 .about-stand b { display: block; margin-bottom: 4px; font-family: var(--serif); font-size: 18px; color: var(--ink); }
 @media (max-width: 560px) { .about-stand { grid-template-columns: 1fr; } }
 /* Header streak and notifications bell (site.js), and the pop-up when a badge is earned. */
-.notes { position: relative; display: flex; align-items: center; gap: 8px; }
+.notes { position: relative; display: flex; }
+/* Streak and XP: hover or tap for a small card that explains them. */
+.hov { position: relative; cursor: default; outline: none; }
+.hov-card { position: absolute; top: calc(100% + 14px); left: 50%; z-index: 40; display: grid; gap: 6px; width: 270px; padding: 14px 16px; border-radius: 14px; background: var(--card); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -16px rgba(0,0,0,.35); font-size: 13.5px; line-height: 1.45; text-align: left; text-shadow: none; white-space: normal; opacity: 0; visibility: hidden; transform: translate(-50%, -6px); transition: opacity .2s, transform .25s var(--ease), visibility .2s; }
+.hov-card::before { content: ""; position: absolute; bottom: 100%; left: 0; right: 0; height: 16px; }
+.hov:hover .hov-card, .hov:focus-within .hov-card { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.hc-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); }
+.hc-best { color: var(--ink-3); font-size: 12.5px; }
+.hov-card .btn { justify-self: start; margin-top: 4px; }
+.hc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.hc-list li { display: grid; grid-template-columns: 34px 1fr; }
+.hc-list b { color: var(--accent); font-weight: 700; }
+@media (max-width: 560px) { .hov-card { position: fixed; top: 62px; left: 12px; right: 12px; width: auto; transform: translateY(-6px); } .hov:hover .hov-card, .hov:focus-within .hov-card { transform: none; } .top-right .xp { display: none; } }
 .streak { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .streak svg { width: 17px; height: 17px; fill: currentColor; opacity: .5; }
 .streak.lit { color: var(--ink); }
@@ -1403,8 +1415,7 @@ body { overflow-x: clip; }
 .notes-pop li b { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; }
 .notes-pop li small { font-size: 12.5px; color: var(--ink-3); }
 .np-empty { color: var(--ink-3); font-size: 14px; }
-.np-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 8px; padding: 10px 6px 2px; border-top: 1px solid var(--line); font-size: 13.5px; }
-.np-streak { flex: 1 0 100%; margin: 0; color: var(--ink-2); }
+.np-foot { margin-top: 8px; padding: 10px 6px 2px; border-top: 1px solid var(--line); font-size: 13.5px; }
 .np-foot a { color: var(--accent); font-weight: 600; text-decoration: none; }
 .badge-pop { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; align-items: center; gap: 14px; max-width: min(360px, calc(100vw - 40px)); padding: 14px 18px 14px 14px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), 0 20px 50px -18px rgba(0,0,0,.45); opacity: 0; transform: translateY(16px) scale(.96); pointer-events: none; transition: opacity .35s, transform .45s var(--ease); }
 .badge-pop.show { opacity: 1; transform: none; }
@@ -1415,7 +1426,6 @@ body { overflow-x: clip; }
 .badge-pop b { display: block; font-family: var(--serif); font-size: 19px; font-weight: 500; }
 .badge-pop em { display: block; font-style: normal; font-size: 13px; color: var(--ink-3); }
 .avatar.has-pic, .prof-avatar.has-pic { background-size: cover; background-position: center; }
-@media (max-width: 560px) { .top-right .xp { display: none; } .notes { gap: 2px; } }
 /* Profile: tap your avatar to change it; your streak; the badge wall (gray until earned). */
 .prof-pic { display: grid; justify-items: center; gap: 4px; }
 button.prof-avatar { border: 0; padding: 0; cursor: pointer; font-family: var(--serif); transition: box-shadow .2s; }
@@ -1438,7 +1448,12 @@ button.prof-avatar:hover, button.prof-avatar:focus-visible { box-shadow: 0 0 0 3
 .badge-wall .got b { color: var(--ink); }
 .badge-wall small { font-size: 12px; line-height: 1.35; color: var(--ink-3); }
 .badge-wall .got small { color: var(--accent); font-weight: 600; }
-.streak-row .set-sub { margin-top: 0; padding-top: 0; border-top: 0; }
+.set-card .streak-row h3.set-sub { margin-top: 0; padding-top: 0; border-top: 0; }
 .ex-tiles .cx-tile.done { padding-right: 36px; }
 .streak svg { flex: none; }
 @media (max-width: 560px) { .notes-pop { position: fixed; top: 62px; left: 12px; right: 12px; width: auto; } }
+/* Under a lesson's title: how much XP it's worth and how you earn it. */
+.xp-chip { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0 14px; font-size: 13.5px; color: var(--ink-3); }
+.xp-chip b { color: var(--accent); font-weight: 700; }
+#badge-wall .set-sub small { margin-left: 6px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
+#badge-wall .badge-wall { margin-bottom: 8px; }

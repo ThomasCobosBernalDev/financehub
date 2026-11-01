@@ -135,7 +135,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 6) * 100));
     if (first) FH.addXP(50, T("Picked the rail for six payments", "Elegiste cómo mover seis pagos"));
-    if (G.score === 6) FH.badge("money-mover", T("Money Mover", "Experto en mover dinero"));
+    if (G.score === 6) FH.badge("money-mover");
     FH.save();
   });
   startRound();

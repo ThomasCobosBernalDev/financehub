@@ -37,7 +37,7 @@
       $("p", d).innerHTML = c.sub(r[c.k]);
       d.classList.remove("bump"); void d.offsetWidth; d.classList.add("bump");
     });
-    if (ff >= 9) FH.badge("volcker", T("Channeling Volcker", "Al estilo Volcker"));
+    if (ff >= 9) FH.badge("volcker");
   };
   slider.addEventListener("input", renderRP);
   renderRP();
@@ -175,7 +175,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, score);
     FH.addXP(first ? 50 : 15, first ? T("Finished Rate Dial", "Terminaste El dial de tasas") : T("Another term at the Fed", "Otro mandato en la Fed"));
-    if (grade === "A") FH.badge("rate-dial-a", T("Rate Dial: A", "El dial de tasas: A"));
+    if (grade === "A") FH.badge("rate-dial-a");
     FH.save();
     $("#f-again").addEventListener("click", () => {
       r.classList.add("hidden");

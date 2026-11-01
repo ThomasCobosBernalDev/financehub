@@ -16,6 +16,11 @@ SHELL = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{title} · FinancedHub</title>
   <meta name="description" content="{description}">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <script>try {{ var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; }} catch (e) {{}}</script>
   <link rel="stylesheet" href="{a}assets/css/style.css">
   <link rel="icon" href="{a}favicon.ico" sizes="32x32">

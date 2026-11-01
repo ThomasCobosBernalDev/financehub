@@ -35,7 +35,7 @@
     $("#tm-bill-note").innerHTML = i === 6
       ? T("Drag back in time to compare a $100 bill from then with one from today.", "Arrastra hacia el pasado para comparar un billete de $100 de entonces con uno de hoy.")
       : T(`A $100 bill in ${YEARS[i]} had the buying power of <b>${money(100 / k)}</b> today, so it's drawn ${(1 / k).toFixed(1)} times bigger. Prices for rent and tuition actually rose faster than the CPI average.`, `Un billete de $100 en ${YEARS[i]} tenía el poder de compra de <b>${money(100 / k)}</b> de hoy, por eso se dibuja ${(1 / k).toFixed(1)} veces más grande. Los alquileres y las matrículas en realidad subieron más rápido que el promedio del IPC.`);
-    if (i === 0) FH.badge("time-traveler", T("Time Traveler", "Viajero del tiempo"));
+    if (i === 0) FH.badge("time-traveler");
   };
   tmSlider.addEventListener("input", renderTM);
   renderTM();
@@ -196,7 +196,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, score);
     FH.addXP(first ? 50 : 15, first ? T("Finished Beat Inflation", "Terminaste Gánale a la inflación") : T("Another trip through time", "Otro viaje en el tiempo"));
-    if (grade === "A") FH.badge("beat-inflation-a", T("Beat Inflation: A", "Gánale a la inflación: A"));
+    if (grade === "A") FH.badge("beat-inflation-a");
     FH.save();
     $("#b-again").addEventListener("click", () => {
       res.classList.add("hidden");

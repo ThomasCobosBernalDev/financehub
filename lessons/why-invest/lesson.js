@@ -208,7 +208,7 @@
     if (right === 6) {
       const first = sortState.filter((s) => s.first).length;
       $("#so-score").textContent = T(`6 of 6 · ${first} on the first try`, `6 de 6 · ${first} al primer intento`);
-      if (first === 6) FH.badge("right-jar", T("Right Jar", "El frasco correcto"));
+      if (first === 6) FH.badge("right-jar");
     }
   };
   $("#so-list").innerHTML = SORT.map((s, i) => `<li data-i="${i}"><p>${s.t}</p><div class="sort-opts">${Object.entries(ACCT).map(([k, v]) => `<button class="chip" type="button" data-k="${k}">${v}</button>`).join("")}</div><p class="sort-why" aria-live="polite"></p></li>`).join("");
@@ -359,7 +359,7 @@
     const first = l.gameBest === null;
     l.gameBest = 100;
     if (first) FH.addXP(50, T("Tested investing on real history", "Pusiste a prueba la inversión con la historia real"));
-    FH.badge("time-traveler", T("Time Traveler", "Viajero del tiempo"));
+    FH.badge("time-traveler");
     FH.save();
   };
 

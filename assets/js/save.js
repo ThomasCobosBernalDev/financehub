@@ -10,7 +10,6 @@
     version: 1,
     xp: 0,
     badges: [],
-    badgeNames: {}, // names for badges earned inside lessons (the course-wide ones are in ACHIEVEMENTS)
     notes: [], // notifications, newest last: { id, at, read }
     streak: { days: 0, best: 0, last: null }, // days in a row the learner showed up
     avatar: null, // their own profile picture, a small square JPEG data URL
@@ -219,6 +218,8 @@
     clip: '<rect x="6" y="5" width="12" height="16" rx="2"/><path d="M9 5V3h6v2M9 13l2 2 4-4"/>',
     shield: '<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="m9 12 2 2 4-4"/>',
     flame: '<path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/>',
+    ear: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+    pen: '<path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/>',
     star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
   };
   const doneCount = () => Object.values(state.lessons).filter((l) => l.completedAt).length;
@@ -238,10 +239,51 @@
     { id: "streak-7", tier: "flame", icon: "flame", name: t("Week Strong", "Semana completa"), how: t("Show up 7 days in a row.", "Entra 7 días seguidos."), test: () => state.streak.best >= 7 },
     { id: "streak-30", tier: "gold", icon: "flame", name: t("Habit Formed", "Hábito formado"), how: t("Show up 30 days in a row.", "Entra 30 días seguidos."), test: () => state.streak.best >= 30 },
   ];
+  // Badges won inside a lesson's game or activity: [id, lesson folder, name, how to earn it]. Shown on the wall even before they're earned.
+  const GAME_BADGES = [
+    ["fee-dodger", "bank-fees", t("Fee Dodger", "Esquiva comisiones"), t("Dodge every fee in the debit card game.", "Esquiva todas las comisiones en el juego de la tarjeta de débito.")],
+    ["fee-reader", "brokerage", t("Fine Print Reader", "Lector de letra chiquita"), t("Check every fee on the brokerage fee sheet.", "Revisa todas las comisiones de la hoja de la casa de bolsa.")],
+    ["account-opener", "brokerage", t("Account Opener", "Cuenta abierta"), t("Get 6 of 6 in the open-an-account game.", "Saca 6 de 6 en el juego de abrir una cuenta.")],
+    ["dollar-grid", "budgeting", t("Every Dollar Has a Job", "Cada dólar tiene un trabajo"), t("Give your coins jobs at exactly 50/30/20.", "Reparte tus monedas exactamente en 50/30/20.")],
+    ["month-survivor-a", "budgeting", t("Month Survivor: A", "Sobrevive al mes: A"), t("Get an A in Month Survivor.", "Saca A en Sobrevive al mes.")],
+    ["smart-split", "checking-savings", t("Smart Split", "Buen reparto"), t("Find a smart split between checking and savings.", "Encuentra un buen reparto entre cheques y ahorro.")],
+    ["bank-app-a", "checking-savings", t("Bank App Pro", "Experto en la app del banco"), t("Get an A in the bank app game.", "Saca A en el juego de la app del banco.")],
+    ["order-pro", "first-trade", t("Order Desk Pro", "Pro de las órdenes"), t("Fill all 4 orders right at the order desk.", "Llena bien las 4 órdenes en la mesa de órdenes.")],
+    ["fund-shopper", "index-funds", t("Fund Shopper", "Comprador de fondos"), t("Pick the right fund 4 out of 4 times.", "Elige el fondo correcto 4 de 4 veces.")],
+    ["time-traveler", "why-invest", t("Time Traveler", "Viajero del tiempo"), t("Travel back in time with real market history.", "Viaja al pasado con la historia real del mercado.")],
+    ["beat-inflation-a", "inflation", t("Beat Inflation: A", "Gánale a la inflación: A"), t("Get an A in Beat Inflation.", "Saca A en Gánale a la inflación.")],
+    ["volcker", "interest-rates", t("Channeling Volcker", "Al estilo Volcker"), t("Push the Fed's rate to 9% or higher.", "Sube la tasa de la Fed a 9% o más.")],
+    ["rate-dial-a", "interest-rates", t("Rate Dial: A", "El dial de tasas: A"), t("Get an A in Rate Dial.", "Saca A en El dial de tasas.")],
+    ["steady-hands", "market-drops", t("Steady Hands", "Pulso firme"), t("Ride out the crashes without selling.", "Aguanta las caídas sin vender.")],
+    ["money-mover", "moving-money", t("Money Mover", "Experto en mover dinero"), t("Pick the right way to move all 6 payments.", "Elige bien cómo mover los 6 pagos.")],
+    ["fine-print", "open-account", t("Fine Print Detective", "Detective de letra chica"), t("Spot the catch in all 6 account offers.", "Encuentra la trampa en las 6 ofertas de cuenta.")],
+    ["stub-detective", "pay-stub", t("Stub Detective", "Detective de talones"), t("Catch every mistake on 6 pay stubs.", "Encuentra todos los errores en 6 talones de pago.")],
+    ["retirement-ready", "retirement", t("Retirement Ready", "Listo para el retiro"), t("Make all 4 benefits-day choices right.", "Toma bien las 4 decisiones del día de beneficios.")],
+    ["ppf-explorer", "scarcity", t("Frontier Explorer", "Explorador de la frontera"), t("Test all 3 kinds of plans on the frontier.", "Prueba los 3 tipos de plan en la frontera.")],
+    ["ten-hours-a", "scarcity", t("Ten Free Hours: A", "Diez horas libres: A"), t("Get an A in Ten Free Hours.", "Saca A en Diez horas libres.")],
+    ["quote-reader", "stocks", t("Quote Reader", "Lector de cotizaciones"), t("Tap all 6 parts of a stock quote.", "Toca las 6 partes de una cotización.")],
+    ["scatter-hoarder", "stocks", t("Scatter Hoarder", "Ardilla previsora"), t("Finish the stock-picking game.", "Termina el juego de elegir acciones.")],
+    ["found-equilibrium", "supply-demand", t("Found the Equilibrium", "Encontraste el equilibrio"), t("Find the price where supply meets demand.", "Encuentra el precio donde la oferta y la demanda se igualan.")],
+    ["market-stall-a", "supply-demand", t("Market Stall: A", "Puesto del mercado: A"), t("Get an A in Market Stall.", "Saca A en Puesto del mercado.")],
+    ["bracket-pro", "taxes", t("Bracket Pro", "Experto en categorías"), t("Pour all 6 paychecks into the right brackets.", "Reparte bien los 6 sueldos en sus categorías.")],
+    ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
+  ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
+  const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };
+  // Every lesson also has three of its own: listen to all of it, fill every blank, ace the quiz.
+  const perLesson = (id) => {
+    let m = /^listened-(.+)$/.exec(id);
+    if (m) return { id, tier: "bronze", icon: "ear", kind: "lesson", name: t("Good Listener", "Buen oyente"), how: t(`Listened to all of ${lessonTitle(m[1])}.`, `Escuchaste toda la lección ${lessonTitle(m[1])}.`) };
+    m = /^blanks-(.+)$/.exec(id);
+    if (m) return { id, tier: "bronze", icon: "pen", kind: "lesson", name: t("Note Taker", "Buenos apuntes"), how: t(`Filled every blank in ${lessonTitle(m[1])}.`, `Llenaste todos los espacios de ${lessonTitle(m[1])}.`) };
+    m = /^quiz-(.+)-perfect$/.exec(id);
+    if (m) return { id, tier: "gold", icon: "check", kind: "lesson", name: t("Perfect Quiz", "Examen perfecto"), how: t(`Got every quiz question right in ${lessonTitle(m[1])}.`, `Acertaste todo el examen de ${lessonTitle(m[1])}.`) };
+    return null;
+  };
   const TIERS = { bronze: "#b0793f", silver: "#7f8c99", gold: "#c3952a", green: "#1f6f5a", flame: "#d0602a" };
   // A badge as a round medal: tier color, a ring like the logo's, and its icon. Locked badges are gray.
   const medal = (b, earned = true) => `<svg class="medal${earned ? "" : " locked"}" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="${earned ? TIERS[b.tier] || TIERS.green : "var(--line)"}"/><circle cx="32" cy="32" r="25" fill="none" stroke="${earned ? "rgba(255,255,255,.4)" : "var(--paper)"}" stroke-width="2"/><g transform="translate(18 18) scale(1.17)" fill="none" stroke="${earned ? "#fff" : "var(--ink-3)"}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[b.icon] || ICON.star}</g></svg>`;
-  const info = (id) => ACHIEVEMENTS.find((a) => a.id === id) || { id, tier: "bronze", icon: "star", name: state.badgeNames[id] || id, how: t("Earned inside a lesson.", "Ganada dentro de una lección.") };
+  // Everything about a badge by its id. Old ids from earlier versions of the site return null and aren't shown.
+  const info = (id) => ACHIEVEMENTS.find((a) => a.id === id) || GAME_BADGES.find((a) => a.id === id) || perLesson(id);
   const award = (id) => {
     if (state.badges.includes(id)) return false;
     state.badges.push(id);
@@ -250,7 +292,7 @@
     return true;
   };
   // Show off a new badge for a few seconds (site.js draws it; this just asks).
-  const celebrate = (id) => document.dispatchEvent(new CustomEvent("fh:badge", { detail: info(id) }));
+  const celebrate = (id) => { const b = info(id); if (b) document.dispatchEvent(new CustomEvent("fh:badge", { detail: b })); };
   const checkBadges = () => {
     const fresh = ACHIEVEMENTS.filter((a) => !state.badges.includes(a.id) && a.test()).map((a) => a.id);
     fresh.forEach(award);
@@ -282,10 +324,9 @@
       emit();
       if (why) toast(`+${n} XP · ${why}`);
     },
-    // A badge earned inside a lesson (a perfect quiz, a game won). It also lands in notifications.
-    badge(id, label) {
+    // A badge earned inside a lesson (a perfect quiz, a game won). Its name and how-to live in GAME_BADGES / perLesson.
+    badge(id) {
       if (state.badges.includes(id)) return;
-      state.badgeNames[id] = label;
       award(id);
       persist();
       emit();
@@ -294,6 +335,7 @@
     // A course-wide badge that can't be checked from the save alone (like creating an account).
     award(id) { if (award(id)) { persist(); emit(); celebrate(id); } },
     ACHIEVEMENTS,
+    GAME_BADGES,
     badgeInfo: info,
     medal,
     streak: liveStreak,

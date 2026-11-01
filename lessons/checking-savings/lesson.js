@@ -42,7 +42,7 @@
       tone = "good";
       msg.textContent = T(`Nice split. Your bills are covered, you have a ${money(cush)} cushion, and ${money(sav)} in savings earns about ${cents(sav * APY)} a year.`,
         `Buen reparto. Tus gastos están cubiertos, tienes un colchón de ${money(cush)} y ${money(sav)} en ahorro ganan unos ${cents(sav * APY)} al año.`);
-      FH.badge("smart-split", T("Smart Split", "Buen reparto"));
+      FH.badge("smart-split");
     }
     msg.dataset.tone = tone;
   };
@@ -206,7 +206,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, score);
     FH.addXP(first ? 50 : 15, first ? T("Finished your first month", "Terminaste tu primer mes") : T("Another month on the app", "Otro mes en la app"));
-    if (grade === "A") FH.badge("bank-app-a", T("Bank App Pro", "Experto en la app del banco"));
+    if (grade === "A") FH.badge("bank-app-a");
     FH.save();
     $("#g-again").addEventListener("click", start);
   };

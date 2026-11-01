@@ -249,7 +249,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, S.score * 25);
     if (first) FH.addXP(50, T("Shopped for an index fund", "Compraste un fondo indexado"));
-    if (S.score === 4) FH.badge("fund-shopper", T("Fund Shopper", "Comprador de fondos"));
+    if (S.score === 4) FH.badge("fund-shopper");
     FH.save();
   });
   renderTrip();

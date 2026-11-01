@@ -39,7 +39,7 @@
     if (left > 0) status.textContent = T(`${left} coins with no job yet.`, `${left} monedas aún sin trabajo.`);
     else if (given.needs === 50 && given.wants === 30 && given.savings === 20) {
       status.innerHTML = T("<b class='c-good'>Every coin has a job, and it's exactly 50/30/20.</b>", "<b class='c-good'>Cada moneda tiene un trabajo, y es exactamente 50/30/20.</b>");
-      FH.badge("dollar-grid", T("Every Dollar Has a Job", "Cada dólar tiene un trabajo"));
+      FH.badge("dollar-grid");
     } else status.innerHTML = T(`<b class='c-good'>Every coin has a job.</b> Your split is ${given.needs}/${given.wants}/${given.savings}. That's still a zero-based budget, just not 50/30/20.`, `<b class='c-good'>Cada moneda tiene un trabajo.</b> Tu reparto es ${given.needs}/${given.wants}/${given.savings}. Sigue siendo un presupuesto base cero, solo que no 50/30/20.`);
   };
   $$("[data-give]").forEach((b) =>
@@ -401,7 +401,7 @@
       creditCardDebt: c.creditCardDebt + S.debt,
     });
     FH.addXP(first ? 50 : 15, first ? T("Survived your first month", "Sobreviviste tu primer mes") : T("Another month down", "Otro mes superado"));
-    if (grade === "A") FH.badge("month-survivor-a", T("Month Survivor: A", "Sobrevive al mes: A"));
+    if (grade === "A") FH.badge("month-survivor-a");
   };
 
   const QUIZ_EN = [

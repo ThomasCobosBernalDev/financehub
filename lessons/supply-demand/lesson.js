@@ -45,7 +45,7 @@
     if (Math.abs(d - s) < 2) {
       gap.setAttribute("stroke", "var(--accent)");
       m.innerHTML = T(`<b class="c-good">Equilibrium.</b> At ${money(p)}, about ${Math.round(d)} bikes are wanted and ${Math.round(s)} are for sale. Nobody's left waiting and nothing's left over.`, `<b class="c-good">Equilibrio.</b> A ${money(p)}, se quieren unas ${Math.round(d)} bicicletas y hay ${Math.round(s)} a la venta. Nadie se queda esperando y no sobra nada.`);
-      FH.badge("found-equilibrium", T("Found the Equilibrium", "Encontraste el equilibrio"));
+      FH.badge("found-equilibrium");
     } else if (d > s) {
       gap.setAttribute("stroke", "var(--needs)");
       m.innerHTML = T(`<b>Shortage of ${Math.round(d - s)}.</b> At ${money(p)}, more people want bikes than sellers bring. Lines form, bikes sell out, and sellers raise prices.`, `<b>Escasez de ${Math.round(d - s)}.</b> A ${money(p)}, más gente quiere bicicletas de las que traen los vendedores. Se forman filas, las bicicletas se agotan y los vendedores suben los precios.`);
@@ -208,7 +208,7 @@
     l.gameBest = Math.max(l.gameBest || 0, score);
     if (first && profit > 0) FH.updateCharacter({ checking: FH.state.character.checking + profit });
     FH.addXP(first ? 50 : 15, first ? T("Finished Market Stall", "Terminaste Puesto del mercado") : T("Another season at the market", "Otra temporada en el mercado"));
-    if (grade === "A") FH.badge("market-stall-a", T("Market Stall: A", "Puesto del mercado: A"));
+    if (grade === "A") FH.badge("market-stall-a");
     $("#m-again").addEventListener("click", () => {
       Object.assign(G, { week: 0, stock: 4, rev: 0, opt: 0, sold: 0, fixed: 4 });
       deck = newDeck();

@@ -417,7 +417,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, G.score * 25);
     if (first) FH.addXP(50, T("Worked the order desk", "Trabajaste en la mesa de órdenes"));
-    if (G.score === 4) FH.badge("order-pro", T("Order Desk Pro", "Pro de las órdenes"));
+    if (G.score === 4) FH.badge("order-pro");
     FH.save();
   });
   renderMission();

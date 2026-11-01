@@ -110,7 +110,7 @@
       msg.innerHTML = T(`<b class="c-danger">Impossible:</b> ${plan}. That's ${hr(hrs)}, and you only have 10.`, `<b class="c-danger">Imposible:</b> ${plan}. Son ${hr(hrs)}, y solo tienes 10.`);
     }
     tested.add(kind);
-    if (tested.size === 3) FH.badge("ppf-explorer", T("Frontier Explorer", "Explorador de la frontera"));
+    if (tested.size === 3) FH.badge("ppf-explorer");
   });
   $("#ppf-grow").addEventListener("click", () => {
     const old = $("#ppf-old");
@@ -277,7 +277,7 @@
     l.gameBest = Math.max(l.gameBest || 0, score);
     if (first) FH.updateCharacter({ checking: FH.state.character.checking + S.money });
     FH.addXP(first ? 50 : 15, first ? T("Finished Ten Free Hours", "Terminaste Diez horas libres") : T("Another summer down", "Otro verano más"));
-    if (grade === "A") FH.badge("ten-hours-a", T("Ten Free Hours: A", "Diez horas libres: A"));
+    if (grade === "A") FH.badge("ten-hours-a");
     $("#g-again").addEventListener("click", () => {
       Object.assign(S, { week: 0, money: 0, study: 0, energy: 70 });
       deck.splice(1, 3, ...shuffle([...EVENTS]));

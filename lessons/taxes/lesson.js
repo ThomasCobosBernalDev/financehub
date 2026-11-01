@@ -132,7 +132,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 6) * 100));
     if (first) FH.addXP(50, T("Poured six paychecks", "Repartiste seis sueldos"));
-    if (G.score === 6) FH.badge("bracket-pro", T("Bracket Pro", "Experto en categorías"));
+    if (G.score === 6) FH.badge("bracket-pro");
     FH.save();
   });
   start();

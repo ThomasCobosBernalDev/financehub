@@ -212,7 +212,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 6) * 100));
     if (first) FH.addXP(50, T("Made it through a month with your debit card", "Pasaste un mes con tu tarjeta de débito"));
-    if (G.score === 6) FH.badge("fee-dodger", T("Fee Dodger", "Esquiva comisiones"));
+    if (G.score === 6) FH.badge("fee-dodger");
     FH.save();
   });
   startRound();

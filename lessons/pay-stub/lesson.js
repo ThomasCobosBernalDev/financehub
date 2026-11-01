@@ -122,7 +122,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 6) * 100));
     if (first) FH.addXP(50, T("Checked six pay stubs", "Revisaste seis talones de pago"));
-    if (G.score === 6) FH.badge("stub-detective", T("Stub Detective", "Detective de talones"));
+    if (G.score === 6) FH.badge("stub-detective");
     FH.save();
   });
   start();

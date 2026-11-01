@@ -207,17 +207,21 @@
     f.lang.value = FH.lang;
     const s = FH.state;
     $("#acct-xp").textContent = s.xp;
-    $("#acct-badges").textContent = s.badges.length;
+    $("#acct-badges").textContent = s.badges.filter(FH.badgeInfo).length;
     $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
     // Streak and the badge wall: every course badge (gray until earned), then any earned inside lessons.
     $("#streak-days").textContent = FH.streak();
     $("#streak-best").textContent = s.streak.best || 0;
     $(".streak-big").classList.toggle("lit", FH.streak() > 0);
-    const extra = s.badges.filter((id) => !FH.ACHIEVEMENTS.some((a) => a.id === id)).map(FH.badgeInfo);
-    $("#badge-wall").innerHTML = [...FH.ACHIEVEMENTS, ...extra].map((b) => {
-      const got = s.badges.includes(b.id);
-      return `<li class="${got ? "got" : ""}">${FH.medal(b, got)}<b>${b.name}</b><small>${got ? FH.t("Earned", "Ganada") : b.how}</small></li>`;
-    }).join("");
+    // Three groups: course badges and game badges (gray until earned, with how to get them), then the lesson ones you've earned.
+    const tile = (b) => { const got = s.badges.includes(b.id); return `<li class="${got ? "got" : ""}">${FH.medal(b, got)}<b>${b.name}</b><small>${b.how}</small></li>`; };
+    const seen = new Set(), games = FH.GAME_BADGES.filter((b) => !seen.has(b.id) && seen.add(b.id));
+    const mine = s.badges.map(FH.badgeInfo).filter((b) => b && b.kind === "lesson");
+    const got = (list) => list.filter((b) => s.badges.includes(b.id)).length;
+    $("#badge-wall").innerHTML = `<h3 class="set-sub">${FH.t("Course badges", "Insignias del curso")} <small>${got(FH.ACHIEVEMENTS)} / ${FH.ACHIEVEMENTS.length}</small></h3><ul class="badge-wall">${FH.ACHIEVEMENTS.map(tile).join("")}</ul>`
+      + `<h3 class="set-sub">${FH.t("Game badges", "Insignias de juegos")} <small>${got(games)} / ${games.length}</small></h3><p class="set-p">${FH.t("Won inside a lesson's game or activity.", "Se ganan en el juego o la actividad de una lección.")}</p><ul class="badge-wall">${games.map(tile).join("")}</ul>`
+      + `<h3 class="set-sub">${FH.t("Lesson badges", "Insignias de lecciones")} <small>${mine.length}</small></h3><p class="set-p">${FH.t("Every lesson has three: listen to all of it, fill in every blank, and get every quiz question right.", "Cada lección tiene tres: escúchala completa, llena todos los espacios y acierta todo el examen.")}</p>`
+      + (mine.length ? `<ul class="badge-wall">${mine.map(tile).join("")}</ul>` : "");
     const dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
     $("#set-motion").checked = FH.still();

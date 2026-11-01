@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Your account · FinancedHub</title>
   <meta name="description" content="Sign in to save your FinancedHub progress across devices.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Your account">
+  <meta property="og:description" content="Sign in to save your FinancedHub progress across devices.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611011812">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611011827">
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -160,7 +165,7 @@
             <div><h3 class="set-sub">Your streak</h3><p class="set-p">Days in a row you've shown up. Come back tomorrow to keep it going. Best: <b id="streak-best">0</b></p></div>
             <button class="btn sm line" type="button" id="streak-share">Share my streak</button></div>
           <p class="set-p">Earn them by finishing lessons, building your path and showing up.</p>
-          <ul class="badge-wall" id="badge-wall"></ul>
+          <div id="badge-wall"></div>
         </div>
       </div>
       <div class="set-grid view-settings">
@@ -210,11 +215,11 @@
     <p>© 2026 FinancedHub</p>
   </div>
 </footer>
-<script src="../assets/js/save.js?v=202611011812"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611011812"></script>
-<script src="../assets/js/auth.js?v=202611011812"></script>
-<script src="../assets/js/site.js?v=202611011812"></script>
+<script src="../assets/js/save.js?v=202611011827"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611011827"></script>
+<script src="../assets/js/auth.js?v=202611011827"></script>
+<script src="../assets/js/site.js?v=202611011827"></script>
 <script>document.getElementById("xp").textContent = FH.state.xp;</script>
-<script src="../assets/js/account.js?v=202611011812"></script>
+<script src="../assets/js/account.js?v=202611011827"></script>
 </body>
 </html>

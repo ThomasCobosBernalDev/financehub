@@ -32,7 +32,7 @@
     const msg = $("#fs-msg");
     msg.innerHTML = `<b>${f.k}: ${f.v}.</b> ${f.when}`;
     msg.dataset.tone = f.never ? "good" : "warn";
-    if (seen.size === FEES.length) FH.badge("fee-reader", T("Fine Print Reader", "Lector de letra chiquita"));
+    if (seen.size === FEES.length) FH.badge("fee-reader");
   }));
 
   // ---------- Play it: open your account ----------
@@ -199,7 +199,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((G.score / 6) * 100));
     if (first) FH.addXP(50, T("Opened a practice brokerage account", "Abriste una cuenta de inversión de práctica"));
-    if (G.score === 6) FH.badge("account-opener", T("Account Opener", "Cuenta abierta"));
+    if (G.score === 6) FH.badge("account-opener");
     FH.save();
     // The transfer lands a moment later, like it would a couple of days later for real.
     setTimeout(() => { const bal = $(".su-bal"); if (bal) { bal.textContent = "$50.00"; bal.classList.add("in"); $(".su-xfer").textContent = T("$50 arrived · ready to invest", "Llegaron los $50 · listos para invertir"); } }, reduced ? 0 : 1600);

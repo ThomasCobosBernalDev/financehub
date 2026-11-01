@@ -21,6 +21,10 @@
       { threshold: 0.3 }
     );
     chapters.forEach((c) => seenIO.observe(c));
+    // How much XP this lesson is worth, under its title, so it's clear where XP comes from.
+    const max = chapters.length * 5 + quiz.length * 10 + 25 + 50;
+    const kick = $("#start .kicker");
+    if (kick) kick.insertAdjacentHTML("afterend", `<p class="xp-chip reveal in"><b>${T(`Up to ${max} XP`, `Hasta ${max} XP`)}</b> ${T(`+5 per section, +10 per right quiz answer, +25 for finishing, +50 for your first game`, `+5 por sección, +10 por respuesta correcta, +25 por terminar, +50 por tu primer juego`)}</p>`);
 
     // ---------- Hear it: recorded narration ----------
     const audio = $("#narration");
@@ -35,7 +39,7 @@
       let lines = [], current = -1, playing = false;
       const setPlaying = (on) => { playing = on; playBtn.classList.toggle("playing", on); player.classList.toggle("on", on); };
       const playLine = (i) => {
-        if (i >= lines.length) { setPlaying(false); current = -1; $$("p", transcript).forEach((p) => p.classList.remove("now")); FH.badge(`listened-${slug}`, T("Good Listener", "Buen oyente")); return; }
+        if (i >= lines.length) { setPlaying(false); current = -1; $$("p", transcript).forEach((p) => p.classList.remove("now")); FH.badge(`listened-${slug}`); return; }
         current = i;
         $$("p", transcript).forEach((p, j) => p.classList.toggle("now", j === i));
         audio.src = `audio/line-${String(i + 1).padStart(2, "0")}.mp3`;
@@ -109,7 +113,7 @@
         } else if (ans) ans.remove();
       });
       $("#blanks-result").textContent = T(`${right} of ${blanks.length} right`, `${right} de ${blanks.length} correctas`);
-      if (right === blanks.length) FH.badge(`blanks-${slug}`, T("Note Taker", "Buenos apuntes"));
+      if (right === blanks.length) FH.badge(`blanks-${slug}`);
     });
 
     // ---------- On your own: reflections stay on this device ----------
@@ -149,7 +153,7 @@
             if (answered === quiz.length) {
               const l = FH.lesson(id);
               l.quizBest = Math.max(l.quizBest, correct);
-              if (correct === quiz.length) FH.badge(`quiz-${slug}-perfect`, T("Perfect Quiz", "Examen perfecto"));
+              if (correct === quiz.length) FH.badge(`quiz-${slug}-perfect`);
               if (!l.completedAt) { l.completedAt = new Date().toISOString(); FH.addXP(25, T("Lesson complete", "Lección completa")); }
               FH.save();
               const done = document.createElement("div");

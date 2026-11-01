@@ -114,7 +114,7 @@
     const seen = ($("#quote").dataset.seen || "").split(",").filter(Boolean);
     if (!seen.includes(b.dataset.p)) seen.push(b.dataset.p);
     $("#quote").dataset.seen = seen.join(",");
-    if (seen.length === 6) FH.badge("quote-reader", T("Quote Reader", "Lector de cotizaciones"));
+    if (seen.length === 6) FH.badge("quote-reader");
   }));
 
   // ---------- See it: Bessembinder's 100 squares ----------
@@ -385,7 +385,7 @@
     const first = l.gameBest === null;
     l.gameBest = 100;
     if (first) FH.addXP(50, T("Played one stock or all ten", "Jugaste una acción o las diez"));
-    FH.badge("scatter-hoarder", T("Scatter Hoarder", "Ardilla previsora"));
+    FH.badge("scatter-hoarder");
     FH.save();
   };
 

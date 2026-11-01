@@ -1,6 +1,8 @@
 # English -> Spanish for the home page (index.html -> es/index.html).
 PAIRS = [
     ('<html lang="en" data-alt="es/">', '<html lang="es" data-alt="../">'),
+    ('<meta property="og:title" content="FinancedHub: learn money from zero to Wall Street">', '<meta property="og:title" content="FinancedHub: aprende de dinero desde cero hasta Wall Street">'),
+    ('<meta property="og:description" content="Free lessons on banking, credit, investing and finance jobs, each taught 8 ways.">', '<meta property="og:description" content="Lecciones gratis de bancos, crédito, inversiones y trabajos en finanzas, cada una enseñada de 8 formas.">'),
     ('<meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">', '<meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">'),
     ('<a class="skip" href="#main">Skip to content</a>', '<a class="skip" href="#main">Saltar al contenido</a>'),
     ('<a href="course/">Course</a><a href="certifications/">Certifications</a><a href="about">About</a>', '<a href="course/">Curso</a><a href="certifications/">Certificaciones</a><a href="about">Acerca de</a>'),

@@ -189,35 +189,48 @@
   });
 })();
 
-// Header: your streak (a flame and the days in a row) and a bell with your notifications.
-// New badges also pop up in the corner for a few seconds.
+// Header, left to right: your streak, your XP, the notifications bell, then theme and account.
+// Hovering (or tapping) the streak or the XP drops a small card that explains it. New badges also pop up in the corner.
 (() => {
   const T = FH.t, root = document.body.dataset.root || "./";
-  const right = document.querySelector(".topbar .top-right");
-  if (!right) return;
+  const right = document.querySelector(".topbar .top-right"), xp = right && right.querySelector(".xp");
+  if (!xp) return;
   const flame = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/></svg>';
-  const wrap = document.createElement("div");
-  wrap.className = "notes";
-  wrap.innerHTML = `<span class="streak" title="${T("Days in a row you've shown up", "Días seguidos que has entrado")}">${flame}<b></b></span>
-    <button class="icon-btn bell" type="button" aria-haspopup="true" aria-expanded="false" aria-label="${T("Notifications", "Notificaciones")}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="dot" hidden></i></button>
+  const streak = document.createElement("span");
+  streak.className = "streak hov";
+  streak.tabIndex = 0;
+  streak.innerHTML = `${flame}<b></b><span class="hov-card" role="tooltip"><b class="hc-title"></b><span class="hc-text">${T("Come back every day to keep your streak going. Any visit counts. Miss a day and it starts over.", "Vuelve cada día para no perder tu racha. Cualquier visita cuenta. Si faltas un día, empieza de nuevo.")}</span><span class="hc-best"></span><button class="btn sm line" type="button" data-share>${T("Share my streak", "Compartir mi racha")}</button></span>`;
+  xp.before(streak);
+  // XP: what it is and where it comes from.
+  xp.classList.add("hov");
+  xp.tabIndex = 0;
+  xp.insertAdjacentHTML("beforeend", `<span class="hov-card" role="tooltip"><b class="hc-title">${T("XP: points for learning", "XP: puntos por aprender")}</b><ul class="hc-list">
+    <li><b>+5</b> ${T("each section of a lesson you open", "por cada sección de una lección que abres")}</li>
+    <li><b>+10</b> ${T("each quiz answer you get right", "por cada respuesta correcta en el examen")}</li>
+    <li><b>+25</b> ${T("finishing a lesson", "por terminar una lección")}</li>
+    <li><b>+50</b> ${T("the first time you play a lesson's game (+15 replays)", "la primera vez que juegas el juego de una lección (+15 al repetir)")}</li></ul></span>`);
+  const notes = document.createElement("div");
+  notes.className = "notes";
+  notes.innerHTML = `<button class="icon-btn bell" type="button" aria-haspopup="true" aria-expanded="false" aria-label="${T("Notifications", "Notificaciones")}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i class="dot" hidden></i></button>
     <div class="notes-pop" hidden><p class="np-head">${T("Notifications", "Notificaciones")}</p><ul></ul>
-      <div class="np-foot"><p class="np-streak"></p><button class="btn sm line" type="button" data-share>${T("Share my streak", "Compartir mi racha")}</button><a href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a></div></div>`;
-  right.prepend(wrap);
-  const bell = wrap.querySelector(".bell"), pop = wrap.querySelector(".notes-pop");
+      <div class="np-foot"><a href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a></div></div>`;
+  xp.after(notes);
+  const bell = notes.querySelector(".bell"), pop = notes.querySelector(".notes-pop");
   const ago = (iso) => {
     const m = Math.round((Date.now() - new Date(iso)) / 60000);
     return m < 1 ? T("just now", "ahora") : m < 60 ? T(`${m} min ago`, `hace ${m} min`) : m < 1440 ? T(`${Math.round(m / 60)} h ago`, `hace ${Math.round(m / 60)} h`) : T(`${Math.round(m / 1440)} d ago`, `hace ${Math.round(m / 1440)} d`);
   };
   const paint = () => {
-    const days = FH.streak(), notes = FH.state.notes || [];
-    wrap.querySelector(".streak b").textContent = days;
-    wrap.querySelector(".streak").classList.toggle("lit", days > 0);
-    wrap.querySelector(".dot").hidden = !notes.some((n) => !n.read);
-    pop.querySelector("ul").innerHTML = notes.length ? notes.slice().reverse().slice(0, 8).map((n) => {
+    const days = FH.streak(), list = (FH.state.notes || []).filter((n) => FH.badgeInfo(n.id));
+    streak.querySelector(":scope > b").textContent = days;
+    streak.classList.toggle("lit", days > 0);
+    streak.querySelector(".hc-title").textContent = T(`${days}-day streak`, `Racha de ${days} ${days === 1 ? "día" : "días"}`);
+    streak.querySelector(".hc-best").textContent = T(`Your best: ${Math.max(FH.state.streak.best || 0, days)} days`, `Tu mejor racha: ${Math.max(FH.state.streak.best || 0, days)} días`);
+    notes.querySelector(".dot").hidden = !list.some((n) => !n.read);
+    pop.querySelector("ul").innerHTML = list.length ? list.slice().reverse().slice(0, 8).map((n) => {
       const b = FH.badgeInfo(n.id);
       return `<li class="${n.read ? "" : "new"}">${FH.medal(b)}<span><b>${T("Badge earned:", "Insignia ganada:")} ${b.name}</b><small>${b.how} · ${ago(n.at)}</small></span></li>`;
     }).join("") : `<li class="np-empty">${T("Nothing yet. Finish a lesson to earn your first badge.", "Nada todavía. Termina una lección para ganar tu primera insignia.")}</li>`;
-    pop.querySelector(".np-streak").innerHTML = T(`<b>${days}-day streak</b> · best ${FH.state.streak.best || days}`, `<b>Racha de ${days} ${days === 1 ? "día" : "días"}</b> · mejor ${FH.state.streak.best || days}`);
   };
   const close = () => { pop.hidden = true; bell.setAttribute("aria-expanded", "false"); };
   bell.addEventListener("click", (e) => {
@@ -229,19 +242,45 @@
   });
   document.addEventListener("click", (e) => { if (!pop.hidden && !e.target.closest(".notes")) close(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pop.hidden) { close(); bell.focus(); } });
-  // Share the streak: the phone's share sheet, or copy the text on a computer.
-  window.FHShareStreak = async () => {
-    const d = FH.streak();
-    const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥`);
-    const url = "https://financedhub.com/";
-    try {
-      if (navigator.share) await navigator.share({ title: "FinancedHub", text, url });
-      else { await navigator.clipboard.writeText(`${text} ${url}`); FH.toast(T("Copied. Paste it anywhere to share.", "Copiado. Pégalo donde quieras compartirlo.")); }
-    } catch (e) { /* they closed the share sheet */ }
-  };
-  pop.querySelector("[data-share]").addEventListener("click", () => window.FHShareStreak());
+  streak.querySelector("[data-share]").addEventListener("click", () => window.FHShareStreak());
   document.addEventListener("fh:save", paint);
   paint();
+
+  // Share the streak as a picture: a square card with the flame, the number of days and the site, drawn on a canvas.
+  // Phones get the share sheet with the image attached; computers download the image and copy the text.
+  const streakCard = (days) => new Promise((done) => {
+    const c = document.createElement("canvas"), x = c.getContext("2d"), W = 1080;
+    c.width = c.height = W;
+    const g = x.createLinearGradient(0, 0, W, W);
+    g.addColorStop(0, "#10201c"); g.addColorStop(1, "#1f4a3e");
+    x.fillStyle = g; x.fillRect(0, 0, W, W);
+    // Faint tree rings, like the logo, in the corner.
+    x.strokeStyle = "rgba(143, 220, 191, .1)"; x.lineWidth = 6;
+    [120, 220, 330, 450, 580].forEach((r, i) => { x.beginPath(); x.arc(W - 120 - i * 14, 150 + i * 14, r, 0, Math.PI * 2); x.stroke(); });
+    // Flame.
+    x.save(); x.translate(W / 2 - 150, 230); x.scale(12.5, 12.5);
+    x.fillStyle = "#e0702f"; x.fill(new Path2D("M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z")); x.restore();
+    x.textAlign = "center"; x.fillStyle = "#fbf8f2";
+    x.font = `700 ${days > 99 ? 200 : 260}px Georgia, serif`; x.fillText(String(days), W / 2, 760);
+    x.font = "600 64px system-ui, sans-serif"; x.fillText(T("day streak", days === 1 ? "día de racha" : "días de racha"), W / 2, 850);
+    x.fillStyle = "rgba(251, 248, 242, .72)"; x.font = "400 40px system-ui, sans-serif";
+    x.fillText(T("learning money on FinancedHub", "aprendiendo de dinero en FinancedHub"), W / 2, 930);
+    x.fillStyle = "#8fdcbf"; x.font = "italic 700 44px Georgia, serif"; x.fillText("financedhub.com", W / 2, 1010);
+    c.toBlob(done, "image/png");
+  });
+  window.FHShareStreak = async () => {
+    const d = FH.streak();
+    const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥 financedhub.com`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥 financedhub.com`);
+    const blob = await streakCard(d), file = new File([blob], "financedhub-streak.png", { type: "image/png" });
+    try {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) return await navigator.share({ files: [file], text });
+    } catch (e) { if (e.name === "AbortError") return; }
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    try { await navigator.clipboard.writeText(text); } catch (e) { /* clipboard blocked */ }
+    FH.toast(T("Saved your streak picture and copied the text. Post them anywhere.", "Guardamos la imagen de tu racha y copiamos el texto. Publícalos donde quieras."));
+  };
 
   // The pop-up for a new badge.
   let card;

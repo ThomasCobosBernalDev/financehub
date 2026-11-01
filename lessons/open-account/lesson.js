@@ -231,7 +231,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, Math.round((P.score / 6) * 100));
     if (first) FH.addXP(50, T("Read the fine print on six offers", "Leíste la letra chica de seis ofertas"));
-    if (P.score === 6) FH.badge("fine-print", T("Fine Print Detective", "Detective de letra chica"));
+    if (P.score === 6) FH.badge("fine-print");
     FH.save();
   });
   startAd();

@@ -351,7 +351,7 @@
     const first = l.gameBest === null;
     l.gameBest = Math.max(l.gameBest || 0, B.score * 25);
     if (first) FH.addXP(50, T("Made your benefits-day choices", "Tomaste tus decisiones de beneficios"));
-    if (B.score === 4) FH.badge("retirement-ready", T("Retirement Ready", "Listo para el retiro"));
+    if (B.score === 4) FH.badge("retirement-ready");
     FH.save();
   };
   startMission();
