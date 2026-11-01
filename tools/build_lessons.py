@@ -30,7 +30,7 @@ TEXT = {
                      "logic": ("Break it down", "Break it down"), "nature": ("Nature", "Nature link"), "notes": ("Notes", "Notes"),
                      "together": ("Together", "Together"), "solo": ("On your own", "On your own"), "check": ("Check", "Check"),
                      "connects": ("Where it leads", "Where it leads")},
-        "skip": "Skip to the lesson", "course": "Course", "certs": "Certifications", "about": "About",
+        "skip": "Skip to the lesson", "home": "Home", "course": "Course", "certs": "Certifications", "about": "About",
         "theme": "Switch light or dark mode", "sign_in": "Sign in", "rail": "Lesson chapters", "start": "Start",
         "play_btn": "Play narration", "speed": "Playback speed",
         "foot_nav": "Legal and info", "f_about": "About", "f_contact": "Contact", "f_privacy": "Privacy", "f_terms": "Terms",
@@ -43,7 +43,7 @@ TEXT = {
                      "logic": ("Paso a paso", "Paso a paso"), "nature": ("Naturaleza", "Conexión con la naturaleza"), "notes": ("Apuntes", "Apuntes"),
                      "together": ("En grupo", "En grupo"), "solo": ("Por tu cuenta", "Por tu cuenta"), "check": ("Ponte a prueba", "Ponte a prueba"),
                      "connects": ("Hacia dónde va", "Hacia dónde va")},
-        "skip": "Saltar a la lección", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
+        "skip": "Saltar a la lección", "home": "Inicio", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
         "theme": "Cambiar entre modo claro y oscuro", "sign_in": "Entrar", "rail": "Capítulos de la lección", "start": "Inicio",
         "play_btn": "Reproducir narración", "speed": "Velocidad",
         "foot_nav": "Información legal", "f_about": "Acerca de", "f_contact": "Contacto", "f_privacy": "Privacidad", "f_terms": "Términos",
@@ -94,7 +94,7 @@ PAGE = """<!doctype html>
 <header class="topbar">
   <div class="wrap wide">
     <a class="logo" href="{r}"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
-    <nav class="topnav" aria-label="Site"><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about">{about}</a></nav>
+    <nav class="topnav" aria-label="Site"><a href="{r}home/">{home}</a><a href="{r}course/">{course}</a><a href="{r}certifications/">{certs}</a><a href="{r}about">{about}</a></nav>
     <div class="top-right">
     <span class="xp"><b id="xp">0</b> xp</span>
     <button class="icon-btn theme-toggle" aria-label="{theme}">

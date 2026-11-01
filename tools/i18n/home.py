@@ -5,7 +5,7 @@ PAIRS = [
     ('<meta property="og:description" content="Free lessons on banking, credit, investing and finance jobs, each taught 8 ways.">', '<meta property="og:description" content="Lecciones gratis de bancos, crédito, inversiones y trabajos en finanzas, cada una enseñada de 8 formas.">'),
     ('<meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">', '<meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">'),
     ('<a class="skip" href="#main">Skip to content</a>', '<a class="skip" href="#main">Saltar al contenido</a>'),
-    ('<a href="course/">Course</a><a href="certifications/">Certifications</a><a href="about">About</a>', '<a href="course/">Curso</a><a href="certifications/">Certificaciones</a><a href="about">Acerca de</a>'),
+    ('<a href="home/">Home</a><a href="course/">Course</a><a href="certifications/">Certifications</a><a href="about">About</a>', '<a href="home/">Inicio</a><a href="course/">Curso</a><a href="certifications/">Certificaciones</a><a href="about">Acerca de</a>'),
     ('<h1>Learn money from zero to Wall Street.</h1>', '<h1>Aprende de dinero, de cero a Wall Street.</h1>'),
     ('<p class="lead">Free lessons on banking, credit, investing and finance jobs. Each one is taught 8 ways, so it sticks.</p>', '<p class="lead">Lecciones gratis de bancos, crédito, inversiones y trabajos en finanzas. Cada una se enseña de 8 formas para que se te quede.</p>'),
     ('<a class="btn" href="account/#create">Create my free account</a>', '<a class="btn" href="account/#create">Crear mi cuenta gratis</a>'),
