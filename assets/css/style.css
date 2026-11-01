@@ -1192,6 +1192,11 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-panel { min-width: 0; }
 .cx-pane { animation: ex-in .35s var(--ease); }
 .cx-pane > h2 { margin: -4px 0 4px; font-size: clamp(26px, 2.6vw, 34px); }
+/* Job name with its one-line description to the right (stacked on phones). */
+.cx-title { display: flex; align-items: center; gap: 6px 28px; margin-bottom: 16px; }
+.cx-title h2 { flex: none; margin: 0; font-size: clamp(26px, 2.6vw, 34px); }
+.cx-title .cx-does { margin: 0; padding-left: 28px; border-left: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+@media (max-width: 760px) { .cx-title { flex-direction: column; align-items: flex-start; } .cx-title .cx-does { padding-left: 0; border-left: 0; } }
 .cx-does { margin: 0 0 16px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
 /* The picked certificate as a banner on top: photo and name on the left, facts on the right. */
 #cx-detail { scroll-margin-top: 84px; margin-bottom: 26px; }

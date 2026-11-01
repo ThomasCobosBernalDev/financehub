@@ -224,7 +224,7 @@ const showJob = (id) => {
   const first = stages.flat()[0];
   curCert = first && first.c.id;
   panel.innerHTML = `<div class="cx-pane">
-    <p class="cx-col">${T("Certifications", "Certificaciones")}</p><h2>${j.name}</h2><p class="cx-does">${j.does}</p>
+    <p class="cx-col">${T("Certifications", "Certificaciones")}</p><div class="cx-title"><h2>${j.name}</h2><p class="cx-does">${j.does}</p></div>
     <div id="cx-detail"></div>
     <ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
       <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div></div>
