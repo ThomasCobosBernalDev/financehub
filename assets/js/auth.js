@@ -83,6 +83,8 @@
     m.querySelector(".acct-btn").setAttribute("aria-expanded", "false");
   });
   document.addEventListener("click", (e) => { if (!e.target.closest(".acct-menu")) closeMenus(); });
+  // Another header pop-up opened (site.js): close this one.
+  document.addEventListener("fh:popup", (e) => { if (!e.detail.classList.contains("acct-menu")) closeMenus(); });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     const open = document.querySelector(".acct-menu.open");
@@ -114,6 +116,7 @@
     btn.addEventListener("click", () => {
       const open = !wrap.classList.contains("open");
       closeMenus();
+      if (open) document.dispatchEvent(new CustomEvent("fh:popup", { detail: wrap }));
       wrap.classList.toggle("open", open);
       btn.setAttribute("aria-expanded", String(open));
       if (open) wrap.querySelector(".acct-row").focus();

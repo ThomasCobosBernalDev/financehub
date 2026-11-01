@@ -254,6 +254,9 @@
   const toggleBanners = (open) => { $("#banner-pick").hidden = !open; $("#banner-btn").setAttribute("aria-expanded", String(open)); };
   $("#banner-btn").addEventListener("click", () => toggleBanners($("#banner-pick").hidden));
   $("#banner-done").addEventListener("click", () => toggleBanners(false));
+  // Clicking anywhere outside the picker (or pressing Escape) closes it too.
+  document.addEventListener("click", (e) => { if (!$("#banner-pick").hidden && !e.composedPath().some((n) => n.id === "banner-pick" || n.id === "banner-btn")) toggleBanners(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { toggleBanners(false); picMenu(false); } });
   $("#banner-list").addEventListener("click", (e) => { const b = e.target.closest("[data-banner]"); if (b) FH.setBanner(b.dataset.banner === BANNERS[0] ? null : b.dataset.banner); });
   // Profile picture: pick a photo, crop it to a centered square and shrink it so it's small enough to save with your progress.
   const pickPic = () => $("#pic-file").click();

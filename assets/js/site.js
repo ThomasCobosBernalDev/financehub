@@ -187,7 +187,7 @@
 })();
 
 // Header, left to right: your streak, your XP, the notifications bell, then theme and account.
-// Hovering (or tapping) the streak or the XP drops a small card that explains it. New badges also pop up in the corner.
+// Hovering (or tapping) the streak or the XP drops a small card that explains it; only one pop-up shows at a time. New badges also pop up in the corner.
 (() => {
   const T = FH.t, root = document.body.dataset.root || "./";
   const right = document.querySelector(".topbar .top-right"), xp = right && right.querySelector(".xp");
@@ -230,9 +230,18 @@
     }).join("") : `<li class="np-empty">${T("Nothing yet. Finish a lesson to earn your first achievement.", "Nada todavía. Termina una lección para ganar tu primer logro.")}</li>`;
   };
   const close = () => { pop.hidden = true; bell.setAttribute("aria-expanded", "false"); };
+  // Only one header pop-up at a time: opening one (or hovering a card) sends "fh:popup", and the others close.
+  const opened = (owner) => document.dispatchEvent(new CustomEvent("fh:popup", { detail: owner }));
+  document.addEventListener("fh:popup", (e) => {
+    if (e.detail !== notes) close();
+    const f = document.activeElement;
+    if (f && f.closest(".hov") && f.closest(".hov") !== e.detail) f.blur();
+  });
+  [streak, xp].forEach((h) => ["mouseenter", "focusin"].forEach((ev) => h.addEventListener(ev, () => opened(h))));
   bell.addEventListener("click", (e) => {
     e.stopPropagation();
     const open = pop.hidden;
+    if (open) opened(notes);
     pop.hidden = !open;
     bell.setAttribute("aria-expanded", String(open));
     if (open) FH.readNotes();
