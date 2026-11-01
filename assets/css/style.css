@@ -63,6 +63,8 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 html { background: var(--paper); }
+/* Short pages (like Contact) still push the footer to the bottom of the screen. */
+#main { min-height: calc(100svh - 300px); }
 body {
   margin: 0;
   background: transparent;
