@@ -193,19 +193,22 @@ const tile = (e, i) => `<button type="button" class="cx-tile${e.must ? " must" :
   <b>${e.c.short}</b><small>${e.note ? esc(e.note) : e.c.org.split(" · ")[0].split(" (")[0]}</small>
   <span class="tags">${e.must ? `<i class="t-must">${T("Must-have", "Obligatorio")}</i>` : ""}${e.c.sponsor ? `<i>${T("Firm signs you up", "La empresa te inscribe")}</i>` : ""}${e.c.free ? `<i class="t-free">${T("Free option", "Opción gratis")}</i>` : ""}</span></button>`;
 
+// The banner for the picked certificate: its photo and name on the left, the facts on the right.
 const detail = (c, stage) => !c ? "" : `<div class="cx-detail" aria-live="polite">
-  <div class="cx-d-photo">${photo(c.id) ? `<img src="${photo(c.id)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-    <div><p class="kicker">${stage != null ? `${stage + 1}. ${STAGES[stage].name} · ` : ""}${esc(c.org)}</p><h3>${c.name}</h3></div></div>
-  <div class="cx-d-head"><a class="btn line sm" href="${c.url}" target="_blank" rel="noopener">${T("Official site", "Sitio oficial")} <span class="arrow">↗</span></a></div>
-  <p class="cx-what">${c.what}</p>
-  <dl>
-    <div><dt>${T("Cost", "Costo")}</dt><dd>${c.cost}</dd></div>
-    <div><dt>${T("Study time", "Tiempo de estudio")}</dt><dd>${c.time}</dd></div>
-    <div><dt>${T("The test", "El examen")}</dt><dd>${c.exam}</dd></div>
-    <div><dt>${T("Who can take it", "Quién puede tomarlo")}</dt><dd>${c.need}</dd></div>
-    <div><dt>${T("Who pays", "Quién paga")}</dt><dd>${PAYS[c.pays]}</dd></div>
-  </dl>
-  <p class="cx-units"><span>${T("Get ready on FinancedHub:", "Prepárate en FinancedHub:")}</span>${unitLinks(c)}</p>
+  <div class="cx-d-photo">${photo(c.id) ? `<img src="${photo(c.id)}" alt="" onerror="this.remove()">` : ""}
+    <div><p class="kicker">${stage != null ? `${stage + 1}. ${STAGES[stage].name}` : ""}</p><h3>${c.name}</h3><p class="cx-org">${esc(c.org)}</p></div></div>
+  <div class="cx-d-info">
+    <p class="cx-what">${c.what}</p>
+    <dl>
+      <div><dt>${T("Cost", "Costo")}</dt><dd>${c.cost}</dd></div>
+      <div><dt>${T("Study time", "Tiempo de estudio")}</dt><dd>${c.time}</dd></div>
+      <div><dt>${T("Who pays", "Quién paga")}</dt><dd>${PAYS[c.pays]}</dd></div>
+      <div><dt>${T("The test", "El examen")}</dt><dd>${c.exam}</dd></div>
+      <div><dt>${T("Who can take it", "Quién puede tomarlo")}</dt><dd>${c.need}</dd></div>
+    </dl>
+    <div class="cx-d-foot"><a class="btn line sm" href="${c.url}" target="_blank" rel="noopener">${T("Official site", "Sitio oficial")} <span class="arrow">↗</span></a>
+      <p class="cx-units"><span>${T("Get ready on FinancedHub:", "Prepárate en FinancedHub:")}</span>${unitLinks(c)}</p></div>
+  </div>
 </div>`;
 
 const showJob = (id) => {
@@ -222,10 +225,10 @@ const showJob = (id) => {
   curCert = first && first.c.id;
   panel.innerHTML = `<div class="cx-pane">
     <p class="kicker">${GROUPS[j.group]}</p><h2>${j.name}</h2><p class="cx-does">${j.does}</p>
-    <div class="cx-split"><ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
+    <div id="cx-detail"></div>
+    <ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
       <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div></div>
       <div class="cx-tiles">${list.length ? list.map((e) => tile(e, i)).join("") : `<p class="cx-none">${i === 2 ? T("Nothing required. You learn on the job.", "Nada obligatorio. Aprendes en el trabajo.") : T("Nothing needed yet.", "Nada todavía.")}</p>`}</div></li>`).join("")}</ol>
-    <div id="cx-detail"></div></div>
     <p class="cx-tip"><b>${T("Real talk", "La verdad")}</b>${j.tip}</p></div>`;
   panel.querySelectorAll(".cx-tile").forEach((b) => b.addEventListener("click", () => showCert(b.dataset.cert, true, +b.dataset.stage)));
   showCert(curCert);
@@ -237,8 +240,8 @@ const showCert = (id, scroll, stage) => {
   tiles.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cert === id && +b.dataset.stage === stage)));
   const d = document.getElementById("cx-detail");
   d.innerHTML = detail(cert[id], stage);
-  // Side by side on wide screens; below the road on narrower ones, so bring it into view.
-  if (scroll && getComputedStyle(d).position !== "sticky") d.scrollIntoView({ behavior: FH.still() ? "auto" : "smooth", block: "nearest" });
+  // The banner sits above the stages; if it has scrolled out of view, bring it back.
+  if (scroll && d.getBoundingClientRect().top < 64) d.scrollIntoView({ behavior: FH.still() ? "auto" : "smooth", block: "start" });
 };
 
 // Every certificate in one table, cheapest first within each kind. Click a name to see which jobs use it.
