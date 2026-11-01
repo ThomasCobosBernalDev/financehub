@@ -242,12 +242,14 @@
   $("#badge-tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; paintBadges(); } });
   // Profile banner: the skyline by default, or one of these photos. Saved with your progress.
   const BANNERS = ["1486406146926-c627a92ad1ab", "1534469650761-fce6cc26ac0d", "1556742031-c6961e8560b0", "1460925895917-afdab827c52f",
-    "1611974789855-9c2a0a7236a3", "1633158829556-6ea20ad39b4f", "1745270917233-65e776a47547", "1457369804613-52c61a468e7d"];
+    "1611974789855-9c2a0a7236a3", "1633158829556-6ea20ad39b4f", "1745270917233-65e776a47547", "1457369804613-52c61a468e7d",
+    "1501504905252-473c47e087f8", "1529078155058-5d716f45d604", "1560221328-12fe60f83ab8", "1501324682324-0d8d7c4b9706",
+    "1526628953301-3e589a6a8b74", "1517048676732-d65bc937f952", "1579532537598-459ecdaf39cc"];
   const bannerUrl = (id, w, h) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
   const paintBanner = () => {
     const cur = BANNERS.includes(FH.state.banner) ? FH.state.banner : BANNERS[0];
-    $("#prof-banner").src = bannerUrl(cur, 1400, 420);
-    $("#banner-list").innerHTML = BANNERS.map((id, i) => `<li><button type="button" data-banner="${id}" aria-pressed="${id === cur}" aria-label="${T("Banner", "Portada")} ${i + 1}"><img src="${bannerUrl(id, 320, 120)}" alt="" loading="lazy"></button></li>`).join("");
+    $("#prof-banner").src = bannerUrl(cur, 1600, 580);
+    $("#banner-list").innerHTML = BANNERS.map((id, i) => `<li><button type="button" data-banner="${id}" aria-pressed="${id === cur}" aria-label="${T("Banner", "Portada")} ${i + 1}"><img src="${bannerUrl(id, 320, 120)}" alt="" loading="lazy" onerror="this.closest('li').remove()"></button></li>`).join("");
   };
   const toggleBanners = (open) => { $("#banner-pick").hidden = !open; $("#banner-btn").setAttribute("aria-expanded", String(open)); };
   $("#banner-btn").addEventListener("click", () => toggleBanners($("#banner-pick").hidden));

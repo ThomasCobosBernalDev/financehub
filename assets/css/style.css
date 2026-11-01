@@ -1363,15 +1363,15 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .set-head.view-settings { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 /* Profile (account/#profile): a photo banner with your avatar and name, four stat cards (the home page's), your path, then badges by tab. */
 .profile-view { display: grid; gap: 16px; }
-.prof-hero { position: relative; z-index: 2; isolation: isolate; display: flex; align-items: flex-end; gap: 20px; min-height: 210px; padding: 24px 26px; border-radius: 24px; background: #14201c; color: #fff; }
+.prof-hero { position: relative; z-index: 2; isolation: isolate; display: flex; align-items: flex-end; gap: 20px; min-height: 290px; padding: 24px 26px; border-radius: 24px; background: #14201c; color: #fff; }
 .prof-hero > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 .prof-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(to top, rgba(8, 14, 12, .9), rgba(8, 14, 12, .25)); }
-.prof-hero .prof-avatar { width: 96px; height: 96px; font-size: 42px; box-shadow: 0 0 0 4px rgba(255, 255, 255, .9); }
-.prof-hero button.prof-avatar:hover, .prof-hero button.prof-avatar:focus-visible { box-shadow: 0 0 0 4px #fff, 0 0 0 7px var(--accent); }
+.prof-hero .prof-avatar { width: 96px; height: 96px; font-size: 42px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .85); }
+.prof-hero button.prof-avatar:hover, .prof-hero button.prof-avatar:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 5px var(--accent); }
 /* Your picture: a camera dot says it's editable; tapping opens a small menu. */
 .prof-pic { position: relative; flex: none; }
-.prof-cam { position: absolute; right: 0; bottom: 2px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #14201c; box-shadow: 0 2px 8px rgba(0, 0, 0, .3); pointer-events: none; }
-.prof-cam svg { width: 16px; height: 16px; }
+.prof-cam { position: absolute; right: 2px; bottom: 4px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #14201c; box-shadow: 0 2px 8px rgba(0, 0, 0, .3); pointer-events: none; }
+.prof-cam svg { width: 13px; height: 13px; }
 .pic-menu { position: absolute; z-index: 5; top: calc(100% + 8px); left: 0; min-width: 200px; padding: 6px; border-radius: 14px; background: var(--card); box-shadow: 0 0 0 1px var(--line), 0 18px 40px -12px rgba(0, 0, 0, .35); }
 .pic-menu[hidden] { display: none; }
 .pic-menu button { display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: 10px; background: none; font: inherit; font-size: 14.5px; font-weight: 600; text-align: left; color: var(--ink); cursor: pointer; }
@@ -1402,7 +1402,7 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .bw-tabs button small { margin-left: 4px; font-size: 12px; font-weight: 500; color: var(--ink-3); }
 .bw-tabs button[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 4px rgba(0, 0, 0, .12); }
 @media (max-width: 980px) { .hm-stats.prof-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .prof-hero { flex-wrap: wrap; padding: 20px; } .prof-hero .prof-avatar { width: 76px; height: 76px; font-size: 34px; } .bw-tabs button { padding: 7px 11px; } }
+@media (max-width: 560px) { .prof-hero { flex-wrap: wrap; min-height: 240px; padding: 20px; } .prof-hero .prof-avatar { width: 76px; height: 76px; font-size: 34px; } .bw-tabs button { padding: 7px 11px; } }
 .prof-avatar { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: var(--on-color); font-family: var(--serif); font-size: 32px; flex: none; }
 .banner-pick ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
 .banner-pick[hidden] { display: none; }
