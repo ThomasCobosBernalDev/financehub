@@ -6,7 +6,7 @@
   <title>FinancedHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611010301">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611010303">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -21,7 +21,7 @@
     .wonder #wq.fade { opacity: 0; }
     .wonder .perfect { display: block; color: var(--ink-2); }
     /* Frosted panel so the doors stay readable over the photo. */
-    .for-you { display: grid; gap: 14px; padding: 22px; border-radius: 28px; background: color-mix(in srgb, var(--paper) 72%, transparent); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent), 0 30px 60px -40px rgba(0, 0, 0, .45); }
+    .for-you { display: grid; gap: 14px; padding: 22px; border-radius: 28px; background: rgba(12, 18, 16, .42); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 8%, transparent), 0 30px 60px -40px rgba(0, 0, 0, .45); }
     .for-you h2 { margin: 0; font-size: 22px; }
     .for-you ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .for-you li a { display: grid; gap: 12px; align-content: space-between; height: 100%; box-sizing: border-box; padding: 18px 20px; border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); color: inherit; text-decoration: none; transition: box-shadow .25s, transform .25s var(--ease), background .25s; }
@@ -37,7 +37,6 @@
     .hero h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 14px; max-width: 14ch; }
     .hero .lead { font-size: 18px; max-width: 30em; margin: 0 0 24px; }
     .hero .nw { white-space: nowrap; }
-    .hero .btn.line { background: var(--card); }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .hero-note { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); max-width: 34em; }
     .hero-note a { color: var(--accent); font-weight: 600; }
@@ -53,23 +52,18 @@
       .hero-copy { display: contents; }
       .hero h1 { order: 1; } .wonder, .hero .lead { order: 2; } .hero-cta { order: 3; } .ways { order: 4; } .for-you { order: 5; margin-top: 28px; }
     }
-    /* Behind the hero, full width: a real photo for each door, crossfading with the "Wondering" line.
-       The page color washes over the left (behind the text) and the bottom, so the photo shows mostly on the right. */
-    .hero-photos { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none; }
-    .hero-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 7s linear; }
+    /* Behind the hero, full width and full height: a real photo for each door, crossfading with the "Wondering" line.
+       A dark tint (stronger on the left, behind the text) keeps the white text readable in both themes. */
+    .hero-photos { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); overflow: hidden; pointer-events: none; background: #14201c; }
+    .hero-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 7s linear; }
     .hero-photos img.on { opacity: 1; transform: scale(1); }
-    .hero-photos::after { content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 38%, color-mix(in srgb, var(--paper) 75%, transparent) 49%, transparent 66%),
-                  linear-gradient(to top, var(--paper), transparent 18%); }
-    :root[data-theme="dark"] .hero-photos::after {
-      background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 38%, color-mix(in srgb, var(--paper) 75%, transparent) 49%, color-mix(in srgb, var(--paper) 30%, transparent) 66%),
-                  linear-gradient(to top, var(--paper), transparent 18%); }
+    .hero-photos::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 16, 14, .82) 0%, rgba(10, 16, 14, .62) 45%, rgba(10, 16, 14, .3) 100%); }
     :root[data-motion="reduce"] .hero-photos img { transition: opacity .3s; transform: none; }
-    @media (max-width: 1024px) {
-      /* Narrow screens: the photo sits as a soft band behind the headline only. */
-      .hero-photos { bottom: auto; height: 420px; }
-      .hero-photos::after { background: linear-gradient(to top, var(--paper) 8%, color-mix(in srgb, var(--paper) 72%, transparent) 60%, color-mix(in srgb, var(--paper) 45%, transparent)); }
-    }
+    @media (max-width: 1024px) { .hero-photos::after { background: rgba(10, 16, 14, .66); } }
+    /* Over the photo the hero uses light text, whatever the site theme. */
+    .hero { --ink: #fbf8f2; --ink-2: rgba(251, 248, 242, .86); --ink-3: rgba(251, 248, 242, .72); --line: rgba(255, 255, 255, .22); --accent: #8fdcbf; --accent-soft: rgba(143, 220, 191, .18); --card: rgba(18, 26, 23, .55); --paper: #121a17; color: var(--ink); }
+    .hero .btn.line { background: rgba(255, 255, 255, .1); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .55); }
+    .hero .btn.line:hover { background: rgba(255, 255, 255, .18); }
 
 
   </style>
@@ -131,10 +125,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202611010301"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611010301"></script>
-<script src="../assets/js/auth.js?v=202611010301"></script>
-<script src="../assets/js/site.js?v=202611010301"></script>
+<script src="../assets/js/save.js?v=202611010303"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611010303"></script>
+<script src="../assets/js/auth.js?v=202611010303"></script>
+<script src="../assets/js/site.js?v=202611010303"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
