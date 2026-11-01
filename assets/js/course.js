@@ -28,8 +28,7 @@ const pathInfo = () => {
 // A lesson's state, used by its tile and the banner.
 const stateOf = (l, pi) => {
   const done = FH.done(l.id), onIt = pi.setUp && pi.onIds.has(l.id), isNext = onIt && pi.next && pi.next.id === l.id && !done;
-  const tag = isNext ? T("Up next", "Sigue") : onIt ? (done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino")) : done ? T("Done", "Hecha") : "";
-  return { done, onIt, isNext, tag };
+  return { done, onIt, isNext };
 };
 
 const banner = (u, l, pi) => {
@@ -66,7 +65,7 @@ const renderPane = () => {
   const tiles = ls.map((x) => {
     const s = stateOf(x, pi);
     return `<li><button type="button" class="cx-tile${x.href ? "" : " soon"}${s.done ? " done" : ""}${s.onIt ? " on-path" : ""}${s.isNext ? " is-next" : ""}" data-lesson="${x.id}" aria-pressed="${x.id === curLesson}">
-      <b><span class="ln">${x.unit}.${x.n}</span>${x.title}</b><small>${x.href ? x.sub : T("Coming soon", "Muy pronto")}</small>${s.tag ? `<span class="tags"><i class="${s.isNext ? "t-must" : "t-free"}">${s.tag}</i></span>` : ""}</button></li>`;
+      <b><span class="ln">${x.unit}.${x.n}</span>${x.title}</b><small>${x.href ? x.sub : T("Coming soon", "Muy pronto")}</small>${s.done ? `<span class="tk" title="${T("Finished", "Terminada")}">✓</span>` : ""}</button></li>`;
   }).join("");
   panel.innerHTML = `<div class="cx-pane"><p class="cx-col">${T("Unit", "Unidad")} ${u} · ${T("Part", "Parte")} ${part.n}, ${part.name}</p>
     <div class="cx-title"><h2>${FH.UNIT_NAMES[u - 1]}</h2><p class="cx-does">${facts}</p></div>
@@ -99,37 +98,35 @@ unitList.querySelectorAll(".unit").forEach((b) => b.addEventListener("click", ()
 const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash), p = m && FH.PARTS.find((x) => x.n === +m[1]); if (p) { pickUnit(p.units[0]); map.scrollIntoView({ behavior: "smooth" }); } };
 addEventListener("hashchange", fromHash);
 
-// Your path: units on it get an outlined number (filled once all done), the rest are grayed out; its tools sit in the header.
+// Your path: units on it get an outlined number (filled once all done), units you know a soft fill, the rest are grayed out.
+// Its progress, buttons and a color key sit at the top of the left column.
+const key = (setUp) => `<ul class="ex-key">${(setUp ? [["on", T("On your path", "En tu camino")], ["done", T("Finished", "Terminada")], ["known", T("You already know it", "Ya lo sabes")], ["next", T("Up next", "Sigue")], ["off", T("Not on your path", "No está en tu camino")]]
+  : [["live", T("Lessons open", "Lecciones abiertas")], ["done", T("Finished", "Terminada")], ["off", T("Coming soon", "Muy pronto")]]).map(([k, t]) => `<li><span class="k ${k}"></span>${t}</li>`).join("")}</ul>`;
 const paintPath = () => {
-  const { on, known, setUp } = FH.path, pi = pathInfo();
+  const { on, known, setUp, items } = FH.path;
   map.classList.toggle("path-set", setUp);
   unitList.querySelectorAll(".unit").forEach((b) => {
     const n = +b.dataset.unit, ls = unitLessons(n), inPath = setUp && on.has(n);
-    b.classList.toggle("known", known.has(n));
+    b.classList.toggle("known", setUp && known.has(n));
     b.classList.toggle("on-path", inPath);
     b.classList.toggle("off-path", setUp && !inPath);
     b.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
-    const pathN = ls.filter((l) => pi.onIds.has(l.id)).length;
-    const text = known.has(n) ? T("You know this", "Ya lo sabes") : setUp && pathN ? T(`${pathN} on your path`, `${pathN} en tu camino`) : "";
-    let tag = b.querySelector(".path-tag");
-    if (!text) { if (tag) tag.remove(); return; }
-    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; b.append(tag); }
-    tag.textContent = text;
   });
   if (curUnit) renderPane();
   const tools = document.getElementById("my-path");
   if (!setUp) {
-    tools.innerHTML = T(`<p>Pick a unit to see its lessons.</p><a class="btn sm" href="${root}start/">Build my path</a>`,
-      `<p>Elige una unidad para ver sus lecciones.</p><a class="btn sm" href="${root}start/">Crear mi camino</a>`);
+    tools.innerHTML = `<p class="cx-col">${T("Your path", "Tu camino")}</p><p>${T("Answer a few quick questions and we'll light up only the lessons you need.", "Responde unas preguntas rápidas y marcamos solo las lecciones que necesitas.")}</p>`
+      + `<a class="btn sm" href="${root}start/">${T("Build my path", "Crear mi camino")}</a>` + key(false);
     return;
   }
-  const lessons = FH.path.items.filter((x) => x.lesson).map((x) => x.lesson);
+  const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
-  tools.innerHTML = `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
-    + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>.</p>`)
-    + `<a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
-    + (FH.state.profile.quiz ? "" : `<a class="btn sm line" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
-    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button>`;
+  tools.innerHTML = `<p class="cx-col">${T("Your path", "Tu camino")}</p>`
+    + T(`<p><b>${doneN} of ${lessons.length}</b> lessons done</p>`, `<p><b>${doneN} de ${lessons.length}</b> lecciones hechas</p>`)
+    + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
+    + `<div class="mp-acts"><a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
+    + (FH.state.profile.quiz ? "" : `<a class="linkish" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
+    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button></div>` + key(true);
   document.getElementById("clear-path").addEventListener("click", () => {
     FH.clearPath();
     FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
