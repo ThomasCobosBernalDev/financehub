@@ -9,7 +9,7 @@ Each source file starts with meta comments, then one block per chapter:
   <!-- @art -->   fold illustration
   <!-- @see --> <!-- @hear --> <!-- @play --> <!-- @logic --> <!-- @nature -->
   <!-- @notes --> <!-- @together --> <!-- @solo --> <!-- @check --> <!-- @connects -->
-The shell adds the header, chapter rail, companion panel, style picker, footer and scripts.
+The shell adds the header, the hidden chapter list (the pager's step names), footer and scripts.
 Run tools/bust_cache.py afterwards.
 """
 import glob, os, re
@@ -23,7 +23,7 @@ CHAPTER_IDS = [  # id, learning style, tinted, narrow
     ("connects", None, False, False),
 ]
 
-# Every piece of shell text, per language. Chapter entries are (rail label, kicker label).
+# Every piece of shell text, per language. Chapter entries are (step name, kicker label).
 TEXT = {
     "en": {
         "chapters": {"see": ("See it", "See it"), "hear": ("Hear it", "Hear it"), "play": ("Play it", "Play it"),
@@ -32,14 +32,11 @@ TEXT = {
                      "connects": ("Where it leads", "Where it leads")},
         "skip": "Skip to the lesson", "course": "Course", "certs": "Certifications", "about": "About",
         "theme": "Switch light or dark mode", "sign_in": "Sign in", "rail": "Lesson chapters", "start": "Start",
-        "companion": "Your character so far", "savings": "Savings", "lessons_done": "Lessons done",
-        "badges": "badges earned. Your numbers carry into every lesson.",
-        "who": "You", "who_sub": "Your money, lesson by lesson",
         "play_btn": "Play narration", "speed": "Playback speed",
         "foot_nav": "Legal and info", "f_about": "About", "f_contact": "Contact", "f_privacy": "Privacy", "f_terms": "Terms",
-        "f_cookies": "Cookies and storage", "f_delete": "Delete my data", "f_credits": "Credits",
+        "f_cookies": "Cookies and storage", "f_credits": "Credits",
         "disclaimer": "FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.",
-        "lang_label": "Español", "lang_short": "ES", "lang_code": "es", "lang_aria": "Ver en español",
+        "lang_code": "es", "lang_aria": "Ver en español",
     },
     "es": {
         "chapters": {"see": ("Míralo", "Míralo"), "hear": ("Escúchalo", "Escúchalo"), "play": ("Juégalo", "Juégalo"),
@@ -48,14 +45,11 @@ TEXT = {
                      "connects": ("Hacia dónde va", "Hacia dónde va")},
         "skip": "Saltar a la lección", "course": "Curso", "certs": "Certificaciones", "about": "Acerca de",
         "theme": "Cambiar entre modo claro y oscuro", "sign_in": "Entrar", "rail": "Capítulos de la lección", "start": "Inicio",
-        "companion": "Tu personaje hasta ahora", "savings": "Ahorros", "lessons_done": "Lecciones hechas",
-        "badges": "insignias ganadas. Tus números pasan a cada lección.",
-        "who": "Tú", "who_sub": "Tu dinero, lección por lección",
         "play_btn": "Reproducir narración", "speed": "Velocidad",
         "foot_nav": "Información legal", "f_about": "Acerca de", "f_contact": "Contacto", "f_privacy": "Privacidad", "f_terms": "Términos",
-        "f_cookies": "Cookies y almacenamiento", "f_delete": "Borrar mis datos", "f_credits": "Créditos",
+        "f_cookies": "Cookies y almacenamiento", "f_credits": "Créditos",
         "disclaimer": "FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.",
-        "lang_label": "English", "lang_short": "EN", "lang_code": "en", "lang_aria": "View in English",
+        "lang_code": "en", "lang_aria": "View in English",
     },
 }
 
@@ -181,7 +175,7 @@ def build(src, lang):
     out_dir = os.path.join(ROOT, rel)
     os.makedirs(out_dir, exist_ok=True)
     fields = {k: v for k, v in T.items() if isinstance(v, str) and k not in ("rail", "start")}
-    fields.update(rail_label=T["rail"], start_label=T["start"], who=meta.get("who", T["who"]), who_sub=meta.get("who_sub", T["who_sub"]))
+    fields.update(rail_label=T["rail"], start_label=T["start"])
     html = PAGE.format(
         lang=lang, alt=alt, r=r, a=a, own=own, face=FACE,
         title=meta["title"], description=meta["description"], kicker=meta["kicker"], topic=meta["topic"],
