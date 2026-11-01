@@ -263,16 +263,16 @@
   const paintPath = () => {
     const { items, known: kn } = FH.path;
     const next = FH.nextLesson();
-    // The whole course as numbered squares, 10 to a row like lines in a book. Lessons on the path light up.
+    // The whole course as squares labeled unit.lesson (3.1 = Unit 3, Lesson 1), 10 to a row. Lessons on the path light up.
     const list = $("#my-path"); list.innerHTML = "";
     const onPath = new Map(items.filter((x) => x.lesson).map((x) => [x.lesson.id, x.lesson]));
     const label = $("#path-pick");
     const tell = (l) => { label.innerHTML = `<b>${l.unit}.${l.n}</b> ${l.title} <small>${!onPath.has(l.id) ? T("Not on your path", "No está en tu camino") : kn.has(l.unit) ? T("You know this. It's there to review.", "Ya lo sabes. Está ahí para repasar.") : l.href ? T("On your path", "En tu camino") : T("On your path · coming soon", "En tu camino · muy pronto")}</small>`; };
-    FH.CATALOG.forEach((l, i) => {
+    FH.CATALOG.forEach((l) => {
       const li = document.createElement("li");
       const on = onPath.has(l.id);
       li.className = [on ? (kn.has(l.unit) ? "known" : "on") : "off", next && next.id === l.id ? "next" : "", !l.href ? "soon" : ""].join(" ").trim();
-      li.innerHTML = l.href ? `<a href="../${l.href}" aria-label="${i + 1}. ${l.title}">${i + 1}</a>` : `<span tabindex="0" aria-label="${i + 1}. ${l.title}">${i + 1}</span>`;
+      li.innerHTML = l.href ? `<a href="../${l.href}" aria-label="${l.unit}.${l.n} ${l.title}">${l.unit}.${l.n}</a>` : `<span tabindex="0" aria-label="${l.unit}.${l.n} ${l.title}">${l.unit}.${l.n}</span>`;
       li.firstChild.addEventListener("mouseenter", () => tell(l));
       li.firstChild.addEventListener("focus", () => tell(l));
       list.appendChild(li);
@@ -280,13 +280,12 @@
     tell(next ? FH.CATALOG.find((l) => l.id === next.id) || FH.CATALOG[0] : FH.CATALOG[0]);
     const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
     const skip = lessons.filter((l) => kn.has(l.unit)).length;
-    $("#path-sum").textContent = T(
-      `${lessons.length} lesson${lessons.length === 1 ? "" : "s"} on your path${skip && skip < lessons.length ? `, and you already know ${skip}` : ""}.`,
-      `${lessons.length} ${lessons.length === 1 ? "lección" : "lecciones"} en tu camino${skip && skip < lessons.length ? `, y ya sabes ${skip}` : ""}.`);
-    if (kn.size) {
-      const startAt = items.map((x) => (x.lesson ? x.lesson.unit : x.unit)).find((u) => !kn.has(u));
-      if (startAt) $("#path-sum").textContent += T(` You start at Unit ${startAt}: ${FH.UNIT_NAMES[startAt - 1]}.`, ` Empiezas en la Unidad ${startAt}: ${FH.UNIT_NAMES[startAt - 1]}.`);
-    }
+    // The summary as short bullet points: how many lessons, how many you know, and where you start.
+    const facts = [T(`${lessons.length} lesson${lessons.length === 1 ? "" : "s"} on your path`, `${lessons.length} ${lessons.length === 1 ? "lección" : "lecciones"} en tu camino`)];
+    if (skip && skip < lessons.length) facts.push(T(`You already know ${skip} of them`, `Ya sabes ${skip} de ellas`));
+    // Where you start is the highlighted square, so the two always match.
+    if (next && next.why === "new") facts.push(T(`You start at Lesson ${next.unit}.${next.n}: ${next.title}`, `Empiezas en la Lección ${next.unit}.${next.n}: ${next.title}`));
+    $("#path-sum").innerHTML = facts.map((f) => `<li>${f}</li>`).join("");
     const go = $("#path-go");
     if (next) {
       const verb = next.why === "review" ? T("Review", "Repasar") : next.why === "extra" ? T("Try an extra lesson:", "Prueba una lección extra:") : T("Start", "Empezar");
