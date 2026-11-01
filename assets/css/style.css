@@ -1172,11 +1172,14 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 
 /* ---------- Certifications page ---------- */
 /* Jobs on the left; then the picked certificate as a photo banner, and the job's four stages side by side under it. */
-.cert-page .cx { padding: clamp(24px, 4vw, 48px) 0 56px; }
+.cert-page .cx { padding: clamp(18px, 3vw, 32px) 0 56px; }
 .wrap.cert-page { max-width: 1320px; }
-.cx-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; margin-bottom: 24px; }
-.cx-head h1 { margin: 0 0 6px; font-size: clamp(32px, 3.4vw, 44px); }
-.cx-head p { margin: 0; max-width: 40em; color: var(--ink-2); font-size: 16.5px; }
+.cx-head { margin-bottom: 18px; }
+.cx-head h1 { margin: 0; font-size: clamp(30px, 3vw, 40px); }
+/* Column labels: "Jobs" over the list, "Certifications" over the panel, on the same line. */
+.cx-col { margin: 0 0 10px; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.cx-side { min-width: 0; }
+.cx-side .cx-col { padding-left: 12px; }
 .cx-body { display: grid; grid-template-columns: minmax(200px, 250px) minmax(0, 1fr); gap: 32px; align-items: start; }
 .cx-jobs { list-style: none; margin: 0; padding: 0; }
 .cx-group { margin: 14px 0 4px 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
@@ -1188,9 +1191,8 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-all { color: var(--accent); font-weight: 600; }
 .cx-panel { min-width: 0; }
 .cx-pane { animation: ex-in .35s var(--ease); }
-.cx-pane > .kicker { margin: 0 0 4px; color: var(--accent); }
-.cx-pane > h2 { margin: 0 0 6px; font-size: clamp(26px, 2.6vw, 34px); }
-.cx-does { margin: 0 0 20px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
+.cx-pane > h2 { margin: -4px 0 4px; font-size: clamp(26px, 2.6vw, 34px); }
+.cx-does { margin: 0 0 16px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
 /* The picked certificate as a banner on top: photo and name on the left, facts on the right. */
 #cx-detail { scroll-margin-top: 84px; margin-bottom: 26px; }
 .cx-detail { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); min-height: 300px; border-radius: 24px; overflow: hidden; background: var(--card); box-shadow: inset 0 0 0 1px var(--line), var(--shadow); animation: ex-in .3s var(--ease); }

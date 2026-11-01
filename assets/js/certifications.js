@@ -224,7 +224,7 @@ const showJob = (id) => {
   const first = stages.flat()[0];
   curCert = first && first.c.id;
   panel.innerHTML = `<div class="cx-pane">
-    <p class="kicker">${GROUPS[j.group]}</p><h2>${j.name}</h2><p class="cx-does">${j.does}</p>
+    <p class="cx-col">${T("Certifications", "Certificaciones")}</p><h2>${j.name}</h2><p class="cx-does">${j.does}</p>
     <div id="cx-detail"></div>
     <ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
       <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div></div>
@@ -247,7 +247,7 @@ const showCert = (id, scroll, stage) => {
 // Every certificate in one table, cheapest first within each kind. Click a name to see which jobs use it.
 const showTable = () => {
   const usedBy = (id) => JOBS.filter((j) => j.stages.flat().some((e) => entry(e).c.id === id)).map((j) => `<a href="#${j.id}">${j.name}</a>`).join(", ");
-  panel.innerHTML = `<div class="cx-pane"><p class="kicker">${T("Compare", "Compara")}</p><h2>${T("Every certificate side by side", "Todos los certificados lado a lado")}</h2>
+  panel.innerHTML = `<div class="cx-pane"><p class="cx-col">${T("Compare", "Compara")}</p><h2>${T("Every certificate side by side", "Todos los certificados lado a lado")}</h2>
     <p class="cx-does">${T("Green ones are free or have a free option. Fees are from each issuer's site, checked October 2026, and can change.", "Los verdes son gratis o tienen opción gratis. Los costos vienen del sitio de cada emisor, revisados en octubre de 2026, y pueden cambiar.")}</p>
     <div class="cx-kinds" role="group">${KINDS.map((k, i) => `<button type="button" data-kind="${i}" aria-pressed="${i === kind}">${k.name} <small>${k.ids.length}</small></button>`).join("")}</div>
     <div class="cx-scroll"><table class="cx-table"><thead><tr><th>${T("Certificate", "Certificado")}</th><th>${T("Cost", "Costo")}</th><th>${T("Study time", "Tiempo de estudio")}</th><th>${T("Who pays", "Quién paga")}</th><th>${T("Jobs that use it", "Trabajos que lo usan")}</th></tr></thead>

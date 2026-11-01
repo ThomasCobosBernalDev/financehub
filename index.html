@@ -6,7 +6,7 @@
   <title>FinancedHub</title>
   <meta name="description" content="A visual, game-based finance and business course, from your first bank account to Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202611010242">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611010256">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -30,11 +30,14 @@
     .for-you b { display: block; font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; margin-bottom: 6px; }
     .for-you small { display: block; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
     .for-you i { justify-self: start; font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-    .for-you-foot { margin: 0; font-size: 14px; color: var(--ink-3); }
+    .for-you-foot { display: grid; gap: 4px; margin: 0; padding: 0 2px; font-size: 14px; color: var(--ink-3); }
+    .for-you-foot a { color: var(--accent); font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .for-you-foot a:hover { text-decoration: underline; }
     @media (max-width: 560px) { .for-you ul { grid-template-columns: 1fr; } }
     .hero h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 14px; max-width: 14ch; }
     .hero .lead { font-size: 18px; max-width: 30em; margin: 0 0 24px; }
     .hero .nw { white-space: nowrap; }
+    .hero .btn.line { background: var(--card); }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .hero-note { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); max-width: 34em; }
     .hero-note a { color: var(--accent); font-weight: 600; }
@@ -56,8 +59,11 @@
     .hero-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; opacity: 0; transform: scale(1.06); transition: opacity 1.1s ease, transform 7s linear; }
     .hero-photos img.on { opacity: 1; transform: scale(1); }
     .hero-photos::after { content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 30%, color-mix(in srgb, var(--paper) 55%, transparent) 58%, color-mix(in srgb, var(--paper) 25%, transparent) 100%),
-                  linear-gradient(to top, var(--paper), transparent 22%); }
+      background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 38%, color-mix(in srgb, var(--paper) 75%, transparent) 49%, transparent 66%),
+                  linear-gradient(to top, var(--paper), transparent 18%); }
+    :root[data-theme="dark"] .hero-photos::after {
+      background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 38%, color-mix(in srgb, var(--paper) 75%, transparent) 49%, color-mix(in srgb, var(--paper) 30%, transparent) 66%),
+                  linear-gradient(to top, var(--paper), transparent 18%); }
     :root[data-motion="reduce"] .hero-photos img { transition: opacity .3s; transform: none; }
     @media (max-width: 1024px) {
       /* Narrow screens: the photo sits as a soft band behind the headline only. */
@@ -88,9 +94,9 @@
 <main class="wrap" id="main">
   <section class="hero" id="top">
     <div class="hero-photos" aria-hidden="true">
-      <img class="on" alt="" src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?auto=format&fit=crop&w=1800&q=70">
+      <img class="on" alt="" src="https://images.unsplash.com/photo-1633158829556-6ea20ad39b4f?auto=format&fit=crop&w=1800&q=70">
       <img alt="" loading="lazy" src="https://images.unsplash.com/photo-1745270917233-65e776a47547?auto=format&fit=crop&w=1800&q=70">
-      <img alt="" loading="lazy" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1800&q=70">
+      <img alt="" loading="lazy" src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=1800&q=70">
       <img alt="" loading="lazy" src="https://images.unsplash.com/photo-1534469650761-fce6cc26ac0d?auto=format&fit=crop&w=1800&q=70">
     </div>
     <div class="hero-copy">
@@ -112,7 +118,7 @@
         <li><a href="course/#part-1"><span><b>How credit and credit cards work</b><small>Build a good score without falling into debt. Lessons coming soon.</small></span><i>Know the basics</i></a></li>
         <li><a href="start/"><span><b>How to get hired in finance</b><small>Ace college finance, then interview at a bank or on Wall Street.</small></span><i>Career</i></a></li>
       </ul>
-      <p class="for-you-foot">Not sure? <a href="start/">Answer a few quick questions</a> and we'll line up your lessons. Aiming for a finance job? <a href="certifications/">See which certifications to get</a>.</p>
+      <p class="for-you-foot"><span>Not sure? <a href="start/">Answer a few quick questions</a></span><span>Aiming for a finance job? <a href="certifications/">See which certifications to get</a></span></p>
     </nav>
   </section>
 </main>
@@ -125,10 +131,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202611010242"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202611010242"></script>
-<script src="assets/js/auth.js?v=202611010242"></script>
-<script src="assets/js/site.js?v=202611010242"></script>
+<script src="assets/js/save.js?v=202611010256"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202611010256"></script>
+<script src="assets/js/auth.js?v=202611010256"></script>
+<script src="assets/js/site.js?v=202611010256"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
