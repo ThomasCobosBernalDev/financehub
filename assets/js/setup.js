@@ -5,6 +5,9 @@
   const T = FH.t;
   const prof = FH.state.profile || {};
   let goals = new Set(prof.goals || []);
+  // Coming from a home page door (start/?goal=bank): that goal starts picked.
+  const fromHome = new URLSearchParams(location.search).get("goal");
+  if (FH.GOALS.some((g) => g.id === fromHome)) goals.add(fromHome);
   let level = prof.level || null;
   let known = {};
 
