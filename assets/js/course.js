@@ -1,116 +1,145 @@
-// Course page: part tabs, that part's units, and the chosen unit's lessons, with the learner's path highlighted.
+// Course page, laid out like the certifications page: units on the left (grouped by part), and on the right the
+// picked unit's lesson as a photo banner with its lesson tiles under it. The learner's path is highlighted.
 (function () {
 const T = FH.t;
 const root = document.body.dataset.root || "./";
-// Course explorer: part tabs, that part's units, and the chosen unit's lessons. Drawn from the catalog in save.js.
 const map = document.getElementById("course-map");
+const unitList = document.getElementById("ex-units"), panel = document.getElementById("ex-panel");
 const unitLessons = (u) => FH.CATALOG.filter((l) => l.unit === u);
-const tabs = document.getElementById("ex-tabs"), unitList = document.getElementById("ex-units"), lessonBox = document.getElementById("ex-lessons");
-tabs.innerHTML = FH.PARTS.map((p) => `<button class="ex-tab" role="tab" id="part-${p.n}" data-part="${p.n}" aria-selected="false"><b>${p.n}</b>${p.name} <small>${p.units.length} ${T("units", "unidades")}</small></button>`).join("");
-const unitStatus = (u) => {
-  const ls = unitLessons(u), open = ls.filter((l) => l.href).length;
-  return !ls.length ? T("Coming soon", "Muy pronto")
-    : open ? T(`${open} of ${ls.length} lessons open`, `${open} de ${ls.length} lecciones abiertas`)
-    : T(`${ls.length} lessons planned`, `${ls.length} lecciones planeadas`);
+const lessonById = (id) => FH.CATALOG.find((l) => l.id === id);
+
+// One Unsplash photo per unit.
+const PHOTO = ["1601597111158-2fceff292cdc", "1554224154-26032ffc0d07", "1554224155-8d04cb21cd6c", "1556742502-ec7c0e9f34b1",
+  "1611974789855-9c2a0a7236a3", "1585914641050-fa9883c4e21c", "1741156386380-0236c72eb6f9", "1526399743290-f73cb4022f48",
+  "1553729459-efe14ef6055d", "1626266061368-46a8f578ddd6", "1556742049-0cfed4f6a45d", "1772588627327-1eeddcf73c11",
+  "1542744173-8e7e53415bb0", "1648275913341-7973ae7bc9b3", "1707157284454-553ef0a4ed0d", "1770461846516-b7e5993a8e4f",
+  "1629654297299-c8506221ca97", "1758520144437-f068ecaf0d83"];
+const photo = (u) => `https://images.unsplash.com/photo-${PHOTO[u - 1]}?auto=format&fit=crop&w=900&h=420&q=70`;
+const icon = (st) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${st.icon}</svg>`;
+
+unitList.innerHTML = FH.PARTS.map((p) => `<li class="cx-group">${T("Part", "Parte")} ${p.n} · ${p.name}</li>`
+  + p.units.map((u) => `<li><button class="unit${unitLessons(u).some((l) => l.href) ? " live" : ""}" role="tab" id="unit-${u}" data-unit="${u}" aria-selected="false"><span class="n">${u}</span><h3>${FH.UNIT_NAMES[u - 1]}</h3></button></li>`).join("")).join("");
+
+let curUnit = 0, curLesson = null;
+const pathInfo = () => {
+  const { items, setUp } = FH.path;
+  return { setUp, onIds: new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id)), next: FH.nextLesson() };
 };
-lessonBox.innerHTML = FH.PARTS.flatMap((p) => p.units).map((u) => {
-  const ls = unitLessons(u);
-  const list = !ls.length ? `<p class="ex-empty">${T("The lessons for this unit are being planned.", "Las lecciones de esta unidad se están planeando.")}</p>` : `<ol class="ex-ls">${ls.map((l) => l.href
-    ? `<li><a href="${root}${l.href}" data-lesson="${l.id}"><span class="dot"></span><b><span class="ln">${l.unit}.${l.n}</span>${l.title}</b><small>${l.sub}</small></a></li>`
-    : `<li><span class="soon" data-lesson="${l.id}"><span class="dot"></span><b><span class="ln">${l.unit}.${l.n}</span>${l.title}</b><small>${l.sub} · ${T("coming soon", "muy pronto")}</small></span></li>`).join("")}</ol>`;
-  return `<div class="ex-group" data-for="${u}" role="tabpanel" hidden><p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p>${list}</div>`;
-}).join("");
-let curPart = 0, curUnit = 0;
+// A lesson's state, used by its tile and the banner.
+const stateOf = (l, pi) => {
+  const done = FH.done(l.id), onIt = pi.setUp && pi.onIds.has(l.id), isNext = onIt && pi.next && pi.next.id === l.id && !done;
+  const tag = isNext ? T("Up next", "Sigue") : onIt ? (done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino")) : done ? T("Done", "Hecha") : "";
+  return { done, onIt, isNext, tag };
+};
+
+const banner = (u, l, pi) => {
+  const top = `<div class="cx-d-photo"><img src="${photo(u)}" alt="" onerror="this.remove()"><div>`;
+  if (!l) return `<div class="cx-detail" aria-live="polite">${top}<p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3></div></div>
+    <div class="cx-d-info"><p class="cx-what">${T("The lessons for this unit are being planned. Every one will teach its topic eight ways, like the open lessons do.", "Las lecciones de esta unidad se están planeando. Cada una enseñará su tema de ocho formas, como las lecciones abiertas.")}</p></div></div>`;
+  const s = stateOf(l, pi);
+  const needs = (l.needs || []).map(lessonById).filter(Boolean);
+  const status = !l.href ? T("Coming soon", "Muy pronto") : s.done ? T("Done", "Hecha") : T("Open now", "Abierta");
+  const path = !pi.setUp ? T("No path yet", "Aún sin camino") : s.isNext ? T("Up next", "Sigue") : s.onIt ? T("On your path", "En tu camino") : T("Not on your path", "No está en tu camino");
+  const go = l.href
+    ? `<a class="btn sm" href="${root}${l.href}">${s.done ? T("Review lesson", "Repasar lección") : T("Start lesson", "Empezar lección")} <span class="arrow">→</span></a>`
+    : `<span class="btn sm line" aria-disabled="true">${T("Coming soon", "Muy pronto")}</span>`;
+  return `<div class="cx-detail" aria-live="polite">${top}<p class="kicker">${T("Lesson", "Lección")} ${l.unit}.${l.n}</p><h3>${l.title}</h3><p class="cx-org">${l.sub}</p></div></div>
+  <div class="cx-d-info">
+    <p class="cx-what">${T("Pick the way you learn best, or do all eight:", "Elige la forma en que mejor aprendes, o haz las ocho:")}</p>
+    <ul class="ex-ways">${FH.STYLES.map((st) => `<li>${icon(st)}<span>${st.chapter}</span></li>`).join("")}</ul>
+    <dl>
+      <div><dt>${T("Status", "Estado")}</dt><dd>${status}</dd></div>
+      <div><dt>${T("Your path", "Tu camino")}</dt><dd>${path}</dd></div>
+      <div><dt>${T("Builds on", "Se basa en")}</dt><dd>${needs.length ? needs.map((n) => `${n.unit}.${n.n} ${n.title}`).join(", ") : T("Nothing, start here", "Nada, empieza aquí")}</dd></div>
+    </dl>
+    <div class="cx-d-foot">${go}</div>
+  </div></div>`;
+};
+
+const renderPane = () => {
+  const u = curUnit, ls = unitLessons(u), pi = pathInfo(), part = FH.partOf(u);
+  const open = ls.filter((l) => l.href).length, doneN = ls.filter((l) => FH.done(l.id)).length, pathN = ls.filter((l) => pi.onIds.has(l.id)).length;
+  const l = lessonById(curLesson);
+  const facts = !ls.length ? T("Lessons coming soon.", "Lecciones muy pronto.")
+    : [open ? T(`${open} of ${ls.length} lessons open`, `${open} de ${ls.length} lecciones abiertas`) : T(`${ls.length} lessons planned`, `${ls.length} lecciones planeadas`),
+      doneN ? T(`${doneN} done`, `${doneN} hechas`) : "", pi.setUp && pathN ? T(`${pathN} on your path`, `${pathN} en tu camino`) : ""].filter(Boolean).join(" · ");
+  const tiles = ls.map((x) => {
+    const s = stateOf(x, pi);
+    return `<li><button type="button" class="cx-tile${x.href ? "" : " soon"}${s.done ? " done" : ""}${s.onIt ? " on-path" : ""}${s.isNext ? " is-next" : ""}" data-lesson="${x.id}" aria-pressed="${x.id === curLesson}">
+      <b><span class="ln">${x.unit}.${x.n}</span>${x.title}</b><small>${x.href ? x.sub : T("Coming soon", "Muy pronto")}</small>${s.tag ? `<span class="tags"><i class="${s.isNext ? "t-must" : "t-free"}">${s.tag}</i></span>` : ""}</button></li>`;
+  }).join("");
+  panel.innerHTML = `<div class="cx-pane"><p class="cx-col">${T("Unit", "Unidad")} ${u} · ${T("Part", "Parte")} ${part.n}, ${part.name}</p>
+    <div class="cx-title"><h2>${FH.UNIT_NAMES[u - 1]}</h2><p class="cx-does">${facts}</p></div>
+    <div id="ex-detail">${banner(u, l, pi)}</div>
+    ${ls.length ? `<p class="cx-col">${T("Lessons", "Lecciones")}</p><ol class="ex-tiles">${tiles}</ol>` : ""}</div>`;
+  panel.querySelectorAll(".cx-tile").forEach((b) => b.addEventListener("click", () => {
+    curLesson = b.dataset.lesson;
+    panel.querySelectorAll(".cx-tile").forEach((t) => t.setAttribute("aria-pressed", String(t === b)));
+    const box = document.getElementById("ex-detail");
+    box.innerHTML = banner(curUnit, lessonById(curLesson), pathInfo());
+    if (box.getBoundingClientRect().top < 64) box.scrollIntoView({ behavior: "smooth", block: "start" });
+  }));
+};
+
+// The lesson a unit opens on: your next lesson if it's here, else the first open one not done, else the first.
+const startLesson = (u) => {
+  const ls = unitLessons(u), next = FH.nextLesson();
+  const l = (next && next.unit === u && next) || ls.find((x) => x.href && !FH.done(x.id)) || ls.find((x) => x.href) || ls[0];
+  return l ? l.id : null;
+};
 const pickUnit = (u) => {
-  curUnit = u;
+  curUnit = u; curLesson = startLesson(u);
   unitList.querySelectorAll(".unit").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.unit === u)));
-  lessonBox.querySelectorAll(".ex-group").forEach((g) => { g.hidden = +g.dataset.for !== u; });
   const sel = unitList.querySelector(`.unit[data-unit="${u}"]`);
   if (sel && unitList.scrollWidth > unitList.clientWidth) unitList.scrollTo({ left: sel.parentNode.offsetLeft - 16, behavior: "smooth" });
+  renderPane();
 };
-const pickPart = (n, unit) => {
-  const part = FH.PARTS.find((p) => p.n === n);
-  curPart = n;
-  tabs.querySelectorAll(".ex-tab").forEach((b) => b.setAttribute("aria-selected", String(+b.dataset.part === n)));
-  unitList.innerHTML = part.units.map((u) => {
-    const ls = unitLessons(u), open = ls.filter((l) => l.href).length;
-    return `<li><button class="unit${open ? " live" : ""}" role="tab" data-unit="${u}" aria-selected="false"><span class="n">${u}</span><h3>${FH.UNIT_NAMES[u - 1]}</h3><p>${unitStatus(u)}</p><span class="bar"><i></i></span></button></li>`;
-  }).join("");
-  unitList.querySelectorAll(".unit").forEach((b) => b.addEventListener("click", () => pickUnit(+b.dataset.unit)));
-  pickUnit(unit || part.units[0]);
-  if (typeof paintPath === "function") paintPath();
-};
-tabs.querySelectorAll(".ex-tab").forEach((b) => b.addEventListener("click", () => pickPart(+b.dataset.part)));
-// Links like #part-3 open that part.
-const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash); if (m && FH.PARTS.some((p) => p.n === +m[1])) { pickPart(+m[1]); map.scrollIntoView({ behavior: "smooth" }); } };
+unitList.querySelectorAll(".unit").forEach((b) => b.addEventListener("click", () => pickUnit(+b.dataset.unit)));
+// Links like #part-3 open that part's first unit.
+const fromHash = () => { const m = /^#part-(\d)$/.exec(location.hash), p = m && FH.PARTS.find((x) => x.n === +m[1]); if (p) { pickUnit(p.units[0]); map.scrollIntoView({ behavior: "smooth" }); } };
 addEventListener("hashchange", fromHash);
 
-// Your path: its lessons are highlighted in place, and its tools sit in the header.
+// Your path: units on it get an outlined number (filled once all done), the rest are grayed out; its tools sit in the header.
 const paintPath = () => {
-  const { items, on, known, setUp } = FH.path;
-  const onIds = new Set(items.filter((x) => x.lesson).map((x) => x.lesson.id));
+  const { on, known, setUp } = FH.path, pi = pathInfo();
   map.classList.toggle("path-set", setUp);
-  map.querySelectorAll(".unit").forEach((u) => {
-    const n = Number(u.dataset.unit);
-    u.classList.toggle("known", known.has(n));
-    const inPath = setUp && on.has(n);
-    u.classList.toggle("on-path", inPath);
-    u.classList.toggle("off-path", setUp && !inPath);
-    const ls = unitLessons(n), doneN = ls.filter((l) => FH.done(l.id)).length;
-    u.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
-    u.querySelector(".bar i").style.setProperty("--p", ls.length ? (doneN / ls.length) * 100 + "%" : "0%");
-    const pathN = ls.filter((l) => onIds.has(l.id)).length;
-    let pd = u.querySelector(".pd");
-    if (setUp && pathN && !known.has(n)) {
-      if (!pd) { pd = document.createElement("span"); pd.className = "pd"; u.querySelector(".bar").before(pd); }
-      pd.textContent = T(`${pathN} on your path`, `${pathN} en tu camino`);
-    } else if (pd) pd.remove();
-    let tag = u.querySelector(".path-tag");
-    const text = known.has(n) ? T("You know this", "Ya lo sabes") : "";
+  unitList.querySelectorAll(".unit").forEach((b) => {
+    const n = +b.dataset.unit, ls = unitLessons(n), inPath = setUp && on.has(n);
+    b.classList.toggle("known", known.has(n));
+    b.classList.toggle("on-path", inPath);
+    b.classList.toggle("off-path", setUp && !inPath);
+    b.classList.toggle("all-done", ls.length > 0 && ls.every((l) => FH.done(l.id)));
+    const pathN = ls.filter((l) => pi.onIds.has(l.id)).length;
+    const text = known.has(n) ? T("You know this", "Ya lo sabes") : setUp && pathN ? T(`${pathN} on your path`, `${pathN} en tu camino`) : "";
+    let tag = b.querySelector(".path-tag");
     if (!text) { if (tag) tag.remove(); return; }
-    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; u.querySelector("h3").after(tag); }
+    if (!tag) { tag = document.createElement("span"); tag.className = "path-tag"; b.append(tag); }
     tag.textContent = text;
   });
-  const next = FH.nextLesson();
-  map.querySelectorAll("[data-lesson]").forEach((el) => {
-    const id = el.dataset.lesson, done = FH.done(id), sm = el.querySelector("small");
-    const onIt = setUp && onIds.has(id), isNext = setUp && next && next.id === id && !done;
-    el.classList.toggle("done", done);
-    el.classList.toggle("on-path", onIt);
-    el.classList.toggle("is-next", !!isNext);
-    let pt = el.querySelector(".pt");
-    if (onIt) {
-      if (!pt) { pt = document.createElement("span"); pt.className = "pt"; el.append(pt); }
-      pt.textContent = isNext ? T("Up next", "Sigue") : done ? T("Your path · done", "Tu camino · hecha") : T("On your path", "En tu camino");
-    } else if (pt) pt.remove();
-    sm.dataset.base = sm.dataset.base || sm.textContent;
-    sm.textContent = sm.dataset.base + (done && !onIt ? T(" · done", " · hecha") : "");
-  });
+  if (curUnit) renderPane();
   const tools = document.getElementById("my-path");
-  const p = FH.state.profile;
   if (!setUp) {
-    tools.innerHTML = T(
-      `<p>Pick a part, then a unit, to see its lessons.</p><a class="btn sm" href="${root}start/">Build my path</a>`,
-      `<p>Elige una parte y luego una unidad para ver sus lecciones.</p><a class="btn sm" href="${root}start/">Crear mi camino</a>`);
+    tools.innerHTML = T(`<p>Pick a unit to see its lessons.</p><a class="btn sm" href="${root}start/">Build my path</a>`,
+      `<p>Elige una unidad para ver sus lecciones.</p><a class="btn sm" href="${root}start/">Crear mi camino</a>`);
     return;
   }
-  const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
+  const lessons = FH.path.items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
   tools.innerHTML = `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
     + T(`<p>Your path: <b>${doneN} of ${lessons.length} lessons done</b>.</p>`, `<p>Tu camino: <b>${doneN} de ${lessons.length} lecciones hechas</b>.</p>`)
     + `<a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
-    + (p.quiz ? "" : `<a class="btn sm line" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
+    + (FH.state.profile.quiz ? "" : `<a class="btn sm line" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
     + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button>`;
   document.getElementById("clear-path").addEventListener("click", () => {
     FH.clearPath();
     FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));
   });
 };
-paintPath();
 document.addEventListener("fh:save", paintPath);
 
-// Open the explorer on the part and unit of the next lesson.
+// Open on the unit of the next lesson.
 const first = FH.nextLesson();
-pickPart(first ? FH.partOf(first.unit).n : 1, first ? first.unit : 0);
+pickUnit(first ? first.unit : 1);
+paintPath();
 fromHash();
 })();

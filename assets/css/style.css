@@ -112,9 +112,11 @@ b, strong { font-weight: 650; }
   backdrop-filter: saturate(1.2) blur(12px);
 }
 .topbar .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
-/* Once you scroll, the header keeps its size but its bottom edge fades into the page instead of ending in a hard line. */
-.topbar::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 85%, transparent), transparent); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
-.scrolled .topbar::after { opacity: 1; }
+/* Once you scroll, the header keeps its size and turns see-through: no blur, and its bottom half fades away,
+   so the page shows through it. */
+.topbar { transition: background .3s ease; }
+.scrolled .topbar { -webkit-backdrop-filter: none; backdrop-filter: none;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 72%, transparent), color-mix(in srgb, var(--paper) 40%, transparent) 60%, transparent); }
 .logo {
   display: inline-flex; align-items: center;
   font-family: "Source Serif 4", Georgia, "Times New Roman", serif; font-style: italic; font-size: 24px; font-weight: 700;
@@ -863,11 +865,6 @@ details .in-example { margin: 10px 0 20px; }
 @keyframes cm-flow { to { stroke-dashoffset: -14; } }
 @media (prefers-reduced-motion: reduce) { .cm-flow { animation: none; } }
 
-/* Home course map: the line that fills as you scroll (site.js). */
-.path-fill { position: absolute; left: 23px; top: 10px; width: 2px; height: 0; background: var(--accent); border-radius: 2px; z-index: 0; }
-.unit .n { transition: background .35s, color .35s, box-shadow .35s, transform .35s var(--ease); z-index: 1; }
-.unit:not(.live) .n.lit { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
-.unit .n.lit { transform: scale(1.06); }
 
 /* Money charts: glowing line tips and riding value tags (FHLesson.fx in lesson-kit.js). */
 .fx-halo { fill: var(--c); opacity: .22; }
@@ -999,79 +996,58 @@ body:has(.help-hero) { overflow-x: clip; }
 
 /* ---------- Course page explorer ---------- */
 #course-map { scroll-margin-top: 88px; }
-/* The course explorer: pick a part, then a unit, and its lessons show beside it. One screen, no long scroll. */
-.explorer { padding: 56px 0 24px; border-top: 1px solid var(--line); margin-top: 24px; }
 .ex-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
-.ex-head h2 { margin: 0; font-size: clamp(28px, 2.6vw, 36px); }
 .ex-head { align-items: center; }
 .ex-tools { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; justify-content: flex-end; }
 .ex-tools p { margin: 0; color: var(--ink-3); font-size: 15px; }
 .ex-tools p b { color: var(--ink); }
-.mp-bar { border-radius: 6px; background: color-mix(in srgb, var(--accent) 18%, transparent); overflow: hidden; }
-.mp-bar i { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
 .ex-tools .mp-bar { width: 90px; height: 6px; margin: 0; flex: none; }
 .ex-tools .btn { flex: none; }
 .ex-tools .linkish { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--ink-3); text-decoration: underline; cursor: pointer; }
 @media (max-width: 760px) { .ex-tools { justify-content: flex-start; } }
-.ex-tabs { display: flex; gap: 6px; padding: 5px; border-radius: 99px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); overflow-x: auto; scrollbar-width: none; }
-.ex-tabs::-webkit-scrollbar { display: none; }
-.ex-tab { flex: 1 0 auto; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 10px 14px; border: 0; border-radius: 99px; background: none; color: var(--ink-2); font: inherit; font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer; scroll-margin-top: 96px; transition: background .25s var(--ease), color .25s, box-shadow .25s; }
-.ex-tab b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; box-shadow: inset 0 0 0 1.5px currentColor; }
-.ex-tab small { display: none; }
-.ex-tab:hover { color: var(--ink); }
-.ex-tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 6px 16px -10px rgba(0,0,0,.35), inset 0 0 0 1px var(--line); }
-.ex-tab[aria-selected="true"] b { background: var(--accent); color: var(--on-color); box-shadow: none; }
-.ex-body { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
-.ex-units { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.unit { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .2s, box-shadow .2s, opacity .2s; }
-.unit .n { grid-row: span 3; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 16px; box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
-.unit.live .n { box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
-.unit h3 { margin: 0; font-family: var(--sans); font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--ink-2); }
-.unit.live h3 { color: var(--ink); }
-.unit p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
-.unit .bar { grid-column: 2; height: 4px; margin-top: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
-.unit .bar i { display: block; height: 100%; width: var(--p, 0%); background: var(--accent); border-radius: inherit; transition: width .6s var(--ease); }
-.unit:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
-.unit[aria-selected="true"] { background: var(--card); box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); opacity: 1; }
-.unit[aria-selected="true"] .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
-.unit .path-tag { display: inline-block; vertical-align: 1px; margin-left: 6px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 7px; border-radius: 99px; background: var(--paper-2); color: var(--ink-3); }
-.unit.known .path-tag { background: var(--accent-soft); color: var(--accent); }
-.unit .pd { grid-column: 2; margin-top: 3px; font-size: 12px; font-weight: 600; color: var(--accent); }
-.unit .pd::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--accent); vertical-align: 1px; }
-.ex-lessons { min-width: 0; }
-.ex-group[hidden] { display: none; }
-.ex-group { animation: ex-in .35s var(--ease); }
-@keyframes ex-in { from { opacity: 0; transform: translateY(8px); } }
-.ex-group .kicker { margin: 4px 0 4px; color: var(--accent); }
-.ex-group h3 { margin: 0 0 4px; font-size: clamp(24px, 2.4vw, 30px); }
-.ex-group > p { margin: 0 0 16px; color: var(--ink-3); font-size: 15px; }
-.ex-ls { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
-.ex-ls a, .ex-ls .soon { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; height: 100%; box-sizing: border-box; padding: 14px 16px 14px 12px; border-radius: 16px; color: inherit; text-decoration: none; }
-.ex-ls a { background: var(--card); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s, transform .2s var(--ease); }
-.ex-ls a:hover { box-shadow: inset 0 0 0 1.5px var(--accent), var(--shadow); transform: translateY(-2px); }
-.ex-ls .soon { box-shadow: inset 0 0 0 1px var(--line); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent); }
-.ex-ls .dot { grid-row: span 2; width: 14px; height: 14px; border-radius: 50%; margin-top: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
-.ex-ls .done .dot { background: var(--accent); box-shadow: none; }
-.ex-ls .soon .dot { box-shadow: inset 0 0 0 2px var(--line); }
-.ex-ls b { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.25; color: var(--ink); }
-.ex-ls .soon b { color: var(--ink-3); }
-.ex-ls small { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; margin-top: 3px; }
-.ex-ls .on-path { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 55%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
-.ex-ls .is-next { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
-.ex-ls .pt { grid-column: 2; justify-self: start; margin-top: 8px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
-.ex-ls .is-next .pt { background: var(--accent); color: var(--on-color); }
-.ex-empty { padding: 28px; border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-3); }
-
-@media (max-width: 760px) {
-  /* Phones: units become a swipeable strip, and the chosen unit's lessons sit right under it. */
-.ex-body { grid-template-columns: 1fr; gap: 18px; }
-.ex-units { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 -16px; padding: 4px 16px; }
-.ex-units li { flex: 0 0 74%; scroll-snap-align: start; }
-.unit { height: 100%; background: var(--paper-2); }
-.ex-ls { grid-template-columns: 1fr; }
-}
-.course-page .explorer { border-top: 0; margin-top: 0; padding-top: clamp(24px, 4vw, 48px); padding-bottom: 72px; }
 .ex-head h1 { margin: 0; font-size: clamp(32px, 3.4vw, 44px); }
+/* Units on the left, grouped by part; same look as the certifications job list. */
+.wrap.units-page { max-width: 1320px; }
+.units-page .cx { padding: clamp(18px, 3vw, 32px) 0 56px; }
+.units-page .cx-body { grid-template-columns: minmax(220px, 270px) minmax(0, 1fr); }
+.units-page .ex-head { flex-direction: row; align-items: flex-end; margin-bottom: 18px; }
+.units-page .ex-tools { justify-content: flex-end; }
+@media (max-width: 760px) { .units-page .ex-head { flex-direction: column; align-items: flex-start; } .units-page .ex-tools { justify-content: flex-start; } }
+.unit { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: center; width: 100%; padding: 6px 10px; border: 0; border-radius: 10px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .2s, box-shadow .2s, opacity .2s; }
+.unit .n { grid-row: span 2; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 14px; box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink-3); }
+.unit.live .n { box-shadow: inset 0 0 0 1.5px var(--accent); color: var(--accent); }
+.unit h3 { margin: 0; font-family: var(--sans); font-size: 15px; font-weight: 500; line-height: 1.3; color: var(--ink-2); }
+.unit.live h3 { color: var(--ink); }
+.unit:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.unit[aria-selected="true"] { background: var(--card); box-shadow: inset 3px 0 0 var(--accent), inset 0 0 0 1px var(--line); opacity: 1; }
+.unit[aria-selected="true"] h3 { font-weight: 600; color: var(--ink); }
+.unit[aria-selected="true"] .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
+.unit .path-tag { grid-column: 2; justify-self: start; margin: 3px 0 1px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; padding: 2px 7px; border-radius: 99px; background: var(--paper-2); color: var(--accent); }
+.unit.known .path-tag { background: var(--accent-soft); }
+/* The banner's eight ways, and the lesson tiles under it. */
+.ex-ways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 14px; }
+.ex-ways li { display: flex; align-items: center; gap: 8px; font-size: 13.5px; line-height: 1.3; color: var(--ink-2); }
+.ex-ways svg { flex: none; width: 20px; height: 20px; color: var(--accent); }
+.ex-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ex-tiles .cx-tile { height: 100%; padding: 12px 14px; }
+.ex-tiles .cx-tile b { font-family: var(--serif); font-weight: 500; font-size: 17px; }
+.cx-tile .ln { margin-right: 7px; font-family: var(--sans); font-size: .78em; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.cx-tile.soon { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--line) 70%, transparent); background: none; }
+.cx-tile.soon b { color: var(--ink-3); }
+.cx-tile.on-path { background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
+.cx-tile.is-next { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.cx-tile.is-next[aria-pressed="true"], .cx-tile.on-path[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
+.units-page #ex-detail { margin-bottom: 26px; }
+@media (max-width: 1180px) { .ex-ways { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  /* Phones: units become a swipeable strip, like the jobs on the certifications page. */
+  .units-page .cx-body { grid-template-columns: 1fr; }
+  .cx-jobs li { flex: none; }
+  .unit { display: flex; gap: 8px; white-space: nowrap; padding: 5px 14px 5px 5px; border-radius: 99px; background: var(--paper-2); }
+  .unit[aria-selected="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .unit .path-tag { display: none; }
+  .ex-tiles { grid-template-columns: 1fr; }
+}
 
 /* Footer language picker, bottom left (like Figma's). */
 .lang-pick { position: absolute; left: clamp(20px, 3vw, 48px); bottom: max(20px, calc(env(safe-area-inset-bottom) + 12px)); display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; margin-left: -10px; border-radius: 10px; color: var(--ink); font-size: 15px; font-weight: 500; cursor: pointer; transition: background .2s; }
@@ -1149,19 +1125,14 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .path-key .on { background: var(--accent); } .path-key .known { background: var(--accent-soft); } .path-key .off { background: var(--paper-2); }
 @media (max-width: 560px) { .my-path { gap: 5px; } .my-path a, .my-path span { font-size: 14px; border-radius: 8px; } }
 
-.ex-ls .ln { margin-right: 8px; font-family: var(--sans); font-size: .78em; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 /* With a path set: units on the path get a green outlined number (filled once all its lessons are done), the rest are grayed out. The open unit gets a bold border. */
-.unit[aria-selected="true"] { box-shadow: inset 0 0 0 2.5px var(--accent), var(--shadow); }
 .path-set .unit[aria-selected="true"] .n { background: none; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 .path-set .unit.on-path .n { background: none; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 .path-set .unit.on-path h3 { color: var(--ink); }
 .path-set .unit.on-path.all-done .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
 .path-set .unit.off-path { opacity: .4; }
 .path-set .unit.off-path .n { box-shadow: inset 0 0 0 2px var(--line); color: var(--ink-3); }
-.path-set .unit.off-path:hover { opacity: .75; }
-.unit .n { grid-row: span 5; }
-.unit .path-tag { grid-column: 2; justify-self: start; margin: 4px 0 1px; }
-.course-page .ex-head { flex-direction: column; align-items: flex-start; } .course-page .ex-tools { justify-content: flex-start; }
+.path-set .unit.off-path:hover, .path-set .unit.off-path[aria-selected="true"] { opacity: .75; }
 /* Pager: step dots centered on their own row, Back on the left and Next on the right underneath. */
 .pager { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; row-gap: 18px; }
 .pager .pg-steps { grid-column: 1 / -1; grid-row: 1; }
@@ -1356,11 +1327,12 @@ a.acct-who:hover, a.acct-who:focus-visible { background: color-mix(in srgb, var(
 .doc > .page-hero:first-child { margin-top: -72px; }
 @keyframes page-hero-in { from { opacity: 0; transform: scale(1.03); } }
 :root[data-motion="reduce"] .page-hero img { animation: none; }
-/* Certifications: a faint city skyline behind the top of the page, washing into the page color. */
-.cert-page { position: relative; isolation: isolate; }
-.cert-page::before { content: ""; position: absolute; z-index: -1; top: 0; left: 50%; width: 100vw; height: 620px; transform: translateX(-50%); pointer-events: none;
+/* Certifications and course pages: a faint photo behind the top of the page, washing into the page color. */
+.cert-page, .units-page { position: relative; isolation: isolate; --top-photo: url("https://images.unsplash.com/photo-1617375819318-67968e5b25c3?auto=format&fit=crop&w=1800&q=60"); }
+.units-page { --top-photo: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=60"); }
+.cert-page::before, .units-page::before { content: ""; position: absolute; z-index: -1; top: 0; left: 50%; width: 100vw; height: 620px; transform: translateX(-50%); pointer-events: none;
   background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 78%, transparent), color-mix(in srgb, var(--paper) 88%, transparent) 55%, var(--paper) 100%),
-              url("https://images.unsplash.com/photo-1617375819318-67968e5b25c3?auto=format&fit=crop&w=1800&q=60") center 30% / cover no-repeat; }
+              var(--top-photo) center 30% / cover no-repeat; }
 /* Full-width photo bands use 100vw; never let that add a sideways scroll. */
 body { overflow-x: clip; }
 

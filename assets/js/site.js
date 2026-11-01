@@ -78,7 +78,7 @@
   // For parts of a page drawn by its own script after this file runs.
   window.FHReveal = (r) => { sides(r.parentNode || r); r.querySelectorAll(".reveal:not(.in)").forEach(watch); stagger(); };
 
-  // Header: once you scroll, its bottom edge fades into the page (CSS keys off .scrolled).
+  // Header: once you scroll, it turns see-through so the page shows through it (CSS keys off .scrolled).
   const onTop = () => root.classList.toggle("scrolled", scrollY > 24);
   addEventListener("scroll", onTop, { passive: true });
   onTop();
@@ -183,24 +183,3 @@
     paint();
   });
 })();
-
-// Home course map: a line runs down the units as you scroll, and each unit's number lights up when the line reaches it.
-(() => {
-  const path = document.querySelector("#course-map.path");
-  if (!path) return;
-  const fill = document.createElement("div");
-  fill.className = "path-fill";
-  let ticking = false;
-  const paint = () => {
-    ticking = false;
-    if (!fill.isConnected) path.prepend(fill); // the home page script fills the map after this runs
-    const r = path.getBoundingClientRect(), mid = innerHeight * .6;
-    const h = Math.min(r.height, Math.max(0, mid - r.top));
-    fill.style.height = h + "px";
-    path.querySelectorAll(".unit .n").forEach((n) => n.classList.toggle("lit", n.getBoundingClientRect().top + 24 < mid));
-  };
-  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
-  addEventListener("resize", paint);
-  setTimeout(paint, 50);
-})();
-
