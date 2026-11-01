@@ -78,7 +78,7 @@
   // For parts of a page drawn by its own script after this file runs.
   window.FHReveal = (r) => { sides(r.parentNode || r); r.querySelectorAll(".reveal:not(.in)").forEach(watch); stagger(); };
 
-  // Header: full bar at the top of the page, slim floating bar once you scroll (CSS keys off .scrolled).
+  // Header: once you scroll, its bottom edge fades into the page (CSS keys off .scrolled).
   const onTop = () => root.classList.toggle("scrolled", scrollY > 24);
   addEventListener("scroll", onTop, { passive: true });
   onTop();

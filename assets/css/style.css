@@ -112,18 +112,9 @@ b, strong { font-weight: 650; }
   backdrop-filter: saturate(1.2) blur(12px);
 }
 .topbar .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
-/* Once you scroll, the full-width bar lifts into a slim floating bar that stays faded until you point at it.
-   Total height stays 64px (6 + 52 + 6), so the page never jumps. No blur: it flickered over photos. */
-.topbar { transition: background .35s ease, box-shadow .35s ease; }
-.topbar .wrap { transition: max-width .45s var(--ease), height .35s var(--ease), margin .35s var(--ease), background .35s ease, box-shadow .35s ease, border-radius .35s ease, padding .35s var(--ease); }
-.scrolled .topbar { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; }
-.scrolled .topbar .wrap.wide { pointer-events: auto; max-width: min(1100px, calc(100% - 24px)); height: 52px; margin-top: 6px; margin-bottom: 6px; padding-left: 22px; padding-right: 8px; border-radius: 99px; background: color-mix(in srgb, var(--paper) 95%, transparent); box-shadow: inset 0 0 0 1px var(--line), 0 14px 34px -20px rgba(0, 0, 0, .45); }
-/* Faded until you point at it. */
-.topbar .wrap > * { transition: opacity .35s ease; }
-.scrolled .topbar .wrap > * { opacity: .7; }
-.scrolled .topbar .wrap:hover > *, .scrolled .topbar .wrap:focus-within > * { opacity: 1; }
-.scrolled .read-progress { display: none; }
-:root[data-motion="reduce"] .topbar .wrap { transition: none; }
+/* Once you scroll, the header keeps its size but its bottom edge fades into the page instead of ending in a hard line. */
+.topbar::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 28px; background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 85%, transparent), transparent); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.scrolled .topbar::after { opacity: 1; }
 .logo {
   display: inline-flex; align-items: center;
   font-family: "Source Serif 4", Georgia, "Times New Roman", serif; font-style: italic; font-size: 24px; font-weight: 700;
@@ -856,7 +847,7 @@ details .in-example { margin: 10px 0 20px; }
 .foot-lang::before { content: ""; width: 16px; height: 16px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z'/%3E%3C/svg%3E") center/contain no-repeat; }
 
 /* Full-width header: logo hugs the left edge, account the right, the menu sits in the middle. */
-.topbar .wrap.wide { max-width: 100%; display: grid; grid-template-columns: 1fr auto 1fr; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
+.topbar .wrap.wide { max-width: none; display: grid; grid-template-columns: 1fr auto 1fr; padding-left: clamp(20px, 3vw, 48px); padding-right: clamp(20px, 3vw, 48px); }
 .wrap.wide .topnav { margin: 0; }
 .top-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; min-width: 0; }
 @media (max-width: 720px) { .topbar .wrap.wide { grid-template-columns: auto 1fr; } .top-right { gap: 10px; } }
@@ -1365,4 +1356,11 @@ a.acct-who:hover, a.acct-who:focus-visible { background: color-mix(in srgb, var(
 .doc > .page-hero:first-child { margin-top: -72px; }
 @keyframes page-hero-in { from { opacity: 0; transform: scale(1.03); } }
 :root[data-motion="reduce"] .page-hero img { animation: none; }
+/* Certifications: a faint city skyline behind the top of the page, washing into the page color. */
+.cert-page { position: relative; isolation: isolate; }
+.cert-page::before { content: ""; position: absolute; z-index: -1; top: 0; left: 50%; width: 100vw; height: 620px; transform: translateX(-50%); pointer-events: none;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 78%, transparent), color-mix(in srgb, var(--paper) 88%, transparent) 55%, var(--paper) 100%),
+              url("https://images.unsplash.com/photo-1617375819318-67968e5b25c3?auto=format&fit=crop&w=1800&q=60") center 30% / cover no-repeat; }
+/* Full-width photo bands use 100vw; never let that add a sideways scroll. */
+body { overflow-x: clip; }
 
