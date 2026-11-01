@@ -1197,7 +1197,7 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-does { margin: 0 0 20px; max-width: 46em; color: var(--ink-2); font-size: 16px; }
 /* The road: one row per stage (number and name on the left, its certificates on the right); the learner's stage is tinted. */
 .cx-road { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.cx-stage { position: relative; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 16px; align-items: start; padding: 14px 14px 16px 0; }
+.cx-stage { position: relative; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 20px; align-items: start; padding: 14px 14px 16px 0; }
 .cx-stage + .cx-stage { border-top: 1px solid var(--line); }
 .cx-stage.here { border-radius: 16px; background: color-mix(in srgb, var(--accent-soft) 40%, transparent); border-top-color: transparent; padding-left: 12px; margin-left: -12px; }
 .cx-stage.here + .cx-stage { border-top-color: transparent; }
@@ -1250,7 +1250,7 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .cx-table td:last-child a { color: var(--ink-2); }
 .cx-table tbody tr:last-child > * { border-bottom: 0; }
 .cx-foot { margin: 28px 0 0; font-size: 13.5px; color: var(--ink-3); max-width: 60em; }
-@media (max-width: 1100px) { .cx-stage { grid-template-columns: 170px minmax(0, 1fr); } }
+@media (max-width: 1100px) { .cx-stage { grid-template-columns: 200px minmax(0, 1fr); } }
 @media (max-width: 760px) {
   /* Phones: jobs become a swipeable strip; the road becomes a vertical timeline. */
   .cx-body { grid-template-columns: 1fr; gap: 18px; }

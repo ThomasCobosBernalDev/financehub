@@ -112,10 +112,10 @@ let kind = 0;
 
 // Four stages, in order. The "Where are you now?" picker lights one up.
 const STAGES = [
-  { name: T("Start now", "Empieza ya"), sub: T("Free or cheap, any age", "Gratis o barato, a cualquier edad"), me: T("New to finance", "Nuevo en finanzas") },
-  { name: T("Before you apply", "Antes de aplicar"), sub: T("Makes your résumé stand out", "Hace que tu currículum resalte"), me: T("In school", "En la escuela") },
-  { name: T("Once you're hired", "Ya contratado"), sub: T("The job requires it", "El trabajo lo pide"), me: T("Just hired", "Recién contratado") },
-  { name: T("To move up", "Para subir"), sub: T("Bigger roles, better pay", "Puestos más grandes, mejor sueldo"), me: T("A few years in", "Con unos años") },
+  { name: T("Learn the basics", "Aprende lo básico"), sub: T("Free or cheap online courses anyone can take, even in high school. They show you what the job is really like.", "Cursos en línea gratis o baratos que cualquiera puede tomar, incluso en la prepa. Te muestran cómo es el trabajo de verdad."), me: T("New to finance", "Nuevo en finanzas") },
+  { name: T("Stand out when you apply", "Destaca al aplicar"), sub: T("For college students. Add these to your résumé before you apply, so employers see you already have the skills.", "Para estudiantes universitarios. Agrégalos a tu currículum antes de aplicar, para que vean que ya tienes las habilidades."), me: T("In college", "En la universidad") },
+  { name: T("Required for the job", "Obligatorio para el trabajo"), sub: T("Licenses the law requires for this job. You take them after you're hired, and the company usually pays.", "Licencias que la ley exige para este trabajo. Las presentas después de que te contratan y casi siempre paga la empresa."), me: T("Just hired", "Recién contratado") },
+  { name: T("Grow your career", "Crece en tu carrera"), sub: T("Big titles people earn after a few years of working. Months of study, but they lead to promotions and higher pay.", "Títulos importantes que se ganan después de unos años de trabajo. Meses de estudio, pero llevan a ascensos y mejor sueldo."), me: T("A few years in", "Con unos años") },
 ];
 
 // Jobs. stages: 4 lists of [certId, note?]; a "!" before the id marks a must-have.
