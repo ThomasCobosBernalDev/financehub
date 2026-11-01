@@ -47,7 +47,7 @@ const paint = () => {
       <p>${goal ? T(`Next badge: <b>${goal.name}</b>. ${goal.how}`, `Siguiente insignia: <b>${goal.name}</b>. ${goal.how}`) : T("You've earned every course badge.", "Ganaste todas las insignias del curso.")}</p></div>
     <div class="hm-stat"><p class="cx-col">${T("Your path", "Tu camino")}</p>${setUp
       ? `<p class="hm-big"><b>${pathDone}</b><small>/ ${pathLessons.length}</small></p><div class="mp-bar" aria-hidden="true"><i style="width:${pathLessons.length ? (pathDone / pathLessons.length) * 100 : 0}%"></i></div>
-        <p>${T("lessons done", "lecciones hechas")} · <a href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a></p>`
+        <p>${T("lessons done", "lecciones hechas")} · <a class="linkish" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a></p>`
       : `<p>${T("Answer a few quick questions and we'll pick only the lessons you need.", "Responde unas preguntas rápidas y elegimos solo las lecciones que necesitas.")}</p><a class="btn sm" href="${root}start/">${T("Build my path", "Crear mi camino")}</a>`}</div>`;
   $("#hm-share").addEventListener("click", () => window.FHShareStreak && window.FHShareStreak());
 
@@ -61,7 +61,7 @@ const paint = () => {
   const earned = s.badges.map(FH.badgeInfo).filter(Boolean).reverse().slice(0, 6);
   $("#hm-badges").innerHTML = (earned.length ? `<ul class="badge-wall">${earned.map((b) => `<li class="got">${FH.medal(b)}<b>${b.name}</b></li>`).join("")}</ul>`
     : `<p class="hm-none">${T("Finish a lesson to earn your first badge.", "Termina una lección para ganar tu primera insignia.")}</p>`)
-    + `<a class="hm-all" href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a>`;
+    + `<a class="linkish hm-all" href="${root}account/#profile">${T("See all badges →", "Ver todas las insignias →")}</a>`;
 };
 paint();
 document.addEventListener("fh:save", paint);

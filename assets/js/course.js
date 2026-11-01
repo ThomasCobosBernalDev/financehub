@@ -108,14 +108,14 @@ const paintPath = () => {
   if (curUnit) renderPane();
   const tools = document.getElementById("my-path");
   if (!setUp) {
-    tools.innerHTML = `<p class="mp-line">${T("No path yet.", "Aún no tienes camino.")} <a href="${root}start/">${T("Build my path", "Crear mi camino")}</a></p>` + key(false);
+    tools.innerHTML = `<p class="mp-line">${T("No path yet.", "Aún no tienes camino.")} <a class="linkish" href="${root}start/">${T("Build my path", "Crear mi camino")}</a></p>` + key(false);
     return;
   }
   const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
   tools.innerHTML = `<p class="mp-line"><span>${T(`Your path: <b>${doneN} of ${lessons.length}</b> done`, `Tu camino: <b>${doneN} de ${lessons.length}</b> hechas`)}</span>`
-    + `<a href="${root}start/">${T("Change", "Cambiar")}</a>`
-    + (FH.state.profile.quiz ? "" : `<a href="${root}start/#check">${T("Placement check", "Prueba de nivel")}</a>`)
+    + `<a class="linkish" href="${root}start/">${T("Change", "Cambiar")}</a>`
+    + (FH.state.profile.quiz ? "" : `<a class="linkish" href="${root}start/#check">${T("Placement check", "Prueba de nivel")}</a>`)
     + `<button class="linkish" type="button" id="clear-path">${T("Clear", "Quitar")}</button></p>`
     + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>` + key(true);
   document.getElementById("clear-path").addEventListener("click", () => {

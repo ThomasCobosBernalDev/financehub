@@ -73,7 +73,6 @@
   // Header button reads "Account" once signed in.
   // Signed in, the header button opens an account menu; signed out, it stays a Sign in link.
   const ico = {
-    user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/>',
     gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
     out: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',
@@ -102,7 +101,6 @@
       <div class="acct-pop" role="menu">
         <a class="acct-who" role="menuitem" href="${base}account/#profile"><span class="avatar"></span><span><b class="uname"></b><small></small></span></a>
         <hr>
-        <a class="acct-row" role="menuitem" href="${base}account/#profile">${svg(ico.user)}<span>${FH.t("Your profile", "Tu perfil")}</span></a>
         <a class="acct-row" role="menuitem" href="${base}account/">${svg(ico.gear)}<span>${FH.t("Settings", "Ajustes")}</span></a>
         <a class="acct-row" role="menuitem" href="${base}help">${svg(ico.help)}<span>${FH.t("Help", "Ayuda")}</span></a>
         <hr>
@@ -110,7 +108,7 @@
       </div>`;
     wrap.querySelectorAll(".avatar").forEach((el) => FHAuth.paintAvatar(el, name));
     wrap.querySelectorAll(".uname").forEach((el) => { el.textContent = name; });
-    wrap.querySelector(".acct-who small").textContent = user.email;
+    wrap.querySelector(".acct-who small").textContent = FH.t("View your profile", "Ver tu perfil");
     const btn = wrap.querySelector(".acct-btn");
     btn.title = FH.t(`Signed in as ${name}`, `Sesión iniciada como ${name}`);
     btn.addEventListener("click", () => {

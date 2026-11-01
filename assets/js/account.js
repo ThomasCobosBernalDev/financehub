@@ -165,6 +165,7 @@
   });
 
   $("#sign-out").addEventListener("click", () => FHAuth.signOut());
+  // account/#profile shows the profile, plain account/ shows Settings.
   const pickView = () => $("#acct-in").classList.toggle("is-profile", location.hash === "#profile");
   addEventListener("hashchange", pickView);
   pickView();
@@ -196,12 +197,12 @@
     $("#acct-email").textContent = user.email;
     $("#acct-email-2").textContent = user.email;
     const name = (user.user_metadata || {}).username || "";
-    // Profile view (account/#profile): avatar, name and progress. Everything else is Settings.
+    // Profile view (account/#profile): photo banner with avatar and name, four stat cards, your path, then badges by tab.
     const nm = name || user.email.split("@")[0];
     FHAuth.paintAvatar($("#prof-avatar"), nm);
     $("#pic-remove").hidden = !FH.state.avatar;
     $("#prof-name").textContent = nm;
-    $("#prof-email").textContent = user.email;
+    $("#prof-since").textContent = user.created_at ? T("Learning since ", "Aprendiendo desde ") + new Date(user.created_at).toLocaleDateString(FH.lang === "es" ? "es-MX" : "en-US", { month: "long", year: "numeric" }) : "";
     const f = $("#form-name");
     if (document.activeElement !== f.username) f.username.value = name;
     f.lang.value = FH.lang;
@@ -209,23 +210,35 @@
     $("#acct-xp").textContent = s.xp;
     $("#acct-badges").textContent = s.badges.filter(FH.badgeInfo).length;
     $("#acct-lessons").textContent = Object.values(s.lessons).filter((l) => l.completedAt).length;
-    // Streak and the badge wall: every course badge (gray until earned), then any earned inside lessons.
     $("#streak-days").textContent = FH.streak();
-    $("#streak-best").textContent = s.streak.best || 0;
+    $("#streak-best").textContent = Math.max(s.streak.best || 0, FH.streak());
     $(".streak-big").classList.toggle("lit", FH.streak() > 0);
-    // Three groups: course badges and game badges (gray until earned, with how to get them), then the lesson ones you've earned.
-    const tile = (b) => { const got = s.badges.includes(b.id); return `<li class="${got ? "got" : ""}">${FH.medal(b, got)}<b>${b.name}</b><small>${b.how}</small></li>`; };
-    const seen = new Set(), games = FH.GAME_BADGES.filter((b) => !seen.has(b.id) && seen.add(b.id));
-    const mine = s.badges.map(FH.badgeInfo).filter((b) => b && b.kind === "lesson");
-    const got = (list) => list.filter((b) => s.badges.includes(b.id)).length;
-    $("#badge-wall").innerHTML = `<h3 class="set-sub">${FH.t("Course badges", "Insignias del curso")} <small>${got(FH.ACHIEVEMENTS)} / ${FH.ACHIEVEMENTS.length}</small></h3><ul class="badge-wall">${FH.ACHIEVEMENTS.map(tile).join("")}</ul>`
-      + `<h3 class="set-sub">${FH.t("Game badges", "Insignias de juegos")} <small>${got(games)} / ${games.length}</small></h3><p class="set-p">${FH.t("Won inside a lesson's game or activity.", "Se ganan en el juego o la actividad de una lección.")}</p><ul class="badge-wall">${games.map(tile).join("")}</ul>`
-      + `<h3 class="set-sub">${FH.t("Lesson badges", "Insignias de lecciones")} <small>${mine.length}</small></h3><p class="set-p">${FH.t("Every lesson has three: listen to all of it, fill in every blank, and get every quiz question right.", "Cada lección tiene tres: escúchala completa, llena todos los espacios y acierta todo el examen.")}</p>`
-      + (mine.length ? `<ul class="badge-wall">${mine.map(tile).join("")}</ul>` : "");
+    const pathLessons = FH.path.items.filter((x) => x.lesson).map((x) => x.lesson), pathDone = pathLessons.filter((l) => FH.done(l.id)).length;
+    $("#prof-path-line").innerHTML = FH.path.setUp ? T(`<b>${pathDone} of ${pathLessons.length}</b> lessons done`, `<b>${pathDone} de ${pathLessons.length}</b> lecciones hechas`)
+      : T("No path yet. Answer a few quick questions and we'll pick only the lessons you need.", "Aún no tienes camino. Responde unas preguntas rápidas y elegimos solo las lecciones que necesitas.");
+    $("#prof-path-bar").style.width = `${pathLessons.length ? (pathDone / pathLessons.length) * 100 : 0}%`;
+    paintBadges();
     const dark = document.documentElement.dataset.theme === "dark";
     document.querySelectorAll('input[name="theme"]').forEach((r) => { r.checked = (r.value === "dark") === dark; });
     $("#set-motion").checked = FH.still();
   };
+  // Badges, one group at a time: course badges and game badges (gray until earned, with how to get them), then lesson badges you've earned.
+  let tab = "course";
+  const paintBadges = () => {
+    const s = FH.state, has = (b) => s.badges.includes(b.id);
+    const tile = (b) => `<li class="${has(b) ? "got" : ""}">${FH.medal(b, has(b))}<b>${b.name}</b><small>${b.how}</small></li>`;
+    const seen = new Set(), games = FH.GAME_BADGES.filter((b) => !seen.has(b.id) && seen.add(b.id));
+    const lessons = s.badges.map(FH.badgeInfo).filter((b) => b && b.kind === "lesson");
+    const groups = {
+      course: [T("Course", "Curso"), FH.ACHIEVEMENTS, `${FH.ACHIEVEMENTS.filter(has).length}/${FH.ACHIEVEMENTS.length}`, T("Earn them by finishing lessons, building your path and showing up.", "Gánalas terminando lecciones, armando tu camino y entrando seguido.")],
+      game: [T("Games", "Juegos"), games, `${games.filter(has).length}/${games.length}`, T("Won inside a lesson's game or activity.", "Se ganan en el juego o la actividad de una lección.")],
+      lesson: [T("Lessons", "Lecciones"), lessons, lessons.length, T("Every lesson has three: listen to all of it, fill in every blank, and get every quiz question right.", "Cada lección tiene tres: escúchala completa, llena todos los espacios y acierta todo el examen.")],
+    };
+    $("#badge-tabs").innerHTML = Object.entries(groups).map(([k, [label, , n]]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${k === tab}">${label} <small>${n}</small></button>`).join("");
+    const [, list, , note] = groups[tab];
+    $("#badge-wall").innerHTML = `<p class="set-p">${note}</p>` + (list.length ? `<ul class="badge-wall">${list.map(tile).join("")}</ul>` : "");
+  };
+  $("#badge-tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { tab = b.dataset.tab; paintBadges(); } });
   // Profile picture: pick a photo, crop it to a centered square and shrink it so it's small enough to save with your progress.
   const pickPic = () => $("#pic-file").click();
   $("#prof-avatar").addEventListener("click", pickPic);

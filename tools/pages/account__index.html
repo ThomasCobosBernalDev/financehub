@@ -3,23 +3,14 @@
 <!-- main: wrap auth-page -->
 <div class="auth-shell">
   <aside class="auth-side" aria-hidden="true">
+    <img class="auth-photo" src="https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=1200&q=70" alt="" onerror="this.remove()">
+    <div class="auth-float">
+      <div class="af af-lesson"><small>Unit 1 · Lesson 3</small><b>Bank fees and debit cards</b><span class="af-bar"><i></i></span><small>62% done</small></div>
+      <div class="af af-streak"><svg viewBox="0 0 24 24"><path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/></svg><b>5</b> day streak</div>
+      <div class="af af-badge"><span class="af-medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2.5"/></svg></span><span><small>Badge unlocked</small><b>First Deposit</b></span></div>
+    </div>
     <p class="kicker">Free account</p>
     <p class="auth-side-title">Your progress<br><em>follows you.</em></p>
-    <svg viewBox="0 0 360 230" class="auth-art">
-      <rect x="18" y="40" width="150" height="104" rx="12" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
-      <rect x="30" y="52" width="126" height="72" rx="6" fill="var(--paper-2)"/>
-      <rect x="40" y="64" width="60" height="8" rx="4" fill="var(--accent)"/>
-      <rect x="40" y="80" width="96" height="6" rx="3" fill="var(--line)"/>
-      <rect x="40" y="92" width="80" height="6" rx="3" fill="var(--line)"/>
-      <path d="M6 150h174l-10 10H16z" fill="var(--line)"/>
-      <rect x="262" y="70" width="80" height="140" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
-      <rect x="272" y="86" width="60" height="100" rx="6" fill="var(--paper-2)"/>
-      <rect x="280" y="98" width="34" height="7" rx="3.5" fill="var(--accent)"/>
-      <rect x="280" y="112" width="44" height="5" rx="2.5" fill="var(--line)"/>
-      <rect x="280" y="122" width="38" height="5" rx="2.5" fill="var(--line)"/>
-      <path class="flow" d="M150 150 C 200 200, 230 60, 268 120" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="6 8" stroke-linecap="round"/>
-      <circle r="9" fill="#f6d36b" stroke="#a87b12" stroke-width="1.5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M150 150 C 200 200, 230 60, 268 120"/></circle>
-    </svg>
     <ul class="auth-perks">
       <li><b>Pick up anywhere.</b> Laptop in class, phone on the bus, same spot.</li>
       <li><b>Keep your XP and badges</b> even if you clear your browser.</li>
@@ -110,30 +101,26 @@
 <section id="acct-in" class="hidden settings">
       <header class="set-head view-settings"><div><h1 id="acct-hello">Settings</h1><p class="muted">Signed in as <b id="acct-email"></b></p></div><button class="btn sm line" type="button" id="sign-out">Log out</button></header>
       <div class="profile-view view-profile">
-        <div class="prof-card">
-          <div class="prof-pic"><button class="prof-avatar" id="prof-avatar" type="button" aria-label="Change photo"></button><input type="file" id="pic-file" accept="image/*" hidden>
+        <div class="prof-hero">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&h=420&q=70" alt="" onerror="this.remove()">
+          <button class="prof-avatar" id="prof-avatar" type="button" aria-label="Change photo"></button><input type="file" id="pic-file" accept="image/*" hidden>
+          <div class="prof-id"><p class="kicker" id="prof-since"></p><h1 id="prof-name">Your profile</h1>
             <p class="prof-pic-acts"><button class="linkish" type="button" id="pic-change">Change photo</button><button class="linkish" type="button" id="pic-remove" hidden>Remove</button></p></div>
-          <div><h1 id="prof-name">Your profile</h1><p class="muted" id="prof-email"></p></div>
-          <a class="text-link prof-set" href="./">Settings <span class="arrow">→</span></a>
+          <a class="btn sm line prof-set" href="./">Settings</a>
+        </div>
+        <div class="hm-stats prof-stats">
+          <div class="hm-stat"><p class="cx-col">Streak</p><p class="hm-big streak-big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/></svg><b id="streak-days">0</b></p><p>Best: <b id="streak-best">0</b> days</p><button class="linkish" type="button" id="streak-share">Share my streak</button></div>
+          <div class="hm-stat"><p class="cx-col">XP</p><p class="hm-big"><b id="acct-xp">0</b></p><p>From lessons, quizzes and games.</p></div>
+          <div class="hm-stat"><p class="cx-col">Lessons done</p><p class="hm-big"><b id="acct-lessons">0</b></p><a class="linkish" href="../course/">See the course</a></div>
+          <div class="hm-stat"><p class="cx-col">Badges</p><p class="hm-big"><b id="acct-badges">0</b></p><p>Course, game and lesson badges.</p></div>
+        </div>
+        <div class="set-card prof-path">
+          <div class="prof-path-main"><h2>Your path</h2><p class="set-p" id="prof-path-line"></p><div class="mp-bar" aria-hidden="true"><i id="prof-path-bar"></i></div></div>
+          <div class="prof-path-acts"><a class="btn sm" href="../home/">Keep learning <span class="arrow">→</span></a><a class="linkish" href="../start/">Change my path</a></div>
         </div>
         <div class="set-card">
-          <h2>Your progress</h2>
-          <dl class="acct-stats">
-            <div><dt>XP</dt><dd id="acct-xp"></dd></div>
-            <div><dt>Badges</dt><dd id="acct-badges"></dd></div>
-            <div><dt>Lessons done</dt><dd id="acct-lessons"></dd></div>
-          </dl>
-          <div class="acct-actions"><a class="btn sm" href="../">Keep learning <span class="arrow">→</span></a></div>
-          <h3 class="set-sub">Your path</h3><p class="set-p">Change why you're learning or retake the quick check of what you already know.</p>
-          <a class="btn sm line" href="../start/">Change my path</a>
-        </div>
-        <div class="set-card">
-          <h2>Badges</h2>
-          <div class="streak-row"><span class="streak-big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-3.5 0-6-2.5-6-6 0-4 4-6 4-11 3 2 5 5 5 8 1-.8 1.5-2 1.5-3 1.5 1.6 2.5 3.8 2.5 6 0 3.5-3 6-7 6z"/></svg><b id="streak-days">0</b></span>
-            <div><h3 class="set-sub">Your streak</h3><p class="set-p">Days in a row you've shown up. Come back tomorrow to keep it going. Best: <b id="streak-best">0</b></p></div>
-            <button class="btn sm line" type="button" id="streak-share">Share my streak</button></div>
-          <p class="set-p">Earn them by finishing lessons, building your path and showing up.</p>
-          <div id="badge-wall"></div>
+          <div class="prof-bh"><h2>Badges</h2><div class="bw-tabs" role="tablist" id="badge-tabs"></div></div>
+          <div id="badge-wall" role="tabpanel"></div>
         </div>
       </div>
       <div class="set-grid view-settings">

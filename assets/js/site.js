@@ -120,7 +120,7 @@
   }
 })();
 
-// "Where it leads" maps: build up as you scroll, like a wiring diagram. The lesson before connects in,
+// "Where it leads" maps: build up like a wiring diagram once in view. The lesson before connects in,
 // "You are here" lights up, then the later lessons branch out one by one. Once it's all drawn, a dashed
 // line keeps flowing along the route into the next lesson.
 (() => {
@@ -167,25 +167,22 @@
       if (kind === "wire") el.setAttribute("pathLength", "1");
     }));
     if (still) { svg.classList.add("cm-done"); return; }
-    let ticking = false;
-    const paint = () => {
-      ticking = false;
-      const r = svg.getBoundingClientRect(), vh = innerHeight;
-      // 0 when the map's top reaches the bottom fifth of the screen, 1 when its middle reaches the screen's middle.
-      const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (vh * .35 + r.height * .5)));
-      steps.forEach(([els, at, kind]) => {
-        const k = Math.min(1, Math.max(0, (p - at) / .14));
-        els.forEach((el) => {
-          if (kind === "wire") el.style.strokeDashoffset = 1 - k;
-          else { el.style.opacity = k; el.style.transform = `scale(${.8 + .2 * k})`; }
-        });
+    // Once most of the map is on screen, the whole thing draws in one go (about 1.6 seconds), then stays drawn.
+    const paint = (p) => steps.forEach(([els, at, kind]) => {
+      const k = Math.min(1, Math.max(0, (p - at) / .14));
+      els.forEach((el) => {
+        if (kind === "wire") el.style.strokeDashoffset = 1 - k;
+        else { el.style.opacity = k; el.style.transform = `scale(${.8 + .2 * k})`; }
       });
-      svg.classList.toggle("cm-done", p >= 1);
+    });
+    const span = Math.max(...steps.map(([, at]) => at)) + .14; // so the last branch finishes too
+    const play = () => {
+      const t0 = performance.now();
+      const tick = (now) => { const p = Math.min(1, (now - t0) / 1600); paint(p * span); if (p < 1) requestAnimationFrame(tick); else svg.classList.add("cm-done"); };
+      requestAnimationFrame(tick);
     };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } };
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", onScroll);
-    paint();
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .6 });
+    io.observe(svg);
   });
 })();
 
