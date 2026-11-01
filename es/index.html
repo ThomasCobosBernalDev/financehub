@@ -6,7 +6,7 @@
   <title>FinancedHub</title>
   <meta name="description" content="Un curso visual de finanzas y negocios con juegos, desde tu primera cuenta de banco hasta Wall Street.">
   <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=202611011753">
+  <link rel="stylesheet" href="../assets/css/style.css?v=202611011805">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -58,9 +58,6 @@
     @media (max-width: 1024px) { .hero-photos::after { background: rgba(10, 16, 14, .78); } }
     /* Home: solid header, so nothing blurs over the photo as it scrolls underneath. */
     .topbar { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
-    /* Scrolled down over the dark photo, the header fades from dark instead of white, with light text. Back at the top it's solid again. */
-    .scrolled.over-hero .topbar { --ink: #fbf8f2; --ink-2: rgba(251, 248, 242, .85); --paper: #121a17;
-      background: linear-gradient(to bottom, rgba(10, 16, 14, .85), rgba(10, 16, 14, .5) 60%, transparent); }
     /* Over the photo the hero uses light text, whatever the site theme, with a soft shadow for contrast. */
     .hero h1, .hero .wonder, .hero .lead, .ways { text-shadow: 0 1px 12px rgba(0, 0, 0, .45); }
     .hero { --ink: #fbf8f2; --ink-2: rgba(251, 248, 242, .86); --ink-3: rgba(251, 248, 242, .72); --line: rgba(255, 255, 255, .22); --accent: #8fdcbf; --accent-soft: rgba(143, 220, 191, .18); --card: rgba(18, 26, 23, .55); --paper: #121a17; color: var(--ink); }
@@ -127,10 +124,10 @@
   </div>
 </footer>
 
-<script src="../assets/js/save.js?v=202611011753"></script>
-<script src="../assets/vendor/supabase-2.45.4.js?v=202611011753"></script>
-<script src="../assets/js/auth.js?v=202611011753"></script>
-<script src="../assets/js/site.js?v=202611011753"></script>
+<script src="../assets/js/save.js?v=202611011805"></script>
+<script src="../assets/vendor/supabase-2.45.4.js?v=202611011805"></script>
+<script src="../assets/js/auth.js?v=202611011805"></script>
+<script src="../assets/js/site.js?v=202611011805"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;
@@ -150,9 +147,6 @@ if (window.FHAuth) FHAuth.onChange((u) => document.getElementById("top").classLi
   doors[0].classList.add("on"); start();
   // New visitors: each door opens the setup with that goal already picked. With a path set, it goes straight to the lessons.
   if (FH.path.setUp) doors.forEach((d) => { d.href = d.dataset.go; });
-  // Over the dark photo, the scrolled header turns dark too.
-  const hero = document.querySelector(".hero"), over = () => document.documentElement.classList.toggle("over-hero", hero.getBoundingClientRect().bottom > 64);
-  addEventListener("scroll", over, { passive: true }); over();
 })();
 
 // The main button points at the next lesson on the learner's path.

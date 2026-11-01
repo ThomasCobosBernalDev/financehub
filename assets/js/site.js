@@ -79,7 +79,12 @@
   window.FHReveal = (r) => { sides(r.parentNode || r); r.querySelectorAll(".reveal:not(.in)").forEach(watch); stagger(); };
 
   // Header: once you scroll, it turns see-through so the page shows through it (CSS keys off .scrolled).
-  const onTop = () => root.classList.toggle("scrolled", scrollY > 24);
+  // Over a dark photo band (home hero, About's banner), the see-through header turns dark with light text.
+  const darkBand = document.querySelector(".hero-photos, .page-hero");
+  const onTop = () => {
+    root.classList.toggle("scrolled", scrollY > 24);
+    if (darkBand) root.classList.toggle("over-hero", darkBand.getBoundingClientRect().bottom > 64);
+  };
   addEventListener("scroll", onTop, { passive: true });
   onTop();
 

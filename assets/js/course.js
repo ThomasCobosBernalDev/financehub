@@ -115,18 +115,16 @@ const paintPath = () => {
   if (curUnit) renderPane();
   const tools = document.getElementById("my-path");
   if (!setUp) {
-    tools.innerHTML = `<p class="cx-col">${T("Your path", "Tu camino")}</p><p>${T("Answer a few quick questions and we'll light up only the lessons you need.", "Responde unas preguntas rápidas y marcamos solo las lecciones que necesitas.")}</p>`
-      + `<a class="btn sm" href="${root}start/">${T("Build my path", "Crear mi camino")}</a>` + key(false);
+    tools.innerHTML = `<p class="mp-line">${T("No path yet.", "Aún no tienes camino.")} <a href="${root}start/">${T("Build my path", "Crear mi camino")}</a></p>` + key(false);
     return;
   }
   const lessons = items.filter((x) => x.lesson).map((x) => x.lesson);
   const doneN = lessons.filter((l) => FH.done(l.id)).length;
-  tools.innerHTML = `<p class="cx-col">${T("Your path", "Tu camino")}</p>`
-    + T(`<p><b>${doneN} of ${lessons.length}</b> lessons done</p>`, `<p><b>${doneN} de ${lessons.length}</b> lecciones hechas</p>`)
-    + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>`
-    + `<div class="mp-acts"><a class="btn sm line" href="${root}start/">${T("Change my path", "Cambiar mi camino")}</a>`
-    + (FH.state.profile.quiz ? "" : `<a class="linkish" href="${root}start/#check">${T("Take the placement check", "Hacer la prueba de nivel")}</a>`)
-    + `<button class="linkish" type="button" id="clear-path">${T("Clear my path", "Quitar mi camino")}</button></div>` + key(true);
+  tools.innerHTML = `<p class="mp-line"><span>${T(`Your path: <b>${doneN} of ${lessons.length}</b> done`, `Tu camino: <b>${doneN} de ${lessons.length}</b> hechas`)}</span>`
+    + `<a href="${root}start/">${T("Change", "Cambiar")}</a>`
+    + (FH.state.profile.quiz ? "" : `<a href="${root}start/#check">${T("Placement check", "Prueba de nivel")}</a>`)
+    + `<button class="linkish" type="button" id="clear-path">${T("Clear", "Quitar")}</button></p>`
+    + `<div class="mp-bar" aria-hidden="true"><i style="width:${lessons.length ? (doneN / lessons.length) * 100 : 0}%"></i></div>` + key(true);
   document.getElementById("clear-path").addEventListener("click", () => {
     FH.clearPath();
     FH.toast(T("Path cleared. You'll see the whole course again.", "Camino quitado. Verás todo el curso otra vez."));

@@ -258,6 +258,8 @@
     FH.setProfile({ goals: [...goals], level, known, quiz: asked && !skippedCheck ? { right, of: asked } : null, done: true });
     paintPath();
     show("path");
+    // So Back from a lesson returns here, to the path, not to step 1.
+    history.replaceState(null, "", "#path");
   };
   $("#ways-next").addEventListener("click", finish);
   const paintPath = () => {

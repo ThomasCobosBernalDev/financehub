@@ -120,6 +120,9 @@ b, strong { font-weight: 650; }
 .scrolled .topnav a { color: var(--ink); font-weight: 650; text-shadow: 0 0 2px var(--paper), 0 0 8px var(--paper), 0 0 14px var(--paper); }
 .scrolled .topbar { -webkit-backdrop-filter: none; backdrop-filter: none;
   background: linear-gradient(to bottom, color-mix(in srgb, var(--paper) 72%, transparent), color-mix(in srgb, var(--paper) 40%, transparent) 60%, transparent); }
+/* Scrolled over a dark photo band, it fades from dark instead of white, with light text. */
+.scrolled.over-hero .topbar { --ink: #fbf8f2; --ink-2: rgba(251, 248, 242, .85); --paper: #121a17;
+  background: linear-gradient(to bottom, rgba(10, 16, 14, .85), rgba(10, 16, 14, .5) 60%, transparent); }
 .logo {
   display: inline-flex; align-items: center;
   font-family: "Source Serif 4", Georgia, "Times New Roman", serif; font-style: italic; font-size: 24px; font-weight: 700;
@@ -1141,23 +1144,26 @@ body.paged main .chapter { padding: 40px 0 32px; min-height: calc(100svh - 64px)
 .path-set .unit.on-path .n { background: none; color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
 .path-set .unit.on-path h3 { color: var(--ink); }
 .unit.all-done .n, .path-set .unit.on-path.all-done .n { background: var(--accent); color: var(--on-color); box-shadow: none; }
-.path-set .unit.known .n { background: var(--accent-soft); color: var(--accent); box-shadow: none; }
+.path-set .unit.known .n { background: color-mix(in srgb, var(--accent) 30%, var(--paper)); color: var(--accent); box-shadow: none; }
 /* Top of the course page's left column: your path's progress and buttons, then a color key instead of tags on every unit. */
-.ex-mine { margin: 0 0 22px; padding: 14px 14px 16px; border-radius: 16px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
-.ex-mine .cx-col { padding-left: 0; }
-.ex-mine > p:not(.cx-col) { margin: 0 0 10px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
-.ex-mine > p b { color: var(--ink); }
-.ex-mine .mp-bar { height: 6px; margin: 0 0 12px; border-radius: 99px; background: var(--line); overflow: hidden; }
+/* Your path sits beside the page title, like the job description on Certifications: one progress line, small links, then the color key. */
+.units-page .ex-head { flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 12px 28px; }
+.ex-mine { min-width: 0; max-width: 560px; padding-left: 28px; border-left: 1px solid var(--line); font-size: 14px; }
+.ex-mine .mp-line { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+@media (max-width: 760px) { .units-page .ex-head { flex-direction: column; align-items: flex-start; } .ex-mine { padding-left: 0; border-left: 0; } }
+.ex-mine .mp-line { margin: 0; color: var(--ink-2); }
+.ex-mine .mp-line b { color: var(--ink); }
+.ex-mine .mp-line a { color: var(--accent); font-weight: 600; }
+.ex-mine .mp-bar { width: 100%; max-width: 260px; height: 4px; margin: 7px 0; border-radius: 99px; background: var(--line); overflow: hidden; }
 .ex-mine .mp-bar i { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
-.mp-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
-.mp-acts .linkish { font-size: 13.5px; color: var(--ink-3); }
-.ex-key { list-style: none; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); display: grid; gap: 7px; font-size: 13px; color: var(--ink-2); }
-.ex-key li { display: flex; align-items: center; gap: 9px; }
-.ex-key .k { flex: none; width: 16px; height: 16px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--accent); }
+.ex-mine .linkish { font-size: inherit; color: var(--ink-3); }
+.ex-key { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 12px; color: var(--ink-3); }
+.ex-key li { display: flex; align-items: center; gap: 5px; }
+.ex-key .k { flex: none; width: 11px; height: 11px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--accent); }
 .ex-key .done { background: var(--accent); box-shadow: none; }
-.ex-key .known { background: var(--accent-soft); box-shadow: none; }
-.ex-key .next { border-radius: 5px; box-shadow: inset 0 0 0 2px var(--accent); }
-.ex-key .off { box-shadow: inset 0 0 0 1.5px var(--line); opacity: .6; }
+.ex-key .known { background: color-mix(in srgb, var(--accent) 30%, var(--paper)); box-shadow: none; }
+.ex-key .next { border-radius: 3px; box-shadow: inset 0 0 0 2px var(--accent); }
+.ex-key .off { box-shadow: inset 0 0 0 1.5px var(--ink-3); opacity: .45; }
 /* A finished lesson tile gets a small check in its corner. */
 .ex-tiles .cx-tile { position: relative; }
 .cx-tile .tk { position: absolute; top: 10px; right: 10px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--on-color); font-size: 12px; font-weight: 700; }
