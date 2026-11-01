@@ -112,10 +112,10 @@ let kind = 0;
 
 // Four stages, in order: who each one is for and when you take it.
 const STAGES = [
-  { name: T("Learn the basics", "Aprende lo básico"), sub: T("Free or cheap online courses anyone can take, even in high school. They show you what the job is really like.", "Cursos en línea gratis o baratos que cualquiera puede tomar, incluso en la prepa. Te muestran cómo es el trabajo de verdad.") },
-  { name: T("Stand out when you apply", "Destaca al aplicar"), sub: T("For college students. Add these to your résumé before you apply, so employers see you already have the skills.", "Para estudiantes universitarios. Agrégalos a tu currículum antes de aplicar, para que vean que ya tienes las habilidades.") },
-  { name: T("Required for the job", "Obligatorio para el trabajo"), sub: T("Licenses the law requires for this job. You take them after you're hired, and the company usually pays.", "Licencias que la ley exige para este trabajo. Las presentas después de que te contratan y casi siempre paga la empresa.") },
-  { name: T("Grow your career", "Crece en tu carrera"), sub: T("Big titles people earn after a few years of working. Months of study, but they lead to promotions and higher pay.", "Títulos importantes que se ganan después de unos años de trabajo. Meses de estudio, pero llevan a ascensos y mejor sueldo.") },
+  { name: T("Learn the basics", "Aprende lo básico"), sub: T("Free or cheap, any age", "Gratis o barato, a cualquier edad") },
+  { name: T("Stand out when you apply", "Destaca al aplicar"), sub: T("While you're in college", "Mientras estás en la universidad") },
+  { name: T("Required for the job", "Obligatorio para el trabajo"), sub: T("Licenses, once you're hired", "Licencias, ya contratado") },
+  { name: T("Grow your career", "Crece en tu carrera"), sub: T("After a few years of work", "Después de unos años de trabajo") },
 ];
 
 // Jobs. stages: 4 lists of [certId, note?]; a "!" before the id marks a must-have.
@@ -229,7 +229,7 @@ const showJob = (id) => {
     <ol class="cx-road">${stages.map((list, i) => `<li class="cx-stage" style="--i:${i}">
       <div class="cx-s-head"><span class="cx-n">${i + 1}</span><div><b>${STAGES[i].name}</b><small>${STAGES[i].sub}</small></div></div>
       <div class="cx-tiles">${list.length ? list.map((e) => tile(e, i)).join("") : `<p class="cx-none">${i === 2 ? T("Nothing required. You learn on the job.", "Nada obligatorio. Aprendes en el trabajo.") : T("Nothing needed yet.", "Nada todavía.")}</p>`}</div></li>`).join("")}</ol>
-    <p class="cx-tip"><b>${T("Real talk", "La verdad")}</b>${j.tip}</p></div>`;
+    <p class="cx-tip"><b>${T("How people really get hired:", "Cómo se consigue el trabajo de verdad:")}</b> ${j.tip}</p></div>`;
   panel.querySelectorAll(".cx-tile").forEach((b) => b.addEventListener("click", () => showCert(b.dataset.cert, true, +b.dataset.stage)));
   showCert(curCert);
 };
