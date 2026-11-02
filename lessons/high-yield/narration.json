@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": { "FDIC": "F D I C", "NCUA": "N C U A", "APY": "A P Y", "1099-INT": "ten ninety-nine I N T" },
+  "lines": [
+    "Your emergency fund holds 3,600 dollars at 4 percent APY. Your cousin Ana saved the same 3,600 dollars at a big bank paying 0.01 percent. In one year you earn 144 dollars. She earns 36 cents.",
+    "APY is the share of your balance you earn in one year, with compounding already counted. It's the fair number to compare. Always compare APY to APY.",
+    "The FDIC says the average savings rate was 0.38 percent in October 2026. On 3,600 dollars that's 13 dollars and 68 cents a year. At 4 percent you get 130 dollars and 32 cents more.",
+    "Online banks can pay more because they don't pay for branches. A high-yield savings account pays many times the average.",
+    "Check the insurance first. FDIC at a bank, NCUA at a credit union. Both protect up to 250,000 dollars per person, per bank.",
+    "Read the fine print. Rates can change. Teaser rates end. And a 5 dollar monthly fee turns 144 dollars of interest into 84.",
+    "Moving money between banks takes 1 to 3 business days, so keep a small cushion in checking.",
+    "Interest is income. The bank sends a 1099-INT. In the 12 percent bracket you pay 17 dollars and 28 cents and keep 126 dollars and 72 cents.",
+    "Two seeds, same soil, same water. The one in the sun grows far faster. Your money is the seed, and the rate is the sunlight. Same safety, more growth."
+  ]
+}

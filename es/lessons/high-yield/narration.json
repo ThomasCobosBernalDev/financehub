@@ -1,0 +1,17 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": { "FDIC": "efe de i ce", "NCUA": "ene ce u a", "APY": "a pe ye", "1099-INT": "mil noventa y nueve I N T" },
+  "lines": [
+    "Tu fondo de emergencia tiene 3,600 dólares al 4 por ciento de APY. Tu prima Ana ahorró los mismos 3,600 dólares en un banco grande que paga 0.01 por ciento. En un año tú ganas 144 dólares. Ella gana 36 centavos.",
+    "El APY es la parte de tu saldo que ganas en un año, con el interés compuesto ya incluido. Es el número justo para comparar. Compara siempre APY con APY.",
+    "Según la FDIC, la tasa promedio de ahorro era 0.38 por ciento en octubre de 2026. Con 3,600 dólares son 13 dólares con 68 centavos al año. Al 4 por ciento ganas 130 dólares con 32 centavos más.",
+    "Los bancos en línea pueden pagar más porque no pagan sucursales. Una cuenta de ahorro de alto rendimiento paga muchas veces el promedio.",
+    "Revisa primero el seguro. FDIC en un banco, NCUA en una cooperativa de crédito. Los dos protegen hasta 250,000 dólares por persona, por banco.",
+    "Lee la letra pequeña. Las tasas pueden cambiar. Las tasas promocionales se acaban. Y un cargo de 5 dólares al mes convierte 144 dólares de interés en 84.",
+    "Mover dinero entre bancos tarda de 1 a 3 días hábiles, así que deja un pequeño colchón en tu cuenta de cheques.",
+    "El interés es ingreso. El banco te manda un formulario 1099-INT. En el tramo del 12 por ciento pagas 17 dólares con 28 centavos y te quedas con 126 dólares con 72 centavos.",
+    "Dos semillas, misma tierra, misma agua. La que está al sol crece mucho más rápido. Tu dinero es la semilla y la tasa es la luz del sol. La misma seguridad, más crecimiento."
+  ]
+}
