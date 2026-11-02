@@ -1456,14 +1456,14 @@ body { overflow-x: clip; }
 .hov { position: relative; cursor: default; outline: none; }
 .hov-card { position: absolute; top: calc(100% + 14px); left: 50%; z-index: 40; display: grid; gap: 6px; width: 270px; padding: 14px 16px; border-radius: 14px; background: var(--card); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line), 0 18px 40px -16px rgba(0,0,0,.35); font-size: 13.5px; line-height: 1.45; text-align: left; text-shadow: none; white-space: normal; opacity: 0; visibility: hidden; transform: translate(-50%, 0) scale(.35); transform-origin: 50% -14px; transition: opacity .18s, transform .2s var(--ease), visibility .2s; }
 .hov-card::before { content: ""; position: absolute; bottom: 100%; left: 0; right: 0; height: 16px; }
-.hov:hover .hov-card, .hov:focus-within .hov-card { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition: opacity .2s, transform .42s var(--pop), visibility 0s; }
+.hov:hover .hov-card, .hov:focus-within .hov-card, .hov.keep .hov-card { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition: opacity .2s, transform .42s var(--pop), visibility 0s; }
 .hc-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--ink); }
 .hc-best { color: var(--ink-3); font-size: 12.5px; }
 .hov-card .btn { justify-self: start; margin-top: 4px; }
 .hc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .hc-list li { display: grid; grid-template-columns: 34px 1fr; }
 .hc-list b { color: var(--accent); font-weight: 700; }
-@media (max-width: 560px) { .hov-card { position: fixed; top: 62px; left: 12px; right: 12px; width: auto; transform: scale(.35); transform-origin: 70% -14px; } .hov:hover .hov-card, .hov:focus-within .hov-card { transform: none; } .top-right .xp { display: none; } }
+@media (max-width: 560px) { .hov-card { position: fixed; top: 62px; left: 12px; right: 12px; width: auto; transform: scale(.35); transform-origin: 70% -14px; } .hov:hover .hov-card, .hov:focus-within .hov-card, .hov.keep .hov-card { transform: none; } .top-right .xp { display: none; } }
 .streak { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .streak svg { width: 17px; height: 17px; fill: currentColor; opacity: .5; }
 .streak.lit { color: var(--ink); }

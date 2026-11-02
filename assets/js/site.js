@@ -285,23 +285,31 @@ window.FHSaveNudge = (el, pos, o = {}) => {
     x.fillStyle = "#8fdcbf"; x.font = "italic 700 44px Georgia, serif"; x.fillText("financedhub.com", W / 2, 1010);
     c.toBlob(done, "image/png");
   });
+  // One share at a time: a second click while the share sheet is open does nothing (it used to fall through to a download).
+  // While sharing, the streak card stays open so the share sheet isn't left pointing at nothing.
+  let sharing = false;
   window.FHShareStreak = async () => {
-    const d = FH.streak();
-    const url = "https://financedhub.com/";
-    const line = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥`);
-    const text = `${line} ${url}`;
-    const blob = await streakCard(d), file = new File([blob], "financedhub-streak.png", { type: "image/png" });
-    // The picture, the line and the link together, so the message shows the card and the site's link preview.
+    if (sharing) return;
+    sharing = true;
+    streak.classList.add("keep");
     try {
-      const data = { files: [file], text: line, url };
-      if (navigator.canShare && navigator.canShare(data)) return await navigator.share(data);
-      if (navigator.canShare && navigator.canShare({ files: [file] })) return await navigator.share({ files: [file], text });
-    } catch (e) { if (e.name === "AbortError") return; }
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    try { await navigator.clipboard.writeText(text); } catch (e) { /* clipboard blocked */ }
-    FH.toast(T("Saved your streak picture and copied the text. Post them anywhere.", "Guardamos la imagen de tu racha y copiamos el texto. Publícalos donde quieras."));
+      const d = FH.streak();
+      const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥 https://financedhub.com`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥 https://financedhub.com`);
+      const blob = await streakCard(d), file = new File([blob], "financedhub-streak.png", { type: "image/png" });
+      // The picture with the line and the link, sent together.
+      if (navigator.canShare && navigator.canShare({ files: [file], text })) {
+        try { await navigator.share({ files: [file], text }); } catch (e) { /* closed or cancelled */ }
+        return;
+      }
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      try { await navigator.clipboard.writeText(text); } catch (e) { /* clipboard blocked */ }
+      FH.toast(T("Saved your streak picture and copied the text. Post them anywhere.", "Guardamos la imagen de tu racha y copiamos el texto. Publícalos donde quieras."));
+    } finally {
+      sharing = false;
+      streak.classList.remove("keep");
+    }
   };
 
   // The pop-up for a new badge.

@@ -58,7 +58,7 @@
     if (!f.terms.checked) return msg(T("Please agree to the terms and privacy policy to continue (you need to be 13 or older).", "Para continuar, acepta los términos y la política de privacidad (necesitas tener 13 años o más)."), true);
     msg(T("Creating your account…", "Creando tu cuenta…"));
     const { data, error } = await FHAuth.signUp(f.email.value.trim(), f.password.value, {
-      username, age_confirmed: true, terms_accepted_at: new Date().toISOString(),
+      username, lang: FH.lang, age_confirmed: true, terms_accepted_at: new Date().toISOString(),
     });
     if (error) return msg(friendly(error), true);
     msg("");
