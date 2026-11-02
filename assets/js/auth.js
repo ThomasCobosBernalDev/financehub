@@ -241,9 +241,11 @@
     // Save the username and consent a Google sign-up skipped, then carry on to setup or the course.
     finishSignup: async (username) => {
       const consent = { age_confirmed: true, terms_accepted_at: new Date().toISOString() };
-      const { data, error } = await client.auth.updateUser({ data: Object.assign({ username }, consent) });
+      const { data, error } = await client.auth.updateUser({ data: Object.assign({ username, lang: FH.lang }, consent) });
       if (error) throw error;
       user = data.user;
+      // Google sign-ups get no email from Supabase, so the welcome email is sent here (once, server-side).
+      await client.functions.invoke("welcome-email", { body: {} }).catch((e) => console.warn("Welcome email failed", e));
       const up = await client.from("progress").upsert(Object.assign({ user_id: user.id, save: FH.state, updated_at: new Date().toISOString() }, consent));
       if (up.error) throw up.error;
       paintHeader();
