@@ -1,0 +1,17 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": { "FICO": "fáico", "AnnualCreditReport.com": "anual crédit report punto com" },
+  "lines": [
+    "Encontraste un departamento de 900 dólares al mes. El dueño revisa tu crédito y no encuentra historial, así que pagas un depósito extra de 900 dólares. Tu prima Ana tiene un puntaje de 760 y no paga depósito extra.",
+    "Tu reporte de crédito es el registro de lo que has pedido prestado: cada tarjeta y préstamo, y si pagaste a tiempo. Lo guardan tres burós: Equifax, Experian y TransUnion. Puedes ver los tres gratis cada semana en AnnualCreditReport.com.",
+    "Tu puntaje FICO va de 300 a 850. De 670 para arriba es bueno, 740 es muy bueno y 800 es excepcional. El promedio en Estados Unidos es de unos 715.",
+    "Cinco cosas lo mueven. El historial de pagos cuenta 35 por ciento. Lo que debes, 30. La antigüedad, 15. El crédito nuevo y los tipos de crédito, 10 cada uno.",
+    "El uso del crédito es el saldo de tu tarjeta dividido entre tu límite. 40 dólares con un límite de 500 es el 8 por ciento. Mantenlo bajo el 30 por ciento, y bajo el 10 es lo mejor.",
+    "Un pago con 30 días o más de atraso se queda en tu reporte 7 años. Solicitar crédito es una consulta dura. Revisar tu propio puntaje es una consulta suave y nunca lo daña.",
+    "Tu ingreso, tus ahorros y tu tarjeta de débito no son parte de tu puntaje.",
+    "Para empezar de cero, abre una tarjeta asegurada, pon una cuenta pequeña en ella y págala completa con pago automático. En unos 6 meses tendrás un puntaje.",
+    "En un préstamo de carro de 20,000 dólares, un puntaje más bajo puede costar unos 3,500 dólares más. Como los peces del arrecife que eligen al limpiador con buen historial, los prestamistas revisan el tuyo primero."
+  ]
+}

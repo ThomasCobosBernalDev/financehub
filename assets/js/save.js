@@ -133,7 +133,7 @@
     L(3, 1, "u4-budgeting-frameworks", t("Making a budget", "Hacer un presupuesto"), t("Give every dollar a job · Month Survivor", "Dale un trabajo a cada dólar · Sobrevive el mes"), { href: "lessons/budgeting/" }),
     L(3, 2, "u3-emergency-fund", t("Emergency funds", "El fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { href: "lessons/emergency-fund/", needs: ["u4-budgeting-frameworks"] }),
     L(3, 3, "u3-high-yield", t("High-yield savings", "Ahorro de alto rendimiento"), t("Make your savings earn more", "Haz que tus ahorros ganen más"), { href: "lessons/high-yield/", needs: ["u1-checking-savings"] }),
-    L(4, 1, "u4-credit-scores", t("Credit scores", "El puntaje de crédito"), t("Reports, scores and what moves them", "Reportes, puntajes y qué los mueve")),
+    L(4, 1, "u4-credit-scores", t("Credit scores", "El puntaje de crédito"), t("Reports, scores and what moves them", "Reportes, puntajes y qué los mueve"), { href: "lessons/credit-scores/" }),
     L(4, 2, "u4-credit-cards", t("Credit cards", "Tarjetas de crédito"), t("Use a card without getting burned", "Usa una tarjeta sin quemarte"), { needs: ["u4-credit-scores"] }),
     L(4, 3, "u4-loans", t("Loans", "Préstamos"), t("Car, student and payday loans", "Préstamos de carro, estudiantiles y de día de pago"), { needs: ["u4-credit-cards"] }),
     L(5, 1, "u5-why-invest", t("Why invest?", "¿Por qué invertir?"), t("Inflation shrinks cash, compounding grows it", "La inflación encoge el efectivo y el interés compuesto lo hace crecer"), { href: "lessons/why-invest/" }),
@@ -287,6 +287,7 @@
     ["mail-sorter", "file-taxes", t("Ready to File", "Listo para declarar"), t("Sort all 8 pieces of tax mail right.", "Ordena bien las 8 cosas del correo de impuestos.")],
     ["rainy-day", "emergency-fund", t("Rainy-Day Ready", "Listo para la lluvia"), t("Make all 6 emergency fund calls right.", "Decide bien las 6 sorpresas del fondo de emergencia.")],
     ["rate-shopper", "high-yield", t("Rate Shopper", "Cazador de tasas"), t("Pick the better account all 6 times.", "Elige la mejor cuenta las 6 veces.")],
+    ["score-keeper", "credit-scores", t("Score Keeper", "Guardián del puntaje"), t("Call all 8 score moves right.", "Acierta las 8 jugadas de crédito.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

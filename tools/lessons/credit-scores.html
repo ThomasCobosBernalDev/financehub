@@ -1,0 +1,269 @@
+<!-- title: Your Credit Score -->
+<!-- description: Unit 4, Lesson 1: credit reports and credit scores, the three bureaus, the 300 to 850 FICO range, the five things that move a score, credit utilization, hard and soft inquiries, how long late payments last, how to build credit from zero, and what a score costs you on a loan. Play: Score moves, eight things that help, hurt or do nothing. -->
+<!-- kicker: Unit 4 · Lesson 1 -->
+<!-- topic: Credit -->
+
+<!-- @start -->
+        <h1 class="reveal">No credit score? <em>That'll be $900 more.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> You found an apartment closer to the bike shop. Rent is <span class="mark">$900</span> a month. The landlord runs a credit check and finds <span class="mark">no credit history</span>, because you've only ever used a debit card. So you have to pay an extra <span class="mark">$900 deposit</span> up front. Your cousin Ana applies for the same kind of apartment. Her score is <span class="mark">760</span>, so she pays no extra deposit. This lesson shows what a credit score is, what moves it, and how to build one from zero.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>credit score</b> is a three-digit number, usually 300 to 850, that tells lenders how likely you are to pay back what you borrow.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Landlords, lenders, card companies and some employers check it. A higher score means lower interest rates and smaller deposits.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Pay every bill on time, use only a small part of your card limits, and give your accounts time to age.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Credit bureaus</b> collect your history. <b>Credit analysts</b> and <b>loan officers</b> read it to approve loans and set rates. <b>Data scientists</b> at FICO build the score models.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="A semicircle gauge from 300 to 850 with five colored bands from poor to exceptional. The needle points to 715, the average U.S. score.">
+          <g transform="translate(260 330)" fill="none" stroke-width="44">
+            <path d="M -200 0 A 200 200 0 0 1 5.7 -199.9" stroke="#c96a4a"/>
+            <path d="M 5.7 -199.9 A 200 200 0 0 1 103.3 -171.3" stroke="#e0a14a"/>
+            <path d="M 103.3 -171.3 A 200 200 0 0 1 161.8 -117.6" stroke="#d9c45a"/>
+            <path d="M 161.8 -117.6 A 200 200 0 0 1 191.9 -56.3" stroke="#8fb36a"/>
+            <path d="M 191.9 -56.3 A 200 200 0 0 1 200 0" stroke="#4f8f5f"/>
+          </g>
+          <g class="cs-needle" style="transform-origin:260px 330px">
+            <path d="M 260 330 L 382 212" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <circle cx="260" cy="330" r="14" fill="var(--ink)"/>
+          <text x="60" y="370" text-anchor="middle" font-size="18" fill="var(--ink-2)">300</text>
+          <text x="460" y="370" text-anchor="middle" font-size="18" fill="var(--ink-2)">850</text>
+          <text x="260" y="420" text-anchor="middle" font-family="Fraunces, serif" font-size="64" fill="var(--ink)">715</text>
+          <text x="260" y="452" text-anchor="middle" font-size="17" fill="var(--ink-2)">average U.S. FICO score</text>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">your money reputation, in one number</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a credit score gauge. The colors run from poor (left) to exceptional (right). The needle points at 715, the average FICO score in the U.S. (FICO, 2025).</p>
+
+<!-- @see -->
+      <h2 class="reveal">Your report, <em>and the score built from it.</em></h2>
+      <p class="lead reveal">Lenders can't know you, so they look at how you've handled borrowing before. That record is your credit report. Your score is a quick summary of it.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The report and the three bureaus</h3>
+      <p class="reveal">Your <dfn class="term" data-def="A record of your borrowing: every credit card and loan, its limit or amount, its balance, and whether you paid on time. Kept by the credit bureaus.">credit report</dfn> lists your cards and loans, their balances, and every payment: on time or late. Three companies keep these reports: <b>Equifax</b>, <b>Experian</b> and <b>TransUnion</b>. They're called <dfn class="term" data-def="The three companies (Equifax, Experian, TransUnion) that collect credit history from lenders and sell credit reports.">credit bureaus</dfn>. You can see all three reports for free every week at AnnualCreditReport.com. A debit card doesn't build a report, because you're spending your own money, not borrowing.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your report</dt><dd>Only a debit card and a checking account, so the bureaus have <b>nothing</b> to report. That's why the landlord found no history.</dd></div><div><dt>Ana's report</dt><dd>A credit card she's paid on time for 4 years. That record is what earns her the <b>760</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The score: 300 to 850</h3>
+      <p class="reveal">The most used score is the <dfn class="term" data-def="The credit score made by the company FICO. Most lenders use it. It runs from 300 to 850; higher is better.">FICO score</dfn>, from 300 to 850. Higher is better. A newer score, VantageScore, uses the same range. You need about 6 months of history before a FICO score exists. Here's how lenders usually read it:</p>
+      <ul class="cs-bands reveal">
+        <li style="--c:#c96a4a"><b>300 to 579</b> Poor</li>
+        <li style="--c:#e0a14a"><b>580 to 669</b> Fair</li>
+        <li style="--c:#d9c45a"><b>670 to 739</b> Good</li>
+        <li style="--c:#8fb36a"><b>740 to 799</b> Very good</li>
+        <li style="--c:#4f8f5f"><b>800 to 850</b> Exceptional</li>
+      </ul>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Ana, 760</dt><dd>Falls in <b>740 to 799</b>: very good. Landlords and lenders give her their best terms.</dd></div><div><dt>You</dt><dd>No history yet, so <b>no score</b> at all. That's different from a bad score, and easier to fix.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The five things that move it</h3>
+      <p class="reveal">FICO keeps its exact formula secret, but it publishes how much each part counts. Tap a part to see what it means.</p>
+      <div class="md-card reveal" id="cf">
+        <div class="cf-bar" id="cf-bar" role="group" aria-label="The five parts of a FICO score"></div>
+        <div class="cf-info" id="cf-info" aria-live="polite"></div>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the share of a FICO score that comes from each part, as published by FICO. The longer the block, the more it counts. Together they make 100%.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Payment history, 35%</dt><dd>Ana's 4 years of on-time payments are the biggest reason her score is <b>760</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Credit utilization: how much of your limit you use</h3>
+      <p class="reveal">The second biggest part, amounts owed, mostly comes down to <dfn class="term" data-def="Your card balances divided by your card limits, as a percent. Lower is better: under 30% is fine, under 10% is best.">credit utilization</dfn>: the balance on your cards divided by your total limit. Under 30% is fine. Under 10% is best. It's measured from the balance on your statement, so even if you pay in full later, a big statement balance can count against you that month.</p>
+      <div class="formula reveal">Utilization <span class="op">=</span> <span class="frac"><span>card balance</span><span>card limit</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$300 on a $1,000 limit</dt><dd><span class="frac"><span>$300</span><span>$1,000</span></span> = 0.30 = <b>30%</b>, right at the line.</dd></div><div><dt>$40 on a $500 limit</dt><dd><span class="frac"><span>$40</span><span>$500</span></span> = 0.08 = <b>8%</b>: under 10%, the best zone.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="ut">
+        <div class="mm-two">
+          <div><label class="md-lab" for="ut-bal">Statement balance <b id="ut-bal-v">$40</b></label><input type="range" id="ut-bal" min="0" max="2000" step="10" value="40"></div>
+          <div><span class="md-lab" id="ut-lim-l">Card limit</span><div class="rt-chips" id="ut-lim" role="group" aria-labelledby="ut-lim-l"><button type="button" class="chip on" data-v="500">$500</button><button type="button" class="chip" data-v="1000">$1,000</button><button type="button" class="chip" data-v="2000">$2,000</button></div></div>
+        </div>
+        <div class="ut-meter" aria-hidden="true"><i id="ut-fill"></i><span style="left:10%"></span><span style="left:30%"></span></div>
+        <div class="ut-scale" aria-hidden="true"><span>0%</span><span style="left:10%">10%</span><span style="left:30%">30%</span><span style="right:0">100%</span></div>
+        <p class="split-msg" id="ut-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> your utilization on one card. The bar fills with the share of the limit you're using. The marks show 10% and 30%, the two lines lenders watch.</p>
+
+      <h3 class="reveal" style="margin-top:56px">What hurts, and for how long</h3>
+      <p class="reveal">A payment that's <b>30 or more days late</b> gets reported and stays on your report for <b>7 years</b>, though it hurts less as it gets older. Applying for new credit causes a <dfn class="term" data-def="A lender pulling your credit because you applied for credit. It can lower your score a few points and stays on your report for 2 years.">hard inquiry</dfn>, which can drop your score a few points and stays on your report for 2 years. Checking your own score is a <dfn class="term" data-def="A look at your credit that isn't for a new application, like checking your own score. It never changes your score.">soft inquiry</dfn> and never hurts it. Some things aren't in your score at all: your income, your savings, and your debit card.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Checking your score</dt><dd>You look in your bank app every week: soft inquiry, <b>no change</b>.</dd></div><div><dt>A missed payment</dt><dd>If a $40 card payment goes 30 days late, that mark stays for <b>7 years</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Building credit from zero, and what it's worth</h3>
+      <p class="reveal">With no history, start small. A <dfn class="term" data-def="A credit card backed by a cash deposit you give the bank. The deposit is usually your limit. It reports to the bureaus like a normal card.">secured credit card</dfn> asks for a deposit, often $200 to $500, that becomes your limit. Put one small bill on it and set autopay for the full balance. Other options: become an <b>authorized user</b> on a family member's card, or take a small credit-builder loan from a credit union. A good score pays off when you borrow: lenders charge lower rates to higher scores.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your plan</dt><dd>A secured card with a <b>$500</b> deposit. Your <b>$40</b> phone bill goes on it, paid in full by autopay: 8% utilization, on time every month. After about 6 months you'll have a first score.</dd></div><div><dt>Later, a car loan</dt><dd>Borrow $20,000 for 5 years. Say a good score gets 6% and a fair score gets 12%. The payments are $386.66 and $444.89 a month: 60 × ($444.89 − $386.66) = 60 × $58.23 = <b>$3,493.80</b> more for the lower score.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Score <em>moves.</em></h2>
+      <p class="lead reveal">Eight things happen to someone with a credit card. For each one, decide: does it <b>help</b> their credit score, <b>hurt</b> it, or do <b>nothing</b>? One try each.</p>
+
+      <div class="fd reveal rr-wide" id="sm">
+        <div class="fd-top">
+          <div><small id="sm-round">Move 1 of 8</small><b id="sm-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="sm-score">0 of 0</b></div>
+        </div>
+        <div class="sm-opts" id="sm-opts" role="group" aria-label="Your answer">
+          <button type="button" class="sm-btn" data-k="up">Helps</button>
+          <button type="button" class="sm-btn" data-k="down">Hurts</button>
+          <button type="button" class="sm-btn" data-k="none">No effect</button>
+        </div>
+        <div class="fd-why hidden" id="sm-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="sm-next" disabled>Next move <span class="arrow">→</span></button>
+      </div>
+      <div id="sm-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up moments in one person's money life. Each answer is about the FICO score, using the five parts from this lesson.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Four checks tell you where a score stands and what to fix first.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Read the band</h3>
+      <div class="formula reveal">300–579 poor · 580–669 fair · 670–739 good · 740–799 very good · 800–850 exceptional</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Ana</dt><dd>760 is <b>very good</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Find the utilization</h3>
+      <div class="formula reveal">Utilization <span class="op">=</span> <span class="frac"><span>total card balances</span><span>total card limits</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Two cards</dt><dd>$200 on a $1,000 card and $400 on a $1,000 card: <span class="frac"><span>$200 + $400</span><span>$1,000 + $1,000</span></span> = <span class="frac"><span>$600</span><span>$2,000</span></span> = <b>30%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Find the target balance</h3>
+      <div class="formula reveal">Balance for 10% <span class="op">=</span> limit <span class="op">×</span> 0.10</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$2,000 of limits</dt><dd>$2,000 × 0.10 = <b>$200</b>. Paying the balance from $600 down to $200 takes utilization from 30% to 10%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Price the score</h3>
+      <div class="formula reveal">Extra cost <span class="op">=</span> number of payments <span class="op">×</span> (higher payment <span class="op">−</span> lower payment)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$20,000 car loan</dt><dd>60 × ($444.89 − $386.66) = <b>$3,493.80</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: from no score to a first score</h3>
+      <ol class="steps reveal">
+        <li><b>Month 0.</b> You open a secured card with a $500 deposit, so your limit is $500.</li>
+        <li><b>Each month.</b> Your $40 phone bill goes on the card. Utilization: <span class="frac"><span>$40</span><span>$500</span></span> = 8%.</li>
+        <li><b>Each due date.</b> Autopay pays the full $40, so you pay no interest and every payment is on time.</li>
+        <li><b>Month 6.</b> The bureaus have 6 months of on-time history, so a FICO score appears.</li>
+        <li><b>Next apartment.</b> With a good score, no extra deposit: that's the <b>$900</b> you keep.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Reef fish check <em>the track record.</em></h2>
+      <p class="lead reveal">On coral reefs, small cleaner fish eat parasites off bigger fish. But some cleaners cheat and bite off healthy skin instead. Scientists found that reef fish watch how a cleaner treats other fish, and choose the one with the good record. Cleaners being watched behave better, because their reputation brings them customers.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Two cleaner fish stations on a reef. Several big fish line up at the one with a good record. The station of the cleaner that bites is empty.">
+        <path d="M0 330 C 150 300, 300 340, 450 320 S 750 300, 900 330 V 390 H 0 Z" fill="color-mix(in srgb, var(--ink-3) 22%, transparent)"/>
+        <g fill="#e08a6a"><circle cx="230" cy="300" r="26"/><circle cx="262" cy="292" r="18"/><circle cx="200" cy="296" r="16"/></g>
+        <g fill="#d9a46a"><circle cx="660" cy="300" r="26"/><circle cx="692" cy="292" r="18"/><circle cx="630" cy="296" r="16"/></g>
+        <g class="cs-fish"><path d="M210 230 c 14 -14, 40 -14, 54 0 c -14 14, -40 14, -54 0 Z" fill="#3a6fa8"/><path d="M262 230 l 14 -10 v 20 Z" fill="#3a6fa8"/><path d="M216 230 h 44" stroke="#f4f1ea" stroke-width="3"/></g>
+        <g class="cs-queue"><g transform="translate(234 0) scale(-1 1)"><path d="M40 170 c 30 -34, 100 -34, 130 0 c -30 34, -100 34, -130 0 Z" fill="#6d9f4a"/><path d="M170 170 l 24 -18 v 36 Z" fill="#6d9f4a"/><circle cx="62" cy="164" r="4" fill="var(--ink)"/></g><path d="M330 180 c 30 -34, 100 -34, 130 0 c -30 34, -100 34, -130 0 Z" fill="#e0a14a"/><path d="M460 180 l 24 -18 v 36 Z" fill="#e0a14a"/><circle cx="352" cy="174" r="4" fill="var(--ink)"/><g transform="translate(374 0) scale(-1 1)"><path d="M110 80 c 30 -34, 100 -34, 130 0 c -30 34, -100 34, -130 0 Z" fill="#8a7bb8"/><path d="M240 80 l 24 -18 v 36 Z" fill="#8a7bb8"/><circle cx="132" cy="74" r="4" fill="var(--ink)"/></g></g>
+        <g><path d="M640 230 c 14 -14, 40 -14, 54 0 c -14 14, -40 14, -54 0 Z" fill="#3a6fa8"/><path d="M692 230 l 14 -10 v 20 Z" fill="#3a6fa8"/><path d="M646 230 h 44" stroke="#f4f1ea" stroke-width="3"/></g>
+        <g opacity=".55"><g transform="translate(1274 0) scale(-1 1)"><path d="M560 90 c 30 -34, 100 -34, 130 0 c -30 34, -100 34, -130 0 Z" fill="#6d9f4a"/><path d="M690 90 l 24 -18 v 36 Z" fill="#6d9f4a"/><circle cx="582" cy="84" r="4" fill="var(--ink)"/></g></g><path d="M520 90 h-40 M520 104 h-26" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round"/>
+        <text x="230" y="356" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Good record</text>
+        <text x="230" y="380" text-anchor="middle" font-size="15" fill="var(--ink-2)">fish line up to be cleaned</text>
+        <text x="660" y="356" text-anchor="middle" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Bites customers</text>
+        <text x="660" y="380" text-anchor="middle" font-size="15" fill="var(--ink-2)">fish swim past</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Two cleaner fish (small, striped) at their spots on a reef. Big fish wait at the one known for cleaning well and skip the one known for biting.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> Lenders are the big fish. They can't know you, so they check your record first. Every on-time payment is a good cleaning someone saw. Build the record, and the best offers line up for you.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Credit report</b> = your borrowing record. Kept by 3 <b>bureaus</b>: Equifax, Experian, TransUnion. Free weekly at AnnualCreditReport.com.</li>
+          <li><b>FICO score</b>: 300 to 850. Average 715. 670+ good, 740+ very good, 800+ exceptional. Needs about 6 months of history.</li>
+          <li>Five parts: payment history 35%, amounts owed 30%, length of history 15%, new credit 10%, credit mix 10%.</li>
+          <li><b>Utilization</b> = <span class="frac"><span>balance</span><span>limit</span></span>. Keep it under 30%, best under 10%. $40 on $500 = 8%.</li>
+          <li>30+ days late stays 7 years. <b>Hard inquiry</b> (applying) stays 2 years. <b>Soft inquiry</b> (checking your own) never hurts.</li>
+          <li>Not in the score: income, savings, debit cards.</li>
+          <li>Start from zero: <b>secured card</b>, small bill, autopay in full. Or authorized user, or a credit-builder loan.</li>
+          <li>Score = money: $20,000 car loan at 6% vs 12% for 5 years costs $3,493.80 more.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. FICO scores run from 300 to <input type="text" class="blank" data-answer="850|eight hundred fifty|eight hundred and fifty" inputmode="numeric" aria-label="Blank 1">.</div>
+        <div>2. The biggest part of a FICO score is payment <input type="text" class="blank" data-answer="history" aria-label="Blank 2">.</div>
+        <div>3. A $100 balance on a $1,000 limit is <input type="text" class="blank" data-answer="10|10%|ten|ten percent|10 percent" inputmode="numeric" aria-label="Blank 3">% utilization.</div>
+        <div>4. A payment 30 or more days late stays on your report for <input type="text" class="blank" data-answer="7|seven|7 years|seven years" inputmode="numeric" aria-label="Blank 4"> years.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Myth or fact?</h3>
+          <p>Take turns saying something people believe about credit, like "checking my score lowers it" or "a higher salary raises it." The others call myth or fact and explain why.</p>
+        </div>
+        <div class="reveal">
+          <h3>Utilization race</h3>
+          <p>One person names a balance and a limit. First to say the utilization as a percent, and whether it's under 10% or 30%, wins the round.</p>
+        </div>
+        <div class="reveal">
+          <h3>Ask someone older</h3>
+          <p>Ask a parent or relative how they built their first credit. What would they do differently? Compare it to the secured-card plan in this lesson.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Do you have a credit history yet? If you're not sure, what's one way to find out for free?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Which small, regular bill could you put on a card and pay in full every month to build credit?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What's one thing you'd do to make sure you never miss a payment?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're the loan officer</h3>
+      <div class="reveal">
+        <p>A customer, Jordan, wants a car loan in a few months and asks how to get a better rate. Here's Jordan's credit report:</p>
+        <ul>
+          <li>FICO score: <b>680</b>.</li>
+          <li>One credit card with a <b>$2,000</b> limit and a <b>$1,400</b> balance.</li>
+          <li>One payment that was 30 days late, <b>3 years ago</b>. Every other payment was on time.</li>
+          <li>Jordan plans to apply for two store cards this month to "build more credit."</li>
+        </ul>
+        <p><b>Your task:</b> tell Jordan which band 680 falls in, what Jordan's utilization is, what balance to aim for, and whether the store cards are a good idea right before a car loan.</p>
+        <textarea id="job-answer" placeholder="Write what you'd say…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>The band:</b> 680 is in 670 to 739, good, but not yet very good.</p>
+            <p><b>Utilization:</b> <span class="frac"><span>$1,400</span><span>$2,000</span></span> = 70%. That's well over 30%, and it's the fastest thing to fix.</p>
+            <p><b>Target:</b> $2,000 × 0.30 = $600 to get under 30%, and $2,000 × 0.10 = $200 for the best zone. Paying down to $200 means paying off $1,200 before the statement closes.</p>
+            <p><b>The late payment:</b> it stays on the report for 7 years, about 4 more, but it counts less every year. Keep every payment on time from here.</p>
+            <p><b>The store cards:</b> skip them for now. Two applications mean two hard inquiries and two new accounts right before the loan, which can lower the score.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">From saving <em>to borrowing well.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on making your savings earn more, and leads to credit cards, loans, and interest rates and the Fed">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M260 170 C 300 170, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 70, 680 70"/><path d="M520 170 C 600 170, 610 170, 680 170"/>
+          <path d="M520 170 C 600 170, 610 270, 680 270"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../high-yield/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">High-yield savings</text><text x="20" y="186">Unit 3 · Lesson 3</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Credit scores</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="66" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Credit cards</text><text x="690" y="86">Next · use a card safely</text>
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Loans</text><text x="690" y="186">Unit 4 · car and student loans</text>
+          <a href="../interest-rates/"><text x="690" y="266" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Interest rates and the Fed</text><text x="690" y="286">Unit 9 · why loan rates move</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lesson that comes before, this lesson in the middle, and the lessons it connects to.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Before · Unit 3</span><b>Make your savings earn more</b></li>
+        <li class="here"><span class="small">You are here</span><b>Your credit score</b></li>
+        <li><span class="muted small">Next · Unit 4</span><b>Credit cards</b></li>
+        <li><span class="muted small">Later · Unit 4</span><b>Loans</b></li>
+        <li><span class="muted small">Later · Unit 9</span><b>Interest rates and the Fed</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../why-invest/">Next open lesson: Why invest? <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

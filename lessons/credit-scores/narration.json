@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": { "FICO": "FYE-coh", "AnnualCreditReport.com": "annual credit report dot com" },
+  "lines": [
+    "You found an apartment for 900 dollars a month. The landlord checks your credit and finds no history, so you pay an extra 900 dollar deposit. Your cousin Ana has a 760 score and pays no extra deposit.",
+    "Your credit report is your record of borrowing: every card and loan, and whether you paid on time. Three bureaus keep it: Equifax, Experian and TransUnion. You can see all three free every week at AnnualCreditReport.com.",
+    "Your FICO score runs from 300 to 850. 670 and up is good, 740 is very good, and 800 is exceptional. The U.S. average is about 715.",
+    "Five things move it. Payment history counts 35 percent. Amounts owed, 30. Length of history, 15. New credit and credit mix, 10 each.",
+    "Utilization is your card balance divided by your limit. 40 dollars on a 500 dollar limit is 8 percent. Keep it under 30 percent, and under 10 is best.",
+    "A payment 30 or more days late stays on your report for 7 years. Applying for credit is a hard inquiry. Checking your own score is a soft inquiry and never hurts it.",
+    "Your income, your savings and your debit card are not part of your score.",
+    "To start from zero, open a secured card, put one small bill on it, and pay it in full with autopay. After about 6 months, you'll have a score.",
+    "On a 20,000 dollar car loan, a lower score can cost about 3,500 dollars more. Like reef fish choosing the cleaner with the good record, lenders check yours first."
+  ]
+}
