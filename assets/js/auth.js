@@ -65,6 +65,7 @@
     if (!user || applyingRemote) return;
     clearTimeout(pushing);
     pushing = setTimeout(async () => {
+      pushing = null;
       await client.from("progress").upsert({ user_id: user.id, save: FH.state, updated_at: new Date().toISOString() });
     }, 1500);
   };
@@ -249,7 +250,14 @@
       try { sessionStorage.setItem("fh-just-signed-in", "1"); } catch (e) { /* storage blocked */ }
       afterSignIn();
     },
-    signOut: () => client.auth.signOut(),
+    // Signing out leaves nothing behind: the progress lives on the account, so this browser's copy
+    // is wiped and the visitor lands on the landing page like a stranger would.
+    signOut: async () => {
+      if (pushing) { clearTimeout(pushing); pushing = null; await client.from("progress").upsert({ user_id: user.id, save: FH.state, updated_at: new Date().toISOString() }); }
+      await client.auth.signOut();
+      try { localStorage.removeItem("financehub-save-v1"); sessionStorage.clear(); } catch (e) { /* storage blocked */ }
+      location.href = document.body.dataset.root || "./";
+    },
     resetPassword: (email) => client.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }),
     setPassword: (password) => client.auth.updateUser({ password }),
     setUsername: (username) => client.auth.updateUser({ data: { username } }),
