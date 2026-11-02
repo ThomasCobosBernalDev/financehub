@@ -66,16 +66,16 @@ def body(lang, kind, name, link):
   <p style="margin:0;font-family:{F};font-size:14px;line-height:1.55;color:#5a564d;">{d}</p></td>"""
         for i, (t, d) in enumerate(c["cols"]))
     return f"""
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#17201c;"><tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1f6f5c;"><tr><td align="center">
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:640px;"><tr><td class="pad" style="padding:30px 40px 40px 40px;">
   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
     <td valign="middle" style="padding-right:10px;"><a href="https://financedhub.com"><img src="https://financedhub.com/apple-touch-icon.png" width="34" height="34" alt="" style="display:block;border:0;border-radius:9px;"></a></td>
-    <td valign="middle" style="font-family:{SERIF};font-style:italic;font-weight:700;font-size:22px;color:#ffffff;">Financed<span style="color:#9fc2b3;">Hub</span></td>
+    <td valign="middle" style="font-family:{SERIF};font-style:italic;font-weight:700;font-size:22px;color:#ffffff;">Financed<span style="color:#cfe5da;">Hub</span></td>
   </tr></table>
   <h1 class="h1" style="margin:34px 0 12px 0;font-family:{SERIF};font-size:34px;line-height:1.18;font-weight:700;color:#ffffff;">{c["h1"].format(name=name)}</h1>
-  <p style="margin:0 0 28px 0;font-family:{F};font-size:17px;line-height:1.6;color:#c9d6cf;">{p}</p>
+  <p style="margin:0 0 28px 0;font-family:{F};font-size:17px;line-height:1.6;color:#e3f0e9;">{p}</p>
   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-radius:999px;background:#ffffff;">
-    <a href="{href}" style="display:inline-block;padding:15px 30px;font-family:{F};font-size:16px;font-weight:700;color:#17201c;text-decoration:none;border-radius:999px;">{btn}</a>
+    <a href="{href}" style="display:inline-block;padding:15px 30px;font-family:{F};font-size:16px;font-weight:700;color:#1f6f5c;text-decoration:none;border-radius:999px;">{btn}</a>
   </td></tr></table>
 </td></tr></table>
 </td></tr></table>
