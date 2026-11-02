@@ -120,14 +120,14 @@
   }
 })();
 
-// Signed-out learners: ask them (inline, never a pop-up) to make a free account so their progress isn't stuck in one browser.
+// Signed-out learners: ask them (inline, never a pop-up) to make a free account, since guest progress is erased when the browser closes.
 // FHSaveNudge(el, "afterend", { title, text }) adds a card; { compact: true } adds a one-line note instead.
 window.FHSaveNudge = (el, pos, o = {}) => {
   try { if (!el || Object.keys(localStorage).some((k) => /^sb-.*-auth-token$/.test(k))) return; } catch (e) { return; }
   const T = FH.t, root = document.body.dataset.root || "./";
-  if (o.compact) return el.insertAdjacentHTML(pos, `<p class="save-line">${T("Not signed in: your progress is saved only in this browser.", "Sin cuenta: tu progreso se guarda solo en este navegador.")} <a class="linkish" href="${root}account/#create">${T("Create a free account to keep it →", "Crea una cuenta gratis para conservarlo →")}</a></p>`);
+  if (o.compact) return el.insertAdjacentHTML(pos, `<p class="save-line">${T("Not signed in: your progress is erased when you close your browser.", "Sin cuenta: tu progreso se borra al cerrar el navegador.")} <a class="linkish" href="${root}account/#create">${T("Create a free account to keep it →", "Crea una cuenta gratis para conservarlo →")}</a></p>`);
   el.insertAdjacentHTML(pos, `<div class="save-nudge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z"/><path d="m9.5 13 2 2 3.5-3.5"/></svg>
-    <div><b>${o.title || T("Save your progress", "Guarda tu progreso")}</b><p>${o.text || T(`You've earned ${FH.state.xp} XP. Create a free account so your XP, streak and path follow you to any device and don't vanish if you clear your browser.`, `Llevas ${FH.state.xp} XP. Crea una cuenta gratis para que tu XP, tu racha y tu camino te sigan a cualquier dispositivo y no se borren si limpias tu navegador.`)}</p>
+    <div><b>${o.title || T("Save your progress", "Guarda tu progreso")}</b><p>${o.text || T(`You've earned ${FH.state.xp} XP. Without an account it's erased when you close your browser. Create a free one to keep your XP, streak and path for good, on any device.`, `Llevas ${FH.state.xp} XP. Sin cuenta se borra al cerrar el navegador. Crea una gratis para conservar tu XP, tu racha y tu camino para siempre, en cualquier dispositivo.`)}</p>
     <p class="sn-acts"><a class="btn sm" href="${root}account/#create">${T("Create my free account", "Crear mi cuenta gratis")}</a><a class="linkish" href="${root}account/#login">${T("I have one, log in", "Ya tengo una, entrar")}</a></p></div></div>`);
 };
 

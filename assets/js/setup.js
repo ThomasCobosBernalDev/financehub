@@ -297,7 +297,7 @@
     // Not signed in yet: offer a free account so this path isn't lost.
     if (!$('[data-step="path"] .save-nudge')) FHSaveNudge($('[data-step="path"] .step-nav'), "beforebegin", {
       title: T("Save your path", "Guarda tu camino"),
-      text: T("Create a free account so your path, XP and streak are saved and follow you to any device. Takes 30 seconds.", "Crea una cuenta gratis para guardar tu camino, tu XP y tu racha en cualquier dispositivo. Toma 30 segundos.") });
+      text: T("Without an account, your path is erased when you close your browser. Create a free one to keep it on any device. Takes 30 seconds.", "Sin cuenta, tu camino se borra al cerrar el navegador. Crea una gratis para conservarlo en cualquier dispositivo. Toma 30 segundos.") });
   };
   $("#redo").addEventListener("click", () => show("goal"));
 

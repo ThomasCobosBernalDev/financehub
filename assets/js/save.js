@@ -30,6 +30,16 @@
     updatedAt: null,
   });
 
+  // Without an account, progress is only kept for the visit: it's erased once the browser is closed
+  // (the fh-guest session cookie is gone) or after 12 hours away. An account keeps it for good.
+  try {
+    if (!Object.keys(localStorage).some((k) => /^sb-.*-auth-token$/.test(k))) {
+      const old = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (old && (!/(^|;\s*)fh-guest=1/.test(document.cookie) || Date.now() - Date.parse(old.updatedAt || 0) > 432e5)) localStorage.removeItem(KEY);
+      document.cookie = "fh-guest=1; path=/; SameSite=Lax";
+    }
+  } catch (e) { /* storage blocked */ }
+
   let state;
   try {
     state = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY) || "{}"));

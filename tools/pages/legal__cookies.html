@@ -1,14 +1,15 @@
 <!-- title: Cookies and storage -->
 <!-- description: Everything FinancedHub saves in your browser, and how to clear it. -->
 <h1>Cookies and storage</h1>
-<p class="updated">Last updated October 24, 2026</p>
+<p class="updated">Last updated November 2, 2026</p>
 
-<div class="callout"><b>Short version:</b> FinancedHub sets no cookies and uses no trackers. It saves a few items in your browser's local storage so the site works, like keeping your progress. These items only keep the site working and never track you, so privacy laws don't require a permission pop-up for them. We still list every one below, so you know exactly what's saved, and you can erase them anytime.</div>
+<div class="callout"><b>Short version:</b> FinancedHub uses no trackers and sets just one tiny cookie, <code>fh-guest</code>, which only tells us whether your browser has been closed since your last visit. It saves a few items in your browser's local storage so the site works, like keeping your progress. These items only keep the site working and never track you, so privacy laws don't require a permission pop-up for them. We still list every one below, so you know exactly what's saved, and you can erase them anytime.</div>
 
 <h2>What we save in your browser</h2>
 <table>
   <tr><th>Name</th><th>What it's for</th><th>How long</th></tr>
-  <tr><td><code>financehub-save-v1</code></td><td>Your progress, XP, achievements, game results and character numbers</td><td>Until you clear it</td></tr>
+  <tr><td><code>financehub-save-v1</code></td><td>Your progress, XP, achievements, game results and character numbers</td><td>Signed in: until you sign out. Not signed in: until you close your browser, or 12 hours away</td></tr>
+  <tr><td><code>fh-guest</code> (cookie)</td><td>If you're not signed in, marks this browser visit so your progress is erased once the browser is closed</td><td>Until you close your browser</td></tr>
   <tr><td><code>fh-theme</code></td><td>Remembers light or dark mode</td><td>Until you clear it</td></tr>
   <tr><td><code>fh-lang</code></td><td>Remembers whether you want the site in English or Spanish</td><td>Until you clear it</td></tr>
   <tr><td><code>fh-notice-ok</code></td><td>Remembers that you closed the storage notice</td><td>Until you clear it</td></tr>
