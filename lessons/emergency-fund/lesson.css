@@ -1,0 +1,63 @@
+/* Unit 3, Lesson 2: emergency fund planner, rainy day game. */
+.split-msg[data-tone="good"], .fd-why[data-tone="good"] { border-color: var(--good); }
+.split-msg[data-tone="warn"], .fd-why[data-tone="warn"] { border-color: var(--wants); }
+.md-card { background: var(--card); border-radius: 24px; padding: clamp(18px, 3.5vw, 30px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); margin-top: 20px; }
+.md-card .split-msg { margin: 16px 0 0; font-size: 17px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.md-lab { display: block; font-size: 15px; color: var(--ink-2); margin: 0 0 8px; }
+.md-lab b { color: var(--ink); }
+.fd { margin-top: 28px; background: var(--card); border-radius: 24px; padding: clamp(16px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); }
+.fd-top { display: flex; justify-content: space-between; gap: 16px 24px; align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.fd-top small, .pg-score small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.fd-top > div > b { display: block; margin-top: 6px; font-family: var(--serif); font-weight: 500; font-size: clamp(20px, 2.4vw, 24px); line-height: 1.35; }
+.pg-score { text-align: right; flex: none; }
+.pg-score b { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--good); font-variant-numeric: tabular-nums; }
+.fd-opt { font: inherit; font-size: 16px; text-align: left; color: var(--ink); background: var(--paper-2); border: 1.5px solid transparent; border-radius: 14px; padding: 12px 14px; cursor: pointer; transition: border-color .2s, background .2s; }
+.fd-opt:hover:not(:disabled) { border-color: var(--ink-3); }
+.fd-opt:disabled { cursor: default; }
+.fd-opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--card)); }
+.fd-opt.wrong { border-color: var(--wants); background: color-mix(in srgb, var(--wants) 10%, var(--card)); }
+.fd-opt.alt { border-color: color-mix(in srgb, var(--good) 50%, transparent); border-style: dashed; }
+.fd-opt:disabled:not(.right):not(.wrong):not(.alt) { opacity: .55; }
+.fd-why { margin-top: 16px; font-size: 16px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.fd-next { margin-top: 16px; width: 100%; justify-content: center; }
+.fd-next:disabled { opacity: .5; cursor: default; }
+@media (max-width: 760px) {
+  .fd-top { flex-direction: column; }
+  .pg-score { text-align: left; }
+}
+.rr-wide .fd-why, .rr-wide .fd-next { max-width: 720px; }
+@keyframes fd-in { from { opacity: 0; transform: translateY(8px); } }
+#rd-result { margin-top: 8px; }
+.rt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ef-cloud { animation: ef-drift 6s ease-in-out infinite; }
+@keyframes ef-drift { 50% { translate: 8px 0; } }
+/* Planner */
+.ef-grid { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 28px; align-items: center; }
+.ef-jar, .rd-jar { position: relative; height: 190px; border: 3px solid var(--ink-3); border-top-width: 10px; border-radius: 14px 14px 26px 26px; overflow: hidden; background: var(--paper); }
+.ef-water { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: color-mix(in srgb, var(--good) 38%, transparent); transition: height .6s var(--ease); }
+.ef-mark { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--wants); transition: bottom .4s var(--ease); }
+.ef-mark::after { content: "$400"; position: absolute; left: 6px; top: 2px; font-size: 11px; font-weight: 700; color: var(--wants); }
+.ef-jar span { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ef-jar span b { font-family: var(--serif); font-weight: 500; font-size: 26px; }
+.ef-jar span small { font-size: 12px; color: var(--ink-2); }
+.ef-months { display: flex; align-items: flex-end; gap: 4px; height: 70px; margin-top: 20px; padding-bottom: 2px; border-bottom: 1px solid var(--line); }
+.ef-months i { flex: 1; max-width: 28px; height: var(--h); background: var(--good); border-radius: 5px 5px 0 0; opacity: .75; animation: ef-grow .5s var(--ease) both; animation-delay: calc(var(--i) * .15s); }
+.ef-months span { font-size: 12px; color: var(--ink-3); align-self: center; }
+@keyframes ef-grow { from { height: 0; } }
+/* Rainy day */
+.rd-row { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 20px; align-items: center; margin: 20px 0 16px; max-width: 720px; }
+.rd-card { background: var(--paper); border-radius: 18px; padding: 18px 20px; animation: fd-in .4s var(--ease); }
+.rd-card p { margin: 0; font-size: 18px; line-height: 1.5; }
+.rd-jar { height: 130px; }
+.sm-bins { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 720px; }
+.rd-pick b { display: block; }
+.rd-pick small { display: block; font-size: 13px; color: var(--ink-3); }
+@media (max-width: 560px) {
+  .ef-grid { grid-template-columns: 1fr; }
+  .ef-jar { height: 150px; max-width: 160px; margin: 0 auto; }
+  .rd-row { grid-template-columns: 1fr 70px; gap: 12px; }
+  .rd-jar { height: 100px; }
+  .rd-card p { font-size: 16px; }
+  .sm-bins { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .ef-cloud, .ef-months i { animation: none; } }

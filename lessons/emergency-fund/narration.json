@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": { "FDIC": "F D I C" },
+  "lines": [
+    "Your car won't start, and the repair costs 450 dollars. With an emergency fund, it's an annoying day. Without one, it goes on a credit card and grows with interest.",
+    "An emergency fund is savings you only use for something needed, urgent and unexpected. A repair you need for work counts. Concert tickets don't. Neither do bills you know are coming.",
+    "Size it by your monthly needs: rent, food, gas and phone. Yours add up to 1,200 dollars a month.",
+    "Most planners suggest three to six months of needs. Three months is 3,600 dollars. Aim for six if your pay changes a lot or you're the only income at home.",
+    "Start with a first goal of 400 dollars. In a 2025 Federal Reserve survey, only 63 percent of adults could cover a 400 dollar surprise with cash.",
+    "Saving 480 dollars a month, the full 3,600 takes 7.5 months. Set up an automatic transfer on payday.",
+    "Keep it in a separate, FDIC-insured savings account. Not in stocks, which can drop right when you need the money.",
+    "When the fund is full, it covers three months with no paycheck. After you use it, refill it before other goals. 450 dollars takes about one month to refill.",
+    "A camel's hump is stored fat. In hard times the camel lives on it and the hump shrinks. In good times it fills back up. Your fund works the same way."
+  ]
+}
