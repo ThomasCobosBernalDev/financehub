@@ -82,7 +82,11 @@ async function handle(req: Request) {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   if (req.method !== "POST") return json({ error: "POST only" }, 405);
   const key = Deno.env.get("RESEND_API_KEY");
-  if (!key) return json({ error: "RESEND_API_KEY is not set" }, 500);
+  if (!key) {
+    // Names only, never values: shows a secret saved under a slightly different name.
+    console.error("RESEND_API_KEY is not set. Secret names that mention resend:", Object.keys(Deno.env.toObject()).filter((k) => /resend|api_key/i.test(k)));
+    return json({ error: "RESEND_API_KEY is not set" }, 500);
+  }
 
   const sk = adminKey();
   if (!sk) { console.error("No service key in env", Object.keys(Deno.env.toObject()).filter((k) => k.startsWith("SUPABASE"))); return json({ error: "no service key" }, 500); }
