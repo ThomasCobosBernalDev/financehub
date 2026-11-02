@@ -1,0 +1,17 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": { "APR": "a pe erre" },
+  "lines": [
+    "Pagas una laptop de 1,000 dólares con una tarjeta de crédito nueva. Si pagas los 1,000 completos cuando llega la cuenta, no cuesta nada extra. Si pagas solo el mínimo, tardas 74 meses y pagas 886 dólares con 90 centavos de interés.",
+    "Tu límite de crédito es lo máximo que puedes deber. Una vez al mes la tarjeta te manda un estado de cuenta. El saldo del estado de cuenta es lo que debías cuando se cerró el ciclo.",
+    "La fecha límite es al menos 21 días después del estado de cuenta. Ese tiempo es el periodo de gracia. Paga todo el saldo del estado de cuenta antes de la fecha límite y no pagas nada de interés.",
+    "Si dejas una parte sin pagar, te cobran interés con el APR. Un mes es más o menos el APR entre 12. Con 24 por ciento, es 2 por ciento al mes: 20 dólares sobre 1,000.",
+    "El pago mínimo muchas veces es 1 por ciento del saldo más el interés del mes. Con 1,000 dólares son 30 dólares, y solo 10 bajan lo que debes.",
+    "Pagar tarde trae un cargo por atraso y quizá una tasa de penalización más alta. Treinta días de atraso llegan a tu reporte de crédito.",
+    "Un adelanto en efectivo cobra una comisión de inmediato, casi siempre 5 por ciento, y el interés empieza ese mismo día. Evítalo.",
+    "El reembolso en efectivo solo cuenta si pagas completo. Un mes de interés, 20 dólares, le gana a una recompensa de 15.",
+    "Piensa en una enredadera rápida. Pódala cada semana y se queda pequeña. Déjala sola y cubre la cerca. Pagar completo cada mes es la poda semanal."
+  ]
+}

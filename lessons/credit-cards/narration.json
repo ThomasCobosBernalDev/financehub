@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": { "APR": "A P R" },
+  "lines": [
+    "You put a 1,000 dollar laptop on a new credit card. Pay the full 1,000 when the bill comes, and it costs nothing extra. Pay only the minimum, and it takes 74 months and 886 dollars and 90 cents of interest.",
+    "Your credit limit is the most you can owe. Once a month the card sends a statement. The statement balance is what you owed when the billing cycle ended.",
+    "The due date is at least 21 days after the statement. That time is the grace period. Pay the whole statement balance by the due date, and you pay no interest at all.",
+    "If you leave part of it unpaid, you're charged interest at the APR. One month is about the APR divided by 12. At 24 percent, that's 2 percent a month: 20 dollars on 1,000.",
+    "The minimum payment is often 1 percent of the balance plus that month's interest. On 1,000 dollars that's 30 dollars, and only 10 of it lowers what you owe.",
+    "Paying late brings a late fee and maybe a higher penalty rate. Thirty days late goes on your credit report.",
+    "A cash advance charges a fee right away, usually 5 percent, and interest starts that same day. Avoid it.",
+    "Cash back only counts if you pay in full. One month of interest, 20 dollars, beats a 15 dollar reward.",
+    "Think of a fast vine. Trim it every week and it stays small. Leave it alone and it covers the fence. Paying in full every month is the weekly trim."
+  ]
+}
