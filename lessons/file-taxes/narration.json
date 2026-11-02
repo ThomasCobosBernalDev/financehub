@@ -1,0 +1,21 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "W-2": "W 2",
+    "1099-INT": "ten ninety-nine I N T",
+    "IRS": "I R S",
+    "VITA": "VEE-tuh"
+  },
+  "lines": [
+    "Every spring, you settle up with the IRS for the year before. That's your tax return, Form 1040.",
+    "In January, forms arrive. Your employer sends a W-2: box 1 is your wages, 8,450 dollars. Box 2 is the tax they withheld, 40 dollars and 4 cents. Your bank sends a 1099-INT for your 45 dollars of interest.",
+    "Money you earn counts even with no form, like 1,200 dollars of tutoring paid by app. Gifts, paybacks from friends, and last year's refund don't count.",
+    "The 1040 is five lines. Total income: 8,495 dollars. Minus the 16,100 dollar standard deduction leaves zero taxable income. Zero tax.",
+    "Then compare. You paid 40 dollars and 4 cents but owed nothing, so you get it all back. But only if you file. The IRS doesn't mail it on its own.",
+    "Side-hustle profit of 400 dollars or more means you must file. You're the worker and the employer, so you pay 15.3 percent for Social Security and Medicare, on 92.35 percent of your profit.",
+    "On 1,200 dollars, that's 169 dollars and 55 cents. Take away the 40 dollars and 4 cents you already paid, and you owe 129 dollars and 51 cents.",
+    "Returns are due April 15. An extension gives you until October to file, but not to pay. And you can file for free with IRS Free File or a VITA volunteer.",
+    "Think of a tree's rings. Each year adds one ring that records the whole year. Your tax return is your money's ring."
+  ]
+}

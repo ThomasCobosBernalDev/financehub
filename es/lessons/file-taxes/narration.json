@@ -1,0 +1,22 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "W-2": "doble u dos",
+    "1099-INT": "diez noventa y nueve i ene te",
+    "IRS": "i erre ese",
+    "VITA": "vita"
+  },
+  "lines": [
+    "Cada primavera arreglas cuentas con el IRS por el año anterior. Esa es tu declaración de impuestos, el Formulario 1040.",
+    "En enero llegan formularios. Tu empleador te manda un W-2: la casilla 1 es tu sueldo, 8,450 dólares. La casilla 2 es el impuesto que te retuvieron, 40 dólares con 4 centavos. Tu banco te manda un 1099-INT por tus 45 dólares de interés.",
+    "El dinero que ganas cuenta aunque no llegue formulario, como 1,200 dólares de tutorías pagados por app. Los regalos, lo que te devuelven tus amigos y el reembolso del año pasado no cuentan.",
+    "El 1040 son cinco líneas. Ingreso total: 8,495 dólares. Menos la deducción estándar de 16,100 dólares, el ingreso gravable queda en cero. Cero de impuesto.",
+    "Luego comparas. Pagaste 40 dólares con 4 centavos pero no debías nada, así que te regresan todo. Pero solo si declaras. El IRS no te lo manda solo.",
+    "Si ganas 400 dólares o más en un trabajo extra, debes declarar. Eres el trabajador y el empleador, así que pagas 15.3 por ciento de Seguro Social y Medicare, sobre el 92.35 por ciento de tu ganancia.",
+    "Sobre 1,200 dólares, son 169 dólares con 55 centavos. Quítale los 40 dólares con 4 centavos que ya pagaste y debes 129 dólares con 51 centavos.",
+    "Las declaraciones se presentan a más tardar el 15 de abril. Una prórroga te da hasta octubre para presentarla, pero no para pagar. Y puedes declarar gratis con IRS Free File o con un voluntario de VITA.",
+    "Piensa en los anillos de un árbol. Cada año suma un anillo que guarda todo el año. Tu declaración es el anillo de tu dinero."
+  ]
+}

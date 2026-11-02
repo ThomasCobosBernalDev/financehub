@@ -129,7 +129,7 @@
     L(1, 4, "u1-moving-money", t("Transfers and payment apps", "Transferencias y apps de pago"), t("Direct deposit, transfers and payment apps", "Depósito directo, transferencias y apps de pago"), { href: "lessons/moving-money/" }),
     L(2, 1, "u2-pay-stub", t("Reading a pay stub", "Leer un talón de pago"), t("Gross vs. take-home pay", "Sueldo bruto vs. neto"), { href: "lessons/pay-stub/" }),
     L(2, 2, "u2-taxes", t("How taxes work", "Cómo funcionan los impuestos"), t("Tax brackets and the W-4", "Categorías de impuestos y el W-4"), { href: "lessons/taxes/", needs: ["u2-pay-stub"] }),
-    L(2, 3, "u2-file-taxes", t("Filing a tax return", "Presentar tu declaración de impuestos"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra")),
+    L(2, 3, "u2-file-taxes", t("Filing a tax return", "Presentar tu declaración de impuestos"), t("Refunds, forms and side-hustle income", "Reembolsos, formularios e ingresos extra"), { href: "lessons/file-taxes/", needs: ["u2-taxes"] }),
     L(3, 1, "u4-budgeting-frameworks", t("Making a budget", "Hacer un presupuesto"), t("Give every dollar a job · Month Survivor", "Dale un trabajo a cada dólar · Sobrevive el mes"), { href: "lessons/budgeting/" }),
     L(3, 2, "u3-emergency-fund", t("Emergency funds", "El fondo de emergencia"), t("How much, where to keep it, how fast", "Cuánto, dónde guardarlo y qué tan rápido"), { needs: ["u4-budgeting-frameworks"] }),
     L(3, 3, "u3-high-yield", t("High-yield savings", "Ahorro de alto rendimiento"), t("Make your savings earn more", "Haz que tus ahorros ganen más"), { needs: ["u1-checking-savings"] }),
@@ -284,6 +284,7 @@
     ["found-equilibrium", "supply-demand", t("Found the Equilibrium", "Encontraste el equilibrio"), t("Find the price where supply meets demand.", "Encuentra el precio donde la oferta y la demanda se igualan.")],
     ["market-stall-a", "supply-demand", t("Market Stall: A", "Puesto del mercado: A"), t("Get an A in Market Stall.", "Saca A en Puesto del mercado.")],
     ["bracket-pro", "taxes", t("Bracket Pro", "Experto en categorías"), t("Pour all 6 paychecks into the right brackets.", "Reparte bien los 6 sueldos en sus categorías.")],
+    ["mail-sorter", "file-taxes", t("Ready to File", "Listo para declarar"), t("Sort all 8 pieces of tax mail right.", "Ordena bien las 8 cosas del correo de impuestos.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };
