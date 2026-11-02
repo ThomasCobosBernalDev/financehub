@@ -26,21 +26,17 @@ function adminKey() {
 
 Deno.serve(async (req) => {
   try { return await handle(req); }
-  catch (e) { console.error("welcome-email failed", e); return json({ error: String(e) }, 500); }
+  catch (e) { console.error("welcome-email failed", e); return json({ error: "failed" }, 500); }
 });
 
 async function handle(req: Request) {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   if (req.method !== "POST") return json({ error: "POST only" }, 405);
   const key = Deno.env.get("RESEND_API_KEY");
-  if (!key) {
-    // Names only, never values: shows a secret saved under a slightly different name.
-    console.error("RESEND_API_KEY is not set. Secret names that mention resend:", Object.keys(Deno.env.toObject()).filter((k) => /resend|api_key/i.test(k)));
-    return json({ error: "RESEND_API_KEY is not set" }, 500);
-  }
+  if (!key) { console.error("RESEND_API_KEY is not set"); return json({ error: "failed" }, 500); }
 
   const sk = adminKey();
-  if (!sk) { console.error("No service key in env", Object.keys(Deno.env.toObject()).filter((k) => k.startsWith("SUPABASE"))); return json({ error: "no service key" }, 500); }
+  if (!sk) { console.error("No service key in env"); return json({ error: "failed" }, 500); }
   const admin = createClient(Deno.env.get("SUPABASE_URL")!, sk, { auth: { persistSession: false, autoRefreshToken: false } });
   const jwt = (req.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
   const { data: got, error } = await admin.auth.getUser(jwt);
@@ -52,6 +48,11 @@ async function handle(req: Request) {
   // Email-and-password sign-ups already got the confirm email, which is their welcome.
   if (!providers.includes("google") || providers.includes("email")) return json({ sent: false, reason: "not a Google sign-up" });
 
+  // Claim the send before calling Resend, so a burst of calls can't send it twice.
+  const meta = u.app_metadata || {};
+  const claim = await admin.auth.admin.updateUserById(u.id, { app_metadata: { ...meta, welcome_sent_at: new Date().toISOString() } });
+  if (claim.error) { console.error("Could not mark welcome as sent", claim.error); return json({ error: "failed" }, 500); }
+
   const m = u.user_metadata || {};
   const { subject, html } = email(m.lang === "es" ? "es" : "en", esc(String(m.username || m.full_name || u.email.split("@")[0]).slice(0, 40)));
   const r = await fetch("https://api.resend.com/emails", {
@@ -59,9 +60,12 @@ async function handle(req: Request) {
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: "FinancedHub <hello@financedhub.com>", to: [u.email], subject, html }),
   });
-  if (!r.ok) { const detail = await r.text(); console.error("Resend refused", r.status, detail); return json({ error: "Resend refused", status: r.status, detail }, 502); }
-  const up = await admin.auth.admin.updateUserById(u.id, { app_metadata: { ...u.app_metadata, welcome_sent_at: new Date().toISOString() } });
-  if (up.error) console.error("Could not mark welcome as sent", up.error);
+  if (!r.ok) {
+    console.error("Resend refused", r.status, await r.text());
+    // Let a later call try again.
+    await admin.auth.admin.updateUserById(u.id, { app_metadata: { ...meta, welcome_sent_at: null } });
+    return json({ error: "send failed" }, 502);
+  }
   console.log("welcome sent", u.id);
   return json({ sent: true });
 }
