@@ -296,9 +296,11 @@ window.FHSaveNudge = (el, pos, o = {}) => {
       const d = FH.streak();
       const text = T(`I'm on a ${d}-day streak learning money on FinancedHub 🔥 https://financedhub.com`, `Llevo una racha de ${d} ${d === 1 ? "día" : "días"} aprendiendo de dinero en FinancedHub 🔥 https://financedhub.com`);
       const blob = await streakCard(d), file = new File([blob], "financedhub-streak.png", { type: "image/png" });
-      // The picture with the line and the link, sent together.
-      if (navigator.canShare && navigator.canShare({ files: [file], text })) {
-        try { await navigator.share({ files: [file], text }); } catch (e) { /* closed or cancelled */ }
+      // The picture plus the bare link. Messages only draws a link's preview card when the link is on its own,
+      // so the words stay on the picture instead of in the message.
+      const pick = [{ files: [file], url: "https://financedhub.com/" }, { files: [file], text }].find((d) => navigator.canShare && navigator.canShare(d));
+      if (pick) {
+        try { await navigator.share(pick); } catch (e) { /* closed or cancelled */ }
         return;
       }
       const a = document.createElement("a");
