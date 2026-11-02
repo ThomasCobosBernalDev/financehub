@@ -200,6 +200,15 @@
     const name = (c) => { const s = $(`.rail a[href="#${c.id}"] span`); return s ? s.textContent : ""; };
     const step = (from, dir) => { const i = from + dir; return i >= 0 && i < chapters.length ? i : -1; };
     let at = 0;
+    // The last step's own "Next lesson / Course map" row moves into the pager, so the page ends with one set of buttons.
+    const last = chapters[chapters.length - 1];
+    const nextA = [...last.querySelectorAll("a.btn:not(.line)")].find((a) => a.parentElement.querySelector('a.btn.line[href$="course/"]'));
+    let nextL = null;
+    if (nextA) {
+      const txt = nextA.textContent.replace("→", "").trim(), k = txt.indexOf(":");
+      nextL = { href: nextA.getAttribute("href"), lead: k > 0 ? txt.slice(0, k) : txt, rest: k > 0 ? txt.slice(k) : "" };
+      nextA.parentElement.remove();
+    }
     chapters.forEach((c, i) => {
       const nav = document.createElement("nav");
       nav.className = "pager";
@@ -218,6 +227,7 @@
         + `<div class="pg-steps"><div class="pg-dots">${chapters.map((c, j) => `<button type="button" class="pg-dot${j === i ? " on" : ""}${seen[c.id] ? " seen" : ""}" data-go="${j}" aria-label="${name(c)}"${j === i ? ' aria-current="step"' : ""}><i></i><span class="pg-tip">${name(c)}</span></button>`).join("")}</div>`
         + `<span class="pg-name">${name(c)} <small>· ${i + 1} ${T("of", "de")} ${chapters.length}</small></span></div>`
         + (next >= 0 ? `<button class="btn pg-next" type="button" data-go="${next}"><span>${T("Next", "Siguiente")}<span class="pg-label">: ${name(chapters[next])}</span></span> <span class="arrow">→</span></button>`
+          : nextL ? `<div class="pg-end"><a class="btn line" href="${root}course/">${T("Course map", "Mapa del curso")}</a><a class="btn pg-next" href="${nextL.href}"><span>${nextL.lead}<span class="pg-label">${nextL.rest}</span></span> <span class="arrow">→</span></a></div>`
           : `<a class="btn pg-next" href="${root}course/">${T("Back to the course", "Volver al curso")} <span class="arrow">→</span></a>`);
     });
     const show = (i, target) => {
