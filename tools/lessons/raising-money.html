@@ -1,0 +1,246 @@
+<!-- title: Raising Money -->
+<!-- description: Unit 13, Lesson 1: how businesses raise money: debt (loans and bonds) vs. equity (selling shares), interest and repayment, ownership and dilution, pre-money and post-money valuation, leverage, and the funding ladder from bootstrapping to angels, venture capital and an IPO. Play: Debt or equity, eight funding questions. -->
+<!-- kicker: Unit 13 · Lesson 1 -->
+<!-- topic: Corporate finance -->
+
+<!-- @start -->
+        <h1 class="reveal">You need $40,000. <em>Borrow it, or sell a piece?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The shop is doing well, and you want to open a <span class="mark">second location</span>. Tools, a lease deposit and a first month of rent add up to <span class="mark">$40,000</span>, and you don't have it. Two offers land on your desk. The bank will lend you <span class="mark">$40,000 at 8% a year</span>. A local investor will give you <span class="mark">$40,000 for 25% of the business</span>. One you have to pay back. The other you never pay back, but you give up a quarter of everything, forever. This lesson is about how every business, from a bike shop to Apple, gets the money to grow.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>Businesses raise money two ways: <b>debt</b> (borrowing, paid back with interest) or <b>equity</b> (selling part ownership).</p></div>
+          <div class="reveal"><div class="word">Why</div><p>The choice decides who controls the company, who gets the profit, and how much risk the owners take.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Compare what each costs in good years and bad, how much ownership you give up, and whether the business can make the payments.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Commercial bankers</b> make loans. <b>Venture capitalists</b> and <b>angel investors</b> buy shares in young companies. <b>Investment bankers</b> help big companies sell bonds and shares, including on IPO day.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Two paths to $40,000. On the left, a bank with 8% a year. On the right, a pie chart with a 25% slice pulled out for an investor.">
+          <rect x="40" y="200" width="180" height="140" rx="10" fill="var(--card)" stroke="var(--ink-3)" stroke-width="4"/>
+          <path d="M30 205 L 130 140 L 230 205 Z" fill="var(--needs)"/>
+          <g fill="var(--ink-3)"><rect x="66" y="230" width="18" height="90" rx="4"/><rect x="106" y="230" width="18" height="90" rx="4"/><rect x="146" y="230" width="18" height="90" rx="4"/><rect x="186" y="230" width="18" height="90" rx="4"/></g>
+          <text x="130" y="390" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Debt</text>
+          <text x="130" y="416" text-anchor="middle" font-size="15" fill="var(--ink-2)">pay back + 8% a year</text>
+          <g transform="translate(390 270)">
+            <path d="M0 0 L 0 -90 A 90 90 0 1 0 90 0 Z" fill="var(--good)"/>
+            <g class="rm-slice"><path d="M12 -12 L 12 -102 A 90 90 0 0 1 102 -12 Z" fill="var(--wants)"/></g>
+            <text x="-22" y="30" text-anchor="middle" font-family="Fraunces, serif" font-size="26" fill="var(--on-color)">75%</text>
+            <text x="56" y="-50" text-anchor="middle" font-size="17" font-weight="700" fill="var(--on-color)">25%</text>
+          </g>
+          <text x="390" y="390" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Equity</text>
+          <text x="390" y="416" text-anchor="middle" font-size="15" fill="var(--ink-2)">give up 25% forever</text>
+          <text x="260" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="40" fill="var(--ink)">$40,000</text>
+          <text x="260" y="510" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">every dollar has a price</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the two ways to get $40,000. On the left, a bank loan: you keep the whole business but owe the money back plus 8% a year. On the right, an investor: you never repay, but the orange quarter of the business now belongs to someone else.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Debt or equity: <em>two kinds of money.</em></h2>
+      <p class="lead reveal">On the balance sheet in Lesson 12.2, everything a business owns was paid for by lenders or owners. Raising money is just choosing which one to add more of.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Debt</h3>
+      <p class="reveal"><dfn class="term" data-def="Money a business borrows and must pay back, with interest, on a set schedule, whether or not it makes a profit.">Debt</dfn> is borrowed money. You pay it back on a schedule, plus interest, whether the business does well or not. You keep all the ownership. And interest is an expense on the income statement (Lesson 12.1), so a corporation pays less tax because of it. Big companies also borrow by selling <dfn class="term" data-def="A loan to a company or government, split into pieces that investors buy. The borrower pays interest and returns the full amount on a set date.">bonds</dfn>: IOUs that investors buy, which pay interest and return the money on a set date.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bank loan</dt><dd>$40,000 at 8%: $40,000 × 0.08 = <b>$3,200 of interest a year</b>, plus paying back the $40,000 over time.</dd></div><div><dt>Ownership</dt><dd>You keep <b>100%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Equity</h3>
+      <p class="reveal"><dfn class="term" data-def="Money raised by selling part ownership of a business. It's never paid back; investors earn a share of future profits and value.">Equity</dfn> financing means selling part of the business. The investor never gets paid back. Instead they own a slice of every future profit, and of whatever the business sells for someday. Ownership is counted in <dfn class="term" data-def="Equal units of ownership in a company. Owning 25% of the shares means owning 25% of the company.">shares</dfn>, like the stocks you learned about in Unit 5.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The investor's offer</dt><dd>$40,000 for <b>25%</b>. You keep 75%.</dd></div><div><dt>In shares</dt><dd>You own 3,000 shares. The business creates 1,000 new shares for the investor: <span class="frac"><span>$40,000</span><span>1,000</span></span> = <b>$40 a share</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Dilution</h3>
+      <p class="reveal">When a business sells new shares, every old owner's slice gets smaller. That's <dfn class="term" data-def="When a company creates new shares, so each existing owner holds a smaller percentage.">dilution</dfn>. You still own the same number of shares, just a smaller percent of a (hopefully) bigger business.</p>
+      <div class="formula reveal">Your ownership <span class="op">=</span> <span class="frac"><span>your shares</span><span>all shares</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Before</dt><dd><span class="frac"><span>3,000</span><span>3,000</span></span> = 100%.</dd></div><div><dt>After</dt><dd><span class="frac"><span>3,000</span><span>4,000</span></span> = 0.75, so <b>75%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Valuation: pre-money and post-money</h3>
+      <p class="reveal">An equity deal quietly puts a price on the whole business. The <dfn class="term" data-def="What a business is worth right after new investment: the investment divided by the share the investor gets.">post-money valuation</dfn> is what it's worth right after the investment. Subtract the new money to get the <dfn class="term" data-def="What a business is worth just before new investment: post-money valuation minus the investment.">pre-money valuation</dfn>, what it was worth before.</p>
+      <div class="formula reveal">Post-money <span class="op">=</span> <span class="frac"><span>investment</span><span>investor's share</span></span> &nbsp;&nbsp; Pre-money <span class="op">=</span> post-money <span class="op">−</span> investment</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Post-money</dt><dd><span class="frac"><span>$40,000</span><span>0.25</span></span> = <b>$160,000</b>.</dd></div><div><dt>Pre-money</dt><dd>$160,000 − $40,000 = <b>$120,000</b>. The investor thinks your shop is worth $120,000 today.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Leverage</h3>
+      <p class="reveal">Debt costs the same in good years and bad. Equity investors share whatever happens. So using debt, called <dfn class="term" data-def="Using borrowed money to grow. It makes good years better and bad years worse for the owners, because the interest is fixed.">leverage</dfn>, makes good years better for you and bad years worse. Try it below.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A $30,000 year</dt><dd>Loan: $30,000 − $3,200 = <b>$26,800</b> for you. Investor: $30,000 × 0.75 = <b>$22,500</b>. Debt wins by $4,300.</dd></div><div><dt>A −$10,000 year</dt><dd>Loan: −$10,000 − $3,200 = <b>−$13,200</b>. Investor: −$10,000 × 0.75 = <b>−$7,500</b>. Equity hurts less.</dd></div></dl></div>
+      <div class="md-card reveal" id="rm">
+        <label class="md-lab" for="rm-p">Both shops' profit next year, before interest <b id="rm-p-v">$30,000</b></label><input type="range" id="rm-p" min="-10000" max="60000" step="5000" value="30000">
+        <div id="rm-out" aria-hidden="true"></div>
+        <p class="rm-msg" id="rm-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> what you'd keep next year under each offer, from a $10,000 loss to a $60,000 profit. Top bar: take the loan and pay $3,200 of interest. Bottom bar: take the investor's money and keep 75%. Simplified: it skips taxes and paying back the loan's $40,000.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The funding ladder</h3>
+      <p class="reveal">Businesses climb a ladder as they grow. First, <dfn class="term" data-def="Starting and growing a business with your own savings and its own profits, without outside money.">bootstrapping</dfn>: your own savings and profits. Then friends and family, and bank loans once there's a track record. <dfn class="term" data-def="A wealthy individual who invests their own money in very young companies, usually for shares.">Angel investors</dfn> put their own money into very young companies. <dfn class="term" data-def="Firms that invest other people's money in young, fast-growing, risky companies in exchange for shares, hoping a few become huge.">Venture capital</dfn> firms invest in startups that could grow huge, in rounds called Series A, B and C. Finally, an <dfn class="term" data-def="Initial public offering: the first time a company sells shares to the public on a stock exchange.">IPO</dfn>, an initial public offering, is the first time a company sells shares to anyone on the stock market.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Where you are</dt><dd>You started with $1,200 of your own savings and a $2,500 bank loan (Lesson 12.3). The $40,000 investor would be your <b>angel</b>.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Debt <em>or equity?</em></h2>
+      <p class="lead reveal">Eight questions about how businesses raise money. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="de">
+        <div class="fd-top">
+          <div><small id="de-round">Question 1 of 8</small><b id="de-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="de-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="de-facts"></ul>
+        <div class="sd-opts" id="de-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="de-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="de-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="de-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up businesses raising money. Each lists the deal, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Before you take anyone's money, run these three steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Can the business make the payments?</h3>
+      <div class="formula reveal">Steady profit that covers interest <span class="op">→</span> debt is possible</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The shop</dt><dd>A profitable year easily covers $3,200 of interest.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: What does each option cost you?</h3>
+      <div class="formula reveal">Debt: interest. Equity: a share of every future profit.</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>In a $30,000 year</dt><dd>$3,200 of interest vs. $7,500 to the investor.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: What happens in a bad year?</h3>
+      <div class="formula reveal">Debt payments don't shrink when profit does</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A −$10,000 year</dt><dd>The loan still costs $3,200; the investor shares the loss.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: where's the break-even?</h3>
+      <ol class="steps reveal">
+        <li><b>With the loan</b>, you keep profit − $3,200.</li>
+        <li><b>With the investor</b>, you keep profit × 0.75.</li>
+        <li><b>They're equal when</b> the investor's 25% share equals $3,200: profit × 0.25 = $3,200.</li>
+        <li><b>Solve.</b> Profit = <span class="frac"><span>$3,200</span><span>0.25</span></span> = $12,800.</li>
+        <li><b>The answer.</b> If you expect more than $12,800 a year, the loan leaves you more. Below that, the investor does. And remember: the investor keeps 25% of every year after this one too.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Trees sell a share <em>of their sugar.</em></h2>
+      <p class="lead reveal">Most trees partner with fungi in the soil, called mycorrhizae. The fungus threads through the ground and brings the tree water and nutrients its roots can't reach. In return, the tree gives the fungus a share of the sugar it makes from sunlight, every year, for as long as they're partners.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A tree above ground and a web of fungus threads around its roots below ground. Arrows show sugar going down to the fungus and water and nutrients coming up to the tree.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--accent) 8%, var(--card))"/>
+        <path d="M0 200 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#7a5a3a"/>
+        <rect x="430" y="110" width="40" height="95" rx="10" fill="#6b4a30"/>
+        <circle cx="450" cy="80" r="70" fill="#4f8a4a"/><circle cx="395" cy="105" r="45" fill="#5a9a52"/><circle cx="505" cy="105" r="45" fill="#5a9a52"/>
+        <g stroke="#4a3220" stroke-width="7" stroke-linecap="round" fill="none"><path d="M450 205 C 440 250, 400 270, 360 300"/><path d="M450 205 C 460 250, 500 270, 540 300"/><path d="M450 205 V 300"/></g>
+        <g class="rm-web" stroke="#f2e6c9" stroke-width="2" fill="none" opacity=".85">
+          <path d="M360 300 C 300 320, 250 300, 200 330"/><path d="M360 300 C 330 340, 280 350, 240 370"/><path d="M540 300 C 600 320, 650 300, 700 330"/><path d="M540 300 C 570 340, 620 350, 660 370"/><path d="M450 300 C 430 340, 470 350, 450 380"/><path d="M200 330 C 170 320, 150 340, 120 330"/><path d="M700 330 C 730 320, 750 340, 780 330"/>
+        </g>
+        <g stroke-width="5" stroke-linecap="round" fill="none"><path d="M560 150 V 240" stroke="#f2c14e"/><path d="M552 230 l 8 12 l 8 -12" stroke="#f2c14e"/><path d="M340 240 V 150" stroke="#8fc4e8"/><path d="M332 160 l 8 -12 l 8 12" stroke="#8fc4e8"/></g>
+        <g text-anchor="middle">
+          <text x="700" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Tree gives sugar</text>
+          <text x="700" y="96" font-size="15" fill="var(--ink-2)">like sharing profit</text>
+          <text x="200" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Fungus gives water</text>
+          <text x="200" y="96" font-size="15" fill="var(--ink-2)">like the investor's money</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A tree above ground and, below it, light threads of fungus spreading out from its roots. The yellow arrow is sugar going down to the fungus; the blue arrow is water and nutrients coming up to the tree.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The tree never "repays" the fungus. It shares its output for as long as the partnership lasts, in exchange for help growing bigger than it could alone. That's equity.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Debt</b>: borrow, pay back with interest, keep 100%. $40,000 × 0.08 = $3,200 a year. Big companies also sell <b>bonds</b>.</li>
+          <li><b>Equity</b>: sell shares, never repay, give up a slice forever. $40,000 for 25%.</li>
+          <li><b>Dilution</b>: <span class="frac"><span>3,000</span><span>4,000</span></span> = 75% after 1,000 new shares.</li>
+          <li><b>Post-money</b> = <span class="frac"><span>$40,000</span><span>0.25</span></span> = $160,000. <b>Pre-money</b> = $160,000 − $40,000 = $120,000.</li>
+          <li><b>Leverage</b>: debt makes good years better ($26,800 vs. $22,500) and bad years worse (−$13,200 vs. −$7,500).</li>
+          <li><b>Ladder</b>: bootstrapping → friends and family → bank loans → angels → venture capital → IPO.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Money you must pay back with interest is <input type="text" class="blank" data-answer="debt" aria-label="Blank 1">.</div>
+        <div>2. An investor pays $50,000 for 25% of a business. Its post-money valuation is <input type="text" class="blank" data-answer="200000|$200000|200,000|$200,000" inputmode="numeric" aria-label="Blank 2"> dollars.</div>
+        <div>3. When new shares shrink each owner's percentage, it's called <input type="text" class="blank" data-answer="dilution" aria-label="Blank 3">.</div>
+        <div>4. A company's first sale of shares to the public is its <input type="text" class="blank" data-answer="ipo|initial public offering" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Pitch night</h3>
+          <p>One person pitches a business and asks for money. The others offer either a loan or cash for a share. Negotiate the percent and the rate.</p>
+        </div>
+        <div class="reveal">
+          <h3>Follow a company</h3>
+          <p>Pick a famous company and look up how it raised money: its first investors, its venture rounds and its IPO year.</p>
+        </div>
+        <div class="reveal">
+          <h3>Slider challenge</h3>
+          <p>Using the slider above, find the profit where both offers leave you the same amount. Check it against the worked example.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">If you started a business, would you rather borrow or take an investor? Why?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What percent of your business would you be willing to give up, and for how much?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Where on the funding ladder would you want to work: banking, angel investing, venture capital or IPOs?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a venture capital analyst</h3>
+      <div class="reveal">
+        <p>A software startup asks your firm for money. Here's the situation:</p>
+        <ul>
+          <li><b>The ask:</b> $2,000,000.</li>
+          <li><b>The offer:</b> a pre-money valuation of $8,000,000.</li>
+          <li><b>Shares:</b> the founders own all 8,000,000 shares today.</li>
+          <li><b>Profit:</b> none yet. It's still growing.</li>
+          <li><b>Your firm's hope:</b> the company sells for $50,000,000 in about 6 years.</li>
+        </ul>
+        <p><b>Your task:</b> what's the post-money valuation, and what percent would your firm own? How many new shares at what price? If the company sells for $50,000,000, what's your firm's stake worth? Why isn't a bank loan a good fit here?</p>
+        <textarea id="job-answer" placeholder="Write your investment memo…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Post-money:</b> $8,000,000 + $2,000,000 = <b>$10,000,000</b>. Your share: <span class="frac"><span>$2,000,000</span><span>$10,000,000</span></span> = <b>20%</b>.</p>
+            <p><b>Shares:</b> price is <span class="frac"><span>$8,000,000</span><span>8,000,000</span></span> = $1 a share, so 2,000,000 new shares. Founders keep <span class="frac"><span>8,000,000</span><span>10,000,000</span></span> = 80%.</p>
+            <p><b>If it sells for $50,000,000:</b> your 20% is worth <b>$10,000,000</b>, five times the $2,000,000 invested. The founders' 80% is worth $40,000,000.</p>
+            <p><b>Why not a loan:</b> with no profit, the startup couldn't pay interest (8% on $2,000,000 would be $160,000 a year). Equity investors accept that risk because a few big winners pay for the many startups that fail.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Where the money <em>comes from.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on the balance sheet, how the three statements connect, and what a stock is, and leads to picking projects with NPV">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../balance-sheet/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Balance sheet</text><text x="20" y="86">Unit 12 · liabilities vs. equity</text></a>
+          <a href="../three-statements/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Three statements</text><text x="20" y="186">Unit 12 · financing cash flows</text></a>
+          <a href="../stocks/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Stocks</text><text x="20" y="286">Unit 5 · what a share is</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Raising money</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Picking projects with NPV</text><text x="690" y="186">Coming soon · Unit 13</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 12</span><b>What it owns, what it owes</b></li>
+        <li><span class="muted small">Back · Unit 12</span><b>How the three statements connect</b></li>
+        <li><span class="muted small">Back · Unit 5</span><b>What a stock is</b></li>
+        <li class="here"><span class="small">You are here</span><b>Raising money</b></li>
+        <li><span class="muted small">Coming soon · Unit 13</span><b>Picking projects with NPV</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../three-statements/">Revisit: How the three statements connect <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

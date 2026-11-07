@@ -1,0 +1,17 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {
+  "IPO": "i pe o"
+ },
+ "lines": [
+  "Necesitas cuarenta mil dólares para abrir un segundo local. El banco te los presta al ocho por ciento anual. Un inversionista te los da a cambio del veinticinco por ciento del negocio.",
+  "Esa es la gran decisión de todo negocio. La deuda es dinero prestado: la devuelves con intereses y te quedas con toda la propiedad. El ocho por ciento de cuarenta mil son tres mil doscientos dólares de intereses al año.",
+  "El capital significa vender una parte del negocio. Nunca lo devuelves, pero el inversionista es dueño de una parte de cada ganancia futura, para siempre.",
+  "Vender acciones nuevas causa dilución. Tienes tres mil acciones, el inversionista recibe mil nuevas, así que ahora tienes tres mil de cuatro mil, o sea el setenta y cinco por ciento.",
+  "El trato también le pone precio al negocio. Cuarenta mil dólares entre el veinticinco por ciento da una valuación después de la inversión de ciento sesenta mil. Quita el dinero nuevo, y la valuación antes de la inversión es de ciento veinte mil.",
+  "La deuda es apalancamiento. En un año de treinta mil dólares, el préstamo te deja veintiséis mil ochocientos, y el trato con el inversionista te deja veintidós mil quinientos. Pero en un mal año, los intereses se pagan igual. El punto de equilibrio es una ganancia de doce mil ochocientos dólares.",
+  "Al crecer, los negocios suben una escalera: sus propios ahorros, amigos y familia, préstamos del banco, inversionistas ángel, capital de riesgo y, al final, la salida a bolsa, la primera venta de acciones al público."
+ ]
+}

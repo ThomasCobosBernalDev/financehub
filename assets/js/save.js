@@ -162,7 +162,7 @@
     L(12, 1, "u12-income-statement", t("The income statement", "El estado de resultados"), t("Did the business make money?", "¿El negocio ganó dinero?"), { needs: ["u11-price-profit"], href: "lessons/income-statement/" }),
     L(12, 2, "u12-balance-sheet", t("The balance sheet", "El balance general"), t("What it owns, what it owes", "Lo que tiene y lo que debe"), { needs: ["u12-income-statement"], href: "lessons/balance-sheet/" }),
     L(12, 3, "u12-three-statements", t("How the three statements connect", "Cómo se conectan los tres estados"), t("The cash flow statement ties it together", "El estado de flujo de efectivo lo une todo"), { needs: ["u12-balance-sheet"], href: "lessons/three-statements/" }),
-    L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"] }),
+    L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"], href: "lessons/raising-money/" }),
     L(13, 2, "u13-npv", t("Picking projects with NPV", "Elegir proyectos con el VPN"), t("Is this investment worth it?", "¿Vale la pena esta inversión?"), { needs: ["u10-time-value"] }),
     L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"] }),
   ];
@@ -314,6 +314,7 @@
     ["bottom-liner", "income-statement", t("Bottom Liner", "Experto en utilidades"), t("Answer all 8 questions right in Line it up.", "Responde bien las 8 preguntas del juego Ponlo en orden.")],
     ["balanced-books", "balance-sheet", t("Balanced Books", "Cuentas cuadradas"), t("Answer all 8 questions right in Keep it balanced.", "Responde bien las 8 preguntas del juego Que cuadre.")],
     ["dot-connector", "three-statements", t("Dot Connector", "Conectas los puntos"), t("Answer all 8 questions right in Connect the dots.", "Responde bien las 8 preguntas del juego Une los puntos.")],
+    ["deal-maker", "raising-money", t("Deal Maker", "Cierras tratos"), t("Answer all 8 questions right in Debt or equity.", "Responde bien las 8 preguntas del juego ¿Deuda o capital?")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

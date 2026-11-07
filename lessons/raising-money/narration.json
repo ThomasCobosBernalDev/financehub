@@ -1,0 +1,16 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "IPO": "I. P. O."
+ },
+ "lines": [
+  "You need forty thousand dollars to open a second shop. The bank will lend it at eight percent a year. An investor will give it to you for twenty five percent of the business.",
+  "That's the big choice every business faces. Debt is borrowed money: you pay it back with interest, and you keep all the ownership. Eight percent of forty thousand is three thousand two hundred dollars of interest a year.",
+  "Equity means selling part of the business. You never pay it back, but the investor owns a slice of every future profit, forever.",
+  "Selling new shares causes dilution. You own three thousand shares, the investor gets one thousand new ones, so you now own three thousand out of four thousand, or seventy five percent.",
+  "The deal also puts a price on the business. Forty thousand dollars divided by twenty five percent is a post-money valuation of one hundred sixty thousand. Take away the new money, and the pre-money valuation is one hundred twenty thousand.",
+  "Debt is leverage. In a thirty thousand dollar year, the loan leaves you twenty six thousand eight hundred, and the investor deal leaves you twenty two thousand five hundred. But in a bad year, the interest is still due. The break-even is twelve thousand eight hundred dollars of profit.",
+  "As businesses grow, they climb a ladder: their own savings, friends and family, bank loans, angel investors, venture capital, and finally an IPO, the first sale of shares to the public."
+ ]
+}
