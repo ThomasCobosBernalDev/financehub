@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "The bike shop offers you a bonus: 1,000 dollars today, or 1,100 dollars in 2 years. Your savings pay 5 percent a year. Save the 1,000 and in 2 years it's 1,102 dollars and 50 cents. Taking the money now wins.",
+  "That's the time value of money. A dollar today is worth more than a dollar later, because it can earn interest. Inflation and risk add to it.",
+  "Future value grows today's money forward. Multiply by one plus the rate, once for every year.",
+  "Present value runs it backward. Divide the future amount by one plus the rate, once for every year. That's called discounting. 1,100 dollars in 2 years, at 5 percent, is worth about 998 dollars today.",
+  "The rate you use is the discount rate: what you could earn somewhere else. A higher rate, or a longer wait, makes future money worth less today.",
+  "A stream of payments, like a pension or a lottery payout, is called an annuity. Find the present value of each payment, and add them up.",
+  "So to compare any two offers: pick the rate, move both amounts to the same moment, and choose the bigger one."
+ ]
+}

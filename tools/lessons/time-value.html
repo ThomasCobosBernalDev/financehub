@@ -1,0 +1,264 @@
+<!-- title: The Time Value of Money -->
+<!-- description: Unit 10, Lesson 2: why a dollar today is worth more than a dollar later, future value, present value and discounting, the discount rate, and how to value a stream of payments like a lottery payout. Play: Now or later, eight offers to compare. -->
+<!-- kicker: Unit 10 · Lesson 2 -->
+<!-- topic: Money math -->
+
+<!-- @start -->
+        <h1 class="reveal">$1,000 now or $1,100 later? <em>Now wins.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The bike shop had a great year, and the owner offers you a bonus. You can take <span class="mark">$1,000 today</span>, or <span class="mark">$1,100 in 2 years</span>. $1,100 looks bigger. But your savings account pays <span class="mark">5% a year</span>. Put the $1,000 in today and in 2 years it grows to <span class="mark">$1,102.50</span>, more than $1,100. Money you have now can start earning right away. That's the <b>time value of money</b>, and it's behind every loan, investment, pension and lottery payout.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A dollar today is worth more than a dollar later, because today's dollar can earn interest in the meantime.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>It lets you compare money at different times: a bonus now or later, a lump sum or payments, a car loan or cash.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Move every amount to the same moment. Grow today's money forward, or shrink future money back to today.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Corporate finance analysts</b> use it to decide which projects to fund. <b>Bankers</b> price loans with it. <b>Financial planners</b> use it to compare pension and payout choices.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Three bars showing $1,000 today growing at 5% to $1,050 after 1 year and $1,102.50 after 2 years. A dashed line marks the $1,100 later offer, just below the last bar.">
+          <line x1="40" y1="440" x2="480" y2="440" stroke="var(--line)" stroke-width="3"/>
+          <rect x="60" y="240" width="100" height="200" rx="10" fill="var(--good)" opacity=".55"/>
+          <rect x="210" y="230" width="100" height="210" rx="10" fill="var(--good)" opacity=".75"/>
+          <rect x="360" y="219.5" width="100" height="220.5" rx="10" fill="var(--good)"/>
+          <path d="M40 220 H 480" stroke="var(--wants)" stroke-width="2.5" stroke-dasharray="7 6"/>
+          <text x="40" y="206" font-size="15" fill="var(--wants)">The later offer: $1,100</text>
+          <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+            <text x="110" y="470">Today</text><text x="260" y="470">1 year</text><text x="410" y="470">2 years</text>
+          </g>
+          <g font-family="Fraunces, serif" font-size="19" text-anchor="middle" fill="var(--on-color)">
+            <text x="110" y="276">$1,000</text><text x="260" y="266">$1,050</text><text x="410" y="256">$1,102.50</text>
+          </g>
+          <g class="tv-coin">
+            <circle cx="110" cy="130" r="34" fill="#e2b04a"/><circle cx="110" cy="130" r="25" fill="none" stroke="#b8862a" stroke-width="3"/>
+            <text x="110" y="139" text-anchor="middle" font-family="Fraunces, serif" font-size="26" fill="#7a5512">$</text>
+          </g>
+          <path d="M160 130 C 260 80, 330 80, 400 130" fill="none" stroke="var(--good)" stroke-width="3" stroke-dasharray="4 7"/>
+          <text x="280" y="76" text-anchor="middle" font-size="15" fill="var(--good)">+5% a year</text>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">money now gets a head start</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the $1,000 bonus taken today and saved at 5% a year. After 1 year it's $1,050; after 2 years, $1,102.50. The dashed line is the $1,100 you'd get by waiting. Taking the money now ends up $2.50 ahead.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Moving money <em>through time.</em></h2>
+      <p class="lead reveal">To compare amounts at different times, bring them to the same moment. You can go forward (future value) or back (present value). It's the same math, run in opposite directions.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Why a dollar now beats a dollar later</h3>
+      <p class="reveal">The <dfn class="term" data-def="The idea that money you have now is worth more than the same amount later, because it can earn interest in the meantime.">time value of money</dfn> comes from three things. Money now can <b>earn interest</b>. <b>Inflation</b> (Lesson 9.1) makes later dollars buy less. And a promise of money later has <b>risk</b>: it might not arrive.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your bonus</dt><dd>The $1,000 today can sit at 5% for 2 years. The $1,100 can't earn anything until you get it.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Future value: growing money forward</h3>
+      <p class="reveal"><dfn class="term" data-def="What money you have today will grow to by a later date at a given rate: today's amount × (1 + rate) to the power of the number of years.">Future value</dfn> is what today's money grows to. It's the compound growth formula from Lesson 10.1.</p>
+      <div class="formula reveal">Future value <span class="op">=</span> today's amount <span class="op">×</span> (1 + rate)<sup>years</sup></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$1,000 today at 5%</dt><dd>$1,000 × 1.05 × 1.05 = <b>$1,102.50</b> in 2 years. That's the future value.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Present value: shrinking money back</h3>
+      <p class="reveal"><dfn class="term" data-def="What a future amount is worth today: the future amount divided by (1 + rate) to the power of the number of years.">Present value</dfn> runs the math in reverse: how much a future amount is worth today. Turning future money into today's money is called <dfn class="term" data-def="Shrinking a future amount back to today's value by dividing by (1 + rate) for each year of waiting.">discounting</dfn>.</p>
+      <div class="formula reveal">Present value <span class="op">=</span> <span class="frac"><span>future amount</span><span>(1 + rate)<sup>years</sup></span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$1,100 in 2 years at 5%</dt><dd><span class="frac"><span>$1,100</span><span>1.05 × 1.05</span></span> = <span class="frac"><span>$1,100</span><span>1.1025</span></span> = <b>$997.73</b> today. That's less than $1,000, so taking the money now wins.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The discount rate</h3>
+      <p class="reveal">The rate you use is the <dfn class="term" data-def="The rate used to bring future money back to today. Usually the return you could earn elsewhere with the same risk.">discount rate</dfn>: what you could earn on the money elsewhere. It's an opportunity cost (Lesson 8.1). The higher the rate, or the longer the wait, the less future money is worth today.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$1,100 in 2 years, at 5%</dt><dd>Worth <b>$997.73</b> today.</dd></div><div><dt>Same, at 2%</dt><dd><span class="frac"><span>$1,100</span><span>1.02 × 1.02</span></span> = <b>$1,057.29</b> today. With a lower rate, waiting would win.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">A stream of payments</h3>
+      <p class="reveal">Many deals pay a set amount every year, like a pension or a lottery payout. A stream of equal payments is called an <dfn class="term" data-def="A series of equal payments made at regular times, like $50,000 a year for 20 years.">annuity</dfn>. Its present value is just the present value of each payment, added up.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$100 a year for 3 years, at 10%</dt><dd><span class="frac"><span>$100</span><span>1.10</span></span> + <span class="frac"><span>$100</span><span>1.10<sup>2</sup></span></span> + <span class="frac"><span>$100</span><span>1.10<sup>3</sup></span></span> = $90.91 + $82.64 + $75.13 = <b>$248.69</b> today, not $300.</dd></div></dl></div>
+      <div class="md-card reveal" id="tv">
+        <div class="tv-ctl">
+          <div><label class="md-lab" for="tv-a">Later offer <b id="tv-a-v">$1,100</b></label><input type="range" id="tv-a" min="1000" max="2000" step="50" value="1100"></div>
+          <div><label class="md-lab" for="tv-y">Years to wait <b id="tv-y-v">2</b></label><input type="range" id="tv-y" min="1" max="10" step="1" value="2"></div>
+          <div><label class="md-lab" for="tv-r">Rate you could earn <b id="tv-r-v">5%</b></label><input type="range" id="tv-r" min="1" max="10" step="1" value="5"></div>
+        </div>
+        <div class="tv-bars" aria-hidden="true">
+          <div><span>$1,000 now</span><i><b id="tv-now"></b></i></div>
+          <div><span id="tv-later-lab">Later offer, in today's dollars</span><i><b id="tv-pv"></b></i></div>
+        </div>
+        <dl class="tv-out" id="tv-out"></dl>
+        <p class="tv-msg" id="tv-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the $1,000 bonus now against a later offer you set. Both bars are in today's dollars: the second bar is the later offer discounted back to today. Whichever bar is longer is the better deal.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Now or <em>later?</em></h2>
+      <p class="lead reveal">Eight offers. Each one gives you the numbers. Work out what each choice is worth at the same moment, then tap your answer. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="nl">
+        <div class="fd-top">
+          <div><small id="nl-round">Offer 1 of 8</small><b id="nl-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="nl-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="nl-facts"></ul>
+        <div class="sd-opts" id="nl-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="nl-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="nl-next" disabled>Next offer <span class="arrow">→</span></button>
+      </div>
+      <div id="nl-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up offers. Each lists the amounts, the wait and the rate you could earn, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every now-or-later question takes the same three steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Pick the rate</h3>
+      <div class="formula reveal">The rate <span class="op">=</span> what you could earn on the money instead</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your savings account</dt><dd>5% a year.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Move both amounts to the same moment</h3>
+      <div class="formula reveal">Forward: × (1 + rate) each year &nbsp; · &nbsp; back: divide by (1 + rate) each year</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Both to today</dt><dd>$1,000 stays $1,000. <span class="frac"><span>$1,100</span><span>1.1025</span></span> = $997.73.</dd></div><div><dt>Or both to year 2</dt><dd>$1,000 × 1.1025 = $1,102.50. $1,100 stays $1,100.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Compare</h3>
+      <div class="formula reveal">Bigger value at the same moment <span class="op">=</span> better deal</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Either way</dt><dd>Now wins by $2.27 in today's dollars, or $2.50 in year-2 dollars. Same answer.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: when does waiting win?</h3>
+      <ol class="steps reveal">
+        <li><b>The question.</b> How big would the 2-year offer need to be to beat $1,000 now?</li>
+        <li><b>The rate.</b> 5% a year, your savings account.</li>
+        <li><b>Grow $1,000 forward.</b> $1,000 × 1.05 × 1.05 = $1,102.50.</li>
+        <li><b>The answer.</b> Any offer over <b>$1,102.50</b> in 2 years beats $1,000 now. At exactly $1,102.50 they're worth the same.</li>
+        <li><b>The lesson.</b> "Bigger later" only wins if it's bigger by more than the money could earn in the meantime.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Squirrels <em>know.</em></h2>
+      <p class="lead reveal">Gray squirrels treat acorns differently depending on how well they keep. White oak acorns sprout soon after they fall, so they lose value fast. Squirrels tend to eat those right away. Red oak acorns stay dormant until spring, so they hold their value. Squirrels are more likely to bury those for winter.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A squirrel between two piles of acorns. On the left, white oak acorns labeled eat now, because they sprout soon. On the right, red oak acorns going into a hole, labeled bury for later, because they keep.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--accent) 8%, var(--card))"/>
+        <path d="M0 300 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#9b7b55" opacity=".45"/>
+        <g fill="#c9a26a" stroke="#7a5a32" stroke-width="2">
+          <ellipse cx="150" cy="282" rx="14" ry="18"/><ellipse cx="185" cy="286" rx="14" ry="18"/><ellipse cx="220" cy="282" rx="14" ry="18"/>
+          <ellipse cx="168" cy="252" rx="14" ry="18"/><ellipse cx="203" cy="252" rx="14" ry="18"/>
+        </g>
+        <g fill="#8a6a3e"><path d="M136 270 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M171 274 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M206 270 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M154 240 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M189 240 h28 v-6 a14 9 0 0 0 -28 0z"/></g>
+        <path d="M150 232 q 6 -14 14 -18" stroke="#6aa04a" stroke-width="4" fill="none"/>
+        <ellipse cx="720" cy="318" rx="70" ry="16" fill="#5a4026" opacity=".7"/>
+        <g fill="#a4643a" stroke="#6a3a1e" stroke-width="2">
+          <ellipse cx="690" cy="310" rx="12" ry="16"/><ellipse cx="722" cy="314" rx="12" ry="16"/><ellipse cx="752" cy="310" rx="12" ry="16"/>
+        </g>
+        <g class="tv-sq">
+          <path d="M520 290 C 600 270, 610 160, 540 140 C 500 130, 500 190, 540 200" fill="#8e8a84"/>
+          <ellipse cx="460" cy="250" rx="58" ry="44" fill="#a29d96"/>
+          <circle cx="410" cy="200" r="30" fill="#a29d96"/>
+          <path d="M398 176 l -4 -18 l 14 12z" fill="#8e8a84"/>
+          <circle cx="400" cy="196" r="4" fill="#222"/>
+          <ellipse cx="455" cy="292" rx="22" ry="8" fill="#8e8a84"/>
+          <ellipse cx="402" cy="236" rx="12" ry="15" fill="#a4643a" stroke="#6a3a1e" stroke-width="2"/>
+        </g>
+        <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+          <text x="185" y="104" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">White oak</text><text x="185" y="134" font-size="15">sprouts soon:</text><text x="185" y="156" font-size="15">eat now</text>
+          <text x="720" y="104" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Red oak</text><text x="720" y="134" font-size="15">keeps:</text><text x="720" y="156" font-size="15">bury for later</text>
+        </g>
+        <text x="450" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Use now, or save for later?</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A squirrel with white oak acorns on the left, which it tends to eat now, and red oak acorns on the right, which it tends to bury for winter.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> Whether to wait depends on what holds its value over time. Money in savings keeps growing, so saving it works. A promise that loses value while you wait, like a later payment in an inflation-heavy year, is worth less than it looks.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Time value of money</b>: a dollar now beats a dollar later (interest, inflation, risk).</li>
+          <li><b>Future value</b> = today × (1 + rate)<sup>years</sup>. $1,000 at 5% for 2 years = $1,102.50.</li>
+          <li><b>Present value</b> = <span class="frac"><span>future amount</span><span>(1 + rate)<sup>years</sup></span></span>. $1,100 in 2 years at 5% = $997.73.</li>
+          <li><b>Discount rate</b> = what you could earn elsewhere. Higher rate or longer wait → lower present value.</li>
+          <li><b>Annuity</b>: add up the present value of each payment. $100 a year for 3 years at 10% = $248.69.</li>
+          <li><b>To compare</b>: move every amount to the same moment, then pick the bigger one.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. $1,000 at 10% for 1 year grows to $<input type="text" class="blank" data-answer="1100|1,100|$1,100|$1100" inputmode="decimal" aria-label="Blank 1">.</div>
+        <div>2. Turning a future amount into today's value is called <input type="text" class="blank" data-answer="discounting" aria-label="Blank 2">.</div>
+        <div>3. The rate you use to bring future money back to today is the <input type="text" class="blank" data-answer="discount" aria-label="Blank 3"> rate.</div>
+        <div>4. A higher rate makes the present value <input type="text" class="blank" data-answer="smaller|lower|less" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Would you wait?</h3>
+          <p>Each person says the smallest amount in 1 year they'd take instead of $100 today. Compare your answers with what a 5% rate says: $105.</p>
+        </div>
+        <div class="reveal">
+          <h3>Break the tie</h3>
+          <p>Use the slider above. One person sets the later offer; the other finds the rate where now and later are worth the same.</p>
+        </div>
+        <div class="reveal">
+          <h3>Lottery debate</h3>
+          <p>Lump sum or yearly payments? Argue both sides, then check the math in the job task below.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">When did you last choose "now" over "later" with money? Would the math have agreed?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What rate could your money earn right now? That's your discount rate. Where would you put it?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What's one thing you could start today that would be worth much more to you in 10 years?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a financial planner</h3>
+      <div class="reveal">
+        <p>Your client just won the lottery. They must pick one way to be paid:</p>
+        <ul>
+          <li><b>Lump sum:</b> <b>$600,000</b> today.</li>
+          <li><b>Payments:</b> <b>$50,000 a year for 20 years</b>, $1,000,000 in total.</li>
+          <li>Present value of the payments at <b>5%</b>: <b>$623,111</b>.</li>
+          <li>Present value of the payments at <b>7%</b>: <b>$529,701</b>.</li>
+        </ul>
+        <p><b>Your task:</b> which choice is worth more today if your client can earn 5% a year? What if they can earn 7%? Why isn't $1,000,000 the real value of the payments?</p>
+        <textarea id="job-answer" placeholder="Write what you'd tell your client…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>At 5%:</b> the payments are worth $623,111 today, more than the $600,000 lump sum. Take the <b>payments</b>, by $23,111.</p>
+            <p><b>At 7%:</b> the payments are worth $529,701 today, less than $600,000. Take the <b>lump sum</b>, by $70,299.</p>
+            <p><b>Why not $1,000,000:</b> most of the payments arrive years from now. Each one is discounted back to today, and the last ones shrink the most.</p>
+            <p><b>The real question:</b> what can your client actually earn, and will they invest the lump sum or spend it? Taxes also matter, so a tax pro should check the final numbers.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Every money choice <em>has a clock.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on percentages and growth, making your savings earn more, and scarcity and trade-offs, and leads to money psychology">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../percentages/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Percentages and growth</text><text x="20" y="86">Unit 10 · compound growth</text></a>
+          <a href="../high-yield/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Savings that earn more</text><text x="20" y="186">Unit 3 · your rate</text></a>
+          <a href="../scarcity/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Scarcity and trade-offs</text><text x="20" y="286">Unit 8 · opportunity cost</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Time value of money</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Money psychology</text><text x="690" y="186">Coming soon · Unit 10</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 10</span><b>The math of percent and growth</b></li>
+        <li><span class="muted small">Back · Unit 3</span><b>Make your savings earn more</b></li>
+        <li><span class="muted small">Back · Unit 8</span><b>Every choice has a price tag</b></li>
+        <li class="here"><span class="small">You are here</span><b>The time value of money</b></li>
+        <li><span class="muted small">Coming soon · Unit 10</span><b>Money psychology</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../percentages/">Revisit: Percentages and growth <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

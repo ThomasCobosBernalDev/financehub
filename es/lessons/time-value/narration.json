@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "La tienda de bicicletas te ofrece un bono: 1,000 dólares hoy, o 1,100 dólares en 2 años. Tus ahorros pagan 5 por ciento al año. Ahorra los 1,000 y en 2 años serán 1,102 dólares con 50 centavos. Tomar el dinero hoy gana.",
+  "Eso es el valor del dinero en el tiempo. Un dólar hoy vale más que un dólar después, porque puede ganar intereses. La inflación y el riesgo también cuentan.",
+  "El valor futuro hace crecer el dinero de hoy hacia adelante. Multiplica por uno más la tasa, una vez por cada año.",
+  "El valor presente hace lo contrario. Divide la cantidad futura entre uno más la tasa, una vez por cada año. A eso se le llama descontar. 1,100 dólares en 2 años, al 5 por ciento, valen unos 998 dólares hoy.",
+  "La tasa que usas es la tasa de descuento: lo que podrías ganar en otro lado. Una tasa más alta, o una espera más larga, hace que el dinero futuro valga menos hoy.",
+  "Una serie de pagos, como una pensión o el premio de una lotería, se llama anualidad. Saca el valor presente de cada pago y súmalos.",
+  "Entonces, para comparar dos ofertas: elige la tasa, lleva las dos cantidades al mismo momento y quédate con la mayor."
+ ]
+}

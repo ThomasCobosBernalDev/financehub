@@ -1,0 +1,264 @@
+<!-- title: El valor del dinero en el tiempo -->
+<!-- description: Unidad 10, Lección 2: por qué un dólar hoy vale más que un dólar después, el valor futuro, el valor presente y el descuento, la tasa de descuento y cómo valorar una serie de pagos, como el premio de una lotería. Juego: Hoy o después, ocho ofertas para comparar. -->
+<!-- kicker: Unidad 10 · Lección 2 -->
+<!-- topic: Matemáticas del dinero -->
+
+<!-- @start -->
+        <h1 class="reveal">¿$1,000 hoy o $1,100 después? <em>Hoy gana.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> A la tienda de bicicletas le fue muy bien este año, y el dueño te ofrece un bono. Puedes tomar <span class="mark">$1,000 hoy</span>, o <span class="mark">$1,100 en 2 años</span>. $1,100 parece más. Pero tu cuenta de ahorros paga <span class="mark">5% al año</span>. Si metes los $1,000 hoy, en 2 años crecen a <span class="mark">$1,102.50</span>, más que $1,100. El dinero que tienes hoy puede empezar a ganar de inmediato. Eso es el <b>valor del dinero en el tiempo</b>, y está detrás de cada préstamo, inversión, pensión y premio de lotería.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Un dólar hoy vale más que un dólar después, porque el dólar de hoy puede ganar intereses mientras tanto.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Te deja comparar dinero en distintos momentos: un bono hoy o después, una suma única o pagos, un préstamo para un carro o pagar de contado.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Lleva cada cantidad al mismo momento. Haz crecer el dinero de hoy hacia adelante, o regresa el dinero futuro a hoy.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>analistas de finanzas corporativas</b> lo usan para decidir qué proyectos financiar. Los <b>banqueros</b> ponen precio a los préstamos con él. Los <b>asesores financieros</b> lo usan para comparar opciones de pensión y de pago.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Tres barras que muestran $1,000 hoy creciendo al 5% a $1,050 después de 1 año y $1,102.50 después de 2 años. Una línea punteada marca la oferta futura de $1,100, justo debajo de la última barra.">
+          <line x1="40" y1="440" x2="480" y2="440" stroke="var(--line)" stroke-width="3"/>
+          <rect x="60" y="240" width="100" height="200" rx="10" fill="var(--good)" opacity=".55"/>
+          <rect x="210" y="230" width="100" height="210" rx="10" fill="var(--good)" opacity=".75"/>
+          <rect x="360" y="219.5" width="100" height="220.5" rx="10" fill="var(--good)"/>
+          <path d="M40 220 H 480" stroke="var(--wants)" stroke-width="2.5" stroke-dasharray="7 6"/>
+          <text x="40" y="206" font-size="15" fill="var(--wants)">La oferta futura: $1,100</text>
+          <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+            <text x="110" y="470">Hoy</text><text x="260" y="470">1 año</text><text x="410" y="470">2 años</text>
+          </g>
+          <g font-family="Fraunces, serif" font-size="19" text-anchor="middle" fill="var(--on-color)">
+            <text x="110" y="276">$1,000</text><text x="260" y="266">$1,050</text><text x="410" y="256">$1,102.50</text>
+          </g>
+          <g class="tv-coin">
+            <circle cx="110" cy="130" r="34" fill="#e2b04a"/><circle cx="110" cy="130" r="25" fill="none" stroke="#b8862a" stroke-width="3"/>
+            <text x="110" y="139" text-anchor="middle" font-family="Fraunces, serif" font-size="26" fill="#7a5512">$</text>
+          </g>
+          <path d="M160 130 C 260 80, 330 80, 400 130" fill="none" stroke="var(--good)" stroke-width="3" stroke-dasharray="4 7"/>
+          <text x="280" y="76" text-anchor="middle" font-size="15" fill="var(--good)">+5% al año</text>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">el dinero de hoy sale con ventaja</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> el bono de $1,000 tomado hoy y ahorrado al 5% anual. Después de 1 año son $1,050; después de 2 años, $1,102.50. La línea punteada son los $1,100 que recibirías si esperas. Tomar el dinero hoy te deja $2.50 adelante.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Mover el dinero <em>en el tiempo.</em></h2>
+      <p class="lead reveal">Para comparar cantidades en distintos momentos, llévalas al mismo momento. Puedes ir hacia adelante (valor futuro) o hacia atrás (valor presente). Son las mismas matemáticas, en sentidos opuestos.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Por qué un dólar hoy le gana a un dólar después</h3>
+      <p class="reveal">El <dfn class="term" data-def="La idea de que el dinero que tienes hoy vale más que la misma cantidad después, porque puede ganar intereses mientras tanto.">valor del dinero en el tiempo</dfn> viene de tres cosas. El dinero de hoy puede <b>ganar intereses</b>. La <b>inflación</b> (Lección 9.1) hace que los dólares futuros compren menos. Y una promesa de dinero futuro tiene <b>riesgo</b>: puede que no llegue.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu bono</dt><dd>Los $1,000 de hoy pueden estar al 5% durante 2 años. Los $1,100 no pueden ganar nada hasta que los recibas.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Valor futuro: hacer crecer el dinero hacia adelante</h3>
+      <p class="reveal">El <dfn class="term" data-def="Lo que el dinero que tienes hoy llegará a valer en una fecha futura a cierta tasa: la cantidad de hoy × (1 + tasa) elevado al número de años.">valor futuro</dfn> es a lo que crece el dinero de hoy. Es la fórmula del crecimiento compuesto de la Lección 10.1.</p>
+      <div class="formula reveal">Valor futuro <span class="op">=</span> cantidad de hoy <span class="op">×</span> (1 + tasa)<sup>años</sup></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>$1,000 hoy al 5%</dt><dd>$1,000 × 1.05 × 1.05 = <b>$1,102.50</b> en 2 años. Ese es el valor futuro.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Valor presente: regresar el dinero a hoy</h3>
+      <p class="reveal">El <dfn class="term" data-def="Lo que vale hoy una cantidad futura: la cantidad futura dividida entre (1 + tasa) elevado al número de años.">valor presente</dfn> hace las cuentas al revés: cuánto vale hoy una cantidad futura. Convertir dinero futuro en dinero de hoy se llama <dfn class="term" data-def="Regresar una cantidad futura a su valor de hoy dividiendo entre (1 + tasa) por cada año de espera.">descontar</dfn>.</p>
+      <div class="formula reveal">Valor presente <span class="op">=</span> <span class="frac"><span>cantidad futura</span><span>(1 + tasa)<sup>años</sup></span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>$1,100 en 2 años al 5%</dt><dd><span class="frac"><span>$1,100</span><span>1.05 × 1.05</span></span> = <span class="frac"><span>$1,100</span><span>1.1025</span></span> = <b>$997.73</b> hoy. Es menos de $1,000, así que tomar el dinero hoy gana.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">La tasa de descuento</h3>
+      <p class="reveal">La tasa que usas es la <dfn class="term" data-def="La tasa que se usa para regresar el dinero futuro a hoy. Normalmente es lo que podrías ganar en otro lado con el mismo riesgo.">tasa de descuento</dfn>: lo que podrías ganar con el dinero en otro lado. Es un costo de oportunidad (Lección 8.1). Entre más alta la tasa, o más larga la espera, menos vale hoy el dinero futuro.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>$1,100 en 2 años, al 5%</dt><dd>Valen <b>$997.73</b> hoy.</dd></div><div><dt>Lo mismo, al 2%</dt><dd><span class="frac"><span>$1,100</span><span>1.02 × 1.02</span></span> = <b>$1,057.29</b> hoy. Con una tasa más baja, esperar ganaría.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Una serie de pagos</h3>
+      <p class="reveal">Muchos tratos pagan una cantidad fija cada año, como una pensión o el premio de una lotería. Una serie de pagos iguales se llama <dfn class="term" data-def="Una serie de pagos iguales hechos en fechas regulares, como $50,000 al año durante 20 años.">anualidad</dfn>. Su valor presente es simplemente el valor presente de cada pago, sumado.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>$100 al año durante 3 años, al 10%</dt><dd><span class="frac"><span>$100</span><span>1.10</span></span> + <span class="frac"><span>$100</span><span>1.10<sup>2</sup></span></span> + <span class="frac"><span>$100</span><span>1.10<sup>3</sup></span></span> = $90.91 + $82.64 + $75.13 = <b>$248.69</b> hoy, no $300.</dd></div></dl></div>
+      <div class="md-card reveal" id="tv">
+        <div class="tv-ctl">
+          <div><label class="md-lab" for="tv-a">Oferta futura <b id="tv-a-v">$1,100</b></label><input type="range" id="tv-a" min="1000" max="2000" step="50" value="1100"></div>
+          <div><label class="md-lab" for="tv-y">Años de espera <b id="tv-y-v">2</b></label><input type="range" id="tv-y" min="1" max="10" step="1" value="2"></div>
+          <div><label class="md-lab" for="tv-r">Tasa que podrías ganar <b id="tv-r-v">5%</b></label><input type="range" id="tv-r" min="1" max="10" step="1" value="5"></div>
+        </div>
+        <div class="tv-bars" aria-hidden="true">
+          <div><span>$1,000 hoy</span><i><b id="tv-now"></b></i></div>
+          <div><span id="tv-later-lab">La oferta futura, en dólares de hoy</span><i><b id="tv-pv"></b></i></div>
+        </div>
+        <dl class="tv-out" id="tv-out"></dl>
+        <p class="tv-msg" id="tv-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> el bono de $1,000 hoy contra una oferta futura que tú eliges. Las dos barras están en dólares de hoy: la segunda es la oferta futura descontada a hoy. La barra más larga es el mejor trato.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">¿Hoy o <em>después?</em></h2>
+      <p class="lead reveal">Ocho ofertas. Cada una te da los números. Calcula cuánto vale cada opción en el mismo momento y luego toca tu respuesta. Un intento por oferta.</p>
+
+      <div class="fd reveal rr-wide" id="nl">
+        <div class="fd-top">
+          <div><small id="nl-round">Oferta 1 de 8</small><b id="nl-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="nl-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="nl-facts"></ul>
+        <div class="sd-opts" id="nl-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="nl-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="nl-next" disabled>Siguiente oferta <span class="arrow">→</span></button>
+      </div>
+      <div id="nl-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> ofertas inventadas. Cada una da las cantidades, la espera y la tasa que podrías ganar, y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Toda pregunta de hoy o después lleva los mismos tres pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Elige la tasa</h3>
+      <div class="formula reveal">La tasa <span class="op">=</span> lo que podrías ganar con el dinero en su lugar</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu cuenta de ahorros</dt><dd>5% al año.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Lleva las dos cantidades al mismo momento</h3>
+      <div class="formula reveal">Hacia adelante: × (1 + tasa) cada año &nbsp; · &nbsp; hacia atrás: divide entre (1 + tasa) cada año</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Las dos a hoy</dt><dd>$1,000 se quedan en $1,000. <span class="frac"><span>$1,100</span><span>1.1025</span></span> = $997.73.</dd></div><div><dt>O las dos al año 2</dt><dd>$1,000 × 1.1025 = $1,102.50. $1,100 se quedan en $1,100.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Compara</h3>
+      <div class="formula reveal">Mayor valor en el mismo momento <span class="op">=</span> mejor trato</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>De cualquier forma</dt><dd>Hoy gana por $2.27 en dólares de hoy, o por $2.50 en dólares del año 2. La misma respuesta.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿cuándo gana esperar?</h3>
+      <ol class="steps reveal">
+        <li><b>La pregunta.</b> ¿De cuánto tendría que ser la oferta a 2 años para superar $1,000 hoy?</li>
+        <li><b>La tasa.</b> 5% al año, tu cuenta de ahorros.</li>
+        <li><b>Haz crecer $1,000 hacia adelante.</b> $1,000 × 1.05 × 1.05 = $1,102.50.</li>
+        <li><b>La respuesta.</b> Cualquier oferta de más de <b>$1,102.50</b> en 2 años le gana a $1,000 hoy. Con exactamente $1,102.50 valen lo mismo.</li>
+        <li><b>La lección.</b> "Más, pero después" solo gana si es más por encima de lo que el dinero podría ganar mientras tanto.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Las ardillas <em>lo saben.</em></h2>
+      <p class="lead reveal">Las ardillas grises tratan las bellotas de forma distinta según cuánto aguantan. Las bellotas de roble blanco germinan poco después de caer, así que pierden valor rápido. Las ardillas suelen comérselas de inmediato. Las bellotas de roble rojo se quedan dormidas hasta la primavera, así que conservan su valor. Las ardillas tienden a enterrarlas para el invierno.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Una ardilla entre dos montones de bellotas. A la izquierda, bellotas de roble blanco con la etiqueta cómelas hoy, porque germinan pronto. A la derecha, bellotas de roble rojo entrando a un hoyo, con la etiqueta entiérralas para después, porque aguantan.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--accent) 8%, var(--card))"/>
+        <path d="M0 300 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#9b7b55" opacity=".45"/>
+        <g fill="#c9a26a" stroke="#7a5a32" stroke-width="2">
+          <ellipse cx="150" cy="282" rx="14" ry="18"/><ellipse cx="185" cy="286" rx="14" ry="18"/><ellipse cx="220" cy="282" rx="14" ry="18"/>
+          <ellipse cx="168" cy="252" rx="14" ry="18"/><ellipse cx="203" cy="252" rx="14" ry="18"/>
+        </g>
+        <g fill="#8a6a3e"><path d="M136 270 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M171 274 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M206 270 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M154 240 h28 v-6 a14 9 0 0 0 -28 0z"/><path d="M189 240 h28 v-6 a14 9 0 0 0 -28 0z"/></g>
+        <path d="M150 232 q 6 -14 14 -18" stroke="#6aa04a" stroke-width="4" fill="none"/>
+        <ellipse cx="720" cy="318" rx="70" ry="16" fill="#5a4026" opacity=".7"/>
+        <g fill="#a4643a" stroke="#6a3a1e" stroke-width="2">
+          <ellipse cx="690" cy="310" rx="12" ry="16"/><ellipse cx="722" cy="314" rx="12" ry="16"/><ellipse cx="752" cy="310" rx="12" ry="16"/>
+        </g>
+        <g class="tv-sq">
+          <path d="M520 290 C 600 270, 610 160, 540 140 C 500 130, 500 190, 540 200" fill="#8e8a84"/>
+          <ellipse cx="460" cy="250" rx="58" ry="44" fill="#a29d96"/>
+          <circle cx="410" cy="200" r="30" fill="#a29d96"/>
+          <path d="M398 176 l -4 -18 l 14 12z" fill="#8e8a84"/>
+          <circle cx="400" cy="196" r="4" fill="#222"/>
+          <ellipse cx="455" cy="292" rx="22" ry="8" fill="#8e8a84"/>
+          <ellipse cx="402" cy="236" rx="12" ry="15" fill="#a4643a" stroke="#6a3a1e" stroke-width="2"/>
+        </g>
+        <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+          <text x="185" y="104" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Roble blanco</text><text x="185" y="134" font-size="15">germina pronto:</text><text x="185" y="156" font-size="15">se come hoy</text>
+          <text x="720" y="104" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Roble rojo</text><text x="720" y="134" font-size="15">aguanta:</text><text x="720" y="156" font-size="15">se entierra</text>
+        </g>
+        <text x="450" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">¿Usar hoy o guardar para después?</text>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. Una ardilla con bellotas de roble blanco a la izquierda, que suele comerse de inmediato, y bellotas de roble rojo a la derecha, que suele enterrar para el invierno.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Si conviene esperar depende de qué conserva su valor con el tiempo. El dinero en ahorros sigue creciendo, así que guardarlo funciona. Una promesa que pierde valor mientras esperas, como un pago futuro en un año de mucha inflación, vale menos de lo que parece.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Valor del dinero en el tiempo</b>: un dólar hoy le gana a un dólar después (intereses, inflación, riesgo).</li>
+          <li><b>Valor futuro</b> = hoy × (1 + tasa)<sup>años</sup>. $1,000 al 5% por 2 años = $1,102.50.</li>
+          <li><b>Valor presente</b> = <span class="frac"><span>cantidad futura</span><span>(1 + tasa)<sup>años</sup></span></span>. $1,100 en 2 años al 5% = $997.73.</li>
+          <li><b>Tasa de descuento</b> = lo que podrías ganar en otro lado. Tasa más alta o espera más larga → menor valor presente.</li>
+          <li><b>Anualidad</b>: suma el valor presente de cada pago. $100 al año por 3 años al 10% = $248.69.</li>
+          <li><b>Para comparar</b>: lleva cada cantidad al mismo momento y elige la mayor.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. $1,000 al 10% por 1 año crecen a $<input type="text" class="blank" data-answer="1100|1,100|$1,100|$1100" inputmode="decimal" aria-label="Espacio 1">.</div>
+        <div>2. Convertir una cantidad futura en su valor de hoy se llama <input type="text" class="blank" data-answer="descontar|descuento" aria-label="Espacio 2">.</div>
+        <div>3. La tasa que usas para regresar el dinero futuro a hoy es la tasa de <input type="text" class="blank" data-answer="descuento" aria-label="Espacio 3">.</div>
+        <div>4. Una tasa más alta hace que el valor presente sea más <input type="text" class="blank" data-answer="chico|pequeño|bajo|pequeno" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>¿Esperarías?</h3>
+          <p>Cada quien dice la cantidad más chica que aceptaría en 1 año en vez de $100 hoy. Comparen sus respuestas con lo que dice una tasa de 5%: $105.</p>
+        </div>
+        <div class="reveal">
+          <h3>Rompan el empate</h3>
+          <p>Usen el control de arriba. Una persona fija la oferta futura; la otra busca la tasa en la que hoy y después valen lo mismo.</p>
+        </div>
+        <div class="reveal">
+          <h3>Debate de la lotería</h3>
+          <p>¿Suma única o pagos anuales? Defiendan los dos lados y luego revisen las cuentas en la tarea de trabajo de abajo.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Cuándo fue la última vez que elegiste "hoy" en vez de "después" con dinero? ¿Las cuentas te habrían dado la razón?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué tasa podría ganar tu dinero ahora mismo? Esa es tu tasa de descuento. ¿Dónde lo pondrías?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué cosa podrías empezar hoy que valdría mucho más para ti en 10 años?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres asesor financiero</h3>
+      <div class="reveal">
+        <p>Tu cliente acaba de ganar la lotería. Tiene que elegir una forma de cobrar:</p>
+        <ul>
+          <li><b>Suma única:</b> <b>$600,000</b> hoy.</li>
+          <li><b>Pagos:</b> <b>$50,000 al año durante 20 años</b>, $1,000,000 en total.</li>
+          <li>Valor presente de los pagos al <b>5%</b>: <b>$623,111</b>.</li>
+          <li>Valor presente de los pagos al <b>7%</b>: <b>$529,701</b>.</li>
+        </ul>
+        <p><b>Tu tarea:</b> ¿qué opción vale más hoy si tu cliente puede ganar 5% al año? ¿Y si puede ganar 7%? ¿Por qué $1,000,000 no es el valor real de los pagos?</p>
+        <textarea id="job-answer" placeholder="Escribe lo que le dirías a tu cliente…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Al 5%:</b> los pagos valen $623,111 hoy, más que la suma única de $600,000. Conviene tomar los <b>pagos</b>, por $23,111.</p>
+            <p><b>Al 7%:</b> los pagos valen $529,701 hoy, menos que $600,000. Conviene la <b>suma única</b>, por $70,299.</p>
+            <p><b>Por qué no $1,000,000:</b> la mayoría de los pagos llegan dentro de muchos años. Cada uno se descuenta a hoy, y los últimos son los que más se encogen.</p>
+            <p><b>La pregunta real:</b> ¿cuánto puede ganar tu cliente en realidad, y va a invertir la suma única o a gastarla? Los impuestos también cuentan, así que un experto en impuestos debería revisar las cifras finales.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Cada decisión de dinero <em>tiene un reloj.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en porcentajes y crecimiento, hacer que tus ahorros ganen más, y escasez y renuncias, y lleva a la psicología del dinero">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../percentages/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Porcentajes y crecimiento</text><text x="20" y="86">Unidad 10 · crecimiento compuesto</text></a>
+          <a href="../high-yield/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Ahorros que ganan más</text><text x="20" y="186">Unidad 3 · tu tasa</text></a>
+          <a href="../scarcity/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Escasez y renuncias</text><text x="20" y="286">Unidad 8 · costo de oportunidad</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Valor en el tiempo</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Psicología del dinero</text><text x="690" y="186">Muy pronto · Unidad 10</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 10</span><b>Las matemáticas del porcentaje y el crecimiento</b></li>
+        <li><span class="muted small">Antes · Unidad 3</span><b>Haz que tus ahorros ganen más</b></li>
+        <li><span class="muted small">Antes · Unidad 8</span><b>Cada decisión tiene un precio</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>El valor del dinero en el tiempo</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 10</span><b>Psicología del dinero</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../percentages/">Repasa: Porcentajes y crecimiento <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>
