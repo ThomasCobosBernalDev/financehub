@@ -156,7 +156,7 @@
     L(10, 1, "u10-percent-growth", t("Percentages and growth", "Porcentajes y crecimiento"), t("The math behind every money question", "Las matemáticas detrás de cada pregunta de dinero"), { href: "lessons/percentages/" }),
     L(10, 2, "u10-time-value", t("The time value of money", "El valor del dinero en el tiempo"), t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), { needs: ["u10-percent-growth"], href: "lessons/time-value/" }),
     L(10, 3, "u10-money-mind", t("Money psychology", "Psicología del dinero"), t("Behavioral finance", "Finanzas conductuales"), { href: "lessons/money-mind/" }),
-    L(11, 1, "u11-price-profit", t("Price, costs and profit", "Precio, costos y ganancia"), t("Fixed vs. variable costs and break-even", "Costos fijos vs. variables y punto de equilibrio"), { needs: ["u10-percent-growth"] }),
+    L(11, 1, "u11-price-profit", t("Price, costs and profit", "Precio, costos y ganancia"), t("Fixed vs. variable costs and break-even", "Costos fijos vs. variables y punto de equilibrio"), { needs: ["u10-percent-growth"], href: "lessons/price-profit/" }),
     L(11, 2, "u11-cash-flow", t("Cash flow", "Flujo de efectivo"), t("Why profitable businesses still run out of money", "Por qué negocios con ganancias se quedan sin dinero"), { needs: ["u11-price-profit"] }),
     L(11, 3, "u11-legal-setup", t("Making it official", "Hacerlo oficial"), t("Sole proprietor, LLC or corporation, plus business taxes", "Dueño único, LLC o corporación, más impuestos del negocio"), { needs: ["u11-price-profit"] }),
     L(12, 1, "u12-income-statement", t("The income statement", "El estado de resultados"), t("Did the business make money?", "¿El negocio ganó dinero?"), { needs: ["u11-price-profit"] }),
@@ -308,6 +308,7 @@
     ["percent-pro", "percentages", t("Percent Pro", "Experto en porcentajes"), t("Answer all 8 questions right in Percent sprint.", "Responde bien las 8 preguntas del juego Carrera de porcentajes.")],
     ["time-traveler", "time-value", t("Time Traveler", "Viajero del tiempo"), t("Answer all 8 offers right in Now or later.", "Responde bien las 8 ofertas del juego Hoy o después.")],
     ["bias-buster", "money-mind", t("Bias Buster", "Detector de sesgos"), t("Name all 8 traps right in Name the trap.", "Nombra bien las 8 trampas del juego Nombra la trampa.")],
+    ["in-the-black", "price-profit", t("In the Black", "Números negros"), t("Answer all 8 businesses right in Break-even or bust.", "Responde bien los 8 negocios del juego Equilibrio o quiebra.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

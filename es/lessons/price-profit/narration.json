@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Empiezas un negocio de fin de semana haciendo afinaciones de bicicletas en el mercado. Cobras 40 dólares, las piezas cuestan 10, y el lugar, las herramientas y el seguro cuestan 300 dólares al mes. Tu primer mes haces 6 afinaciones, y aun así pierdes dinero.",
+  "Los ingresos son el precio por la cantidad vendida. Los costos fijos se quedan igual sin importar cuánto vendas. Los costos variables suben con cada venta.",
+  "La ganancia son los ingresos menos todos tus costos. 25 afinaciones dejan 1,000 dólares. Quita 300 de fijos y 250 de piezas, y te quedas con 450 dólares.",
+  "Cada afinación deja 40 menos 10, o sea 30 dólares. Ese es el margen de contribución. Paga primero los costos fijos y luego se vuelve ganancia.",
+  "El punto de equilibrio son los costos fijos divididos entre el margen de contribución. 300 entre 30 son 10 afinaciones al mes. La número 11 es tu primera ganancia. Si el resultado tiene decimales, redondea hacia arriba.",
+  "El margen de ganancia es la ganancia dividida entre los ingresos. 450 de 1,000 es 45 por ciento. Y un precio más alto no siempre es mejor: a 50 dólares solo llegan 18 clientes, y la ganancia baja a 420.",
+  "Entonces: separa tus costos, encuentra lo que deja cada venta, luego divide y redondea hacia arriba."
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "You start a weekend business doing bike tune-ups at the farmers market. You charge 40 dollars, the parts cost 10, and the spot, tools and insurance cost 300 dollars a month. Your first month, 6 tune-ups, and you still lose money.",
+  "Revenue is price times the number sold. Fixed costs stay the same no matter how much you sell. Variable costs go up with every sale.",
+  "Profit is revenue minus all your costs. 25 tune-ups bring in 1,000 dollars. Take away 300 fixed and 250 for parts, and you keep 450 dollars.",
+  "Each tune-up leaves 40 minus 10, or 30 dollars. That's the contribution margin. It pays the fixed costs first, then becomes profit.",
+  "The break-even point is fixed costs divided by the contribution margin. 300 divided by 30 is 10 tune-ups a month. Number 11 is your first profit. If the answer has a decimal, round up.",
+  "Profit margin is profit divided by revenue. 450 out of 1,000 is 45 percent. And a higher price isn't always better: at 50 dollars, only 18 customers come, and profit drops to 420.",
+  "So: sort your costs, find what each sale adds, then divide and round up."
+ ]
+}
