@@ -1,0 +1,261 @@
+<!-- title: Cómo se conectan los tres estados -->
+<!-- description: Unidad 12, Lección 3: el estado de flujo de efectivo (actividades de operación, inversión y financiamiento), empezando por la utilidad neta, sumando la depreciación y ajustando el capital de trabajo, el flujo de efectivo libre, y las conexiones entre el estado de resultados, el balance general y el estado de flujo de efectivo. Juego: Une los puntos, ocho preguntas sobre los tres estados. -->
+<!-- kicker: Unidad 12 · Lección 3 -->
+<!-- topic: Contabilidad -->
+
+<!-- @start -->
+        <h1 class="reveal">$2,800 de ganancia. $2,600 de efectivo. <em>¿A dónde se fue el dinero?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Abriste el local el 1 de enero con <span class="mark">$0 en su cuenta de banco</span>. Para el 31 de diciembre, tu estado de resultados dice que ganó <span class="mark">$2,800</span>, y tu balance dice que tiene <span class="mark">$2,600 de efectivo</span>. Pero también pusiste $1,200 de tu dinero y pediste un préstamo. Entonces, ¿cómo se movió de verdad el efectivo? El tercer estado lo responde: el <span class="mark">estado de flujo de efectivo</span>. Y cuando lo veas, verás cómo los tres estados encajan como engranes.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>El <b>estado de flujo de efectivo</b> muestra cada dólar de efectivo que entró y salió en el año, ordenado en tres grupos.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>La ganancia puede esconder problemas, como viste en la Lección 11.2. El efectivo no. Conectar los tres estados muestra el panorama completo, y es la base de todo modelo financiero de Wall Street.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Empieza con la utilidad neta, corrige lo que no fue efectivo y luego suma lo que gastaste en equipo y lo que pediste prestado o pagaste.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>analistas de banca de inversión</b> arman "modelos de tres estados" que los conectan. Los <b>tesoreros</b> de las empresas viven en el estado de flujo de efectivo. Los <b>auditores</b> revisan que cada conexión cuadre.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Tres tarjetas unidas por flechas. La utilidad neta de $2,800 va del estado de resultados al estado de flujo de efectivo y al balance. El efectivo final de $2,600 va del estado de flujo al balance.">
+          <g class="ts-gear">
+            <rect x="30" y="60" width="200" height="140" rx="18" fill="var(--card)" stroke="var(--needs)" stroke-width="4"/>
+            <text x="130" y="100" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Estado de resultados</text>
+            <text x="130" y="134" text-anchor="middle" font-size="15" fill="var(--ink-2)">utilidad neta</text>
+            <text x="130" y="168" text-anchor="middle" font-family="Fraunces, serif" font-size="28" fill="var(--needs)">$2,800</text>
+          </g>
+          <rect x="290" y="60" width="200" height="140" rx="18" fill="var(--card)" stroke="var(--good)" stroke-width="4"/>
+          <text x="390" y="100" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Flujo de efectivo</text>
+          <text x="390" y="134" text-anchor="middle" font-size="15" fill="var(--ink-2)">efectivo final</text>
+          <text x="390" y="168" text-anchor="middle" font-family="Fraunces, serif" font-size="28" fill="var(--good)">$2,600</text>
+          <rect x="140" y="300" width="240" height="160" rx="18" fill="var(--card)" stroke="var(--ink-3)" stroke-width="4"/>
+          <text x="260" y="340" text-anchor="middle" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Balance general</text>
+          <text x="260" y="378" text-anchor="middle" font-size="16" fill="var(--good)">efectivo $2,600</text>
+          <text x="260" y="410" text-anchor="middle" font-size="16" fill="var(--needs)">utilidades retenidas $2,800</text>
+          <g fill="none" stroke-width="3.5" stroke-linecap="round">
+            <path d="M230 130 H 282" stroke="var(--needs)"/><path d="M274 122 l 10 8 l -10 8" stroke="var(--needs)"/>
+            <path d="M120 200 C 120 280, 150 300, 170 310" stroke="var(--needs)"/><path d="M158 312 l 14 0 l -6 -12" stroke="var(--needs)"/>
+            <path d="M400 200 C 400 280, 370 300, 350 310" stroke="var(--good)"/><path d="M362 312 l -14 0 l 6 -12" stroke="var(--good)"/>
+          </g>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">tres vistas de un mismo negocio</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> cómo los tres estados se pasan números entre sí. La utilidad neta del estado de resultados se vuelve la primera línea del estado de flujo de efectivo y se suma a las utilidades retenidas del balance. El efectivo final del estado de flujo se vuelve la línea de efectivo del balance.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Tres estados, <em>una historia.</em></h2>
+      <p class="lead reveal">El estado de resultados muestra la ganancia de un año. El balance muestra lo que tienes en un día. El estado de flujo de efectivo explica cómo llegó el efectivo del balance del año pasado al de este año.</p>
+
+      <h3 class="reveal" style="margin-top:56px">El estado de flujo de efectivo</h3>
+      <p class="reveal">El <dfn class="term" data-def="Un estado financiero que muestra todo el efectivo que entró y salió en un periodo, dividido en actividades de operación, inversión y financiamiento.">estado de flujo de efectivo</dfn> ordena cada movimiento de efectivo en tres grupos: operar el negocio, comprar cosas que duran años, y dinero de o para prestamistas y dueños. Suma los tres y obtienes el cambio en el efectivo.</p>
+      <div class="formula reveal">Efectivo final <span class="op">=</span> efectivo inicial <span class="op">+</span> operación <span class="op">+</span> inversión <span class="op">+</span> financiamiento</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El año</dt><dd>$0 + $2,400 − $3,000 + $3,200 = <b>$2,600</b>. Cada parte está abajo.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Actividades de operación</h3>
+      <p class="reveal">El <dfn class="term" data-def="El efectivo de operar el negocio día a día: la utilidad neta, ajustada por lo que no fue efectivo y por los cambios en cuentas por cobrar, inventario y cuentas por pagar.">efectivo de actividades de operación</dfn> empieza con la utilidad neta y luego corrige dos cosas. Primero, suma la depreciación: fue un gasto, pero no salió efectivo por ella este año. Segundo, ajusta el <dfn class="term" data-def="El efectivo atado a la operación diaria del negocio: activos circulantes como cuentas por cobrar e inventario, menos pasivos circulantes como cuentas por pagar.">capital de trabajo</dfn>: el dinero atorado en cuentas por cobrar o inventario no llegó como efectivo, y las facturas que todavía no pagas (cuentas por pagar) son efectivo que todavía tienes.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Utilidad neta</dt><dd><b>$2,800</b>, del estado de resultados.</dd></div><div><dt>Suma la depreciación</dt><dd><b>+$600</b>. No salió efectivo por ella este año.</dd></div><div><dt>Subieron las cuentas por cobrar</dt><dd>De $0 a $1,000: <b>−$1,000</b>. Un cliente todavía lo debe.</dd></div><div><dt>Subió el inventario</dt><dd>De $0 a $1,000: <b>−$1,000</b>. Efectivo en el estante en forma de piezas.</dd></div><div><dt>Subieron las cuentas por pagar</dt><dd>De $0 a $1,000: <b>+$1,000</b>. Piezas que tienes pero todavía no pagas.</dd></div><div><dt>Efectivo de operación</dt><dd>$2,800 + $600 − $1,000 − $1,000 + $1,000 = <b>$2,400</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Actividades de inversión</h3>
+      <p class="reveal">Las <dfn class="term" data-def="El efectivo gastado en, o recibido por vender, activos que duran años, como equipo, edificios u otros negocios.">actividades de inversión</dfn> son el efectivo gastado en activos que duran años, o recibido por venderlos. Comprar equipo se llama <dfn class="term" data-def="El efectivo que un negocio gasta en activos que duran años, como equipo y edificios. En inglés, capex.">inversión de capital</dfn>, o capex en inglés. Aquí aparece el precio completo, aunque el estado de resultados solo cuente la depreciación.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Las herramientas</dt><dd>Pagadas en efectivo en enero: <b>−$3,000</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Actividades de financiamiento</h3>
+      <p class="reveal">Las <dfn class="term" data-def="El efectivo de o para prestamistas y dueños: pedir prestado, pagar el capital de un préstamo, dinero que ponen los dueños y pagos a los dueños como dividendos o retiros.">actividades de financiamiento</dfn> son el efectivo de o para prestamistas y dueños: pedir prestado, pagar el capital de un préstamo, el dinero que ponen los dueños y lo que se les paga. Pagarles a los dueños, que en una corporación se llama dividendos y en una LLC retiros, no es un gasto: baja directamente las utilidades retenidas.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Lo que pusiste</dt><dd><b>+$1,200</b>.</dd></div><div><dt>El préstamo</dt><dd>Pediste $2,500 y pagaste $500: <b>+$2,000</b>. Quedan $2,000 por pagar, el préstamo del balance.</dd></div><div><dt>Total de financiamiento</dt><dd>$1,200 + $2,000 = <b>$3,200</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Flujo de efectivo libre</h3>
+      <p class="reveal">El <dfn class="term" data-def="El efectivo de operación menos las inversiones de capital: el efectivo que genera un negocio y que queda libre para pagar a prestamistas, a dueños o para crecer.">flujo de efectivo libre</dfn> es el efectivo que el negocio genera con su operación después de pagar el equipo que necesita. Es lo que de verdad queda libre para pagar deudas, pagarles a los dueños o crecer. Los inversionistas valúan empresas con él, como verás en la Unidad 13.</p>
+      <div class="formula reveal">Flujo de efectivo libre <span class="op">=</span> efectivo de operación <span class="op">−</span> inversiones de capital</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El primer año</dt><dd>$2,400 − $3,000 = <b>−$600</b>. Normal en un primer año: las herramientas fueron un gasto de una vez. El próximo año, sin herramientas nuevas, podría ser positivo.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Las conexiones</h3>
+      <p class="reveal">Tres números unen los estados. La <b>utilidad neta</b> es la última línea del estado de resultados y la primera del estado de flujo de efectivo, y se suma a las <b>utilidades retenidas</b> del balance. El <b>efectivo final</b> del estado de flujo es el <b>efectivo</b> del balance. Y la <b>depreciación</b> baja la utilidad neta, se suma en el efectivo de operación y baja el valor en libros del equipo.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Utilidad neta</dt><dd>$2,800 → arriba del flujo de efectivo, y utilidades retenidas $0 + $2,800 = <b>$2,800</b>.</dd></div><div><dt>Efectivo</dt><dd>Efectivo final del flujo <b>$2,600</b> = efectivo del balance $2,600.</dd></div><div><dt>Depreciación</dt><dd>−$600 en el estado de resultados, +$600 en el efectivo de operación, herramientas $3,000 → <b>$2,400</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="ts">
+        <div class="ts-ctl">
+          <div><label class="md-lab" for="ts-ar">Lo que deben los clientes el 31 dic. <b id="ts-ar-v">$1,000</b></label><input type="range" id="ts-ar" min="0" max="3000" step="500" value="1000"></div>
+          <div><label class="md-lab" for="ts-inv">Piezas en el estante el 31 dic. <b id="ts-inv-v">$1,000</b></label><input type="range" id="ts-inv" min="0" max="3000" step="500" value="1000"></div>
+          <div><label class="md-lab" for="ts-loan">Préstamo pendiente el 31 dic. <b id="ts-loan-v">$2,000</b></label><input type="range" id="ts-loan" min="0" max="4000" step="500" value="2000"></div>
+        </div>
+        <div class="ts-out" id="ts-out"></div>
+        <p class="ts-msg" id="ts-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> tus tres estados del primer año, conectados. Los colores iguales son el mismo número en dos lugares: azul para la utilidad neta, verde para el efectivo, gris para la depreciación. La utilidad neta se queda en $2,800 mientras mueves los controles, pero el efectivo cambia. Ese es todo el punto.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Une <em>los puntos.</em></h2>
+      <p class="lead reveal">Ocho preguntas sobre cómo encajan los tres estados. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="cd">
+        <div class="fd-top">
+          <div><small id="cd-round">Pregunta 1 de 8</small><b id="cd-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="cd-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="cd-facts"></ul>
+        <div class="sd-opts" id="cd-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="cd-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="cd-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="cd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> empresas inventadas. Cada una da algunos números de sus estados y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Para armar un estado de flujo de efectivo a partir de los otros dos, sigue estos cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Empieza con la utilidad neta</h3>
+      <div class="formula reveal">La utilidad neta del estado de resultados</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Inicio</dt><dd>$2,800.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Corrige lo que no fue efectivo</h3>
+      <div class="formula reveal"><span class="op">+</span> depreciación <span class="op">−</span> aumentos en por cobrar e inventario <span class="op">+</span> aumentos en por pagar</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Efectivo de operación</dt><dd>$2,800 + $600 − $1,000 − $1,000 + $1,000 = $2,400.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Suma inversión y financiamiento</h3>
+      <div class="formula reveal">Sale la inversión de capital; entran préstamos y dinero de los dueños; salen pagos y repartos</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Inversión y financiamiento</dt><dd>−$3,000 y +$3,200.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Revisa que cuadre</h3>
+      <div class="formula reveal">Efectivo inicial <span class="op">+</span> los tres <span class="op">=</span> efectivo del balance</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Comprobación</dt><dd>$0 + $2,400 − $3,000 + $3,200 = $2,600. Cuadra.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: una afinación de $40 por los tres estados</h3>
+      <ol class="steps reveal">
+        <li><b>Qué pasa.</b> Un cliente paga $40 en efectivo por una afinación que usa $10 de piezas del estante.</li>
+        <li><b>Estado de resultados.</b> Ingresos +$40, costo de ventas +$10, así que la utilidad neta sube $30.</li>
+        <li><b>Estado de flujo de efectivo.</b> Utilidad neta +$30, y el inventario bajó $10, lo que suma +$10. Efectivo de operación +$40.</li>
+        <li><b>Balance general.</b> Efectivo +$40, inventario −$10: activos +$30. Utilidades retenidas +$30: capital +$30.</li>
+        <li><b>Cuadra.</b> El efectivo subió $40 en el estado de flujo y en el balance, y los activos siguen siendo iguales a los pasivos más el capital.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Un lago lleva <em>sus propias cuentas.</em></h2>
+      <p class="lead reveal">Los hidrólogos siguen un lago con dos tipos de números. El nivel del agua en un día es un <i>saldo</i>, como un balance. Los ríos que entran y salen, la lluvia y la evaporación del año son <i>flujos</i>, como un estado de flujo de efectivo. El nivel del año pasado más todos los flujos siempre da el nivel de este año.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un lago con un río que entra por la izquierda y sale por la derecha, lluvia arriba y un poste de medición en el agua.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--accent) 8%, var(--card))"/>
+        <path d="M0 250 Q 450 220 900 250 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#8fb27a"/>
+        <ellipse cx="450" cy="300" rx="260" ry="60" fill="#5b8fc4"/>
+        <path d="M0 280 C 80 280, 120 300, 200 300" stroke="#5b8fc4" stroke-width="22" fill="none"/>
+        <path d="M700 300 C 780 300, 820 320, 900 320" stroke="#5b8fc4" stroke-width="18" fill="none"/>
+        <g class="ts-rain" stroke="#5b8fc4" stroke-width="4" stroke-linecap="round"><path d="M380 120 l -8 22"/><path d="M430 110 l -8 22"/><path d="M480 125 l -8 22"/><path d="M530 112 l -8 22"/></g>
+        <path d="M360 100 q 0 -40 50 -40 q 20 -30 60 -10 q 50 -10 60 30 q 30 10 10 30 Z" fill="#c9d3dd"/>
+        <rect x="560" y="230" width="10" height="90" fill="#7a5a3a"/>
+        <g stroke="#7a5a3a" stroke-width="3"><path d="M570 245 h 12"/><path d="M570 265 h 12"/><path d="M570 285 h 12"/></g>
+        <g text-anchor="middle">
+          <text x="140" y="200" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Entra</text>
+          <text x="140" y="226" font-size="15" fill="var(--ink-2)">ríos y lluvia</text>
+          <text x="780" y="200" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Sale</text>
+          <text x="780" y="226" font-size="15" fill="var(--ink-2)">ríos y evaporación</text>
+          <text x="450" y="322" font-family="Fraunces, serif" font-size="22" fill="#f4f1ea">Saldo: el nivel de hoy</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. Un lago con un río que entra por la izquierda, lluvia desde arriba, un río que sale por la derecha y un poste que mide el nivel del agua.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> No puedes explicar por qué un lago está bajo viendo solo su nivel de hoy. Necesitas los flujos. Un negocio es igual: el balance te dice dónde terminó el efectivo, y el estado de flujo te dice por qué.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Estado de flujo de efectivo</b>: operación + inversión + financiamiento = cambio en el efectivo. $2,400 − $3,000 + $3,200 = $2,600.</li>
+          <li><b>Operación</b> = utilidad neta + depreciación − más por cobrar − más inventario + más por pagar. $2,800 + $600 − $1,000 − $1,000 + $1,000 = $2,400.</li>
+          <li><b>Inversión</b>: inversión de capital (equipo comprado) −$3,000.</li>
+          <li><b>Financiamiento</b>: dinero de los dueños, préstamos, pagos, dividendos o retiros. $1,200 + $2,500 − $500 = $3,200.</li>
+          <li><b>Flujo de efectivo libre</b> = efectivo de operación − inversión de capital. $2,400 − $3,000 = −$600.</li>
+          <li><b>Conexiones</b>: utilidad neta → arriba del flujo y utilidades retenidas; efectivo final → efectivo del balance; depreciación → se suma y baja el valor en libros.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Comprar equipo aparece en las actividades de <input type="text" class="blank" data-answer="inversión|inversion" aria-label="Espacio 1">.</div>
+        <div>2. La depreciación se suma al efectivo de operación porque no es un pago en <input type="text" class="blank" data-answer="efectivo" aria-label="Espacio 2">.</div>
+        <div>3. Con $50,000 de efectivo de operación y $20,000 de inversión de capital, el flujo de efectivo libre es de <input type="text" class="blank" data-answer="30000|$30000|30,000|$30,000" inputmode="numeric" aria-label="Espacio 3"> dólares.</div>
+        <div>4. La utilidad neta se suma a las utilidades <input type="text" class="blank" data-answer="retenidas" aria-label="Espacio 4"> del balance.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Pasen la operación</h3>
+          <p>Una persona dice una operación. La siguiente dice qué cambia en el estado de resultados, la siguiente en el balance y la siguiente en el estado de flujo de efectivo.</p>
+        </div>
+        <div class="reveal">
+          <h3>Encuentren las conexiones</h3>
+          <p>Busquen los tres estados de una empresa de la bolsa. Encuentren la utilidad neta en los tres lugares donde aparece y revisen que el efectivo final coincida.</p>
+        </div>
+        <div class="reveal">
+          <h3>Reto de los controles</h3>
+          <p>Con los estados de arriba, encuentren una combinación en la que el efectivo baje de cero mientras la utilidad neta sigue en $2,800. ¿Qué harían?</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Ordena el dinero del mes pasado en tres grupos: gastos de todos los días, compras grandes, y préstamos o pagos de deudas. ¿Qué grupo se movió más?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Cuál es tu "flujo de efectivo libre" personal: lo que queda después de los gastos diarios y las compras necesarias?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Cuál de los tres estados querrías ver antes de invertir en una empresa? ¿Por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres analista de banca de inversión</h3>
+      <div class="reveal">
+        <p>Estás armando un modelo de tres estados para Northside Supply, una empresa que tu banco podría ayudar a vender. Este es su año:</p>
+        <ul>
+          <li><b>Utilidad neta:</b> $500,000. <b>Depreciación:</b> $100,000.</li>
+          <li><b>Las cuentas por cobrar</b> subieron $150,000. <b>El inventario</b> subió $50,000. <b>Las cuentas por pagar</b> subieron $30,000.</li>
+          <li><b>Inversión de capital:</b> $200,000 en equipo nuevo.</li>
+          <li><b>Capital del préstamo pagado:</b> $100,000. <b>Dividendos pagados:</b> $50,000.</li>
+          <li><b>Efectivo al inicio del año:</b> $300,000.</li>
+        </ul>
+        <p><b>Tu tarea:</b> arma el estado de flujo de efectivo. ¿Cuál es el efectivo final y el flujo de efectivo libre? ¿Cuánto cambiaron las utilidades retenidas?</p>
+        <textarea id="job-answer" placeholder="Escribe la revisión de tu modelo…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Operación:</b> $500,000 + $100,000 − $150,000 − $50,000 + $30,000 = <b>$430,000</b>.</p>
+            <p><b>Inversión:</b> <b>−$200,000</b>. <b>Financiamiento:</b> −$100,000 − $50,000 = <b>−$150,000</b>.</p>
+            <p><b>Efectivo final:</b> $300,000 + $430,000 − $200,000 − $150,000 = <b>$380,000</b>. Ese es el efectivo del balance de fin de año.</p>
+            <p><b>Flujo de efectivo libre:</b> $430,000 − $200,000 = <b>$230,000</b>.</p>
+            <p><b>Utilidades retenidas:</b> suben $500,000 de utilidad neta y bajan $50,000 de dividendos: <b>+$450,000</b>.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">De la contabilidad <em>a valuar empresas.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en el estado de resultados, el balance general y el flujo de efectivo, y lleva a conseguir dinero">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../income-statement/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Estado de resultados</text><text x="20" y="86">Unidad 12 · de dónde sale la utilidad</text></a>
+          <a href="../balance-sheet/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Balance general</text><text x="20" y="186">Unidad 12 · dónde termina el efectivo</text></a>
+          <a href="../cash-flow/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Flujo de efectivo</text><text x="20" y="286">Unidad 11 · por qué importan los tiempos</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Los tres estados</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Conseguir dinero</text><text x="690" y="186">Muy pronto · Unidad 13</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 12</span><b>¿El negocio ganó dinero?</b></li>
+        <li><span class="muted small">Antes · Unidad 12</span><b>Lo que tiene y lo que debe</b></li>
+        <li><span class="muted small">Antes · Unidad 11</span><b>Con ganancias y sin efectivo</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Cómo se conectan los tres estados</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 13</span><b>Conseguir dinero</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../balance-sheet/">Repasa: Lo que tiene y lo que debe <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

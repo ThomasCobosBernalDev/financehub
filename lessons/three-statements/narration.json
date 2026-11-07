@@ -1,0 +1,16 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "capex": "cap ex"
+ },
+ "lines": [
+  "The shop opened with zero dollars in the bank. A year later it earned 2,800 dollars and has 2,600 dollars of cash. The cash flow statement explains how the cash moved, in three groups.",
+  "Operating activities start with net income, 2,800. Add back 600 of depreciation, because no cash left for it this year. Subtract 1,000 still owed by a customer and 1,000 of parts on the shelf. Add 1,000 of bills not yet paid. Cash from operations: 2,400 dollars.",
+  "Investing activities are long-lasting things: the 3,000 dollar tool kit, paid in cash. That's capital expenditures, or capex.",
+  "Financing activities are money from lenders and owners: 1,200 dollars you put in, plus 2,500 borrowed and 500 paid back. Total: 3,200. Add it all up: 2,400, minus 3,000, plus 3,200, is 2,600 dollars of cash.",
+  "Free cash flow is operating cash minus capex: 2,400 minus 3,000, minus 600 dollars. Normal for a first year with a big purchase.",
+  "Three links tie it together. Net income tops the cash flow statement and adds to retained earnings. Ending cash is balance sheet cash. Depreciation lowers profit, is added back to cash, and lowers the tool kit's book value.",
+  "Like a lake, today's level is a stock and the rivers in and out are flows. The balance sheet tells you where cash ended up; the cash flow statement tells you why."
+ ]
+}

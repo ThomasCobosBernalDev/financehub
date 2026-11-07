@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "El local abrió con cero dólares en el banco. Un año después ganó 2,800 dólares y tiene 2,600 de efectivo. El estado de flujo de efectivo explica cómo se movió el efectivo, en tres grupos.",
+  "Las actividades de operación empiezan con la utilidad neta, 2,800. Suma 600 de depreciación, porque no salió efectivo por ella este año. Resta 1,000 que todavía debe un cliente y 1,000 de piezas en el estante. Suma 1,000 de facturas que aún no pagas. Efectivo de operación: 2,400 dólares.",
+  "Las actividades de inversión son cosas que duran años: las herramientas de 3,000 dólares, pagadas en efectivo. Eso es inversión de capital.",
+  "Las actividades de financiamiento son dinero de prestamistas y dueños: 1,200 dólares que pusiste, más 2,500 prestados y 500 pagados. Total: 3,200. Súmalo todo: 2,400, menos 3,000, más 3,200, da 2,600 dólares de efectivo.",
+  "El flujo de efectivo libre es el efectivo de operación menos la inversión de capital: 2,400 menos 3,000, menos 600 dólares. Normal en un primer año con una compra grande.",
+  "Tres conexiones lo unen. La utilidad neta encabeza el estado de flujo y se suma a las utilidades retenidas. El efectivo final es el efectivo del balance. La depreciación baja la utilidad, se suma al efectivo y baja el valor en libros de las herramientas.",
+  "Como en un lago, el nivel de hoy es un saldo y los ríos que entran y salen son flujos. El balance te dice dónde terminó el efectivo; el estado de flujo te dice por qué."
+ ]
+}
