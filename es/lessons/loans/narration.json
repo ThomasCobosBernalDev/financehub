@@ -1,0 +1,17 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": { "APR": "a pe erre", "FAFSA": "fafsa", "CFPB": "ce efe pe be" },
+  "lines": [
+    "Compras un carro usado de 12,000 dólares, das 2,000 de pago inicial y pides prestados 10,000 al 7 por ciento. El vendedor te ofrece 239 dólares al mes por 4 años, o 170 dólares al mes por 6. El pago más chico cuesta 781 dólares más.",
+    "Todo préstamo tiene tres números: el principal que pides, el APR y el plazo, el tiempo que tienes para pagarlo. Un pago inicial baja el principal.",
+    "Cada mes, el interés se calcula sobre lo que todavía debes. Con 10,000 dólares al 7 por ciento, el interés del primer mes es de 58 dólares con 33 centavos. El resto de tu pago baja el préstamo.",
+    "Conforme baja el saldo, menos de cada pago va a interés y más baja lo que debes.",
+    "Un plazo más largo significa un pago más chico pero más interés total. Multiplica siempre el pago por el número de meses para ver el costo real.",
+    "Para un carro, consigue primero una oferta de tu banco o cooperativa, da un pago inicial y mantén el pago cerca del 10 por ciento de tu sueldo neto.",
+    "Para la universidad, llena la FAFSA y usa primero los préstamos federales. Los subsidiados no crecen mientras estás en la escuela. Los no subsidiados suman interés todo el tiempo.",
+    "Los préstamos de día de pago cobran unos 15 dólares por cada 100, a pagar en dos semanas. Eso es cerca de 390 por ciento al año, y las renovaciones suman cargo tras cargo.",
+    "La planta jarra atrae insectos con néctar dulce, y sus paredes resbalosas no los dejan salir. Mantén lleno tu fondo de emergencia, para nunca necesitar el borde dulce."
+  ]
+}

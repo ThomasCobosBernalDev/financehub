@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": { "APR": "A P R", "FAFSA": "faff-sa", "CFPB": "C F P B" },
+  "lines": [
+    "You buy a 12,000 dollar used car, put 2,000 down, and borrow 10,000 at 7 percent. The dealer offers 239 dollars a month for 4 years, or 170 dollars a month for 6. The smaller payment costs 781 dollars more.",
+    "Every loan has three numbers: the principal you borrow, the APR, and the term, how long you have to pay it back. A down payment lowers the principal.",
+    "Each month, interest is figured on what you still owe. On 10,000 dollars at 7 percent, the first month's interest is 58 dollars and 33 cents. The rest of your payment pays down the loan.",
+    "As the balance shrinks, less of each payment goes to interest and more pays down what you owe.",
+    "A longer term means a smaller payment but more total interest. Always multiply the payment by the number of months to see the real cost.",
+    "For a car, get an offer from your bank or credit union first, put money down, and keep the payment near 10 percent of your take-home pay.",
+    "For college, fill out the FAFSA and use federal loans first. Subsidized loans don't grow while you're in school. Unsubsidized loans add interest the whole time.",
+    "Payday loans charge about 15 dollars for every 100, due in two weeks. That's about 390 percent a year, and rollovers stack fee after fee.",
+    "A pitcher plant lures insects in with sweet nectar, and its slippery walls keep them from climbing out. Keep your emergency fund full, so you never need the sweet rim."
+  ]
+}
