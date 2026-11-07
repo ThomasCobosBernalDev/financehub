@@ -155,7 +155,7 @@
     L(9, 3, "u9-business-cycle", t("The business cycle", "El ciclo económico"), t("Booms and recessions", "Auges y recesiones"), { needs: ["u1-interest-rates"], href: "lessons/business-cycle/" }),
     L(10, 1, "u10-percent-growth", t("Percentages and growth", "Porcentajes y crecimiento"), t("The math behind every money question", "Las matemáticas detrás de cada pregunta de dinero"), { href: "lessons/percentages/" }),
     L(10, 2, "u10-time-value", t("The time value of money", "El valor del dinero en el tiempo"), t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), { needs: ["u10-percent-growth"], href: "lessons/time-value/" }),
-    L(10, 3, "u10-money-mind", t("Money psychology", "Psicología del dinero"), t("Behavioral finance", "Finanzas conductuales")),
+    L(10, 3, "u10-money-mind", t("Money psychology", "Psicología del dinero"), t("Behavioral finance", "Finanzas conductuales"), { href: "lessons/money-mind/" }),
   ];
   // Lessons that are open so far, in course order.
   const OPEN = CATALOG.filter((l) => l.href);
@@ -298,6 +298,7 @@
     ["cycle-reader", "business-cycle", t("Cycle Reader", "Lector de ciclos"), t("Place all 8 headlines right in Name the phase.", "Ubica bien los 8 titulares del juego Nombra la fase.")],
     ["percent-pro", "percentages", t("Percent Pro", "Experto en porcentajes"), t("Answer all 8 questions right in Percent sprint.", "Responde bien las 8 preguntas del juego Carrera de porcentajes.")],
     ["time-traveler", "time-value", t("Time Traveler", "Viajero del tiempo"), t("Answer all 8 offers right in Now or later.", "Responde bien las 8 ofertas del juego Hoy o después.")],
+    ["bias-buster", "money-mind", t("Bias Buster", "Detector de sesgos"), t("Name all 8 traps right in Name the trap.", "Nombra bien las 8 trampas del juego Nombra la trampa.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };
