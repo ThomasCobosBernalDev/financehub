@@ -1,0 +1,18 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "NBER": "N B E R",
+    "GDP": "G D P"
+  },
+  "lines": [
+    "The economy slows down and the bike shop cuts your hours by a quarter. Your pay drops from 2,400 to 1,800 dollars, a 600 dollar gap. It lasts 6 months, and your 3,600 dollar emergency fund covers it exactly.",
+    "The business cycle has four phases. Expansion, when the economy grows. Peak, the top. Contraction, when it shrinks. And trough, the bottom, before growth comes back.",
+    "A recession is a big, broad drop that lasts more than a few months. A common rule of thumb is two quarters in a row of shrinking real GDP. Officially, a committee at the NBER decides.",
+    "Since 1945, the average expansion has lasted about 5 years, and the average recession about 10 months. The Great Recession lasted 18 months. The 2020 recession lasted just 2.",
+    "Leading indicators, like stock prices and building permits, tend to turn first. Lagging indicators, like the unemployment rate, turn last.",
+    "In a recession, the Fed usually cuts interest rates to make borrowing cheaper. When the economy runs too hot, it raises them.",
+    "You can't control the cycle, but you can prepare. Build your emergency fund in good times. In bad times, lean on it, and keep investing if your job is safe.",
+    "Snowshoe hares boom and crash about every 8 to 11 years, and the lynx follow a step behind. The hares that make it through have a safe burrow. Your emergency fund is yours."
+  ]
+}

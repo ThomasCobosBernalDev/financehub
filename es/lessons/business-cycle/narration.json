@@ -1,0 +1,19 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "NBER": "N B E R",
+    "PIB": "P I B"
+  },
+  "lines": [
+    "La economía se frena y la tienda de bicicletas te recorta una cuarta parte de tus horas. Tu sueldo baja de 2,400 a 1,800 dólares, una diferencia de 600. Dura 6 meses, y tu fondo de emergencia de 3,600 dólares la cubre justo.",
+    "El ciclo económico tiene cuatro fases. Expansión, cuando la economía crece. Pico, lo más alto. Contracción, cuando se encoge. Y fondo, lo más bajo, antes de que vuelva el crecimiento.",
+    "Una recesión es una caída grande y amplia que dura más de unos cuantos meses. Una regla práctica común es dos trimestres seguidos de PIB real a la baja. Oficialmente, lo decide un comité del NBER.",
+    "Desde 1945, la expansión promedio ha durado unos 5 años, y la recesión promedio unos 10 meses. La Gran Recesión duró 18 meses. La recesión de 2020 duró solo 2.",
+    "Los indicadores adelantados, como los precios de las acciones y los permisos de construcción, suelen cambiar primero. Los atrasados, como la tasa de desempleo, cambian al final.",
+    "En una recesión, la Fed suele bajar las tasas de interés para abaratar los préstamos. Cuando la economía se calienta demasiado, las sube.",
+    "No puedes controlar el ciclo, pero sí prepararte. Arma tu fondo de emergencia en los buenos tiempos. En los malos, apóyate en él, y sigue invirtiendo si tu trabajo es seguro.",
+    "Las liebres americanas tienen auges y caídas cada 8 a 11 años más o menos, y los linces las siguen un paso atrás. Las liebres que sobreviven tienen una madriguera segura. Tu fondo de emergencia es la tuya."
+  ]
+}
