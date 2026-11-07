@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "El banco hizo una segunda pregunta: ¿qué tiene el local ahora mismo y qué debe? La respuesta es el balance general, una foto de un día.",
+  "Los activos son lo que tiene el negocio. Los activos circulantes se convierten en efectivo en menos de un año: 2,600 dólares de efectivo, 1,000 que debe un cliente y 1,000 de piezas. Más las herramientas: 3,000 dólares menos 600 de depreciación acumulada, un valor en libros de 2,400. Total: 7,000 dólares.",
+  "Los pasivos son lo que debe: 1,000 dólares al proveedor de piezas, que vencen pronto, y 2,000 dólares que quedan del préstamo. Total: 3,000 dólares.",
+  "El capital es lo que queda para el dueño: los 1,200 dólares que pusiste, más 2,800 dólares de utilidades retenidas, la ganancia de este año que se quedó en el negocio. Total: 4,000 dólares.",
+  "Los activos son iguales a los pasivos más el capital. 7,000 es igual a 3,000 más 4,000. Cada operación mueve dos cosas, así que siempre cuadra.",
+  "Dos razones dicen qué tan fuerte está. La razón circulante, 4,600 entre 1,000, es 4.6: suficiente para pagar las cuentas. La deuda a capital, 3,000 entre 4,000, es 0.75.",
+  "Como la foto de una manada desde el cielo, el balance muestra un día, no todo el año."
+ ]
+}

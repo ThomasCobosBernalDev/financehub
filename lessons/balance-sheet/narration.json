@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "The bank asked a second question: what does the shop have right now, and what does it owe? The answer is the balance sheet, a snapshot of one day.",
+  "Assets are what the business owns. Current assets turn into cash within a year: 2,600 dollars of cash, 1,000 owed by a customer, and 1,000 of parts. Plus the tool kit: 3,000 dollars minus 600 of accumulated depreciation, a book value of 2,400. Total: 7,000 dollars.",
+  "Liabilities are what it owes: 1,000 dollars to the parts supplier, due soon, and 2,000 dollars left on the loan. Total: 3,000 dollars.",
+  "Equity is what's left for the owner: the 1,200 dollars you put in, plus 2,800 dollars of retained earnings, this year's profit kept in the business. Total: 4,000 dollars.",
+  "Assets equal liabilities plus equity. 7,000 equals 3,000 plus 4,000. Every transaction moves two things, so it always balances.",
+  "Two ratios tell you how strong it is. The current ratio, 4,600 over 1,000, is 4.6: plenty to pay the bills. Debt to equity, 3,000 over 4,000, is 0.75.",
+  "Like a photo of a herd from the sky, the balance sheet shows one day, not the whole year."
+ ]
+}
