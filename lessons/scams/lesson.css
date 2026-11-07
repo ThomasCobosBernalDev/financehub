@@ -1,0 +1,46 @@
+/* Unit 6, Lesson 2: red-flag tapper, scam or legit game. */
+.md-card { background: var(--card); border-radius: 24px; padding: clamp(18px, 3.5vw, 30px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); margin-top: 20px; }
+.md-lab { display: block; font-size: 15px; color: var(--ink-2); margin: 0 0 8px; }
+.md-card .split-msg { margin: 16px 0; font-size: 17px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.md-card .split-msg:empty { display: none; }
+.fd { margin-top: 28px; background: var(--card); border-radius: 24px; padding: clamp(16px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); }
+.fd-top { display: flex; justify-content: space-between; gap: 16px 24px; align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.fd-top small, .pg-score small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.fd-top > div > b { display: block; margin-top: 6px; font-family: var(--serif); font-weight: 500; font-size: clamp(20px, 2.4vw, 24px); line-height: 1.35; }
+.pg-score { text-align: right; flex: none; }
+.pg-score b { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--good); font-variant-numeric: tabular-nums; }
+.fd-why { margin-top: 16px; font-size: 16px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.fd-why[data-tone="good"] { border-color: var(--good); }
+.fd-why[data-tone="warn"] { border-color: var(--wants); }
+.fd-next { margin-top: 16px; width: 100%; justify-content: center; }
+.fd-next:disabled { opacity: .5; cursor: default; }
+.rr-wide .fd-why, .rr-wide .fd-next { max-width: 720px; }
+@media (max-width: 760px) {
+  .fd-top { flex-direction: column; }
+  .pg-score { text-align: left; }
+}
+/* Red-flag tapper */
+.rf-msg { max-width: 560px; margin-top: 8px; padding: 16px 18px; border-radius: 20px 20px 20px 6px; background: color-mix(in srgb, var(--ink-3) 14%, var(--card)); font-size: 17px; line-height: 1.7; }
+.rf-msg p { margin: 8px 0 0; }
+.rf-from { font-size: 14px; }
+.rf-bit { padding: 1px 3px; margin: 0 -3px; border-radius: 6px; cursor: pointer; box-decoration-break: clone; -webkit-box-decoration-break: clone; text-decoration: underline dotted color-mix(in srgb, var(--ink-3) 60%, transparent); text-underline-offset: 4px; transition: background .2s; }
+.rf-bit:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rf-bit:hover { background: color-mix(in srgb, var(--ink-3) 18%, transparent); }
+.rf-bit.found { background: color-mix(in srgb, var(--wants) 22%, transparent); text-decoration: none; box-shadow: inset 0 -2px 0 var(--wants); }
+/* Scam or legit */
+.sl-msg { margin-top: 20px; max-width: 620px; padding: 16px 18px; border-radius: 20px 20px 20px 6px; background: color-mix(in srgb, var(--ink-3) 14%, var(--card)); }
+.sl-msg small { display: block; font-size: 13px; font-weight: 700; color: var(--ink-3); }
+.sl-msg p { margin: 6px 0 0; font-size: 17px; line-height: 1.55; }
+.sl-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 4px; max-width: 480px; }
+.sm-btn { font: inherit; font-weight: 600; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 10px; cursor: pointer; transition: border-color .2s, background .2s, transform .2s var(--ease); }
+.sm-btn:hover:not(:disabled) { border-color: var(--ink-3); transform: translateY(-2px); }
+.sm-btn:disabled { cursor: default; }
+.sm-btn.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--card)); }
+.sm-btn.wrong { border-color: var(--wants); background: color-mix(in srgb, var(--wants) 8%, var(--card)); }
+.sm-btn.alt { border-color: var(--good); border-style: dashed; }
+#sl-result { margin-top: 8px; }
+/* Art */
+.sc-glow { transform-box: fill-box; transform-origin: center; animation: sc-glow 2.4s ease-in-out infinite; }
+@keyframes sc-glow { 50% { scale: 1.35; opacity: .15; } }
+.sc-fish { animation: sc-fish 5s ease-in-out infinite; }
+@keyframes sc-fish { 50% { translate: 60px -12px; } }

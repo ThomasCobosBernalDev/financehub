@@ -144,7 +144,7 @@
     L(5, 6, "u5-market-drops", t("Market drops and risk", "Caídas del mercado y riesgo"), t("Risk, time and not panic-selling", "Riesgo, tiempo y no vender por pánico"), { href: "lessons/market-drops/", needs: ["u5-first-trade"] }),
     L(5, 7, "u5-retirement", t("401(k) and Roth IRA", "El 401(k) y la Roth IRA"), t("Retirement accounts and the employer match", "Cuentas para el retiro y la aportación del empleador"), { href: "lessons/retirement/", needs: ["u5-index-funds"] }),
     L(6, 1, "u6-insurance", t("Insurance", "Seguros"), t("Health, car and renters insurance", "Seguro médico, de carro y de inquilino"), { href: "lessons/insurance/" }),
-    L(6, 2, "u6-scams", t("Scams and identity theft", "Estafas y robo de identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad")),
+    L(6, 2, "u6-scams", t("Scams and identity theft", "Estafas y robo de identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad"), { href: "lessons/scams/" }),
     L(7, 1, "u7-renting", t("Renting an apartment", "Rentar un departamento"), t("Leases, deposits and roommates", "Contratos, depósitos y compañeros de cuarto")),
     L(7, 2, "u7-car", t("Buying a car", "Comprar un carro"), t("New vs. used, loans and total cost", "Nuevo vs. usado, préstamos y costo total"), { needs: ["u4-loans"] }),
     L(7, 3, "u7-home", t("Renting vs. buying a home", "Rentar vs. comprar casa"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"] }),
@@ -291,6 +291,7 @@
     ["statement-pro", "credit-cards", t("Statement Pro", "Experto en estados de cuenta"), t("Answer all 6 statement questions right.", "Acierta las 6 preguntas del estado de cuenta.")],
     ["loan-detective", "loans", t("Loan Detective", "Detective de préstamos"), t("Solve all 6 loan cases right.", "Resuelve bien los 6 casos de préstamos.")],
     ["claims-pro", "insurance", t("Claims Pro", "Experto en reclamos"), t("Settle all 6 insurance claims right.", "Resuelve bien los 6 reclamos de seguro.")],
+    ["scam-spotter", "scams", t("Scam Spotter", "Detector de estafas"), t("Judge all 8 messages right in Scam or legit.", "Juzga bien los 8 mensajes del juego Estafa o legítimo.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };
