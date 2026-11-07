@@ -1,0 +1,18 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {
+  "EBIT": "í bit",
+  "LLC": "ele ele ce"
+ },
+ "lines": [
+  "Tu local hizo 500 afinaciones a 40 dólares: 20,000 dólares de ventas. El estado de resultados muestra cuánto de eso fue ganancia, de la primera línea a la última.",
+  "Empieza con los ingresos: 20,000 dólares. Resta el costo de ventas, las piezas, 5,000 dólares. Quedan 15,000 dólares de utilidad bruta, un margen bruto de 75 por ciento.",
+  "Luego, los gastos de operación: el costo de operar el local. La renta, el seguro y los anuncios suman 11,400 dólares. Más la depreciación: unas herramientas de 3,000 dólares que duran 5 años cuentan como 600 dólares al año.",
+  "La utilidad bruta menos 12,000 dólares de gastos de operación da 3,000 dólares de utilidad de operación, también llamada EBIT: utilidad antes de intereses e impuestos. Es un margen de operación de 15 por ciento.",
+  "Después resta los intereses, 200 dólares, y los impuestos. Tu LLC es de transferencia, así que aquí los impuestos son cero. Devolver el capital de un préstamo no es gasto; solo los intereses.",
+  "La utilidad neta, la última línea, es de 2,800 dólares: un margen neto de 14 por ciento. Como corporación C, un impuesto de 21 por ciento dejaría 2,212 dólares.",
+  "Como un árbol que gasta mucha energía solo en mantenerse vivo, un negocio puede recibir mucho y quedarse con poco. Siempre lee hasta el neto."
+ ]
+}

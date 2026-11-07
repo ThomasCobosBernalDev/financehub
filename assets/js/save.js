@@ -159,7 +159,7 @@
     L(11, 1, "u11-price-profit", t("Price, costs and profit", "Precio, costos y ganancia"), t("Fixed vs. variable costs and break-even", "Costos fijos vs. variables y punto de equilibrio"), { needs: ["u10-percent-growth"], href: "lessons/price-profit/" }),
     L(11, 2, "u11-cash-flow", t("Cash flow", "Flujo de efectivo"), t("Why profitable businesses still run out of money", "Por qué negocios con ganancias se quedan sin dinero"), { needs: ["u11-price-profit"], href: "lessons/cash-flow/" }),
     L(11, 3, "u11-legal-setup", t("Making it official", "Hacerlo oficial"), t("Sole proprietor, LLC or corporation, plus business taxes", "Dueño único, LLC o corporación, más impuestos del negocio"), { needs: ["u11-price-profit"], href: "lessons/legal-setup/" }),
-    L(12, 1, "u12-income-statement", t("The income statement", "El estado de resultados"), t("Did the business make money?", "¿El negocio ganó dinero?"), { needs: ["u11-price-profit"] }),
+    L(12, 1, "u12-income-statement", t("The income statement", "El estado de resultados"), t("Did the business make money?", "¿El negocio ganó dinero?"), { needs: ["u11-price-profit"], href: "lessons/income-statement/" }),
     L(12, 2, "u12-balance-sheet", t("The balance sheet", "El balance general"), t("What it owns, what it owes", "Lo que tiene y lo que debe"), { needs: ["u12-income-statement"] }),
     L(12, 3, "u12-three-statements", t("How the three statements connect", "Cómo se conectan los tres estados"), t("The cash flow statement ties it together", "El estado de flujo de efectivo lo une todo"), { needs: ["u12-balance-sheet"] }),
     L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"] }),
@@ -311,6 +311,7 @@
     ["in-the-black", "price-profit", t("In the Black", "Números negros"), t("Answer all 8 businesses right in Break-even or bust.", "Responde bien los 8 negocios del juego Equilibrio o quiebra.")],
     ["cash-keeper", "cash-flow", t("Cash Keeper", "Guardián del efectivo"), t("Answer all 8 questions right in Cash or crash.", "Responde bien las 8 preguntas del juego Efectivo o quiebra.")],
     ["by-the-book", "legal-setup", t("By the Book", "En regla"), t("Answer all 8 questions right in Pick the paperwork.", "Responde bien las 8 preguntas del juego Elige los trámites.")],
+    ["bottom-liner", "income-statement", t("Bottom Liner", "Experto en utilidades"), t("Answer all 8 questions right in Line it up.", "Responde bien las 8 preguntas del juego Ponlo en orden.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

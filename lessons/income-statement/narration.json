@@ -1,0 +1,17 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "EBIT": "E bit",
+  "LLC": "L. L. C."
+ },
+ "lines": [
+  "Your shop did 500 tune-ups at 40 dollars: 20,000 dollars of sales. The income statement shows how much of that was profit, from the top line down to the bottom line.",
+  "Start with revenue: 20,000 dollars. Subtract the cost of goods sold, the parts, 5,000 dollars. That leaves 15,000 dollars of gross profit, a 75 percent gross margin.",
+  "Next, operating expenses: the cost of running the place. Rent, insurance and ads add up to 11,400 dollars. Plus depreciation: a 3,000 dollar tool kit that lasts 5 years counts as 600 dollars a year.",
+  "Gross profit minus 12,000 dollars of operating expenses is 3,000 dollars of operating income, also called EBIT, earnings before interest and taxes. That's a 15 percent operating margin.",
+  "Then subtract interest, 200 dollars, and taxes. Your LLC is pass-through, so taxes here are zero. Paying back loan principal isn't an expense; only the interest is.",
+  "Net income, the bottom line, is 2,800 dollars: a 14 percent net margin. As a C corporation, a 21 percent tax would leave 2,212 dollars.",
+  "Like a tree that burns much of its energy just to stay alive, a business can bring in a lot and keep a little. Always read down to the net."
+ ]
+}
