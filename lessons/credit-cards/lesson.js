@@ -1,7 +1,7 @@
 // Unit 4, Lesson 2: Use a credit card without getting burned
 (function () {
   const LESSON = "u4-credit-cards";
-  const { $, $$, fillRange } = FHLesson;
+  const { $, $$, fillRange, shuffle } = FHLesson;
   const T = FH.t;
   const cents = (x) => `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
@@ -67,7 +67,7 @@
     G.done = false;
     $("#sd-round").textContent = T(`Question ${G.i + 1} of ${N}`, `Pregunta ${G.i + 1} de ${N}`);
     $("#sd-q").textContent = r.q;
-    $("#sd-opts").innerHTML = r.opts.map((o, j) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
+    $("#sd-opts").innerHTML = shuffle(r.opts.map((o, j) => [o, j])).map(([o, j]) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
     whyEl.classList.add("hidden");
     nextB.disabled = true;
     nextB.innerHTML = `${T("Next question", "Siguiente pregunta")} <span class="arrow">→</span>`;

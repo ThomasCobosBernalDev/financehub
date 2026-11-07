@@ -1,7 +1,7 @@
 // Unit 1, Lesson 3: Dodge the fees
 (function () {
   const LESSON = "u1-bank-fees";
-  const { $, $$, fillRange } = FHLesson;
+  const { $, $$, fillRange, shuffle } = FHLesson;
   const money = FH.money;
   const T = FH.t;
   const cents = (x) => `${x < 0 ? "−" : ""}$${Math.abs(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -169,7 +169,7 @@
     $("#fd-q").textContent = r.q;
     $("#fd-scene").innerHTML = r.scene;
     drawPhone(r);
-    optsEl.innerHTML = r.opts.map((o, k) => `<button type="button" class="fd-opt" data-k="${k}">${o.t}</button>`).join("");
+    optsEl.innerHTML = shuffle(r.opts.map((o, k) => [o, k])).map(([o, k]) => `<button type="button" class="fd-opt" data-k="${k}">${o.t}</button>`).join("");
     whyEl.classList.add("hidden");
     nextB.disabled = true;
     nextB.innerHTML = `${T("Next moment", "Siguiente momento")} <span class="arrow">→</span>`;

@@ -1,7 +1,7 @@
 // Unit 6, Lesson 1: Insurance: health, car and renters
 (function () {
   const LESSON = "u6-insurance";
-  const { $, $$, fillRange } = FHLesson;
+  const { $, $$, fillRange, shuffle } = FHLesson;
   const T = FH.t;
   const usd = (x) => "$" + Math.round(x).toLocaleString("en-US");
 
@@ -58,7 +58,7 @@
     $("#wp-round").textContent = T(`Claim ${G.i + 1} of ${N}`, `Reclamo ${G.i + 1} de ${N}`);
     $("#wp-q").textContent = r.q;
     $("#wp-facts").innerHTML = r.facts.map((f) => `<li>${f}</li>`).join("");
-    $("#wp-opts").innerHTML = r.opts.map((o, j) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
+    $("#wp-opts").innerHTML = shuffle(r.opts.map((o, j) => [o, j])).map(([o, j]) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
     whyEl.classList.add("hidden");
     nextB.disabled = true;
     nextB.innerHTML = `${T("Next claim", "Siguiente reclamo")} <span class="arrow">→</span>`;

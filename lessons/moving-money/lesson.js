@@ -1,7 +1,7 @@
 // Unit 1, Lesson 4: Move money safely
 (function () {
   const LESSON = "u1-moving-money";
-  const { $, $$, fillRange } = FHLesson;
+  const { $, $$, fillRange, shuffle } = FHLesson;
   const money = FH.money;
   const T = FH.t;
   const cents = (x) => `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -95,7 +95,7 @@
     G.done = false;
     $("#rr-round").textContent = T(`Situation ${G.i + 1} of 6`, `Situación ${G.i + 1} de 6`);
     $("#rr-scene").innerHTML = r.scene;
-    optsEl.innerHTML = r.opts.map((o, k) => `<button type="button" class="fd-opt" data-k="${k}">${o.t}</button>`).join("");
+    optsEl.innerHTML = shuffle(r.opts.map((o, k) => [o, k])).map(([o, k]) => `<button type="button" class="fd-opt" data-k="${k}">${o.t}</button>`).join("");
     whyEl.classList.add("hidden");
     nextB.disabled = true;
     nextB.innerHTML = `${T("Next situation", "Siguiente situación")} <span class="arrow">→</span>`;

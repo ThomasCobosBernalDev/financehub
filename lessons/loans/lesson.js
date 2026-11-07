@@ -1,7 +1,7 @@
 // Unit 4, Lesson 3: Car, student and payday loans
 (function () {
   const LESSON = "u4-loans";
-  const { $, $$, fillRange } = FHLesson;
+  const { $, $$, fillRange, shuffle } = FHLesson;
   const T = FH.t;
   const cents = (x) => `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const usd = (x) => "$" + Math.round(x).toLocaleString("en-US");
@@ -73,7 +73,7 @@
     $("#ld-round").textContent = T(`Case ${G.i + 1} of ${N}`, `Caso ${G.i + 1} de ${N}`);
     $("#ld-q").textContent = r.q;
     $("#ld-facts").innerHTML = r.facts.map((f) => `<li>${f}</li>`).join("");
-    $("#ld-opts").innerHTML = r.opts.map((o, j) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
+    $("#ld-opts").innerHTML = shuffle(r.opts.map((o, j) => [o, j])).map(([o, j]) => `<button type="button" class="sm-btn" data-k="${j}">${o}</button>`).join("");
     whyEl.classList.add("hidden");
     nextB.disabled = true;
     nextB.innerHTML = `${T("Next case", "Siguiente caso")} <span class="arrow">→</span>`;
