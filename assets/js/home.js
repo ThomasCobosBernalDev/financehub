@@ -21,9 +21,9 @@ const banner = (next) => {
   const why = next.why === "review" ? T("On your path, in a unit you already know. A quick review.", "En tu camino, en una unidad que ya sabes. Un repaso rápido.")
     : next.why === "extra" ? T("Your path's open lessons are done, so here's an extra one.", "Ya hiciste las lecciones abiertas de tu camino, así que aquí va una extra.")
     : FH.path.setUp ? T("Next on your path.", "Lo siguiente en tu camino.") : T("Next in the course.", "Lo siguiente en el curso.");
-  return `<div class="cx-detail"><div class="cx-d-photo"><img src="${FH.unitPhoto(next.unit)}" alt="" onerror="this.remove()"><div><p class="kicker">${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n}</p><h3>${next.title}</h3><p class="cx-org">${next.sub}</p></div></div>
+  return `<div class="cx-detail"><div class="cx-d-photo"><img src="${FH.unitPhoto(next.unit)}" alt="" onerror="this.remove()"><div><h3>${T("Unit", "Unidad")} ${next.unit} · ${T("Lesson", "Lección")} ${next.n}</h3><p class="cx-d-name">${next.title}</p><p class="cx-org">${next.sub}</p></div></div>
   <div class="cx-d-info">
-    <p class="cx-what">${why} ${T("Pick the way you learn best, or do all eight:", "Elige la forma en que mejor aprendes, o haz las ocho:")}</p>
+    <p class="cx-what">${why} ${T("Taught eight ways:", "Enseñada de ocho formas:")}</p>
     <ul class="ex-ways">${FH.STYLES.map((st) => `<li>${icon(st)}<span>${st.chapter}</span></li>`).join("")}</ul>
     <div class="cx-d-foot"><a class="btn" href="${root}${next.href}">${started ? T("Continue lesson", "Seguir la lección") : T("Start lesson", "Empezar lección")} <span class="arrow">→</span></a></div>
   </div></div>`;

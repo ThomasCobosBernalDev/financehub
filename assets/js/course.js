@@ -26,7 +26,7 @@ const stateOf = (l, pi) => {
 
 const banner = (u, l, pi) => {
   const top = `<div class="cx-d-photo"><img src="${FH.unitPhoto(u)}" alt="" onerror="this.remove()"><div>`;
-  if (!l) return `<div class="cx-detail" aria-live="polite">${top}<p class="kicker">${T("Unit", "Unidad")} ${u}</p><h3>${FH.UNIT_NAMES[u - 1]}</h3></div></div>
+  if (!l) return `<div class="cx-detail" aria-live="polite">${top}<h3>${T("Unit", "Unidad")} ${u}</h3><p class="cx-d-name">${FH.UNIT_NAMES[u - 1]}</p></div></div>
     <div class="cx-d-info"><p class="cx-what">${T("The lessons for this unit are being planned. Every one will teach its topic eight ways, like the open lessons do.", "Las lecciones de esta unidad se están planeando. Cada una enseñará su tema de ocho formas, como las lecciones abiertas.")}</p></div></div>`;
   const s = stateOf(l, pi);
   const needs = (l.needs || []).map(lessonById).filter(Boolean);
@@ -35,9 +35,9 @@ const banner = (u, l, pi) => {
   const go = l.href
     ? `<a class="btn sm" href="${root}${l.href}">${s.done ? T("Review lesson", "Repasar lección") : T("Start lesson", "Empezar lección")} <span class="arrow">→</span></a>`
     : `<span class="btn sm line" aria-disabled="true">${T("Coming soon", "Muy pronto")}</span>`;
-  return `<div class="cx-detail" aria-live="polite">${top}<p class="kicker">${T("Lesson", "Lección")} ${l.unit}.${l.n}</p><h3>${l.title}</h3><p class="cx-org">${l.sub}</p></div></div>
+  return `<div class="cx-detail" aria-live="polite">${top}<h3>${T("Unit", "Unidad")} ${l.unit} · ${T("Lesson", "Lección")} ${l.n}</h3><p class="cx-d-name">${l.title}</p><p class="cx-org">${l.sub}</p></div></div>
   <div class="cx-d-info">
-    <p class="cx-what">${T("Pick the way you learn best, or do all eight:", "Elige la forma en que mejor aprendes, o haz las ocho:")}</p>
+    <p class="cx-what">${T("Taught eight ways:", "Enseñada de ocho formas:")}</p>
     <ul class="ex-ways">${FH.STYLES.map((st) => `<li>${icon(st)}<span>${st.chapter}</span></li>`).join("")}</ul>
     <dl>
       <div><dt>${T("Status", "Estado")}</dt><dd>${status}</dd></div>
