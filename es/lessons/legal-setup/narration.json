@@ -1,0 +1,19 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {
+  "EIN": "E. I. N.",
+  "LLC": "ele ele ce",
+  "IRS": "I. R. S."
+ },
+ "lines": [
+  "Tu puesto de afinaciones ganó 8,400 dólares este año. Nunca llenaste un formulario, así que eres una empresa de dueño único: tú y el negocio son la misma persona. Ahora quieres firmar un contrato de un año por un local, a 800 dólares al mes.",
+  "Como dueño único, tienes responsabilidad ilimitada. Si el local cierra a los 3 meses, los 7,200 dólares que se deben del contrato son tu deuda, y el dueño del local puede ir por tu fondo de emergencia. Dos dueños sin papeles son una sociedad general, con el mismo riesgo.",
+  "Una LLC es un negocio que registras en tu estado, normalmente por 50 a 500 dólares. Te da responsabilidad limitada: puedes perder lo que está en el negocio, pero normalmente no tus ahorros personales, a menos que firmes una garantía personal.",
+  "La mayoría de los negocios pequeños son de transferencia. El negocio no paga impuesto sobre la renta; la ganancia va en tu declaración, más el 15.3 por ciento de impuesto de trabajo por cuenta propia. Sobre 8,400 dólares, son 1,186 dólares con 88 centavos.",
+  "Una corporación C paga 21 por ciento sobre su ganancia. Luego los dueños pagan otra vez sobre los dividendos, normalmente 15 por ciento. Sobre 100,000 dólares, son 21,000 y luego 11,850. Eso es la doble tributación. Las startups que buscan inversionistas igual eligen ser corporaciones.",
+  "Luego haz los trámites: registra el negocio, saca un EIN gratis del IRS, saca una licencia, abre una cuenta de banco del negocio, compra un seguro y paga impuestos estimados cada trimestre si vas a deber 1,000 dólares o más. En tu caso, unos 297 dólares por trimestre.",
+  "Como la lagartija que suelta la cola para escapar, una LLC deja que el negocio reciba el golpe mientras tú conservas tus ahorros y vuelves a empezar."
+ ]
+}

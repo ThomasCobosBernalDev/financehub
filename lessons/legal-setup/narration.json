@@ -1,0 +1,18 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "EIN": "E. I. N.",
+  "LLC": "L. L. C.",
+  "IRS": "I. R. S."
+ },
+ "lines": [
+  "Your tune-up stand made 8,400 dollars of profit this year. You never filed a form, so you're a sole proprietor: you and the business are the same person. Now you want to sign a one-year lease for a shop, at 800 dollars a month.",
+  "As a sole proprietor, you have unlimited liability. If the shop closes after 3 months, the 7,200 dollars still owed on the lease is your debt, and the landlord can go after your emergency fund. Two owners with no paperwork are a general partnership, with the same risk.",
+  "An LLC is a business you register with your state, usually for 50 to 500 dollars. It gives you limited liability: you can lose what's in the business, but usually not your personal savings, unless you sign a personal guarantee.",
+  "Most small businesses are pass-through. The business pays no income tax; the profit goes on your own return, plus the 15.3 percent self-employment tax. On 8,400 dollars, that's 1,186 dollars and 88 cents.",
+  "A C corporation pays 21 percent on its profit. Then owners pay tax again on dividends, usually 15 percent. On 100,000 dollars, that's 21,000, then 11,850. That's double taxation. Startups raising money from investors still choose corporations.",
+  "Then do the paperwork: register, get a free EIN from the IRS, get a license, open a business bank account, buy insurance, and pay estimated taxes every quarter if you'll owe 1,000 dollars or more. For you, about 297 dollars a quarter.",
+  "Like a lizard that drops its tail to escape, an LLC lets the business take the hit while you keep your savings and start again."
+ ]
+}
