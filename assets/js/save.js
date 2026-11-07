@@ -147,7 +147,7 @@
     L(6, 2, "u6-scams", t("Scams and identity theft", "Estafas y robo de identidad"), t("Phishing, fake checks and identity theft", "Phishing, cheques falsos y robo de identidad"), { href: "lessons/scams/" }),
     L(7, 1, "u7-renting", t("Renting an apartment", "Rentar un departamento"), t("Leases, deposits and roommates", "Contratos, depósitos y compañeros de cuarto"), { href: "lessons/renting/" }),
     L(7, 2, "u7-car", t("Buying a car", "Comprar un carro"), t("New vs. used, loans and total cost", "Nuevo vs. usado, préstamos y costo total"), { needs: ["u4-loans"], href: "lessons/buying-car/" }),
-    L(7, 3, "u7-home", t("Renting vs. buying a home", "Rentar vs. comprar casa"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"] }),
+    L(7, 3, "u7-home", t("Renting vs. buying a home", "Rentar vs. comprar casa"), t("Mortgages and the real cost of owning", "Hipotecas y el costo real de ser dueño"), { needs: ["u7-renting"], href: "lessons/rent-vs-buy/" }),
     L(8, 1, "u1-scarcity", t("Scarcity and trade-offs", "Escasez y renuncias"), t("Every choice has a price tag · Ten Free Hours", "Cada decisión tiene un precio · Diez horas libres"), { href: "lessons/scarcity/" }),
     L(8, 2, "u1-supply-demand", t("Supply and demand", "Oferta y demanda"), t("Why prices are what they are · Market Stall", "Por qué los precios son lo que son · Puesto en el mercado"), { href: "lessons/supply-demand/", needs: ["u1-scarcity"] }),
     L(9, 1, "u1-inflation", t("Inflation", "Inflación"), t("Why your money shrinks · Beat Inflation", "Por qué tu dinero se encoge · Gánale a la inflación"), { href: "lessons/inflation/", needs: ["u1-supply-demand"] }),
@@ -294,6 +294,7 @@
     ["scam-spotter", "scams", t("Scam Spotter", "Detector de estafas"), t("Judge all 8 messages right in Scam or legit.", "Juzga bien los 8 mensajes del juego Estafa o legítimo.")],
     ["lease-ready", "renting", t("Lease Ready", "Listo para rentar"), t("Answer all 8 Lease check questions right.", "Responde bien las 8 preguntas del juego Revisa el contrato.")],
     ["car-smart", "buying-car", t("Car Smart", "Experto en carros"), t("Answer all 8 Car lot questions right.", "Responde bien las 8 preguntas del juego Lote de carros.")],
+    ["home-smart", "rent-vs-buy", t("Home Smart", "Experto en vivienda"), t("Answer all 8 House hunt questions right.", "Responde bien las 8 preguntas del juego Busca casa.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

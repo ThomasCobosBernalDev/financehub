@@ -1,0 +1,18 @@
+{
+  "voice": "ef_dora",
+  "lang": "es",
+  "speed": 1.0,
+  "say": {
+    "PMI": "P M I"
+  },
+  "lines": [
+    "Rentas por 1,800 dólares al mes. Una casa parecida de 300,000 dólares costaría unos 2,472 al mes, más 39,000 dólares para empezar.",
+    "Una hipoteca es un préstamo para casa, casi siempre a 30 años. En 270,000 dólares al 6.25 por ciento, el pago es de 1,662 dólares al mes. Al principio, casi todo es interés. Solo 256 dólares del primer pago bajan el préstamo.",
+    "Para empezar necesitas un pago inicial y gastos de cierre. Si das menos del 20 por ciento, casi siempre pagarás PMI, un seguro que protege al prestamista, no a ti.",
+    "Los dueños también pagan el impuesto sobre la propiedad, el seguro de hogar y cada reparación. Un cálculo común para reparaciones es el 1 por ciento del valor de la casa cada año.",
+    "Los prestamistas muchas veces usan la regla del 28 por ciento. Tu hipoteca, impuesto, seguro y PMI no deben pasar del 28 por ciento de tu ingreso antes de impuestos. Con 8,000 dólares al mes, son 2,240.",
+    "El patrimonio en la casa es lo que vale menos lo que debes. Crece cuando pagas el préstamo y si sube el valor de la casa. Es el dinero que recuperas cuando vendes.",
+    "Comprar tiene costos grandes al principio y al final. Por eso casi siempre le gana a rentar solo si te quedas unos 5 años o más.",
+    "El castor trabaja duro para construir su madriguera, y la sigue reparando, porque planea quedarse por años. Compra casa igual: solo cuando planees quedarte."
+  ]
+}

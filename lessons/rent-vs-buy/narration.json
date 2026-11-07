@@ -1,0 +1,17 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {
+    "PMI": "P M I"
+  },
+  "lines": [
+    "You rent for 1,800 dollars a month. A similar 300,000 dollar house would cost about 2,472 a month to own, plus 39,000 dollars to get started.",
+    "A mortgage is a home loan, usually for 30 years. On 270,000 dollars at 6.25 percent, the payment is 1,662 dollars a month. At first, most of it is interest. Only 256 dollars of the first payment pays down the loan.",
+    "To start, you need a down payment and closing costs. Put down less than 20 percent and you'll usually pay PMI, insurance that protects the lender, not you.",
+    "Owners also pay property tax, homeowners insurance, and every repair. A common guess for repairs is 1 percent of the home's value each year.",
+    "Lenders often use the 28 percent rule. Your mortgage, tax, insurance and PMI should be at most 28 percent of your income before taxes. On 8,000 dollars a month, that's 2,240.",
+    "Equity is what your home is worth minus what you owe. It grows as you pay down the loan and if the home's value rises. That's the money you get back when you sell.",
+    "Buying has big costs at the start and the end. So it usually beats renting only if you stay about 5 years or more.",
+    "A beaver works hard to build its lodge, and keeps repairing it, because it plans to stay for years. Buy a home the same way: only when you plan to stay."
+  ]
+}
