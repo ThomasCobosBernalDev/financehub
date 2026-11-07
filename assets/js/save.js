@@ -156,6 +156,15 @@
     L(10, 1, "u10-percent-growth", t("Percentages and growth", "Porcentajes y crecimiento"), t("The math behind every money question", "Las matemáticas detrás de cada pregunta de dinero"), { href: "lessons/percentages/" }),
     L(10, 2, "u10-time-value", t("The time value of money", "El valor del dinero en el tiempo"), t("A dollar today vs. a dollar later", "Un dólar hoy vs. un dólar después"), { needs: ["u10-percent-growth"], href: "lessons/time-value/" }),
     L(10, 3, "u10-money-mind", t("Money psychology", "Psicología del dinero"), t("Behavioral finance", "Finanzas conductuales"), { href: "lessons/money-mind/" }),
+    L(11, 1, "u11-price-profit", t("Price, costs and profit", "Precio, costos y ganancia"), t("Fixed vs. variable costs and break-even", "Costos fijos vs. variables y punto de equilibrio"), { needs: ["u10-percent-growth"] }),
+    L(11, 2, "u11-cash-flow", t("Cash flow", "Flujo de efectivo"), t("Why profitable businesses still run out of money", "Por qué negocios con ganancias se quedan sin dinero"), { needs: ["u11-price-profit"] }),
+    L(11, 3, "u11-legal-setup", t("Making it official", "Hacerlo oficial"), t("Sole proprietor, LLC or corporation, plus business taxes", "Dueño único, LLC o corporación, más impuestos del negocio"), { needs: ["u11-price-profit"] }),
+    L(12, 1, "u12-income-statement", t("The income statement", "El estado de resultados"), t("Did the business make money?", "¿El negocio ganó dinero?"), { needs: ["u11-price-profit"] }),
+    L(12, 2, "u12-balance-sheet", t("The balance sheet", "El balance general"), t("What it owns, what it owes", "Lo que tiene y lo que debe"), { needs: ["u12-income-statement"] }),
+    L(12, 3, "u12-three-statements", t("How the three statements connect", "Cómo se conectan los tres estados"), t("The cash flow statement ties it together", "El estado de flujo de efectivo lo une todo"), { needs: ["u12-balance-sheet"] }),
+    L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"] }),
+    L(13, 2, "u13-npv", t("Picking projects with NPV", "Elegir proyectos con el VPN"), t("Is this investment worth it?", "¿Vale la pena esta inversión?"), { needs: ["u10-time-value"] }),
+    L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"] }),
   ];
   // Lessons that are open so far, in course order.
   const OPEN = CATALOG.filter((l) => l.href);
