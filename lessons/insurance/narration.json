@@ -1,0 +1,16 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "say": {},
+  "lines": [
+    "You break your wrist, and the hospital bill is 8,000 dollars. Because you have health insurance for 120 dollars a month, you pay 2,800 and the insurer pays 5,200.",
+    "Insurance works by pooling risk. Thousands of people each pay a little, and most stay healthy, so their money covers the few who need it. What you pay to stay covered is the premium.",
+    "When you get care, you first pay the deductible. After that you pay your share, the coinsurance, like 20 percent. And once you hit the out-of-pocket maximum, the insurer pays everything.",
+    "On the 8,000 dollar wrist: 1,500 deductible, plus 20 percent of the other 6,500, which is 1,300. You pay 2,800.",
+    "To choose a health plan, add a year of premiums to what you'd pay for care. A low premium plan wins in healthy years. A high premium plan can win in a big year.",
+    "Car insurance: liability pays for damage you cause to others, and almost every state requires it. Collision fixes your car after a crash. Comprehensive covers theft, hail and deer.",
+    "If you rent, the landlord's insurance doesn't cover your things. Renters insurance does, often for about 15 to 20 dollars a month.",
+    "Pick deductibles your emergency fund can pay. Insurance covers the disasters; your fund covers the deductibles.",
+    "Emperor penguins huddle through the Antarctic winter, each taking a turn on the cold edge. Your premium is your turn on the edge, so the group can carry you when the storm hits."
+  ]
+}
