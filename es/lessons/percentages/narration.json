@@ -1,0 +1,16 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Te dan un aumento de 10 por ciento, de 2,400 a 2,640 dólares al mes. Un año después, un recorte de 10 por ciento te deja en 2,376 dólares, no en 2,400. El recorte fue el 10 por ciento de un número más grande.",
+  "Un porcentaje significa de cada 100. Mueve el punto decimal dos lugares a la izquierda y luego multiplica. Una propina de 15 por ciento sobre una comida de 60 dólares es 60 por 0.15, o sea 9 dólares.",
+  "El cambio porcentual es el número nuevo menos el anterior, dividido entre el anterior. Siempre se mide desde donde empezaste.",
+  "Los puntos porcentuales son la simple diferencia entre dos tasas. Una tasa que pasa de 4 a 5 por ciento subió 1 punto, pero eso es un aumento de 25 por ciento.",
+  "Las pérdidas necesitan ganancias más grandes para deshacerse. Una acción que cae 50 por ciento, de 100 a 50 dólares, necesita una ganancia de 100 por ciento para volver a 100.",
+  "Los descuentos encadenados se multiplican. 20 por ciento de descuento y luego 10 por ciento más sobre una chaqueta de 100 dólares te deja pagando 72 dólares. Eso es 28 por ciento de descuento, no 30.",
+  "El crecimiento compuesto genera crecimiento sobre crecimiento. Mil dólares al 10 por ciento por 3 años se vuelven 1,331 dólares, no 1,300. Y la regla del 72 dice que el dinero que crece 8 por ciento al año se duplica en unos 9 años.",
+  "Entonces: convierte el porcentaje en decimal, usa un multiplicador y siempre pregunta, ¿porcentaje de qué?"
+ ]
+}

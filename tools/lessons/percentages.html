@@ -1,0 +1,258 @@
+<!-- title: The Math of Percent and Growth -->
+<!-- description: Unit 10, Lesson 1: what a percent is, finding a percent of a number, percent change, percentage points vs. percent, why a loss needs a bigger gain to recover, stacked discounts, and simple vs. compound growth. Play: Percent sprint, eight quick money-math questions. -->
+<!-- kicker: Unit 10 · Lesson 1 -->
+<!-- topic: Money math -->
+
+<!-- @start -->
+        <h1 class="reveal">Up 10%, then down 10%. <em>You end up with less.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Business at the bike shop is booming, so the owner gives you a <span class="mark">10% raise</span>: your <span class="mark">$2,400</span> a month becomes <span class="mark">$2,640</span>. A year later, sales slow down and everyone takes a <span class="mark">10% cut</span>. You figure you're back at $2,400. But your new pay is <span class="mark">$2,376</span>, $24 less than where you started. Nobody cheated you. That's just how percents work. This lesson shows the math behind almost every money question: tips, raises, discounts, interest and investment returns.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>percent</b> means "out of 100." Growth in percent is how money questions are asked: rates, returns, raises and prices.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Percents can fool you: a 50% loss needs a 100% gain to recover, and two discounts don't simply add up.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Turn every percent into a decimal, multiply, and always ask: percent <b>of what</b>?</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Financial analysts</b> measure growth in sales and profits. <b>Actuaries</b> use percents to price risk. <b>Pricing analysts</b> set discounts that still make money.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Three bars: $2,400, then $2,640 after a 10% raise, then $2,376 after a 10% cut. The last bar is a little shorter than the first.">
+          <line x1="40" y1="440" x2="480" y2="440" stroke="var(--line)" stroke-width="3"/>
+          <rect x="60" y="200" width="100" height="240" rx="10" fill="color-mix(in srgb, var(--ink-3) 45%, transparent)"/>
+          <rect x="210" y="176" width="100" height="264" rx="10" fill="var(--good)" opacity=".8"/>
+          <rect x="360" y="202.4" width="100" height="237.6" rx="10" fill="var(--wants)" opacity=".85"/>
+          <path d="M60 200 H 460" stroke="var(--ink)" stroke-width="2" stroke-dasharray="6 6"/>
+          <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+            <text x="110" y="470">Start</text><text x="260" y="470">+10% raise</text><text x="410" y="470">−10% cut</text>
+          </g>
+          <g font-family="Fraunces, serif" font-size="24" text-anchor="middle" fill="var(--ink)">
+            <text x="110" y="186">$2,400</text><text x="260" y="162">$2,640</text><text x="410" y="240" fill="var(--on-color)">$2,376</text>
+          </g>
+          <path d="M160 140 C 190 110, 220 110, 238 140" fill="none" stroke="var(--good)" stroke-width="3"/>
+          <text x="200" y="104" text-anchor="middle" font-size="14" fill="var(--good)">10% of $2,400 = $240</text>
+          <path d="M290 140 C 320 110, 360 110, 384 140" fill="none" stroke="var(--wants)" stroke-width="3"/>
+          <text x="400" y="104" text-anchor="middle" font-size="14" fill="var(--wants)">10% of $2,640 = $264</text>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">same 10%, different starting point</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> your monthly pay, drawn to scale. The dashed line marks your starting $2,400. The raise added 10% of $2,400, which is $240. The cut took 10% of a bigger number, $2,640, which is $264. So you end $24 below the line.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Percent, <em>piece by piece.</em></h2>
+      <p class="lead reveal">Six ideas cover nearly all the percent math you'll meet in money: finding a percent, percent change, points vs. percent, the comeback trap, stacked discounts and compounding.</p>
+
+      <h3 class="reveal" style="margin-top:56px">A percent of a number</h3>
+      <p class="reveal">A <dfn class="term" data-def="A number out of 100. 15% means 15 out of every 100, which is 0.15 as a decimal.">percent</dfn> means "out of 100." To use one, turn it into a decimal by moving the point two places left (15% = 0.15), then multiply.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your raise</dt><dd>10% = 0.10. $2,400 × 0.10 = <b>$240</b>. New pay: $2,400 + $240 = $2,640, or in one step $2,400 × 1.10 = <b>$2,640</b>.</dd></div><div><dt>A tip</dt><dd>15% on a $60 meal: $60 × 0.15 = <b>$9</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Percent change</h3>
+      <p class="reveal"><dfn class="term" data-def="How much something grew or shrank compared to where it started: (new − old) divided by old, then times 100.">Percent change</dfn> compares the change to the <b>starting</b> number: new minus old, divided by old.</p>
+      <div class="formula reveal">Percent change <span class="op">=</span> <span class="frac"><span>new − old</span><span>old</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The cut</dt><dd><span class="frac"><span>$2,376 − $2,640</span><span>$2,640</span></span> = <span class="frac"><span>−$264</span><span>$2,640</span></span> = −0.10, a <b>10% drop</b>.</dd></div><div><dt>Start to finish</dt><dd><span class="frac"><span>$2,376 − $2,400</span><span>$2,400</span></span> = <span class="frac"><span>−$24</span><span>$2,400</span></span> = −0.01, <b>1% less</b> overall.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Percentage points vs. percent</h3>
+      <p class="reveal">When a rate itself changes, there are two ways to say it. <dfn class="term" data-def="The simple difference between two percentages. A rate going from 4% to 5% rose 1 percentage point.">Percentage points</dfn> are the plain difference. Percent change compares that difference to the old rate. News headlines mix them up all the time.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A savings rate from 4% to 5%</dt><dd>Up <b>1 percentage point</b> (5 − 4). But that's <span class="frac"><span>5 − 4</span><span>4</span></span> = 0.25, a <b>25% increase</b> in what you earn.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The comeback trap</h3>
+      <p class="reveal">A loss and the gain needed to undo it are not the same size, because the gain starts from a smaller number. That's why your 10% cut didn't cancel your 10% raise, and why big investment losses hurt so much.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A stock falls 50%</dt><dd>$100 × 0.50 = $50. A 50% gain only gets it to $50 × 1.50 = $75. To get back to $100 it needs <span class="frac"><span>$100 − $50</span><span>$50</span></span> = 1.00, a <b>100% gain</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Stacked discounts</h3>
+      <p class="reveal">"20% off, plus an extra 10% off" is not 30% off. The second discount comes off the already-lower price. Multiply the parts you <b>keep</b>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A $100 jacket</dt><dd>$100 × 0.80 = $80, then $80 × 0.90 = <b>$72</b>. That's 28% off, not 30%.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Simple vs. compound growth</h3>
+      <p class="reveal"><dfn class="term" data-def="Growth where each year's increase is figured only on the original amount.">Simple growth</dfn> adds the same amount every year, figured on the starting number. <dfn class="term" data-def="Growth where each year's increase is figured on the new, larger total, so growth earns growth. Value = start × (1 + rate) to the power of the number of years.">Compound growth</dfn> figures each year's gain on the new total, so the growth itself grows. That's the engine behind savings interest (Lesson 3.3), investing (Lesson 5.1) and, in reverse, credit card debt (Lesson 4.2).</p>
+      <div class="formula reveal">Compound value <span class="op">=</span> start <span class="op">×</span> (1 + rate)<sup>years</sup></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>$1,000 at 10% for 3 years, simple</dt><dd>$1,000 + 3 × $100 = <b>$1,300</b>.</dd></div><div><dt>Same, compound</dt><dd>$1,000 × 1.10 × 1.10 × 1.10 = <b>$1,331</b>. The extra $31 is growth earned on growth.</dd></div></dl></div>
+      <p class="reveal">A quick shortcut for compounding is the <dfn class="term" data-def="A shortcut: divide 72 by the yearly growth percent to estimate how many years it takes money to double.">rule of 72</dfn>: divide 72 by the yearly percent to estimate how many years it takes to double.</p>
+      <div class="formula reveal">Years to double <span class="op">≈</span> <span class="frac"><span>72</span><span>yearly growth %</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Growing 8% a year</dt><dd><span class="frac"><span>72</span><span>8</span></span> = <b>9 years</b> to double: $1,000 becomes about $2,000.</dd></div></dl></div>
+      <div class="md-card reveal" id="gm">
+        <div class="gm-ctl">
+          <div><label class="md-lab" for="gm-r">Yearly growth <b id="gm-r-v">7%</b></label><input type="range" id="gm-r" min="1" max="12" step="1" value="7"></div>
+          <div><label class="md-lab" for="gm-y">Years <b id="gm-y-v">10</b></label><input type="range" id="gm-y" min="1" max="40" step="1" value="10"></div>
+        </div>
+        <div class="gm-bars" id="gm-bars" aria-hidden="true"></div>
+        <dl class="gm-out" id="gm-out"></dl>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> $1,000 growing at the rate and for the years you pick. Each column is one year. The gray part is what simple growth would give you; the green on top is the extra from compounding. It's a math example, not a promise of any real return.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Percent <em>sprint.</em></h2>
+      <p class="lead reveal">Eight quick money-math questions. Each one gives you the numbers. Work it out, then tap your answer. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="ps">
+        <div class="fd-top">
+          <div><small id="ps-round">Question 1 of 8</small><b id="ps-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="ps-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="ps-facts"></ul>
+        <div class="sd-opts" id="ps-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="ps-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="ps-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="ps-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up money situations. Each lists the numbers, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Three moves solve almost any percent problem.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Turn the percent into a decimal</h3>
+      <div class="formula reveal">Move the decimal point two places left: 10% <span class="op">=</span> 0.10, 7% <span class="op">=</span> 0.07</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your raise</dt><dd>10% becomes 0.10.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Use a multiplier</h3>
+      <div class="formula reveal">Up by a percent: × (1 + decimal) &nbsp; · &nbsp; down by a percent: × (1 − decimal)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Raise, then cut</dt><dd>$2,400 × 1.10 × 0.90 = $2,400 × 0.99 = <b>$2,376</b>.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Ask "percent of what?"</h3>
+      <div class="formula reveal">Percent change is always measured from the <b>starting</b> number</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The cut</dt><dd>10% of $2,640, not 10% of $2,400. That's why it's $264, not $240.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: getting back to $2,400</h3>
+      <ol class="steps reveal">
+        <li><b>Where you are.</b> $2,376 a month after the raise and the cut.</li>
+        <li><b>The gap.</b> $2,400 − $2,376 = $24.</li>
+        <li><b>Percent of what?</b> Of the new, lower pay: <span class="frac"><span>$24</span><span>$2,376</span></span> = 0.0101.</li>
+        <li><b>The answer.</b> You'd need a raise of about <b>1.01%</b>, a bit more than 1%, to get back where you started.</li>
+        <li><b>The lesson.</b> Losses and cuts always need a slightly bigger gain to undo, and the bigger the loss, the bigger the gap.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Duckweed <em>doubles.</em></h2>
+      <p class="lead reveal">Duckweed, a tiny floating plant, can double the space it covers in about two days when conditions are right. That's compounding in nature: each new plant starts making more plants. A pond can look nearly empty, and then be covered within days.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Four ponds in a row, each with twice as much green duckweed as the one before: one eighth covered, one quarter, half, then fully covered.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--accent) 8%, var(--card))"/>
+        <g>
+          <ellipse cx="130" cy="190" rx="100" ry="70" fill="#7fa9bf" opacity=".6"/>
+          <ellipse cx="350" cy="190" rx="100" ry="70" fill="#7fa9bf" opacity=".6"/>
+          <ellipse cx="570" cy="190" rx="100" ry="70" fill="#7fa9bf" opacity=".6"/>
+          <ellipse cx="790" cy="190" rx="100" ry="70" fill="#7fa9bf" opacity=".6"/>
+        </g>
+        <clipPath id="pc1"><ellipse cx="130" cy="190" rx="100" ry="70"/></clipPath>
+        <clipPath id="pc2"><ellipse cx="350" cy="190" rx="100" ry="70"/></clipPath>
+        <clipPath id="pc3"><ellipse cx="570" cy="190" rx="100" ry="70"/></clipPath>
+        <rect x="30" y="120" width="25" height="140" fill="#7cae4a" clip-path="url(#pc1)"/>
+        <rect x="250" y="120" width="50" height="140" fill="#7cae4a" clip-path="url(#pc2)"/>
+        <rect x="470" y="120" width="100" height="140" fill="#7cae4a" clip-path="url(#pc3)"/>
+        <ellipse class="pc-full" cx="790" cy="190" rx="100" ry="70" fill="#7cae4a"/>
+        <g font-size="15" text-anchor="middle" fill="var(--ink-2)">
+          <text x="130" y="296" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Day 54</text><text x="130" y="320">one eighth</text>
+          <text x="350" y="296" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Day 56</text><text x="350" y="320">a quarter</text>
+          <text x="570" y="296" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Day 58</text><text x="570" y="320">half</text>
+          <text x="790" y="296" font-family="Fraunces, serif" font-size="21" fill="var(--ink)">Day 60</text><text x="790" y="320">covered</text>
+        </g>
+        <text x="450" y="70" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Doubling every 2 days</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. If duckweed doubled every 2 days and covered a pond on day 60, it would cover half the pond on day 58, a quarter on day 56, and only an eighth on day 54.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> Compounding looks slow, then sudden. Most of the growth comes at the end. That's why starting to save early matters so much, and why ignored debt can swamp you.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Percent</b> = out of 100. 15% = 0.15. Percent of a number: multiply. $60 × 0.15 = $9.</li>
+          <li><b>Percent change</b> = <span class="frac"><span>new − old</span><span>old</span></span>. Always measured from the start.</li>
+          <li><b>Percentage points</b>: 4% to 5% is +1 point, but a 25% increase.</li>
+          <li><b>Comeback trap</b>: −50% needs +100% to recover. +10% then −10% = × 0.99: $2,400 → $2,376.</li>
+          <li><b>Stacked discounts</b> multiply: 20% then 10% off = × 0.80 × 0.90 = × 0.72, so 28% off.</li>
+          <li><b>Compound growth</b>: start × (1 + rate)<sup>years</sup>. $1,000 at 10% for 3 years = $1,331 vs. $1,300 simple.</li>
+          <li><b>Rule of 72</b>: years to double ≈ <span class="frac"><span>72</span><span>yearly %</span></span>. At 8%: 9 years.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. As a decimal, 7% is <input type="text" class="blank" data-answer="0.07|.07" inputmode="decimal" aria-label="Blank 1">.</div>
+        <div>2. A 15% tip on a $40 meal is $<input type="text" class="blank" data-answer="6|$6|6.00|six" inputmode="decimal" aria-label="Blank 2">.</div>
+        <div>3. After a 50% loss, you need a <input type="text" class="blank" data-answer="100|100%|one hundred" inputmode="numeric" aria-label="Blank 3">% gain to get back to even.</div>
+        <div>4. A rate going from 3% to 4% rose 1 percentage <input type="text" class="blank" data-answer="point" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Headline check</h3>
+          <p>Find a news headline with a percent in it. Is it percent or percentage points? Percent of what? Rewrite it to be clearer.</p>
+        </div>
+        <div class="reveal">
+          <h3>Store sale race</h3>
+          <p>Find a real sale with stacked discounts. Everyone works out the final price on paper. First right answer wins.</p>
+        </div>
+        <div class="reveal">
+          <h3>Double or nothing</h3>
+          <p>Each person picks a growth rate. Use the slider above to see how many years it takes $1,000 to double. Who guessed closest before looking?</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Think of a time a percent fooled you, like a sale or a "50% more" claim. What was really going on?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If you saved $100 a month and it grew 7% a year, how would you feel about it in 10 years? In 40?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Where is compounding working against you right now, like a card balance or a loan?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a financial analyst</h3>
+      <div class="reveal">
+        <p>Your boss wants to know which of two companies is growing faster. Here are their yearly sales:</p>
+        <ul>
+          <li><b>Company A:</b> $2,000,000 last year, <b>$2,500,000</b> this year.</li>
+          <li><b>Company B:</b> $8,000,000 last year, <b>$9,000,000</b> this year.</li>
+          <li>Company B's manager says, "We grew by $1,000,000, double Company A's $500,000. We're growing faster."</li>
+        </ul>
+        <p><b>Your task:</b> work out each company's growth in percent. Is the manager right? If Company A keeps its growth rate, what will its sales be next year?</p>
+        <textarea id="job-answer" placeholder="Write what you'd tell your boss…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Company A:</b> <span class="frac"><span>$2,500,000 − $2,000,000</span><span>$2,000,000</span></span> = 0.25, so <b>25%</b> growth.</p>
+            <p><b>Company B:</b> <span class="frac"><span>$9,000,000 − $8,000,000</span><span>$8,000,000</span></span> = 0.125, so <b>12.5%</b> growth.</p>
+            <p><b>The manager's claim:</b> B added more dollars, but from a much bigger start. In percent, A is growing twice as fast.</p>
+            <p><b>Next year for A:</b> $2,500,000 × 1.25 = <b>$3,125,000</b>, if the 25% rate holds.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">The math under <em>every lesson.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on making your savings earn more, why invest and credit cards, and leads to the time value of money">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../high-yield/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Savings that earn more</text><text x="20" y="86">Unit 3 · compound interest</text></a>
+          <a href="../why-invest/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Why invest?</text><text x="20" y="186">Unit 5 · the rule of 72</text></a>
+          <a href="../credit-cards/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Credit cards</text><text x="20" y="286">Unit 4 · compounding against you</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Percent and growth</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The time value of money</text><text x="690" y="186">Coming soon · Unit 10</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 3</span><b>Make your savings earn more</b></li>
+        <li><span class="muted small">Back · Unit 5</span><b>Why invest at all?</b></li>
+        <li><span class="muted small">Back · Unit 4</span><b>Credit cards</b></li>
+        <li class="here"><span class="small">You are here</span><b>The math of percent and growth</b></li>
+        <li><span class="muted small">Coming soon · Unit 10</span><b>The time value of money</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../why-invest/">Revisit: Why invest? <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

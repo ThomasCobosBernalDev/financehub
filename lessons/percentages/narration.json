@@ -1,0 +1,15 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "You get a 10 percent raise, from 2,400 to 2,640 dollars a month. A year later, a 10 percent cut takes you to 2,376 dollars, not back to 2,400. The cut was 10 percent of a bigger number.",
+  "A percent means out of 100. Move the decimal point two places left, then multiply. A 15 percent tip on a 60 dollar meal is 60 times 0.15, which is 9 dollars.",
+  "Percent change is the new number minus the old one, divided by the old one. Always measure from where you started.",
+  "Percentage points are the plain difference between two rates. A rate going from 4 to 5 percent rose 1 point, but that's a 25 percent increase.",
+  "Losses need bigger gains to undo. A stock that falls 50 percent, from 100 to 50 dollars, needs a 100 percent gain to get back to 100.",
+  "Stacked discounts multiply. 20 percent off and then 10 percent off a 100 dollar jacket leaves you paying 72 dollars. That's 28 percent off, not 30.",
+  "Compound growth earns growth on growth. A thousand dollars at 10 percent for 3 years becomes 1,331 dollars, not 1,300. And the rule of 72 says money growing 8 percent a year doubles in about 9 years.",
+  "So: turn the percent into a decimal, use a multiplier, and always ask, percent of what?"
+ ]
+}
