@@ -3,6 +3,7 @@
 Usage: python3 tools/bust_cache.py   (run after tools/build_pages.py, before committing)
 """
 import os, re, time
+import seo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 stamp = time.strftime("%Y%m%d%H%M")
@@ -18,3 +19,5 @@ for dirpath, dirs, files in os.walk(ROOT):
             if new != html:
                 open(path, "w").write(new)
                 print(os.path.relpath(path, ROOT))
+
+seo.main()  # canonical/hreflang tags, sitemap.xml, robots.txt
