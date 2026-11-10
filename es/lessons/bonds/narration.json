@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Una fábrica de bicicletas pide prestado vendiendo un bono: pagas mil dólares hoy. Te paga el cinco por ciento, cincuenta dólares, cada año durante tres años, y luego te devuelve tus mil.",
+  "Esos mil son el valor nominal, o par. El pago anual de cincuenta dólares es el cupón. La fecha en que te devuelven tus mil es el vencimiento.",
+  "Ahora los bonos nuevos pagan el siete por ciento. Ya nadie paga mil completos por tu bono al cinco por ciento. Su precio baja hasta que quien lo compre gane un siete por ciento: a unos novecientos cuarenta y siete dólares.",
+  "Ese es el subibaja de los bonos. Cuando las tasas de interés suben, los precios de los bonos bajan. Si las tasas bajan al tres por ciento, el mismo bono vale unos mil cincuenta y siete dólares, con prima.",
+  "Los bonos más largos se mueven más. Un bono a diez años al cinco por ciento baja a unos ochocientos sesenta dólares con tasas del siete por ciento, una pérdida del catorce por ciento, porque tiene más pagos atados a la tasa vieja.",
+  "Quien tiene más riesgo paga más. Las calificaciones, desde triple A hasta basura, te dicen qué tan probable es que te paguen. El rendimiento extra sobre un bono seguro del gobierno es el diferencial de crédito.",
+  "En dos mil veintitrés, Silicon Valley Bank tenía bonos largos comprados cuando las tasas estaban bajas. Las tasas subieron, esos bonos cayeron y, cuando los clientes sacaron su dinero, el banco quebró."
+ ]
+}

@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/bonds/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>How Bonds Work · FinancedHub</title>
+  <meta name="description" content="Unit 14, Lesson 3: how bonds really work: face value, coupon and maturity, pricing a bond as the present value of its payments, why prices fall when rates rise, premium and discount bonds, yield to maturity and current yield, interest rate risk for long bonds, and credit risk, ratings and spreads. Play: Bond desk, eight bond questions.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="How Bonds Work">
+  <meta property="og:description" content="Unit 14, Lesson 3: how bonds really work: face value, coupon and maturity, pricing a bond as the present value of its payments, why prices fall when rates rise, premium and discount bonds, yield to maturity and current yield, interest rate risk for long bonds, and credit risk, ratings and spreads. Play: Bond desk, eight bond questions.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611102329">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="lesson.css?v=202611102329">
+
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/lessons/bonds/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/bonds/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/bonds/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/bonds/">
+  <meta property="og:url" content="https://financedhub.com/lessons/bonds/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Home</a><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about">About</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 14 · Lesson 3</span> Building a portfolio</div>
+        <h1 class="reveal">You bought a safe bond. <em>Why is it worth less today?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> To steady your portfolio (Lesson 14.1), you buy a bond from a big bike maker. It costs <span class="mark">$1,000</span>, pays <span class="mark">$50 a year</span> for 3 years, then gives your $1,000 back. A week later, interest rates jump, and new bonds just like yours pay <span class="mark">7%</span>. You check your account: your "safe" bond is now worth <span class="mark">$947.51</span>. Nobody defaulted. Nothing went wrong with the company. This lesson shows exactly where the $52.49 went.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>bond</b> is a loan you make to a company or government. It pays you interest on a schedule and returns your money on a set date.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>The bond market is bigger than the stock market. Bonds fund governments and companies, steady portfolios, and set the interest rates on mortgages and car loans.</p></div>
+          <div class="reveal"><div class="word">How</div><p>A bond's price is the present value of all its future payments. When market rates change, that present value, and the price, change too.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Bond traders</b> buy and sell bonds all day. <b>Fixed income analysts</b> judge which issuers will pay. <b>Credit rating agencies</b> grade them. <b>Debt capital markets bankers</b> help companies sell new bonds.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A seesaw. On one end, interest rates go up. On the other end, bond prices go down.">
+          <text x="260" y="70" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">The bond seesaw</text>
+          <path d="M260 330 L 225 400 H 295 Z" fill="var(--ink-3)"/>
+          <g class="bp-tilt">
+            <rect x="60" y="316" width="400" height="16" rx="8" fill="#8a7a62"/>
+            <g transform="translate(110 250)"><rect x="-50" y="0" width="100" height="62" rx="12" fill="var(--wants)"/><text x="0" y="40" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Rates</text></g>
+            <g transform="translate(410 250)"><rect x="-50" y="0" width="100" height="62" rx="12" fill="var(--needs)"/><text x="0" y="40" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Prices</text></g>
+          </g>
+          <g font-size="16" font-weight="700" text-anchor="middle"><text x="110" y="200" fill="var(--wants)">↑ 5% → 7%</text><text x="410" y="200" fill="var(--needs)">↓ $1,000 → $947.51</text></g>
+          <text x="260" y="470" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">one goes up, the other comes down</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the most important rule in bonds, drawn as a seesaw. When interest rates rise (orange), the prices of existing bonds fall (blue). Your 3-year bond's price fell from $1,000 to $947.51 when rates went from 5% to 7%.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it</div>
+      <h2 class="reveal">A bond is <em>a stream of payments.</em></h2>
+      <p class="lead reveal">You met bonds in Lesson 13.1 as a way for companies to borrow. Now you're on the other side: the lender. And you'll price one with the present value math from Lessons 10.2 and 13.2.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The three parts of a bond</h3>
+      <p class="reveal">Every bond has a <dfn class="term" data-def="The amount a bond pays back at the end, usually $1,000. Also called par value.">face value</dfn> (also called par), the amount paid back at the end. It has a <dfn class="term" data-def="The fixed interest a bond pays each year, as a percent of its face value.">coupon</dfn>, the fixed interest it pays each year. And it has a <dfn class="term" data-def="The date a bond ends and the issuer pays back its face value.">maturity</dfn>, the date it ends.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Face value</dt><dd><b>$1,000</b>, paid back in year 3.</dd></div><div><dt>Coupon</dt><dd>5% of $1,000 = <b>$50 a year</b>.</dd></div><div><dt>Maturity</dt><dd><b>3 years</b>. Total payments: $50 + $50 + $1,050.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">A bond's price is a present value</h3>
+      <p class="reveal">What is that stream of payments worth today? Bring each one back to today at the rate new bonds pay, just like the van in Lesson 13.2, and add them up. That's the bond's price.</p>
+      <div class="formula reveal">Bond price <span class="op">=</span> <span class="frac"><span>year 1 payment</span><span>(1 + rate)</span></span> <span class="op">+</span> <span class="frac"><span>year 2 payment</span><span>(1 + rate)<sup>2</sup></span></span> <span class="op">+</span> …</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>At 5%, the day you buy</dt><dd>The payments are worth exactly <b>$1,000</b>, because the bond pays the market rate.</dd></div><div><dt>At 7%, a week later</dt><dd><span class="frac"><span>$50</span><span>1.07</span></span> + <span class="frac"><span>$50</span><span>1.07<sup>2</sup></span></span> + <span class="frac"><span>$1,050</span><span>1.07<sup>3</sup></span></span> = $46.73 + $43.67 + $857.11 = <b>$947.51</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Why rates up means prices down</h3>
+      <p class="reveal">Think like a buyer. New bonds now pay $70 a year. Yours pays only $50, locked in. Nobody will pay $1,000 for it; it has to go on sale until its total return matches 7%. When rates fall, the opposite happens. A bond selling below face value trades at a <dfn class="term" data-def="When a bond's price is below its face value, because its coupon is lower than current market rates.">discount</dfn>; above face value, at a <dfn class="term" data-def="When a bond's price is above its face value, because its coupon is higher than current market rates.">premium</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Rates rise to 7%</dt><dd>Price <b>$947.51</b>: a discount.</dd></div><div><dt>Rates fall to 3%</dt><dd><span class="frac"><span>$50</span><span>1.03</span></span> + <span class="frac"><span>$50</span><span>1.03<sup>2</sup></span></span> + <span class="frac"><span>$1,050</span><span>1.03<sup>3</sup></span></span> = $48.54 + $47.13 + $960.90 = <b>$1,056.57</b>: a premium.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Yield to maturity and current yield</h3>
+      <p class="reveal">The <dfn class="term" data-def="The total yearly return you earn if you buy a bond at today's price and hold it until it matures, counting every coupon and the face value. It's the bond's IRR.">yield to maturity</dfn> (YTM) is the yearly return you'd earn buying at today's price and holding to the end. It's the bond's IRR (Lesson 13.2). A quicker number is the <dfn class="term" data-def="A bond's yearly coupon divided by its current price. It ignores the gain or loss at maturity.">current yield</dfn>: the coupon divided by the price.</p>
+      <div class="formula reveal">Current yield <span class="op">=</span> <span class="frac"><span>yearly coupon</span><span>price</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Buy at $947.51</dt><dd>YTM: <b>7%</b>, the rate that makes the payments worth $947.51.</dd></div><div><dt>Current yield</dt><dd><span class="frac"><span>$50</span><span>$947.51</span></span> = about <b>5.3%</b>. The rest of the 7% comes from getting $1,000 back for a bond you paid $947.51 for.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Interest rate risk: long bonds swing more</h3>
+      <p class="reveal">The risk that rate changes move a bond's price is <dfn class="term" data-def="The risk that a bond's price falls because market interest rates rise. Longer bonds have more of it.">interest rate risk</dfn>. Longer bonds have more, because more of their payments are far in the future, where discounting hits hardest. Professionals measure this sensitivity with <dfn class="term" data-def="A measure of how much a bond's price moves when interest rates change, roughly in years. Longer duration means bigger price swings.">duration</dfn>. Slide the rate to compare.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Rates 5% → 7%</dt><dd>3-year bond: $1,000 → $947.51, about <b>−5%</b>. A 10-year bond with the same 5% coupon: $1,000 → $859.53, about <b>−14%</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="bp">
+        <label class="md-lab" for="bp-r">Market interest rate for new bonds <b id="bp-r-v">5%</b></label><input type="range" id="bp-r" min="1" max="9" step="1" value="5">
+        <div id="bp-out" aria-hidden="true"></div>
+        <p class="bp-msg" id="bp-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the price of two bonds that each pay a 5% coupon on $1,000, at market rates from 1% to 9%. Blue is a 3-year bond; green is a 10-year bond. The dashed line is the $1,000 face value. The steeper the curve, the more interest rate risk.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Credit risk, ratings and spreads</h3>
+      <p class="reveal">The other risk is that the issuer can't pay: <dfn class="term" data-def="The risk that a bond's issuer misses payments or can't pay back the face value.">credit risk</dfn>. Agencies like S&amp;P, Moody's and Fitch give <dfn class="term" data-def="A grade from an agency like S&amp;P or Moody's on how likely an issuer is to pay. BBB− (or Baa3) and above is investment grade; below that is high-yield, or junk.">credit ratings</dfn> from AAA down. BBB− and above is <b>investment grade</b>; below that is <b>high-yield</b>, or "junk." Riskier issuers must pay more. The extra yield over a U.S. Treasury of the same maturity is the <dfn class="term" data-def="The extra yield a bond pays above a U.S. Treasury of the same maturity, as payment for credit risk.">credit spread</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bike maker</dt><dd>If 3-year Treasuries yield 4% and the bike maker's bond yields 5%, the credit spread is 5% − 4% = <b>1%</b>, the pay for the chance the company can't pay.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it</div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it</div>
+      <h2 class="reveal">Bond <em>desk.</em></h2>
+      <p class="lead reveal">Eight questions a junior bond trader should answer fast. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="bd">
+        <div class="fd-top">
+          <div><small id="bd-round">Question 1 of 8</small><b id="bd-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="bd-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="bd-facts"></ul>
+        <div class="sd-opts" id="bd-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="bd-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="bd-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="bd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up bonds. Each lists the details, then asks one question.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down</div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Pricing any bond takes four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: List the payments</h3>
+      <div class="formula reveal">Coupon each year, plus face value at the end</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bike maker's bond</dt><dd>$50, $50, $1,050.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Find the market rate</h3>
+      <div class="formula reveal">What new bonds with the same risk and maturity pay</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A week later</dt><dd>7%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Bring each payment back to today</h3>
+      <div class="formula reveal">Divide by (1 + rate) once per year of waiting</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>At 7%</dt><dd>$46.73 + $43.67 + $857.11 = $947.51.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Compare with face value</h3>
+      <div class="formula reveal">Coupon below market rate <span class="op">→</span> discount; above <span class="op">→</span> premium</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>5% coupon, 7% market</dt><dd>Discount: $947.51 &lt; $1,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: did you really lose money?</h3>
+      <p class="reveal">Your bond is now priced at $947.51. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>You paid:</b> $1,000.</li>
+        <li><b>The issuer:</b> still healthy, still paying.</li>
+        <li><b>Your plan:</b> hold it all 3 years.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>If you sell today.</b> You get $947.51, a real loss of $1,000 − $947.51 = $52.49.</li>
+        <li><b>If you hold.</b> You still collect $50 + $50 + $50 = $150 of coupons and get your $1,000 back. Total $1,150, exactly what you were promised.</li>
+        <li><b>The catch.</b> New buyers earn 7% while you earn 5%. That's the real cost: $20 a year of missed interest for 3 years.</li>
+        <li><b>Check it.</b> The $52.49 drop is about what those three missed $20 payments are worth today at 7%: <span class="frac"><span>$20</span><span>1.07</span></span> + <span class="frac"><span>$20</span><span>1.07<sup>2</sup></span></span> + <span class="frac"><span>$20</span><span>1.07<sup>3</sup></span></span> = $52.49.</li>
+        <li><b>The answer.</b> Holding avoids a loss on paper, but you can't escape the lower return. And if you're forced to sell, the loss becomes real. That's what sank Silicon Valley Bank in 2023: it held long bonds, rates jumped, and it had to sell at a loss when customers pulled their money.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link</div>
+      <h2 class="reveal">Tall trees <em>sway more.</em></h2>
+      <p class="lead reveal">In a gust of wind, the top of a tall tree swings much farther than the top of a shrub. The same push travels up a longer trunk, and the far end moves the most. Forest scientists measure this sway with motion sensors to study which trees snap in storms.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A short shrub and a tall tree in the same wind. The shrub's top barely moves; the tall tree's top swings far to the side.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--good) 8%, var(--card))"/>
+        <path d="M0 330 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#9b8a6c"/>
+        <g stroke="#8fa3b8" stroke-width="4" stroke-linecap="round" fill="none" opacity=".8"><path d="M40 120 q 40 -12 80 0 t 80 0"/><path d="M60 170 q 40 -12 80 0 t 80 0"/></g>
+        <rect x="290" y="290" width="16" height="42" rx="6" fill="#6b4a30"/><circle cx="298" cy="276" r="36" fill="#5a9a52"/>
+        <g class="bp-sway">
+          <path d="M620 332 C 620 250, 628 160, 650 60" stroke="#6b4a30" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <circle cx="652" cy="70" r="52" fill="#4f8a4a"/><circle cx="634" cy="140" r="44" fill="#5a9a52"/>
+        </g>
+        <path d="M600 30 H 740" stroke="var(--wants)" stroke-width="4" stroke-dasharray="6 6"/>
+        <g text-anchor="middle">
+          <text x="298" y="200" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Short: barely moves</text>
+          <text x="298" y="226" font-size="15" fill="var(--ink-2)">like a 1-year bond</text>
+          <text x="800" y="200" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Tall: big swing</text>
+          <text x="800" y="226" font-size="15" fill="var(--ink-2)">like a 30-year bond</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A shrub and a tall tree in the same wind. The dashed orange line shows how far the tall tree's top swings.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> A change in interest rates is the gust. A short bond is the shrub; a long bond is the tall tree. Same push, much bigger swing at the far end.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes</div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Face value</b> $1,000, <b>coupon</b> 5% = $50 a year, <b>maturity</b> 3 years.</li>
+          <li><b>Price</b> = present value of every payment. At 7%: $46.73 + $43.67 + $857.11 = $947.51.</li>
+          <li><b>Rates up, prices down.</b> At 3%: $1,056.57 (premium). At 7%: $947.51 (discount).</li>
+          <li><b>Yield to maturity</b>: the bond's IRR from today's price. <b>Current yield</b> = <span class="frac"><span>coupon</span><span>price</span></span>: <span class="frac"><span>$50</span><span>$947.51</span></span> = about 5.3%.</li>
+          <li><b>Interest rate risk</b>: longer bonds swing more (higher duration). 5% → 7%: 3-year −5%, 10-year −14%.</li>
+          <li><b>Credit risk</b>: ratings from AAA down; BBB− and up is investment grade. <b>Credit spread</b> = bond yield − Treasury yield.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A $1,000 bond with a 6% coupon pays <input type="text" class="blank" data-answer="60|$60" inputmode="numeric" aria-label="Blank 1"> dollars a year.</div>
+        <div>2. When interest rates rise, existing bond prices <input type="text" class="blank" data-answer="fall|drop|go down|decrease" aria-label="Blank 2">.</div>
+        <div>3. A bond priced above its face value trades at a <input type="text" class="blank" data-answer="premium" aria-label="Blank 3">.</div>
+        <div>4. Bonds rated BBB− or higher are called investment <input type="text" class="blank" data-answer="grade" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together</div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Bond auction</h3>
+          <p>One person holds a "bond" paying $50 a year. Another announces the new market rate. Everyone bids what it's worth. Who got closest?</p>
+        </div>
+        <div class="reveal">
+          <h3>Check today's rates</h3>
+          <p>Look up today's yields on 2-year and 10-year U.S. Treasuries. Which is higher? Discuss what that might say about where rates are headed.</p>
+        </div>
+        <div class="reveal">
+          <h3>Rate the issuers</h3>
+          <p>List five organizations, from the U.S. government to a new startup. Agree on a rating for each and how big a credit spread they should pay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own</div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Does it surprise you that a "safe" bond can lose value? How would you explain it to a friend?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If rates might rise soon, would you rather own a short bond or a long one? Why?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">You're a lender every time money sits in a savings account. Who borrows it, and what rating would you give them?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a fixed income analyst</h3>
+      <div class="reveal">
+        <p>You work for a pension fund. Here's the situation:</p>
+        <ul>
+          <li><b>The holding:</b> 10,000 bonds, each with a $1,000 face value: $10 million in total.</li>
+          <li><b>Each bond:</b> a 4% coupon ($40 a year), 10 years left, bought at $1,000.</li>
+          <li><b>The news:</b> market rates for similar bonds jump from 4% to 6%.</li>
+          <li><b>At 6%, each bond's payments are worth:</b> $852.80 today.</li>
+        </ul>
+        <p><b>Your task:</b> what's the holding worth now, and how much did it drop? What's the new current yield? If the fund holds every bond to maturity, what does it get back? What would you tell the fund's board?</p>
+        <textarea id="job-answer" placeholder="Write your memo to the board…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>New value:</b> 10,000 × $852.80 = <b>$8,528,000</b>, down $10,000,000 − $8,528,000 = <b>$1,472,000</b>, about 14.7%.</p>
+            <p><b>Current yield:</b> <span class="frac"><span>$40</span><span>$852.80</span></span> = about <b>4.7%</b>. A new buyer at $852.80 earns a 6% yield to maturity.</p>
+            <p><b>Held to maturity:</b> the fund still collects $40 a year per bond and gets $1,000 back per bond, $10,000,000 in total, as long as the issuer pays.</p>
+            <p><b>To the board:</b> the drop is a paper loss unless we sell, but it reflects a real cost: we're earning 4% while new bonds pay 6%. As long as we never need to sell early, we can hold. To limit this risk in the future, we could mix in shorter bonds, which swing less when rates move.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Every loan <em>has a price tag.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on the time value of money, picking projects with NPV, and interest rates, and leads to valuing a company with DCF">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../time-value/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Time value of money</text><text x="20" y="86">Unit 10 · present value</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Picking projects</text><text x="20" y="186">Unit 13 · NPV and IRR</text></a>
+          <a href="../interest-rates/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Interest rates</text><text x="20" y="286">Unit 9 · the Fed</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">How bonds work</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Valuing a company with DCF</text><text x="690" y="186">Coming soon · Unit 15</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 10</span><b>The time value of money</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>Picking projects with NPV</b></li>
+        <li><span class="muted small">Back · Unit 9</span><b>Interest rates and the Fed</b></li>
+        <li class="here"><span class="small">You are here</span><b>How bonds work</b></li>
+        <li><span class="muted small">Coming soon · Unit 15</span><b>Valuing a company with DCF</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../diversification/">Revisit: Diversification <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about">About</a><a href="../../contact">Contact</a><a href="../../legal/privacy">Privacy</a><a href="../../legal/terms">Terms</a><a href="../../legal/cookies">Cookies and storage</a><a href="../../credits">Credits</a></nav>
+    <p><a class="foot-lang" href="../../es/lessons/bonds/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
+    <p class="disclaimer">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202611102329"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611102329"></script>
+<script src="../../assets/js/auth.js?v=202611102329"></script>
+<script src="../../assets/js/site.js?v=202611102329"></script>
+<script src="../../assets/js/lesson-kit.js?v=202611102329"></script>
+<script src="lesson.js?v=202611102329"></script>
+</body>
+</html>

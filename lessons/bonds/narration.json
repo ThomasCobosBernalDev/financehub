@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "A bike maker borrows by selling a bond: you pay one thousand dollars today. It pays you five percent, fifty dollars, every year for three years, then hands back your thousand.",
+  "That thousand is the face value, or par. The fifty dollar yearly payment is the coupon. The date your thousand comes back is maturity.",
+  "Now new bonds start paying seven percent. Nobody pays a full thousand for your five percent bond anymore. Its price falls until a buyer earns seven percent: to about nine hundred forty seven dollars.",
+  "That's the bond seesaw. When interest rates go up, bond prices go down. When rates fall to three percent, the same bond is worth about one thousand fifty seven dollars, a premium.",
+  "Longer bonds swing more. A ten year five percent bond drops to about eight hundred sixty dollars at seven percent, a fourteen percent loss, because more payments are locked at the old rate.",
+  "Riskier borrowers pay more. Ratings from triple A down to junk tell you how likely you are to be paid. The extra yield over a safe government bond is the credit spread.",
+  "In twenty twenty three, Silicon Valley Bank held long bonds bought when rates were low. Rates jumped, those bonds fell, and when customers pulled their money, the bank collapsed."
+ ]
+}
