@@ -166,7 +166,7 @@
     L(13, 2, "u13-npv", t("Picking projects with NPV", "Elegir proyectos con el VPN"), t("Is this investment worth it?", "¿Vale la pena esta inversión?"), { needs: ["u10-time-value"], href: "lessons/npv/" }),
     L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"], href: "lessons/cost-of-capital/" }),
     L(14, 1, "u14-risk-return", t("Risk and return", "Riesgo y rendimiento"), t("Expected return, volatility and the trade-off", "Rendimiento esperado, volatilidad y el equilibrio entre los dos"), { needs: ["u5-market-drops"], href: "lessons/risk-return/" }),
-    L(14, 2, "u14-diversification", t("Diversification", "Diversificar"), t("Why mixing investments lowers risk", "Por qué mezclar inversiones baja el riesgo"), { needs: ["u14-risk-return"] }),
+    L(14, 2, "u14-diversification", t("Diversification", "Diversificar"), t("Why mixing investments lowers risk", "Por qué mezclar inversiones baja el riesgo"), { needs: ["u14-risk-return"], href: "lessons/diversification/" }),
     L(14, 3, "u14-bonds", t("How bonds work", "Cómo funcionan los bonos"), t("Prices, yields and why they move opposite", "Precios, rendimientos y por qué se mueven al revés"), { needs: ["u10-time-value"] }),
     L(15, 1, "u15-dcf", t("Valuing a company with DCF", "Valuar una empresa con DCF"), t("What a business is worth from its future cash", "Lo que vale un negocio por su efectivo futuro"), { needs: ["u13-cost-of-capital"] }),
     L(15, 2, "u15-multiples", t("Comparables and multiples", "Comparables y múltiplos"), t("Pricing a company against its peers", "Ponerle precio a una empresa comparándola con otras"), { needs: ["u15-dcf"] }),
@@ -327,6 +327,7 @@
     ["value-creator", "npv", t("Value Creator", "Creas valor"), t("Answer all 8 questions right in Build it or skip it.", "Responde bien las 8 preguntas del juego ¿Lo haces o no?")],
     ["hurdle-setter", "cost-of-capital", t("Hurdle Setter", "Fijas la tasa mínima"), t("Answer all 8 questions right in Clear the hurdle.", "Responde bien las 8 preguntas del juego Supera la tasa mínima.")],
     ["risk-weigher", "risk-return", t("Risk Weigher", "Mides el riesgo"), t("Answer all 8 questions right in Pick your risk.", "Responde bien las 8 preguntas del juego Elige tu riesgo.")],
+    ["well-diversified", "diversification", t("Well Diversified", "Bien diversificado"), t("Answer all 8 questions right in Spread it out.", "Responde bien las 8 preguntas del juego Repártelo bien.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

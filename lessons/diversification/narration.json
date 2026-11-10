@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Raincoat Company gains thirty percent in a rainy summer and loses ten percent in a sunny one. Sunny Company does the exact opposite. Each alone is a coin flip.",
+  "Put five thousand dollars in each. Rainy summer: six thousand five hundred plus four thousand five hundred is eleven thousand. Sunny summer: the same eleven thousand. Ten percent, no matter the weather.",
+  "That's diversification: spreading money across investments that don't move together. How much two investments move together is their correlation, from minus one, exactly opposite, to plus one, in lockstep.",
+  "Real stocks mostly move somewhat together. So a stock's risk has two parts. Unique risk comes from one company, like a recall or a lawsuit. Market risk, like a recession, hits almost everyone at once.",
+  "One typical stock swings about forty percent. Spread your money across ten, and the swing drops to about twenty three percent. At thirty stocks, it's about twenty one. It never drops below the market's own twenty percent.",
+  "Since anyone can remove unique risk for free, nobody pays you for carrying it. The risk premium only rewards market risk, the part measured by beta.",
+  "So don't bet everything on one company, especially the one that pays your salary. Many Enron employees lost both their jobs and their savings when it collapsed in two thousand one."
+ ]
+}

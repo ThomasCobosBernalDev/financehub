@@ -18,7 +18,7 @@
     // Returning learners (signed in, or setup done) land on their home. ?landing shows this page anyway.
     else if (!/[?&]landing/.test(location.search)) { var sv = JSON.parse(localStorage.getItem("financehub-save-v1") || "{}"); if ((sv.profile && sv.profile.done && /fh-guest=1/.test(document.cookie)) || Object.keys(localStorage).some(function (k) { return /^sb-.*-auth-token$/.test(k); })) location.replace("home/"); }
     if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202611102018">
+  <link rel="stylesheet" href="assets/css/style.css?v=202611102138">
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -76,6 +76,8 @@
 
 
   </style>
+
+
 
 
 
@@ -151,10 +153,10 @@
   </div>
 </footer>
 
-<script src="assets/js/save.js?v=202611102018"></script>
-<script src="assets/vendor/supabase-2.45.4.js?v=202611102018"></script>
-<script src="assets/js/auth.js?v=202611102018"></script>
-<script src="assets/js/site.js?v=202611102018"></script>
+<script src="assets/js/save.js?v=202611102138"></script>
+<script src="assets/vendor/supabase-2.45.4.js?v=202611102138"></script>
+<script src="assets/js/auth.js?v=202611102138"></script>
+<script src="assets/js/site.js?v=202611102138"></script>
 <script>
 document.getElementById("xp").textContent = FH.state.xp;
 const T = FH.t;

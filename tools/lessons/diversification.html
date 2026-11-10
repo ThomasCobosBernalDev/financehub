@@ -1,0 +1,242 @@
+<!-- title: Diversification -->
+<!-- description: Unit 14, Lesson 2: why mixing investments lowers risk: diversification, correlation from −1 to +1, unique (company) risk vs. market risk, how risk falls as you add stocks, why only market risk earns a premium, and the danger of owning too much of one company. Play: Spread it out, eight diversification questions. -->
+<!-- kicker: Unit 14 · Lesson 2 -->
+<!-- topic: Building a portfolio -->
+
+<!-- @start -->
+        <h1 class="reveal">Two risky stocks. <em>One perfectly safe result.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> You still have <span class="mark">$10,000</span> to invest. Two stocks catch your eye. <b>Raincoat Co.</b> sells rain gear: in a rainy summer it gains <span class="mark">30%</span>, in a sunny one it loses <span class="mark">10%</span>. <b>Sunny Co.</b> sells sunscreen and does the exact opposite. Each one alone is a coin flip, just like the stock fund in Lesson 14.1. But put <span class="mark">$5,000 in each</span>, and something strange happens: you make the same money no matter what the weather does. That's the power of diversification.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Diversification</b> means spreading your money across investments that don't all move together, so one bad bet can't sink you.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>It lowers risk without lowering expected return. It's often called the only free lunch in investing.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Own many companies in different industries, so their individual surprises cancel out. Index funds do this for you.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Portfolio managers</b> and <b>asset allocators</b> decide how to spread money across stocks, bonds and other assets. <b>Risk managers</b> watch for too much money in one place.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Two zigzag lines that move in opposite directions, one for a rain gear company and one for a sunscreen company. Below them, their average is a flat, steady line.">
+          <text x="260" y="70" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">Opposites cancel</text>
+          <g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M40 150 L 130 250 L 220 150 L 310 250 L 400 150 L 490 250" stroke="var(--needs)"/>
+            <path d="M40 250 L 130 150 L 220 250 L 310 150 L 400 250 L 490 150" stroke="#e0a43a"/>
+            <path class="ds-calm" d="M40 400 H 490" stroke="var(--good)" stroke-width="8"/>
+          </g>
+          <g font-size="16" font-weight="700"><text x="40" y="300" fill="var(--needs)">Raincoat Co.</text><text x="490" y="300" text-anchor="end" fill="#b97d16">Sunny Co.</text></g>
+          <text x="260" y="370" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Half in each: +10% every year</text>
+          <text x="260" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">don't put all your eggs in one basket</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> two stocks that zigzag in opposite directions. When the blue one is up, the yellow one is down. The green line is a 50/50 mix of the two: the zigs and zags cancel, and it stays flat at +10%.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Mix things that <em>don't move together.</em></h2>
+      <p class="lead reveal">In Lesson 14.1 you measured risk with standard deviation. Now you'll see how to shrink it without giving up any expected return.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Diversification</h3>
+      <p class="reveal"><dfn class="term" data-def="Spreading money across many investments that don't all move together, so losses in some are offset by gains in others.">Diversification</dfn> is spreading your money so that no single surprise can hurt you much. When one investment zigs, another zags, and the bumps partly cancel.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Rainy summer</dt><dd>$5,000 × 1.30 = $6,500 in Raincoat, $5,000 × 0.90 = $4,500 in Sunny. Total <b>$11,000</b>.</dd></div><div><dt>Sunny summer</dt><dd>$4,500 + $6,500 = <b>$11,000</b>. The same 10% either way: expected return still 10%, standard deviation 0%.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Correlation</h3>
+      <p class="reveal">How much two investments move together is their <dfn class="term" data-def="A number from −1 to +1 that shows how two investments move together. +1: always the same direction. 0: no connection. −1: always opposite.">correlation</dfn>, a number from −1 to +1. At +1 they move in lockstep, and mixing them doesn't help at all. At 0 they're unrelated. At −1 they move exactly opposite, and the risk can vanish. The lower the correlation, the more risk the mix removes.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Raincoat and Sunny</dt><dd>Correlation <b>−1</b>, so the 50/50 mix has no risk.</dd></div><div><dt>Two stocks with 20% risk each, 50/50</dt><dd>Correlation +1: still <b>20%</b>. Correlation 0.5: about <b>17%</b>. Correlation 0: about <b>14%</b>. Correlation −1: <b>0%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Unique risk vs. market risk</h3>
+      <p class="reveal">Real stocks almost never have a correlation of −1. Most pairs of U.S. stocks move somewhat together, because they all live in the same economy. So a stock's risk has two parts. <dfn class="term" data-def="Risk that comes from one company or industry, like a recall, a lawsuit or a bad CEO. Diversification can remove it. Also called company-specific risk.">Unique risk</dfn> comes from that one company: a product recall, a lawsuit, a factory fire. <dfn class="term" data-def="Risk that hits almost every investment at once, like a recession, a rate hike or a crisis. Diversification can't remove it. Also called systematic risk.">Market risk</dfn> hits nearly everyone at once: a recession, a jump in interest rates, a pandemic.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Raincoat's unique risk</dt><dd>The weather, or a factory fire. Owning Sunny and dozens of other companies cancels it out.</dd></div><div><dt>Raincoat's market risk</dt><dd>A recession that makes everyone buy less of everything. Every other stock you own feels it too.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Adding stocks</h3>
+      <p class="reveal">Here's a typical single stock: expected return 10%, standard deviation <b>40%</b>, twice as wild as the whole market. Spread your money evenly across more stocks like it, and the unique risk melts away. The market risk doesn't. Slide to add stocks.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>1 stock</dt><dd>40% standard deviation.</dd></div><div><dt>10 stocks</dt><dd>About <b>23%</b>. Most of the unique risk is gone.</dd></div><div><dt>30 stocks</dt><dd>About <b>21%</b>. Close to the floor: the market's own <b>20%</b>, which no amount of mixing removes.</dd></div></dl></div>
+      <div class="md-card reveal" id="ds">
+        <label class="md-lab" for="ds-n">Number of different stocks you own <b id="ds-n-v">1</b></label><input type="range" id="ds-n" min="1" max="30" step="1" value="1">
+        <div id="ds-out" aria-hidden="true"></div>
+        <p class="ds-msg" id="ds-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> how risky your portfolio is (standard deviation, up the side) as you own more stocks (along the bottom), with the money split evenly. The dashed line is market risk at 20%, the floor. The gap between the curve and the floor is unique risk. Every portfolio here still expects 10%.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Only market risk gets paid</h3>
+      <p class="reveal">If anyone can delete unique risk for free by diversifying, nobody has to pay you for carrying it. So the risk premium from Lesson 14.1 only rewards <b>market risk</b>, the part measured by <b>beta</b> in the CAPM (Lesson 13.3). Holding one stock means taking extra risk with no extra expected return.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>One stock vs. 30</dt><dd>Both expect 10%. One swings 40%, the other about 21%. The extra 19 points of swing earn you nothing.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Spread <em>it out.</em></h2>
+      <p class="lead reveal">Eight questions about mixing investments. Each one gives you the facts. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="sp">
+        <div class="fd-top">
+          <div><small id="sp-round">Question 1 of 8</small><b id="sp-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="sp-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="sp-facts"></ul>
+        <div class="sd-opts" id="sp-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="sp-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="sp-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="sp-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up companies and events. Each lists the facts, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Checking whether a portfolio is diversified takes four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: How many companies?</h3>
+      <div class="formula reveal">More companies <span class="op">→</span> less unique risk</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>One stock</dt><dd>40% swing. Thirty stocks: about 21%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Do they move together?</h3>
+      <div class="formula reveal">Lower correlation <span class="op">→</span> more risk cancels</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Raincoat and Sunny</dt><dd>Correlation −1: the mix never moves.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Different industries?</h3>
+      <div class="formula reveal">Ten airlines are not ten different bets</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The weather</dt><dd>Two rain gear makers would both lose in a sunny summer.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: What's left?</h3>
+      <div class="formula reveal">Market risk: the part you're paid for</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The floor</dt><dd>20%. Lower it further by mixing in bonds or T-bills (Lesson 14.1), not more stocks.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: all in on your employer</h3>
+      <p class="reveal">Jordan works at a regional grocery chain and has <b>$100,000</b> saved. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>Jordan's plan:</b> put it all in the chain's stock, because "I know this company."</li>
+        <li><b>The chain's stock:</b> expected 10%, standard deviation 40%.</li>
+        <li><b>An index fund:</b> expected 10%, standard deviation 20%.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Same expected return.</b> Both expect 10%, so Jordan gains nothing on average by picking the one stock.</li>
+        <li><b>A typical bad year, one stock.</b> 10% − 40% = −30%: $100,000 × 0.70 = $70,000, a <b>$30,000</b> loss.</li>
+        <li><b>A typical bad year, index fund.</b> 10% − 20% = −10%: $100,000 × 0.90 = $90,000, a <b>$10,000</b> loss.</li>
+        <li><b>The hidden link.</b> If the chain struggles, Jordan's paycheck is at risk too. The job and the savings would fall together: a correlation close to +1.</li>
+        <li><b>The answer.</b> Move most of it into a diversified fund. Many Enron employees learned this in 2001, when the company collapsed and took both their jobs and their company-stock savings.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Salmon <em>run a portfolio.</em></h2>
+      <p class="lead reveal">Bristol Bay, Alaska, has one of the world's biggest sockeye salmon runs. It isn't one population but hundreds, each spawning in its own stream, lake or river. In any year, some do well and others do poorly. Scientists found that the total catch is about 2 times steadier than it would be from a single population, and that without this mix, fishing would have to be shut down about 10 times as often. They named it the portfolio effect.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Several streams with salmon flowing into one bay. Each stream's fish count goes up or down, but the bay's total stays steady.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <g fill="none" stroke="#8fc4e8" stroke-width="16" stroke-linecap="round">
+          <path d="M80 40 C 160 120, 260 180, 450 300"/><path d="M300 30 C 340 120, 380 200, 450 300"/><path d="M600 30 C 560 120, 520 200, 450 300"/><path d="M820 40 C 740 120, 640 180, 450 300"/>
+        </g>
+        <ellipse cx="450" cy="330" rx="260" ry="46" fill="#8fc4e8"/>
+        <g class="ds-fish" fill="#d9534f">
+          <path d="M158 120 q 16 -10 32 0 q -16 10 -32 0 z M190 120 l 10 -7 v 14 z"/><path d="M321 109 q 16 -10 32 0 q -16 10 -32 0 z M353 109 l 10 -7 v 14 z"/><path d="M355 174 q 16 -10 32 0 q -16 10 -32 0 z M387 174 l 10 -7 v 14 z"/><path d="M534 135 q 16 -10 32 0 q -16 10 -32 0 z M566 135 l 10 -7 v 14 z"/><path d="M739 98 q 16 -10 32 0 q -16 10 -32 0 z M771 98 l 10 -7 v 14 z"/><path d="M677 143 q 16 -10 32 0 q -16 10 -32 0 z M709 143 l 10 -7 v 14 z"/><path d="M615 185 q 16 -10 32 0 q -16 10 -32 0 z M647 185 l 10 -7 v 14 z"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="450" y="322" font-family="Fraunces, serif" font-size="22" fill="#1d3b52">The bay: steady total</text>
+          <text x="450" y="348" font-size="15" fill="#1d3b52">hundreds of runs, ups and downs cancel</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Four streams, each with a different number of salmon this year, flowing into one bay. Some streams are crowded and others have few fish, but the bay's total stays fairly steady.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> No single stream is reliable, but together they are. That's exactly why owning hundreds of companies in an index fund is steadier than owning one.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Diversification</b>: spread money across investments that don't move together. $5,000 Raincoat + $5,000 Sunny = $11,000 either way.</li>
+          <li><b>Correlation</b>: −1 (opposite) to +1 (lockstep). Two 20%-risk stocks, 50/50: +1 → 20%, 0 → about 14%, −1 → 0%.</li>
+          <li><b>Unique risk</b>: one company's surprises. Diversification removes it.</li>
+          <li><b>Market risk</b>: recessions, rate jumps, crises. Can't be diversified away. 20% floor.</li>
+          <li><b>Adding stocks</b>: 1 stock 40%, 10 about 23%, 30 about 21%, all expecting 10%.</li>
+          <li><b>Only market risk is paid</b> (beta). Extra unique risk earns nothing.</li>
+          <li><b>Don't bet your job and savings on one company.</b></li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Spreading money across investments that don't move together is called <input type="text" class="blank" data-answer="diversification|diversifying" aria-label="Blank 1">.</div>
+        <div>2. Two stocks that always move in exactly opposite directions have a correlation of <input type="text" class="blank" data-answer="-1|−1|negative 1|minus 1|negative one" aria-label="Blank 2">.</div>
+        <div>3. Risk from one company, like a product recall, is <input type="text" class="blank" data-answer="unique|unique risk|company-specific|company specific" aria-label="Blank 3"> risk.</div>
+        <div>4. Risk that hits almost every stock at once, like a recession, is <input type="text" class="blank" data-answer="market|market risk|systematic" aria-label="Blank 4"> risk.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Find the opposites</h3>
+          <p>Each person names a business. The group tries to find another business that does well exactly when the first one struggles.</p>
+        </div>
+        <div class="reveal">
+          <h3>Dice portfolio</h3>
+          <p>Roll one die 10 times and track the results. Then roll five dice 10 times and track the average. Which bounces around less, and why?</p>
+        </div>
+        <div class="reveal">
+          <h3>Look inside a fund</h3>
+          <p>Look up an S&amp;P 500 index fund's top holdings and industries. How much is in its single biggest company? Its biggest industry?</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Is there one company or one thing your money or income depends on too much?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If you owned just one stock, which would it be, and what unique risk would you be taking?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Your skills are an investment too. How could you diversify them?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a financial advisor</h3>
+      <div class="reveal">
+        <p>A new client asks you to review their savings. Here's the situation:</p>
+        <ul>
+          <li><b>Total savings:</b> $200,000.</li>
+          <li><b>In their employer's stock:</b> $160,000. The rest, $40,000, is in an S&amp;P 500 index fund.</li>
+          <li><b>The employer's stock:</b> expected 10%, standard deviation 40%.</li>
+          <li><b>The index fund:</b> expected 10%, standard deviation 20%.</li>
+          <li><b>Their job:</b> at the same company.</li>
+        </ul>
+        <p><b>Your task:</b> what share of their savings is in one company? What would a typical bad year cost each part? What would you recommend, and why?</p>
+        <textarea id="job-answer" placeholder="Write your recommendation…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Concentration:</b> <span class="frac"><span>$160,000</span><span>$200,000</span></span> = <b>80%</b> in one company, the same company that pays their salary.</p>
+            <p><b>A typical bad year:</b> the employer's stock at 10% − 40% = −30% loses $160,000 × 0.30 = <b>$48,000</b>. The index fund at 10% − 20% = −10% loses $40,000 × 0.10 = <b>$4,000</b>.</p>
+            <p><b>If it were all in the index fund:</b> a typical bad year would cost $200,000 × 0.10 = <b>$20,000</b>, with the same 10% expected return.</p>
+            <p><b>Recommendation:</b> sell most of the employer stock over time, keeping no more than about 10% in it, and move the rest into a diversified fund. They give up no expected return, cut their risk sharply, and stop tying their savings to their paycheck. Check for taxes on the gains before selling.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Many bets <em>beat one.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on risk and return, index funds, and the cost of capital, and leads to how bonds work">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../risk-return/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Risk and return</text><text x="20" y="86">Unit 14 · standard deviation</text></a>
+          <a href="../index-funds/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Index funds</text><text x="20" y="186">Unit 5 · 500 companies at once</text></a>
+          <a href="../cost-of-capital/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Cost of capital</text><text x="20" y="286">Unit 13 · beta</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Diversification</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">How bonds work</text><text x="690" y="186">Coming soon · Unit 14</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 14</span><b>Risk and return</b></li>
+        <li><span class="muted small">Back · Unit 5</span><b>Index funds and the S&amp;P 500</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>The cost of capital</b></li>
+        <li class="here"><span class="small">You are here</span><b>Diversification</b></li>
+        <li><span class="muted small">Coming soon · Unit 14</span><b>How bonds work</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../risk-return/">Revisit: Risk and return <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
