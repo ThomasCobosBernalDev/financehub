@@ -1,0 +1,17 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "NPV": "N. P. V.",
+  "IRR": "I. R. R."
+ },
+ "lines": [
+  "You want a repair van. It costs ten thousand dollars today, and it should bring three thousand dollars of extra cash a year for five years. That's fifteen thousand back for ten thousand spent. But is it really a good deal?",
+  "The fifteen thousand arrives slowly, and money later is worth less than money now. So you bring every future dollar back to today, using a discount rate: the return your money has to earn. Here, ten percent.",
+  "Year one's three thousand dollars, divided by one point one zero, is worth two thousand seven hundred twenty seven today. Year five's is worth only one thousand eight hundred sixty three.",
+  "Add all five years and you get eleven thousand three hundred seventy two dollars. Subtract the ten thousand dollar cost, and the net present value, or NPV, is one thousand three hundred seventy two dollars. Above zero, so buy the van.",
+  "Raise the discount rate and NPV falls. The rate where NPV hits exactly zero is the internal rate of return, or IRR. For the van, it's about fifteen point two percent, which beats your ten percent.",
+  "The payback period asks how long until you get your money back. For the van, about three point three years. It's simple, but it ignores the time value of money and every dollar after payback.",
+  "When you can only afford one project, pick the higher NPV. The van's NPV beats a parts booth that pays back faster, because the van keeps paying in years four and five."
+ ]
+}

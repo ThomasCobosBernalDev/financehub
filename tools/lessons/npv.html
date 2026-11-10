@@ -1,0 +1,259 @@
+<!-- title: Picking Projects with NPV -->
+<!-- description: Unit 13, Lesson 2: how companies decide which projects are worth doing: project cash flows, the discount rate, net present value (NPV) and the NPV rule, the internal rate of return (IRR), the payback period and its blind spots, and choosing between two projects. Play: Build it or skip it, eight project decisions. -->
+<!-- kicker: Unit 13 · Lesson 2 -->
+<!-- topic: Corporate finance -->
+
+<!-- @start -->
+        <h1 class="reveal">$10,000 now for $15,000 later. <em>Is that a good deal?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Both shops are open. Now you want a <span class="mark">repair van</span>, so you can fix bikes at people's homes. The van costs <span class="mark">$10,000 today</span>. You expect it to bring in <span class="mark">$3,000 of extra cash a year for 5 years</span>, then it's worn out. That's $15,000 back for $10,000 spent. Sounds like an easy yes. But the $15,000 comes slowly, over five years, and money later is worth less than money now (Lesson 10.2). This lesson shows the tool every company uses to decide what to build: net present value.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Net present value (NPV)</b> is what a project's future cash is worth today, minus what it costs today.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Every company has more ideas than money. NPV tells you which ideas make the business more valuable and which ones quietly lose money.</p></div>
+          <div class="reveal"><div class="word">How</div><p>List the cash the project brings each year, shrink each amount back to today's dollars, add them up, and subtract the cost.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Corporate finance analysts</b> run NPV on new stores, machines and products. <b>CFOs</b> use it to pick which projects get money. <b>Investment bankers</b> use the same math to value whole companies.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="A timeline. Today, $10,000 goes out. Each of the next five years, $3,000 comes in, but each coin shrinks the further away it is, because money later is worth less today.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">Worth it?</text>
+          <line x1="40" y1="330" x2="490" y2="330" stroke="var(--ink-3)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="34" y="330" width="52" height="150" rx="8" fill="var(--wants)"/>
+          <text x="60" y="510" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">−$10,000</text>
+          <text x="60" y="534" text-anchor="middle" font-size="14" fill="var(--ink-2)">today</text>
+          <g class="nv-coins">
+            <circle cx="140" cy="270" r="40" fill="var(--good)"/><circle cx="140" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="215" cy="274" r="36" fill="var(--good)"/><circle cx="215" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="290" cy="278" r="32" fill="var(--good)"/><circle cx="290" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="365" cy="282" r="28" fill="var(--good)"/><circle cx="365" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="440" cy="286" r="24" fill="var(--good)"/><circle cx="440" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+          </g>
+          <g text-anchor="middle" font-size="14" fill="var(--ink-2)"><text x="140" y="360">year 1</text><text x="215" y="360">year 2</text><text x="290" y="360">year 3</text><text x="365" y="360">year 4</text><text x="440" y="360">year 5</text></g>
+          <text x="290" y="200" text-anchor="middle" font-size="15" fill="var(--ink-2)">$3,000 each year, worth less today</text>
+          <text x="300" y="440" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">later money shrinks</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the van as a timeline. The orange bar is the $10,000 you pay today. The green coins are the $3,000 it brings each year. The dashed rings show $3,000; the solid coins show what it's worth in today's dollars, which shrinks the further away it is.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Bring every dollar <em>back to today.</em></h2>
+      <p class="lead reveal">You can't compare $10,000 today with $3,000 in year 5 directly. They're different kinds of dollars. So you turn every future dollar into today's dollars first.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Project cash flows</h3>
+      <p class="reveal">A project's <dfn class="term" data-def="The actual cash a project brings in or costs each year: money in minus money out, not accounting profit.">cash flows</dfn> are the real money it brings in or costs each year. Use cash, not profit, for the same reason as in Lesson 12.3: you can only spend cash.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Today</dt><dd>−$10,000 for the van.</dd></div><div><dt>Years 1 to 5</dt><dd>+$3,000 each year: $3,000 × 5 = <b>$15,000</b> in total, before thinking about time.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The discount rate</h3>
+      <p class="reveal">To shrink future cash into today's dollars, you need a <dfn class="term" data-def="The yearly return a business needs from a project to be worth doing, based on what its money could earn elsewhere and what that money costs. Also called the hurdle rate.">discount rate</dfn>: the return your money has to earn to be worth tying up. Companies also call it the <b>hurdle rate</b>, because a project has to jump over it. Lesson 13.3 shows how companies set it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your rate</dt><dd><b>10%</b> a year. Between the bank loan at 8% and what your investor expects, you need the van to earn at least 10%.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Present value of each year</h3>
+      <p class="reveal">Divide each year's cash by 1.10 once for every year you wait. That's the present value from Lesson 10.2.</p>
+      <div class="formula reveal">Present value <span class="op">=</span> <span class="frac"><span>cash that year</span><span>(1 + rate)<sup>year</sup></span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Year 1</dt><dd><span class="frac"><span>$3,000</span><span>1.10</span></span> = <b>$2,727</b></dd></div><div><dt>Year 2</dt><dd><span class="frac"><span>$3,000</span><span>1.21</span></span> = <b>$2,479</b></dd></div><div><dt>Years 3, 4, 5</dt><dd><b>$2,254</b>, <b>$2,049</b> and <b>$1,863</b>. The later the $3,000, the less it's worth today.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Net present value</h3>
+      <p class="reveal">Add up every year's present value and subtract the cost. That's the <dfn class="term" data-def="The present value of all of a project's future cash flows minus what it costs today. Above zero, the project adds value.">net present value</dfn>, or NPV. The <b>NPV rule</b>: if NPV is above zero, do the project. It earns more than your discount rate, and the business becomes worth that much more. Below zero, skip it.</p>
+      <div class="formula reveal">NPV <span class="op">=</span> present value of all future cash <span class="op">−</span> cost today</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Add them up</dt><dd>$2,727 + $2,479 + $2,254 + $2,049 + $1,863 = <b>$11,372</b>.</dd></div><div><dt>NPV</dt><dd>$11,372 − $10,000 = <b>$1,372</b>. Above zero, so buy the van. The $15,000 is really worth $11,372 today, and that still beats the $10,000 price.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Internal rate of return</h3>
+      <p class="reveal">Raise the discount rate and NPV falls. At some rate, NPV hits exactly zero. That rate is the <dfn class="term" data-def="The discount rate that makes a project's NPV exactly zero: the yearly return the project earns. If it beats your required rate, the project is worth doing.">internal rate of return</dfn>, or IRR: the yearly return the project really earns. If the IRR beats your discount rate, the NPV is above zero. Slide the rate below and find it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The van's IRR</dt><dd>About <b>15.2%</b>. At 15%, NPV is +$56. At 16%, it's −$177. Since 15.2% beats your 10%, the van is worth it.</dd></div></dl></div>
+      <div class="md-card reveal" id="nv">
+        <label class="md-lab" for="nv-r">Discount rate <b id="nv-r-v">10%</b></label><input type="range" id="nv-r" min="0" max="20" step="1" value="10">
+        <div id="nv-out" aria-hidden="true"></div>
+        <p class="nv-msg" id="nv-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the van's five years of cash. Each dashed outline is the $3,000 that arrives; the green bar inside is what it's worth today at the rate you pick. The total at the bottom compares all five green bars with the $10,000 cost.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The payback period</h3>
+      <p class="reveal">Many small businesses ask a simpler question: how long until I get my money back? That's the <dfn class="term" data-def="How many years it takes for a project's cash to add up to its cost. Easy to understand, but it ignores the time value of money and any cash after that point.">payback period</dfn>. It's easy, but it has two blind spots: it treats a dollar in year 3 like a dollar today, and it ignores everything after the money comes back.</p>
+      <div class="formula reveal">Payback <span class="op">=</span> <span class="frac"><span>cost</span><span>cash per year</span></span> &nbsp; (when the cash is the same every year)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The van</dt><dd><span class="frac"><span>$10,000</span><span>$3,000</span></span> = about <b>3.3 years</b>. It says nothing about years 4 and 5.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Build it <em>or skip it?</em></h2>
+      <p class="lead reveal">Eight project decisions. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="np">
+        <div class="fd-top">
+          <div><small id="np-round">Question 1 of 8</small><b id="np-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="np-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="np-facts"></ul>
+        <div class="sd-opts" id="np-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="np-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="np-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="np-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up projects at made-up businesses. Each lists the numbers, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every NPV, from a bike van to a new factory, takes the same four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: List the cash, year by year</h3>
+      <div class="formula reveal">Cost today, then the cash each year</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The van</dt><dd>−$10,000, then $3,000 a year for 5 years.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Pick the discount rate</h3>
+      <div class="formula reveal">The return your money must earn</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The shop</dt><dd>10% a year.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Bring each year back to today</h3>
+      <div class="formula reveal">Divide by 1.10 once per year of waiting</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Total</dt><dd>$2,727 + $2,479 + $2,254 + $2,049 + $1,863 = $11,372.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Subtract the cost and decide</h3>
+      <div class="formula reveal">NPV above zero <span class="op">→</span> do it</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>NPV</dt><dd>$11,372 − $10,000 = $1,372. Buy the van.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: you can only afford one</h3>
+      <p class="reveal">You have $10,000 and two ideas. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>The van:</b> costs $10,000 and brings $3,000 a year for 5 years.</li>
+        <li><b>A parts booth at the market:</b> costs $10,000 and brings $6,600 in year 1, $4,235 in year 2 and $1,331 in year 3.</li>
+        <li><b>Your rate:</b> 10%.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Payback.</b> The booth gets your money back in about 1.8 years ($6,600 + $4,235 = $10,835 by year 2). The van takes about 3.3 years. Payback says: booth.</li>
+        <li><b>The booth's present values.</b> <span class="frac"><span>$6,600</span><span>1.10</span></span> = $6,000, <span class="frac"><span>$4,235</span><span>1.21</span></span> = $3,500, <span class="frac"><span>$1,331</span><span>1.331</span></span> = $1,000.</li>
+        <li><b>The booth's NPV.</b> $6,000 + $3,500 + $1,000 − $10,000 = <b>$500</b>.</li>
+        <li><b>Compare.</b> The van's NPV is $1,372; the booth's is $500.</li>
+        <li><b>The answer.</b> Buy the van. When you can only do one, pick the higher NPV. The booth pays back faster, but the van adds $872 more value, because payback ignores the van's years 4 and 5.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Bees pay up front <em>for wax.</em></h2>
+      <p class="lead reveal">Honeybees build their comb from wax they make inside their bodies. It's expensive: a colony eats about 6 to 8 pounds of honey to make 1 pound of wax. But a good comb stores honey and raises young bees for years. So colonies build most of their comb when flowers are full of nectar, when the payoff is biggest.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="On the left, a pile of honey jars marked as the cost: about 7 pounds of honey. An arrow points to a honeycomb on the right marked as years of storage and young bees.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, #f2c14e 12%, var(--card))"/>
+        <g fill="#f2c14e" stroke="#c98f1c" stroke-width="3">
+          <rect x="90" y="190" width="56" height="70" rx="10"/><rect x="156" y="190" width="56" height="70" rx="10"/><rect x="222" y="190" width="56" height="70" rx="10"/>
+          <rect x="123" y="112" width="56" height="70" rx="10"/><rect x="189" y="112" width="56" height="70" rx="10"/>
+        </g>
+        <g fill="#c98f1c"><rect x="98" y="180" width="40" height="14" rx="4"/><rect x="164" y="180" width="40" height="14" rx="4"/><rect x="230" y="180" width="40" height="14" rx="4"/><rect x="131" y="102" width="40" height="14" rx="4"/><rect x="197" y="102" width="40" height="14" rx="4"/></g>
+        <g stroke="var(--ink-3)" stroke-width="5" stroke-linecap="round" fill="none"><path d="M330 200 H 470"/><path d="M455 186 l 16 14 l -16 14"/></g>
+        <g class="nv-comb" fill="#f6d77a" stroke="#c98f1c" stroke-width="3">
+          <path d="M560 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M620 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M680 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+          <path d="M590 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M650 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M710 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+          <path d="M560 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M620 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M680 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="184" y="310" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Cost today</text>
+          <text x="184" y="336" font-size="15" fill="var(--ink-2)">about 7 lb of honey</text>
+          <text x="665" y="320" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Payoff for years</text>
+          <text x="665" y="346" font-size="15" fill="var(--ink-2)">1 lb of comb: storage and young bees</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. On the left, the honey a colony spends today. On the right, the comb it builds with that honey, which pays the colony back for years.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The colony pays a big cost now for a stream of benefits later, and builds most when the future payoff is largest. That's an NPV decision.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Cash flows</b>: cost today, then cash each year. Van: −$10,000, then $3,000 × 5.</li>
+          <li><b>Discount rate</b> (hurdle rate): the return the money must earn. 10%.</li>
+          <li><b>Present value</b> = <span class="frac"><span>cash that year</span><span>(1 + rate)<sup>year</sup></span></span>. Year 1: <span class="frac"><span>$3,000</span><span>1.10</span></span> = $2,727.</li>
+          <li><b>NPV</b> = all present values − cost. $11,372 − $10,000 = $1,372. Above zero: do it.</li>
+          <li><b>IRR</b>: the rate where NPV = 0. Van: about 15.2%. Beats 10%, so do it.</li>
+          <li><b>Payback</b> = <span class="frac"><span>$10,000</span><span>$3,000</span></span> = 3.3 years. Ignores time value and later years.</li>
+          <li><b>Only one?</b> Pick the higher NPV: van $1,372 beats booth $500.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A project's present value of future cash minus its cost today is its <input type="text" class="blank" data-answer="npv|net present value" aria-label="Blank 1">.</div>
+        <div>2. At a 10% rate, $1,100 arriving in one year is worth <input type="text" class="blank" data-answer="1000|$1000|1,000|$1,000" inputmode="numeric" aria-label="Blank 2"> dollars today.</div>
+        <div>3. The discount rate that makes NPV exactly zero is the <input type="text" class="blank" data-answer="irr|internal rate of return" aria-label="Blank 3">.</div>
+        <div>4. The number of years it takes to earn back a project's cost is its <input type="text" class="blank" data-answer="payback|payback period" aria-label="Blank 4"> period.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Shark tank, NPV style</h3>
+          <p>Each person invents a small project with a cost and yearly cash. Swap, compute each other's NPV at 10%, and fund only the ones above zero.</p>
+        </div>
+        <div class="reveal">
+          <h3>Is college worth it?</h3>
+          <p>List the cost of a degree today and the extra pay it might bring each year. Pick a discount rate and argue about which numbers are fair.</p>
+        </div>
+        <div class="reveal">
+          <h3>Find the IRR</h3>
+          <p>Using the slider above, find the two whole-number rates where the van's NPV flips from positive to negative.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Think of something you paid for once that paid you back over time, like a tool, a course or a bike. Was it worth it?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What return would you need to tie up $1,000 for five years?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What's a big purchase you're considering? What cash would it save or bring in each year?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a corporate finance analyst</h3>
+      <div class="reveal">
+        <p>A coffee chain is thinking about a new espresso machine for its busiest store. Here's the situation:</p>
+        <ul>
+          <li><b>Cost today:</b> $50,000.</li>
+          <li><b>Extra cash:</b> $12,000 a year from faster service, for 6 years.</li>
+          <li><b>After 6 years:</b> the machine is worth nothing.</li>
+          <li><b>The company's discount rate:</b> 8%.</li>
+        </ul>
+        <p><b>Your task:</b> what's the payback period? What's the NPV at 8%? Should the company buy it? What if the CFO says the rate should be 12%?</p>
+        <textarea id="job-answer" placeholder="Write your recommendation…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Payback:</b> <span class="frac"><span>$50,000</span><span>$12,000</span></span> = about <b>4.2 years</b>.</p>
+            <p><b>NPV at 8%:</b> bringing each $12,000 back to today gives $11,111, $10,288, $9,526, $8,820, $8,167 and $7,562, which add up to about <b>$55,475</b> (each year is rounded). NPV = $55,475 − $50,000 = <b>$5,475</b>. Above zero, so buy it.</p>
+            <p><b>At 12%:</b> the same six years are worth only about $49,337 today, so NPV is about <b>−$663</b>. Now it's a skip. The decision depends on the rate, which is why the next lesson is about setting it.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Is it <em>worth it?</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on the time value of money, how the three statements connect, and raising money, and leads to the cost of capital">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../time-value/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Time value of money</text><text x="20" y="86">Unit 10 · present value</text></a>
+          <a href="../three-statements/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Three statements</text><text x="20" y="186">Unit 12 · cash, not profit</text></a>
+          <a href="../raising-money/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Raising money</text><text x="20" y="286">Unit 13 · where the money comes from</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Picking projects</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The cost of capital</text><text x="690" y="186">Coming soon · Unit 13</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 10</span><b>The time value of money</b></li>
+        <li><span class="muted small">Back · Unit 12</span><b>How the three statements connect</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>Raising money</b></li>
+        <li class="here"><span class="small">You are here</span><b>Picking projects with NPV</b></li>
+        <li><span class="muted small">Coming soon · Unit 13</span><b>The cost of capital</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../raising-money/">Revisit: Raising money <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

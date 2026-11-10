@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/npv/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Elegir proyectos con el VPN · FinancedHub</title>
+  <meta name="description" content="Unidad 13, Lección 2: cómo deciden las empresas qué proyectos vale la pena hacer: los flujos de efectivo de un proyecto, la tasa de descuento, el valor presente neto (VPN) y la regla del VPN, la tasa interna de retorno (TIR), el periodo de recuperación y sus puntos ciegos, y cómo elegir entre dos proyectos. Juego: ¿Lo haces o no?, ocho decisiones de proyectos.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Elegir proyectos con el VPN">
+  <meta property="og:description" content="Unidad 13, Lección 2: cómo deciden las empresas qué proyectos vale la pena hacer: los flujos de efectivo de un proyecto, la tasa de descuento, el valor presente neto (VPN) y la regla del VPN, la tasa interna de retorno (TIR), el periodo de recuperación y sus puntos ciegos, y cómo elegir entre dos proyectos. Juego: ¿Lo haces o no?, ocho decisiones de proyectos.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202611101938">
+  <link rel="icon" href="../../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../../lessons/npv/lesson.css?v=202611101938">
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/es/lessons/npv/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/npv/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/npv/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/npv/">
+  <meta property="og:url" content="https://financedhub.com/es/lessons/npv/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Inicio</a><a href="../../course/">Curso</a><a href="../../certifications/">Certificaciones</a><a href="../../about">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 13 · Lección 2</span> Finanzas corporativas</div>
+        <h1 class="reveal">$10,000 hoy por $15,000 después. <em>¿Es buen trato?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Los dos locales ya están abiertos. Ahora quieres una <span class="mark">camioneta de reparaciones</span> para arreglar bicicletas en la casa de la gente. La camioneta cuesta <span class="mark">$10,000 hoy</span>. Esperas que traiga <span class="mark">$3,000 de efectivo extra al año durante 5 años</span>, y después ya está gastada. Son $15,000 de vuelta por $10,000 gastados. Parece un sí fácil. Pero los $15,000 llegan poco a poco, en cinco años, y el dinero de después vale menos que el de hoy (Lección 10.2). Esta lección te enseña la herramienta que usa toda empresa para decidir qué construir: el valor presente neto.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>El <b>valor presente neto (VPN)</b> es lo que vale hoy el efectivo futuro de un proyecto, menos lo que cuesta hoy.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Toda empresa tiene más ideas que dinero. El VPN te dice qué ideas hacen que el negocio valga más y cuáles pierden dinero sin que se note.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Anota el efectivo que trae el proyecto cada año, convierte cada cantidad a dólares de hoy, súmalas y resta el costo.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>analistas de finanzas corporativas</b> calculan el VPN de tiendas, máquinas y productos nuevos. Los <b>directores financieros</b> lo usan para decidir qué proyectos reciben dinero. Los <b>banqueros de inversión</b> usan las mismas matemáticas para valuar empresas enteras.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una línea de tiempo. Hoy salen $10,000. En cada uno de los siguientes cinco años entran $3,000, pero cada moneda se achica mientras más lejos está, porque el dinero de después vale menos hoy.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">¿Vale la pena?</text>
+          <line x1="40" y1="330" x2="490" y2="330" stroke="var(--ink-3)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="34" y="330" width="52" height="150" rx="8" fill="var(--wants)"/>
+          <text x="60" y="510" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">−$10,000</text>
+          <text x="60" y="534" text-anchor="middle" font-size="14" fill="var(--ink-2)">hoy</text>
+          <g class="nv-coins">
+            <circle cx="140" cy="270" r="40" fill="var(--good)"/><circle cx="140" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="215" cy="274" r="36" fill="var(--good)"/><circle cx="215" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="290" cy="278" r="32" fill="var(--good)"/><circle cx="290" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="365" cy="282" r="28" fill="var(--good)"/><circle cx="365" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+            <circle cx="440" cy="286" r="24" fill="var(--good)"/><circle cx="440" cy="270" r="44" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/>
+          </g>
+          <g text-anchor="middle" font-size="14" fill="var(--ink-2)"><text x="140" y="360">año 1</text><text x="215" y="360">año 2</text><text x="290" y="360">año 3</text><text x="365" y="360">año 4</text><text x="440" y="360">año 5</text></g>
+          <text x="290" y="200" text-anchor="middle" font-size="15" fill="var(--ink-2)">$3,000 cada año, valen menos hoy</text>
+          <text x="300" y="440" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">el dinero de después se achica</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> la camioneta como una línea de tiempo. La barra naranja son los $10,000 que pagas hoy. Las monedas verdes son los $3,000 que trae cada año. Los anillos punteados muestran $3,000; las monedas sólidas muestran lo que valen en dólares de hoy, que se achica mientras más lejos están.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo</div>
+      <h2 class="reveal">Trae cada dólar <em>a hoy.</em></h2>
+      <p class="lead reveal">No puedes comparar directamente $10,000 de hoy con $3,000 del año 5. Son dólares distintos. Por eso primero conviertes cada dólar futuro a dólares de hoy.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Flujos de efectivo del proyecto</h3>
+      <p class="reveal">Los <dfn class="term" data-def="El efectivo real que un proyecto trae o cuesta cada año: el dinero que entra menos el que sale, no la ganancia contable.">flujos de efectivo</dfn> de un proyecto son el dinero real que trae o cuesta cada año. Usa efectivo, no ganancias, por la misma razón que en la Lección 12.3: solo puedes gastar efectivo.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Hoy</dt><dd>−$10,000 por la camioneta.</dd></div><div><dt>Años 1 a 5</dt><dd>+$3,000 cada año: $3,000 × 5 = <b>$15,000</b> en total, sin pensar todavía en el tiempo.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">La tasa de descuento</h3>
+      <p class="reveal">Para convertir el efectivo futuro a dólares de hoy, necesitas una <dfn class="term" data-def="El rendimiento anual que un negocio le pide a un proyecto para que valga la pena, según lo que su dinero podría ganar en otro lado y lo que ese dinero le cuesta. También se llama tasa mínima.">tasa de descuento</dfn>: el rendimiento que tu dinero tiene que ganar para que valga la pena amarrarlo. Las empresas también la llaman <b>tasa mínima</b>, porque el proyecto tiene que superarla. La Lección 13.3 muestra cómo la fijan las empresas.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu tasa</dt><dd><b>10%</b> al año. Entre el préstamo del banco al 8% y lo que espera tu inversionista, necesitas que la camioneta gane por lo menos 10%.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Valor presente de cada año</h3>
+      <p class="reveal">Divide el efectivo de cada año entre 1.10 una vez por cada año que esperas. Es el valor presente de la Lección 10.2.</p>
+      <div class="formula reveal">Valor presente <span class="op">=</span> <span class="frac"><span>efectivo de ese año</span><span>(1 + tasa)<sup>año</sup></span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Año 1</dt><dd><span class="frac"><span>$3,000</span><span>1.10</span></span> = <b>$2,727</b></dd></div><div><dt>Año 2</dt><dd><span class="frac"><span>$3,000</span><span>1.21</span></span> = <b>$2,479</b></dd></div><div><dt>Años 3, 4 y 5</dt><dd><b>$2,254</b>, <b>$2,049</b> y <b>$1,863</b>. Mientras más tarde llegan los $3,000, menos valen hoy.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Valor presente neto</h3>
+      <p class="reveal">Suma el valor presente de cada año y resta el costo. Eso es el <dfn class="term" data-def="El valor presente de todos los flujos de efectivo futuros de un proyecto menos lo que cuesta hoy. Arriba de cero, el proyecto suma valor.">valor presente neto</dfn>, o VPN. La <b>regla del VPN</b>: si el VPN está arriba de cero, haz el proyecto. Rinde más que tu tasa de descuento, y el negocio pasa a valer eso de más. Abajo de cero, no lo hagas.</p>
+      <div class="formula reveal">VPN <span class="op">=</span> valor presente de todo el efectivo futuro <span class="op">−</span> costo de hoy</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Súmalos</dt><dd>$2,727 + $2,479 + $2,254 + $2,049 + $1,863 = <b>$11,372</b>.</dd></div><div><dt>VPN</dt><dd>$11,372 − $10,000 = <b>$1,372</b>. Arriba de cero, así que compra la camioneta. Los $15,000 en realidad valen $11,372 hoy, y eso todavía le gana al precio de $10,000.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Tasa interna de retorno</h3>
+      <p class="reveal">Si subes la tasa de descuento, el VPN baja. Con alguna tasa, el VPN llega exactamente a cero. Esa tasa es la <dfn class="term" data-def="La tasa de descuento que hace que el VPN de un proyecto sea exactamente cero: el rendimiento anual que gana el proyecto. Si supera tu tasa mínima, vale la pena hacerlo.">tasa interna de retorno</dfn>, o TIR: el rendimiento anual que de verdad gana el proyecto. Si la TIR le gana a tu tasa de descuento, el VPN está arriba de cero. Mueve la tasa abajo y encuéntrala.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La TIR de la camioneta</dt><dd>Cerca de <b>15.2%</b>. Al 15%, el VPN es +$56. Al 16%, es −$177. Como 15.2% le gana a tu 10%, la camioneta vale la pena.</dd></div></dl></div>
+      <div class="md-card reveal" id="nv">
+        <label class="md-lab" for="nv-r">Tasa de descuento <b id="nv-r-v">10%</b></label><input type="range" id="nv-r" min="0" max="20" step="1" value="10">
+        <div id="nv-out" aria-hidden="true"></div>
+        <p class="nv-msg" id="nv-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> los cinco años de efectivo de la camioneta. Cada contorno punteado son los $3,000 que llegan; la barra verde de adentro es lo que valen hoy con la tasa que elijas. El total de abajo compara las cinco barras verdes con el costo de $10,000.</p>
+
+      <h3 class="reveal" style="margin-top:56px">El periodo de recuperación</h3>
+      <p class="reveal">Muchos negocios pequeños se hacen una pregunta más simple: ¿cuánto tardo en recuperar mi dinero? Eso es el <dfn class="term" data-def="Cuántos años tarda el efectivo de un proyecto en sumar lo que costó. Es fácil de entender, pero ignora el valor del dinero en el tiempo y todo el efectivo que llega después.">periodo de recuperación</dfn>. Es fácil, pero tiene dos puntos ciegos: trata un dólar del año 3 igual que un dólar de hoy, e ignora todo lo que llega después de recuperar el dinero.</p>
+      <div class="formula reveal">Recuperación <span class="op">=</span> <span class="frac"><span>costo</span><span>efectivo por año</span></span> &nbsp; (cuando el efectivo es igual cada año)</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La camioneta</dt><dd><span class="frac"><span>$10,000</span><span>$3,000</span></span> = cerca de <b>3.3 años</b>. No dice nada de los años 4 y 5.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo</div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo</div>
+      <h2 class="reveal">¿Lo haces <em>o no?</em></h2>
+      <p class="lead reveal">Ocho decisiones sobre proyectos. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="np">
+        <div class="fd-top">
+          <div><small id="np-round">Pregunta 1 de 8</small><b id="np-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="np-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="np-facts"></ul>
+        <div class="sd-opts" id="np-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="np-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="np-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="np-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> proyectos inventados en negocios inventados. Cada uno muestra los números y luego hace una pregunta.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso</div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Todo VPN, desde una camioneta hasta una fábrica nueva, sigue los mismos cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Anota el efectivo, año por año</h3>
+      <div class="formula reveal">El costo de hoy y luego el efectivo de cada año</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La camioneta</dt><dd>−$10,000 y luego $3,000 al año durante 5 años.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Elige la tasa de descuento</h3>
+      <div class="formula reveal">El rendimiento que tu dinero tiene que ganar</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El taller</dt><dd>10% al año.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Trae cada año a hoy</h3>
+      <div class="formula reveal">Divide entre 1.10 una vez por cada año de espera</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Total</dt><dd>$2,727 + $2,479 + $2,254 + $2,049 + $1,863 = $11,372.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Resta el costo y decide</h3>
+      <div class="formula reveal">VPN arriba de cero <span class="op">→</span> hazlo</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>VPN</dt><dd>$11,372 − $10,000 = $1,372. Compra la camioneta.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: solo te alcanza para uno</h3>
+      <p class="reveal">Tienes $10,000 y dos ideas. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>La camioneta:</b> cuesta $10,000 y trae $3,000 al año durante 5 años.</li>
+        <li><b>Un puesto de repuestos en el mercado:</b> cuesta $10,000 y trae $6,600 el año 1, $4,235 el año 2 y $1,331 el año 3.</li>
+        <li><b>Tu tasa:</b> 10%.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Recuperación.</b> El puesto te devuelve el dinero en cerca de 1.8 años ($6,600 + $4,235 = $10,835 para el año 2). La camioneta tarda cerca de 3.3 años. La recuperación dice: el puesto.</li>
+        <li><b>Valores presentes del puesto.</b> <span class="frac"><span>$6,600</span><span>1.10</span></span> = $6,000, <span class="frac"><span>$4,235</span><span>1.21</span></span> = $3,500, <span class="frac"><span>$1,331</span><span>1.331</span></span> = $1,000.</li>
+        <li><b>VPN del puesto.</b> $6,000 + $3,500 + $1,000 − $10,000 = <b>$500</b>.</li>
+        <li><b>Compara.</b> El VPN de la camioneta es $1,372; el del puesto, $500.</li>
+        <li><b>La respuesta.</b> Compra la camioneta. Cuando solo puedes hacer uno, elige el VPN más alto. El puesto se paga más rápido, pero la camioneta suma $872 más de valor, porque la recuperación ignora los años 4 y 5 de la camioneta.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza</div>
+      <h2 class="reveal">Las abejas pagan por adelantado <em>su cera.</em></h2>
+      <p class="lead reveal">Las abejas construyen su panal con cera que producen dentro de su cuerpo. Sale cara: una colonia consume entre 6 y 8 libras de miel para hacer 1 libra de cera. Pero un buen panal guarda miel y cría abejas jóvenes durante años. Por eso las colonias construyen la mayor parte del panal cuando las flores están llenas de néctar, cuando la recompensa es más grande.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A la izquierda, frascos de miel marcados como el costo: cerca de 7 libras de miel. Una flecha apunta a un panal a la derecha marcado como años de almacén y abejas jóvenes.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, #f2c14e 12%, var(--card))"/>
+        <g fill="#f2c14e" stroke="#c98f1c" stroke-width="3">
+          <rect x="90" y="190" width="56" height="70" rx="10"/><rect x="156" y="190" width="56" height="70" rx="10"/><rect x="222" y="190" width="56" height="70" rx="10"/>
+          <rect x="123" y="112" width="56" height="70" rx="10"/><rect x="189" y="112" width="56" height="70" rx="10"/>
+        </g>
+        <g fill="#c98f1c"><rect x="98" y="180" width="40" height="14" rx="4"/><rect x="164" y="180" width="40" height="14" rx="4"/><rect x="230" y="180" width="40" height="14" rx="4"/><rect x="131" y="102" width="40" height="14" rx="4"/><rect x="197" y="102" width="40" height="14" rx="4"/></g>
+        <g stroke="var(--ink-3)" stroke-width="5" stroke-linecap="round" fill="none"><path d="M330 200 H 470"/><path d="M455 186 l 16 14 l -16 14"/></g>
+        <g class="nv-comb" fill="#f6d77a" stroke="#c98f1c" stroke-width="3">
+          <path d="M560 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M620 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M680 120 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+          <path d="M590 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M650 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M710 172 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+          <path d="M560 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M620 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/><path d="M680 224 l 30 -17 l 30 17 v 35 l -30 17 l -30 -17 Z"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="184" y="310" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Costo de hoy</text>
+          <text x="184" y="336" font-size="15" fill="var(--ink-2)">cerca de 7 libras de miel</text>
+          <text x="665" y="320" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Recompensa por años</text>
+          <text x="665" y="346" font-size="15" fill="var(--ink-2)">1 libra de panal: almacén y abejas jóvenes</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. A la izquierda, la miel que gasta una colonia hoy. A la derecha, el panal que construye con esa miel, que le devuelve el esfuerzo durante años.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> La colonia paga un costo grande hoy a cambio de beneficios que llegan después, y construye más cuando la recompensa futura es más grande. Esa es una decisión de VPN.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes</div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Flujos de efectivo</b>: el costo de hoy y luego el efectivo de cada año. Camioneta: −$10,000 y luego $3,000 × 5.</li>
+          <li><b>Tasa de descuento</b> (tasa mínima): el rendimiento que el dinero tiene que ganar. 10%.</li>
+          <li><b>Valor presente</b> = <span class="frac"><span>efectivo de ese año</span><span>(1 + tasa)<sup>año</sup></span></span>. Año 1: <span class="frac"><span>$3,000</span><span>1.10</span></span> = $2,727.</li>
+          <li><b>VPN</b> = todos los valores presentes − costo. $11,372 − $10,000 = $1,372. Arriba de cero: hazlo.</li>
+          <li><b>TIR</b>: la tasa donde el VPN = 0. Camioneta: cerca de 15.2%. Le gana al 10%, así que hazlo.</li>
+          <li><b>Recuperación</b> = <span class="frac"><span>$10,000</span><span>$3,000</span></span> = 3.3 años. Ignora el valor del dinero en el tiempo y los años de después.</li>
+          <li><b>¿Solo uno?</b> Elige el VPN más alto: camioneta $1,372 le gana al puesto $500.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. El valor presente del efectivo futuro de un proyecto menos su costo de hoy es su <input type="text" class="blank" data-answer="vpn|valor presente neto|el vpn" aria-label="Espacio 1">.</div>
+        <div>2. Con una tasa de 10%, $1,100 que llegan en un año valen <input type="text" class="blank" data-answer="1000|$1000|1,000|$1,000" inputmode="numeric" aria-label="Espacio 2"> dólares hoy.</div>
+        <div>3. La tasa de descuento que hace que el VPN sea exactamente cero es la <input type="text" class="blank" data-answer="tir|tasa interna de retorno" aria-label="Espacio 3">.</div>
+        <div>4. El número de años que tarda un proyecto en recuperar su costo es su periodo de <input type="text" class="blank" data-answer="recuperación|recuperacion" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo</div>
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Ronda de inversionistas</h3>
+          <p>Cada persona inventa un proyecto pequeño con un costo y un efectivo anual. Intercámbienlos, calculen el VPN de los demás al 10% y solo financien los que estén arriba de cero.</p>
+        </div>
+        <div class="reveal">
+          <h3>¿Vale la pena la universidad?</h3>
+          <p>Anoten lo que cuesta un título hoy y el sueldo extra que podría traer cada año. Elijan una tasa de descuento y discutan qué números son justos.</p>
+        </div>
+        <div class="reveal">
+          <h3>Encuentra la TIR</h3>
+          <p>Con el control de arriba, encuentra las dos tasas enteras donde el VPN de la camioneta pasa de positivo a negativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta</div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Piensa en algo que pagaste una vez y que te devolvió valor con el tiempo, como una herramienta, un curso o una bicicleta. ¿Valió la pena?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué rendimiento necesitarías para amarrar $1,000 durante cinco años?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué compra grande estás pensando hacer? ¿Cuánto efectivo te ahorraría o te traería cada año?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres analista de finanzas corporativas</h3>
+      <div class="reveal">
+        <p>Una cadena de cafeterías está pensando en comprar una máquina de espresso nueva para su tienda con más clientes. Esta es la situación:</p>
+        <ul>
+          <li><b>Costo hoy:</b> $50,000.</li>
+          <li><b>Efectivo extra:</b> $12,000 al año por atender más rápido, durante 6 años.</li>
+          <li><b>Después de 6 años:</b> la máquina ya no vale nada.</li>
+          <li><b>La tasa de descuento de la empresa:</b> 8%.</li>
+        </ul>
+        <p><b>Tu tarea:</b> ¿cuál es el periodo de recuperación? ¿Cuál es el VPN al 8%? ¿La empresa debe comprarla? ¿Y si el director financiero dice que la tasa debe ser 12%?</p>
+        <textarea id="job-answer" placeholder="Escribe tu recomendación…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Recuperación:</b> <span class="frac"><span>$50,000</span><span>$12,000</span></span> = cerca de <b>4.2 años</b>.</p>
+            <p><b>VPN al 8%:</b> al traer cada $12,000 a hoy quedan $11,111, $10,288, $9,526, $8,820, $8,167 y $7,562, que suman cerca de <b>$55,475</b> (cada año está redondeado). VPN = $55,475 − $50,000 = <b>$5,475</b>. Arriba de cero, así que cómprala.</p>
+            <p><b>Al 12%:</b> los mismos seis años valen solo cerca de $49,337 hoy, así que el VPN es cerca de <b>−$663</b>. Ahora no conviene. La decisión depende de la tasa, y por eso la siguiente lección trata de cómo fijarla.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">¿Vale <em>la pena?</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en el valor del dinero en el tiempo, en cómo se conectan los tres estados y en conseguir dinero, y lleva al costo de capital">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../time-value/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Valor en el tiempo</text><text x="20" y="86">Unidad 10 · valor presente</text></a>
+          <a href="../three-statements/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Los tres estados</text><text x="20" y="186">Unidad 12 · efectivo, no ganancia</text></a>
+          <a href="../raising-money/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Conseguir dinero</text><text x="20" y="286">Unidad 13 · de dónde sale el dinero</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Elegir proyectos</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">El costo de capital</text><text x="690" y="186">Muy pronto · Unidad 13</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 10</span><b>El valor del dinero en el tiempo</b></li>
+        <li><span class="muted small">Antes · Unidad 12</span><b>Cómo se conectan los tres estados</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>Conseguir dinero</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Elegir proyectos con el VPN</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 13</span><b>El costo de capital</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../raising-money/">Repasa: Conseguir dinero <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about">Acerca de</a><a href="../../contact">Contacto</a><a href="../../legal/privacy">Privacidad</a><a href="../../legal/terms">Términos</a><a href="../../legal/cookies">Cookies y almacenamiento</a><a href="../../credits">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../../lessons/npv/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202611101938"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202611101938"></script>
+<script src="../../../assets/js/auth.js?v=202611101938"></script>
+<script src="../../../assets/js/site.js?v=202611101938"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202611101938"></script>
+<script src="../../../lessons/npv/lesson.js?v=202611101938"></script>
+</body>
+</html>

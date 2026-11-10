@@ -1,0 +1,18 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {
+  "VPN": "ve pe ene",
+  "TIR": "tir"
+ },
+ "lines": [
+  "Quieres una camioneta de reparaciones. Cuesta diez mil dólares hoy, y debería traer tres mil dólares de efectivo extra al año durante cinco años. Son quince mil de vuelta por diez mil gastados. ¿Pero de verdad es buen trato?",
+  "Los quince mil llegan poco a poco, y el dinero de después vale menos que el de hoy. Por eso traes cada dólar futuro a hoy, con una tasa de descuento: el rendimiento que tu dinero tiene que ganar. Aquí, diez por ciento.",
+  "Los tres mil dólares del año uno, divididos entre uno punto diez, valen dos mil setecientos veintisiete hoy. Los del año cinco valen solo mil ochocientos sesenta y tres.",
+  "Suma los cinco años y te da once mil trescientos setenta y dos dólares. Resta el costo de diez mil, y el valor presente neto, o VPN, es de mil trescientos setenta y dos dólares. Arriba de cero, así que compra la camioneta.",
+  "Si subes la tasa de descuento, el VPN baja. La tasa donde el VPN llega exactamente a cero es la tasa interna de retorno, o TIR. Para la camioneta es cerca de quince punto dos por ciento, que le gana a tu diez por ciento.",
+  "El periodo de recuperación pregunta cuánto tardas en recuperar tu dinero. Para la camioneta, cerca de tres punto tres años. Es simple, pero ignora el valor del dinero en el tiempo y cada dólar que llega después.",
+  "Cuando solo te alcanza para un proyecto, elige el VPN más alto. El VPN de la camioneta le gana a un puesto de repuestos que se paga más rápido, porque la camioneta sigue pagando en los años cuatro y cinco."
+ ]
+}

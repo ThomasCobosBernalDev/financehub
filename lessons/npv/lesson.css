@@ -1,0 +1,55 @@
+/* Unit 13 · Lesson 2: Picking projects with NPV */
+.md-card { background: var(--card); border-radius: 24px; padding: clamp(18px, 3.5vw, 30px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); margin-top: 20px; }
+.md-lab { display: block; font-size: 15px; color: var(--ink-2); margin: 0 0 8px; }
+.md-lab b { color: var(--ink); }
+.fd { margin-top: 28px; background: var(--card); border-radius: 24px; padding: clamp(16px, 3vw, 28px); box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(60, 50, 30, .25); }
+.fd-top { display: flex; justify-content: space-between; gap: 16px 24px; align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.fd-top small, .pg-score small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.fd-top > div > b { display: block; margin-top: 6px; font-family: var(--serif); font-weight: 500; font-size: clamp(20px, 2.4vw, 24px); line-height: 1.35; }
+.pg-score { text-align: right; flex: none; }
+.pg-score b { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--good); font-variant-numeric: tabular-nums; }
+.fd-why { margin-top: 16px; font-size: 16px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); }
+.fd-why[data-tone="good"] { border-color: var(--good); }
+.fd-why[data-tone="warn"] { border-color: var(--wants); }
+.fd-next { margin-top: 16px; width: 100%; justify-content: center; }
+.fd-next:disabled { opacity: .5; cursor: default; }
+.rr-wide .fd-why, .rr-wide .fd-next { max-width: 720px; }
+@media (max-width: 760px) {
+  .fd-top { flex-direction: column; }
+  .pg-score { text-align: left; }
+}
+/* Discount-rate slider */
+.nv-chart { display: block; width: 100%; max-width: 680px; overflow: visible; margin-top: 18px; }
+.nv-yr { font-size: 15px; font-weight: 600; fill: var(--ink-2); }
+.nv-ghost { fill: none; stroke: var(--good); stroke-width: 2; stroke-dasharray: 5 4; }
+.nv-pv { fill: var(--good); transition: width .3s var(--ease); }
+.nv-num { font-size: 15px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.nv-msg { margin: 14px 0 0; font-size: 16px; line-height: 1.55; padding-left: 14px; border-left: 4px solid var(--line); font-variant-numeric: tabular-nums; }
+.nv-msg[data-tone="good"] { border-color: var(--good); }
+.nv-msg[data-tone="warn"] { border-color: var(--wants); }
+@media (max-width: 760px) {
+  .nv-yr { font-size: 22px; }
+  .nv-num { font-size: 24px; }
+}
+/* Build it or skip it */
+.ld-facts { list-style: none; margin: 16px 0 0; padding: 12px 14px; border-radius: 14px; background: var(--paper-2); display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sd-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0 4px; max-width: 720px; }
+.sm-btn { font: inherit; font-weight: 600; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 10px; cursor: pointer; transition: border-color .2s, background .2s, transform .2s var(--ease); }
+.sm-btn:hover:not(:disabled) { border-color: var(--ink-3); transform: translateY(-2px); }
+.sm-btn:disabled { cursor: default; }
+.sm-btn.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--card)); }
+.sm-btn.wrong { border-color: var(--wants); background: color-mix(in srgb, var(--wants) 8%, var(--card)); }
+.sm-btn.alt { border-color: var(--good); border-style: dashed; }
+#np-result { margin-top: 8px; }
+.sd-opts[data-n="4"] { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 560px) {
+  .sd-opts { grid-template-columns: 1fr; }
+  .sd-opts[data-n="4"] { grid-template-columns: repeat(2, 1fr); }
+}
+.sd-opts[data-n="2"] { grid-template-columns: repeat(2, 1fr); }
+/* Art */
+.nv-coins circle:nth-child(odd) { animation: nv-breathe 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.nv-comb { animation: nv-glow 4s ease-in-out infinite; }
+@keyframes nv-breathe { 50% { scale: .9; } }
+@keyframes nv-glow { 50% { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .nv-coins circle, .nv-comb { animation: none; } }
