@@ -1,0 +1,19 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "WACC": "whack",
+  "CAPM": "cap M",
+  "IRR": "I. R. R.",
+  "NPV": "N. P. V."
+ },
+ "lines": [
+  "Last lesson, you judged the van with a ten percent discount rate. Now you find the real number: the cost of capital, what the shop pays for the money it uses.",
+  "The shop has a forty thousand dollar loan at eight percent. But interest lowers taxes. With a twenty five percent tax rate, eight percent times zero point seven five is an after-tax cost of debt of six percent.",
+  "The owners' sixty thousand dollars isn't free either. Owners get paid last, so they expect more. The CAPM estimates it: a four percent risk-free rate, plus a beta of two times a five and a half percent market risk premium, equals fifteen percent.",
+  "Now weight them. Forty thousand out of one hundred thousand is forty percent debt, and sixty percent equity.",
+  "Zero point four times six percent is two point four percent. Zero point six times fifteen percent is nine percent. Add them, and the weighted average cost of capital, or WACC, is eleven point four percent.",
+  "That's the hurdle. The van's IRR of fifteen point two percent clears it, so at eleven point four percent its NPV is still about nine hundred seventy seven dollars. Buy it.",
+  "Is more debt always cheaper? No. Borrow too much, and both the bank and the owners demand more. At seventy percent debt, the WACC rises to twelve point three percent. Companies look for the mix in between."
+ ]
+}

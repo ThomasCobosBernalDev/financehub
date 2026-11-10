@@ -1,0 +1,263 @@
+<!-- title: The Cost of Capital -->
+<!-- description: Unit 13, Lesson 3: what money costs a company: the after-tax cost of debt, the cost of equity with the CAPM (risk-free rate, beta, market risk premium), capital structure weights, the weighted average cost of capital (WACC), and using WACC as the hurdle rate for projects. Play: Clear the hurdle, eight cost-of-capital questions. -->
+<!-- kicker: Unit 13 · Lesson 3 -->
+<!-- topic: Corporate finance -->
+
+<!-- @start -->
+        <h1 class="reveal">Last lesson you guessed 10%. <em>Now find the real number.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> In Lesson 13.2 you judged the van with a <span class="mark">10% discount rate</span>. But where should that number come from? Your shop's money comes from two places: a <span class="mark">$40,000 bank loan at 8%</span>, and <span class="mark">$60,000 of owners' money</span>, yours and your investor's. Neither one is free. The bank wants its interest, and the owners want a return big enough to be worth the risk. Blend the two, and you get the shop's real hurdle: the <b>cost of capital</b>.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>The <b>cost of capital</b> is the average yearly return a company must pay its lenders and owners for using their money.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>It's the hurdle every project has to clear. A project that earns less than it destroys value, even if it makes a profit.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Find what debt costs after taxes, find what owners expect, then average the two by how much of each the company uses.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Corporate treasurers</b> manage the mix of debt and equity. <b>Equity research analysts</b> and <b>investment bankers</b> estimate it to value companies. <b>CFOs</b> set it as the hurdle rate.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Two blocks stacked into a tower: debt at 6% and equity at 15%. Next to them, a track hurdle set at 11.4%, and a ball marked 15.2% arcing over it.">
+          <rect x="50" y="300" width="150" height="100" rx="10" fill="var(--needs)"/>
+          <rect x="50" y="150" width="150" height="146" rx="10" fill="var(--good)"/>
+          <text x="125" y="345" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Debt 40%</text>
+          <text x="125" y="372" text-anchor="middle" font-size="15" fill="var(--on-color)">costs 6%</text>
+          <text x="125" y="218" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Equity 60%</text>
+          <text x="125" y="245" text-anchor="middle" font-size="15" fill="var(--on-color)">costs 15%</text>
+          <g stroke="var(--ink-3)" stroke-width="7" stroke-linecap="round"><path d="M310 400 V 300"/><path d="M450 400 V 300"/></g>
+          <rect x="300" y="290" width="160" height="22" rx="6" fill="var(--wants)"/>
+          <text x="380" y="438" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">hurdle 11.4%</text>
+          <path d="M250 380 Q 380 40, 500 360" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 6"/>
+          <g class="cc-ball"><circle cx="376" cy="205" r="24" fill="var(--accent)"/><text x="376" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="var(--on-color)">15.2%</text></g>
+          <line x1="30" y1="400" x2="500" y2="400" stroke="var(--line)" stroke-width="4"/>
+          <text x="260" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">What money costs</text>
+          <text x="260" y="506" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">clear the bar, or don't build</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> where the shop's money comes from and the bar it sets. On the left, 40% debt that costs 6% after taxes and 60% equity that costs 15%. On the right, the blended hurdle of 11.4%, and the van's 15.2% return flying over it.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Every dollar <em>has a price.</em></h2>
+      <p class="lead reveal">In Lesson 13.1 you learned the two kinds of money. Now you put a price on each, and blend them into one number.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Cost of debt, after taxes</h3>
+      <p class="reveal">The <dfn class="term" data-def="The yearly interest rate a company pays to borrow. After taxes it's lower, because interest is a deductible expense: rate × (1 − tax rate).">cost of debt</dfn> starts with the interest rate. But interest is an expense on the income statement (Lesson 12.1), so it lowers taxes. That makes debt cheaper than its rate. To keep the math simple, this lesson uses a flat 25% tax rate.</p>
+      <div class="formula reveal">After-tax cost of debt <span class="op">=</span> interest rate <span class="op">×</span> (1 − tax rate)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bank loan</dt><dd>8% × (1 − 0.25) = 8% × 0.75 = <b>6%</b>. Every $100 of interest saves $25 of tax.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Cost of equity</h3>
+      <p class="reveal">The <dfn class="term" data-def="The yearly return a company's owners expect for investing in it. It's higher than the cost of debt because owners are paid last and take more risk.">cost of equity</dfn> is the return owners expect. Nobody sends a bill for it, but if owners don't earn it, they sell their shares or stop investing. It's always higher than the cost of debt, because owners get paid last: lenders get their interest first, even in a bad year (Lesson 13.1).</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your owners</dt><dd>Expect <b>15%</b> a year. The bank only asks 8%, because it gets paid first.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The CAPM: where 15% comes from</h3>
+      <p class="reveal">Wall Street estimates the cost of equity with the <dfn class="term" data-def="Capital asset pricing model: cost of equity = risk-free rate + beta × market risk premium.">CAPM</dfn>, the capital asset pricing model. It starts from the <dfn class="term" data-def="What you can earn with almost no risk, usually the interest rate on U.S. government bonds.">risk-free rate</dfn>, what U.S. government bonds pay. Then it adds extra return for risk: the <dfn class="term" data-def="How much more than the risk-free rate investors expect from the stock market as a whole, usually around 5% to 6% a year.">market risk premium</dfn>, times the company's <dfn class="term" data-def="How much a stock tends to swing compared with the whole market. A beta of 1 moves with the market; 2 swings twice as much.">beta</dfn>, which measures how much it swings compared with the market.</p>
+      <div class="formula reveal">Cost of equity <span class="op">=</span> risk-free rate <span class="op">+</span> beta <span class="op">×</span> market risk premium</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Risk-free rate</dt><dd><b>4%</b> from government bonds.</dd></div><div><dt>Beta</dt><dd><b>2</b>. A small, young shop swings about twice as much as the market.</dd></div><div><dt>Market risk premium</dt><dd><b>5.5%</b>.</dd></div><div><dt>Cost of equity</dt><dd>4% + 2 × 5.5% = 4% + 11% = <b>15%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Weights</h3>
+      <p class="reveal">A company's mix of debt and equity is its <dfn class="term" data-def="The mix of debt and equity a company uses to pay for everything it owns.">capital structure</dfn>. Each kind of money counts by its share of the total.</p>
+      <div class="formula reveal">Debt weight <span class="op">=</span> <span class="frac"><span>debt</span><span>debt + equity</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Debt</dt><dd><span class="frac"><span>$40,000</span><span>$100,000</span></span> = <b>40%</b></dd></div><div><dt>Equity</dt><dd><span class="frac"><span>$60,000</span><span>$100,000</span></span> = <b>60%</b></dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">WACC: the blend</h3>
+      <p class="reveal">Multiply each cost by its weight and add them up. That's the <dfn class="term" data-def="Weighted average cost of capital: each source of money's cost times its share of the total, added up. It's the company's hurdle rate for average-risk projects.">weighted average cost of capital</dfn>, or WACC, the company's cost of capital.</p>
+      <div class="formula reveal">WACC <span class="op">=</span> debt weight <span class="op">×</span> after-tax cost of debt <span class="op">+</span> equity weight <span class="op">×</span> cost of equity</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Debt part</dt><dd>0.40 × 6% = <b>2.4%</b></dd></div><div><dt>Equity part</dt><dd>0.60 × 15% = <b>9%</b></dd></div><div><dt>WACC</dt><dd>2.4% + 9% = <b>11.4%</b></dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">WACC is the hurdle</h3>
+      <p class="reveal">WACC is the discount rate to use for projects as risky as the business itself. A project is worth doing when its IRR beats the WACC, which is the same as having an NPV above zero at the WACC.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The van</dt><dd>IRR 15.2% beats 11.4%. At 11.4%, its NPV is about <b>$977</b>, less than the $1,372 you found at 10%, but still above zero. Buy it.</dd></div><div><dt>The parts booth</dt><dd>IRR about 13.6% also beats 11.4%. NPV about <b>$300</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="wc">
+        <label class="md-lab" for="wc-d">Share of the shop paid for with debt <b id="wc-d-v">40%</b></label><input type="range" id="wc-d" min="0" max="80" step="10" value="40">
+        <div id="wc-out" aria-hidden="true"></div>
+        <p class="wc-msg" id="wc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the shop's money split into debt (blue, 6% after taxes) and equity (green, 15%). Move the slider to change the mix and watch the WACC, then see whether the van (IRR 15.2%) and the booth (IRR 13.6%) still clear it. Simplified: it keeps both costs fixed, which real lenders and owners don't (see the worked example).</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Clear <em>the hurdle.</em></h2>
+      <p class="lead reveal">Eight questions about what money costs. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="hr">
+        <div class="fd-top">
+          <div><small id="hr-round">Question 1 of 8</small><b id="hr-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="hr-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="hr-facts"></ul>
+        <div class="sd-opts" id="hr-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="hr-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="hr-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="hr-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up companies and projects. Each lists the numbers, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Finding any company's cost of capital takes four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Cost of debt, after taxes</h3>
+      <div class="formula reveal">Interest rate × (1 − tax rate)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The loan</dt><dd>8% × 0.75 = 6%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Cost of equity</h3>
+      <div class="formula reveal">Risk-free rate + beta × market risk premium</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The owners</dt><dd>4% + 2 × 5.5% = 15%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Weights</h3>
+      <div class="formula reveal">Weight <span class="op">=</span> <span class="frac"><span>each source</span><span>total money</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The mix</dt><dd><span class="frac"><span>$40,000</span><span>$100,000</span></span> = 40% debt, <span class="frac"><span>$60,000</span><span>$100,000</span></span> = 60% equity.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Blend, then use it as the hurdle</h3>
+      <div class="formula reveal">IRR above WACC <span class="op">→</span> build it</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>WACC</dt><dd>0.40 × 6% + 0.60 × 15% = 11.4%. The van's 15.2% clears it.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: is more debt always cheaper?</h3>
+      <p class="reveal">The slider makes it look like piling on debt keeps lowering WACC. Here's what really happens if the shop borrows until debt is 70% of its money:</p>
+      <ul class="reveal">
+        <li><b>The bank:</b> sees a riskier borrower and charges 12% instead of 8%.</li>
+        <li><b>The owners:</b> now get paid after a much bigger interest bill, so they want 20% instead of 15%.</li>
+        <li><b>Tax rate:</b> still 25%.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>After-tax cost of debt.</b> 12% × 0.75 = 9%.</li>
+        <li><b>Debt part.</b> 0.70 × 9% = 6.3%.</li>
+        <li><b>Equity part.</b> 0.30 × 20% = 6%.</li>
+        <li><b>WACC.</b> 6.3% + 6% = <b>12.3%</b>, higher than the 11.4% you started with.</li>
+        <li><b>The answer.</b> No. A little debt is cheap, but too much makes everyone demand more. Companies look for a middle mix where WACC is lowest.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Crows only crack <em>the big shells.</em></h2>
+      <p class="lead reveal">On the Pacific coast of Canada, crows eat sea snails called whelks. To crack one, a crow flies straight up about 5 meters and drops it on the rocks, again and again until it breaks. Every flight costs energy. Scientists found that crows pick only the largest whelks: small ones take just as many drops and hold too little food to pay for the flights.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A crow flies up above rocky shore holding a whelk shell. On the beach, large whelks are marked as worth it and small whelks are marked as skipped.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 300 Q 200 270 450 290 T 900 280 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#8a8476"/>
+        <g class="cc-crow">
+          <path d="M430 110 q 30 -30 70 -10 q -20 5 -30 20 q 25 0 40 15 q -40 5 -60 -5 z" fill="#2b2b33"/>
+          <circle cx="498" cy="104" r="9" fill="#2b2b33"/><path d="M506 104 l 14 4 l -14 4 z" fill="#d9a441"/>
+          <path d="M470 128 q -6 14 0 26 q 12 -4 14 -16 z" fill="#e6dcc8" stroke="#a89878" stroke-width="2"/>
+        </g>
+        <path d="M478 170 V 270" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 6"/>
+        <text x="500" y="226" font-size="15" fill="var(--ink-2)">about 5 m drop</text>
+        <g fill="#e6dcc8" stroke="#a89878" stroke-width="2">
+          <path d="M170 290 q -18 -40 10 -60 q 30 20 14 60 z"/><path d="M230 292 q -18 -40 10 -60 q 30 20 14 60 z"/>
+          <path d="M700 292 q -8 -18 5 -27 q 14 9 6 27 z"/><path d="M730 290 q -8 -18 5 -27 q 14 9 6 27 z"/><path d="M760 292 q -8 -18 5 -27 q 14 9 6 27 z"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="205" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Big whelks: worth it</text>
+          <text x="205" y="96" font-size="15" fill="var(--ink-2)">food beats the flights</text>
+          <text x="730" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Small whelks: skipped</text>
+          <text x="730" y="96" font-size="15" fill="var(--ink-2)">below the hurdle</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A crow carrying a whelk up to drop it on the rocks. On the left, the big whelks crows choose; on the right, the small ones they leave.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> Every flight has a cost, so a whelk has to return more food than the flights take. A project has to return more than the cost of the money behind it. Both are hurdles.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>After-tax cost of debt</b> = rate × (1 − tax rate). 8% × 0.75 = 6%.</li>
+          <li><b>Cost of equity</b> (CAPM) = risk-free rate + beta × market risk premium. 4% + 2 × 5.5% = 15%.</li>
+          <li><b>Equity costs more than debt</b>: owners are paid last and take more risk.</li>
+          <li><b>Weights</b>: <span class="frac"><span>$40,000</span><span>$100,000</span></span> = 40% debt, 60% equity.</li>
+          <li><b>WACC</b> = 0.40 × 6% + 0.60 × 15% = 11.4%.</li>
+          <li><b>Hurdle</b>: build when IRR beats WACC. Van 15.2% &gt; 11.4%; NPV at 11.4% about $977.</li>
+          <li><b>Too much debt</b> raises both costs: at 70% debt, WACC rose to 12.3%.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A 10% loan with a 30% tax rate has an after-tax cost of <input type="text" class="blank" data-answer="7|7%|7 percent" inputmode="numeric" aria-label="Blank 1"> percent.</div>
+        <div>2. A stock that swings twice as much as the market has a <input type="text" class="blank" data-answer="beta" aria-label="Blank 2"> of 2.</div>
+        <div>3. The blend of a company's cost of debt and cost of equity is called its <input type="text" class="blank" data-answer="wacc|weighted average cost of capital|cost of capital" aria-label="Blank 3">.</div>
+        <div>4. Owners are paid last, so the cost of <input type="text" class="blank" data-answer="equity" aria-label="Blank 4"> is higher than the cost of debt.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Look up a beta</h3>
+          <p>Pick three companies you know, like a utility, a grocery chain and a tech company. Look up each one's beta on a finance site and guess why they differ.</p>
+        </div>
+        <div class="reveal">
+          <h3>Bank vs. owner</h3>
+          <p>One person is the bank, one is an investor. The shop asks each for $10,000. Argue about what return each of you should ask for, and why.</p>
+        </div>
+        <div class="reveal">
+          <h3>Slider challenge</h3>
+          <p>Using the slider above, find the debt share where the parts booth starts clearing the hurdle. Then explain why the real answer would be harder to find.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">What's your own "cost of capital"? If you have a credit card or loan, what rate does your debt cost you?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Paying off a 24% credit card is like earning 24% for sure. What does that say about investing while carrying that debt?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Would you rather work on the company side (setting the hurdle) or the investor side (demanding the return)? Why?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're an equity research analyst</h3>
+      <div class="reveal">
+        <p>You're estimating the cost of capital for a grocery chain. Here's the situation:</p>
+        <ul>
+          <li><b>Equity:</b> $600 million (what all its shares are worth on the stock market).</li>
+          <li><b>Debt:</b> $400 million, at 6% interest.</li>
+          <li><b>Tax rate:</b> 21%, the U.S. federal rate for corporations.</li>
+          <li><b>Risk-free rate:</b> 4%. <b>Beta:</b> 1.2. <b>Market risk premium:</b> 5%.</li>
+          <li><b>A new project:</b> a delivery service with an expected IRR of 9%.</li>
+        </ul>
+        <p><b>Your task:</b> find the after-tax cost of debt, the cost of equity, the weights and the WACC. Should the chain launch the delivery service?</p>
+        <textarea id="job-answer" placeholder="Write your analysis…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>After-tax cost of debt:</b> 6% × (1 − 0.21) = 6% × 0.79 = <b>4.74%</b>.</p>
+            <p><b>Cost of equity:</b> 4% + 1.2 × 5% = 4% + 6% = <b>10%</b>.</p>
+            <p><b>Weights:</b> <span class="frac"><span>$400 million</span><span>$1,000 million</span></span> = 40% debt, <span class="frac"><span>$600 million</span><span>$1,000 million</span></span> = 60% equity.</p>
+            <p><b>WACC:</b> 0.40 × 4.74% + 0.60 × 10% = 1.896% + 6% = about <b>7.9%</b>.</p>
+            <p><b>Decision:</b> the delivery service's 9% IRR beats the 7.9% hurdle, so its NPV is above zero. Launch it, as long as it's about as risky as the rest of the business.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">The hurdle <em>behind every decision.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on raising money, picking projects with NPV, and what a stock is, and leads to Part 4, Wall Street">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../raising-money/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Raising money</text><text x="20" y="86">Unit 13 · debt vs. equity</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Picking projects</text><text x="20" y="186">Unit 13 · NPV and IRR</text></a>
+          <a href="../stocks/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Stocks</text><text x="20" y="286">Unit 5 · risk and return</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Cost of capital</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Part 4: Wall Street</text><text x="690" y="186">Coming soon · Unit 14</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and what comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 13</span><b>Raising money</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>Picking projects with NPV</b></li>
+        <li><span class="muted small">Back · Unit 5</span><b>What a stock is</b></li>
+        <li class="here"><span class="small">You are here</span><b>The cost of capital</b></li>
+        <li><span class="muted small">Coming soon · Unit 14</span><b>Part 4: Wall Street</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../npv/">Revisit: Picking projects with NPV <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

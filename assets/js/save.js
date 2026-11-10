@@ -164,7 +164,7 @@
     L(12, 3, "u12-three-statements", t("How the three statements connect", "Cómo se conectan los tres estados"), t("The cash flow statement ties it together", "El estado de flujo de efectivo lo une todo"), { needs: ["u12-balance-sheet"], href: "lessons/three-statements/" }),
     L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"], href: "lessons/raising-money/" }),
     L(13, 2, "u13-npv", t("Picking projects with NPV", "Elegir proyectos con el VPN"), t("Is this investment worth it?", "¿Vale la pena esta inversión?"), { needs: ["u10-time-value"], href: "lessons/npv/" }),
-    L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"] }),
+    L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"], href: "lessons/cost-of-capital/" }),
   ];
   // Lessons that are open so far, in course order.
   const OPEN = CATALOG.filter((l) => l.href);
@@ -316,6 +316,7 @@
     ["dot-connector", "three-statements", t("Dot Connector", "Conectas los puntos"), t("Answer all 8 questions right in Connect the dots.", "Responde bien las 8 preguntas del juego Une los puntos.")],
     ["deal-maker", "raising-money", t("Deal Maker", "Cierras tratos"), t("Answer all 8 questions right in Debt or equity.", "Responde bien las 8 preguntas del juego ¿Deuda o capital?")],
     ["value-creator", "npv", t("Value Creator", "Creas valor"), t("Answer all 8 questions right in Build it or skip it.", "Responde bien las 8 preguntas del juego ¿Lo haces o no?")],
+    ["hurdle-setter", "cost-of-capital", t("Hurdle Setter", "Fijas la tasa mínima"), t("Answer all 8 questions right in Clear the hurdle.", "Responde bien las 8 preguntas del juego Supera la tasa mínima.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

@@ -1,0 +1,263 @@
+<!-- title: El costo de capital -->
+<!-- description: Unidad 13, Lección 3: lo que le cuesta el dinero a una empresa: el costo de la deuda después de impuestos, el costo del capital propio con el CAPM (tasa libre de riesgo, beta, prima de riesgo del mercado), los pesos de la estructura de capital, el costo promedio ponderado de capital (WACC) y su uso como tasa mínima para los proyectos. Juego: Supera la tasa mínima, ocho preguntas sobre el costo de capital. -->
+<!-- kicker: Unidad 13 · Lección 3 -->
+<!-- topic: Finanzas corporativas -->
+
+<!-- @start -->
+        <h1 class="reveal">En la lección pasada supusiste 10%. <em>Ahora encuentra el número real.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> En la Lección 13.2 evaluaste la camioneta con una <span class="mark">tasa de descuento de 10%</span>. ¿Pero de dónde debería salir ese número? El dinero de tu taller viene de dos lugares: un <span class="mark">préstamo bancario de $40,000 al 8%</span> y <span class="mark">$60,000 de dinero de los dueños</span>, el tuyo y el de tu inversionista. Ninguno es gratis. El banco quiere sus intereses, y los dueños quieren un rendimiento que valga el riesgo. Mezcla los dos y obtienes la tasa mínima real del taller: el <b>costo de capital</b>.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>El <b>costo de capital</b> es el rendimiento anual promedio que una empresa tiene que pagarles a sus prestamistas y dueños por usar su dinero.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Es la tasa mínima que todo proyecto tiene que superar. Un proyecto que rinde menos destruye valor, aunque deje ganancia.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Calcula cuánto cuesta la deuda después de impuestos, cuánto esperan los dueños, y promedia los dos según cuánto usa la empresa de cada uno.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>tesoreros</b> de las empresas manejan la mezcla de deuda y capital propio. Los <b>analistas de inversiones</b> y los <b>banqueros de inversión</b> lo estiman para valuar empresas. Los <b>directores financieros</b> lo fijan como tasa mínima.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Dos bloques apilados en una torre: deuda al 6% y capital propio al 15%. Al lado, una valla de atletismo a 11.4% y una pelota marcada 15.2% que pasa por encima.">
+          <rect x="50" y="300" width="150" height="100" rx="10" fill="var(--needs)"/>
+          <rect x="50" y="150" width="150" height="146" rx="10" fill="var(--good)"/>
+          <text x="125" y="345" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Deuda 40%</text>
+          <text x="125" y="372" text-anchor="middle" font-size="15" fill="var(--on-color)">cuesta 6%</text>
+          <text x="125" y="218" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--on-color)">Capital 60%</text>
+          <text x="125" y="245" text-anchor="middle" font-size="15" fill="var(--on-color)">cuesta 15%</text>
+          <g stroke="var(--ink-3)" stroke-width="7" stroke-linecap="round"><path d="M310 400 V 300"/><path d="M450 400 V 300"/></g>
+          <rect x="300" y="290" width="160" height="22" rx="6" fill="var(--wants)"/>
+          <text x="380" y="438" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">tasa mínima 11.4%</text>
+          <path d="M250 380 Q 380 40, 500 360" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 6"/>
+          <g class="cc-ball"><circle cx="376" cy="205" r="24" fill="var(--accent)"/><text x="376" y="210" text-anchor="middle" font-size="13" font-weight="700" fill="var(--on-color)">15.2%</text></g>
+          <line x1="30" y1="400" x2="500" y2="400" stroke="var(--line)" stroke-width="4"/>
+          <text x="260" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">Lo que cuesta el dinero</text>
+          <text x="260" y="506" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">supera la vara, o no lo hagas</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> de dónde viene el dinero del taller y la vara que pone. A la izquierda, 40% de deuda que cuesta 6% después de impuestos y 60% de capital propio que cuesta 15%. A la derecha, la tasa mínima mezclada de 11.4%, y el rendimiento de 15.2% de la camioneta pasando por encima.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Cada dólar <em>tiene un precio.</em></h2>
+      <p class="lead reveal">En la Lección 13.1 aprendiste los dos tipos de dinero. Ahora le pones precio a cada uno y los mezclas en un solo número. Aquí al dinero de los dueños le decimos <b>capital propio</b>: es el mismo "capital" de la Lección 13.1.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Costo de la deuda, después de impuestos</h3>
+      <p class="reveal">El <dfn class="term" data-def="La tasa de interés anual que paga una empresa por pedir prestado. Después de impuestos es menor, porque los intereses son un gasto deducible: tasa × (1 − tasa de impuestos).">costo de la deuda</dfn> empieza con la tasa de interés. Pero los intereses son un gasto en el estado de resultados (Lección 12.1), así que bajan los impuestos. Eso hace que la deuda cueste menos que su tasa. Para que las cuentas sean simples, esta lección usa una tasa de impuestos fija de 25%.</p>
+      <div class="formula reveal">Costo de la deuda después de impuestos <span class="op">=</span> tasa de interés <span class="op">×</span> (1 − tasa de impuestos)</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El préstamo del banco</dt><dd>8% × (1 − 0.25) = 8% × 0.75 = <b>6%</b>. Cada $100 de intereses ahorra $25 de impuestos.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Costo del capital propio</h3>
+      <p class="reveal">El <dfn class="term" data-def="El rendimiento anual que esperan los dueños de una empresa por invertir en ella. Es más alto que el costo de la deuda porque los dueños cobran al final y toman más riesgo.">costo del capital propio</dfn> es el rendimiento que esperan los dueños. Nadie manda una factura por él, pero si los dueños no lo reciben, venden sus acciones o dejan de invertir. Siempre es más alto que el costo de la deuda, porque los dueños cobran al final: los prestamistas reciben sus intereses primero, aun en un mal año (Lección 13.1).</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tus dueños</dt><dd>Esperan <b>15%</b> al año. El banco solo pide 8%, porque cobra primero.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El CAPM: de dónde sale el 15%</h3>
+      <p class="reveal">Wall Street estima el costo del capital propio con el <dfn class="term" data-def="Modelo de valoración de activos de capital (CAPM, por sus siglas en inglés): costo del capital propio = tasa libre de riesgo + beta × prima de riesgo del mercado.">CAPM</dfn>, el modelo de valoración de activos de capital. Empieza con la <dfn class="term" data-def="Lo que puedes ganar casi sin riesgo, normalmente la tasa de interés de los bonos del gobierno de Estados Unidos.">tasa libre de riesgo</dfn>, lo que pagan los bonos del gobierno de Estados Unidos. Luego suma un rendimiento extra por el riesgo: la <dfn class="term" data-def="Cuánto más que la tasa libre de riesgo esperan los inversionistas del mercado de acciones en general, normalmente entre 5% y 6% al año.">prima de riesgo del mercado</dfn>, multiplicada por la <dfn class="term" data-def="Cuánto suele moverse una acción comparada con todo el mercado. Una beta de 1 se mueve igual que el mercado; una de 2 se mueve el doble.">beta</dfn> de la empresa, que mide cuánto se mueve comparada con el mercado.</p>
+      <div class="formula reveal">Costo del capital propio <span class="op">=</span> tasa libre de riesgo <span class="op">+</span> beta <span class="op">×</span> prima de riesgo del mercado</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tasa libre de riesgo</dt><dd><b>4%</b> de los bonos del gobierno.</dd></div><div><dt>Beta</dt><dd><b>2</b>. Un taller pequeño y joven se mueve cerca del doble que el mercado.</dd></div><div><dt>Prima de riesgo del mercado</dt><dd><b>5.5%</b>.</dd></div><div><dt>Costo del capital propio</dt><dd>4% + 2 × 5.5% = 4% + 11% = <b>15%</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Pesos</h3>
+      <p class="reveal">La mezcla de deuda y capital propio de una empresa es su <dfn class="term" data-def="La mezcla de deuda y capital propio que usa una empresa para pagar todo lo que tiene.">estructura de capital</dfn>. Cada tipo de dinero cuenta según su parte del total.</p>
+      <div class="formula reveal">Peso de la deuda <span class="op">=</span> <span class="frac"><span>deuda</span><span>deuda + capital propio</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Deuda</dt><dd><span class="frac"><span>$40,000</span><span>$100,000</span></span> = <b>40%</b></dd></div><div><dt>Capital propio</dt><dd><span class="frac"><span>$60,000</span><span>$100,000</span></span> = <b>60%</b></dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">WACC: la mezcla</h3>
+      <p class="reveal">Multiplica cada costo por su peso y súmalos. Eso es el <dfn class="term" data-def="Costo promedio ponderado de capital (WACC, por sus siglas en inglés): el costo de cada fuente de dinero por su parte del total, sumados. Es la tasa mínima de la empresa para proyectos de riesgo normal.">costo promedio ponderado de capital</dfn>, o WACC por sus siglas en inglés: el costo de capital de la empresa.</p>
+      <div class="formula reveal">WACC <span class="op">=</span> peso de la deuda <span class="op">×</span> costo de la deuda después de impuestos <span class="op">+</span> peso del capital propio <span class="op">×</span> costo del capital propio</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Parte de la deuda</dt><dd>0.40 × 6% = <b>2.4%</b></dd></div><div><dt>Parte del capital propio</dt><dd>0.60 × 15% = <b>9%</b></dd></div><div><dt>WACC</dt><dd>2.4% + 9% = <b>11.4%</b></dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El WACC es la tasa mínima</h3>
+      <p class="reveal">El WACC es la tasa de descuento para proyectos con el mismo riesgo que el negocio. Un proyecto vale la pena cuando su TIR supera el WACC, que es lo mismo que tener un VPN arriba de cero al WACC.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La camioneta</dt><dd>TIR de 15.2%, supera 11.4%. Al 11.4%, su VPN es cerca de <b>$977</b>, menos que los $1,372 que encontraste al 10%, pero sigue arriba de cero. Cómprala.</dd></div><div><dt>El puesto de repuestos</dt><dd>TIR de cerca de 13.6%, también supera 11.4%. VPN de cerca de <b>$300</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="wc">
+        <label class="md-lab" for="wc-d">Parte del taller pagada con deuda <b id="wc-d-v">40%</b></label><input type="range" id="wc-d" min="0" max="80" step="10" value="40">
+        <div id="wc-out" aria-hidden="true"></div>
+        <p class="wc-msg" id="wc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> el dinero del taller dividido en deuda (azul, 6% después de impuestos) y capital propio (verde, 15%). Mueve el control para cambiar la mezcla y mira el WACC, y luego si la camioneta (TIR 15.2%) y el puesto (TIR 13.6%) todavía lo superan. Simplificado: deja fijos los dos costos, cosa que los prestamistas y dueños reales no hacen (mira el ejemplo resuelto).</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Supera <em>la tasa mínima.</em></h2>
+      <p class="lead reveal">Ocho preguntas sobre lo que cuesta el dinero. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="hr">
+        <div class="fd-top">
+          <div><small id="hr-round">Pregunta 1 de 8</small><b id="hr-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="hr-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="hr-facts"></ul>
+        <div class="sd-opts" id="hr-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="hr-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="hr-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="hr-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> empresas y proyectos inventados. Cada uno muestra los números y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Encontrar el costo de capital de cualquier empresa toma cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Costo de la deuda, después de impuestos</h3>
+      <div class="formula reveal">Tasa de interés × (1 − tasa de impuestos)</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El préstamo</dt><dd>8% × 0.75 = 6%.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Costo del capital propio</h3>
+      <div class="formula reveal">Tasa libre de riesgo + beta × prima de riesgo del mercado</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Los dueños</dt><dd>4% + 2 × 5.5% = 15%.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Pesos</h3>
+      <div class="formula reveal">Peso <span class="op">=</span> <span class="frac"><span>cada fuente</span><span>dinero total</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La mezcla</dt><dd><span class="frac"><span>$40,000</span><span>$100,000</span></span> = 40% deuda, <span class="frac"><span>$60,000</span><span>$100,000</span></span> = 60% capital propio.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Mezcla y úsalo como tasa mínima</h3>
+      <div class="formula reveal">TIR arriba del WACC <span class="op">→</span> hazlo</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>WACC</dt><dd>0.40 × 6% + 0.60 × 15% = 11.4%. El 15.2% de la camioneta lo supera.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿más deuda siempre sale más barato?</h3>
+      <p class="reveal">El control hace parecer que sumar deuda siempre baja el WACC. Esto es lo que pasa de verdad si el taller pide prestado hasta que la deuda sea el 70% de su dinero:</p>
+      <ul class="reveal">
+        <li><b>El banco:</b> ve un cliente más riesgoso y cobra 12% en vez de 8%.</li>
+        <li><b>Los dueños:</b> ahora cobran después de una cuenta de intereses mucho más grande, así que quieren 20% en vez de 15%.</li>
+        <li><b>Tasa de impuestos:</b> sigue en 25%.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Costo de la deuda después de impuestos.</b> 12% × 0.75 = 9%.</li>
+        <li><b>Parte de la deuda.</b> 0.70 × 9% = 6.3%.</li>
+        <li><b>Parte del capital propio.</b> 0.30 × 20% = 6%.</li>
+        <li><b>WACC.</b> 6.3% + 6% = <b>12.3%</b>, más alto que el 11.4% del principio.</li>
+        <li><b>La respuesta.</b> No. Un poco de deuda es barata, pero demasiada hace que todos pidan más. Las empresas buscan una mezcla intermedia donde el WACC sea lo más bajo posible.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Los cuervos solo rompen <em>las conchas grandes.</em></h2>
+      <p class="lead reveal">En la costa del Pacífico de Canadá, los cuervos comen unos caracoles de mar llamados buccinos. Para romper uno, el cuervo vuela unos 5 metros hacia arriba y lo deja caer sobre las rocas, una y otra vez hasta que se rompe. Cada vuelo gasta energía. Los científicos descubrieron que los cuervos escogen solo los buccinos más grandes: los chicos necesitan las mismas caídas y tienen muy poca comida para pagar los vuelos.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un cuervo vuela sobre una costa rocosa con un buccino. En la playa, los buccinos grandes están marcados como que valen la pena y los chicos como descartados.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 300 Q 200 270 450 290 T 900 280 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#8a8476"/>
+        <g class="cc-crow">
+          <path d="M430 110 q 30 -30 70 -10 q -20 5 -30 20 q 25 0 40 15 q -40 5 -60 -5 z" fill="#2b2b33"/>
+          <circle cx="498" cy="104" r="9" fill="#2b2b33"/><path d="M506 104 l 14 4 l -14 4 z" fill="#d9a441"/>
+          <path d="M470 128 q -6 14 0 26 q 12 -4 14 -16 z" fill="#e6dcc8" stroke="#a89878" stroke-width="2"/>
+        </g>
+        <path d="M478 170 V 270" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="6 6"/>
+        <text x="500" y="226" font-size="15" fill="var(--ink-2)">caída de unos 5 m</text>
+        <g fill="#e6dcc8" stroke="#a89878" stroke-width="2">
+          <path d="M170 290 q -18 -40 10 -60 q 30 20 14 60 z"/><path d="M230 292 q -18 -40 10 -60 q 30 20 14 60 z"/>
+          <path d="M700 292 q -8 -18 5 -27 q 14 9 6 27 z"/><path d="M730 290 q -8 -18 5 -27 q 14 9 6 27 z"/><path d="M760 292 q -8 -18 5 -27 q 14 9 6 27 z"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="205" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Buccinos grandes: sí valen</text>
+          <text x="205" y="96" font-size="15" fill="var(--ink-2)">la comida supera los vuelos</text>
+          <text x="730" y="70" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Buccinos chicos: descartados</text>
+          <text x="730" y="96" font-size="15" fill="var(--ink-2)">abajo de la tasa mínima</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. Un cuervo que sube con un buccino para dejarlo caer sobre las rocas. A la izquierda, los buccinos grandes que eligen los cuervos; a la derecha, los chicos que dejan.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Cada vuelo tiene un costo, así que un buccino tiene que dar más comida de la que gastan los vuelos. Un proyecto tiene que rendir más de lo que cuesta el dinero detrás de él. Las dos son tasas mínimas.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Costo de la deuda después de impuestos</b> = tasa × (1 − tasa de impuestos). 8% × 0.75 = 6%.</li>
+          <li><b>Costo del capital propio</b> (CAPM) = tasa libre de riesgo + beta × prima de riesgo del mercado. 4% + 2 × 5.5% = 15%.</li>
+          <li><b>El capital propio cuesta más que la deuda</b>: los dueños cobran al final y toman más riesgo.</li>
+          <li><b>Pesos</b>: <span class="frac"><span>$40,000</span><span>$100,000</span></span> = 40% deuda, 60% capital propio.</li>
+          <li><b>WACC</b> = 0.40 × 6% + 0.60 × 15% = 11.4%.</li>
+          <li><b>Tasa mínima</b>: hazlo cuando la TIR supera el WACC. Camioneta 15.2% &gt; 11.4%; VPN al 11.4% cerca de $977.</li>
+          <li><b>Demasiada deuda</b> sube los dos costos: con 70% de deuda, el WACC subió a 12.3%.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Un préstamo al 10% con una tasa de impuestos de 30% cuesta <input type="text" class="blank" data-answer="7|7%|7 por ciento" inputmode="numeric" aria-label="Espacio 1"> por ciento después de impuestos.</div>
+        <div>2. Una acción que se mueve el doble que el mercado tiene una <input type="text" class="blank" data-answer="beta" aria-label="Espacio 2"> de 2.</div>
+        <div>3. La mezcla del costo de la deuda y del capital propio de una empresa se llama <input type="text" class="blank" data-answer="wacc|costo promedio ponderado de capital|costo de capital" aria-label="Espacio 3">.</div>
+        <div>4. Los dueños cobran al final, así que el costo del capital <input type="text" class="blank" data-answer="propio" aria-label="Espacio 4"> es más alto que el de la deuda.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Busquen una beta</h3>
+          <p>Elijan tres empresas conocidas, como una de electricidad, una cadena de supermercados y una de tecnología. Busquen la beta de cada una en un sitio de finanzas y adivinen por qué son distintas.</p>
+        </div>
+        <div class="reveal">
+          <h3>Banco vs. dueño</h3>
+          <p>Una persona es el banco y otra es un inversionista. El taller le pide $10,000 a cada uno. Discutan qué rendimiento debería pedir cada quien, y por qué.</p>
+        </div>
+        <div class="reveal">
+          <h3>Reto del control</h3>
+          <p>Con el control de arriba, encuentra la parte de deuda donde el puesto de repuestos empieza a superar la tasa mínima. Luego explica por qué la respuesta real sería más difícil de encontrar.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Cuál es tu propio "costo de capital"? Si tienes una tarjeta de crédito o un préstamo, ¿qué tasa te cuesta tu deuda?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Pagar una tarjeta al 24% es como ganar 24% seguro. ¿Qué te dice eso de invertir mientras tienes esa deuda?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Preferirías trabajar del lado de la empresa (fijando la tasa mínima) o del lado del inversionista (exigiendo el rendimiento)? ¿Por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: eres analista de inversiones</h3>
+      <div class="reveal">
+        <p>Estás estimando el costo de capital de una cadena de supermercados. Esta es la situación:</p>
+        <ul>
+          <li><b>Capital propio:</b> $600 millones (lo que valen todas sus acciones en la bolsa).</li>
+          <li><b>Deuda:</b> $400 millones, al 6% de interés.</li>
+          <li><b>Tasa de impuestos:</b> 21%, la tasa federal de Estados Unidos para corporaciones.</li>
+          <li><b>Tasa libre de riesgo:</b> 4%. <b>Beta:</b> 1.2. <b>Prima de riesgo del mercado:</b> 5%.</li>
+          <li><b>Un proyecto nuevo:</b> un servicio a domicilio con una TIR esperada de 9%.</li>
+        </ul>
+        <p><b>Tu tarea:</b> calcula el costo de la deuda después de impuestos, el costo del capital propio, los pesos y el WACC. ¿La cadena debe lanzar el servicio a domicilio?</p>
+        <textarea id="job-answer" placeholder="Escribe tu análisis…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Costo de la deuda después de impuestos:</b> 6% × (1 − 0.21) = 6% × 0.79 = <b>4.74%</b>.</p>
+            <p><b>Costo del capital propio:</b> 4% + 1.2 × 5% = 4% + 6% = <b>10%</b>.</p>
+            <p><b>Pesos:</b> <span class="frac"><span>$400 millones</span><span>$1,000 millones</span></span> = 40% deuda, <span class="frac"><span>$600 millones</span><span>$1,000 millones</span></span> = 60% capital propio.</p>
+            <p><b>WACC:</b> 0.40 × 4.74% + 0.60 × 10% = 1.896% + 6% = cerca de <b>7.9%</b>.</p>
+            <p><b>Decisión:</b> la TIR de 9% del servicio a domicilio supera la tasa mínima de 7.9%, así que su VPN está arriba de cero. Lánzalo, siempre que tenga más o menos el mismo riesgo que el resto del negocio.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">La tasa mínima <em>detrás de cada decisión.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en conseguir dinero, en elegir proyectos con el VPN y en qué es una acción, y lleva a la Parte 4, Wall Street">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../raising-money/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Conseguir dinero</text><text x="20" y="86">Unidad 13 · deuda vs. capital</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Elegir proyectos</text><text x="20" y="186">Unidad 13 · VPN y TIR</text></a>
+          <a href="../stocks/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Acciones</text><text x="20" y="286">Unidad 5 · riesgo y rendimiento</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Costo de capital</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Parte 4: Wall Street</text><text x="690" y="186">Muy pronto · Unidad 14</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y lo que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 13</span><b>Conseguir dinero</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>Elegir proyectos con el VPN</b></li>
+        <li><span class="muted small">Antes · Unidad 5</span><b>Qué es una acción</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>El costo de capital</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 14</span><b>Parte 4: Wall Street</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../npv/">Repasa: Elegir proyectos con el VPN <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

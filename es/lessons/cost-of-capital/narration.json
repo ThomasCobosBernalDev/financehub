@@ -1,0 +1,20 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {
+  "WACC": "guac",
+  "CAPM": "cap eme",
+  "TIR": "tir",
+  "VPN": "ve pe ene"
+ },
+ "lines": [
+  "En la lección pasada evaluaste la camioneta con una tasa de descuento de diez por ciento. Ahora encuentras el número real: el costo de capital, lo que paga el taller por el dinero que usa.",
+  "El taller tiene un préstamo de cuarenta mil dólares al ocho por ciento. Pero los intereses bajan los impuestos. Con una tasa de impuestos de veinticinco por ciento, ocho por ciento por cero punto setenta y cinco da un costo de la deuda después de impuestos de seis por ciento.",
+  "Los sesenta mil dólares de los dueños tampoco son gratis. Los dueños cobran al final, así que esperan más. El CAPM lo estima: una tasa libre de riesgo de cuatro por ciento, más una beta de dos por una prima de riesgo del mercado de cinco y medio por ciento, da quince por ciento.",
+  "Ahora ponles peso. Cuarenta mil de cien mil es cuarenta por ciento de deuda, y sesenta por ciento de capital propio.",
+  "Cero punto cuatro por seis por ciento es dos punto cuatro por ciento. Cero punto seis por quince por ciento es nueve por ciento. Súmalos, y el costo promedio ponderado de capital, o WACC, es once punto cuatro por ciento.",
+  "Esa es la tasa mínima. La TIR de quince punto dos por ciento de la camioneta la supera, así que al once punto cuatro por ciento su VPN sigue siendo cerca de novecientos setenta y siete dólares. Cómprala.",
+  "¿Más deuda siempre sale más barato? No. Si pides demasiado prestado, el banco y los dueños piden más. Con setenta por ciento de deuda, el WACC sube a doce punto tres por ciento. Las empresas buscan la mezcla intermedia."
+ ]
+}
