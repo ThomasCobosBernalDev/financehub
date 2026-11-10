@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Una gran cadena de bicicletas ofrece quinientos mil dólares por tu negocio. Para saber si es justo, valúa el negocio como el valor presente de todo el efectivo que va a generar en el futuro. Eso es un flujo de caja descontado, o D C F.",
+  "Empieza con el flujo de caja libre: el efectivo que deja el negocio al operar, menos lo que gastas en equipo. El próximo año, cincuenta y cinco mil menos quince mil deja cuarenta mil dólares.",
+  "Proyecta cinco años, creciendo cinco mil al año, de cuarenta mil a sesenta mil. Trae cada año a hoy con tu costo de capital de diez por ciento. Juntos valen unos ciento ochenta y seis mil dólares.",
+  "Las tiendas siguen funcionando después del año cinco. El valor terminal cubre todos esos años: el efectivo del año siguiente dividido entre la tasa de descuento menos una tasa de crecimiento pequeña. Sesenta y un mil doscientos entre ocho por ciento da setecientos sesenta y cinco mil, que hoy valen unos cuatrocientos setenta y cinco mil.",
+  "Súmalos: el valor de empresa es de unos seiscientos sesenta y un mil dólares. Como el setenta y dos por ciento viene de después del año cinco. Resta tu préstamo y suma tu efectivo para obtener la parte de los dueños: unos seiscientos cuarenta y un mil.",
+  "Las suposiciones pequeñas mueven el resultado. Al doce por ciento, el negocio vale unos quinientos veintitrés mil. Al trece, baja de la oferta. Por eso siempre se prueban varias tasas.",
+  "Así que no aceptes quinientos mil. Haz una contraoferta cerca de seiscientos cincuenta mil y prepárate para explicar tu proyección, tu tasa y tu crecimiento. Un D C F no te da el precio; te da las razones detrás del precio."
+ ]
+}

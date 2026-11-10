@@ -1,0 +1,267 @@
+<!-- title: Valuar una empresa con DCF -->
+<!-- description: Unidad 15, Lección 1: cómo valuar una empresa completa con un flujo de caja descontado (DCF): flujo de caja libre, una proyección a 5 años, descontar con el costo de capital, el valor terminal con una tasa de crecimiento a largo plazo, el valor de empresa, el valor del capital y el valor por acción, y por qué cambios pequeños en la tasa de descuento mueven mucho el resultado. Juego: Mesa de valuación, ocho preguntas de DCF. -->
+<!-- kicker: Unidad 15 · Lección 1 -->
+<!-- topic: Valuar una empresa -->
+
+<!-- @start -->
+        <h1 class="reveal">Alguien quiere comprar tu negocio. <em>¿Cuánto vale de verdad?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Tus dos tiendas de bicicletas y la camioneta de reparaciones (Lecciones 13.1 a 13.3) ya dejan dinero de forma constante. Una gran cadena de bicicletas te llama y te ofrece <span class="mark">$500,000</span> por todo el negocio. Es más dinero del que has visto en tu vida. Pero ¿es un buen precio? El negocio debería generar <span class="mark">$40,000 de efectivo libre el próximo año</span>, creciendo <span class="mark">$5,000 al año</span>, y va a seguir funcionando mucho después. Esta lección convierte ese efectivo futuro en un solo número de hoy.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Un <b>DCF</b>, o flujo de caja descontado, valúa una empresa como el valor presente de todo el efectivo que va a generar en el futuro.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Así deciden compradores, inversionistas y banqueros cuánto pagar por una empresa o por una acción. También es la pregunta de valuación más común en las entrevistas de finanzas.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Proyecta el efectivo libre de algunos años, súmale un valor por todo lo que viene después y trae todo a hoy con el costo de capital.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Quienes trabajan en <b>banca de inversión</b> arman DCF para ponerle precio a una operación. Los equipos de <b>análisis de acciones</b> los usan para recomendar comprar o vender. En <b>capital privado</b> los usan para decidir cuánto ofrecer.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Cinco monedas para los años 1 a 5 y una moneda grande y tenue para todos los años después, cada una más chica mientras más lejos está en el futuro. Unas flechas las traen todas a un solo valor de hoy: $660,945.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Efectivo futuro, un precio</text>
+          <g class="dc-coins" text-anchor="middle" font-size="15" font-weight="700">
+            <g><circle cx="70" cy="190" r="34" fill="var(--needs)"/><text x="70" y="196" fill="var(--on-color)">Año 1</text></g>
+            <g><circle cx="150" cy="190" r="31" fill="var(--needs)" opacity=".9"/><text x="150" y="196" fill="var(--on-color)">Año 2</text></g>
+            <g><circle cx="224" cy="190" r="28" fill="var(--needs)" opacity=".8"/><text x="224" y="196" fill="var(--on-color)">Año 3</text></g>
+            <g><circle cx="292" cy="190" r="25" fill="var(--needs)" opacity=".7"/><text x="292" y="196" fill="var(--on-color)">Año 4</text></g>
+            <g><circle cx="354" cy="190" r="22" fill="var(--needs)" opacity=".6"/><text x="354" y="196" fill="var(--on-color)">Año 5</text></g>
+            <g><circle cx="446" cy="190" r="48" fill="var(--good)" opacity=".55"/><text x="446" y="186" fill="var(--on-color)">Año 6</text><text x="446" y="206" fill="var(--on-color)">en adelante</text></g>
+          </g>
+          <g fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="6 6">
+            <path d="M70 228 C 90 300, 200 330, 250 360"/><path d="M224 222 C 230 290, 250 320, 258 360"/><path d="M446 242 C 430 310, 320 330, 270 360"/>
+          </g>
+          <rect x="150" y="364" width="220" height="86" rx="20" fill="var(--accent)"/>
+          <text x="260" y="398" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Vale hoy</text>
+          <text x="260" y="430" text-anchor="middle" font-size="24" font-weight="700" fill="var(--on-color)">$660,945</text>
+          <text x="260" y="500" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">mientras más lejos, menos cuenta</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> la idea de un DCF. Cada moneda es un año de efectivo libre de tu negocio. Las monedas más lejanas en el futuro valen menos hoy, por eso se ven más chicas. La moneda verde representa todos los años después del año 5. Súmalas todas con su valor de hoy y obtienes lo que vale el negocio: $660,945.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Una empresa es <em>una serie de pagos.</em></h2>
+      <p class="lead reveal">En la Lección 14.3, un bono valía el valor presente de sus pagos. Una empresa funciona igual. Las únicas diferencias: tienes que proyectar su efectivo tú, y nunca deja de pagar.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Paso uno: flujo de caja libre</h3>
+      <p class="reveal">La ganancia no es efectivo (Lección 12.3). Lo que le importa a quien compra es el <dfn class="term" data-def="El efectivo que le queda a un negocio después de pagar su operación y de reponer o comprar equipo. Es lo que queda libre para pagarles a los prestamistas y a los dueños.">flujo de caja libre</dfn>: el efectivo que deja el negocio al operar, menos lo que gastas en equipo y edificios, llamado <dfn class="term" data-def="Dinero gastado en cosas que duran mucho, como equipo, camionetas y edificios. También se le dice capex.">gasto de capital</dfn> (capex). Es el efectivo que de verdad queda libre para pagarles a los prestamistas y a los dueños.</p>
+      <div class="formula reveal">Flujo de caja libre <span class="op">=</span> efectivo de operaciones <span class="op">−</span> gasto de capital</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El próximo año</dt><dd>Efectivo de operaciones $55,000 − herramientas nuevas y una reparación de la camioneta $15,000 = <b>$40,000</b> de flujo de caja libre.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Paso dos: proyecta algunos años</h3>
+      <p class="reveal">Nadie puede ver muy lejos, así que se proyecta el flujo de caja libre año por año durante un tramo corto, por lo general de 5 a 10 años. Ese tramo es el <dfn class="term" data-def="Los años de un DCF en los que proyectas el flujo de caja libre año por año, por lo general de 5 a 10 años.">periodo de proyección</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Proyección a 5 años</dt><dd>Creciendo $5,000 al año: <b>$40,000, $45,000, $50,000, $55,000, $60,000</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Paso tres: trae cada año a hoy</h3>
+      <p class="reveal">Descuenta el efectivo de cada año, igual que con la camioneta en la Lección 13.2. La <dfn class="term" data-def="La tasa con la que traes el efectivo futuro a hoy. Para una empresa completa, por lo general es el costo de capital (WACC).">tasa de descuento</dfn> de una empresa completa es su costo de capital, el WACC de la Lección 13.3, porque eso es lo que esperan ganar sus prestamistas y sus dueños.</p>
+      <div class="formula reveal">Valor hoy <span class="op">=</span> <span class="frac"><span>efectivo del año 1</span><span>(1 + tasa)</span></span> <span class="op">+</span> <span class="frac"><span>efectivo del año 2</span><span>(1 + tasa)<sup>2</sup></span></span> <span class="op">+</span> …</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Con una tasa de descuento de 10%</dt><dd><span class="frac"><span>$40,000</span><span>1.1</span></span> + <span class="frac"><span>$45,000</span><span>1.1<sup>2</sup></span></span> + <span class="frac"><span>$50,000</span><span>1.1<sup>3</sup></span></span> + <span class="frac"><span>$55,000</span><span>1.1<sup>4</sup></span></span> + <span class="frac"><span>$60,000</span><span>1.1<sup>5</sup></span></span></dd></div><div><dt>Cada uno hoy</dt><dd>$36,364 + $37,190 + $37,566 + $37,566 + $37,255 = unos <b>$185,940</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Paso cuatro: todo lo que viene después del año 5</h3>
+      <p class="reveal">Tus tiendas no van a cerrar después del año 5. El valor de todos los años después de la proyección es el <dfn class="term" data-def="El valor, al final del periodo de proyección, de todo el flujo de caja libre que viene después. Por lo general es la parte más grande de un DCF.">valor terminal</dfn>. La forma más común de calcularlo supone que el efectivo crece a una tasa pequeña y constante para siempre: la <dfn class="term" data-def="La tasa a la que se supone que crece el flujo de caja libre de una empresa cada año, para siempre, después del periodo de proyección. Por lo general de 2% a 3%, abajo del crecimiento de la economía a largo plazo.">tasa de crecimiento a largo plazo</dfn>.</p>
+      <div class="formula reveal">Valor terminal <span class="op">=</span> <span class="frac"><span>flujo de caja libre del año siguiente</span><span>tasa de descuento − tasa de crecimiento</span></span></div>
+      <p class="reveal">Mantén esa tasa de crecimiento pequeña, de 2% a 3%. Ninguna empresa puede crecer más rápido que toda la economía para siempre, o algún día sería más grande que la economía. Y tiene que quedar abajo de la tasa de descuento, o la fórmula no funciona.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Crecimiento después del año 5: 2%</dt><dd>Efectivo del año 6: $60,000 × 1.02 = $61,200.</dd></div><div><dt>Valor terminal</dt><dd><span class="frac"><span>$61,200</span><span>10% − 2%</span></span> = <span class="frac"><span>$61,200</span><span>0.08</span></span> = <b>$765,000</b>, medido en el año 5.</dd></div><div><dt>Traído a hoy</dt><dd><span class="frac"><span>$765,000</span><span>1.1<sup>5</sup></span></span> = <b>$475,005</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Paso cinco: súmalo todo</h3>
+      <p class="reveal">Los 5 años proyectados más el valor terminal dan el <dfn class="term" data-def="El valor de todo el negocio de una empresa, antes de ver quién es dueño de qué parte. Es lo que te da un DCF del flujo de caja libre.">valor de empresa</dfn>: lo que vale todo el negocio.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Valor de empresa</dt><dd>$185,940 + $475,005 = <b>$660,945</b>. La oferta de $500,000 de la cadena se queda $160,945 corta.</dd></div><div><dt>Cuánto viene de después del año 5</dt><dd><span class="frac"><span>$475,005</span><span>$660,945</span></span> = como el <b>72%</b>. La mayor parte del valor está en años que no puedes ver.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Del negocio a los dueños</h3>
+      <p class="reveal">A los prestamistas se les paga antes que a los dueños. Para saber qué les toca a los dueños, el <dfn class="term" data-def="Lo que vale una empresa para sus dueños: el valor de empresa menos la deuda más el efectivo.">valor del capital</dfn>, resta la deuda y suma el efectivo que tiene el negocio. En una empresa que cotiza en bolsa, divide entre el número de acciones para obtener el <dfn class="term" data-def="El valor del capital dividido entre el número de acciones. Compáralo con el precio de la acción en el mercado.">valor por acción</dfn>.</p>
+      <div class="formula reveal">Valor del capital <span class="op">=</span> valor de empresa <span class="op">−</span> deuda <span class="op">+</span> efectivo</div>
+      <div class="formula reveal">Valor por acción <span class="op">=</span> <span class="frac"><span>valor del capital</span><span>número de acciones</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu parte</dt><dd>$660,945 − el préstamo del banco de $40,000 + $20,000 en el banco = <b>$640,945</b>.</dd></div><div><dt>Si el negocio tuviera 100,000 acciones</dt><dd><span class="frac"><span>$640,945</span><span>100,000</span></span> = unos <b>$6.41</b> por acción.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El detalle: suposiciones pequeñas, cambios grandes</h3>
+      <p class="reveal">Un DCF solo es tan bueno como sus suposiciones. Como el valor terminal es tan grande, un cambio pequeño en la tasa de descuento mueve mucho el resultado. Por eso siempre se hace un <dfn class="term" data-def="Probar un modelo con distintos datos, como varias tasas de descuento, para ver cuánto cambia el resultado.">análisis de sensibilidad</dfn>: el mismo DCF con varias tasas. Mueve la tasa y mira la oferta.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>10% → 12%</dt><dd>El valor de empresa baja de $660,945 a unos <b>$523,441</b>, todavía arriba de la oferta. Al 13% baja a unos <b>$473,562</b>, abajo de ella.</dd></div></dl></div>
+      <div class="md-card reveal" id="dc">
+        <label class="md-lab" for="dc-r">Tasa de descuento (costo de capital) <b id="dc-r-v">10%</b></label><input type="range" id="dc-r" min="8" max="14" step="1" value="10">
+        <div id="dc-out" aria-hidden="true"></div>
+        <p class="dc-msg" id="dc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> lo que vale tu negocio hoy con tasas de descuento de 8% a 14%, con 2% de crecimiento a largo plazo. Azul son los 5 años proyectados; verde es todo lo que viene después del año 5. La línea punteada es la oferta de $500,000 de la cadena.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Mesa de <em>valuación.</em></h2>
+      <p class="lead reveal">Ocho preguntas que le hacen a alguien en su primer año como analista. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="vd">
+        <div class="fd-top">
+          <div><small id="vd-round">Pregunta 1 de 8</small><b id="vd-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="vd-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="vd-facts"></ul>
+        <div class="sd-opts" id="vd-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="vd-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="vd-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="vd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> empresas inventadas. Cada una muestra los números y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Todo DCF sigue los mismos cinco pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Proyecta el flujo de caja libre</h3>
+      <div class="formula reveal">Efectivo de operaciones − gasto de capital, para cada año proyectado</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Años 1 a 5</dt><dd>$40,000, $45,000, $50,000, $55,000, $60,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Elige la tasa de descuento</h3>
+      <div class="formula reveal">El costo de capital de la empresa (WACC)</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Las tiendas de bicicletas</dt><dd>10%.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Calcula el valor terminal</h3>
+      <div class="formula reveal"><span class="frac"><span>flujo de caja libre del año siguiente</span><span>tasa de descuento − tasa de crecimiento</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Con 2% de crecimiento</dt><dd><span class="frac"><span>$61,200</span><span>0.08</span></span> = $765,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Descuenta todo a hoy</h3>
+      <div class="formula reveal">Valor de empresa = valor de hoy de cada año + valor de hoy del valor terminal</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Súmalo</dt><dd>$185,940 + $475,005 = $660,945.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 5: Llega a la parte de los dueños</h3>
+      <div class="formula reveal">Valor del capital = valor de empresa − deuda + efectivo</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu parte</dt><dd>$660,945 − $40,000 + $20,000 = $640,945.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿aceptas la oferta?</h3>
+      <p class="reveal">La cadena ofrece $500,000 por todo el negocio. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>Tu DCF al 10%:</b> $660,945 por todo el negocio.</li>
+        <li><b>Al 12%:</b> unos $523,441. <b>Al 13%:</b> unos $473,562.</li>
+        <li><b>Tu préstamo:</b> $40,000. <b>Efectivo en el banco:</b> $20,000.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Compara.</b> Al 10%, el negocio vale $660,945 − $500,000 = $160,945 más que la oferta.</li>
+        <li><b>Prueba tus suposiciones.</b> La oferta solo parece justa si la tasa de descuento correcta es como 13%, o sea, si el negocio es mucho más riesgoso de lo que crees.</li>
+        <li><b>¿Con cuánto te quedas?</b> Si vendes en $500,000, pagas el préstamo de $40,000 y te quedas con los $20,000 de efectivo: $500,000 − $40,000 + $20,000 = $480,000 para ti.</li>
+        <li><b>Revisa el crecimiento.</b> Si las tiendas pudieran crecer más de $5,000 al año, el valor sube. Si abre una tienda de una cadena al lado, baja.</li>
+        <li><b>La respuesta.</b> No aceptes $500,000. Haz una contraoferta cerca de $650,000 y prepárate para explicar tu proyección, tu tasa y tu crecimiento. Un DCF no te da el precio; te da las razones detrás del precio.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Casi todo un iceberg <em>está bajo el agua.</em></h2>
+      <p class="lead reveal">El hielo es un poco más ligero que el agua de mar, así que un iceberg flota con solo una décima parte a la vista. Los barcos aprendieron a la mala que la parte que ves no es la que importa. En 1912, el Titanic chocó con un iceberg bajo la línea del agua.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un iceberg en el mar. Una punta pequeña arriba del agua dice años 1 a 5, el 28% del valor. Una masa mucho más grande abajo dice todo lo que viene después del año 5, el 72%.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 7%, var(--card))"/>
+        <path d="M0 130 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="color-mix(in srgb, var(--needs) 30%, var(--card))"/>
+        <g class="dc-bob">
+          <path d="M380 130 L 420 70 L 450 92 L 480 50 L 530 130 Z" fill="#f4f8fb" stroke="#b9cbd8" stroke-width="3"/>
+          <path d="M380 130 L 300 210 L 330 300 L 430 360 L 560 340 L 620 250 L 530 130 Z" fill="#dfeaf2" opacity=".85" stroke="#b9cbd8" stroke-width="3"/>
+        </g>
+        <path d="M0 130 q 30 -8 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" stroke="var(--needs)" stroke-width="3" fill="none"/>
+        <g text-anchor="middle">
+          <text x="200" y="64" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Años 1 a 5</text>
+          <text x="200" y="90" font-size="15" fill="var(--ink-2)">como el 28% del valor</text>
+          <text x="760" y="250" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Después del año 5</text>
+          <text x="760" y="276" font-size="15" fill="var(--ink-2)">como el 72%</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. La punta pequeña arriba del agua son los 5 años que proyectas. La gran masa de abajo es el valor terminal, los años que no puedes ver.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> En tu DCF, como el 72% del valor está bajo el agua, después del año 5. Revisa esa parte con más cuidado; ahí es donde se hunde una valuación.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>DCF</b>: una empresa vale el valor presente de su flujo de caja libre futuro.</li>
+          <li><b>Flujo de caja libre</b> = efectivo de operaciones − gasto de capital: $55,000 − $15,000 = $40,000.</li>
+          <li><b>Descuenta</b> cada año proyectado con el costo de capital (WACC). Años 1 a 5 al 10%: unos $185,940.</li>
+          <li><b>Valor terminal</b> = <span class="frac"><span>efectivo del año siguiente</span><span>tasa − crecimiento</span></span>: <span class="frac"><span>$61,200</span><span>0.08</span></span> = $765,000, que hoy valen $475,005. El crecimiento es pequeño (2% a 3%) y abajo de la tasa.</li>
+          <li><b>Valor de empresa</b> = $185,940 + $475,005 = $660,945. Como el 72% viene del valor terminal.</li>
+          <li><b>Valor del capital</b> = valor de empresa − deuda + efectivo = $640,945. <b>Por acción</b> = <span class="frac"><span>valor del capital</span><span>acciones</span></span>.</li>
+          <li><b>Tasa de descuento más alta, valor más bajo.</b> Siempre haz un análisis de sensibilidad.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Un efectivo de operaciones de $80,000 menos un gasto de capital de $30,000 da <input type="text" class="blank" data-answer="50000|$50,000|50,000|$50000|cincuenta mil" inputmode="numeric" aria-label="Espacio 1"> dólares de flujo de caja libre.</div>
+        <div>2. Cuando la tasa de descuento sube, el valor de un DCF <input type="text" class="blank" data-answer="baja|disminuye|cae" aria-label="Espacio 2">.</div>
+        <div>3. El valor de todos los años después de la proyección es el valor <input type="text" class="blank" data-answer="terminal" aria-label="Espacio 3">.</div>
+        <div>4. Valor del capital = valor de empresa − deuda + <input type="text" class="blank" data-answer="efectivo" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Valúa un lugar favorito</h3>
+          <p>Elijan una cafetería o un puesto de comida de su zona. Calculen a ojo su efectivo libre del próximo año y una tasa de crecimiento. Usen una tasa de 12%. ¿Cuánto pagarían?</p>
+        </div>
+        <div class="reveal">
+          <h3>Discutan la tasa</h3>
+          <p>Una persona hace de compradora y defiende una tasa de descuento alta. La otra hace de vendedora y defiende una baja. ¿Quién gana y por qué?</p>
+        </div>
+        <div class="reveal">
+          <h3>Práctica de entrevista</h3>
+          <p>Por turnos, respondan "Explícame un DCF" en menos de un minuto. Usen los cinco pasos de esta lección.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">El 72% del valor de las tiendas viene después del año 5. ¿Eso te hace confiar más o menos en un DCF? ¿Por qué?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Piensa en una empresa que conozcas. ¿Crees que en los próximos 10 años va a generar más efectivo o menos? ¿Qué te haría cambiar de opinión?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Si alguien quisiera comprar un negocio que construiste, ¿qué te importaría además del precio?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: haces análisis de acciones</h3>
+      <div class="reveal">
+        <p>Sigues a una empresa que fabrica electrodomésticos de cocina. Tu jefe quiere un DCF rápido. Esta es la situación:</p>
+        <ul>
+          <li><b>Flujo de caja libre del próximo año:</b> $50 millones, creciendo 3% al año para siempre.</li>
+          <li><b>Costo de capital:</b> 9%.</li>
+          <li><b>Deuda:</b> $200 millones. <b>Efectivo:</b> $50 millones.</li>
+          <li><b>Acciones:</b> 25 millones. <b>Precio de la acción hoy:</b> $22.</li>
+        </ul>
+        <p><b>Tu tarea:</b> calcula el valor de empresa, el valor del capital y el valor por acción. ¿La acción está barata o cara? ¿Y si el costo de capital en realidad es 10%? ¿Qué le dirías a tu jefe?</p>
+        <textarea id="job-answer" placeholder="Escribe tu nota para tu jefe…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Valor de empresa:</b> con crecimiento constante desde el próximo año, toda la empresa es un solo valor terminal: <span class="frac"><span>$50 millones</span><span>9% − 3%</span></span> = <span class="frac"><span>$50 millones</span><span>0.06</span></span> = unos <b>$833.3 millones</b>.</p>
+            <p><b>Valor del capital:</b> $833.3 millones − $200 millones + $50 millones = <b>$683.3 millones</b>. <b>Por acción:</b> <span class="frac"><span>$683.3 millones</span><span>25 millones</span></span> = unos <b>$27.33</b>.</p>
+            <p><b>Al 10%:</b> <span class="frac"><span>$50 millones</span><span>0.07</span></span> = unos $714.3 millones; capital $564.3 millones; unos <b>$22.57</b> por acción, apenas arriba de los $22 de hoy.</p>
+            <p><b>Para tu jefe:</b> al 9%, la acción se ve como 24% barata, así que podría ser una compra. Pero un punto en la tasa de descuento borra casi todo eso, así que la recomendación depende de qué tan riesgosa creemos que es la empresa. La calificaría como compra con cautela y revisaría a fondo el crecimiento y el riesgo antes de publicar.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Todo precio <em>esconde una proyección.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en los tres estados financieros, en elegir proyectos con el VPN y en el costo de capital, y lleva a comparables y múltiplos">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../three-statements/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Los tres estados</text><text x="20" y="86">Unidad 12 · flujo de efectivo</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Elegir proyectos</text><text x="20" y="186">Unidad 13 · VPN y TIR</text></a>
+          <a href="../cost-of-capital/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Costo de capital</text><text x="20" y="286">Unidad 13 · WACC</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Valuar con DCF</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Comparables y múltiplos</text><text x="690" y="186">Muy pronto · Unidad 15</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 12</span><b>Cómo se conectan los tres estados</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>Elegir proyectos con el VPN</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>El costo de capital</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Valuar una empresa con DCF</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 15</span><b>Comparables y múltiplos</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../bonds/">Repasa: Cómo funcionan los bonos <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

@@ -1,0 +1,267 @@
+<!-- title: Valuing a Company with DCF -->
+<!-- description: Unit 15, Lesson 1: how to value a whole company with a discounted cash flow (DCF): free cash flow, a 5-year forecast, discounting at the cost of capital, terminal value with a long-term growth rate, enterprise value, equity value and value per share, and why small changes in the discount rate move the answer a lot. Play: Valuation desk, eight DCF questions. -->
+<!-- kicker: Unit 15 · Lesson 1 -->
+<!-- topic: Valuing a company -->
+
+<!-- @start -->
+        <h1 class="reveal">Someone wants to buy your business. <em>What is it really worth?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Your two bike shops and the repair van (Lessons 13.1 to 13.3) now make steady money. A big bike chain calls and offers <span class="mark">$500,000</span> for the whole business. That's more money than you've ever seen. But is it a good price? The business should bring in <span class="mark">$40,000 of free cash next year</span>, growing <span class="mark">$5,000 a year</span>, and it will keep running long after that. This lesson turns that future cash into one number for today.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>DCF</b>, or discounted cash flow, values a company as the present value of all the cash it will make in the future.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>It's how buyers, investors and bankers decide what to pay for a company or a share of stock. It's also the most common valuation question in finance interviews.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Forecast the free cash for a few years, add a value for everything after, and bring it all back to today at the cost of capital.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Investment bankers</b> build DCFs to price deals. <b>Equity research analysts</b> use them to rate stocks buy or sell. <b>Private equity associates</b> use them to decide what to bid.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Five coins for years 1 to 5 and a large faded coin for every year after, each getting smaller as it moves into the future. Arrows bring them all back to one stack today worth $660,945.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Future cash, one price</text>
+          <g class="dc-coins" text-anchor="middle" font-size="15" font-weight="700">
+            <g><circle cx="70" cy="190" r="34" fill="var(--needs)"/><text x="70" y="196" fill="var(--on-color)">Yr 1</text></g>
+            <g><circle cx="150" cy="190" r="31" fill="var(--needs)" opacity=".9"/><text x="150" y="196" fill="var(--on-color)">Yr 2</text></g>
+            <g><circle cx="224" cy="190" r="28" fill="var(--needs)" opacity=".8"/><text x="224" y="196" fill="var(--on-color)">Yr 3</text></g>
+            <g><circle cx="292" cy="190" r="25" fill="var(--needs)" opacity=".7"/><text x="292" y="196" fill="var(--on-color)">Yr 4</text></g>
+            <g><circle cx="354" cy="190" r="22" fill="var(--needs)" opacity=".6"/><text x="354" y="196" fill="var(--on-color)">Yr 5</text></g>
+            <g><circle cx="446" cy="190" r="48" fill="var(--good)" opacity=".55"/><text x="446" y="186" fill="var(--on-color)">Year 6</text><text x="446" y="206" fill="var(--on-color)">and on</text></g>
+          </g>
+          <g fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="6 6">
+            <path d="M70 228 C 90 300, 200 330, 250 360"/><path d="M224 222 C 230 290, 250 320, 258 360"/><path d="M446 242 C 430 310, 320 330, 270 360"/>
+          </g>
+          <rect x="150" y="364" width="220" height="86" rx="20" fill="var(--accent)"/>
+          <text x="260" y="398" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Worth today</text>
+          <text x="260" y="430" text-anchor="middle" font-size="24" font-weight="700" fill="var(--on-color)">$660,945</text>
+          <text x="260" y="500" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">the further away, the less it counts</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the idea of a DCF. Each coin is a year of free cash from your business. Coins further in the future count for less today, so they're drawn smaller. The green coin stands for every year after year 5. Add them all up at today's value and you get what the business is worth: $660,945.</p>
+
+<!-- @see -->
+      <h2 class="reveal">A company is <em>a stream of cash.</em></h2>
+      <p class="lead reveal">In Lesson 14.3, a bond was worth the present value of its payments. A company works the same way. The only differences: you have to forecast its cash yourself, and it never stops paying.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Step one: free cash flow</h3>
+      <p class="reveal">Profit isn't cash (Lesson 12.3). What a buyer cares about is <dfn class="term" data-def="The cash a business has left after paying to run itself and to replace or add equipment. It's what's free to pay lenders and owners.">free cash flow</dfn>: cash from running the business, minus what you spend on equipment and buildings, called <dfn class="term" data-def="Money spent on long-lasting things like equipment, vans and buildings. Also called capex.">capital spending</dfn> (capex). It's the cash that's truly free to pay the lenders and owners.</p>
+      <div class="formula reveal">Free cash flow <span class="op">=</span> cash from operations <span class="op">−</span> capital spending</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Next year</dt><dd>Cash from operations $55,000 − new tools and a van repair $15,000 = <b>$40,000</b> of free cash flow.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Step two: forecast a few years</h3>
+      <p class="reveal">Nobody can see far ahead, so analysts forecast free cash flow year by year for a short stretch, usually 5 to 10 years. That stretch is the <dfn class="term" data-def="The years in a DCF where you forecast free cash flow one year at a time, usually 5 to 10 years.">forecast period</dfn>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>5-year forecast</dt><dd>Growing $5,000 a year: <b>$40,000, $45,000, $50,000, $55,000, $60,000</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Step three: bring each year back to today</h3>
+      <p class="reveal">Discount each year's cash, just like the van in Lesson 13.2. The <dfn class="term" data-def="The rate used to bring future cash back to today. For a whole company, it's usually the cost of capital (WACC).">discount rate</dfn> for a whole company is its cost of capital, the WACC from Lesson 13.3, because that's what its lenders and owners expect to earn.</p>
+      <div class="formula reveal">Value today <span class="op">=</span> <span class="frac"><span>cash in year 1</span><span>(1 + rate)</span></span> <span class="op">+</span> <span class="frac"><span>cash in year 2</span><span>(1 + rate)<sup>2</sup></span></span> <span class="op">+</span> …</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>At a 10% discount rate</dt><dd><span class="frac"><span>$40,000</span><span>1.1</span></span> + <span class="frac"><span>$45,000</span><span>1.1<sup>2</sup></span></span> + <span class="frac"><span>$50,000</span><span>1.1<sup>3</sup></span></span> + <span class="frac"><span>$55,000</span><span>1.1<sup>4</sup></span></span> + <span class="frac"><span>$60,000</span><span>1.1<sup>5</sup></span></span></dd></div><div><dt>Each one today</dt><dd>$36,364 + $37,190 + $37,566 + $37,566 + $37,255 = about <b>$185,940</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Step four: everything after year 5</h3>
+      <p class="reveal">Your shops won't close after year 5. The value of all the years after the forecast is the <dfn class="term" data-def="The value, at the end of the forecast period, of all the free cash flow after it. It's usually the biggest part of a DCF.">terminal value</dfn>. The usual way to find it assumes the cash grows at a small, steady rate forever, the <dfn class="term" data-def="The rate a company's free cash flow is assumed to grow every year forever after the forecast period. Usually 2% to 3%, below the economy's long-run growth.">long-term growth rate</dfn>.</p>
+      <div class="formula reveal">Terminal value <span class="op">=</span> <span class="frac"><span>next year's free cash flow</span><span>discount rate − growth rate</span></span></div>
+      <p class="reveal">Keep that growth rate small, about 2% to 3%. No company can grow faster than the whole economy forever, or it would someday be bigger than the economy. And it must stay below the discount rate, or the formula breaks.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Growth after year 5: 2%</dt><dd>Year 6 cash: $60,000 × 1.02 = $61,200.</dd></div><div><dt>Terminal value</dt><dd><span class="frac"><span>$61,200</span><span>10% − 2%</span></span> = <span class="frac"><span>$61,200</span><span>0.08</span></span> = <b>$765,000</b>, valued as of year 5.</dd></div><div><dt>Brought back to today</dt><dd><span class="frac"><span>$765,000</span><span>1.1<sup>5</sup></span></span> = <b>$475,005</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Step five: add it up</h3>
+      <p class="reveal">The 5 forecast years plus the terminal value give the <dfn class="term" data-def="The value of a company's whole business, before thinking about who owns which part. It's what a DCF of free cash flow gives you.">enterprise value</dfn>: what the whole business is worth.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Enterprise value</dt><dd>$185,940 + $475,005 = <b>$660,945</b>. The chain's $500,000 offer is $160,945 too low.</dd></div><div><dt>How much comes from after year 5</dt><dd><span class="frac"><span>$475,005</span><span>$660,945</span></span> = about <b>72%</b>. Most of the value is in years you can't see.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">From the business to the owners</h3>
+      <p class="reveal">Lenders get paid before owners. To find what belongs to the owners, the <dfn class="term" data-def="What a company is worth to its owners: enterprise value minus debt plus cash.">equity value</dfn>, subtract debt and add back cash the business holds. For a public company, divide by the number of shares to get the <dfn class="term" data-def="Equity value divided by the number of shares. Compare it with the stock's market price.">value per share</dfn>.</p>
+      <div class="formula reveal">Equity value <span class="op">=</span> enterprise value <span class="op">−</span> debt <span class="op">+</span> cash</div>
+      <div class="formula reveal">Value per share <span class="op">=</span> <span class="frac"><span>equity value</span><span>number of shares</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your share</dt><dd>$660,945 − the $40,000 bank loan + $20,000 in the bank = <b>$640,945</b>.</dd></div><div><dt>If the business had 100,000 shares</dt><dd><span class="frac"><span>$640,945</span><span>100,000</span></span> = about <b>$6.41</b> a share.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The catch: small guesses, big swings</h3>
+      <p class="reveal">A DCF is only as good as its guesses. Because the terminal value is so big, a small change in the discount rate moves the answer a lot. So analysts always run a <dfn class="term" data-def="Trying a model with different inputs, like several discount rates, to see how much the answer changes.">sensitivity analysis</dfn>: the same DCF at several rates. Slide the rate and watch the offer.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>10% → 12%</dt><dd>Enterprise value falls from $660,945 to about <b>$523,441</b>, still above the offer. At 13% it falls to about <b>$473,562</b>, below it.</dd></div></dl></div>
+      <div class="md-card reveal" id="dc">
+        <label class="md-lab" for="dc-r">Discount rate (cost of capital) <b id="dc-r-v">10%</b></label><input type="range" id="dc-r" min="8" max="14" step="1" value="10">
+        <div id="dc-out" aria-hidden="true"></div>
+        <p class="dc-msg" id="dc-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> what your business is worth today at discount rates from 8% to 14%, with 2% long-term growth. Blue is the 5 forecast years; green is everything after year 5. The dashed line is the chain's $500,000 offer.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Valuation <em>desk.</em></h2>
+      <p class="lead reveal">Eight questions a first-year analyst gets asked. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="vd">
+        <div class="fd-top">
+          <div><small id="vd-round">Question 1 of 8</small><b id="vd-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="vd-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="vd-facts"></ul>
+        <div class="sd-opts" id="vd-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="vd-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="vd-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="vd-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up companies. Each lists the numbers, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every DCF follows the same five steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Forecast free cash flow</h3>
+      <div class="formula reveal">Cash from operations − capital spending, for each forecast year</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Years 1 to 5</dt><dd>$40,000, $45,000, $50,000, $55,000, $60,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Pick the discount rate</h3>
+      <div class="formula reveal">The company's cost of capital (WACC)</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bike shops</dt><dd>10%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Find the terminal value</h3>
+      <div class="formula reveal"><span class="frac"><span>next year's free cash flow</span><span>discount rate − growth rate</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>At 2% growth</dt><dd><span class="frac"><span>$61,200</span><span>0.08</span></span> = $765,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Discount everything to today</h3>
+      <div class="formula reveal">Enterprise value = today's value of each year + today's value of the terminal value</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Add it up</dt><dd>$185,940 + $475,005 = $660,945.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 5: Get to the owners' share</h3>
+      <div class="formula reveal">Equity value = enterprise value − debt + cash</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your share</dt><dd>$660,945 − $40,000 + $20,000 = $640,945.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: should you take the offer?</h3>
+      <p class="reveal">The chain offers $500,000 for the whole business. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>Your DCF at 10%:</b> $660,945 for the whole business.</li>
+        <li><b>At 12%:</b> about $523,441. <b>At 13%:</b> about $473,562.</li>
+        <li><b>Your loan:</b> $40,000. <b>Cash in the bank:</b> $20,000.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Compare.</b> At 10%, the business is worth $660,945 − $500,000 = $160,945 more than the offer.</li>
+        <li><b>Test your guesses.</b> The offer only looks fair if the right discount rate is about 13%, meaning the business is far riskier than you think.</li>
+        <li><b>Walk away with?</b> If you sell for $500,000, you repay the $40,000 loan and keep the $20,000 cash: $500,000 − $40,000 + $20,000 = $480,000 for you.</li>
+        <li><b>Check the growth.</b> If the shops could grow faster than $5,000 a year, the value goes up. If a new chain store opens next door, it goes down.</li>
+        <li><b>The answer.</b> Don't take $500,000. Counter near $650,000, and be ready to explain your forecast, your rate and your growth. A DCF doesn't give you the price; it gives you the reasons behind the price.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Most of an iceberg <em>is underwater.</em></h2>
+      <p class="lead reveal">Ice is a little lighter than seawater, so an iceberg floats with only about a tenth of it showing. Ships learned the hard way that the part you see is not the part that matters. In 1912, the Titanic struck an iceberg below the waterline.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="An iceberg in the sea. A small peak above the waterline is labeled years 1 to 5, 28% of the value. A much bigger mass below is labeled everything after year 5, 72%.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 7%, var(--card))"/>
+        <path d="M0 130 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="color-mix(in srgb, var(--needs) 30%, var(--card))"/>
+        <g class="dc-bob">
+          <path d="M380 130 L 420 70 L 450 92 L 480 50 L 530 130 Z" fill="#f4f8fb" stroke="#b9cbd8" stroke-width="3"/>
+          <path d="M380 130 L 300 210 L 330 300 L 430 360 L 560 340 L 620 250 L 530 130 Z" fill="#dfeaf2" opacity=".85" stroke="#b9cbd8" stroke-width="3"/>
+        </g>
+        <path d="M0 130 q 30 -8 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0" stroke="var(--needs)" stroke-width="3" fill="none"/>
+        <g text-anchor="middle">
+          <text x="200" y="64" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Years 1 to 5</text>
+          <text x="200" y="90" font-size="15" fill="var(--ink-2)">about 28% of the value</text>
+          <text x="760" y="250" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">After year 5</text>
+          <text x="760" y="276" font-size="15" fill="var(--ink-2)">about 72%</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. The small peak above the water is the 5 years you forecast. The big mass below is the terminal value, the years you can't see.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> In your DCF, about 72% of the value sits below the waterline, after year 5. Check that part hardest; it's where a valuation sinks.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>DCF</b>: a company is worth the present value of its future free cash flow.</li>
+          <li><b>Free cash flow</b> = cash from operations − capital spending: $55,000 − $15,000 = $40,000.</li>
+          <li><b>Discount</b> each forecast year at the cost of capital (WACC). Years 1 to 5 at 10%: about $185,940.</li>
+          <li><b>Terminal value</b> = <span class="frac"><span>next year's cash</span><span>rate − growth</span></span>: <span class="frac"><span>$61,200</span><span>0.08</span></span> = $765,000, worth $475,005 today. Growth stays small (2% to 3%) and below the rate.</li>
+          <li><b>Enterprise value</b> = $185,940 + $475,005 = $660,945. About 72% comes from the terminal value.</li>
+          <li><b>Equity value</b> = enterprise value − debt + cash = $640,945. <b>Per share</b> = <span class="frac"><span>equity value</span><span>shares</span></span>.</li>
+          <li><b>Higher discount rate, lower value.</b> Always run a sensitivity analysis.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Cash from operations of $80,000 minus capital spending of $30,000 is <input type="text" class="blank" data-answer="50000|$50,000|50,000|$50000" inputmode="numeric" aria-label="Blank 1"> dollars of free cash flow.</div>
+        <div>2. When the discount rate goes up, a DCF value goes <input type="text" class="blank" data-answer="down|lower|fall|falls|drops" aria-label="Blank 2">.</div>
+        <div>3. The value of all the years after the forecast is the <input type="text" class="blank" data-answer="terminal value|terminal" aria-label="Blank 3">.</div>
+        <div>4. Equity value = enterprise value − debt + <input type="text" class="blank" data-answer="cash" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Value a favorite spot</h3>
+          <p>Pick a local coffee shop or food truck. Guess its free cash next year and a growth rate. Use a 12% rate. What would you pay for it?</p>
+        </div>
+        <div class="reveal">
+          <h3>Argue the rate</h3>
+          <p>One person plays the buyer and argues for a high discount rate. The other plays the seller and argues for a low one. Who wins, and why?</p>
+        </div>
+        <div class="reveal">
+          <h3>Interview drill</h3>
+          <p>Take turns answering "Walk me through a DCF" in under a minute. Use the five steps from this lesson.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">72% of the bike shops' value comes after year 5. Does that make you trust a DCF more or less? Why?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Think of a company you know. Which do you think it will make more of over the next 10 years: more cash or less? What would change your mind?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If someone offered to buy a business you built, what would matter to you besides the price?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're an equity research analyst</h3>
+      <div class="reveal">
+        <p>You cover a company that makes kitchen appliances. Your boss wants a quick DCF. Here's the situation:</p>
+        <ul>
+          <li><b>Free cash flow next year:</b> $50 million, growing 3% a year forever.</li>
+          <li><b>Cost of capital:</b> 9%.</li>
+          <li><b>Debt:</b> $200 million. <b>Cash:</b> $50 million.</li>
+          <li><b>Shares:</b> 25 million. <b>Today's stock price:</b> $22.</li>
+        </ul>
+        <p><b>Your task:</b> find the enterprise value, the equity value and the value per share. Is the stock cheap or expensive? What if the cost of capital is really 10%? What would you tell your boss?</p>
+        <textarea id="job-answer" placeholder="Write your note to your boss…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Enterprise value:</b> with steady growth from next year, the whole company is one terminal value: <span class="frac"><span>$50 million</span><span>9% − 3%</span></span> = <span class="frac"><span>$50 million</span><span>0.06</span></span> = about <b>$833.3 million</b>.</p>
+            <p><b>Equity value:</b> $833.3 million − $200 million + $50 million = <b>$683.3 million</b>. <b>Per share:</b> <span class="frac"><span>$683.3 million</span><span>25 million</span></span> = about <b>$27.33</b>.</p>
+            <p><b>At 10%:</b> <span class="frac"><span>$50 million</span><span>0.07</span></span> = about $714.3 million; equity $564.3 million; about <b>$22.57</b> a share, barely above today's $22.</p>
+            <p><b>To your boss:</b> at 9%, the stock looks about 24% cheap, so it could be a buy. But one point on the discount rate wipes out almost all of that, so the call depends on how risky we think the company is. I'd rate it a cautious buy and dig into the growth and risk before we publish.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Every price <em>hides a forecast.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on the three financial statements, picking projects with NPV, and the cost of capital, and leads to comparables and multiples">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../three-statements/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The three statements</text><text x="20" y="86">Unit 12 · cash flow</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Picking projects</text><text x="20" y="186">Unit 13 · NPV and IRR</text></a>
+          <a href="../cost-of-capital/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Cost of capital</text><text x="20" y="286">Unit 13 · WACC</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Valuing with DCF</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Comparables and multiples</text><text x="690" y="186">Coming soon · Unit 15</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 12</span><b>How the three statements connect</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>Picking projects with NPV</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>The cost of capital</b></li>
+        <li class="here"><span class="small">You are here</span><b>Valuing a company with DCF</b></li>
+        <li><span class="muted small">Coming soon · Unit 15</span><b>Comparables and multiples</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../bonds/">Revisit: How bonds work <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

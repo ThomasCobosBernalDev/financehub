@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "A big bike chain offers five hundred thousand dollars for your business. To know if that's fair, value the business as the present value of all the cash it will make in the future. That's a discounted cash flow, or D C F.",
+  "Start with free cash flow: cash from running the business, minus what you spend on equipment. Next year, fifty five thousand minus fifteen thousand leaves forty thousand dollars.",
+  "Forecast five years, growing five thousand a year, from forty thousand to sixty thousand. Bring each year back to today at your ten percent cost of capital. Together they're worth about one hundred eighty six thousand dollars.",
+  "The shops keep running after year five. The terminal value covers all those years: next year's cash divided by the discount rate minus a small growth rate. Sixty one thousand two hundred over eight percent is seven hundred sixty five thousand, worth about four hundred seventy five thousand today.",
+  "Add them up: the enterprise value is about six hundred sixty one thousand dollars. About seventy two percent of it comes from after year five. Subtract your loan and add your cash to get the owners' share: about six hundred forty one thousand.",
+  "Small guesses swing the answer. At twelve percent, the business is worth about five hundred twenty three thousand. At thirteen, it drops below the offer. That's why analysts always test several rates.",
+  "So don't take five hundred thousand. Counter near six hundred fifty thousand, and be ready to explain your forecast, your rate and your growth. A D C F doesn't give you the price; it gives you the reasons behind it."
+ ]
+}
