@@ -1,0 +1,256 @@
+<!-- title: Riesgo y rendimiento -->
+<!-- description: Unidad 14, Lección 1: cómo miden los inversionistas el riesgo y la recompensa: rendimiento esperado, desviación estándar (volatilidad), la regla de dos de cada tres, la prima de riesgo, el equilibrio entre riesgo y rendimiento en efectivo, bonos y acciones, el índice de Sharpe, y cómo mezclar un activo seguro con uno riesgoso. Juego: Elige tu riesgo, ocho preguntas sobre riesgo y rendimiento. -->
+<!-- kicker: Unidad 14 · Lección 1 -->
+<!-- topic: Armar un portafolio -->
+
+<!-- @start -->
+        <h1 class="reveal">¿Un 4% seguro o la oportunidad de un 30%? <em>Cómo le ponen precio al riesgo.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Al taller le fue bien este año y tienes <span class="mark">$10,000</span> para invertir durante un año. Tienes tres opciones. Las <b>letras del Tesoro</b> pagan <span class="mark">4% seguro</span>. Un <b>fondo de bonos</b> ganará 8% o 2%, a cara o cruz. Un <b>fondo de acciones</b> ganará <span class="mark">30% o perderá 10%</span>, también a cara o cruz. ¿Cuál es mejor? Depende de cómo midas dos cosas: lo que esperas ganar y qué tan movido es el viaje. De eso trata esta lección, y de eso vive todo Wall Street.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>El <b>rendimiento</b> es lo que gana una inversión. El <b>riesgo</b> es cuánto puede alejarse ese rendimiento de lo que esperas.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Los inversionistas solo toman más riesgo si esperan más rendimiento. Ese equilibrio fija el precio de cada acción, bono y fondo.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Promedia los resultados posibles para obtener el rendimiento esperado. Mide qué tan separados están para obtener el riesgo. Luego compara los dos.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los <b>administradores de portafolios</b> equilibran riesgo y rendimiento en los fondos. Los <b>asesores patrimoniales</b> los ajustan a cada cliente. Los <b>analistas de riesgo</b> miden cuánto podría perder un banco o un fondo.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Tres caminos durante un año. Las letras del Tesoro hacen una línea plana. Un fondo de bonos hace una ola suave. Un fondo de acciones hace una ola grande que sube y baja mucho.">
+          <text x="260" y="70" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">¿Qué tan movido es el viaje?</text>
+          <g fill="none" stroke-width="6" stroke-linecap="round">
+            <path class="rr-wave" d="M40 180 C 110 90, 170 90, 230 180 S 360 290, 420 180 S 470 120, 490 150" stroke="var(--good)"/>
+            <path d="M40 320 C 110 290, 170 290, 230 320 S 360 350, 420 320 S 470 305, 490 312" stroke="var(--needs)"/>
+            <path d="M40 440 H 490" stroke="var(--ink-3)"/>
+          </g>
+          <g font-size="16" font-weight="700" fill="var(--ink)">
+            <text x="40" y="236">Acciones</text><text x="40" y="374">Bonos</text><text x="40" y="474">Letras</text>
+          </g>
+          <g font-size="15" fill="var(--ink-2)" text-anchor="end">
+            <text x="490" y="236">+30% o −10%</text><text x="490" y="374">+8% o +2%</text><text x="490" y="474">4% seguro</text>
+          </g>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">más recompensa, más vaivén</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> las tres opciones dibujadas como viajes. La línea gris de las letras del Tesoro es plana porque el 4% es seguro. La línea azul de los bonos se mueve un poco. La línea verde de las acciones es la que más se mueve, hasta +30% o hasta −10%.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Dos números <em>para cada inversión.</em></h2>
+      <p class="lead reveal">En la Lección 5.6 viste que los mercados caen y se recuperan. Ahora le pones números, como en una clase de finanzas y en una mesa de Wall Street.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Rendimiento esperado</h3>
+      <p class="reveal">El <dfn class="term" data-def="El rendimiento promedio que obtendrías si pudieras repetir la inversión muchas veces: cada rendimiento posible por su probabilidad, sumados.">rendimiento esperado</dfn> es lo que ganarías en promedio. Multiplica cada rendimiento posible por su probabilidad y súmalos. No es lo que va a pasar este año, solo la mejor apuesta en un número.</p>
+      <div class="formula reveal">Rendimiento esperado <span class="op">=</span> (probabilidad <span class="op">×</span> rendimiento) <span class="op">+</span> (probabilidad <span class="op">×</span> rendimiento) <span class="op">+</span> …</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd>0.5 × 30% + 0.5 × (−10%) = 15% − 5% = <b>10%</b></dd></div><div><dt>Fondo de bonos</dt><dd>0.5 × 8% + 0.5 × 2% = 4% + 1% = <b>5%</b></dd></div><div><dt>Letras del Tesoro</dt><dd><b>4%</b>, pase lo que pase.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Desviación estándar: cuánto se mueve</h3>
+      <p class="reveal">El riesgo se mide con la <dfn class="term" data-def="Una medida de qué tan lejos suelen caer los rendimientos del rendimiento esperado. Más grande significa un viaje más movido. También se llama volatilidad.">desviación estándar</dfn>: qué tan lejos cae un año típico del rendimiento esperado. Es el número detrás de la palabra volatilidad. Cuando dos resultados son igual de probables, es simplemente la mitad de la distancia entre ellos.</p>
+      <div class="formula reveal">Desviación estándar (dos resultados iguales) <span class="op">=</span> <span class="frac"><span>alto − bajo</span><span>2</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd><span class="frac"><span>30% − (−10%)</span><span>2</span></span> = <span class="frac"><span>40%</span><span>2</span></span> = <b>20%</b>. Cada resultado cae a 20 puntos del promedio de 10%.</dd></div><div><dt>Fondo de bonos</dt><dd><span class="frac"><span>8% − 2%</span><span>2</span></span> = <b>3%</b></dd></div><div><dt>Letras del Tesoro</dt><dd><b>0%</b>. No se mueven nada.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">La regla de dos de cada tres</h3>
+      <p class="reveal">Los rendimientos reales no son cara o cruz; se reparten como una campana. En una curva de campana, cerca de <b>2 de cada 3 años</b> caen a una desviación estándar o menos del rendimiento esperado. Eso convierte dos números en un rango que puedes imaginar.</p>
+      <div class="formula reveal">Rango típico <span class="op">=</span> rendimiento esperado <span class="op">−</span> desviación estándar, hasta rendimiento esperado <span class="op">+</span> desviación estándar</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Un fondo de acciones así</dt><dd>10% − 20% = −10%, hasta 10% + 20% = 30%. Con $10,000, la mayoría de los años terminan entre <b>$9,000</b> y <b>$13,000</b>. El otro año de cada tres cae fuera de ese rango.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">La prima de riesgo</h3>
+      <p class="reveal">¿Por qué alguien elegiría el fondo de acciones? Porque le pagan por el riesgo. La <dfn class="term" data-def="El rendimiento esperado extra que ofrece una inversión por encima de la tasa libre de riesgo, como pago por tomar riesgo.">prima de riesgo</dfn> es el rendimiento esperado extra por encima de la <b>tasa libre de riesgo</b> (Lección 13.3). Este es el <dfn class="term" data-def="La regla de que las inversiones con más rendimiento esperado vienen con más riesgo. No puedes obtener más rendimiento sin aceptar más riesgo.">equilibrio entre riesgo y rendimiento</dfn>: más rendimiento esperado siempre viene con más riesgo.</p>
+      <div class="formula reveal">Prima de riesgo <span class="op">=</span> rendimiento esperado <span class="op">−</span> tasa libre de riesgo</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd>10% − 4% = <b>6%</b> extra, por aceptar 20% de vaivén.</dd></div><div><dt>Fondo de bonos</dt><dd>5% − 4% = <b>1%</b> extra, por aceptar 3% de vaivén.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El índice de Sharpe: recompensa por unidad de riesgo</h3>
+      <p class="reveal">Para comparar inversiones con distinto riesgo, divide la prima de riesgo entre la desviación estándar. Ese es el <dfn class="term" data-def="La prima de riesgo dividida entre la desviación estándar: cuánto rendimiento extra paga una inversión por cada unidad de riesgo. Más alto es mejor.">índice de Sharpe</dfn>, llamado así por el economista William Sharpe. Más alto significa más recompensa por cada punto de riesgo.</p>
+      <div class="formula reveal">Índice de Sharpe <span class="op">=</span> <span class="frac"><span>rendimiento esperado − tasa libre de riesgo</span><span>desviación estándar</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd><span class="frac"><span>10% − 4%</span><span>20%</span></span> = <b>0.30</b></dd></div><div><dt>Fondo de bonos</dt><dd><span class="frac"><span>5% − 4%</span><span>3%</span></span> = cerca de <b>0.33</b>. Por cada punto de riesgo, los bonos pagan un poco más. Las acciones solo ofrecen más de todo.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Mezclar lo seguro y lo riesgoso</h3>
+      <p class="reveal">No tienes que elegir solo uno. Pon una parte de los $10,000 en acciones y el resto en letras del Tesoro. El rendimiento esperado y la desviación estándar de cada mezcla se mueven en línea recta, así que ajustas justo el riesgo que puedes aguantar. Pruébalo.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Mitad y mitad</dt><dd>Esperado: 0.5 × 10% + 0.5 × 4% = <b>7%</b>. Vaivén: 0.5 × 20% = <b>10%</b>, porque las letras del Tesoro no suman nada. Rango típico: −3% a 17%.</dd></div></dl></div>
+      <div class="md-card reveal" id="rr">
+        <label class="md-lab" for="rr-s">Parte de los $10,000 en el fondo de acciones <b id="rr-s-v">50%</b></label><input type="range" id="rr-s" min="0" max="100" step="10" value="50">
+        <div id="rr-out" aria-hidden="true"></div>
+        <p class="rr-msg" id="rr-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una recta de rendimientos de un año, de −15% a +35%. La barra es el rango típico, donde caen cerca de 2 de cada 3 años; el punto es el rendimiento esperado. El resto del dinero está en letras del Tesoro al 4%.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Elige <em>tu riesgo.</em></h2>
+      <p class="lead reveal">Ocho preguntas sobre riesgo y rendimiento. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="rk">
+        <div class="fd-top">
+          <div><small id="rk-round">Pregunta 1 de 8</small><b id="rk-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="rk-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="rk-facts"></ul>
+        <div class="sd-opts" id="rk-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="rk-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="rk-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="rk-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> inversiones inventadas. Cada una muestra los rendimientos posibles y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Evaluar cualquier inversión toma cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Rendimiento esperado</h3>
+      <div class="formula reveal">Cada rendimiento × su probabilidad, sumados</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd>0.5 × 30% + 0.5 × (−10%) = 10%.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Riesgo</h3>
+      <div class="formula reveal">Desviación estándar: qué tan lejos cae un año típico del promedio</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd>20%. Rango típico: −10% a 30%.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: La recompensa por el riesgo</h3>
+      <div class="formula reveal">Prima de riesgo, y luego índice de Sharpe</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Fondo de acciones</dt><dd>10% − 4% = 6%; <span class="frac"><span>6%</span><span>20%</span></span> = 0.30.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Ajústalo a la persona</h3>
+      <div class="formula reveal">¿Cuánto vaivén puede aguantar, y por cuánto tiempo?</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Un año, dinero que vas a necesitar</dt><dd>Perder $1,000 podría doler, así que conviene una parte más chica en acciones.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿cuándo necesitas el dinero?</h3>
+      <p class="reveal">El taller necesita <b>$9,800</b> para el depósito de un local nuevo dentro de exactamente un año. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>El dinero:</b> $10,000, invertidos por un año.</li>
+        <li><b>El fondo de acciones:</b> espera 10%, desviación estándar 20%.</li>
+        <li><b>Letras del Tesoro:</b> 4% seguro.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Todo en acciones.</b> El extremo bajo del rango típico es −10%: $10,000 × 0.90 = $9,000. No alcanza para el depósito de $9,800, y ni siquiera es el peor caso.</li>
+        <li><b>Lo más que puedes perder.</b> $10,000 − $9,800 = $200, o sea 2%.</li>
+        <li><b>Prueba con 30% en acciones.</b> Esperado: 0.3 × 10% + 0.7 × 4% = 5.8%. Vaivén: 0.3 × 20% = 6%. Extremo bajo: 5.8% − 6% = −0.2%, o sea $9,980.</li>
+        <li><b>Compruébalo.</b> $9,980 cubre los $9,800 en un mal año típico.</li>
+        <li><b>La respuesta.</b> Deja cerca de 30% o menos en acciones. El dinero que necesitas pronto va sobre todo en activos seguros; el dinero que no vas a tocar en décadas puede aguantar los vaivenes (Lección 5.6).</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Los pajaritos se arriesgan <em>cuando tienen que hacerlo.</em></h2>
+      <p class="lead reveal">En un experimento clásico, unos científicos les dieron a unos pajaritos llamados juncos dos comederos para elegir: uno que siempre daba la misma cantidad de semillas y otro que daba muchas o casi ninguna. Cuando el comedero estable daba lo suficiente para pasar una noche fría, los pájaros lo elegían. Cuando la cantidad estable no alcanzaba para sobrevivir, se pasaban a la apuesta, porque solo el comedero riesgoso les daba una oportunidad de comer lo suficiente.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un pajarito entre dos comederos. El de la izquierda siempre deja caer las mismas pocas semillas. El de la derecha deja caer un montón o nada.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 320 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#d9d2c3"/>
+        <g stroke="#6b5d48" stroke-width="3"><path d="M210 0 V 112"/><path d="M690 0 V 112"/></g><g fill="#6b5d48"><path d="M162 124 L 210 104 L 258 124 Z"/><path d="M642 124 L 690 104 L 738 124 Z"/></g><g fill="color-mix(in srgb, #c9a86b 35%, var(--card))" stroke="#8a7a62" stroke-width="4"><rect x="174" y="124" width="72" height="96" rx="8"/><rect x="654" y="124" width="72" height="96" rx="8"/></g><g fill="#8a7a62"><rect x="160" y="220" width="100" height="12" rx="6"/><rect x="640" y="220" width="100" height="12" rx="6"/></g>
+        <g fill="#c9a86b"><circle cx="196" cy="300" r="6"/><circle cx="212" cy="306" r="6"/><circle cx="228" cy="300" r="6"/></g>
+        <g class="rr-seeds" fill="#c9a86b"><circle cx="660" cy="306" r="6"/><circle cx="676" cy="300" r="6"/><circle cx="692" cy="306" r="6"/><circle cx="708" cy="300" r="6"/><circle cx="724" cy="306" r="6"/><circle cx="684" cy="290" r="6"/><circle cx="700" cy="290" r="6"/><circle cx="668" cy="292" r="6"/><circle cx="716" cy="292" r="6"/></g>
+        <g class="rr-bird">
+          <ellipse cx="450" cy="270" rx="38" ry="28" fill="#5d6470"/><circle cx="478" cy="248" r="18" fill="#5d6470"/>
+          <path d="M494 246 l 14 4 l -14 4 z" fill="#e8c9a0"/><circle cx="482" cy="244" r="3.5" fill="#f2c14e"/>
+          <path d="M414 266 l -26 -8 l 8 18 z" fill="#3e444d"/><ellipse cx="452" cy="282" rx="22" ry="12" fill="#e8e2d6"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="210" y="352" font-family="Fraunces, serif" font-size="22" fill="#2b2b33">Comedero estable</text>
+          <text x="210" y="376" font-size="15" fill="#4a4438">como las letras: siempre igual</text>
+          <text x="690" y="352" font-family="Fraunces, serif" font-size="22" fill="#2b2b33">Comedero riesgoso</text>
+          <text x="690" y="376" font-size="15" fill="#4a4438">como las acciones: mucho o nada</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo, no datos. Un pájaro que elige entre un comedero que siempre deja caer unas pocas semillas y otro que deja caer un montón o nada.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Los pájaros no siempre eligieron lo seguro ni siempre lo riesgoso. Eligieron el riesgo que les servía para lo que necesitaban. Así es exactamente como un asesor arma un portafolio.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Rendimiento esperado</b> = cada rendimiento × su probabilidad, sumados. Acciones: 0.5 × 30% + 0.5 × (−10%) = 10%.</li>
+          <li><b>Desviación estándar</b> (volatilidad): qué tan lejos cae un año típico del promedio. Dos resultados iguales: <span class="frac"><span>alto − bajo</span><span>2</span></span>. Acciones: 20%.</li>
+          <li><b>Regla de dos de cada tres</b>: cerca de 2 de cada 3 años caen a una desviación estándar o menos. Acciones: −10% a 30%.</li>
+          <li><b>Prima de riesgo</b> = rendimiento esperado − tasa libre de riesgo. 10% − 4% = 6%.</li>
+          <li><b>Índice de Sharpe</b> = <span class="frac"><span>prima de riesgo</span><span>desviación estándar</span></span>. Acciones 0.30, bonos cerca de 0.33.</li>
+          <li><b>Mezclar</b> con letras del Tesoro: el esperado y el riesgo se mueven en línea recta. 50/50: 7% esperado, 10% de vaivén.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Una inversión gana 20% o 0%, cada uno la mitad de las veces. Su rendimiento esperado es <input type="text" class="blank" data-answer="10|10%|10 por ciento" inputmode="numeric" aria-label="Espacio 1"> por ciento.</div>
+        <div>2. El número que mide qué tan lejos suelen moverse los rendimientos del promedio es la <input type="text" class="blank" data-answer="desviación estándar|desviacion estandar" aria-label="Espacio 2">.</div>
+        <div>3. El rendimiento esperado extra por encima de la tasa libre de riesgo es la prima de <input type="text" class="blank" data-answer="riesgo" aria-label="Espacio 3">.</div>
+        <div>4. La prima de riesgo dividida entre la desviación estándar es el índice de <input type="text" class="blank" data-answer="sharpe" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Con un amigo o <em>un grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Portafolio a cara o cruz</h3>
+          <p>Cada persona elige una parte en acciones con el control. Lancen una moneda 10 veces (cara +30%, cruz −10% para la parte en acciones). Comparen el saldo final y el rango de cada uno.</p>
+        </div>
+        <div class="reveal">
+          <h3>¿Quién debe tener qué?</h3>
+          <p>Inventen tres personas: alguien de 20 años, alguien que ahorra para una casa en 2 años y alguien jubilado. Pónganse de acuerdo en la parte en acciones de cada uno y expliquen por qué.</p>
+        </div>
+        <div class="reveal">
+          <h3>Busquen un fondo</h3>
+          <p>Encuentren la página de un fondo indexado del S&amp;P 500. Busquen su rendimiento promedio y su desviación estándar, y calculen su rango típico.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Si $10,000 que invertiste bajaran a $9,000 en un año, ¿qué harías? Responde con honestidad.</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué dinero tienes que vas a necesitar en menos de 2 años? ¿Qué dinero no vas a tocar en 20?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿En qué otra parte de tu vida tomas más riesgo a cambio de más recompensa?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas tipo <em>examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: trabajas en gestión patrimonial</h3>
+      <div class="reveal">
+        <p>Dos clientes tienen $100,000 cada uno para invertir. Esta es la situación:</p>
+        <ul>
+          <li><b>María, 30 años:</b> ahorra para su retiro y no va a tocar el dinero en 35 años. Quiere 80% en un fondo de acciones.</li>
+          <li><b>El señor Okafor, 63 años:</b> se jubila en 2 años y va a empezar a vivir de este dinero. Quiere 30% en el fondo de acciones.</li>
+          <li><b>El fondo de acciones:</b> espera 10% al año, desviación estándar 20%.</li>
+          <li><b>El resto:</b> letras del Tesoro al 4%.</li>
+        </ul>
+        <p><b>Tu tarea:</b> para cada cliente, calcula el rendimiento esperado, la desviación estándar y el rango típico de un año en dólares. ¿Tienen sentido las dos decisiones?</p>
+        <textarea id="job-answer" placeholder="Escribe tus notas para cada cliente…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>María (80% acciones):</b> esperado 0.8 × 10% + 0.2 × 4% = 8% + 0.8% = <b>8.8%</b>. Vaivén: 0.8 × 20% = <b>16%</b>. Rango típico: 8.8% − 16% = −7.2% hasta 8.8% + 16% = 24.8%, o sea de <b>$92,800 a $124,800</b> después de un año.</p>
+            <p><b>El señor Okafor (30% acciones):</b> esperado 0.3 × 10% + 0.7 × 4% = 3% + 2.8% = <b>5.8%</b>. Vaivén: 0.3 × 20% = <b>6%</b>. Rango típico: −0.2% a 11.8%, o sea de <b>$99,800 a $111,800</b>.</p>
+            <p><b>¿Tienen sentido?</b> Sí. María tiene 35 años para recuperarse de los años malos, así que puede aguantar vaivenes más grandes a cambio de 3 puntos más de rendimiento esperado. El señor Okafor va a necesitar el dinero pronto, así que un rango más chico y estable lo protege. Recuerda que 1 de cada 3 años cae fuera del rango típico, así que los dos deben estar listos para algo peor.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Cada precio <em>lleva un riesgo adentro.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en caídas del mercado y riesgo, en los fondos indexados y en el costo de capital, y lleva a diversificar">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../market-drops/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Caídas del mercado</text><text x="20" y="86">Unidad 5 · volatilidad</text></a>
+          <a href="../index-funds/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Fondos indexados</text><text x="20" y="186">Unidad 5 · el S&amp;P 500</text></a>
+          <a href="../cost-of-capital/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Costo de capital</text><text x="20" y="286">Unidad 13 · tasa libre de riesgo</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Riesgo y rendimiento</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Diversificar</text><text x="690" y="186">Muy pronto · Unidad 14</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 5</span><b>Caídas del mercado y riesgo</b></li>
+        <li><span class="muted small">Antes · Unidad 5</span><b>Los fondos indexados y el S&amp;P 500</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>El costo de capital</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Riesgo y rendimiento</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 14</span><b>Diversificar</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../cost-of-capital/">Repasa: El costo de capital <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

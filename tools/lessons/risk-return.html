@@ -1,0 +1,256 @@
+<!-- title: Risk and Return -->
+<!-- description: Unit 14, Lesson 1: how investors measure risk and reward: expected return, standard deviation (volatility), the two-in-three rule, the risk premium, the risk-return trade-off across cash, bonds and stocks, the Sharpe ratio, and mixing a safe asset with a risky one. Play: Pick your risk, eight risk-and-return questions. -->
+<!-- kicker: Unit 14 · Lesson 1 -->
+<!-- topic: Building a portfolio -->
+
+<!-- @start -->
+        <h1 class="reveal">A sure 4%, or a shot at 30%? <em>How investors price risk.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The shop had a good year, and you have <span class="mark">$10,000</span> to invest for one year. You have three choices. <b>Treasury bills</b> pay <span class="mark">4% for sure</span>. A <b>bond fund</b> will earn 8% or 2%, a coin flip. A <b>stock fund</b> will earn <span class="mark">30% or lose 10%</span>, also a coin flip. Which is best? It depends on how you measure two things: what you expect to earn, and how wild the ride is. That's what this lesson, and all of Wall Street, runs on.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Return</b> is what an investment earns. <b>Risk</b> is how much that return can swing away from what you expect.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Investors only take more risk if they expect more return. That trade-off sets the price of every stock, bond and fund.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Average the possible outcomes to get the expected return. Measure how far they spread to get the risk. Then compare the two.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Portfolio managers</b> balance risk and return for funds. <b>Wealth advisors</b> match them to each client. <b>Risk analysts</b> measure how much a bank or fund could lose.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Three paths over one year. Treasury bills make a flat line. A bond fund makes a gentle wave. A stock fund makes a big wave that swings far up and down.">
+          <text x="260" y="70" text-anchor="middle" font-family="Fraunces, serif" font-size="34" fill="var(--ink)">How wild the ride?</text>
+          <g fill="none" stroke-width="6" stroke-linecap="round">
+            <path class="rr-wave" d="M40 180 C 110 90, 170 90, 230 180 S 360 290, 420 180 S 470 120, 490 150" stroke="var(--good)"/>
+            <path d="M40 320 C 110 290, 170 290, 230 320 S 360 350, 420 320 S 470 305, 490 312" stroke="var(--needs)"/>
+            <path d="M40 440 H 490" stroke="var(--ink-3)"/>
+          </g>
+          <g font-size="16" font-weight="700" fill="var(--ink)">
+            <text x="40" y="236">Stocks</text><text x="40" y="374">Bonds</text><text x="40" y="474">T-bills</text>
+          </g>
+          <g font-size="15" fill="var(--ink-2)" text-anchor="end">
+            <text x="490" y="236">+30% or −10%</text><text x="490" y="374">+8% or +2%</text><text x="490" y="474">4% for sure</text>
+          </g>
+          <text x="260" y="530" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="24" fill="var(--ink-2)">more reward, bigger swings</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the three choices drawn as rides. The gray T-bill line is flat because 4% is certain. The blue bond line wiggles a little. The green stock line swings the most, up to +30% or down to −10%.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Two numbers <em>for every investment.</em></h2>
+      <p class="lead reveal">In Lesson 5.6 you saw that markets drop and recover. Now you put numbers on it, the way a finance class and a Wall Street desk do.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Expected return</h3>
+      <p class="reveal">The <dfn class="term" data-def="The average return you'd get if you could repeat the investment many times: each possible return times its chance, added up.">expected return</dfn> is what you'd earn on average. Multiply each possible return by its chance and add them up. It's not what will happen this year, just the best single guess.</p>
+      <div class="formula reveal">Expected return <span class="op">=</span> (chance <span class="op">×</span> return) <span class="op">+</span> (chance <span class="op">×</span> return) <span class="op">+</span> …</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd>0.5 × 30% + 0.5 × (−10%) = 15% − 5% = <b>10%</b></dd></div><div><dt>Bond fund</dt><dd>0.5 × 8% + 0.5 × 2% = 4% + 1% = <b>5%</b></dd></div><div><dt>T-bills</dt><dd><b>4%</b>, no matter what.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Standard deviation: how far it swings</h3>
+      <p class="reveal">Risk is measured with <dfn class="term" data-def="A measure of how far returns typically land from the expected return. Bigger means a wilder ride. Also called volatility.">standard deviation</dfn>: how far a typical year lands from the expected return. It's the number behind the word volatility. When two outcomes are equally likely, it's simply half the gap between them.</p>
+      <div class="formula reveal">Standard deviation (two equal outcomes) <span class="op">=</span> <span class="frac"><span>high − low</span><span>2</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd><span class="frac"><span>30% − (−10%)</span><span>2</span></span> = <span class="frac"><span>40%</span><span>2</span></span> = <b>20%</b>. Each outcome lands 20 points from the 10% average.</dd></div><div><dt>Bond fund</dt><dd><span class="frac"><span>8% − 2%</span><span>2</span></span> = <b>3%</b></dd></div><div><dt>T-bills</dt><dd><b>0%</b>. No swing at all.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The two-in-three rule</h3>
+      <p class="reveal">Real returns aren't coin flips; they spread out like a bell curve. For a bell curve, about <b>2 years out of 3</b> land within one standard deviation of the expected return. That turns two numbers into a range you can picture.</p>
+      <div class="formula reveal">Typical range <span class="op">=</span> expected return <span class="op">−</span> standard deviation, up to expected return <span class="op">+</span> standard deviation</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A stock fund like this</dt><dd>10% − 20% = −10%, up to 10% + 20% = 30%. On $10,000, most years end between <b>$9,000</b> and <b>$13,000</b>. The other year in three lands outside that range.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The risk premium</h3>
+      <p class="reveal">Why would anyone pick the stock fund? Because they're paid for the risk. The <dfn class="term" data-def="The extra expected return an investment offers above the risk-free rate, as payment for taking risk.">risk premium</dfn> is the extra expected return above the <b>risk-free rate</b> (Lesson 13.3). This is the <dfn class="term" data-def="The rule that investments with higher expected returns come with more risk. You can't get more return without accepting more risk.">risk-return trade-off</dfn>: more expected return always comes with more risk.</p>
+      <div class="formula reveal">Risk premium <span class="op">=</span> expected return <span class="op">−</span> risk-free rate</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd>10% − 4% = <b>6%</b> extra, for taking 20% of swing.</dd></div><div><dt>Bond fund</dt><dd>5% − 4% = <b>1%</b> extra, for taking 3% of swing.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The Sharpe ratio: reward per unit of risk</h3>
+      <p class="reveal">To compare investments with different risks, divide the risk premium by the standard deviation. That's the <dfn class="term" data-def="Risk premium divided by standard deviation: how much extra return an investment pays for each unit of risk. Higher is better.">Sharpe ratio</dfn>, named after the economist William Sharpe. Higher means more reward for each point of risk.</p>
+      <div class="formula reveal">Sharpe ratio <span class="op">=</span> <span class="frac"><span>expected return − risk-free rate</span><span>standard deviation</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd><span class="frac"><span>10% − 4%</span><span>20%</span></span> = <b>0.30</b></dd></div><div><dt>Bond fund</dt><dd><span class="frac"><span>5% − 4%</span><span>3%</span></span> = about <b>0.33</b>. Per point of risk, the bonds pay slightly more. The stocks just offer more of everything.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Mixing safe and risky</h3>
+      <p class="reveal">You don't have to pick just one. Put part of the $10,000 in stocks and the rest in T-bills. Each mix's expected return and standard deviation move in a straight line, so you dial in exactly the risk you can live with. Try it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Half and half</dt><dd>Expected: 0.5 × 10% + 0.5 × 4% = <b>7%</b>. Swing: 0.5 × 20% = <b>10%</b>, since T-bills add none. Typical range: −3% to 17%.</dd></div></dl></div>
+      <div class="md-card reveal" id="rr">
+        <label class="md-lab" for="rr-s">Share of the $10,000 in the stock fund <b id="rr-s-v">50%</b></label><input type="range" id="rr-s" min="0" max="100" step="10" value="50">
+        <div id="rr-out" aria-hidden="true"></div>
+        <p class="rr-msg" id="rr-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a number line of one-year returns from −15% to +35%. The bar is the typical range, where about 2 years in 3 land; the dot is the expected return. The rest of the money sits in T-bills at 4%.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Pick <em>your risk.</em></h2>
+      <p class="lead reveal">Eight questions about risk and return. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="rk">
+        <div class="fd-top">
+          <div><small id="rk-round">Question 1 of 8</small><b id="rk-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="rk-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="rk-facts"></ul>
+        <div class="sd-opts" id="rk-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="rk-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="rk-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="rk-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up investments. Each lists the possible returns, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Sizing up any investment takes four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Expected return</h3>
+      <div class="formula reveal">Each return × its chance, added up</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd>0.5 × 30% + 0.5 × (−10%) = 10%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Risk</h3>
+      <div class="formula reveal">Standard deviation: how far a typical year lands from the average</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd>20%. Typical range: −10% to 30%.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Reward for the risk</h3>
+      <div class="formula reveal">Risk premium, then Sharpe ratio</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock fund</dt><dd>10% − 4% = 6%; <span class="frac"><span>6%</span><span>20%</span></span> = 0.30.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Match it to the person</h3>
+      <div class="formula reveal">How much swing can they live with, and for how long?</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>One year, money you'll need</dt><dd>A $1,000 loss could hurt, so a smaller stock share fits.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: when do you need the money?</h3>
+      <p class="reveal">The shop needs <b>$9,800</b> for a new lease deposit in exactly one year. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>The money:</b> $10,000, invested for one year.</li>
+        <li><b>The stock fund:</b> expected 10%, standard deviation 20%.</li>
+        <li><b>T-bills:</b> 4% for sure.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>All stocks.</b> The low end of the typical range is −10%: $10,000 × 0.90 = $9,000. That misses the $9,800 deposit, and that's not even the worst case.</li>
+        <li><b>The most you can afford to lose.</b> $10,000 − $9,800 = $200, or 2%.</li>
+        <li><b>Try 30% in stocks.</b> Expected: 0.3 × 10% + 0.7 × 4% = 5.8%. Swing: 0.3 × 20% = 6%. Low end: 5.8% − 6% = −0.2%, or $9,980.</li>
+        <li><b>Check it.</b> $9,980 covers the $9,800 in a typical bad year.</li>
+        <li><b>The answer.</b> Keep about 30% in stocks or less. Money you need soon belongs mostly in safe assets; money you won't touch for decades can ride out the swings (Lesson 5.6).</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Small birds <em>gamble when they must.</em></h2>
+      <p class="lead reveal">In a classic experiment, scientists gave small birds called juncos a choice between two feeders: one that always gave the same number of seeds, and one that gave a lot or almost none. When the steady feeder gave enough to get through a cold night, the birds chose it. When the steady amount wasn't enough to survive, they switched to the gamble, because only the risky feeder gave them a chance of eating enough.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A small bird between two feeders. The left feeder always drops the same few seeds. The right feeder drops either a big pile or nothing.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 320 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#d9d2c3"/>
+        <g stroke="#6b5d48" stroke-width="3"><path d="M210 0 V 112"/><path d="M690 0 V 112"/></g><g fill="#6b5d48"><path d="M162 124 L 210 104 L 258 124 Z"/><path d="M642 124 L 690 104 L 738 124 Z"/></g><g fill="color-mix(in srgb, #c9a86b 35%, var(--card))" stroke="#8a7a62" stroke-width="4"><rect x="174" y="124" width="72" height="96" rx="8"/><rect x="654" y="124" width="72" height="96" rx="8"/></g><g fill="#8a7a62"><rect x="160" y="220" width="100" height="12" rx="6"/><rect x="640" y="220" width="100" height="12" rx="6"/></g>
+        <g fill="#c9a86b"><circle cx="196" cy="300" r="6"/><circle cx="212" cy="306" r="6"/><circle cx="228" cy="300" r="6"/></g>
+        <g class="rr-seeds" fill="#c9a86b"><circle cx="660" cy="306" r="6"/><circle cx="676" cy="300" r="6"/><circle cx="692" cy="306" r="6"/><circle cx="708" cy="300" r="6"/><circle cx="724" cy="306" r="6"/><circle cx="684" cy="290" r="6"/><circle cx="700" cy="290" r="6"/><circle cx="668" cy="292" r="6"/><circle cx="716" cy="292" r="6"/></g>
+        <g class="rr-bird">
+          <ellipse cx="450" cy="270" rx="38" ry="28" fill="#5d6470"/><circle cx="478" cy="248" r="18" fill="#5d6470"/>
+          <path d="M494 246 l 14 4 l -14 4 z" fill="#e8c9a0"/><circle cx="482" cy="244" r="3.5" fill="#f2c14e"/>
+          <path d="M414 266 l -26 -8 l 8 18 z" fill="#3e444d"/><ellipse cx="452" cy="282" rx="22" ry="12" fill="#e8e2d6"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="210" y="352" font-family="Fraunces, serif" font-size="22" fill="#2b2b33">Steady feeder</text>
+          <text x="210" y="376" font-size="15" fill="#4a4438">like T-bills: same every time</text>
+          <text x="690" y="352" font-family="Fraunces, serif" font-size="22" fill="#2b2b33">Risky feeder</text>
+          <text x="690" y="376" font-size="15" fill="#4a4438">like stocks: a lot or none</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A bird choosing between a feeder that always drops a few seeds and one that drops a big pile or nothing.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The birds didn't always pick safe or always pick risky. They picked the risk that fit what they needed. That's exactly how an advisor picks a portfolio.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Expected return</b> = each return × its chance, added up. Stocks: 0.5 × 30% + 0.5 × (−10%) = 10%.</li>
+          <li><b>Standard deviation</b> (volatility): how far a typical year lands from the average. Two equal outcomes: <span class="frac"><span>high − low</span><span>2</span></span>. Stocks: 20%.</li>
+          <li><b>Two-in-three rule</b>: about 2 years in 3 land within one standard deviation. Stocks: −10% to 30%.</li>
+          <li><b>Risk premium</b> = expected return − risk-free rate. 10% − 4% = 6%.</li>
+          <li><b>Sharpe ratio</b> = <span class="frac"><span>risk premium</span><span>standard deviation</span></span>. Stocks 0.30, bonds about 0.33.</li>
+          <li><b>Mixing</b> with T-bills: expected and risk move in a straight line. 50/50: 7% expected, 10% swing.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. An investment earns 20% or 0%, each half the time. Its expected return is <input type="text" class="blank" data-answer="10|10%|10 percent" inputmode="numeric" aria-label="Blank 1"> percent.</div>
+        <div>2. The number that measures how far returns typically swing from the average is the standard <input type="text" class="blank" data-answer="deviation" aria-label="Blank 2">.</div>
+        <div>3. The extra expected return above the risk-free rate is the risk <input type="text" class="blank" data-answer="premium" aria-label="Blank 3">.</div>
+        <div>4. Risk premium divided by standard deviation is the <input type="text" class="blank" data-answer="sharpe|sharpe ratio" aria-label="Blank 4"> ratio.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Coin-flip portfolio</h3>
+          <p>Each person picks a stock share from the slider. Flip a coin 10 times (heads +30%, tails −10% for the stock part). Compare everyone's ending balance and range.</p>
+        </div>
+        <div class="reveal">
+          <h3>Who should hold what?</h3>
+          <p>Make up three people: a 20-year-old, someone saving for a house in 2 years, and a retiree. Agree on a stock share for each and explain why.</p>
+        </div>
+        <div class="reveal">
+          <h3>Look up a fund</h3>
+          <p>Find an S&amp;P 500 index fund's page. Look for its average return and its standard deviation, and work out its typical range.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">If $10,000 you invested dropped to $9,000 in a year, what would you do? Be honest.</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What money do you have that you'll need within 2 years? What money won't you touch for 20?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Where else in your life do you take more risk for more reward?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a wealth management associate</h3>
+      <div class="reveal">
+        <p>Two clients each have $100,000 to invest. Here's the situation:</p>
+        <ul>
+          <li><b>Maria, 30:</b> saving for retirement, won't touch the money for 35 years. She wants 80% in a stock fund.</li>
+          <li><b>Mr. Okafor, 63:</b> retiring in 2 years and will start living on this money. He wants 30% in the stock fund.</li>
+          <li><b>The stock fund:</b> expected 10% a year, standard deviation 20%.</li>
+          <li><b>The rest:</b> T-bills at 4%.</li>
+        </ul>
+        <p><b>Your task:</b> for each client, find the expected return, the standard deviation and the typical one-year range in dollars. Do both choices make sense?</p>
+        <textarea id="job-answer" placeholder="Write your notes for each client…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Maria (80% stocks):</b> expected 0.8 × 10% + 0.2 × 4% = 8% + 0.8% = <b>8.8%</b>. Swing: 0.8 × 20% = <b>16%</b>. Typical range: 8.8% − 16% = −7.2% up to 8.8% + 16% = 24.8%, so <b>$92,800 to $124,800</b> after one year.</p>
+            <p><b>Mr. Okafor (30% stocks):</b> expected 0.3 × 10% + 0.7 × 4% = 3% + 2.8% = <b>5.8%</b>. Swing: 0.3 × 20% = <b>6%</b>. Typical range: −0.2% to 11.8%, so <b>$99,800 to $111,800</b>.</p>
+            <p><b>Do they make sense?</b> Yes. Maria has 35 years to recover from bad years, so she can take the bigger swings for 3 more points of expected return. Mr. Okafor will need the money soon, so a smaller, steadier range protects him. Remember that 1 year in 3 lands outside the typical range, so both should be ready for worse.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Every price <em>has a risk inside it.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on market drops and risk, index funds, and the cost of capital, and leads to diversification">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../market-drops/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Market drops</text><text x="20" y="86">Unit 5 · volatility</text></a>
+          <a href="../index-funds/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Index funds</text><text x="20" y="186">Unit 5 · the S&amp;P 500</text></a>
+          <a href="../cost-of-capital/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Cost of capital</text><text x="20" y="286">Unit 13 · risk-free rate</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Risk and return</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Diversification</text><text x="690" y="186">Coming soon · Unit 14</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 5</span><b>Market drops and risk</b></li>
+        <li><span class="muted small">Back · Unit 5</span><b>Index funds and the S&amp;P 500</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>The cost of capital</b></li>
+        <li class="here"><span class="small">You are here</span><b>Risk and return</b></li>
+        <li><span class="muted small">Coming soon · Unit 14</span><b>Diversification</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../cost-of-capital/">Revisit: The cost of capital <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Tienes diez mil dólares para invertir durante un año. Las letras del Tesoro pagan cuatro por ciento seguro. Un fondo de bonos gana ocho o dos por ciento. Un fondo de acciones gana treinta por ciento o pierde diez, a cara o cruz.",
+  "Primero, el rendimiento esperado: cada resultado por su probabilidad, sumados. Para el fondo de acciones, la mitad de treinta por ciento más la mitad de menos diez por ciento da diez por ciento. Los bonos esperan cinco por ciento.",
+  "Después, el riesgo. La desviación estándar mide qué tan lejos cae un año típico del promedio. Con dos resultados iguales, es la mitad de la distancia. Treinta menos menos diez es cuarenta, entre dos es veinte por ciento.",
+  "Cerca de dos de cada tres años caen a una desviación estándar o menos. Así que el fondo de acciones suele terminar entre menos diez y más treinta por ciento, o sea entre nueve mil y trece mil dólares.",
+  "¿Por qué tomar ese riesgo? Por la prima de riesgo. El fondo de acciones espera seis por ciento más que la tasa libre de riesgo. Más rendimiento esperado siempre viene con más riesgo.",
+  "El índice de Sharpe divide la prima de riesgo entre la desviación estándar. Seis entre veinte da cero punto treinta para las acciones. Los bonos dan cerca de cero punto treinta y tres: un poco más de recompensa por unidad de riesgo.",
+  "Puedes mezclar. Mitad acciones y mitad letras del Tesoro espera siete por ciento con un vaivén de diez por ciento. El dinero que necesitas pronto va sobre todo en activos seguros; el que no vas a tocar en décadas puede aguantar las olas."
+ ]
+}

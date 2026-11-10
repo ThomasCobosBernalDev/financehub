@@ -1,0 +1,16 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {
+  "T-bills": "T bills"
+ },
+ "lines": [
+  "You have ten thousand dollars to invest for a year. Treasury bills pay four percent for sure. A bond fund earns eight or two percent. A stock fund earns thirty percent or loses ten, a coin flip.",
+  "First, the expected return: each outcome times its chance, added up. For the stock fund, half of thirty percent plus half of minus ten percent is ten percent. The bonds expect five percent.",
+  "Next, the risk. Standard deviation measures how far a typical year lands from the average. With two equal outcomes, it's half the gap. Thirty minus negative ten is forty, divided by two is twenty percent.",
+  "About two years in three land within one standard deviation. So the stock fund usually ends between minus ten and plus thirty percent, or between nine thousand and thirteen thousand dollars.",
+  "Why take that risk? The risk premium. The stock fund expects six percent more than the risk-free rate. More expected return always comes with more risk.",
+  "The Sharpe ratio divides the risk premium by the standard deviation. Six over twenty is zero point three zero for stocks. The bonds score about zero point three three: a bit more reward per unit of risk.",
+  "You can mix. Half stocks and half T-bills expects seven percent with a ten percent swing. Money you need soon belongs mostly in safe assets; money you won't touch for decades can ride the waves."
+ ]
+}

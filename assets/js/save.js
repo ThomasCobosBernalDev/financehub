@@ -165,6 +165,15 @@
     L(13, 1, "u13-raising-money", t("Raising money", "Conseguir dinero"), t("Debt vs. equity, from loans to an IPO", "Deuda vs. capital, de préstamos a una salida a bolsa"), { needs: ["u12-balance-sheet"], href: "lessons/raising-money/" }),
     L(13, 2, "u13-npv", t("Picking projects with NPV", "Elegir proyectos con el VPN"), t("Is this investment worth it?", "¿Vale la pena esta inversión?"), { needs: ["u10-time-value"], href: "lessons/npv/" }),
     L(13, 3, "u13-cost-of-capital", t("The cost of capital", "El costo de capital"), t("What money costs a company", "Lo que le cuesta el dinero a una empresa"), { needs: ["u13-raising-money", "u13-npv"], href: "lessons/cost-of-capital/" }),
+    L(14, 1, "u14-risk-return", t("Risk and return", "Riesgo y rendimiento"), t("Expected return, volatility and the trade-off", "Rendimiento esperado, volatilidad y el equilibrio entre los dos"), { needs: ["u5-market-drops"], href: "lessons/risk-return/" }),
+    L(14, 2, "u14-diversification", t("Diversification", "Diversificar"), t("Why mixing investments lowers risk", "Por qué mezclar inversiones baja el riesgo"), { needs: ["u14-risk-return"] }),
+    L(14, 3, "u14-bonds", t("How bonds work", "Cómo funcionan los bonos"), t("Prices, yields and why they move opposite", "Precios, rendimientos y por qué se mueven al revés"), { needs: ["u10-time-value"] }),
+    L(15, 1, "u15-dcf", t("Valuing a company with DCF", "Valuar una empresa con DCF"), t("What a business is worth from its future cash", "Lo que vale un negocio por su efectivo futuro"), { needs: ["u13-cost-of-capital"] }),
+    L(15, 2, "u15-multiples", t("Comparables and multiples", "Comparables y múltiplos"), t("Pricing a company against its peers", "Ponerle precio a una empresa comparándola con otras"), { needs: ["u15-dcf"] }),
+    L(15, 3, "u15-mergers", t("Mergers and buyouts", "Fusiones y compras de empresas"), t("How companies buy companies, including LBOs", "Cómo las empresas compran empresas, incluidas las LBO"), { needs: ["u15-multiples"] }),
+    L(16, 1, "u16-wall-street", t("Who does what on Wall Street", "Quién hace qué en Wall Street"), t("Banks, funds and the jobs inside them", "Bancos, fondos y los trabajos que hay adentro"), { needs: ["u13-raising-money"] }),
+    L(16, 2, "u16-trading", t("How trading works", "Cómo se compran y venden acciones"), t("Exchanges, orders and market makers", "Bolsas, órdenes y creadores de mercado"), { needs: ["u16-wall-street"] }),
+    L(16, 3, "u16-derivatives", t("Options and futures", "Opciones y futuros"), t("Contracts on what happens next", "Contratos sobre lo que va a pasar"), { needs: ["u14-risk-return"] }),
   ];
   // Lessons that are open so far, in course order.
   const OPEN = CATALOG.filter((l) => l.href);
@@ -317,6 +326,7 @@
     ["deal-maker", "raising-money", t("Deal Maker", "Cierras tratos"), t("Answer all 8 questions right in Debt or equity.", "Responde bien las 8 preguntas del juego ¿Deuda o capital?")],
     ["value-creator", "npv", t("Value Creator", "Creas valor"), t("Answer all 8 questions right in Build it or skip it.", "Responde bien las 8 preguntas del juego ¿Lo haces o no?")],
     ["hurdle-setter", "cost-of-capital", t("Hurdle Setter", "Fijas la tasa mínima"), t("Answer all 8 questions right in Clear the hurdle.", "Responde bien las 8 preguntas del juego Supera la tasa mínima.")],
+    ["risk-weigher", "risk-return", t("Risk Weigher", "Mides el riesgo"), t("Answer all 8 questions right in Pick your risk.", "Responde bien las 8 preguntas del juego Elige tu riesgo.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };
