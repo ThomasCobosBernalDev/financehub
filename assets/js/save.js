@@ -169,7 +169,7 @@
     L(14, 2, "u14-diversification", t("Diversification", "Diversificar"), t("Why mixing investments lowers risk", "Por qué mezclar inversiones baja el riesgo"), { needs: ["u14-risk-return"], href: "lessons/diversification/" }),
     L(14, 3, "u14-bonds", t("How bonds work", "Cómo funcionan los bonos"), t("Prices, yields and why they move opposite", "Precios, rendimientos y por qué se mueven al revés"), { needs: ["u10-time-value"], href: "lessons/bonds/" }),
     L(15, 1, "u15-dcf", t("Valuing a company with DCF", "Valuar una empresa con DCF"), t("What a business is worth from its future cash", "Lo que vale un negocio por su efectivo futuro"), { needs: ["u13-cost-of-capital"], href: "lessons/dcf/" }),
-    L(15, 2, "u15-multiples", t("Comparables and multiples", "Comparables y múltiplos"), t("Pricing a company against its peers", "Ponerle precio a una empresa comparándola con otras"), { needs: ["u15-dcf"] }),
+    L(15, 2, "u15-multiples", t("Comparables and multiples", "Comparables y múltiplos"), t("Pricing a company against its peers", "Ponerle precio a una empresa comparándola con otras"), { needs: ["u15-dcf"], href: "lessons/multiples/" }),
     L(15, 3, "u15-mergers", t("Mergers and buyouts", "Fusiones y compras de empresas"), t("How companies buy companies, including LBOs", "Cómo las empresas compran empresas, incluidas las LBO"), { needs: ["u15-multiples"] }),
     L(16, 1, "u16-wall-street", t("Who does what on Wall Street", "Quién hace qué en Wall Street"), t("Banks, funds and the jobs inside them", "Bancos, fondos y los trabajos que hay adentro"), { needs: ["u13-raising-money"] }),
     L(16, 2, "u16-trading", t("How trading works", "Cómo se compran y venden acciones"), t("Exchanges, orders and market makers", "Bolsas, órdenes y creadores de mercado"), { needs: ["u16-wall-street"] }),
@@ -330,6 +330,7 @@
     ["well-diversified", "diversification", t("Well Diversified", "Bien diversificado"), t("Answer all 8 questions right in Spread it out.", "Responde bien las 8 preguntas del juego Repártelo bien.")],
     ["bond-reader", "bonds", t("Bond Reader", "Lees bonos"), t("Answer all 8 questions right in Bond desk.", "Responde bien las 8 preguntas del juego Mesa de bonos.")],
     ["dcf-builder", "dcf", t("DCF Builder", "Arma un DCF"), t("Answer all 8 questions right in Valuation desk.", "Responde bien las 8 preguntas del juego Mesa de valuación.")],
+    ["comps-pro", "multiples", t("Comps Pro", "Domina los comparables"), t("Answer all 8 questions right in Comps table.", "Responde bien las 8 preguntas del juego Mesa de comparables.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

@@ -1,0 +1,256 @@
+<!-- title: Comparables and Multiples -->
+<!-- description: Unit 15, Lesson 2: how to price a company by comparing it with similar ones: comparable companies and past sales, multiples, the P/E ratio, EBITDA and EV/EBITDA, matching enterprise value with EBITDA and share price with earnings, picking the median, why fast growers get higher multiples, and checking a DCF with a football field chart. Play: Comps table, eight multiples questions. -->
+<!-- kicker: Unit 15 · Lesson 2 -->
+<!-- topic: Valuing a company -->
+
+<!-- @start -->
+        <h1 class="reveal">Your DCF says $660,945. <em>What are shops like yours actually selling for?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> In Lesson 15.1, your DCF said your bike shops are worth about <span class="mark">$660,945</span>, and the chain offered <span class="mark">$500,000</span>. The chain's buyer pushes back: "A DCF is just your guesses." So you look up what similar bike businesses really sold for. Three nearby shops sold in the last two years, at <span class="mark">5, 6 and 7 times</span> their yearly operating income. Your shops make <span class="mark">$110,000</span> of that profit. This lesson turns those three sales into a price for yours.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Comparables</b>, or comps, price a company by looking at what investors pay for similar companies, using ratios called <b>multiples</b>.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>It's fast, it's based on real prices, and it's the first number most bankers, buyers and investors check. Stock prices on the news are often quoted as a multiple.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Find similar companies, divide each one's price by its profit to get a multiple, pick a typical multiple, and multiply by your company's profit.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Investment banking analysts</b> build "comps tables" for every deal. <b>Equity research analysts</b> compare a stock's multiple with its rivals. <b>Business brokers</b> price small businesses this way.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Three bike shops with price tags of 5x, 6x and 7x, and your shop with a question mark. The middle tag, 6x, times your $110,000 profit gives $660,000.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Price it like its neighbors</text>
+          <g text-anchor="middle">
+            <g transform="translate(80 200)"><path d="M-46 0 L 0 -34 L 46 0 V 60 H -46 Z" fill="var(--needs)" opacity=".75"/><rect x="-12" y="26" width="24" height="34" fill="var(--card)"/><g class="cm-tag"><rect x="-30" y="-92" width="60" height="36" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="2"/><text x="0" y="-66" font-size="20" font-weight="700" fill="var(--ink)">5x</text></g></g>
+            <g transform="translate(190 200)"><path d="M-46 0 L 0 -34 L 46 0 V 60 H -46 Z" fill="var(--needs)" opacity=".75"/><rect x="-12" y="26" width="24" height="34" fill="var(--card)"/><g class="cm-tag"><rect x="-30" y="-92" width="60" height="36" rx="8" fill="var(--card)" stroke="var(--good)" stroke-width="3"/><text x="0" y="-66" font-size="20" font-weight="700" fill="var(--good)">6x</text></g></g>
+            <g transform="translate(300 200)"><path d="M-46 0 L 0 -34 L 46 0 V 60 H -46 Z" fill="var(--needs)" opacity=".75"/><rect x="-12" y="26" width="24" height="34" fill="var(--card)"/><g class="cm-tag"><rect x="-30" y="-92" width="60" height="36" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="2"/><text x="0" y="-66" font-size="20" font-weight="700" fill="var(--ink)">7x</text></g></g>
+            <g transform="translate(430 200)"><path d="M-52 0 L 0 -38 L 52 0 V 64 H -52 Z" fill="var(--accent)"/><rect x="-13" y="28" width="26" height="36" fill="var(--card)"/><text x="0" y="-60" font-family="Fraunces, serif" font-size="44" fill="var(--accent)">?</text><text x="0" y="92" font-size="15" fill="var(--ink-2)">Your shops</text></g>
+          </g>
+          <rect x="70" y="350" width="380" height="96" rx="20" fill="var(--paper-2)"/>
+          <text x="260" y="388" text-anchor="middle" font-size="18" fill="var(--ink-2)">middle multiple × your profit</text>
+          <text x="260" y="424" text-anchor="middle" font-size="24" font-weight="700" fill="var(--ink)">6 × $110,000 = $660,000</text>
+          <text x="260" y="500" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">similar things sell for similar prices</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> three bike shops that sold recently, each tagged with its multiple: how many times its yearly operating income the buyer paid. Your shops have a question mark. Use the middle multiple, 6, and your $110,000 profit: about $660,000, almost exactly what your DCF said.</p>
+
+<!-- @see -->
+      <h2 class="reveal">A multiple is <em>a price per dollar of profit.</em></h2>
+      <p class="lead reveal">A DCF builds the value from your own forecast. Comps start from the other end: what are real buyers paying right now for businesses like yours? Bankers almost always do both and compare.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Multiples</h3>
+      <p class="reveal">You can't compare prices directly; a bigger shop costs more. So you divide each price by a measure of how much the business earns. That ratio is a <dfn class="term" data-def="A company's price divided by a measure of what it earns, like profit. It tells you how many dollars investors pay for each dollar of that measure.">multiple</dfn>: how many dollars a buyer pays for each dollar of profit.</p>
+      <div class="formula reveal">Multiple <span class="op">=</span> <span class="frac"><span>price</span><span>profit</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The first shop that sold</dt><dd>Price $500,000, yearly profit $100,000: <span class="frac"><span>$500,000</span><span>$100,000</span></span> = <b>5x</b>, read "5 times."</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The P/E ratio</h3>
+      <p class="reveal">The multiple you'll hear most for stocks is the <dfn class="term" data-def="Price-to-earnings ratio: a stock's price divided by its earnings per share. It's how many dollars investors pay for $1 of the company's yearly net profit.">P/E ratio</dfn>: the share price divided by <dfn class="term" data-def="A company's net profit for the year divided by its number of shares.">earnings per share</dfn> (EPS), the company's net profit split across its shares.</p>
+      <div class="formula reveal">P/E <span class="op">=</span> <span class="frac"><span>share price</span><span>earnings per share</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The bike maker from Lesson 14.3</dt><dd>Its stock is $30 and it earned $2 per share: <span class="frac"><span>$30</span><span>$2</span></span> = a P/E of <b>15</b>. Investors pay $15 for each $1 of yearly profit.</dd></div><div><dt>Going the other way</dt><dd>If a rival earns $3 a share and similar stocks trade at a P/E of 15, its stock should be about 15 × $3 = <b>$45</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">EBITDA and EV/EBITDA</h3>
+      <p class="reveal">For buying a whole business, bankers use <dfn class="term" data-def="Earnings before interest, taxes, depreciation and amortization: operating income with depreciation added back. A rough measure of the cash the business itself makes, before paying lenders and taxes.">EBITDA</dfn> (say "ee-bit-dah"): operating income (EBIT, Lesson 12.1) with depreciation added back. It's a rough measure of the cash the business itself makes, before lenders and taxes. They divide enterprise value (Lesson 15.1) by it to get <dfn class="term" data-def="Enterprise value divided by EBITDA. The most common multiple for buying whole companies.">EV/EBITDA</dfn>.</p>
+      <div class="formula reveal">EBITDA <span class="op">=</span> operating income <span class="op">+</span> depreciation</div>
+      <div class="formula reveal">EV/EBITDA <span class="op">=</span> <span class="frac"><span>enterprise value</span><span>EBITDA</span></span></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your shops' EBITDA</dt><dd>Operating profit $95,000 + depreciation on tools and the van $15,000 = <b>$110,000</b>.</dd></div></dl></div>
+      <p class="reveal"><b>Match the top and the bottom.</b> EBITDA comes before interest, so it belongs to lenders and owners together; pair it with enterprise value, which is also for both. Earnings per share come after interest, so they belong only to owners; pair them with the share price.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Pick good comps, then the middle one</h3>
+      <p class="reveal"><dfn class="term" data-def="Similar companies used to price another one: same industry, similar size, growth and risk. Also called comps.">Comparable companies</dfn> should be in the same industry, with similar size, growth and risk. Prices paid to buy whole similar companies are called <dfn class="term" data-def="Prices paid in past purchases of whole companies similar to the one you're pricing.">precedent transactions</dfn>. Then use the <dfn class="term" data-def="The middle number once a list is sorted from smallest to largest. One extreme number can't pull it far.">median</dfn>, the middle number once sorted, so one strange sale can't pull the answer too far.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Shop A</dt><dd>Sold for $500,000; EBITDA $100,000: <span class="frac"><span>$500,000</span><span>$100,000</span></span> = <b>5x</b>.</dd></div><div><dt>Shop B</dt><dd>Sold for $480,000; EBITDA $80,000: <span class="frac"><span>$480,000</span><span>$80,000</span></span> = <b>6x</b>.</dd></div><div><dt>Shop C</dt><dd>Sold for $840,000; EBITDA $120,000: <span class="frac"><span>$840,000</span><span>$120,000</span></span> = <b>7x</b>.</dd></div><div><dt>Left out</dt><dd>An electric bike startup sold at 15x. It's growing fast and isn't like your shops, so it's not a comp.</dd></div><div><dt>Median</dt><dd>5x, 6x, 7x: the middle is <b>6x</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Apply it</h3>
+      <p class="reveal">Multiply the multiple by your own number. Then, just like in Lesson 15.1, subtract debt and add cash to get the owners' share.</p>
+      <div class="formula reveal">Enterprise value <span class="op">=</span> multiple <span class="op">×</span> your EBITDA</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your shops</dt><dd>6 × $110,000 = <b>$660,000</b>. Your DCF said $660,945. Two methods, nearly the same answer.</dd></div><div><dt>Owners' share</dt><dd>$660,000 − $40,000 loan + $20,000 cash = <b>$640,000</b>.</dd></div><div><dt>The chain's offer</dt><dd><span class="frac"><span>$500,000</span><span>$110,000</span></span> = about <b>4.5x</b>, below every shop that sold.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Why multiples differ</h3>
+      <p class="reveal">A higher multiple means investors pay more today for each dollar of profit. They do that when they expect that profit to grow faster, or when it's less risky. That's why a fast-growing software company can trade at a P/E of 40 while a steady utility trades at 15.</p>
+      <p class="reveal">The weak spot: comps tell you what others are paying, not what a business is truly worth. If the whole market is overpriced, the comps are too. In the 1999 to 2000 dot-com bubble, many internet stocks looked "cheap" next to other internet stocks, and then most of them crashed.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Put it on a football field</h3>
+      <p class="reveal">Bankers show every method's range on one chart called a <dfn class="term" data-def="A chart of horizontal bars showing the value range from each method, like DCF and comps, so you can see where they overlap.">football field</dfn>, because the bars look like a field's yard lines. Where the bars overlap is the fair price. Slide the multiple to move your comps value.</p>
+      <div class="md-card reveal" id="cm">
+        <label class="md-lab" for="cm-m">EV/EBITDA multiple <b id="cm-m-v">6x</b></label><input type="range" id="cm-m" min="4" max="8" step="0.5" value="6">
+        <div id="cm-out" aria-hidden="true"></div>
+        <p class="cm-msg" id="cm-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a football field for your shops. The blue bar is your DCF from 12% down to 8% (Lesson 15.1). The green bar is the comps from 5x to 7x your $110,000 EBITDA. The dot is the multiple you picked. The dashed line is the chain's $500,000 offer.</p>
+
+<!-- @hear -->
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Comps <em>table.</em></h2>
+      <p class="lead reveal">Eight questions an analyst answers while building a comps table. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="mx">
+        <div class="fd-top">
+          <div><small id="mx-round">Question 1 of 8</small><b id="mx-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="mx-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="mx-facts"></ul>
+        <div class="sd-opts" id="mx-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="mx-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="mx-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="mx-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up companies. Each lists the numbers, then asks one question.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every comps valuation follows four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Pick comparable companies</h3>
+      <div class="formula reveal">Same industry, similar size, growth and risk</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Kept</dt><dd>Three local bike shops. <b>Left out:</b> the fast-growing electric bike startup.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Find each one's multiple</h3>
+      <div class="formula reveal"><span class="frac"><span>enterprise value</span><span>EBITDA</span></span> for each comp</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The three shops</dt><dd>5x, 6x and 7x.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Pick the median</h3>
+      <div class="formula reveal">Sort them and take the middle one</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Median</dt><dd>6x.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Apply it to your company</h3>
+      <div class="formula reveal">Multiple × your EBITDA, then − debt + cash</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your shops</dt><dd>6 × $110,000 = $660,000; owners' share $640,000.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: answering the chain</h3>
+      <p class="reveal">The chain's buyer says, "Your DCF is just guesses." Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>Your DCF:</b> $660,945 at 10%, from about $523,441 at 12% to $890,765 at 8%.</li>
+        <li><b>Comps:</b> 5x to 7x your $110,000 EBITDA, so $550,000 to $770,000.</li>
+        <li><b>The offer:</b> $500,000.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Find the overlap.</b> The DCF range ($523,441 to $890,765) and the comps range ($550,000 to $770,000) overlap from $550,000 to $770,000.</li>
+        <li><b>Check the offer.</b> $500,000 is below both ranges. It's about 4.5x EBITDA, lower than any shop that sold.</li>
+        <li><b>Pick your ask.</b> Both middles land near $660,000: 6 × $110,000 = $660,000, and the DCF at 10% gives $660,945.</li>
+        <li><b>Expect pushback.</b> The buyer may argue your shops deserve a lower multiple, maybe because they're smaller than Shop C. Be ready with your growth and how steady your profit is.</li>
+        <li><b>The answer.</b> Counter at about $660,000 and show the football field. Two methods agreeing makes your number much harder to argue with.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Weighing a dinosaur <em>with living animals.</em></h2>
+      <p class="lead reveal">Nobody can put a dinosaur on a scale. So in 2012, scientists measured how thick the leg bones are on hundreds of living animals, from mice to elephants, and how much each animal weighs. Thicker bones go with heavier bodies in a steady pattern. Then they measured dinosaur bones and read the weight off that same pattern.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A chart with dots for a mouse, a dog, a horse and an elephant on a rising line: thicker leg bones, heavier animals. A star for a dinosaur sits on the same line past the elephant.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--good) 8%, var(--card))"/>
+        <path d="M110 330 H 840 M110 330 V 50" stroke="var(--ink-3)" stroke-width="2.5"/>
+        <path d="M130 318 L 820 70" stroke="var(--line)" stroke-width="4" stroke-dasharray="8 8"/>
+        <g fill="var(--needs)"><circle cx="170" cy="304" r="10"/><circle cx="330" cy="246" r="12"/><circle cx="500" cy="186" r="14"/><circle cx="640" cy="134" r="16"/></g>
+        <g class="cm-star"><path d="M780 58 l 12 26 28 3 -21 19 6 28 -25 -14 -25 14 6 -28 -21 -19 28 -3 Z" fill="var(--wants)"/></g>
+        <g font-size="15" fill="var(--ink-2)" text-anchor="middle">
+          <text x="170" y="282">mouse</text><text x="330" y="222">dog</text><text x="500" y="160">horse</text><text x="640" y="106">elephant</text>
+        </g>
+        <text x="810" y="178" text-anchor="middle" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Dinosaur</text>
+        <text x="475" y="366" text-anchor="middle" font-size="15" fill="var(--ink-2)">Thicker leg bones →</text>
+        <text x="60" y="190" text-anchor="middle" font-size="15" fill="var(--ink-2)" transform="rotate(-90 60 190)">Heavier body →</text>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Living animals (blue) show how body weight rises with leg bone thickness. The dinosaur (orange star) is weighed by placing its bones on the same pattern.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The living animals are the comps; bone thickness is the profit; body weight is the price. Measure the thing you can see, then borrow the pattern from similar things you can weigh.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Multiple</b> = <span class="frac"><span>price</span><span>profit</span></span>: dollars paid per dollar of profit.</li>
+          <li><b>P/E</b> = <span class="frac"><span>share price</span><span>earnings per share</span></span>: <span class="frac"><span>$30</span><span>$2</span></span> = 15.</li>
+          <li><b>EBITDA</b> = operating income + depreciation: $95,000 + $15,000 = $110,000.</li>
+          <li><b>EV/EBITDA</b> for whole companies. Match: EV with EBITDA (before interest), price with EPS (after interest).</li>
+          <li><b>Comps</b>: same industry, size, growth, risk. Use the <b>median</b>: 5x, 6x, 7x → 6x.</li>
+          <li><b>Apply</b>: 6 × $110,000 = $660,000; − debt + cash = $640,000.</li>
+          <li>Faster growth or less risk → <b>higher multiple</b>. Comps show what others pay, not true worth.</li>
+          <li><b>Football field</b>: show each method's range; the overlap is the fair price.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. A stock at $40 with earnings per share of $2 has a P/E of <input type="text" class="blank" data-answer="20|twenty" inputmode="numeric" aria-label="Blank 1">.</div>
+        <div>2. Operating profit of $70,000 plus $10,000 of depreciation is an EBITDA of <input type="text" class="blank" data-answer="80000|$80,000|80,000|$80000" inputmode="numeric" aria-label="Blank 2"> dollars.</div>
+        <div>3. Comps of 4x, 8x and 9x have a median of <input type="text" class="blank" data-answer="8|8x|eight" aria-label="Blank 3">.</div>
+        <div>4. Pair EBITDA with enterprise <input type="text" class="blank" data-answer="value" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>P/E hunt</h3>
+          <p>Each person looks up the P/E of two companies in the same industry, like two airlines or two soda makers. Why is one higher?</p>
+        </div>
+        <div class="reveal">
+          <h3>Comp or not?</h3>
+          <p>One person names a company. The others call out good and bad comps for it and explain why in one sentence each.</p>
+        </div>
+        <div class="reveal">
+          <h3>Price a used car</h3>
+          <p>Look up three listings of the same model and year. Divide each price by its miles left or its age. That's a comps table for cars.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Where have you already priced something by comparing it with similar things: a car, a phone, an apartment?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Would you trust a DCF or comps more? What would make you trust one over the other?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">If every similar company is overpriced, how would you notice?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're an investment banking analyst</h3>
+      <div class="reveal">
+        <p>A client wants to sell their chain of gyms. Your managing director wants a comps value by tomorrow. Here's the situation:</p>
+        <ul>
+          <li><b>The gyms' EBITDA:</b> $8 million.</li>
+          <li><b>Five recent gym sales, EV/EBITDA:</b> 7x, 8x, 9x, 10x and 14x. The 14x was a fast-growing luxury chain.</li>
+          <li><b>Debt:</b> $12 million. <b>Cash:</b> $2 million.</li>
+          <li><b>The owner hopes for:</b> $100 million for the whole business.</li>
+        </ul>
+        <p><b>Your task:</b> find the median multiple and the enterprise value. What range would you show? What's the owners' share? What multiple would $100 million take, and what would you tell the owner?</p>
+        <textarea id="job-answer" placeholder="Write your note to the managing director…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Median:</b> sorted, 7x, 8x, 9x, 10x, 14x; the middle is <b>9x</b>. Enterprise value: 9 × $8 million = <b>$72 million</b>.</p>
+            <p><b>Range:</b> the luxury chain isn't a good comp, so use 8x to 10x: <b>$64 million to $80 million</b>.</p>
+            <p><b>Owners' share:</b> $72 million − $12 million + $2 million = <b>$62 million</b>.</p>
+            <p><b>The owner's hope:</b> <span class="frac"><span>$100 million</span><span>$8 million</span></span> = <b>12.5x</b>, above every typical sale. Only a fast-growing chain got more. Unless the client can show growth like that, we should set expectations around $64 to $80 million.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Two methods, <em>one fair price.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on the income statement, the stock market, and valuing a company with DCF, and leads to mergers and buyouts">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../income-statement/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The income statement</text><text x="20" y="86">Unit 12 · operating income</text></a>
+          <a href="../risk-return/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Risk and return</text><text x="20" y="186">Unit 14 · what investors want</text></a>
+          <a href="../dcf/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Valuing with DCF</text><text x="20" y="286">Unit 15 · enterprise value</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Comps and multiples</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Mergers and buyouts</text><text x="690" y="186">Coming soon · Unit 15</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 12</span><b>The income statement</b></li>
+        <li><span class="muted small">Back · Unit 14</span><b>Risk and return</b></li>
+        <li><span class="muted small">Back · Unit 15</span><b>Valuing a company with DCF</b></li>
+        <li class="here"><span class="small">You are here</span><b>Comparables and multiples</b></li>
+        <li><span class="muted small">Coming soon · Unit 15</span><b>Mergers and buyouts</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../dcf/">Revisit: Valuing a company with DCF <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>

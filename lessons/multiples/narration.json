@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "The chain says your D C F is just guesses. So check what real buyers paid. Three bike shops near you sold at five, six and seven times their yearly operating income.",
+  "That ratio is a multiple: a price divided by a measure of profit. The first shop sold for five hundred thousand dollars and made one hundred thousand. Five hundred thousand over one hundred thousand is five times.",
+  "For stocks, the common multiple is the P E ratio: share price over earnings per share. A thirty dollar stock earning two dollars a share has a P E of fifteen.",
+  "For whole businesses, bankers use E V over EBITDA. EBITDA is operating income plus depreciation. Your shops: ninety five thousand plus fifteen thousand, or one hundred ten thousand dollars.",
+  "Pick comps in the same industry, with similar size, growth and risk, and use the median. Five, six and seven times gives six. Six times one hundred ten thousand is six hundred sixty thousand, almost exactly your D C F.",
+  "Faster growth or lower risk earns a higher multiple. But comps only show what others pay. If the whole market is overpriced, like in the dot com bubble, the comps are too.",
+  "Bankers put every method on one football field chart. Your D C F and your comps overlap well above the five hundred thousand dollar offer. So counter near six hundred sixty thousand, with two methods behind you."
+ ]
+}
