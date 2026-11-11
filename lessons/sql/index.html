@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/sql/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SQL for Finance · FinancedHub</title>
+  <meta name="description" content="Unit 17, Lesson 3: SQL, the language for asking databases questions: tables, rows and columns, SELECT and FROM, WHERE with AND, ORDER BY and LIMIT, COUNT, SUM and AVG, GROUP BY, JOIN, and the order the clauses go in. Play: Query check, eight questions about what SQL queries return.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="SQL for Finance">
+  <meta property="og:description" content="Unit 17, Lesson 3: SQL, the language for asking databases questions: tables, rows and columns, SELECT and FROM, WHERE with AND, ORDER BY and LIMIT, COUNT, SUM and AVG, GROUP BY, JOIN, and the order the clauses go in. Play: Query check, eight questions about what SQL queries return.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611112131">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="lesson.css?v=202611112131">
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/lessons/sql/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/sql/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/sql/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/sql/">
+  <meta property="og:url" content="https://financedhub.com/lessons/sql/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Home</a><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about">About</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 17 · Lesson 3</span> Excel, Python and SQL</div>
+        <h1 class="reveal">The data is already there. <em>Learn to ask it questions.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The bike chain (Lessons 16.1 to 16.3) saves every sale in a <span class="mark">database</span>: which store, which month, how much. Your manager asks: <span class="mark">"How much did Austin sell this quarter?"</span> Nobody emails you a spreadsheet. The answer sits in a table with millions of rows, and the way to get it is <b>SQL</b>, a language for asking databases questions. Almost every bank, fund and company keeps its data this way, and SQL is one of the skills finance job posts ask for most.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>SQL</b> (say "sequel" or "S-Q-L") is a language for pulling data out of a database: the rows you want, added up the way you want.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Company data is too big for a spreadsheet. SQL fetches just what you need, often in seconds, from millions of rows.</p></div>
+          <div class="reveal"><div class="word">How</div><p>You write a <b>query</b>: SELECT the columns, FROM a table, WHERE rows match a rule, then sort, count or add them up.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Data analysts</b> and <b>FP&amp;A analysts</b> pull reports with it. <b>Risk</b> and <b>compliance</b> teams search trades. <b>Quants</b> load prices before using Python.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A database cylinder holding the sales table sends a query, SELECT SUM of amount where the store is Austin, and gets back one answer: $3,900.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Ask, and it answers</text>
+          <g fill="color-mix(in srgb, var(--needs) 14%, var(--card))" stroke="var(--needs)" stroke-width="3">
+            <path d="M100 120 V 230 A 70 22 0 0 0 240 230 V 120"/>
+            <ellipse cx="170" cy="120" rx="70" ry="22"/>
+            <path d="M100 160 A 70 22 0 0 0 240 160 M100 196 A 70 22 0 0 0 240 196" fill="none"/>
+          </g>
+          <text x="170" y="282" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)">sales</text>
+          <text x="170" y="304" text-anchor="middle" font-size="15" fill="var(--ink-2)">millions of rows</text>
+          <path class="sq-flow" d="M248 175 H 280" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="8 7"/>
+          <path d="M280 166 L 296 175 L 280 184 Z" fill="var(--ink-3)"/>
+          <rect x="300" y="110" width="200" height="130" rx="16" fill="var(--card)" stroke="var(--good)" stroke-width="3"/>
+          <text x="400" y="150" text-anchor="middle" font-size="14" fill="var(--ink-2)">Austin, this quarter</text>
+          <text x="400" y="200" text-anchor="middle" font-family="Fraunces, serif" font-size="40" fill="var(--good)">$3,900</text>
+          <rect x="40" y="340" width="440" height="120" rx="16" fill="#1f2a2e"/>
+          <g font-family="ui-monospace, Menlo, monospace" font-size="17">
+            <text x="64" y="380" fill="#c792ea">SELECT <tspan fill="#e8e3d6">SUM(amount)</tspan></text>
+            <text x="64" y="408" fill="#c792ea">FROM <tspan fill="#e8e3d6">sales</tspan></text>
+            <text x="64" y="436" fill="#c792ea">WHERE <tspan fill="#e8e3d6">store = </tspan><tspan fill="#f2c14e">'Austin'</tspan>;</text>
+          </g>
+          <text x="260" y="512" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">millions of rows in; one answer out</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a database of sales on the left, and the answer on the right. The dark box is the SQL query that asks for it: add up the amount column, from the sales table, but only rows where the store is Austin. The answer is $3,900.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it</div>
+      <h2 class="reveal">A database is a set of <em>tables.</em></h2>
+      <p class="lead reveal">A <dfn class="term" data-def="An organized store of data, usually many tables, that programs can search and update. Banks and companies keep their records in databases.">database</dfn> keeps data in <b>tables</b>. Each row is one record, like one sale; each column is one kind of fact, like the store or the amount. <dfn class="term" data-def="Structured Query Language: the standard language for pulling and summarizing data from databases.">SQL</dfn> is how you ask for it, and each question is a <dfn class="term" data-def="One request written in SQL, like SELECT SUM(amount) FROM sales. The database answers with a table of results.">query</dfn>. Here is the chain's sales table for one quarter. A real one has millions of rows; the rules are the same.</p>
+      <div class="sq-wrap reveal"><table class="sq-tbl"><tr><th>store</th><th>month</th><th>amount</th></tr><tr><td>Austin</td><td>Jan</td><td>1200</td></tr><tr><td>Denver</td><td>Jan</td><td>900</td></tr><tr><td>Miami</td><td>Jan</td><td>1500</td></tr><tr><td>Austin</td><td>Feb</td><td>1400</td></tr><tr><td>Denver</td><td>Feb</td><td>700</td></tr><tr><td>Miami</td><td>Feb</td><td>1600</td></tr><tr><td>Austin</td><td>Mar</td><td>1300</td></tr><tr><td>Denver</td><td>Mar</td><td>1100</td></tr><tr><td>Miami</td><td>Mar</td><td>1700</td></tr></table></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the sales table: 9 rows (one per store per month) and 3 columns. Amounts are in dollars.</p>
+
+      <h3 class="reveal" style="margin-top:56px">SELECT, FROM and WHERE</h3>
+      <p class="reveal">Every query starts with <b>SELECT</b> (which columns) and <b>FROM</b> (which table). * means every column. <b>WHERE</b> keeps only the rows that pass a test. Text goes in single quotes, like 'Austin', and a semicolon ends the query. <b>AND</b> joins two tests: a row must pass both. &gt; means more than and &lt; means less than; a value equal to the number doesn't pass.</p>
+      <div class="code reveal"><code>SELECT month, amount
+FROM sales
+WHERE store = 'Austin';</code><samp>Jan  1200
+Feb  1400
+Mar  1300</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>SELECT month, amount</dt><dd>Only those two columns come back.</dd></div><div><dt>WHERE store = 'Austin'</dt><dd>Keeps <b>3</b> of the 9 rows.</dd></div><div><dt>Add AND amount &gt; 1250</dt><dd>Only Feb (1400) and Mar (1300) pass both tests.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">ORDER BY and LIMIT</h3>
+      <p class="reveal"><b>ORDER BY</b> sorts the results; add <b>DESC</b> for biggest first. <b>LIMIT</b> keeps only the first few rows. Together they answer "what were our top 3?"</p>
+      <div class="code reveal"><code>SELECT store, month, amount
+FROM sales
+ORDER BY amount DESC
+LIMIT 3;</code><samp>Miami  Mar  1700
+Miami  Feb  1600
+Miami  Jan  1500</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The top 3 months</dt><dd>All <b>Miami</b>: 1700, 1600 and 1500.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Adding up: COUNT, SUM, AVG and GROUP BY</h3>
+      <p class="reveal">SQL can summarize as it fetches. <b>COUNT(*)</b> counts rows, <b>SUM()</b> adds a column, and <b>AVG()</b> averages it. <dfn class="term" data-def="Splits rows into groups that share a value, like each store, so SUM, COUNT or AVG gives one answer per group.">GROUP BY</dfn> splits the rows into groups first, so you get one answer per group, like a totals row for each store.</p>
+      <div class="code reveal"><code>SELECT store, SUM(amount), AVG(amount)
+FROM sales
+GROUP BY store;</code><samp>Austin  3900  1300
+Denver  2700   900
+Miami   4800  1600</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>COUNT(*) FROM sales</dt><dd><b>9</b> rows.</dd></div><div><dt>Austin's SUM</dt><dd>1200 + 1400 + 1300 = <b>3900</b>, the answer to your manager's question.</dd></div><div><dt>Austin's AVG</dt><dd><span class="frac"><span>3900</span><span>3</span></span> = <b>1300</b> a month.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="sq">
+        <p class="md-lab">Pick a question to ask the sales table</p>
+        <div class="sq-picks" role="group" aria-label="Queries">
+          <button type="button" class="sm-btn" data-q="0">Austin only</button>
+          <button type="button" class="sm-btn" data-q="1">Top 3</button>
+          <button type="button" class="sm-btn" data-q="2">Total by store</button>
+          <button type="button" class="sm-btn" data-q="3">Over $1,250</button>
+        </div>
+        <div class="code"><code id="sq-code"></code></div>
+        <div class="sq-wrap"><table class="sq-tbl" id="sq-out"></table></div>
+        <p class="op-msg" id="sq-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> four queries on the same 9-row sales table. Pick one to see the SQL and the table the database sends back.</p>
+
+      <h3 class="reveal" style="margin-top:56px">JOIN: connect two tables</h3>
+      <p class="reveal">Databases split data into many tables so nothing is typed twice. <dfn class="term" data-def="Combines rows from two tables that share a value in a column, like the store name, so you can use facts from both.">JOIN</dfn> puts them back together by matching a column they share.</p>
+      <div class="code reveal"><code>SELECT stores.manager, SUM(sales.amount)
+FROM sales
+JOIN stores ON sales.store = stores.store
+GROUP BY stores.manager;</code><samp>Kim     2700
+Lopez   4800
+Rivera  3900</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The stores table</dt><dd>Austin: manager Rivera. Denver: Kim. Miami: Lopez.</dd></div><div><dt>Matched on store</dt><dd>Each sale finds its store's manager, so Lopez's stores sold <b>4800</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The order clauses go in</h3>
+      <div class="formula reveal">SELECT → FROM → JOIN → WHERE → GROUP BY → ORDER BY → LIMIT</div>
+      <p class="reveal">You can skip any clause you don't need, but the ones you use must go in this order.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it</div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it</div>
+      <h2 class="reveal">Query <em>check.</em></h2>
+      <p class="lead reveal">Eight questions about the same 9-row sales table, shown here. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="qy">
+        <div class="fd-top">
+          <div><small id="qy-round">Question 1 of 8</small><b id="qy-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="qy-score">0 of 0</b></div>
+        </div>
+        <div class="sq-wrap sq-mini"><table class="sq-tbl"><tr><th>store</th><th>Jan</th><th>Feb</th><th>Mar</th></tr><tr><td>Austin</td><td>1200</td><td>1400</td><td>1300</td></tr><tr><td>Denver</td><td>900</td><td>700</td><td>1100</td></tr><tr><td>Miami</td><td>1500</td><td>1600</td><td>1700</td></tr></table></div>
+        <div class="code"><code id="qy-code"></code></div>
+        <div class="sd-opts" id="qy-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="qy-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="qy-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="qy-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the sales amounts laid out by store and month (each number is one row of the sales table), then a query and one question about it.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down</div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">To turn any question into a query, take four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Which table?</h3>
+      <div class="formula reveal">FROM the table that holds the facts</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Austin's quarter</dt><dd>FROM sales.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Which rows?</h3>
+      <div class="formula reveal">WHERE keeps the rows that pass every test</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The filter</dt><dd>WHERE store = 'Austin': 3 rows.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Summarize?</h3>
+      <div class="formula reveal">SUM, COUNT or AVG, with GROUP BY for one answer per group</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The total</dt><dd>SELECT SUM(amount): 3900.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Sort and trim</h3>
+      <div class="formula reveal">ORDER BY … DESC, then LIMIT</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>One number</dt><dd>Nothing to sort here: the answer is one row.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: Denver's slow months</h3>
+      <p class="reveal">The regional manager asks: "Which months did Denver sell less than $1,000?" Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>The table:</b> sales, with store, month and amount.</li>
+        <li><b>Two tests:</b> the store is Denver, and the amount is under 1000.</li>
+        <li><b>Wanted:</b> the months, smallest first.</li>
+      </ul>
+      <div class="code reveal"><code>SELECT month, amount
+FROM sales
+WHERE store = 'Denver' AND amount &lt; 1000
+ORDER BY amount;</code><samp>Feb  700
+Jan  900</samp></div>
+      <ol class="steps reveal">
+        <li><b>Table.</b> FROM sales.</li>
+        <li><b>Rows.</b> Denver has Jan 900, Feb 700 and Mar 1100. With AND, both tests must pass, so Mar drops out.</li>
+        <li><b>Sort.</b> ORDER BY amount with no DESC puts the smallest first.</li>
+        <li><b>The answer.</b> February ($700) and January ($900). Denver picked up in March ($1,100), which is worth telling the manager too.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link</div>
+      <h2 class="reveal">A bird that <em>queries its memory.</em></h2>
+      <p class="lead reveal">Each fall, a Clark's nutcracker, a bird of western mountains, hides tens of thousands of pine seeds in thousands of small caches spread across the slopes. Months later, often under snow, it flies back and digs up the right spots, using rocks and trees as landmarks.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A mountain slope dotted with dozens of hidden seed caches. A nutcracker digs up a few highlighted ones.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 260 L 220 120 L 360 200 L 520 90 L 700 210 L 900 150 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#dfe6ea"/>
+        <path d="M0 300 Q 450 240 900 290 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#b8a07e"/>
+        <g fill="#7a5a3a" opacity=".55"><circle cx="60" cy="320" r="5"/><circle cx="110" cy="345" r="5"/><circle cx="170" cy="318" r="5"/><circle cx="230" cy="352" r="5"/><circle cx="290" cy="330" r="5"/><circle cx="340" cy="360" r="5"/><circle cx="400" cy="325" r="5"/><circle cx="460" cy="350" r="5"/><circle cx="560" cy="330" r="5"/><circle cx="610" cy="360" r="5"/><circle cx="660" cy="320" r="5"/><circle cx="720" cy="348" r="5"/><circle cx="770" cy="325" r="5"/><circle cx="830" cy="355" r="5"/><circle cx="140" cy="370" r="5"/><circle cx="520" cy="372" r="5"/><circle cx="860" cy="318" r="5"/></g>
+        <g class="sq-pick" fill="none" stroke="var(--good)" stroke-width="4"><circle cx="250" cy="322" r="13"/><circle cx="510" cy="335" r="13"/><circle cx="700" cy="366" r="13"/></g>
+        <g fill="var(--good)"><circle cx="250" cy="322" r="5"/><circle cx="510" cy="335" r="5"/><circle cx="700" cy="366" r="5"/></g>
+        <g transform="translate(470 250)"><ellipse cx="0" cy="0" rx="28" ry="17" fill="#8a8f94"/><circle cx="24" cy="-12" r="12" fill="#9ca1a6"/><path d="M34 -14 L 52 -9 L 34 -7 Z" fill="#3e3a36"/><path d="M-26 -4 L -50 6 L -22 8 Z" fill="#2e2e2e"/><path d="M-10 -8 Q 4 -20 14 -6" fill="#2e2e2e"/><circle cx="27" cy="-14" r="2.2" fill="#1d1d1d"/></g>
+        <g text-anchor="middle">
+          <text x="170" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Stored</text><text x="170" y="84" font-size="15" fill="var(--ink-2)">thousands of caches</text>
+          <text x="730" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Retrieved</text><text x="730" y="84" font-size="15" fill="var(--ink-2)">just the ones it needs</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Brown dots are seed caches hidden across a slope; the green circles are the few the nutcracker is digging up today.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The bird doesn't dig up the whole mountain; it goes straight to the caches it wants. A good query does the same: the database holds everything, and WHERE takes you straight to the rows you need.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes</div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Database</b> = tables. Row = one record; column = one kind of fact. A <b>query</b> asks a question in <b>SQL</b>.</li>
+          <li><b>SELECT</b> columns <b>FROM</b> table <b>WHERE</b> test. * = every column. Text in 'single quotes'. AND = both tests.</li>
+          <li>Austin only: Jan 1200, Feb 1400, Mar 1300.</li>
+          <li><b>ORDER BY</b> amount <b>DESC</b> <b>LIMIT</b> 3: Miami 1700, 1600, 1500.</li>
+          <li><b>COUNT(*)</b> = 9 rows. <b>SUM</b> Austin = 3900. <b>AVG</b> = <span class="frac"><span>3900</span><span>3</span></span> = 1300.</li>
+          <li><b>GROUP BY</b> store: Austin 3900, Denver 2700, Miami 4800.</li>
+          <li><b>JOIN</b> matches two tables on a shared column (store → manager).</li>
+          <li>Order: SELECT, FROM, JOIN, WHERE, GROUP BY, ORDER BY, LIMIT.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. To keep only rows that pass a test, use <input type="text" class="blank" data-answer="where" aria-label="Blank 1">.</div>
+        <div>2. To get one total per store, use GROUP <input type="text" class="blank" data-answer="by" aria-label="Blank 2"> store.</div>
+        <div>3. SELECT COUNT(*) FROM sales returns <input type="text" class="blank" data-answer="9|nine" inputmode="numeric" aria-label="Blank 3"> for our table.</div>
+        <div>4. To sort biggest first, add <input type="text" class="blank" data-answer="desc|descending" aria-label="Blank 4"> after ORDER BY amount.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together</div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Human database</h3>
+          <p>Write each sale on a card. One person reads out a query; the others hold up only the cards that match, then add them up.</p>
+        </div>
+        <div class="reveal">
+          <h3>Question to query</h3>
+          <p>Take turns asking a plain question about the sales table, like "Which store sold the least in February?" The others write the SQL.</p>
+        </div>
+        <div class="reveal">
+          <h3>Try it for real</h3>
+          <p>Search for a free online SQL playground, paste in the sales table, and run the lesson's queries. Then invent your own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own</div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">If your bank account were a table, what query would you write to see where your money went last month?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Spreadsheets, Python or SQL: which one do you want to get good at first, and why?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Companies know a lot from data like this. What data about you would you not want a company to query?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a data analyst at the bike chain</h3>
+      <div class="reveal">
+        <p>The CFO is meeting store managers tomorrow and sends you a message: "Which store had the highest total sales this quarter, and what was its average month?" Here's what you have:</p>
+        <ul>
+          <li><b>The table:</b> sales, with store, month and amount (the 9 rows in this lesson).</li>
+          <li><b>Wanted:</b> one row, with the store, its total and its average.</li>
+        </ul>
+        <p><b>Your task:</b> write one query that answers both, and the reply you'd send.</p>
+        <textarea id="job-answer" placeholder="Write your query and reply…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <div class="code"><code>SELECT store, SUM(amount), AVG(amount)
+FROM sales
+GROUP BY store
+ORDER BY SUM(amount) DESC
+LIMIT 1;</code><samp>Miami  4800  1600</samp></div>
+            <p><b>To the CFO:</b> Miami led the quarter with $4,800 in sales, an average of $1,600 a month, and it grew every month (1500, 1600, 1700). Austin was second at $3,900.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Where this <em>leads.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on spreadsheets for finance, Python for finance, and the income statement. It leads to a finance resume and LinkedIn.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../spreadsheets/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Spreadsheets for finance</text><text x="20" y="86">Unit 17 · SUM and AVERAGE</text></a>
+          <a href="../python/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Python for finance</text><text x="20" y="186">Unit 17 · tables in code</text></a>
+          <a href="../income-statement/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">The income statement</text><text x="20" y="286">Unit 12 · revenue is a SUM</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">SQL for finance</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Resume and LinkedIn</text><text x="690" y="186">Coming soon · Unit 18</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and where it leads.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 17</span><b>Spreadsheets for finance</b></li>
+        <li><span class="muted small">Back · Unit 17</span><b>Python for finance</b></li>
+        <li><span class="muted small">Back · Unit 12</span><b>The income statement</b></li>
+        <li class="here"><span class="small">You are here</span><b>SQL for finance</b></li>
+        <li><span class="muted small">Coming soon · Unit 18</span><b>A finance resume and LinkedIn</b></li>
+      </ul>
+      <p class="reveal" style="max-width:680px;margin-top:32px">That's the analyst's toolkit: spreadsheets to model, Python to repeat and scale, SQL to pull the data. Unit 18 turns it into a job: your resume, your network and the interview.</p>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../python/">Revisit: Python for finance <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about">About</a><a href="../../contact">Contact</a><a href="../../legal/privacy">Privacy</a><a href="../../legal/terms">Terms</a><a href="../../legal/cookies">Cookies and storage</a><a href="../../credits">Credits</a></nav>
+    <p><a class="foot-lang" href="../../es/lessons/sql/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
+    <p class="disclaimer">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202611112131"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611112131"></script>
+<script src="../../assets/js/auth.js?v=202611112131"></script>
+<script src="../../assets/js/site.js?v=202611112131"></script>
+<script src="../../assets/js/lesson-kit.js?v=202611112131"></script>
+<script src="lesson.js?v=202611112131"></script>
+</body>
+</html>

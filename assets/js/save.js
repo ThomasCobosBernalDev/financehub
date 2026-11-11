@@ -176,7 +176,7 @@
     L(16, 3, "u16-derivatives", t("Options and futures", "Opciones y futuros"), t("Contracts on what happens next", "Contratos sobre lo que va a pasar"), { needs: ["u14-risk-return"], href: "lessons/derivatives/" }),
     L(17, 1, "u17-excel", t("Spreadsheets for finance", "Hojas de cálculo para finanzas"), t("Cells, formulas and your first model", "Celdas, fórmulas y tu primer modelo"), { needs: ["u10-percent-growth"], href: "lessons/spreadsheets/" }),
     L(17, 2, "u17-python", t("Python for finance", "Python para finanzas"), t("Let code do the math for you", "Deja que el código haga las cuentas"), { needs: ["u17-excel"], href: "lessons/python/" }),
-    L(17, 3, "u17-sql", t("SQL for finance", "SQL para finanzas"), t("Ask a database questions", "Hazle preguntas a una base de datos"), { needs: ["u17-excel"] }),
+    L(17, 3, "u17-sql", t("SQL for finance", "SQL para finanzas"), t("Ask a database questions", "Hazle preguntas a una base de datos"), { needs: ["u17-excel"], href: "lessons/sql/" }),
     L(18, 1, "u18-resume", t("A finance resume and LinkedIn", "Currículum y LinkedIn para finanzas"), t("One page that gets you the call", "Una página que te consigue la llamada"), { needs: ["u16-wall-street"] }),
     L(18, 2, "u18-recruiting", t("Networking and recruiting", "Contactos y reclutamiento"), t("Coffee chats, timelines and internships", "Charlas, fechas y prácticas"), { needs: ["u18-resume"] }),
     L(18, 3, "u18-interviews", t("Acing the interview", "Cómo destacar en la entrevista"), t("Your story and the technical questions", "Tu historia y las preguntas técnicas"), { needs: ["u15-dcf", "u12-three-statements"] }),
@@ -343,6 +343,7 @@
     ["hedge-master", "derivatives", t("Hedge Master", "Domina las coberturas"), t("Answer all 8 questions right in Derivatives desk.", "Responde bien las 8 preguntas del juego Mesa de derivados.")],
     ["formula-pro", "spreadsheets", t("Formula Pro", "Domina las fórmulas"), t("Answer all 8 questions right in Formula check.", "Responde bien las 8 preguntas del juego Revisa la fórmula.")],
     ["python-pro", "python", t("Python Pro", "Domina Python"), t("Answer all 8 questions right in Code check.", "Responde bien las 8 preguntas del juego Revisa el código.")],
+    ["query-pro", "sql", t("Query Pro", "Domina las consultas"), t("Answer all 8 questions right in Query check.", "Responde bien las 8 preguntas del juego Revisa la consulta.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

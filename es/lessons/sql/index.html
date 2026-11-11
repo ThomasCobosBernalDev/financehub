@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/sql/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SQL para finanzas · FinancedHub</title>
+  <meta name="description" content="Unidad 17, Lección 3: SQL, el lenguaje para hacerle preguntas a una base de datos: tablas, filas y columnas, SELECT y FROM, WHERE con AND, ORDER BY y LIMIT, COUNT, SUM y AVG, GROUP BY, JOIN y el orden de las cláusulas. Juega: Revisa la consulta, ocho preguntas sobre lo que devuelven consultas de SQL.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="SQL para finanzas">
+  <meta property="og:description" content="Unidad 17, Lección 3: SQL, el lenguaje para hacerle preguntas a una base de datos: tablas, filas y columnas, SELECT y FROM, WHERE con AND, ORDER BY y LIMIT, COUNT, SUM y AVG, GROUP BY, JOIN y el orden de las cláusulas. Juega: Revisa la consulta, ocho preguntas sobre lo que devuelven consultas de SQL.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202611112131">
+  <link rel="icon" href="../../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../../lessons/sql/lesson.css?v=202611112131">
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/es/lessons/sql/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/sql/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/sql/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/sql/">
+  <meta property="og:url" content="https://financedhub.com/es/lessons/sql/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Inicio</a><a href="../../course/">Curso</a><a href="../../certifications/">Certificaciones</a><a href="../../about">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 17 · Lección 3</span> Excel, Python y SQL</div>
+        <h1 class="reveal">Los datos ya están ahí. <em>Aprende a hacerles preguntas.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> La cadena de bicicletas (Lecciones 16.1 a 16.3) guarda cada venta en una <span class="mark">base de datos</span>: qué tienda, qué mes y cuánto. Tu gerente pregunta: <span class="mark">"¿Cuánto vendió Austin este trimestre?"</span> Nadie te manda una hoja de cálculo. La respuesta está en una tabla con millones de filas, y la forma de sacarla es <b>SQL</b>, un lenguaje para hacerle preguntas a una base de datos. Casi todos los bancos, fondos y empresas guardan sus datos así, y SQL es una de las habilidades que más piden los anuncios de trabajo en finanzas.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p><b>SQL</b> (se dice "ese-cu-ele" o, en inglés, "sequel") es un lenguaje para sacar datos de una base de datos: las filas que quieres, sumadas como quieres.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Los datos de una empresa son demasiado grandes para una hoja de cálculo. SQL trae solo lo que necesitas, muchas veces en segundos, de entre millones de filas.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Escribes una <b>consulta</b>: SELECT las columnas, FROM una tabla, WHERE las filas cumplen una regla, y luego ordenas, cuentas o sumas.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>En <b>análisis de datos</b> y <b>análisis financiero</b> sacan reportes con él. Los equipos de <b>riesgos</b> y de <b>cumplimiento</b> revisan operaciones. En <b>análisis cuantitativo</b> cargan precios antes de usar Python.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Un cilindro de base de datos con la tabla de ventas recibe una consulta, SELECT SUM de amount donde la tienda es Austin, y devuelve una sola respuesta: $3,900.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Pregunta, y responde</text>
+          <g fill="color-mix(in srgb, var(--needs) 14%, var(--card))" stroke="var(--needs)" stroke-width="3">
+            <path d="M100 120 V 230 A 70 22 0 0 0 240 230 V 120"/>
+            <ellipse cx="170" cy="120" rx="70" ry="22"/>
+            <path d="M100 160 A 70 22 0 0 0 240 160 M100 196 A 70 22 0 0 0 240 196" fill="none"/>
+          </g>
+          <text x="170" y="282" text-anchor="middle" font-size="18" font-weight="700" fill="var(--ink)">sales</text>
+          <text x="170" y="304" text-anchor="middle" font-size="15" fill="var(--ink-2)">millones de filas</text>
+          <path class="sq-flow" d="M248 175 H 280" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="8 7"/>
+          <path d="M280 166 L 296 175 L 280 184 Z" fill="var(--ink-3)"/>
+          <rect x="300" y="110" width="200" height="130" rx="16" fill="var(--card)" stroke="var(--good)" stroke-width="3"/>
+          <text x="400" y="150" text-anchor="middle" font-size="14" fill="var(--ink-2)">Austin, este trimestre</text>
+          <text x="400" y="200" text-anchor="middle" font-family="Fraunces, serif" font-size="40" fill="var(--good)">$3,900</text>
+          <rect x="40" y="340" width="440" height="120" rx="16" fill="#1f2a2e"/>
+          <g font-family="ui-monospace, Menlo, monospace" font-size="17">
+            <text x="64" y="380" fill="#c792ea">SELECT <tspan fill="#e8e3d6">SUM(amount)</tspan></text>
+            <text x="64" y="408" fill="#c792ea">FROM <tspan fill="#e8e3d6">sales</tspan></text>
+            <text x="64" y="436" fill="#c792ea">WHERE <tspan fill="#e8e3d6">store = </tspan><tspan fill="#f2c14e">'Austin'</tspan>;</text>
+          </g>
+          <text x="260" y="512" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">entran millones de filas; sale una respuesta</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> una base de datos de ventas a la izquierda y la respuesta a la derecha. El recuadro oscuro es la consulta de SQL que la pide: suma la columna amount (el monto), de la tabla sales (ventas), pero solo las filas donde la tienda es Austin. La respuesta es $3,900.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo</div>
+      <h2 class="reveal">Una base de datos es un conjunto <em>de tablas.</em></h2>
+      <p class="lead reveal">Una <dfn class="term" data-def="Un almacén ordenado de datos, por lo general muchas tablas, que los programas pueden buscar y actualizar. Los bancos y las empresas guardan sus registros en bases de datos.">base de datos</dfn> guarda los datos en <b>tablas</b>. Cada fila es un registro, como una venta; cada columna es un tipo de dato, como la tienda o el monto. <dfn class="term" data-def="Structured Query Language (lenguaje de consulta estructurado): el lenguaje estándar para sacar y resumir datos de una base de datos.">SQL</dfn> es la forma de pedirlos, y cada pregunta es una <dfn class="term" data-def="Una petición escrita en SQL, como SELECT SUM(amount) FROM sales. La base de datos responde con una tabla de resultados.">consulta</dfn>. Esta es la tabla de ventas de la cadena en un trimestre. Una real tiene millones de filas; las reglas son las mismas. Los nombres van en inglés, como en el trabajo: store es la tienda, month el mes y amount el monto.</p>
+      <div class="sq-wrap reveal"><table class="sq-tbl"><tr><th>store</th><th>month</th><th>amount</th></tr><tr><td>Austin</td><td>Jan</td><td>1200</td></tr><tr><td>Denver</td><td>Jan</td><td>900</td></tr><tr><td>Miami</td><td>Jan</td><td>1500</td></tr><tr><td>Austin</td><td>Feb</td><td>1400</td></tr><tr><td>Denver</td><td>Feb</td><td>700</td></tr><tr><td>Miami</td><td>Feb</td><td>1600</td></tr><tr><td>Austin</td><td>Mar</td><td>1300</td></tr><tr><td>Denver</td><td>Mar</td><td>1100</td></tr><tr><td>Miami</td><td>Mar</td><td>1700</td></tr></table></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> la tabla sales (ventas): 9 filas (una por tienda por mes) y 3 columnas. Jan, Feb y Mar son enero, febrero y marzo. Los montos están en dólares.</p>
+
+      <h3 class="reveal" style="margin-top:56px">SELECT, FROM y WHERE</h3>
+      <p class="reveal">Toda consulta empieza con <b>SELECT</b> (qué columnas) y <b>FROM</b> (qué tabla). * significa todas las columnas. <b>WHERE</b> deja solo las filas que pasan una prueba. El texto va entre comillas simples, como 'Austin', y un punto y coma termina la consulta. <b>AND</b> une dos pruebas: una fila debe pasar las dos. &gt; significa mayor que y &lt; significa menor que; un valor igual al número no pasa.</p>
+      <div class="code reveal"><code>SELECT month, amount
+FROM sales
+WHERE store = 'Austin';</code><samp>Jan  1200
+Feb  1400
+Mar  1300</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>SELECT month, amount</dt><dd>Solo vuelven esas dos columnas: el mes y el monto.</dd></div><div><dt>WHERE store = 'Austin'</dt><dd>Deja <b>3</b> de las 9 filas.</dd></div><div><dt>Agrega AND amount &gt; 1250</dt><dd>Solo febrero (1400) y marzo (1300) pasan las dos pruebas.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">ORDER BY y LIMIT</h3>
+      <p class="reveal"><b>ORDER BY</b> ordena los resultados; agrega <b>DESC</b> para poner el más grande primero. <b>LIMIT</b> deja solo las primeras filas. Juntos responden "¿cuáles fueron nuestros 3 mejores?"</p>
+      <div class="code reveal"><code>SELECT store, month, amount
+FROM sales
+ORDER BY amount DESC
+LIMIT 3;</code><samp>Miami  Mar  1700
+Miami  Feb  1600
+Miami  Jan  1500</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Los 3 mejores meses</dt><dd>Todos de <b>Miami</b>: 1700, 1600 y 1500.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Sumar: COUNT, SUM, AVG y GROUP BY</h3>
+      <p class="reveal">SQL puede resumir mientras trae los datos. <b>COUNT(*)</b> cuenta filas, <b>SUM()</b> suma una columna y <b>AVG()</b> saca el promedio. <dfn class="term" data-def="Divide las filas en grupos que comparten un valor, como cada tienda, para que SUM, COUNT o AVG den una respuesta por grupo.">GROUP BY</dfn> primero divide las filas en grupos, así obtienes una respuesta por grupo, como una fila de totales para cada tienda.</p>
+      <div class="code reveal"><code>SELECT store, SUM(amount), AVG(amount)
+FROM sales
+GROUP BY store;</code><samp>Austin  3900  1300
+Denver  2700   900
+Miami   4800  1600</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>COUNT(*) FROM sales</dt><dd><b>9</b> filas.</dd></div><div><dt>SUM de Austin</dt><dd>1200 + 1400 + 1300 = <b>3900</b>, la respuesta a la pregunta de tu gerente.</dd></div><div><dt>AVG de Austin</dt><dd><span class="frac"><span>3900</span><span>3</span></span> = <b>1300</b> al mes.</dd></div></dl></div>
+
+      <div class="md-card reveal" id="sq">
+        <p class="md-lab">Elige una pregunta para la tabla de ventas</p>
+        <div class="sq-picks" role="group" aria-label="Consultas">
+          <button type="button" class="sm-btn" data-q="0">Solo Austin</button>
+          <button type="button" class="sm-btn" data-q="1">Las 3 mejores</button>
+          <button type="button" class="sm-btn" data-q="2">Total por tienda</button>
+          <button type="button" class="sm-btn" data-q="3">Más de $1,250</button>
+        </div>
+        <div class="code"><code id="sq-code"></code></div>
+        <div class="sq-wrap"><table class="sq-tbl" id="sq-out"></table></div>
+        <p class="op-msg" id="sq-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> cuatro consultas sobre la misma tabla de ventas de 9 filas. Elige una para ver el SQL y la tabla que devuelve la base de datos.</p>
+
+      <h3 class="reveal" style="margin-top:56px">JOIN: conecta dos tablas</h3>
+      <p class="reveal">Las bases de datos reparten los datos en muchas tablas para no escribir nada dos veces. <dfn class="term" data-def="Combina filas de dos tablas que comparten un valor en una columna, como el nombre de la tienda, para usar datos de las dos.">JOIN</dfn> las vuelve a juntar emparejando una columna que tienen en común.</p>
+      <div class="code reveal"><code>SELECT stores.manager, SUM(sales.amount)
+FROM sales
+JOIN stores ON sales.store = stores.store
+GROUP BY stores.manager;</code><samp>Kim     2700
+Lopez   4800
+Rivera  3900</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La tabla stores (tiendas)</dt><dd>Austin: gerente Rivera. Denver: Kim. Miami: Lopez.</dd></div><div><dt>Emparejadas por tienda</dt><dd>Cada venta encuentra al gerente de su tienda, así que las tiendas de Lopez vendieron <b>4800</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El orden de las cláusulas</h3>
+      <div class="formula reveal">SELECT → FROM → JOIN → WHERE → GROUP BY → ORDER BY → LIMIT</div>
+      <p class="reveal">Puedes saltarte las que no necesites, pero las que uses deben ir en este orden.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo</div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo</div>
+      <h2 class="reveal">Revisa <em>la consulta.</em></h2>
+      <p class="lead reveal">Ocho preguntas sobre la misma tabla de ventas de 9 filas, que se muestra aquí. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="qy">
+        <div class="fd-top">
+          <div><small id="qy-round">Pregunta 1 de 8</small><b id="qy-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="qy-score">0 de 0</b></div>
+        </div>
+        <div class="sq-wrap sq-mini"><table class="sq-tbl"><tr><th>store</th><th>Jan</th><th>Feb</th><th>Mar</th></tr><tr><td>Austin</td><td>1200</td><td>1400</td><td>1300</td></tr><tr><td>Denver</td><td>900</td><td>700</td><td>1100</td></tr><tr><td>Miami</td><td>1500</td><td>1600</td><td>1700</td></tr></table></div>
+        <div class="code"><code id="qy-code"></code></div>
+        <div class="sd-opts" id="qy-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="qy-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="qy-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="qy-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> los montos de ventas acomodados por tienda y mes (cada número es una fila de la tabla sales), luego una consulta y una pregunta sobre ella.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso</div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Para convertir cualquier pregunta en una consulta, sigue cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: ¿Qué tabla?</h3>
+      <div class="formula reveal">FROM la tabla que tiene los datos</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El trimestre de Austin</dt><dd>FROM sales.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: ¿Qué filas?</h3>
+      <div class="formula reveal">WHERE deja las filas que pasan cada prueba</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El filtro</dt><dd>WHERE store = 'Austin': 3 filas.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: ¿Resumir?</h3>
+      <div class="formula reveal">SUM, COUNT o AVG, con GROUP BY para una respuesta por grupo</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El total</dt><dd>SELECT SUM(amount): 3900.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Ordena y recorta</h3>
+      <div class="formula reveal">ORDER BY … DESC, luego LIMIT</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Un solo número</dt><dd>No hay nada que ordenar: la respuesta es una fila.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: los meses flojos de Denver</h3>
+      <p class="reveal">La gerencia regional pregunta: "¿En qué meses vendió Denver menos de $1,000?" Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>La tabla:</b> sales, con store, month y amount.</li>
+        <li><b>Dos pruebas:</b> la tienda es Denver y el monto es menor que 1000.</li>
+        <li><b>Lo que se pide:</b> los meses, del más chico al más grande.</li>
+      </ul>
+      <div class="code reveal"><code>SELECT month, amount
+FROM sales
+WHERE store = 'Denver' AND amount &lt; 1000
+ORDER BY amount;</code><samp>Feb  700
+Jan  900</samp></div>
+      <ol class="steps reveal">
+        <li><b>Tabla.</b> FROM sales.</li>
+        <li><b>Filas.</b> Denver tiene enero 900, febrero 700 y marzo 1100. Con AND, las dos pruebas deben pasar, así que marzo queda fuera.</li>
+        <li><b>Orden.</b> ORDER BY amount sin DESC pone el más chico primero.</li>
+        <li><b>La respuesta.</b> Febrero ($700) y enero ($900). Denver se recuperó en marzo ($1,100), y eso también vale la pena contárselo a la gerencia.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza</div>
+      <h2 class="reveal">Un ave que <em>consulta su memoria.</em></h2>
+      <p class="lead reveal">Cada otoño, el cascanueces americano, un ave de las montañas del oeste de Norteamérica, esconde decenas de miles de semillas de pino en miles de escondites pequeños repartidos por las laderas. Meses después, muchas veces bajo la nieve, regresa y desentierra los lugares correctos, usando rocas y árboles como señales.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Una ladera de montaña con decenas de escondites de semillas. Un cascanueces desentierra unos pocos que están marcados.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 8%, var(--card))"/>
+        <path d="M0 260 L 220 120 L 360 200 L 520 90 L 700 210 L 900 150 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#dfe6ea"/>
+        <path d="M0 300 Q 450 240 900 290 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#b8a07e"/>
+        <g fill="#7a5a3a" opacity=".55"><circle cx="60" cy="320" r="5"/><circle cx="110" cy="345" r="5"/><circle cx="170" cy="318" r="5"/><circle cx="230" cy="352" r="5"/><circle cx="290" cy="330" r="5"/><circle cx="340" cy="360" r="5"/><circle cx="400" cy="325" r="5"/><circle cx="460" cy="350" r="5"/><circle cx="560" cy="330" r="5"/><circle cx="610" cy="360" r="5"/><circle cx="660" cy="320" r="5"/><circle cx="720" cy="348" r="5"/><circle cx="770" cy="325" r="5"/><circle cx="830" cy="355" r="5"/><circle cx="140" cy="370" r="5"/><circle cx="520" cy="372" r="5"/><circle cx="860" cy="318" r="5"/></g>
+        <g class="sq-pick" fill="none" stroke="var(--good)" stroke-width="4"><circle cx="250" cy="322" r="13"/><circle cx="510" cy="335" r="13"/><circle cx="700" cy="366" r="13"/></g>
+        <g fill="var(--good)"><circle cx="250" cy="322" r="5"/><circle cx="510" cy="335" r="5"/><circle cx="700" cy="366" r="5"/></g>
+        <g transform="translate(470 250)"><ellipse cx="0" cy="0" rx="28" ry="17" fill="#8a8f94"/><circle cx="24" cy="-12" r="12" fill="#9ca1a6"/><path d="M34 -14 L 52 -9 L 34 -7 Z" fill="#3e3a36"/><path d="M-26 -4 L -50 6 L -22 8 Z" fill="#2e2e2e"/><path d="M-10 -8 Q 4 -20 14 -6" fill="#2e2e2e"/><circle cx="27" cy="-14" r="2.2" fill="#1d1d1d"/></g>
+        <g text-anchor="middle">
+          <text x="170" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Guardado</text><text x="170" y="84" font-size="15" fill="var(--ink-2)">miles de escondites</text>
+          <text x="730" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Recuperado</text><text x="730" y="84" font-size="15" fill="var(--ink-2)">solo los que necesita</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Los puntos cafés son escondites de semillas repartidos en una ladera; los círculos verdes son los pocos que el cascanueces está desenterrando hoy.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> El ave no escarba toda la montaña; va directo a los escondites que quiere. Una buena consulta hace lo mismo: la base de datos lo guarda todo, y WHERE te lleva directo a las filas que necesitas.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes</div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Base de datos</b> = tablas. Fila = un registro; columna = un tipo de dato. Una <b>consulta</b> hace una pregunta en <b>SQL</b>.</li>
+          <li><b>SELECT</b> columnas <b>FROM</b> tabla <b>WHERE</b> prueba. * = todas las columnas. Texto entre 'comillas simples'. AND = las dos pruebas.</li>
+          <li>Solo Austin: enero 1200, febrero 1400, marzo 1300.</li>
+          <li><b>ORDER BY</b> amount <b>DESC</b> <b>LIMIT</b> 3: Miami 1700, 1600, 1500.</li>
+          <li><b>COUNT(*)</b> = 9 filas. <b>SUM</b> de Austin = 3900. <b>AVG</b> = <span class="frac"><span>3900</span><span>3</span></span> = 1300.</li>
+          <li><b>GROUP BY</b> store: Austin 3900, Denver 2700, Miami 4800.</li>
+          <li><b>JOIN</b> une dos tablas por una columna en común (tienda → gerente).</li>
+          <li>Orden: SELECT, FROM, JOIN, WHERE, GROUP BY, ORDER BY, LIMIT.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Para dejar solo las filas que pasan una prueba, usa <input type="text" class="blank" data-answer="where" aria-label="Espacio 1">.</div>
+        <div>2. Para obtener un total por tienda, usa GROUP <input type="text" class="blank" data-answer="by" aria-label="Espacio 2"> store.</div>
+        <div>3. SELECT COUNT(*) FROM sales devuelve <input type="text" class="blank" data-answer="9|nueve" inputmode="numeric" aria-label="Espacio 3"> en nuestra tabla.</div>
+        <div>4. Para ordenar del más grande al más chico, agrega <input type="text" class="blank" data-answer="desc|descendente" aria-label="Espacio 4"> después de ORDER BY amount.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo</div>
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Base de datos humana</h3>
+          <p>Escriban cada venta en una tarjeta. Una persona lee una consulta en voz alta; las demás levantan solo las tarjetas que cumplen y las suman.</p>
+        </div>
+        <div class="reveal">
+          <h3>De pregunta a consulta</h3>
+          <p>Por turnos, hagan una pregunta sencilla sobre la tabla de ventas, como "¿Qué tienda vendió menos en febrero?" Las demás personas escriben el SQL.</p>
+        </div>
+        <div class="reveal">
+          <h3>Pruébenlo de verdad</h3>
+          <p>Busquen un espacio gratis en línea para practicar SQL, peguen la tabla de ventas y corran las consultas de la lección. Luego inventen las suyas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta</div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Si tu cuenta de banco fuera una tabla, ¿qué consulta escribirías para ver a dónde se fue tu dinero el mes pasado?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Hojas de cálculo, Python o SQL: ¿cuál quieres dominar primero, y por qué?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Las empresas saben mucho gracias a datos como estos. ¿Qué datos tuyos no querrías que una empresa consultara?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: haces análisis de datos en la cadena de bicicletas</h3>
+      <div class="reveal">
+        <p>La dirección de finanzas se reúne mañana con la gerencia de cada tienda y te manda un mensaje: "¿Qué tienda tuvo las ventas totales más altas este trimestre, y cuál fue su promedio mensual?" Esto es lo que tienes:</p>
+        <ul>
+          <li><b>La tabla:</b> sales, con store, month y amount (las 9 filas de esta lección).</li>
+          <li><b>Lo que se pide:</b> una fila, con la tienda, su total y su promedio.</li>
+        </ul>
+        <p><b>Tu tarea:</b> escribe una consulta que responda las dos cosas, y la respuesta que mandarías.</p>
+        <textarea id="job-answer" placeholder="Escribe tu consulta y tu respuesta…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <div class="code"><code>SELECT store, SUM(amount), AVG(amount)
+FROM sales
+GROUP BY store
+ORDER BY SUM(amount) DESC
+LIMIT 1;</code><samp>Miami  4800  1600</samp></div>
+            <p><b>Para la dirección de finanzas:</b> Miami encabezó el trimestre con $4,800 en ventas, un promedio de $1,600 al mes, y creció cada mes (1500, 1600, 1700). Austin quedó en segundo lugar con $3,900.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">Hacia dónde <em>va.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en las hojas de cálculo para finanzas, en Python para finanzas y en el estado de resultados. Lleva al currículum y LinkedIn para finanzas.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../spreadsheets/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Hojas de cálculo</text><text x="20" y="86">Unidad 17 · SUM y AVERAGE</text></a>
+          <a href="../python/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Python para finanzas</text><text x="20" y="186">Unidad 17 · tablas en código</text></a>
+          <a href="../income-statement/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">El estado de resultados</text><text x="20" y="286">Unidad 12 · los ingresos son un SUM</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">SQL para finanzas</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Currículum y LinkedIn</text><text x="690" y="186">Muy pronto · Unidad 18</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y hacia dónde va.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 17</span><b>Hojas de cálculo para finanzas</b></li>
+        <li><span class="muted small">Antes · Unidad 17</span><b>Python para finanzas</b></li>
+        <li><span class="muted small">Antes · Unidad 12</span><b>El estado de resultados</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>SQL para finanzas</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 18</span><b>Currículum y LinkedIn para finanzas</b></li>
+      </ul>
+      <p class="reveal" style="max-width:680px;margin-top:32px">Esa es la caja de herramientas de un analista: hojas de cálculo para modelar, Python para repetir y crecer, SQL para sacar los datos. La Unidad 18 lo convierte en un trabajo: tu currículum, tus contactos y la entrevista.</p>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../python/">Repasa: Python para finanzas <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about">Acerca de</a><a href="../../contact">Contacto</a><a href="../../legal/privacy">Privacidad</a><a href="../../legal/terms">Términos</a><a href="../../legal/cookies">Cookies y almacenamiento</a><a href="../../credits">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../../lessons/sql/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202611112131"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202611112131"></script>
+<script src="../../../assets/js/auth.js?v=202611112131"></script>
+<script src="../../../assets/js/site.js?v=202611112131"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202611112131"></script>
+<script src="../../../lessons/sql/lesson.js?v=202611112131"></script>
+</body>
+</html>
