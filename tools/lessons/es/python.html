@@ -1,0 +1,278 @@
+<!-- title: Python para finanzas -->
+<!-- description: Unidad 17, Lección 2: Python como lo usan los equipos de finanzas: variables, listas, sum y len, bucles for y sangría, crecimiento compuesto en un bucle, funciones con def, if y else para decidir, y DataFrames de pandas para millones de filas. Juega: Revisa el código, ocho preguntas sobre lo que imprimen programas cortos de Python. -->
+<!-- kicker: Unidad 17 · Lección 2 -->
+<!-- topic: Excel, Python y SQL -->
+
+<!-- @start -->
+        <h1 class="reveal">Escribe los pasos una vez. <em>Deja que la computadora los repita.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> Tu hoja de cálculo de afinaciones (Lección 17.1) funciona. Ahora quieres poner <span class="mark">$200 al mes</span>, o sea <span class="mark">$2,400 al año</span>, de las afinaciones en un fondo indexado (Lección 5.3). Si gana <span class="mark">7% al año</span>, ¿cuánto vas a tener en <span class="mark">30 años</span>? ¿Y si gana 4%, o 10%? En una hoja de cálculo son 30 filas por cada intento. En Python son cuatro líneas, y la computadora las repite por ti. Por eso los bancos, los fondos y las empresas fintech contratan a gente que sabe programar.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p><b>Python</b> es un lenguaje de programación: escribes pasos en un texto fácil de leer, y la computadora los corre en orden.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Repite trabajo en un instante, maneja millones de filas que romperían una hoja de cálculo y vuelve a correr el mismo reporte mañana con un clic.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Guarda números en <b>variables</b>, junta muchos en una <b>lista</b>, repite pasos con un <b>bucle</b> y agrupa los pasos que reusas en una <b>función</b>.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los equipos de <b>análisis cuantitativo</b> prueban ideas de inversión con él. Los equipos de <b>riesgos</b> corren miles de escenarios. En los bancos, el <b>análisis de datos</b> limpia y estudia enormes bases de datos.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una ventana de código con un bucle de Python de cuatro líneas que suma $2,400 al año al 7% durante 30 años, y una línea de salida que imprime 226,706.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Cuatro líneas, 30 años</text>
+          <rect x="40" y="100" width="440" height="300" rx="18" fill="#1f2a2e"/>
+          <g><circle cx="70" cy="126" r="7" fill="#e06c5a"/><circle cx="94" cy="126" r="7" fill="#f2c14e"/><circle cx="118" cy="126" r="7" fill="#6fa35a"/></g>
+          <g font-family="ui-monospace, Menlo, monospace" font-size="17">
+            <text x="66" y="184" fill="#e8e3d6">balance <tspan fill="#9fb4bd">=</tspan> <tspan fill="#f2c14e">0</tspan></text>
+            <text x="66" y="220" fill="#e8e3d6"><tspan fill="#c792ea">for</tspan> year <tspan fill="#c792ea">in</tspan> range(<tspan fill="#f2c14e">30</tspan>):</text>
+            <text x="98" y="256" fill="#e8e3d6">balance <tspan fill="#9fb4bd">=</tspan> balance <tspan fill="#9fb4bd">*</tspan> <tspan fill="#f2c14e">1.07</tspan></text>
+            <text x="98" y="292" fill="#e8e3d6">balance <tspan fill="#9fb4bd">=</tspan> balance <tspan fill="#9fb4bd">+</tspan> <tspan fill="#f2c14e">2400</tspan></text>
+            <text x="66" y="328" fill="#e8e3d6">print(round(balance))</text>
+            <text x="66" y="374" fill="#8fd18a">226706</text>
+          </g>
+          <rect class="py-cursor" x="140" y="360" width="10" height="18" fill="#8fd18a"/>
+          <text x="260" y="470" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">lo escribes una vez; corre 30 veces</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> un programa corto de Python. Empieza con $0 y, 30 veces, hace crecer el saldo un 7% y le suma los $2,400 del año. La última línea imprime el resultado: unos $226,706. La línea verde de abajo es lo que imprime.</p>
+
+<!-- @see -->
+      <h2 class="reveal">El código es una receta <em>que la computadora sigue.</em></h2>
+      <p class="lead reveal"><dfn class="term" data-def="Un lenguaje de programación popular y fácil de leer. Los equipos de finanzas lo usan para analizar datos, correr modelos y automatizar reportes.">Python</dfn> corre tus líneas de arriba abajo. Una <dfn class="term" data-def="Un nombre que guarda un valor, como price = 40. Puedes usar el nombre después y cambiar su valor.">variable</dfn> es un nombre que guarda un valor: el signo = significa "guarda esto", no "es igual a". <b>print()</b> muestra un resultado en la pantalla. Los nombres en el código van en inglés, como se usa en el trabajo.</p>
+      <div class="code reveal"><code>price = 40
+tune_ups = 25
+revenue = price * tune_ups
+print(revenue)</code><samp>1000</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>price y tune_ups</dt><dd>Variables con el precio, <b>40</b>, y las afinaciones, <b>25</b>, como las celdas B1 y B2 de la Lección 17.1.</dd></div><div><dt>revenue</dt><dd>Los ingresos: 40 × 25 = <b>1000</b>. Igual que en una hoja de cálculo, * significa por.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Listas: muchos números con un solo nombre</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Un grupo ordenado de valores entre corchetes, como [20, 25, 30].">lista</dfn> guarda muchos valores entre corchetes. <b>sum()</b> los suma y <b>len()</b> los cuenta. Python divide con la barra diagonal: sum(months) / len(months) significa <span class="frac"><span>sum(months)</span><span>len(months)</span></span>, el promedio.</p>
+      <div class="code reveal"><code>months = [20, 25, 30]
+print(sum(months))
+print(len(months))
+print(sum(months) / len(months))</code><samp>75
+3
+25.0</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>sum(months)</dt><dd>20 + 25 + 30 = <b>75</b> afinaciones.</dd></div><div><dt>len(months)</dt><dd>3 meses en la lista: <b>3</b>.</dd></div><div><dt>El promedio</dt><dd><span class="frac"><span>75</span><span>3</span></span> = <b>25.0</b>. Python muestra .0 después de una división.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Bucles: repite los pasos</h3>
+      <p class="reveal">Un <dfn class="term" data-def="Código que repite un grupo de pasos, una vez por cada elemento de una lista o cada número de un rango.">bucle for</dfn> repite las líneas que tienen sangría debajo de él. <b>range(3)</b> da los números 0, 1 y 2, así que el bucle corre 3 veces. Los espacios al inicio de la línea importan: las líneas con sangría están dentro del bucle, y la primera línea sin sangría corre cuando el bucle termina. Cada vez, balance = balance * 1.10 toma el saldo anterior, lo hace crecer 10% y guarda el nuevo con el mismo nombre.</p>
+      <div class="code reveal"><code>balance = 1000
+for year in range(3):
+    balance = balance * 1.10
+print(round(balance))</code><samp>1331</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Cada vuelta</dt><dd>$1,000 → $1,100 → $1,210 → <b>$1,331</b>, el mismo crecimiento compuesto de la Lección 10.1.</dd></div><div><dt>round()</dt><dd>Redondea a un número entero, para que no veas 1331.0000000000005.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Tus ahorros, 30 años en cuatro líneas</h3>
+      <p class="reveal">Cambia dos números y el bucle responde una pregunta nueva. Aquí, cada año el saldo crece según el rendimiento y luego sumas $2,400. Mueve el control para cambiar la tasa y mira cómo cambian el código y lo que imprime.</p>
+      <div class="md-card reveal" id="py">
+        <label class="md-lab" for="py-r">Rendimiento anual (rate) <b id="py-r-v">7%</b></label><input type="range" id="py-r" min="0" max="12" step="1" value="7">
+        <div class="code"><code id="py-code"></code><samp id="py-out"></samp></div>
+        <div id="py-chart" aria-hidden="true"></div>
+        <p class="op-msg" id="py-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> el código, lo que imprime y tu saldo cada 5 años, con barras para los años 5 a 30. El verde es lo que pones tú ($2,400 al año); el dorado de arriba es el crecimiento por los rendimientos.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Al 0%</dt><dd>30 × $2,400 = <b>$72,000</b>: solo lo que pusiste.</dd></div><div><dt>Al 7%</dt><dd><b>$226,706</b>. $154,706 son crecimiento.</dd></div><div><dt>Al 10%</dt><dd><b>$394,786</b>. Tres puntos más de rendimiento, $168,080 más de dinero.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Funciones y decisiones</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Un conjunto de pasos con nombre que puedes volver a correr con otros datos. En Python se crea con def, y return devuelve la respuesta.">función</dfn> agrupa pasos que reusas: <b>def</b> le pone nombre y <b>return</b> devuelve la respuesta. Un <b>if</b> deja que el código decida: la línea con sangría debajo del if corre solo si la prueba es verdadera; si no, corre la línea debajo de <b>else</b>.</p>
+      <div class="code reveal"><code>def profit(tune_ups):
+    return tune_ups * 30 - 300
+
+print(profit(20))
+npv = 1372
+if npv > 0:
+    print("Build it")
+else:
+    print("Skip it")</code><samp>300
+Build it</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>profit(20)</dt><dd>La ganancia: 20 × ($40 − $10) − $300 = <b>300</b>, la de enero en la Lección 17.1.</dd></div><div><dt>El if</dt><dd>El VPN de la camioneta de reparaciones es $1,372 (Lección 13.2), mayor que 0, así que imprime <b>Build it</b> ("constrúyelo").</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">pandas: una hoja de cálculo dentro de tu código</h3>
+      <p class="reveal">Python tiene complementos gratis llamados bibliotecas. La que más se usa en finanzas es <b>pandas</b>. Su <dfn class="term" data-def="Una tabla de filas y columnas en pandas, la biblioteca de datos de Python. Como una hoja de cálculo que controlas con código.">DataFrame</dfn> es una tabla, como una hoja de cálculo que controlas con código. Una hoja de Excel llega hasta 1,048,576 filas; los registros de operaciones de un banco pueden tener cientos de millones. pandas los lee y suma una columna en una sola línea.</p>
+      <div class="code reveal"><code>import pandas as pd
+df = pd.DataFrame({"month": ["Jan", "Feb", "Mar"], "profit": [300, 450, 600]})
+print(df["profit"].sum())</code><samp>1350</samp></div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La tabla</dt><dd>Dos columnas, mes y ganancia, y tres filas: tus primeros tres meses de la Lección 17.1.</dd></div><div><dt>df["profit"].sum()</dt><dd>$300 + $450 + $600 = <b>1350</b>. La misma línea funciona con 300 filas o con 300 millones.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Revisa <em>el código.</em></h2>
+      <p class="lead reveal">Ocho programas cortos. Lee cada uno y elige lo que imprime. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="pc">
+        <div class="fd-top">
+          <div><small id="pc-round">Pregunta 1 de 8</small><b id="pc-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="pc-score">0 de 0</b></div>
+        </div>
+        <div class="code"><code id="pc-code"></code></div>
+        <div class="sd-opts" id="pc-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="pc-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="pc-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="pc-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> programas inventados. Cada uno muestra el código y luego hace una pregunta sobre él.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Para leer cualquier programa corto, sigue cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Lee de arriba abajo</h3>
+      <div class="formula reveal">Python corre una línea a la vez, en orden</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El código de ahorro</dt><dd>Pone balance en 0, luego el bucle, luego imprime.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Sigue cada variable</h3>
+      <div class="formula reveal">= guarda un valor nuevo con ese nombre</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>balance</dt><dd>Empieza en 0.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Cuenta las vueltas</h3>
+      <div class="formula reveal">range(n) corre n veces las líneas con sangría</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>range(30)</dt><dd>30 vueltas: crecer 7% y sumar $2,400.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Revisa la primera vuelta a mano</h3>
+      <div class="formula reveal">Si la vuelta 1 está bien, las demás siguen la misma regla</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Año 1</dt><dd>$0 × 1.07 + $2,400 = $2,400. Año 2: $2,400 × 1.07 + $2,400 = $4,968.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: prueba tres tasas a la vez</h3>
+      <p class="reveal">Quieres el saldo a 30 años al 4%, al 7% y al 10% sin correr el código tres veces. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>Ahorras:</b> $2,400 al año durante 30 años.</li>
+        <li><b>Las tasas:</b> 4%, 7% y 10%, guardadas en una lista: [0.04, 0.07, 0.10].</li>
+        <li><b>La herramienta:</b> un bucle dentro de otro bucle.</li>
+      </ul>
+      <div class="code reveal"><code>for rate in [0.04, 0.07, 0.10]:
+    balance = 0
+    for year in range(30):
+        balance = balance * (1 + rate) + 2400
+    print(rate, round(balance))</code><samp>0.04 134604
+0.07 226706
+0.1 394786</samp></div>
+      <ol class="steps reveal">
+        <li><b>Bucle de afuera.</b> Corre 3 veces, una por cada tasa.</li>
+        <li><b>Reinicia.</b> balance = 0 está dentro del bucle de afuera, así que cada tasa empieza desde cero.</li>
+        <li><b>Bucle de adentro.</b> 30 vueltas, con la misma regla de ahorro de antes.</li>
+        <li><b>La respuesta.</b> $134,604, $226,706 y $394,786. Pasar del 4% al 10% casi triplica tu dinero. Por eso importan tanto las comisiones bajas y una buena mezcla de inversiones.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Un girasol corre <em>una línea de código.</em></h2>
+      <p class="lead reveal">Mira de cerca el centro de un girasol y verás espirales. La planta sigue una sola regla: cada semilla nueva crece unos 137.5° más allá de la anterior, un poco más afuera. Repetida cientos de veces, esa regla acomoda las semillas casi sin huecos.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un girasol cuyas semillas forman espirales. Cada semilla queda a 137.5 grados de la anterior.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--good) 8%, var(--card))"/>
+        <g fill="#f2c14e" class="py-petals"><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(0.0 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(12.9 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(25.7 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(38.6 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(51.4 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(64.3 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(77.1 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(90.0 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(102.9 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(115.7 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(128.6 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(141.4 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(154.3 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(167.1 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(180.0 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(192.9 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(205.7 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(218.6 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(231.4 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(244.3 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(257.1 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(270.0 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(282.9 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(295.7 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(308.6 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(321.4 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(334.3 450 200)"/><ellipse cx="450" cy="50" rx="13" ry="34" transform="rotate(347.1 450 200)"/></g><circle cx="450" cy="200" r="128" fill="#6b4a2b"/><g fill="#3e2a17" stroke="#8a6a3e" stroke-width="1"><circle cx="444" cy="205" r="3.0"/><circle cx="451" cy="189" r="3.0"/><circle cx="458" cy="211" r="3.1"/><circle cx="434" cy="197" r="3.1"/><circle cx="465" cy="190" r="3.1"/><circle cx="445" cy="219" r="3.1"/><circle cx="440" cy="181" r="3.1"/><circle cx="471" cy="208" r="3.1"/><circle cx="428" cy="209" r="3.2"/><circle cx="461" cy="177" r="3.2"/><circle cx="458" cy="225" r="3.2"/><circle cx="426" cy="186" r="3.2"/><circle cx="478" cy="194" r="3.2"/><circle cx="433" cy="224" r="3.3"/><circle cx="446" cy="169" r="3.3"/><circle cx="474" cy="221" r="3.3"/><circle cx="417" cy="201" r="3.3"/><circle cx="474" cy="176" r="3.3"/><circle cx="448" cy="235" r="3.3"/><circle cx="427" cy="173" r="3.4"/><circle cx="486" cy="205" r="3.4"/><circle cx="419" cy="221" r="3.4"/><circle cx="458" cy="163" r="3.4"/><circle cx="469" cy="234" r="3.4"/><circle cx="412" cy="188" r="3.5"/><circle cx="487" cy="183" r="3.5"/><circle cx="434" cy="238" r="3.5"/><circle cx="436" cy="160" r="3.5"/><circle cx="488" cy="220" r="3.5"/><circle cx="408" cy="211" r="3.5"/><circle cx="474" cy="163" r="3.6"/><circle cx="458" cy="245" r="3.6"/><circle cx="414" cy="172" r="3.6"/><circle cx="496" cy="196" r="3.6"/><circle cx="418" cy="235" r="3.6"/><circle cx="450" cy="152" r="3.6"/><circle cx="483" cy="236" r="3.7"/><circle cx="401" cy="195" r="3.7"/><circle cx="490" cy="170" r="3.7"/><circle cx="441" cy="250" r="3.7"/><circle cx="423" cy="157" r="3.7"/><circle cx="500" cy="214" r="3.8"/><circle cx="403" cy="224" r="3.8"/><circle cx="468" cy="150" r="3.8"/><circle cx="470" cy="250" r="3.8"/><circle cx="401" cy="177" r="3.8"/><circle cx="502" cy="184" r="3.8"/><circle cx="422" cy="248" r="3.9"/><circle cx="438" cy="145" r="3.9"/><circle cx="496" cy="233" r="3.9"/><circle cx="393" cy="207" r="3.9"/><circle cx="487" cy="156" r="3.9"/><circle cx="452" cy="258" r="4.0"/><circle cx="409" cy="158" r="4.0"/><circle cx="509" cy="203" r="4.0"/><circle cx="404" cy="238" r="4.0"/><circle cx="458" cy="140" r="4.0"/><circle cx="485" cy="250" r="4.0"/><circle cx="390" cy="186" r="4.1"/><circle cx="504" cy="169" r="4.1"/><circle cx="431" cy="259" r="4.1"/><circle cx="424" cy="143" r="4.1"/><circle cx="508" cy="225" r="4.1"/><circle cx="390" cy="221" r="4.2"/><circle cx="480" cy="143" r="4.2"/><circle cx="466" cy="263" r="4.2"/><circle cx="395" cy="164" r="4.2"/><circle cx="515" cy="189" r="4.2"/><circle cx="409" cy="252" r="4.2"/><circle cx="445" cy="133" r="4.3"/><circle cx="499" cy="246" r="4.3"/><circle cx="382" cy="199" r="4.3"/><circle cx="501" cy="154" r="4.3"/><circle cx="443" cy="268" r="4.3"/><circle cx="408" cy="145" r="4.3"/><circle cx="519" cy="213" r="4.4"/><circle cx="390" cy="237" r="4.4"/><circle cx="469" cy="132" r="4.4"/><circle cx="482" cy="263" r="4.4"/><circle cx="383" cy="175" r="4.4"/><circle cx="517" cy="173" r="4.5"/><circle cx="419" cy="265" r="4.5"/><circle cx="429" cy="130" r="4.5"/><circle cx="513" cy="237" r="4.5"/><circle cx="378" cy="215" r="4.5"/><circle cx="493" cy="140" r="4.5"/><circle cx="459" cy="274" r="4.6"/><circle cx="393" cy="151" r="4.6"/><circle cx="525" cy="198" r="4.6"/><circle cx="396" cy="253" r="4.6"/><circle cx="454" cy="124" r="4.6"/><circle cx="499" cy="259" r="4.7"/><circle cx="374" cy="189" r="4.7"/><circle cx="514" cy="156" r="4.7"/><circle cx="432" cy="276" r="4.7"/><circle cx="412" cy="132" r="4.7"/><circle cx="525" cy="225" r="4.7"/><circle cx="378" cy="232" r="4.8"/><circle cx="481" cy="127" r="4.8"/><circle cx="476" cy="276" r="4.8"/><circle cx="379" cy="162" r="4.8"/><circle cx="528" cy="180" r="4.8"/><circle cx="405" cy="268" r="4.9"/><circle cx="437" cy="119" r="4.9"/><circle cx="514" cy="251" r="4.9"/><circle cx="368" cy="206" r="4.9"/><circle cx="507" cy="140" r="4.9"/><circle cx="449" cy="283" r="4.9"/><circle cx="395" cy="138" r="5.0"/><circle cx="533" cy="209" r="5.0"/><circle cx="382" cy="250" r="5.0"/><circle cx="466" cy="117" r="5.0"/><circle cx="495" cy="272" r="5.0"/><circle cx="368" cy="177" r="5.1"/><circle cx="527" cy="162" r="5.1"/><circle cx="419" cy="280" r="5.1"/><circle cx="418" cy="120" r="5.1"/><circle cx="528" cy="238" r="5.1"/><circle cx="366" cy="225" r="5.1"/><circle cx="495" cy="125" r="5.2"/><circle cx="468" cy="286" r="5.2"/><circle cx="378" cy="148" r="5.2"/><circle cx="538" cy="190" r="5.2"/><circle cx="392" cy="267" r="5.2"/><circle cx="448" cy="111" r="5.2"/><circle cx="512" cy="265" r="5.3"/><circle cx="360" cy="194" r="5.3"/><circle cx="520" cy="143" r="5.3"/><circle cx="437" cy="290" r="5.3"/><circle cx="399" cy="124" r="5.3"/><circle cx="539" cy="221" r="5.4"/><circle cx="370" cy="244" r="5.4"/><circle cx="479" cy="113" r="5.4"/><circle cx="488" cy="285" r="5.4"/><circle cx="365" cy="163" r="5.4"/><circle cx="538" cy="170" r="5.4"/><circle cx="405" cy="282" r="5.5"/><circle cx="427" cy="109" r="5.5"/><circle cx="529" cy="252" r="5.5"/><circle cx="356" cy="215" r="5.5"/><circle cx="509" cy="126" r="5.5"/><circle cx="456" cy="295" r="5.6"/><circle cx="381" cy="134" r="5.6"/><circle cx="546" cy="202" r="5.6"/><circle cx="378" cy="264" r="5.6"/><circle cx="460" cy="104" r="5.6"/><circle cx="507" cy="278" r="5.6"/><circle cx="355" cy="181" r="5.7"/><circle cx="533" cy="149" r="5.7"/><circle cx="423" cy="294" r="5.7"/><circle cx="406" cy="112" r="5.7"/><circle cx="542" cy="236" r="5.7"/><circle cx="358" cy="236" r="5.8"/><circle cx="494" cy="111" r="5.8"/><circle cx="478" cy="296" r="5.8"/><circle cx="365" cy="148" r="5.8"/><circle cx="548" cy="180" r="5.8"/><circle cx="391" cy="281" r="5.8"/><circle cx="439" cy="100" r="5.9"/><circle cx="526" cy="267" r="5.9"/><circle cx="349" cy="202" r="5.9"/><circle cx="524" cy="130" r="5.9"/><circle cx="443" cy="302" r="5.9"/><circle cx="386" cy="120" r="6.0"/><circle cx="552" cy="216" r="6.0"/><circle cx="364" cy="257" r="6.0"/><circle cx="475" cy="100" r="6.0"/><circle cx="500" cy="291" r="6.0"/><circle cx="352" cy="166" r="6.0"/><circle cx="546" cy="158" r="6.1"/><circle cx="408" cy="296" r="6.1"/><circle cx="416" cy="101" r="6.1"/><circle cx="542" cy="251" r="6.1"/><circle cx="347" cy="225" r="6.1"/><circle cx="509" cy="112" r="6.2"/><circle cx="466" cy="305" r="6.2"/><circle cx="367" cy="133" r="6.2"/><circle cx="557" cy="193" r="6.2"/><circle cx="376" cy="277" r="6.2"/><circle cx="453" cy="93" r="6.2"/><circle cx="521" cy="281" r="6.3"/><circle cx="343" cy="188" r="6.3"/><circle cx="538" cy="136" r="6.3"/><circle cx="428" cy="306" r="6.3"/><circle cx="394" cy="107" r="6.3"/><circle cx="555" cy="231" r="6.3"/><circle cx="352" cy="248" r="6.4"/><circle cx="490" cy="98" r="6.4"/><circle cx="489" cy="303" r="6.4"/><circle cx="351" cy="151" r="6.4"/><circle cx="556" cy="170" r="6.4"/><circle cx="392" cy="294" r="6.5"/><circle cx="429" cy="91" r="6.5"/><circle cx="540" cy="266" r="6.5"/><circle cx="339" cy="212" r="6.5"/><circle cx="524" cy="116" r="6.5"/><circle cx="452" cy="312" r="6.5"/><circle cx="373" cy="118" r="6.6"/><circle cx="563" cy="208" r="6.6"/><circle cx="361" cy="270" r="6.6"/><circle cx="468" cy="88" r="6.6"/><circle cx="513" cy="295" r="6.6"/><circle cx="339" cy="172" r="6.7"/><circle cx="551" cy="146" r="6.7"/><circle cx="412" cy="308" r="6.7"/><circle cx="404" cy="95" r="6.7"/><circle cx="555" cy="247" r="6.7"/><circle cx="340" cy="236" r="6.7"/><circle cx="506" cy="99" r="6.8"/><circle cx="477" cy="313" r="6.8"/><circle cx="354" cy="135" r="6.8"/><circle cx="565" cy="183" r="6.8"/><circle cx="376" cy="290" r="6.8"/><circle cx="443" cy="83" r="6.9"/><circle cx="534" cy="282" r="6.9"/><circle cx="332" cy="196" r="6.9"/><circle cx="539" cy="123" r="6.9"/><circle cx="436" cy="317" r="6.9"/><circle cx="381" cy="104" r="6.9"/><circle cx="566" cy="224" r="7.0"/><circle cx="348" cy="261" r="7.0"/><circle cx="484" cy="86" r="7.0"/><circle cx="502" cy="308" r="7.0"/><circle cx="339" cy="156" r="7.0"/><circle cx="562" cy="158" r="7.0"/><circle cx="396" cy="307" r="7.1"/><circle cx="417" cy="84" r="7.1"/><circle cx="553" cy="264" r="7.1"/><circle cx="331" cy="222" r="7.1"/><circle cx="523" cy="103" r="7.1"/><circle cx="462" cy="321" r="7.2"/><circle cx="359" cy="119" r="7.2"/><circle cx="572" cy="199" r="7.2"/><circle cx="361" cy="284" r="7.2"/><circle cx="459" cy="78" r="7.2"/><circle cx="526" cy="297" r="7.2"/><circle cx="328" cy="180" r="7.3"/><circle cx="553" cy="133" r="7.3"/><circle cx="419" cy="320" r="7.3"/></g>
+        <g text-anchor="middle">
+          <text x="140" y="170" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Una regla</text><text x="140" y="196" font-size="15" fill="var(--ink-2)">gira 137.5°, avanza</text>
+          <text x="760" y="170" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Repetida</text><text x="760" y="196" font-size="15" fill="var(--ink-2)">cientos de veces</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un dibujo hecho con la regla del propio girasol. Cada una de las 239 semillas se puso a 137.5° de la anterior, un poco más lejos del centro.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> El girasol no planea cada semilla; repite un paso. El código funciona igual: escribes una regla con cuidado, y un bucle la aplica 30 veces, o 30 millones.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Variable</b>: price = 40 guarda 40. <b>print()</b> muestra un resultado.</li>
+          <li><b>Lista</b>: months = [20, 25, 30]. sum = 75, len = 3, promedio <span class="frac"><span>75</span><span>3</span></span> = 25.0.</li>
+          <li><b>Bucle for</b>: repite las líneas con sangría. range(3) = 0, 1, 2. $1,000 al 10% por 3 años = 1331.</li>
+          <li>$2,400 al año durante 30 años: $72,000 al 0%, <b>$226,706</b> al 7%, $394,786 al 10%.</li>
+          <li><b>Función</b>: def le pone nombre, return responde. profit(20) = 300.</li>
+          <li><b>if / else</b>: corre una línea solo si la prueba es verdadera. VPN $1,372 &gt; 0: "Build it".</li>
+          <li><b>DataFrame de pandas</b>: una tabla en código. Excel llega a 1,048,576 filas; pandas no tiene ese límite.</li>
+          <li>Siempre revisa a mano la primera vuelta de un bucle.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Para repetir líneas de código, usa un <input type="text" class="blank" data-answer="bucle|bucle for|for|loop|ciclo" aria-label="Espacio 1">.</div>
+        <div>2. len([5, 10, 15, 20]) da <input type="text" class="blank" data-answer="4|cuatro" inputmode="numeric" aria-label="Espacio 2">.</div>
+        <div>3. Para crear una función en Python, empieza con la palabra <input type="text" class="blank" data-answer="def" aria-label="Espacio 3">.</div>
+        <div>4. La biblioteca de Python para tablas de datos se llama <input type="text" class="blank" data-answer="pandas" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Sean la computadora</h3>
+          <p>Una persona lee en voz alta un bucle corto. Las demás siguen las variables en papel, vuelta por vuelta, y dicen qué imprime.</p>
+        </div>
+        <div class="reveal">
+          <h3>Pruébenlo de verdad</h3>
+          <p>Abran un cuaderno gratis como Google Colab, escriban el bucle de ahorro y cambien la tasa y los años. ¿Quién llega primero a $1 millón, y cómo?</p>
+        </div>
+        <div class="reveal">
+          <h3>¿Hoja de cálculo o código?</h3>
+          <p>Hagan una lista de cinco tareas de finanzas, como un presupuesto o revisar todas las operaciones del año pasado. Decidan qué herramienta conviene para cada una, y por qué.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Cuánto podrías ahorrar de verdad al año ahora? Ponlo en el bucle. ¿Cuánto te da en 30 años al 7%?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué tarea aburrida de tu vida, o de tu trabajo, te encantaría que una computadora repitiera por ti?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿El código te pareció más fácil o más difícil de lo que esperabas? ¿Qué parte te gustaría practicar?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: haces análisis en una firma de gestión patrimonial</h3>
+      <div class="reveal">
+        <p>Una persona cliente de 25 años puede invertir $500 al mes, o $6,000 al año, hasta los 65. Pregunta cuánto podría tener. Tu gerente quiere tres casos. Esta es la situación:</p>
+        <ul>
+          <li><b>Años:</b> 40.</li>
+          <li><b>Casos:</b> 5% (prudente), 7% (medio), 9% (fuerte).</li>
+          <li><b>Regla:</b> cada año el saldo crece y luego se suman los $6,000 del año.</li>
+        </ul>
+        <p><b>Tu tarea:</b> escribe el código, da los tres resultados y agrega una frase para la persona cliente.</p>
+        <textarea id="job-answer" placeholder="Escribe tu código y tu nota…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <div class="code"><code>for rate in [0.05, 0.07, 0.09]:
+    balance = 0
+    for year in range(40):
+        balance = balance * (1 + rate) + 6000
+    print(rate, round(balance))</code><samp>0.05 724799
+0.07 1197811
+0.09 2027295</samp></div>
+            <p><b>Para la persona cliente:</b> vas a poner $240,000 de tu bolsillo (40 × $6,000). Según los rendimientos, podría crecer a unos $725,000, $1.2 millones o $2 millones. Empezar a los 25 es tu mayor ventaja: la mayor parte de ese dinero es crecimiento, no ahorro.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Hacia dónde <em>va.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en las hojas de cálculo para finanzas, en porcentajes y crecimiento y en el valor del dinero en el tiempo. Lleva a SQL para finanzas.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../spreadsheets/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Hojas de cálculo</text><text x="20" y="86">Unidad 17 · el mismo modelo</text></a>
+          <a href="../percentages/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Porcentajes y crecimiento</text><text x="20" y="186">Unidad 10 · el interés compuesto</text></a>
+          <a href="../time-value/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">El dinero en el tiempo</text><text x="20" y="286">Unidad 10 · el dinero con los años</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Python para finanzas</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">SQL para finanzas</text><text x="690" y="186">Muy pronto · Unidad 17</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y hacia dónde va.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 17</span><b>Hojas de cálculo para finanzas</b></li>
+        <li><span class="muted small">Antes · Unidad 10</span><b>Porcentajes y crecimiento</b></li>
+        <li><span class="muted small">Antes · Unidad 10</span><b>El valor del dinero en el tiempo</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Python para finanzas</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 17</span><b>SQL para finanzas</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../spreadsheets/">Repasa: Hojas de cálculo para finanzas <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>
