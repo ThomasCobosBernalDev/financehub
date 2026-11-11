@@ -1,0 +1,247 @@
+<!-- title: Hojas de cálculo para finanzas -->
+<!-- description: Unidad 17, Lección 1: las hojas de cálculo como las usan los analistas: celdas y direcciones de celda, fórmulas, SUM y AVERAGE, rangos, copiar fórmulas y el signo $ (referencias absolutas), datos de entrada contra fórmulas y la regla del texto azul, valores fijos dentro de una fórmula, armar un pequeño modelo financiero y la función NPV. Juega: Revisa la fórmula, ocho preguntas sobre hojas de cálculo. -->
+<!-- kicker: Unidad 17 · Lección 1 -->
+<!-- topic: Excel, Python y SQL -->
+
+<!-- @start -->
+        <h1 class="reveal">Cambia un número. <em>Mira cómo se actualiza todo el plan.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> ¿Te acuerdas de tus afinaciones de bicicletas de fin de semana (Lección 11.1)? Cobras <span class="mark">$40</span>, las piezas cuestan <span class="mark">$10</span>, y tus costos fijos (el lugar en el mercado, las herramientas y el seguro) son <span class="mark">$300 al mes</span>. En enero hiciste 20 afinaciones, y crees que puedes sumar <span class="mark">5 más cada mes</span>. ¿Cuánto vas a ganar para junio? Podrías calcularlo a mano, pero cada vez que cambie un número tendrías que empezar de nuevo. En una hoja de cálculo lo armas una vez y se actualiza solo. Es la herramienta que se usa todos los días en cualquier trabajo de finanzas.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Una <b>hoja de cálculo</b> es una cuadrícula de celdas con números y fórmulas. <b>Excel</b> y <b>Google Sheets</b> son las más usadas.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Las fórmulas conectan las celdas, así que cuando cambia un dato, cambian todas las respuestas que dependen de él. Así puedes probar "¿y si…?" en segundos.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Escribe tus datos en celdas y luego escribe fórmulas que apunten a esas celdas. Copia una fórmula hacia abajo para repetirla en cada mes.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>Los equipos de <b>análisis financiero</b> arman presupuestos con ellas. En la <b>banca de inversión</b> arman modelos de valuación. En <b>contabilidad</b> las usan para cerrar los libros.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una hoja de cálculo pequeña. La celda B1 tiene el precio de $40 y B2 tiene 25 afinaciones. La celda B3 tiene la fórmula igual a B1 por B2 y muestra $1,000.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Una cuadrícula que calcula</text>
+          <rect x="50" y="104" width="420" height="44" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <text x="72" y="133" font-size="17" font-style="italic" fill="var(--ink-3)">fx</text>
+          <text x="110" y="133" font-size="19" font-weight="700" fill="var(--ink)" font-family="ui-monospace, monospace">=B1*B2</text>
+          <rect x="50" y="170" width="420" height="250" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <g fill="var(--paper-2)"><rect x="52" y="172" width="416" height="38"/><rect x="52" y="172" width="48" height="246"/></g>
+          <g stroke="var(--line)" stroke-width="1.5"><path d="M100 172 V 418 M270 172 V 418 M52 210 H 468 M52 280 H 468 M52 350 H 468"/></g>
+          <g font-size="15" font-weight="700" fill="var(--ink-3)" text-anchor="middle"><text x="185" y="197">A</text><text x="369" y="197">B</text><text x="76" y="250">1</text><text x="76" y="320">2</text><text x="76" y="390">3</text></g>
+          <g font-size="19" fill="var(--ink-2)"><text x="116" y="252">Precio</text><text x="116" y="322">Afinaciones</text><text x="116" y="392">Ingresos</text></g>
+          <g font-size="20" font-weight="700" text-anchor="end"><text x="452" y="252" fill="var(--needs)">$40</text><text x="452" y="322" fill="var(--needs)">25</text></g>
+          <rect class="ss-hot" x="272" y="352" width="194" height="64" rx="4" fill="color-mix(in srgb, var(--good) 14%, var(--card))" stroke="var(--good)" stroke-width="3"/>
+          <text x="452" y="392" text-anchor="end" font-size="20" font-weight="700" fill="var(--ink)">$1,000</text>
+          <text x="260" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">cambia una celda; las demás la siguen</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> una hoja de cálculo pequeña. La columna A tiene etiquetas y la columna B tiene números. Los números azules se escriben a mano. La celda verde, B3, tiene la fórmula =B1*B2 (se ve en la barra de arriba), así que muestra $40 × 25 = $1,000.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Una cuadrícula que <em>hace las cuentas por ti.</em></h2>
+      <p class="lead reveal">Una <dfn class="term" data-def="Un programa, como Excel o Google Sheets, que ordena números, texto y fórmulas en una cuadrícula de celdas.">hoja de cálculo</dfn> es una cuadrícula. Las columnas tienen letras (A, B, C…) y las filas tienen números (1, 2, 3…). Cada casilla es una <dfn class="term" data-def="Una casilla de una hoja de cálculo. Se nombra con la letra de su columna y el número de su fila, como B2.">celda</dfn>, y su dirección es su columna y luego su fila: la columna B, fila 1, es <b>B1</b>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>B1</dt><dd>Tu precio: <b>40</b>.</dd></div><div><dt>B2</dt><dd>Afinaciones de este mes: <b>25</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Las fórmulas empiezan con =</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Una instrucción dentro de una celda que calcula un resultado. Siempre empieza con un signo de igual, como =B1*B2.">fórmula</dfn> es un cálculo dentro de una celda, y siempre empieza con un <b>signo de igual</b>. En vez de escribir números en ella, apuntas a otras celdas. Las hojas de cálculo usan * para multiplicar, + y − para sumar y restar, y la barra diagonal para dividir: =C2/B2 significa <span class="frac"><span>C2</span><span>B2</span></span>.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>En B3, escribe =B1*B2</dt><dd>Muestra $40 × 25 = <b>$1,000</b>, tus ingresos.</dd></div><div><dt>Cambia B2 a 30</dt><dd>B3 se actualiza sola a $40 × 30 = <b>$1,200</b>. Nunca tocas B3.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Funciones: SUM y AVERAGE</h3>
+      <p class="reveal">Una <dfn class="term" data-def="Una fórmula ya hecha que tiene nombre, como SUM, AVERAGE o NPV. Le das celdas o números entre paréntesis.">función</dfn> es una fórmula ya hecha. Un <dfn class="term" data-def="Un bloque de celdas que se escribe con dos puntos, como B2:B4, que significa B2, B3 y B4.">rango</dfn> usa dos puntos: B2:B4 significa B2, B3 y B4, tres celdas. B7:B12 serían seis celdas. Si tu Excel está en español, SUM se llama SUMA, AVERAGE se llama PROMEDIO y NPV se llama VNA, pero funcionan igual.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>B2:B4 tienen de enero a marzo</dt><dd>20, 25 y 30 afinaciones.</dd></div><div><dt>=SUM(B2:B4)</dt><dd>20 + 25 + 30 = <b>75</b> afinaciones.</dd></div><div><dt>=AVERAGE(B2:B4)</dt><dd><span class="frac"><span>75</span><span>3</span></span> = <b>25</b> al mes.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Copiar fórmulas y el signo $</h3>
+      <p class="reveal">Cuando copias una fórmula, sus direcciones de celda se mueven con ella: si la copias una fila abajo, B4 se vuelve B5; si la copias una columna a la derecha, B4 se vuelve C4. Casi siempre eso es lo que quieres. Pero algunas celdas, como tu precio, nunca deberían moverse. El signo <b>$</b> las fija: la <dfn class="term" data-def="Una dirección de celda con signos $, como $B$1, que no cambia cuando se copia la fórmula.">referencia absoluta</dfn> $B$1 siempre significa B1.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La hoja</dt><dd>B1 tiene el precio, 40. B2 está vacía. Las afinaciones están en B4 (20) y B5 (25).</dd></div><div><dt>Bien: C4 es =B4*$B$1</dt><dd>Muestra $800. Copiada abajo a C5, se vuelve =B5*$B$1: 25 × $40 = <b>$1,000</b>.</dd></div><div><dt>Mal: C4 es =B4*B1</dt><dd>Copiada abajo, se vuelve =B5*B2. B2 está vacía, así que C5 muestra <b>0</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Un modelo: entran datos, salen respuestas</h3>
+      <p class="reveal">Un <dfn class="term" data-def="Una hoja de cálculo que convierte datos de entrada (supuestos) en resultados con fórmulas, para que puedas probar qué pasa cuando cambia un dato.">modelo financiero</dfn> guarda sus datos de entrada, los números que supones, en sus propias celdas, y todo lo demás son fórmulas. Los bancos pintan de <b style="color:var(--needs)">azul</b> los datos escritos a mano y dejan las fórmulas en negro, para que cualquiera vea qué es un supuesto. Escribir un número directo dentro de una fórmula, como =B7*40, se llama poner un <dfn class="term" data-def="Un número escrito directo dentro de una fórmula, como =B7*40, en vez de apuntar a una celda. En inglés se dice hard-coding. Rompe el modelo cuando ese número cambia.">valor fijo</dfn> (en inglés, hard-coding). Si el precio cambia, esa fórmula se queda mal y nadie se da cuenta.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Datos de entrada (azul)</dt><dd>Precio $40 en B1, piezas $10 en B2, costos fijos $300 en B3, afinaciones extra cada mes en B4.</dd></div><div><dt>Afinaciones cada mes</dt><dd>Enero es 20. Febrero es =B7+$B$4, copiada hacia abajo. Con 5 extra: 20, 25, 30, 35, 40, 45.</dd></div><div><dt>Ganancia cada mes</dt><dd>=B7*($B$1-$B$2)-$B$3. Enero: 20 × ($40 − $10) − $300 = <b>$300</b>.</dd></div><div><dt>Cambia B4 a 10</dt><dd>Las afinaciones quedan en 20, 30, 40, 50, 60, 70, y la ganancia de seis meses sube de $4,050 a <b>$6,300</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="sh">
+        <label class="md-lab" for="sh-g">Afinaciones extra cada mes (celda B4) <b id="sh-g-v">5</b></label><input type="range" id="sh-g" min="0" max="10" step="1" value="5">
+        <div class="sh-fbar"><span>fx</span><b id="sh-f">=SUM(D7:D12)</b></div>
+        <div class="sh-wrap"><table class="sh-grid" id="sh-out"></table></div>
+        <p class="op-msg" id="sh-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> tu negocio de afinaciones como hoja de cálculo. Las filas 1 a 4 son datos de entrada (azul); las filas 7 a 13 son fórmulas. Mueve el control para cambiar B4, y toca cualquier celda para ver su fórmula en la barra de arriba.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Funciones de finanzas: NPV</h3>
+      <p class="reveal">Las hojas de cálculo también tienen funciones de finanzas, como pagos de préstamos y tasas de crecimiento. La que más vas a usar es la del VPN (Lección 13.2), que en Excel en inglés se llama NPV. Cuidado: =NPV() trata cada flujo de efectivo como si llegara al final de un año, así que el dinero que pagas hoy va afuera.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La camioneta de reparaciones (Lección 13.2)</dt><dd>Cuesta $10,000 hoy y deja $3,000 al año durante 5 años, al 10%.</dd></div><div><dt>=NPV(10%, 3000, 3000, 3000, 3000, 3000)</dt><dd>Muestra <b>$11,372</b>: lo que valen hoy los 5 años de efectivo.</dd></div><div><dt>Resta el costo de hoy</dt><dd>=NPV(…)-10000 = <b>$1,372</b>, el mismo VPN que calculaste a mano.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Revisa <em>la fórmula.</em></h2>
+      <p class="lead reveal">Ocho preguntas sobre una hoja de cálculo. Cada una muestra lo que hay en las celdas. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="fx">
+        <div class="fd-top">
+          <div><small id="fx-round">Pregunta 1 de 8</small><b id="fx-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="fx-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="fx-facts"></ul>
+        <div class="sd-opts" id="fx-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="fx-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="fx-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="fx-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> hojas de cálculo inventadas. Cada una dice lo que hay en las celdas y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Para armar cualquier modelo, sigue cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Pon cada dato en su propia celda</h3>
+      <div class="formula reveal">Un supuesto por celda, en azul</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Datos de entrada</dt><dd>$40 en B1, $10 en B2, $300 en B3, 5 en B4.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Escribe fórmulas que apunten a los datos</h3>
+      <div class="formula reveal">Nunca escribas un número dentro de una fórmula</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ingresos</dt><dd>=B7*$B$1, no =B7*40.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Fija lo que no debe moverse</h3>
+      <div class="formula reveal">$B$1 se queda igual al copiar; B7 se mueve</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Copiada a la fila 8</dt><dd>=B8*$B$1.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Revisa una celda a mano</h3>
+      <div class="formula reveal">Si una fila está bien, las copias también</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ganancia de enero</dt><dd>20 × ($40 − $10) − $300 = $300. La hoja muestra $300.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿está bien la hoja de tu amistad?</h3>
+      <p class="reveal">Una persona amiga armó el mismo plan de afinaciones y dice que vas a ganar $5,850 en seis meses. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>Su fórmula de ganancia:</b> =B7*($B$1-$B$2), copiada hacia abajo.</li>
+        <li><b>Afinaciones:</b> 20, 25, 30, 35, 40, 45, que suman 195.</li>
+        <li><b>Costos fijos:</b> $300 al mes.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Revisa una celda a mano.</b> Enero debería ser 20 × ($40 − $10) − $300 = $300. Su hoja muestra 20 × $30 = $600.</li>
+        <li><b>Encuentra la diferencia.</b> Su fórmula nunca resta los costos fijos: falta el -$B$3.</li>
+        <li><b>Mide el error.</b> $300 al mes × 6 meses = $1,800 de más.</li>
+        <li><b>La respuesta.</b> La ganancia de seis meses es $5,850 − $1,800 = <b>$4,050</b>. Una sola referencia que faltaba hizo que el plan se viera 44% mejor de lo que es. Por eso los analistas siempre revisan una fila a mano.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">Un panal es <em>una hoja de cálculo.</em></h2>
+      <p class="lead reveal">Las abejas construyen el panal con miles de celdas de cera de seis lados. Cada celda guarda una sola cosa: miel, polen o una abeja joven que está creciendo. Y las abejas mantienen un orden: las abejas jóvenes en el centro, el polen alrededor y la miel afuera. Cualquier obrera encuentra lo que necesita.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un panal con abejas jóvenes en las celdas del centro, polen alrededor y miel en las celdas de afuera.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, #f2c14e 10%, var(--card))"/>
+        <g stroke="#c99a2e" stroke-width="3">
+        <defs><polygon id="ss-hx" points="20.8,12.0 0.0,24.0 -20.8,12.0 -20.8,-12.0 -0.0,-24.0 20.8,-12.0"/></defs>
+        <g fill="#e8a92a" class="ss-glow"><use href="#ss-hx" x="30" y="132"/><use href="#ss-hx" x="72" y="132"/><use href="#ss-hx" x="113" y="132"/><use href="#ss-hx" x="155" y="132"/><use href="#ss-hx" x="196" y="132"/><use href="#ss-hx" x="238" y="132"/><use href="#ss-hx" x="279" y="132"/><use href="#ss-hx" x="654" y="132"/><use href="#ss-hx" x="695" y="132"/><use href="#ss-hx" x="737" y="132"/><use href="#ss-hx" x="778" y="132"/><use href="#ss-hx" x="820" y="132"/><use href="#ss-hx" x="861" y="132"/><use href="#ss-hx" x="51" y="168"/><use href="#ss-hx" x="92" y="168"/><use href="#ss-hx" x="134" y="168"/><use href="#ss-hx" x="175" y="168"/><use href="#ss-hx" x="217" y="168"/><use href="#ss-hx" x="259" y="168"/><use href="#ss-hx" x="674" y="168"/><use href="#ss-hx" x="716" y="168"/><use href="#ss-hx" x="757" y="168"/><use href="#ss-hx" x="799" y="168"/><use href="#ss-hx" x="841" y="168"/><use href="#ss-hx" x="30" y="204"/><use href="#ss-hx" x="72" y="204"/><use href="#ss-hx" x="113" y="204"/><use href="#ss-hx" x="155" y="204"/><use href="#ss-hx" x="196" y="204"/><use href="#ss-hx" x="238" y="204"/><use href="#ss-hx" x="695" y="204"/><use href="#ss-hx" x="737" y="204"/><use href="#ss-hx" x="778" y="204"/><use href="#ss-hx" x="820" y="204"/><use href="#ss-hx" x="861" y="204"/><use href="#ss-hx" x="51" y="240"/><use href="#ss-hx" x="92" y="240"/><use href="#ss-hx" x="134" y="240"/><use href="#ss-hx" x="175" y="240"/><use href="#ss-hx" x="217" y="240"/><use href="#ss-hx" x="716" y="240"/><use href="#ss-hx" x="757" y="240"/><use href="#ss-hx" x="799" y="240"/><use href="#ss-hx" x="841" y="240"/><use href="#ss-hx" x="30" y="276"/><use href="#ss-hx" x="72" y="276"/><use href="#ss-hx" x="113" y="276"/><use href="#ss-hx" x="155" y="276"/><use href="#ss-hx" x="196" y="276"/><use href="#ss-hx" x="238" y="276"/><use href="#ss-hx" x="695" y="276"/><use href="#ss-hx" x="737" y="276"/><use href="#ss-hx" x="778" y="276"/><use href="#ss-hx" x="820" y="276"/><use href="#ss-hx" x="861" y="276"/><use href="#ss-hx" x="51" y="312"/><use href="#ss-hx" x="92" y="312"/><use href="#ss-hx" x="134" y="312"/><use href="#ss-hx" x="175" y="312"/><use href="#ss-hx" x="217" y="312"/><use href="#ss-hx" x="259" y="312"/><use href="#ss-hx" x="674" y="312"/><use href="#ss-hx" x="716" y="312"/><use href="#ss-hx" x="757" y="312"/><use href="#ss-hx" x="799" y="312"/><use href="#ss-hx" x="841" y="312"/><use href="#ss-hx" x="30" y="348"/><use href="#ss-hx" x="72" y="348"/><use href="#ss-hx" x="113" y="348"/><use href="#ss-hx" x="155" y="348"/><use href="#ss-hx" x="196" y="348"/><use href="#ss-hx" x="238" y="348"/><use href="#ss-hx" x="279" y="348"/><use href="#ss-hx" x="654" y="348"/><use href="#ss-hx" x="695" y="348"/><use href="#ss-hx" x="737" y="348"/><use href="#ss-hx" x="778" y="348"/><use href="#ss-hx" x="820" y="348"/><use href="#ss-hx" x="861" y="348"/></g>
+        <g fill="#e07b39"><use href="#ss-hx" x="321" y="132"/><use href="#ss-hx" x="363" y="132"/><use href="#ss-hx" x="529" y="132"/><use href="#ss-hx" x="570" y="132"/><use href="#ss-hx" x="612" y="132"/><use href="#ss-hx" x="300" y="168"/><use href="#ss-hx" x="342" y="168"/><use href="#ss-hx" x="550" y="168"/><use href="#ss-hx" x="591" y="168"/><use href="#ss-hx" x="633" y="168"/><use href="#ss-hx" x="279" y="204"/><use href="#ss-hx" x="321" y="204"/><use href="#ss-hx" x="570" y="204"/><use href="#ss-hx" x="612" y="204"/><use href="#ss-hx" x="654" y="204"/><use href="#ss-hx" x="259" y="240"/><use href="#ss-hx" x="300" y="240"/><use href="#ss-hx" x="591" y="240"/><use href="#ss-hx" x="633" y="240"/><use href="#ss-hx" x="674" y="240"/><use href="#ss-hx" x="279" y="276"/><use href="#ss-hx" x="321" y="276"/><use href="#ss-hx" x="570" y="276"/><use href="#ss-hx" x="612" y="276"/><use href="#ss-hx" x="654" y="276"/><use href="#ss-hx" x="300" y="312"/><use href="#ss-hx" x="342" y="312"/><use href="#ss-hx" x="550" y="312"/><use href="#ss-hx" x="591" y="312"/><use href="#ss-hx" x="633" y="312"/><use href="#ss-hx" x="321" y="348"/><use href="#ss-hx" x="363" y="348"/><use href="#ss-hx" x="529" y="348"/><use href="#ss-hx" x="570" y="348"/><use href="#ss-hx" x="612" y="348"/></g>
+        <g fill="#f7ecd2"><use href="#ss-hx" x="404" y="132"/><use href="#ss-hx" x="446" y="132"/><use href="#ss-hx" x="487" y="132"/><use href="#ss-hx" x="383" y="168"/><use href="#ss-hx" x="425" y="168"/><use href="#ss-hx" x="466" y="168"/><use href="#ss-hx" x="508" y="168"/><use href="#ss-hx" x="363" y="204"/><use href="#ss-hx" x="404" y="204"/><use href="#ss-hx" x="446" y="204"/><use href="#ss-hx" x="487" y="204"/><use href="#ss-hx" x="529" y="204"/><use href="#ss-hx" x="342" y="240"/><use href="#ss-hx" x="383" y="240"/><use href="#ss-hx" x="425" y="240"/><use href="#ss-hx" x="466" y="240"/><use href="#ss-hx" x="508" y="240"/><use href="#ss-hx" x="550" y="240"/><use href="#ss-hx" x="363" y="276"/><use href="#ss-hx" x="404" y="276"/><use href="#ss-hx" x="446" y="276"/><use href="#ss-hx" x="487" y="276"/><use href="#ss-hx" x="529" y="276"/><use href="#ss-hx" x="383" y="312"/><use href="#ss-hx" x="425" y="312"/><use href="#ss-hx" x="466" y="312"/><use href="#ss-hx" x="508" y="312"/><use href="#ss-hx" x="404" y="348"/><use href="#ss-hx" x="446" y="348"/><use href="#ss-hx" x="487" y="348"/></g>
+        </g>
+        <g text-anchor="middle">
+          <text x="110" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Miel</text><text x="110" y="84" font-size="15" fill="var(--ink-2)">afuera</text>
+          <text x="450" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Abejas jóvenes</text><text x="450" y="84" font-size="15" fill="var(--ink-2)">en el centro</text>
+          <text x="290" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Polen</text><text x="290" y="84" font-size="15" fill="var(--ink-2)">en medio</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Un pedazo de panal: celdas claras con abejas jóvenes en el centro, celdas naranjas de polen alrededor y celdas doradas de miel en las orillas.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Una cosa por celda, en un orden que todos conocen. Un buen modelo funciona igual: un dato por celda y las mismas filas cada mes, para que cualquiera de tu equipo encuentre el precio, lo cambie y confíe en la respuesta.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li>Dirección de <b>celda</b> = columna + fila: <b>B1</b>. Un <b>rango</b> usa dos puntos: B2:B4 = B2, B3, B4.</li>
+          <li>Las <b>fórmulas</b> empiezan con =. Apunta a celdas: =B1*B2 = $40 × 25 = $1,000.</li>
+          <li><b>SUM</b>(20, 25, 30) = 75. <b>AVERAGE</b> = <span class="frac"><span>75</span><span>3</span></span> = 25. En Excel en español: SUMA y PROMEDIO.</li>
+          <li>Las fórmulas copiadas se mueven. <b>$B$1</b> (referencia absoluta) se queda fija. =B4*B1 copiada abajo se vuelve =B5*B2: mal.</li>
+          <li><b>Modelo</b>: datos de entrada en azul, fórmulas en negro. Nada de <b>valores fijos</b> (=B7*40).</li>
+          <li>Modelo de afinaciones: +5 al mes da $4,050 en seis meses; +10 da $6,300.</li>
+          <li><b>=NPV</b>(10%, cinco × 3000) = $11,372; resta afuera los $10,000 de hoy: $1,372.</li>
+          <li>Siempre revisa una fila a mano.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Completa los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Toda fórmula empieza con el signo de <input type="text" class="blank" data-answer="=|igual|igual que" aria-label="Espacio 1">.</div>
+        <div>2. Si B2:B4 tienen 10, 20 y 30, =SUM(B2:B4) muestra <input type="text" class="blank" data-answer="60" inputmode="numeric" aria-label="Espacio 2">.</div>
+        <div>3. $B$1 es una referencia <input type="text" class="blank" data-answer="absoluta" aria-label="Espacio 3">: no se mueve al copiarla.</div>
+        <div>4. En el modelo de un banco, los datos escritos a mano van en color <input type="text" class="blank" data-answer="azul" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Repartan el viaje</h3>
+          <p>Planeen un viaje en grupo en una sola hoja de Google Sheets compartida: gasolina, comida y entradas como datos, y una celda que muestre cuánto debe cada persona. Cambien el número de personas y vean cómo se actualiza.</p>
+        </div>
+        <div class="reveal">
+          <h3>Rompan el modelo</h3>
+          <p>Una persona esconde un valor fijo o un $ que falta en algún lugar del modelo de afinaciones. Las demás lo encuentran revisando filas a mano.</p>
+        </div>
+        <div class="reveal">
+          <h3>¿Y si…?</h3>
+          <p>Por turnos, cambien un dato, como el precio o los costos fijos. Antes de mirar, todos adivinan la nueva ganancia de seis meses.</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">¿Qué pregunta de dinero en tu vida podría responder una hoja de cálculo, como un presupuesto, una meta de ahorro o el pago de un carro?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué datos irían en azul? Escríbelos con tu mejor estimado para cada uno.</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Los analistas pasan horas al día en Excel. ¿Te suena divertido, normal o pesado? ¿Por qué?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: haces análisis financiero en la cadena de bicicletas</h3>
+      <div class="reveal">
+        <p>Una persona de tu equipo armó el presupuesto de la nueva tienda de la cadena y se fue de vacaciones. Tu gerente te pide revisarlo antes de que llegue a la dirección de finanzas. Esto es lo que encuentras:</p>
+        <ul>
+          <li><b>B1 (precio):</b> 45. La cadena acaba de subir el precio de la afinación de $40 a $45.</li>
+          <li><b>C8 (ingresos de febrero):</b> =B8*40.</li>
+          <li><b>C13 (ingresos totales, meses en las filas 7 a 12):</b> =SUM(C7:C11).</li>
+          <li><b>El VPN de la tienda:</b> =NPV(10%, -50000, 15000, 15000, 15000, 15000, 15000), que muestra $6,238. La tienda cuesta $50,000 hoy y deja $15,000 al año durante 5 años.</li>
+        </ul>
+        <p><b>Tu tarea:</b> encuentra los tres errores y escribe las fórmulas corregidas.</p>
+        <textarea id="job-answer" placeholder="Escribe tu nota para tu gerente…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Error 1, valor fijo:</b> C8 todavía usa los $40 de antes. Corrección: =B8*$B$1, y cópiala en toda la columna.</p>
+            <p><b>Error 2, rango equivocado:</b> C7:C11 deja fuera junio, en la fila 12. Corrección: =SUM(C7:C12).</p>
+            <p><b>Error 3, el momento del VPN:</b> poner los -$50,000 dentro de NPV los trata como si se pagaran dentro de un año, así que se descuentan. Corrección: =NPV(10%, 15000, 15000, 15000, 15000, 15000)-50000, que muestra <b>$6,862</b>, no $6,238.</p>
+            <p><b>Para tu gerente:</b> tres correcciones, y la tienda se ve un poco mejor de lo que decía la hoja. También revisé a mano los ingresos de febrero para confirmar que las fórmulas copiadas coinciden.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Hacia dónde <em>va.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en precio, costos y ganancia, en el VPN y en la valuación con DCF. Lleva a Python para finanzas.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../price-profit/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Precio, costos y ganancia</text><text x="20" y="86">Unidad 11 · las afinaciones</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Elegir proyectos con el VPN</text><text x="20" y="186">Unidad 13 · la camioneta</text></a>
+          <a href="../dcf/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Valuar con DCF</text><text x="20" y="286">Unidad 15 · un modelo real</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Hojas de cálculo</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Python para finanzas</text><text x="690" y="186">Muy pronto · Unidad 17</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y hacia dónde va.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 11</span><b>Precio, costos y ganancia</b></li>
+        <li><span class="muted small">Antes · Unidad 13</span><b>Elegir proyectos con el VPN</b></li>
+        <li><span class="muted small">Antes · Unidad 15</span><b>Valuar una empresa con DCF</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Hojas de cálculo para finanzas</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 17</span><b>Python para finanzas</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../derivatives/">Repasa: Opciones y futuros <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/spreadsheets/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Spreadsheets for Finance · FinancedHub</title>
+  <meta name="description" content="Unit 17, Lesson 1: spreadsheets the way analysts use them: cells and cell addresses, formulas, SUM and AVERAGE, ranges, copying formulas and the $ sign (absolute references), inputs vs. formulas and the blue-text rule, hard-coding, building a small financial model, and the NPV function. Play: Formula check, eight spreadsheet questions.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Spreadsheets for Finance">
+  <meta property="og:description" content="Unit 17, Lesson 1: spreadsheets the way analysts use them: cells and cell addresses, formulas, SUM and AVERAGE, ranges, copying formulas and the $ sign (absolute references), inputs vs. formulas and the blue-text rule, hard-coding, building a small financial model, and the NPV function. Play: Formula check, eight spreadsheet questions.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611110235">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="lesson.css?v=202611110235">
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/lessons/spreadsheets/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/spreadsheets/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/spreadsheets/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/spreadsheets/">
+  <meta property="og:url" content="https://financedhub.com/lessons/spreadsheets/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Home</a><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about">About</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 17 · Lesson 1</span> Excel, Python and SQL</div>
+        <h1 class="reveal">Change one number. <em>Watch the whole plan update.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> Remember your weekend bike tune-ups (Lesson 11.1)? You charge <span class="mark">$40</span>, parts cost <span class="mark">$10</span>, and your fixed costs (the market stall, tools and insurance) are <span class="mark">$300 a month</span>. You did 20 tune-ups in January, and you think you can add <span class="mark">5 more each month</span>. What will you earn by June? You could work it out by hand, but every time a number changes, you'd start over. In a spreadsheet, you build it once and it updates itself. It's the tool every finance job uses every day.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>spreadsheet</b> is a grid of cells that holds numbers and formulas. <b>Excel</b> and <b>Google Sheets</b> are the most common.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Formulas link the cells, so when one input changes, every answer that depends on it changes too. That lets you test "what if" in seconds.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Type your inputs into cells, then write formulas that point to those cells. Copy a formula down a column to repeat it for every month.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Financial analysts</b> build budgets in them. <b>Investment bankers</b> build valuation models. <b>Accountants</b> use them to close the books.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A small spreadsheet. Cell B1 holds the $40 price and B2 holds 25 tune-ups. Cell B3 holds the formula equals B1 times B2 and shows $1,000.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">A grid that does math</text>
+          <rect x="50" y="104" width="420" height="44" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <text x="72" y="133" font-size="17" font-style="italic" fill="var(--ink-3)">fx</text>
+          <text x="110" y="133" font-size="19" font-weight="700" fill="var(--ink)" font-family="ui-monospace, monospace">=B1*B2</text>
+          <rect x="50" y="170" width="420" height="250" rx="14" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+          <g fill="var(--paper-2)"><rect x="52" y="172" width="416" height="38"/><rect x="52" y="172" width="48" height="246"/></g>
+          <g stroke="var(--line)" stroke-width="1.5"><path d="M100 172 V 418 M270 172 V 418 M52 210 H 468 M52 280 H 468 M52 350 H 468"/></g>
+          <g font-size="15" font-weight="700" fill="var(--ink-3)" text-anchor="middle"><text x="185" y="197">A</text><text x="369" y="197">B</text><text x="76" y="250">1</text><text x="76" y="320">2</text><text x="76" y="390">3</text></g>
+          <g font-size="19" fill="var(--ink-2)"><text x="116" y="252">Price</text><text x="116" y="322">Tune-ups</text><text x="116" y="392">Revenue</text></g>
+          <g font-size="20" font-weight="700" text-anchor="end"><text x="452" y="252" fill="var(--needs)">$40</text><text x="452" y="322" fill="var(--needs)">25</text></g>
+          <rect class="ss-hot" x="272" y="352" width="194" height="64" rx="4" fill="color-mix(in srgb, var(--good) 14%, var(--card))" stroke="var(--good)" stroke-width="3"/>
+          <text x="452" y="392" text-anchor="end" font-size="20" font-weight="700" fill="var(--ink)">$1,000</text>
+          <text x="260" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">change one cell; the rest follow</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a tiny spreadsheet. Column A has labels, column B has numbers. The blue numbers are typed in. The green cell, B3, holds the formula =B1*B2 (shown in the bar on top), so it shows $40 × 25 = $1,000.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it</div>
+      <h2 class="reveal">A grid that <em>does the math for you.</em></h2>
+      <p class="lead reveal">A <dfn class="term" data-def="A program, like Excel or Google Sheets, that arranges numbers, text and formulas in a grid of cells.">spreadsheet</dfn> is a grid. Columns are named with letters (A, B, C…) and rows with numbers (1, 2, 3…). Each box is a <dfn class="term" data-def="One box in a spreadsheet. It's named by its column letter and row number, like B2.">cell</dfn>, and its address is its column then its row: column B, row 1 is <b>B1</b>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>B1</dt><dd>Your price: <b>40</b>.</dd></div><div><dt>B2</dt><dd>Tune-ups this month: <b>25</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Formulas start with =</h3>
+      <p class="reveal">A <dfn class="term" data-def="An instruction in a cell that calculates a result. It always starts with an equals sign, like =B1*B2.">formula</dfn> is a calculation inside a cell, and it always starts with an <b>equals sign</b>. Instead of typing numbers into it, you point to other cells. Spreadsheets use * for times, + and − for plus and minus, and the slash key to divide: =C2/B2 means <span class="frac"><span>C2</span><span>B2</span></span>.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>In B3, type =B1*B2</dt><dd>It shows $40 × 25 = <b>$1,000</b>, your revenue.</dd></div><div><dt>Change B2 to 30</dt><dd>B3 updates by itself to $40 × 30 = <b>$1,200</b>. You never touch B3.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Functions: SUM and AVERAGE</h3>
+      <p class="reveal">A <dfn class="term" data-def="A built-in formula with a name, like SUM, AVERAGE or NPV. You give it cells or numbers in parentheses.">function</dfn> is a ready-made formula. A <dfn class="term" data-def="A block of cells written with a colon, like B2:B4, which means B2, B3 and B4.">range</dfn> uses a colon: B2:B4 means B2, B3 and B4, three cells. B7:B12 would be six cells.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>B2:B4 hold January to March</dt><dd>20, 25 and 30 tune-ups.</dd></div><div><dt>=SUM(B2:B4)</dt><dd>20 + 25 + 30 = <b>75</b> tune-ups.</dd></div><div><dt>=AVERAGE(B2:B4)</dt><dd><span class="frac"><span>75</span><span>3</span></span> = <b>25</b> a month.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Copying formulas and the $ sign</h3>
+      <p class="reveal">When you copy a formula, its cell addresses move with it: copy one row down and B4 becomes B5; copy one column right and B4 becomes C4. Usually that's what you want. But some cells, like your price, should never move. A <b>$</b> sign locks them: <dfn class="term" data-def="A cell address with $ signs, like $B$1, that stays the same when the formula is copied.">absolute reference</dfn> $B$1 always means B1.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The sheet</dt><dd>B1 holds the price, 40. B2 is empty. Tune-ups are in B4 (20) and B5 (25).</dd></div><div><dt>Right: C4 is =B4*$B$1</dt><dd>Shows $800. Copied down to C5, it becomes =B5*$B$1: 25 × $40 = <b>$1,000</b>.</dd></div><div><dt>Wrong: C4 is =B4*B1</dt><dd>Copied down, it becomes =B5*B2. B2 is empty, so C5 shows <b>0</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">A model: inputs in, answers out</h3>
+      <p class="reveal">A <dfn class="term" data-def="A spreadsheet that turns inputs (assumptions) into outputs (answers) with formulas, so you can test what happens when an input changes.">financial model</dfn> keeps its inputs, the numbers you assume, in their own cells, and everything else is formulas. Banks color typed-in inputs <b style="color:var(--needs)">blue</b> and formulas black, so anyone can see what's an assumption. Typing a number straight into a formula, like =B7*40, is called <dfn class="term" data-def="Typing a number straight into a formula, like =B7*40, instead of pointing to a cell. It breaks the model when that number changes.">hard-coding</dfn>. If the price changes, that formula stays wrong and nobody notices.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Inputs (blue)</dt><dd>Price $40 in B1, parts $10 in B2, fixed costs $300 in B3, tune-ups added each month in B4.</dd></div><div><dt>Tune-ups each month</dt><dd>January is 20. February is =B7+$B$4, copied down. With 5 added: 20, 25, 30, 35, 40, 45.</dd></div><div><dt>Profit each month</dt><dd>=B7*($B$1-$B$2)-$B$3. January: 20 × ($40 − $10) − $300 = <b>$300</b>.</dd></div><div><dt>Change B4 to 10</dt><dd>Tune-ups become 20, 30, 40, 50, 60, 70, and six-month profit jumps from $4,050 to <b>$6,300</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="sh">
+        <label class="md-lab" for="sh-g">Tune-ups added each month (cell B4) <b id="sh-g-v">5</b></label><input type="range" id="sh-g" min="0" max="10" step="1" value="5">
+        <div class="sh-fbar"><span>fx</span><b id="sh-f">=SUM(D7:D12)</b></div>
+        <div class="sh-wrap"><table class="sh-grid" id="sh-out"></table></div>
+        <p class="op-msg" id="sh-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> your tune-up business as a spreadsheet. Rows 1 to 4 are inputs (blue); rows 7 to 13 are formulas. Move the slider to change B4, and tap any cell to see its formula in the bar on top.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Finance functions: NPV</h3>
+      <p class="reveal">Spreadsheets have functions for finance too, like loan payments and growth rates. The one you'll use most is NPV (Lesson 13.2). Watch out: Excel's =NPV() treats every cash flow as arriving at the end of a year, so money you pay today goes outside it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The repair van (Lesson 13.2)</dt><dd>Costs $10,000 today and brings $3,000 a year for 5 years, at 10%.</dd></div><div><dt>=NPV(10%, 3000, 3000, 3000, 3000, 3000)</dt><dd>Shows <b>$11,372</b>: what the 5 years of cash are worth today.</dd></div><div><dt>Subtract today's cost</dt><dd>=NPV(…)-10000 = <b>$1,372</b>, the same NPV you found by hand.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it</div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it</div>
+      <h2 class="reveal">Formula <em>check.</em></h2>
+      <p class="lead reveal">Eight questions about a spreadsheet. Each one shows what's in the cells. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="fx">
+        <div class="fd-top">
+          <div><small id="fx-round">Question 1 of 8</small><b id="fx-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="fx-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="fx-facts"></ul>
+        <div class="sd-opts" id="fx-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="fx-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="fx-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="fx-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up spreadsheets. Each lists what's in the cells, then asks one question.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down</div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">To build any model, take four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Put every input in its own cell</h3>
+      <div class="formula reveal">One assumption per cell, in blue</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Inputs</dt><dd>$40 in B1, $10 in B2, $300 in B3, 5 in B4.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Write formulas that point to inputs</h3>
+      <div class="formula reveal">Never type a number into a formula</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Revenue</dt><dd>=B7*$B$1, not =B7*40.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: Lock what shouldn't move</h3>
+      <div class="formula reveal">$B$1 stays put when copied; B7 moves</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Copied to row 8</dt><dd>=B8*$B$1.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Check one cell by hand</h3>
+      <div class="formula reveal">If one row is right, the copies are too</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>January profit</dt><dd>20 × ($40 − $10) − $300 = $300. The sheet shows $300.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: is your friend's sheet right?</h3>
+      <p class="reveal">A friend built the same tune-up plan and says you'll make $5,850 in six months. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>Their profit formula:</b> =B7*($B$1-$B$2), copied down.</li>
+        <li><b>Tune-ups:</b> 20, 25, 30, 35, 40, 45, which add up to 195.</li>
+        <li><b>Fixed costs:</b> $300 a month.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Check one cell by hand.</b> January should be 20 × ($40 − $10) − $300 = $300. Their sheet shows 20 × $30 = $600.</li>
+        <li><b>Find the gap.</b> Their formula never subtracts the fixed costs: the -$B$3 is missing.</li>
+        <li><b>Size the mistake.</b> $300 a month × 6 months = $1,800 too high.</li>
+        <li><b>The answer.</b> Six-month profit is $5,850 − $1,800 = <b>$4,050</b>. One missing reference made the plan look 44% better than it is, which is why analysts always check a row by hand.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link</div>
+      <h2 class="reveal">A honeycomb is <em>a spreadsheet.</em></h2>
+      <p class="lead reveal">Honeybees build comb out of thousands of six-sided wax cells. Each cell holds one thing: honey, pollen, or a young bee growing up. And the bees keep a layout: young bees in the middle, pollen around them, honey on the outside. Any worker can find what it needs.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A honeycomb with young bees in the middle cells, pollen around them and honey in the outer cells.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, #f2c14e 10%, var(--card))"/>
+        <g stroke="#c99a2e" stroke-width="3">
+        <defs><polygon id="ss-hx" points="20.8,12.0 0.0,24.0 -20.8,12.0 -20.8,-12.0 -0.0,-24.0 20.8,-12.0"/></defs>
+        <g fill="#e8a92a" class="ss-glow"><use href="#ss-hx" x="30" y="132"/><use href="#ss-hx" x="72" y="132"/><use href="#ss-hx" x="113" y="132"/><use href="#ss-hx" x="155" y="132"/><use href="#ss-hx" x="196" y="132"/><use href="#ss-hx" x="238" y="132"/><use href="#ss-hx" x="279" y="132"/><use href="#ss-hx" x="654" y="132"/><use href="#ss-hx" x="695" y="132"/><use href="#ss-hx" x="737" y="132"/><use href="#ss-hx" x="778" y="132"/><use href="#ss-hx" x="820" y="132"/><use href="#ss-hx" x="861" y="132"/><use href="#ss-hx" x="51" y="168"/><use href="#ss-hx" x="92" y="168"/><use href="#ss-hx" x="134" y="168"/><use href="#ss-hx" x="175" y="168"/><use href="#ss-hx" x="217" y="168"/><use href="#ss-hx" x="259" y="168"/><use href="#ss-hx" x="674" y="168"/><use href="#ss-hx" x="716" y="168"/><use href="#ss-hx" x="757" y="168"/><use href="#ss-hx" x="799" y="168"/><use href="#ss-hx" x="841" y="168"/><use href="#ss-hx" x="30" y="204"/><use href="#ss-hx" x="72" y="204"/><use href="#ss-hx" x="113" y="204"/><use href="#ss-hx" x="155" y="204"/><use href="#ss-hx" x="196" y="204"/><use href="#ss-hx" x="238" y="204"/><use href="#ss-hx" x="695" y="204"/><use href="#ss-hx" x="737" y="204"/><use href="#ss-hx" x="778" y="204"/><use href="#ss-hx" x="820" y="204"/><use href="#ss-hx" x="861" y="204"/><use href="#ss-hx" x="51" y="240"/><use href="#ss-hx" x="92" y="240"/><use href="#ss-hx" x="134" y="240"/><use href="#ss-hx" x="175" y="240"/><use href="#ss-hx" x="217" y="240"/><use href="#ss-hx" x="716" y="240"/><use href="#ss-hx" x="757" y="240"/><use href="#ss-hx" x="799" y="240"/><use href="#ss-hx" x="841" y="240"/><use href="#ss-hx" x="30" y="276"/><use href="#ss-hx" x="72" y="276"/><use href="#ss-hx" x="113" y="276"/><use href="#ss-hx" x="155" y="276"/><use href="#ss-hx" x="196" y="276"/><use href="#ss-hx" x="238" y="276"/><use href="#ss-hx" x="695" y="276"/><use href="#ss-hx" x="737" y="276"/><use href="#ss-hx" x="778" y="276"/><use href="#ss-hx" x="820" y="276"/><use href="#ss-hx" x="861" y="276"/><use href="#ss-hx" x="51" y="312"/><use href="#ss-hx" x="92" y="312"/><use href="#ss-hx" x="134" y="312"/><use href="#ss-hx" x="175" y="312"/><use href="#ss-hx" x="217" y="312"/><use href="#ss-hx" x="259" y="312"/><use href="#ss-hx" x="674" y="312"/><use href="#ss-hx" x="716" y="312"/><use href="#ss-hx" x="757" y="312"/><use href="#ss-hx" x="799" y="312"/><use href="#ss-hx" x="841" y="312"/><use href="#ss-hx" x="30" y="348"/><use href="#ss-hx" x="72" y="348"/><use href="#ss-hx" x="113" y="348"/><use href="#ss-hx" x="155" y="348"/><use href="#ss-hx" x="196" y="348"/><use href="#ss-hx" x="238" y="348"/><use href="#ss-hx" x="279" y="348"/><use href="#ss-hx" x="654" y="348"/><use href="#ss-hx" x="695" y="348"/><use href="#ss-hx" x="737" y="348"/><use href="#ss-hx" x="778" y="348"/><use href="#ss-hx" x="820" y="348"/><use href="#ss-hx" x="861" y="348"/></g>
+        <g fill="#e07b39"><use href="#ss-hx" x="321" y="132"/><use href="#ss-hx" x="363" y="132"/><use href="#ss-hx" x="529" y="132"/><use href="#ss-hx" x="570" y="132"/><use href="#ss-hx" x="612" y="132"/><use href="#ss-hx" x="300" y="168"/><use href="#ss-hx" x="342" y="168"/><use href="#ss-hx" x="550" y="168"/><use href="#ss-hx" x="591" y="168"/><use href="#ss-hx" x="633" y="168"/><use href="#ss-hx" x="279" y="204"/><use href="#ss-hx" x="321" y="204"/><use href="#ss-hx" x="570" y="204"/><use href="#ss-hx" x="612" y="204"/><use href="#ss-hx" x="654" y="204"/><use href="#ss-hx" x="259" y="240"/><use href="#ss-hx" x="300" y="240"/><use href="#ss-hx" x="591" y="240"/><use href="#ss-hx" x="633" y="240"/><use href="#ss-hx" x="674" y="240"/><use href="#ss-hx" x="279" y="276"/><use href="#ss-hx" x="321" y="276"/><use href="#ss-hx" x="570" y="276"/><use href="#ss-hx" x="612" y="276"/><use href="#ss-hx" x="654" y="276"/><use href="#ss-hx" x="300" y="312"/><use href="#ss-hx" x="342" y="312"/><use href="#ss-hx" x="550" y="312"/><use href="#ss-hx" x="591" y="312"/><use href="#ss-hx" x="633" y="312"/><use href="#ss-hx" x="321" y="348"/><use href="#ss-hx" x="363" y="348"/><use href="#ss-hx" x="529" y="348"/><use href="#ss-hx" x="570" y="348"/><use href="#ss-hx" x="612" y="348"/></g>
+        <g fill="#f7ecd2"><use href="#ss-hx" x="404" y="132"/><use href="#ss-hx" x="446" y="132"/><use href="#ss-hx" x="487" y="132"/><use href="#ss-hx" x="383" y="168"/><use href="#ss-hx" x="425" y="168"/><use href="#ss-hx" x="466" y="168"/><use href="#ss-hx" x="508" y="168"/><use href="#ss-hx" x="363" y="204"/><use href="#ss-hx" x="404" y="204"/><use href="#ss-hx" x="446" y="204"/><use href="#ss-hx" x="487" y="204"/><use href="#ss-hx" x="529" y="204"/><use href="#ss-hx" x="342" y="240"/><use href="#ss-hx" x="383" y="240"/><use href="#ss-hx" x="425" y="240"/><use href="#ss-hx" x="466" y="240"/><use href="#ss-hx" x="508" y="240"/><use href="#ss-hx" x="550" y="240"/><use href="#ss-hx" x="363" y="276"/><use href="#ss-hx" x="404" y="276"/><use href="#ss-hx" x="446" y="276"/><use href="#ss-hx" x="487" y="276"/><use href="#ss-hx" x="529" y="276"/><use href="#ss-hx" x="383" y="312"/><use href="#ss-hx" x="425" y="312"/><use href="#ss-hx" x="466" y="312"/><use href="#ss-hx" x="508" y="312"/><use href="#ss-hx" x="404" y="348"/><use href="#ss-hx" x="446" y="348"/><use href="#ss-hx" x="487" y="348"/></g>
+        </g>
+        <g text-anchor="middle">
+          <text x="110" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Honey</text><text x="110" y="84" font-size="15" fill="var(--ink-2)">outside</text>
+          <text x="450" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Young bees</text><text x="450" y="84" font-size="15" fill="var(--ink-2)">in the middle</text>
+          <text x="290" y="60" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Pollen</text><text x="290" y="84" font-size="15" fill="var(--ink-2)">in between</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A piece of honeycomb: pale cells with young bees in the middle, orange pollen cells around them, and gold honey cells at the edges.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> One thing per cell, in a layout everyone knows. A good model works the same way: one input per cell, the same rows every month, so anyone on your team can find the price, change it, and trust the answer.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes</div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Cell</b> address = column + row: <b>B1</b>. A <b>range</b> uses a colon: B2:B4 = B2, B3, B4.</li>
+          <li><b>Formulas</b> start with =. Point to cells: =B1*B2 = $40 × 25 = $1,000.</li>
+          <li><b>SUM</b>(20, 25, 30) = 75. <b>AVERAGE</b> = <span class="frac"><span>75</span><span>3</span></span> = 25.</li>
+          <li>Copied formulas move. <b>$B$1</b> (absolute reference) stays put. =B4*B1 copied down becomes =B5*B2: wrong.</li>
+          <li><b>Model</b>: inputs in blue, formulas in black. No <b>hard-coding</b> (=B7*40).</li>
+          <li>Tune-up model: +5 a month gives $4,050 in six months; +10 gives $6,300.</li>
+          <li><b>=NPV</b>(10%, five × 3000) = $11,372; subtract today's $10,000 outside it: $1,372.</li>
+          <li>Always check one row by hand.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Every formula starts with the <input type="text" class="blank" data-answer="=|equals|equal|equals sign|equal sign" aria-label="Blank 1"> sign.</div>
+        <div>2. If B2:B4 hold 10, 20 and 30, =SUM(B2:B4) shows <input type="text" class="blank" data-answer="60" inputmode="numeric" aria-label="Blank 2">.</div>
+        <div>3. $B$1 is an <input type="text" class="blank" data-answer="absolute|absolute reference" aria-label="Blank 3"> reference: it doesn't move when copied.</div>
+        <div>4. In a bank's model, typed-in inputs are colored <input type="text" class="blank" data-answer="blue" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together</div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Split the trip</h3>
+          <p>Plan a group trip in one shared Google Sheet: gas, food and tickets as inputs, and a cell that shows what each person owes. Change the number of people and watch it update.</p>
+        </div>
+        <div class="reveal">
+          <h3>Break the model</h3>
+          <p>One person hides a hard-coded number or a missing $ somewhere in the tune-up model. The others find it by checking rows by hand.</p>
+        </div>
+        <div class="reveal">
+          <h3>What if?</h3>
+          <p>Take turns changing one input, like the price or the fixed costs. Before anyone looks, everyone guesses the new six-month profit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own</div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">What's one money question in your life a spreadsheet could answer, like a budget, a savings goal or a car payment?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Which inputs would go in blue? Write them down with your best guess for each.</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Analysts spend hours a day in Excel. Does that sound fun, fine or painful to you? Why?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a financial analyst at the bike chain</h3>
+      <div class="reveal">
+        <p>A coworker built the budget for the chain's new store and went on vacation. Your manager asks you to check it before it goes to the CFO. Here's what you find:</p>
+        <ul>
+          <li><b>B1 (price):</b> 45. The chain just raised the tune-up price from $40 to $45.</li>
+          <li><b>C8 (February revenue):</b> =B8*40.</li>
+          <li><b>C13 (total revenue, months in rows 7 to 12):</b> =SUM(C7:C11).</li>
+          <li><b>The store's NPV:</b> =NPV(10%, -50000, 15000, 15000, 15000, 15000, 15000), which shows $6,238. The store costs $50,000 today and brings $15,000 a year for 5 years.</li>
+        </ul>
+        <p><b>Your task:</b> find the three mistakes, and write the fixed formulas.</p>
+        <textarea id="job-answer" placeholder="Write your note to your manager…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Mistake 1, hard-coding:</b> C8 still uses the old $40. Fix: =B8*$B$1, then copy it down the whole column.</p>
+            <p><b>Mistake 2, wrong range:</b> C7:C11 skips June in row 12. Fix: =SUM(C7:C12).</p>
+            <p><b>Mistake 3, NPV timing:</b> putting the −$50,000 inside NPV treats it as paid a year from now, so it gets discounted. Fix: =NPV(10%, 15000, 15000, 15000, 15000, 15000)-50000, which shows <b>$6,862</b>, not $6,238.</p>
+            <p><b>To your manager:</b> three fixes, and the store looks a bit better than the sheet said. I also checked February revenue by hand to make sure the copied formulas match.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Where this <em>leads.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on price, costs and profit, NPV, and DCF valuation. It leads to Python for finance.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../price-profit/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Price, costs and profit</text><text x="20" y="86">Unit 11 · the tune-up business</text></a>
+          <a href="../npv/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Picking projects with NPV</text><text x="20" y="186">Unit 13 · the repair van</text></a>
+          <a href="../dcf/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Valuing with DCF</text><text x="20" y="286">Unit 15 · a model in real life</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Spreadsheets</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Python for finance</text><text x="690" y="186">Coming soon · Unit 17</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and where it leads.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 11</span><b>Price, costs and profit</b></li>
+        <li><span class="muted small">Back · Unit 13</span><b>Picking projects with NPV</b></li>
+        <li><span class="muted small">Back · Unit 15</span><b>Valuing a company with DCF</b></li>
+        <li class="here"><span class="small">You are here</span><b>Spreadsheets for finance</b></li>
+        <li><span class="muted small">Coming soon · Unit 17</span><b>Python for finance</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../derivatives/">Revisit: Options and futures <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about">About</a><a href="../../contact">Contact</a><a href="../../legal/privacy">Privacy</a><a href="../../legal/terms">Terms</a><a href="../../legal/cookies">Cookies and storage</a><a href="../../credits">Credits</a></nav>
+    <p><a class="foot-lang" href="../../es/lessons/spreadsheets/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
+    <p class="disclaimer">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202611110235"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611110235"></script>
+<script src="../../assets/js/auth.js?v=202611110235"></script>
+<script src="../../assets/js/site.js?v=202611110235"></script>
+<script src="../../assets/js/lesson-kit.js?v=202611110235"></script>
+<script src="lesson.js?v=202611110235"></script>
+</body>
+</html>
