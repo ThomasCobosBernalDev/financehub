@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/trading/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>How Trading Works · FinancedHub</title>
+  <meta name="description" content="Unit 16, Lesson 2: what really happens when you click buy: exchanges and the order book, the matching engine and price-time priority, liquidity and price impact, market makers and how they earn the spread, payment for order flow and zero-commission brokers, high-frequency trading, short selling and its unlimited risk, and T+1 settlement. Play: Trading desk, eight trading questions.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="How Trading Works">
+  <meta property="og:description" content="Unit 16, Lesson 2: what really happens when you click buy: exchanges and the order book, the matching engine and price-time priority, liquidity and price impact, market makers and how they earn the spread, payment for order flow and zero-commission brokers, high-frequency trading, short selling and its unlimited risk, and T+1 settlement. Play: Trading desk, eight trading questions.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611110017">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="lesson.css?v=202611110017">
+
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/lessons/trading/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/trading/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/trading/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/trading/">
+  <meta property="og:url" content="https://financedhub.com/lessons/trading/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Home</a><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about">About</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 16 · Lesson 2</span> Banks and markets</div>
+        <h1 class="reveal">You tap "Buy." <em>What happens in the next millisecond?</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The bike chain's IPO is done (Lesson 16.1), and its stock now trades every day at about <span class="mark">$26</span>. You want <span class="mark">100 shares</span>. You tap "Buy" in your brokerage app (Lesson 5.4), and less than a second later you own them. Who sold them to you? Why did you pay $26.00 and not $25.95? And why does a big fund buying <span class="mark">1,000 shares</span> pay more per share than you? This lesson opens up the machine.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p><b>Trading</b> is buying and selling stocks and other securities that already exist. Exchanges and market makers match buyers with sellers.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Every investment you make passes through this machine. Knowing it helps you pay less, avoid traps and answer trading questions in interviews.</p></div>
+          <div class="reveal"><div class="word">How</div><p>Orders wait in an order book. A matching engine pairs buyers and sellers by price, then by time. Market makers fill the gaps.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Traders</b> at banks and funds place big orders. <b>Market makers</b> quote prices all day. <b>Exchange engineers</b> run the matching engines. <b>Compliance officers</b> watch for cheating.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Your phone sends an order to your broker, which sends it to an exchange or a market maker, where it is matched with a seller. The whole trip takes less than a thousandth of a second.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">The trip of one order</text>
+          <g text-anchor="middle">
+            <rect x="200" y="110" width="120" height="70" rx="16" fill="var(--needs)"/><text x="260" y="152" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Your phone</text>
+            <rect x="200" y="230" width="120" height="70" rx="16" fill="var(--accent)"/><text x="260" y="272" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Your broker</text>
+            <rect x="60" y="350" width="170" height="70" rx="16" fill="var(--good)"/><text x="145" y="392" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Exchange</text>
+            <rect x="290" y="350" width="170" height="70" rx="16" fill="var(--good)"/><text x="375" y="392" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Market maker</text>
+          </g>
+          <g class="tr-ping" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="8 8"><path d="M260 180 V 230"/><path d="M240 300 L 160 350"/><path d="M280 300 L 360 350"/></g>
+          <text x="260" y="470" text-anchor="middle" font-size="18" font-weight="700" fill="var(--wants)">matched in under 0.001 seconds</text>
+          <text x="260" y="510" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">every buyer needs a seller</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> the path of your order. Your phone sends it to your broker. The broker sends it to a stock exchange or to a market maker (both green), where it's matched with someone selling. The whole trip usually takes less than a thousandth of a second.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it</div>
+      <h2 class="reveal">Every buyer <em>needs a seller.</em></h2>
+      <p class="lead reveal">In Lesson 5.5 you placed your first order and met the bid, the ask and the spread. Now look inside: where those prices come from, who's on the other side, and who gets paid.</p>
+
+      <h3 class="reveal" style="margin-top:56px">The order book</h3>
+      <p class="reveal">An exchange like the New York Stock Exchange or Nasdaq keeps an <dfn class="term" data-def="The list of every waiting buy and sell order for a stock at each price. The highest buy price is the bid; the lowest sell price is the ask.">order book</dfn> for each stock: every limit order still waiting, sorted by price. The highest price a buyer will pay is the bid; the lowest price a seller will take is the ask; the gap is the spread.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Sellers waiting</dt><dd>300 shares at $26.00, 500 at $26.05, 800 at $26.10, 1,000 at $26.20.</dd></div><div><dt>Buyers waiting</dt><dd>400 shares at $25.95, 600 at $25.90, 900 at $25.80.</dd></div><div><dt>Spread</dt><dd>Best ask $26.00 − best bid $25.95 = <b>5 cents</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">The matching engine</h3>
+      <p class="reveal">A computer called the <dfn class="term" data-def="The exchange computer that pairs buy and sell orders, best price first, then whoever was first in line at that price.">matching engine</dfn> pairs orders. It follows <dfn class="term" data-def="The matching rule: the best price trades first; at the same price, the order that arrived first trades first.">price-time priority</dfn>: the best price goes first, and at the same price, whoever got in line first goes first. A market order takes the best price waiting; a limit order that can't trade yet joins the book.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your market order for 100 shares</dt><dd>Matches the cheapest seller: 100 shares at <b>$26.00</b>. Cost: 100 × $26.00 = $2,600.</dd></div><div><dt>A limit order to buy at $25.97</dt><dd>No seller is that low, so it waits in the book and becomes the new best bid.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Liquidity and price impact</h3>
+      <p class="reveal"><dfn class="term" data-def="How easily you can buy or sell something quickly without moving its price. Lots of orders and a tight spread mean high liquidity.">Liquidity</dfn> is how easily you can trade without moving the price. A big order eats through the cheapest sellers and then has to pay more. That extra is <dfn class="term" data-def="How much a large order pushes the price against you as it uses up the best offers in the order book. The extra cost is also called slippage.">price impact</dfn>, also called slippage. Slide the order size to see it.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>A fund buys 1,000 shares at market</dt><dd>300 × $26.00 + 500 × $26.05 + 200 × $26.10 = $7,800 + $13,025 + $5,220 = <b>$26,045</b>.</dd></div><div><dt>Average price</dt><dd><span class="frac"><span>$26,045</span><span>1,000</span></span> = <b>$26.045</b>, so $45 more than if all 1,000 had cost $26.00.</dd></div></dl></div>
+      <div class="md-card reveal" id="ob">
+        <label class="md-lab" for="ob-n">Market order to buy <b id="ob-n-v">1,000 shares</b></label><input type="range" id="ob-n" min="100" max="2500" step="100" value="1000">
+        <div id="ob-out" aria-hidden="true"></div>
+        <p class="ob-msg" id="ob-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> the order book for the chain's stock. Orange bars are sellers waiting at each price; green bars are buyers. The darker orange part is what your market order buys, starting at the cheapest price and moving up.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Market makers</h3>
+      <p class="reveal">What if no seller is waiting when you want to buy? A <dfn class="term" data-def="A firm that always posts both a price to buy and a price to sell a stock, so others can trade anytime. It earns the spread.">market maker</dfn> always posts both a bid and an ask, so there's always someone to trade with. It earns the spread, a few cents a share, millions of times a day, and takes the risk that the price moves while it holds shares.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>One round trip</dt><dd>The market maker buys at $25.95 and sells at $26.00: <b>5 cents</b> a share.</dd></div><div><dt>A whole day</dt><dd>1 million shares × $0.05 = <b>$50,000</b>, if prices hold still.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Who pays for "free" trading?</h3>
+      <p class="reveal">Most U.S. apps charge no commission. Many make money from <dfn class="term" data-def="When a market maker pays a broker to send it the broker's customer orders. It's how many zero-commission apps earn money.">payment for order flow</dfn>: market makers like Citadel Securities pay the broker to send them customer orders, because small orders are easy to profit from. Critics say it can give you a slightly worse price; supporters say customers still often get a price a bit better than the best ask. Big firms also use <dfn class="term" data-def="Trading by computers that place and cancel huge numbers of orders in millionths of a second, often to make markets or catch tiny price gaps.">high-frequency trading</dfn>: computers trading in millionths of a second.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Selling short</h3>
+      <p class="reveal">You can also bet a price will fall. In <dfn class="term" data-def="Borrowing shares, selling them now, and buying them back later to return them. You profit if the price falls; your loss has no limit if it rises.">short selling</dfn>, you borrow shares, sell them now, and buy them back later to return them. If the price falls, you keep the difference. If it rises, you lose, and since a price can rise without limit, so can your loss.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Short 100 shares at $26</dt><dd>You get 100 × $26 = $2,600 now.</dd></div><div><dt>Price falls to $20</dt><dd>Buy back for $2,000: profit $2,600 − $2,000 = <b>$600</b>.</dd></div><div><dt>Price rises to $35</dt><dd>Buy back for $3,500: loss $3,500 − $2,600 = <b>$900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Settlement</h3>
+      <p class="reveal">The trade happens in a millisecond, but the official swap of money and shares, <b>settlement</b> (Lesson 5.5), takes a little longer. Since May 2024, U.S. stocks settle on <dfn class="term" data-def="Trade date plus one business day: U.S. stock trades officially settle one business day after the trade.">T+1</dfn>: one business day after the trade.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>You buy on Monday</dt><dd>The shares and money officially change hands on <b>Tuesday</b>.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it</div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it</div>
+      <h2 class="reveal">Trading <em>desk.</em></h2>
+      <p class="lead reveal">Eight calls a junior trader makes every day. Each one gives you the numbers. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="tr">
+        <div class="fd-top">
+          <div><small id="tr-round">Question 1 of 8</small><b id="tr-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="tr-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="tr-facts"></ul>
+        <div class="sd-opts" id="tr-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="tr-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="tr-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="tr-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up stocks and orders. Each lists the numbers, then asks one question.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down</div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">Every order goes through the same four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: You choose the order type</h3>
+      <div class="formula reveal">Market order: trade now at the best price. Limit order: only at your price or better.</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>You</dt><dd>A market order for 100 shares.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Your broker routes it</h3>
+      <div class="formula reveal">To an exchange or to a market maker</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your app</dt><dd>Sends it to a market maker that pays for the order flow.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: It's matched</h3>
+      <div class="formula reveal">Best price first, then first in line</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The match</dt><dd>100 shares at $26.00.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: It settles</h3>
+      <div class="formula reveal">T+1: one business day later</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Bought Monday</dt><dd>Settles Tuesday.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: buying a big order without overpaying</h3>
+      <p class="reveal">You're a trader at a fund that wants 2,500 shares of the chain's stock. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>The order book:</b> 300 at $26.00, 500 at $26.05, 800 at $26.10, 1,000 at $26.20.</li>
+        <li><b>All at once, at market:</b> average $26.114, or $285 more than $26.00 a share.</li>
+        <li><b>The stock trades:</b> about 1 million shares a day.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>See the cost.</b> One market order eats every seller up to $26.20. Slippage: $285.</li>
+        <li><b>Split it up.</b> Buy 300 now at $26.00, then wait for new sellers to arrive.</li>
+        <li><b>Use limit orders.</b> Place the rest at $26.00 or $26.05 so you never pay more than you choose.</li>
+        <li><b>Hide your size.</b> If the market sees a huge buyer, sellers raise their prices. Traders spread big orders over hours or use computer programs to slice them.</li>
+        <li><b>The answer.</b> In a stock that trades 1 million shares a day, 2,500 shares is small. Spread it over an hour with limit orders, and you'll likely pay close to $26.00 instead of $26.114.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link</div>
+      <h2 class="reveal">The reef's market maker: <em>the cleaner wrasse.</em></h2>
+      <p class="lead reveal">On coral reefs, a small fish called the cleaner wrasse runs a "cleaning station." All day, bigger fish line up to have parasites picked off. One wrasse can serve over 2,000 visitors a day, each paying a tiny "fee" in parasites eaten. Scientists found that wrasses even serve choosy visitors who could go to another station before regulars, to keep their business.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="A small striped cleaner wrasse at a coral cleaning station, with a line of bigger fish waiting their turn.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 12%, var(--card))"/>
+        <path d="M0 320 Q 120 290 240 316 T 480 310 T 720 318 T 900 306 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#d9c7a0"/>
+        <g fill="#e07a5f"><path d="M110 320 q -10 -70 20 -110 q 10 40 -5 110 Z"/><path d="M150 320 q 10 -60 40 -90 q 0 50 -20 90 Z"/><path d="M90 320 q -30 -40 -20 -80 q 25 30 30 80 Z"/></g>
+        <g class="tr-swim">
+          <ellipse cx="230" cy="220" rx="34" ry="11" fill="#2f6fd6"/><path d="M196 220 l -16 -10 v 20 Z" fill="#2f6fd6"/><path d="M200 220 H 262" stroke="#111" stroke-width="4"/>
+        </g>
+        <g fill="#8a9a5b"><ellipse cx="390" cy="200" rx="70" ry="36"/><path d="M320 200 l -30 -22 v 44 Z"/><circle cx="440" cy="192" r="6" fill="#fff"/></g>
+        <g fill="#c9a227"><ellipse cx="570" cy="210" rx="52" ry="28"/><path d="M518 210 l -24 -18 v 36 Z"/><circle cx="606" cy="204" r="5" fill="#fff"/></g>
+        <g fill="#7a6aa8"><ellipse cx="730" cy="215" rx="58" ry="30"/><path d="M672 215 l -26 -18 v 36 Z"/><circle cx="770" cy="208" r="5" fill="#fff"/></g>
+        <g text-anchor="middle">
+          <text x="200" y="110" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Cleaner wrasse</text><text x="200" y="136" font-size="15" fill="var(--ink-2)">always open</text>
+          <text x="560" y="110" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">The line</text><text x="560" y="136" font-size="15" fill="var(--ink-2)">waiting their turn</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. A small striped cleaner wrasse at its station near the coral, with bigger fish lined up for their turn.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> A market maker is a cleaner wrasse: always open, serving a long line of customers, earning a tiny fee from each one. Tiny fees times thousands of visits a day add up to a living.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes</div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Order book</b>: every waiting buy and sell order. Spread = best ask − best bid: $26.00 − $25.95 = 5 cents.</li>
+          <li><b>Matching engine</b>: <b>price-time priority</b>, best price first, then first in line.</li>
+          <li><b>Liquidity</b>: trading without moving the price. <b>Price impact</b>: 1,000 shares averaged $26.045, $45 extra.</li>
+          <li><b>Market maker</b>: always quotes a bid and an ask, earns the spread: 1 million shares × $0.05 = $50,000.</li>
+          <li><b>Payment for order flow</b>: how many zero-commission apps get paid. <b>High-frequency trading</b>: computers, millionths of a second.</li>
+          <li><b>Short selling</b>: borrow, sell, buy back. $26 → $20: +$600; $26 → $35: −$900. Losses have no limit.</li>
+          <li><b>T+1</b>: U.S. stocks settle one business day after the trade.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. The list of all waiting buy and sell orders is the order <input type="text" class="blank" data-answer="book" aria-label="Blank 1">.</div>
+        <div>2. A firm that always quotes both a bid and an ask is a market <input type="text" class="blank" data-answer="maker" aria-label="Blank 2">.</div>
+        <div>3. Short 100 shares at $50 and buy back at $45, and you make <input type="text" class="blank" data-answer="500|$500" inputmode="numeric" aria-label="Blank 3"> dollars.</div>
+        <div>4. A U.S. stock bought on Wednesday settles on <input type="text" class="blank" data-answer="thursday" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together</div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Paper order book</h3>
+          <p>Half the group writes buy prices on sticky notes, half writes sell prices. Sort them on a wall into an order book. Where's the spread? Who trades first?</p>
+        </div>
+        <div class="reveal">
+          <h3>Be the market maker</h3>
+          <p>One person quotes a bid and an ask for a snack. Everyone else can buy or sell one. After ten trades, did the market maker make money?</p>
+        </div>
+        <div class="reveal">
+          <h3>Spot the spread</h3>
+          <p>Look up the bid and ask for a giant company like Apple and a tiny one. Compare the spreads. Which is more liquid?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own</div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Now that you know who pays for "free" trading, does it change how you feel about your app?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Would you ever sell a stock short, knowing the loss has no limit? When might it make sense?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">When do you use market orders today? When would a limit order protect you?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a junior trader at a market maker</h3>
+      <div class="reveal">
+        <p>You make markets in the bike chain's stock. Your manager wants a report on today. Here's the situation:</p>
+        <ul>
+          <li><b>Your quote all day:</b> buy at $25.95, sell at $26.00.</li>
+          <li><b>Shares traded with you:</b> 400,000 bought from customers and 400,000 sold to customers.</li>
+          <li><b>At the close:</b> you're left holding 5,000 extra shares you bought at $25.95, and the stock ends the day at $25.80.</li>
+          <li><b>Payment for order flow:</b> you paid brokers $0.002 a share on 800,000 shares.</li>
+        </ul>
+        <p><b>Your task:</b> what did you earn from the spread? What did the leftover shares cost you? What did you pay brokers? What's your profit for the day, and what's the lesson for tomorrow?</p>
+        <textarea id="job-answer" placeholder="Write your report to your manager…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Spread:</b> 400,000 round trips × $0.05 = <b>$20,000</b>.</p>
+            <p><b>Leftover shares:</b> 5,000 × ($25.95 − $25.80) = 5,000 × $0.15 = <b>$750</b> lost.</p>
+            <p><b>Order flow:</b> 800,000 × $0.002 = <b>$1,600</b>.</p>
+            <p><b>Profit:</b> $20,000 − $750 − $1,600 = <b>$17,650</b>.</p>
+            <p><b>For tomorrow:</b> the spread is the business; the risk is holding shares when the price moves. When we pile up extra shares in a falling stock, we should lower our quotes to sell them off sooner.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">Every price <em>is a meeting.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on placing your first trade, supply and demand, and who does what on Wall Street, and leads to options and futures">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../first-trade/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Your first stock</text><text x="20" y="86">Unit 5 · bid, ask, orders</text></a>
+          <a href="../supply-demand/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Supply and demand</text><text x="20" y="186">Unit 1 · how prices form</text></a>
+          <a href="../wall-street/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Who does what</text><text x="20" y="286">Unit 16 · Wall Street jobs</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">How trading works</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Options and futures</text><text x="690" y="186">Coming soon · Unit 16</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the lesson that comes next.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 5</span><b>Buying your first stock</b></li>
+        <li><span class="muted small">Back · Unit 1</span><b>Supply and demand</b></li>
+        <li><span class="muted small">Back · Unit 16</span><b>Who does what on Wall Street</b></li>
+        <li class="here"><span class="small">You are here</span><b>How trading works</b></li>
+        <li><span class="muted small">Coming soon · Unit 16</span><b>Options and futures</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../wall-street/">Revisit: Who does what on Wall Street <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about">About</a><a href="../../contact">Contact</a><a href="../../legal/privacy">Privacy</a><a href="../../legal/terms">Terms</a><a href="../../legal/cookies">Cookies and storage</a><a href="../../credits">Credits</a></nav>
+    <p><a class="foot-lang" href="../../es/lessons/trading/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
+    <p class="disclaimer">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202611110017"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611110017"></script>
+<script src="../../assets/js/auth.js?v=202611110017"></script>
+<script src="../../assets/js/site.js?v=202611110017"></script>
+<script src="../../assets/js/lesson-kit.js?v=202611110017"></script>
+<script src="lesson.js?v=202611110017"></script>
+</body>
+</html>

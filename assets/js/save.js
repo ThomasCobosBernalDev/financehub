@@ -172,7 +172,7 @@
     L(15, 2, "u15-multiples", t("Comparables and multiples", "Comparables y múltiplos"), t("Pricing a company against its peers", "Ponerle precio a una empresa comparándola con otras"), { needs: ["u15-dcf"], href: "lessons/multiples/" }),
     L(15, 3, "u15-mergers", t("Mergers and buyouts", "Fusiones y compras de empresas"), t("How companies buy companies, including LBOs", "Cómo las empresas compran empresas, incluidas las LBO"), { needs: ["u15-multiples"], href: "lessons/mergers/" }),
     L(16, 1, "u16-wall-street", t("Who does what on Wall Street", "Quién hace qué en Wall Street"), t("Banks, funds and the jobs inside them", "Bancos, fondos y los trabajos que hay adentro"), { needs: ["u13-raising-money"], href: "lessons/wall-street/" }),
-    L(16, 2, "u16-trading", t("How trading works", "Cómo se compran y venden acciones"), t("Exchanges, orders and market makers", "Bolsas, órdenes y creadores de mercado"), { needs: ["u16-wall-street"] }),
+    L(16, 2, "u16-trading", t("How trading works", "Cómo se compran y venden acciones"), t("Exchanges, orders and market makers", "Bolsas, órdenes y creadores de mercado"), { needs: ["u16-wall-street"], href: "lessons/trading/" }),
     L(16, 3, "u16-derivatives", t("Options and futures", "Opciones y futuros"), t("Contracts on what happens next", "Contratos sobre lo que va a pasar"), { needs: ["u14-risk-return"] }),
   ];
   // Lessons that are open so far, in course order.
@@ -333,6 +333,7 @@
     ["comps-pro", "multiples", t("Comps Pro", "Domina los comparables"), t("Answer all 8 questions right in Comps table.", "Responde bien las 8 preguntas del juego Mesa de comparables.")],
     ["deal-closer", "mergers", t("Deal Closer", "Cierra tratos"), t("Answer all 8 questions right in Deal room.", "Responde bien las 8 preguntas del juego Mesa de negociación.")],
     ["street-smart", "wall-street", t("Street Smart", "Conoce Wall Street"), t("Answer all 8 questions right in the Who does it? game.", "Responde bien las 8 preguntas del juego ¿Quién lo hace?")],
+    ["market-mover", "trading", t("Market Mover", "Mueve el mercado"), t("Answer all 8 questions right in Trading desk.", "Responde bien las 8 preguntas del juego Mesa de operaciones.")],
     ["right-jar", "why-invest", t("Right Jar", "El frasco correcto"), t("Sort all 6 into the right jar on the first try.", "Pon los 6 en el frasco correcto al primer intento.")],
   ].map(([id, slug, name, how]) => ({ id, slug, name, how, tier: "silver", icon: "star", kind: "game" }));
   const lessonTitle = (slug) => { const l = CATALOG.find((x) => x.href === `lessons/${slug}/`); return l ? l.title : slug; };

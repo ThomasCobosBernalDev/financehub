@@ -1,0 +1,14 @@
+{
+ "voice": "af_heart",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "You tap buy on the bike chain's stock, and in less than a thousandth of a second, your broker sends the order to an exchange or a market maker, and it's matched with a seller.",
+  "Each exchange keeps an order book: every waiting buy and sell order. Sellers wait at twenty six dollars and up; buyers at twenty five ninety five and down. The five cent gap is the spread.",
+  "The matching engine follows price-time priority: best price first, then first in line. Your market order for one hundred shares fills at twenty six dollars.",
+  "A fund buying a thousand shares eats through the cheapest sellers and pays an average of about twenty six dollars and four and a half cents. That extra forty five dollars is price impact. The more liquid a stock, the smaller it is.",
+  "Market makers always quote both a bid and an ask and earn the spread: five cents a share on a million shares is fifty thousand dollars a day. Many zero-commission apps get paid by them, through payment for order flow.",
+  "You can also sell short: borrow shares, sell them, and buy them back later. Short at twenty six, buy back at twenty, and you make six hundred dollars on one hundred shares. But if the price climbs, your loss has no limit.",
+  "The trade takes a millisecond, but settlement takes one business day. Since May twenty twenty four, U.S. stocks settle T plus one."
+ ]
+}

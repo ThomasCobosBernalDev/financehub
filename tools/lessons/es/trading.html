@@ -1,0 +1,251 @@
+<!-- title: Cómo se compran y venden acciones -->
+<!-- description: Unidad 16, Lección 2: qué pasa de verdad cuando tocas comprar: las bolsas y el libro de órdenes, el motor de emparejamiento y la prioridad de precio y tiempo, la liquidez y el impacto en el precio, los creadores de mercado y cómo ganan el diferencial, el pago por flujo de órdenes y los brokers sin comisión, la operación de alta frecuencia, la venta en corto y su riesgo sin límite, y la liquidación T+1. Juego: Mesa de operaciones, ocho preguntas de compraventa. -->
+<!-- kicker: Unidad 16 · Lección 2 -->
+<!-- topic: Bancos y mercados -->
+
+<!-- @start -->
+        <h1 class="reveal">Tocas "Comprar". <em>¿Qué pasa en el siguiente milisegundo?</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> La IPO de la cadena de bicicletas ya se hizo (Lección 16.1), y ahora su acción se compra y vende todos los días a unos <span class="mark">$26</span>. Quieres <span class="mark">100 acciones</span>. Tocas "Comprar" en la app de tu broker (Lección 5.4), y en menos de un segundo ya son tuyas. ¿Quién te las vendió? ¿Por qué pagaste $26.00 y no $25.95? ¿Y por qué un fondo grande que compra <span class="mark">1,000 acciones</span> paga más por acción que tú? Esta lección abre la máquina.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p><b>Operar</b> es comprar y vender acciones y otros valores que ya existen. Las bolsas y los creadores de mercado juntan a quienes compran con quienes venden.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Cada inversión que haces pasa por esta máquina. Entenderla te ayuda a pagar menos, evitar trampas y responder preguntas de compraventa en las entrevistas.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Las órdenes esperan en un libro de órdenes. Un motor de emparejamiento junta compradores y vendedores por precio y luego por tiempo. Los creadores de mercado llenan los huecos.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>En <b>operaciones</b>, en bancos y fondos, se ponen órdenes grandes. Los <b>creadores de mercado</b> cotizan precios todo el día. Los equipos de <b>ingeniería de las bolsas</b> manejan los motores de emparejamiento. Los equipos de <b>cumplimiento</b> vigilan que nadie haga trampa.</p></div>
+        </div>
+
+<!-- @art -->
+        <svg viewBox="0 0 520 560" role="img" aria-label="Tu teléfono manda una orden a tu broker, que la manda a una bolsa o a un creador de mercado, donde se junta con alguien que vende. Todo el viaje tarda menos de una milésima de segundo.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">El viaje de una orden</text>
+          <g text-anchor="middle">
+            <rect x="200" y="110" width="120" height="70" rx="16" fill="var(--needs)"/><text x="260" y="152" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Tu teléfono</text>
+            <rect x="200" y="230" width="120" height="70" rx="16" fill="var(--accent)"/><text x="260" y="272" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Tu broker</text>
+            <rect x="60" y="350" width="170" height="70" rx="16" fill="var(--good)"/><text x="145" y="392" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Bolsa</text>
+            <rect x="290" y="350" width="170" height="70" rx="16" fill="var(--good)"/><text x="375" y="392" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Creador de mercado</text>
+          </g>
+          <g class="tr-ping" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="8 8"><path d="M260 180 V 230"/><path d="M240 300 L 160 350"/><path d="M280 300 L 360 350"/></g>
+          <text x="260" y="470" text-anchor="middle" font-size="18" font-weight="700" fill="var(--wants)">emparejada en menos de 0.001 segundos</text>
+          <text x="260" y="510" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">todo comprador necesita un vendedor</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> el camino de tu orden. Tu teléfono la manda a tu broker. El broker la manda a una bolsa de valores o a un creador de mercado (los dos en verde), donde se junta con alguien que vende. Todo el viaje suele tardar menos de una milésima de segundo.</p>
+
+<!-- @see -->
+      <h2 class="reveal">Todo comprador <em>necesita un vendedor.</em></h2>
+      <p class="lead reveal">En la Lección 5.5 hiciste tu primera orden y conociste el precio de compra, el precio de venta y el diferencial. Ahora mira por dentro: de dónde salen esos precios, quién está del otro lado y quién cobra.</p>
+
+      <h3 class="reveal" style="margin-top:56px">El libro de órdenes</h3>
+      <p class="reveal">Una bolsa como la Bolsa de Nueva York o Nasdaq lleva un <dfn class="term" data-def="La lista de cada orden de compra y venta en espera de una acción, en cada precio. El precio más alto de compra es el precio de compra; el precio más bajo de venta es el precio de venta.">libro de órdenes</dfn> para cada acción: cada orden límite que sigue esperando, ordenada por precio. El precio más alto que alguien pagaría es el precio de compra; el más bajo que alguien aceptaría es el precio de venta; la diferencia es el diferencial.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Vendedores esperando</dt><dd>300 acciones a $26.00, 500 a $26.05, 800 a $26.10, 1,000 a $26.20.</dd></div><div><dt>Compradores esperando</dt><dd>400 acciones a $25.95, 600 a $25.90, 900 a $25.80.</dd></div><div><dt>Diferencial</dt><dd>Mejor precio de venta $26.00 − mejor precio de compra $25.95 = <b>5 centavos</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">El motor de emparejamiento</h3>
+      <p class="reveal">Una computadora llamada <dfn class="term" data-def="La computadora de la bolsa que junta órdenes de compra y venta: primero el mejor precio, luego quien llegó primero a ese precio.">motor de emparejamiento</dfn> junta las órdenes. Sigue la <dfn class="term" data-def="La regla para juntar órdenes: el mejor precio va primero; al mismo precio, la orden que llegó primero va primero.">prioridad de precio y tiempo</dfn>: el mejor precio va primero y, al mismo precio, va primero quien llegó antes a la fila. Una orden a mercado toma el mejor precio que esté esperando; una orden límite que todavía no puede operarse se suma al libro.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu orden a mercado de 100 acciones</dt><dd>Se junta con quien vende más barato: 100 acciones a <b>$26.00</b>. Costo: 100 × $26.00 = $2,600.</dd></div><div><dt>Una orden límite para comprar a $25.97</dt><dd>Nadie vende tan barato, así que espera en el libro y se vuelve el nuevo mejor precio de compra.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Liquidez e impacto en el precio</h3>
+      <p class="reveal">La <dfn class="term" data-def="Qué tan fácil puedes comprar o vender algo rápido sin mover su precio. Muchas órdenes y un diferencial pequeño significan mucha liquidez.">liquidez</dfn> es qué tan fácil puedes operar sin mover el precio. Una orden grande se come a los vendedores más baratos y luego tiene que pagar más. Ese extra es el <dfn class="term" data-def="Cuánto empuja el precio en tu contra una orden grande al ir usando las mejores ofertas del libro. El costo extra también se llama deslizamiento.">impacto en el precio</dfn>, también llamado deslizamiento. Mueve el tamaño de la orden para verlo.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Un fondo compra 1,000 acciones a mercado</dt><dd>300 × $26.00 + 500 × $26.05 + 200 × $26.10 = $7,800 + $13,025 + $5,220 = <b>$26,045</b>.</dd></div><div><dt>Precio promedio</dt><dd><span class="frac"><span>$26,045</span><span>1,000</span></span> = <b>$26.045</b>, o sea $45 más que si las 1,000 hubieran costado $26.00.</dd></div></dl></div>
+      <div class="md-card reveal" id="ob">
+        <label class="md-lab" for="ob-n">Orden a mercado para comprar <b id="ob-n-v">1,000 acciones</b></label><input type="range" id="ob-n" min="100" max="2500" step="100" value="1000">
+        <div id="ob-out" aria-hidden="true"></div>
+        <p class="ob-msg" id="ob-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> el libro de órdenes de la acción de la cadena. Las barras naranjas son vendedores esperando en cada precio; las verdes, compradores. La parte naranja más oscura es lo que compra tu orden a mercado, empezando por el precio más barato y subiendo.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Creadores de mercado</h3>
+      <p class="reveal">¿Y si no hay nadie vendiendo cuando quieres comprar? Un <dfn class="term" data-def="Una firma que siempre publica un precio para comprar y otro para vender una acción, para que otros puedan operar cuando quieran. Gana el diferencial.">creador de mercado</dfn> siempre publica un precio de compra y uno de venta, así que siempre hay con quién operar. Gana el diferencial, unos centavos por acción, millones de veces al día, y asume el riesgo de que el precio se mueva mientras tiene acciones.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Una ida y vuelta</dt><dd>El creador de mercado compra a $25.95 y vende a $26.00: <b>5 centavos</b> por acción.</dd></div><div><dt>Un día completo</dt><dd>1 millón de acciones × $0.05 = <b>$50,000</b>, si los precios no se mueven.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">¿Quién paga la compraventa "gratis"?</h3>
+      <p class="reveal">La mayoría de las apps en Estados Unidos no cobran comisión. Muchas ganan con el <dfn class="term" data-def="Cuando un creador de mercado le paga a un broker por mandarle las órdenes de sus clientes. Así ganan dinero muchas apps sin comisión.">pago por flujo de órdenes</dfn>: creadores de mercado como Citadel Securities le pagan al broker por mandarles las órdenes de sus clientes, porque las órdenes pequeñas son fáciles de aprovechar. Hay quien critica que te puede dar un precio un poco peor; quienes lo defienden dicen que los clientes muchas veces reciben un precio un poco mejor que el mejor precio de venta. Las firmas grandes también usan la <dfn class="term" data-def="Compraventa hecha por computadoras que ponen y cancelan enormes cantidades de órdenes en millonésimas de segundo, muchas veces para crear mercado o aprovechar diferencias pequeñísimas de precio.">operación de alta frecuencia</dfn>: computadoras que operan en millonésimas de segundo.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Vender en corto</h3>
+      <p class="reveal">También puedes apostar a que un precio va a bajar. En la <dfn class="term" data-def="Pedir prestadas acciones, venderlas ahora y recomprarlas después para devolverlas. Ganas si el precio baja; tu pérdida no tiene límite si sube.">venta en corto</dfn>, pides prestadas acciones, las vendes ahora y las recompras después para devolverlas. Si el precio baja, te quedas con la diferencia. Si sube, pierdes, y como un precio puede subir sin límite, tu pérdida también.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Vendes en corto 100 acciones a $26</dt><dd>Recibes 100 × $26 = $2,600 ahora.</dd></div><div><dt>El precio baja a $20</dt><dd>Recompras en $2,000: ganas $2,600 − $2,000 = <b>$600</b>.</dd></div><div><dt>El precio sube a $35</dt><dd>Recompras en $3,500: pierdes $3,500 − $2,600 = <b>$900</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Liquidación</h3>
+      <p class="reveal">La operación pasa en un milisegundo, pero el intercambio oficial de dinero y acciones, la <b>liquidación</b> (Lección 5.5), tarda un poco más. Desde mayo de 2024, las acciones de Estados Unidos se liquidan en <dfn class="term" data-def="Fecha de la operación más un día hábil: en Estados Unidos, las operaciones con acciones se liquidan oficialmente un día hábil después.">T+1</dfn>: un día hábil después de la operación.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Compras el lunes</dt><dd>Las acciones y el dinero cambian de manos oficialmente el <b>martes</b>.</dd></div></dl></div>
+
+<!-- @hear -->
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+<!-- player -->
+
+<!-- @play -->
+      <h2 class="reveal">Mesa de <em>operaciones.</em></h2>
+      <p class="lead reveal">Ocho decisiones que se toman todos los días en una mesa de operaciones. Cada una te da los números. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="tr">
+        <div class="fd-top">
+          <div><small id="tr-round">Pregunta 1 de 8</small><b id="tr-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="tr-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="tr-facts"></ul>
+        <div class="sd-opts" id="tr-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="tr-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="tr-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="tr-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> acciones y órdenes inventadas. Cada una muestra los números y luego hace una pregunta.</p>
+
+<!-- @logic -->
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Cada orden pasa por los mismos cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: Eliges el tipo de orden</h3>
+      <div class="formula reveal">Orden a mercado: opera ya al mejor precio. Orden límite: solo a tu precio o mejor.</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tú</dt><dd>Una orden a mercado de 100 acciones.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: Tu broker la envía</h3>
+      <div class="formula reveal">A una bolsa o a un creador de mercado</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu app</dt><dd>La manda a un creador de mercado que paga por el flujo de órdenes.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: Se empareja</h3>
+      <div class="formula reveal">Primero el mejor precio, luego quien llegó primero</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>El emparejamiento</dt><dd>100 acciones a $26.00.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Se liquida</h3>
+      <div class="formula reveal">T+1: un día hábil después</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Compra el lunes</dt><dd>Se liquida el martes.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: comprar una orden grande sin pagar de más</h3>
+      <p class="reveal">Trabajas en la mesa de operaciones de un fondo que quiere 2,500 acciones de la cadena. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>El libro de órdenes:</b> 300 a $26.00, 500 a $26.05, 800 a $26.10, 1,000 a $26.20.</li>
+        <li><b>Todo de una vez, a mercado:</b> promedio $26.114, o sea $285 más que a $26.00 por acción.</li>
+        <li><b>La acción se opera:</b> como 1 millón de acciones al día.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Ve el costo.</b> Una sola orden a mercado se come a todos los vendedores hasta $26.20. Deslizamiento: $285.</li>
+        <li><b>Divídela.</b> Compra 300 ahora a $26.00 y espera a que lleguen vendedores nuevos.</li>
+        <li><b>Usa órdenes límite.</b> Pon el resto a $26.00 o $26.05 para nunca pagar más de lo que decidas.</li>
+        <li><b>Esconde tu tamaño.</b> Si el mercado ve un comprador enorme, los vendedores suben sus precios. En las mesas se reparten las órdenes grandes en varias horas o se usan programas que las cortan en pedazos.</li>
+        <li><b>La respuesta.</b> En una acción que opera 1 millón de acciones al día, 2,500 es poco. Repártela en una hora con órdenes límite y seguramente pagarás cerca de $26.00 en vez de $26.114.</li>
+      </ol>
+
+<!-- @nature -->
+      <h2 class="reveal">El creador de mercado del arrecife: <em>el pez limpiador.</em></h2>
+      <p class="lead reveal">En los arrecifes de coral, un pez pequeño llamado lábrido limpiador atiende una "estación de limpieza". Todo el día, peces más grandes hacen fila para que les quite parásitos. Un solo lábrido puede atender a más de 2,000 visitantes al día, y cada uno paga una "comisión" pequeñita en parásitos que se come. Los científicos descubrieron que el lábrido incluso atiende antes a los visitantes que podrían irse a otra estación que a los de siempre, para no perder clientela.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Un pequeño lábrido limpiador con rayas en una estación de limpieza junto al coral, con una fila de peces más grandes esperando su turno.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--needs) 12%, var(--card))"/>
+        <path d="M0 320 Q 120 290 240 316 T 480 310 T 720 318 T 900 306 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#d9c7a0"/>
+        <g fill="#e07a5f"><path d="M110 320 q -10 -70 20 -110 q 10 40 -5 110 Z"/><path d="M150 320 q 10 -60 40 -90 q 0 50 -20 90 Z"/><path d="M90 320 q -30 -40 -20 -80 q 25 30 30 80 Z"/></g>
+        <g class="tr-swim">
+          <ellipse cx="230" cy="220" rx="34" ry="11" fill="#2f6fd6"/><path d="M196 220 l -16 -10 v 20 Z" fill="#2f6fd6"/><path d="M200 220 H 262" stroke="#111" stroke-width="4"/>
+        </g>
+        <g fill="#8a9a5b"><ellipse cx="390" cy="200" rx="70" ry="36"/><path d="M320 200 l -30 -22 v 44 Z"/><circle cx="440" cy="192" r="6" fill="#fff"/></g>
+        <g fill="#c9a227"><ellipse cx="570" cy="210" rx="52" ry="28"/><path d="M518 210 l -24 -18 v 36 Z"/><circle cx="606" cy="204" r="5" fill="#fff"/></g>
+        <g fill="#7a6aa8"><ellipse cx="730" cy="215" rx="58" ry="30"/><path d="M672 215 l -26 -18 v 36 Z"/><circle cx="770" cy="208" r="5" fill="#fff"/></g>
+        <g text-anchor="middle">
+          <text x="200" y="110" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Lábrido limpiador</text><text x="200" y="136" font-size="15" fill="var(--ink-2)">siempre abierto</text>
+          <text x="560" y="110" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">La fila</text><text x="560" y="136" font-size="15" fill="var(--ink-2)">esperando su turno</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Un pequeño lábrido limpiador con rayas en su estación junto al coral, con peces más grandes en fila esperando su turno.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Un creador de mercado es un lábrido limpiador: siempre abierto, atiende una fila larga de clientes y gana una comisión pequeñita de cada uno. Comisiones pequeñas por miles de visitas al día se vuelven un buen negocio.</p>
+
+<!-- @notes -->
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Libro de órdenes</b>: cada orden de compra y venta en espera. Diferencial = mejor precio de venta − mejor precio de compra: $26.00 − $25.95 = 5 centavos.</li>
+          <li><b>Motor de emparejamiento</b>: <b>prioridad de precio y tiempo</b>, primero el mejor precio, luego quien llegó primero.</li>
+          <li><b>Liquidez</b>: operar sin mover el precio. <b>Impacto en el precio</b>: 1,000 acciones promediaron $26.045, $45 extra.</li>
+          <li><b>Creador de mercado</b>: siempre cotiza compra y venta, gana el diferencial: 1 millón de acciones × $0.05 = $50,000.</li>
+          <li><b>Pago por flujo de órdenes</b>: así cobran muchas apps sin comisión. <b>Operación de alta frecuencia</b>: computadoras, millonésimas de segundo.</li>
+          <li><b>Venta en corto</b>: pides prestado, vendes, recompras. $26 → $20: +$600; $26 → $35: −$900. Las pérdidas no tienen límite.</li>
+          <li><b>T+1</b>: las acciones de EE. UU. se liquidan un día hábil después de la operación.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. La lista de todas las órdenes de compra y venta en espera es el libro de <input type="text" class="blank" data-answer="órdenes|ordenes" aria-label="Espacio 1">.</div>
+        <div>2. Una firma que siempre cotiza un precio de compra y uno de venta es un creador de <input type="text" class="blank" data-answer="mercado" aria-label="Espacio 2">.</div>
+        <div>3. Vendes en corto 100 acciones a $50 y recompras a $45: ganas <input type="text" class="blank" data-answer="500|$500|quinientos" inputmode="numeric" aria-label="Espacio 3"> dólares.</div>
+        <div>4. Una acción de EE. UU. comprada el miércoles se liquida el <input type="text" class="blank" data-answer="jueves" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+
+<!-- @together -->
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Libro de órdenes de papel</h3>
+          <p>La mitad del grupo escribe precios de compra en notas adhesivas, y la otra mitad, precios de venta. Ordénenlas en una pared como un libro de órdenes. ¿Dónde está el diferencial? ¿Quién opera primero?</p>
+        </div>
+        <div class="reveal">
+          <h3>Sean el creador de mercado</h3>
+          <p>Una persona cotiza un precio de compra y uno de venta para un dulce. Las demás pueden comprarle o venderle uno. Después de diez operaciones, ¿ganó dinero el creador de mercado?</p>
+        </div>
+        <div class="reveal">
+          <h3>Encuentren el diferencial</h3>
+          <p>Busquen el precio de compra y de venta de una empresa gigante como Apple y de una muy pequeña. Comparen los diferenciales. ¿Cuál es más líquida?</p>
+        </div>
+      </div>
+
+<!-- @solo -->
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Ahora que sabes quién paga la compraventa "gratis", ¿cambia lo que piensas de tu app?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Venderías una acción en corto sabiendo que la pérdida no tiene límite? ¿Cuándo podría tener sentido?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Cuándo usas órdenes a mercado hoy? ¿Cuándo te protegería una orden límite?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+
+<!-- @check -->
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: operas en un creador de mercado</h3>
+      <div class="reveal">
+        <p>Creas mercado en la acción de la cadena de bicicletas. Tu jefe quiere un reporte del día. Esta es la situación:</p>
+        <ul>
+          <li><b>Tu cotización todo el día:</b> compras a $25.95, vendes a $26.00.</li>
+          <li><b>Acciones operadas contigo:</b> 400,000 compradas a clientes y 400,000 vendidas a clientes.</li>
+          <li><b>Al cierre:</b> te quedan 5,000 acciones extra que compraste a $25.95, y la acción cierra el día en $25.80.</li>
+          <li><b>Pago por flujo de órdenes:</b> les pagaste a los brokers $0.002 por acción sobre 800,000 acciones.</li>
+        </ul>
+        <p><b>Tu tarea:</b> ¿cuánto ganaste con el diferencial? ¿Cuánto te costaron las acciones que te sobraron? ¿Cuánto les pagaste a los brokers? ¿Cuál es tu ganancia del día y qué aprendes para mañana?</p>
+        <textarea id="job-answer" placeholder="Escribe tu reporte para tu jefe…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Diferencial:</b> 400,000 idas y vueltas × $0.05 = <b>$20,000</b>.</p>
+            <p><b>Acciones sobrantes:</b> 5,000 × ($25.95 − $25.80) = 5,000 × $0.15 = <b>$750</b> perdidos.</p>
+            <p><b>Flujo de órdenes:</b> 800,000 × $0.002 = <b>$1,600</b>.</p>
+            <p><b>Ganancia:</b> $20,000 − $750 − $1,600 = <b>$17,650</b>.</p>
+            <p><b>Para mañana:</b> el diferencial es el negocio; el riesgo es quedarse con acciones cuando el precio se mueve. Cuando acumulamos acciones extra de una acción que va bajando, conviene bajar nuestras cotizaciones para venderlas antes.</p>
+          </div>
+        </details>
+      </div>
+
+<!-- @connects -->
+      <h2 class="reveal">Cada precio <em>es un encuentro.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en comprar tu primera acción, en la oferta y la demanda y en quién hace qué en Wall Street, y lleva a opciones y futuros">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../first-trade/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Tu primera acción</text><text x="20" y="86">Unidad 5 · órdenes</text></a>
+          <a href="../supply-demand/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Oferta y demanda</text><text x="20" y="186">Unidad 1 · los precios</text></a>
+          <a href="../wall-street/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Quién hace qué</text><text x="20" y="286">Unidad 16 · los trabajos</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">La compraventa</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Opciones y futuros</text><text x="690" y="186">Muy pronto · Unidad 16</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y la lección que sigue.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 5</span><b>Comprar tu primera acción</b></li>
+        <li><span class="muted small">Antes · Unidad 1</span><b>Oferta y demanda</b></li>
+        <li><span class="muted small">Antes · Unidad 16</span><b>Quién hace qué en Wall Street</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Cómo se compran y venden acciones</b></li>
+        <li><span class="muted small">Muy pronto · Unidad 16</span><b>Opciones y futuros</b></li>
+      </ul>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../wall-street/">Repasa: Quién hace qué en Wall Street <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>

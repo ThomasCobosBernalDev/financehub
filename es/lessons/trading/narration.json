@@ -1,0 +1,15 @@
+{
+ "voice": "ef_dora",
+ "lang": "es",
+ "speed": 1.0,
+ "say": {},
+ "lines": [
+  "Tocas comprar en la acción de la cadena de bicicletas y, en menos de una milésima de segundo, tu broker manda la orden a una bolsa o a un creador de mercado, y se junta con alguien que vende.",
+  "Cada bolsa lleva un libro de órdenes: cada orden de compra y venta en espera. Los vendedores esperan desde veintiséis dólares hacia arriba; los compradores, desde veinticinco noventa y cinco hacia abajo. La diferencia de cinco centavos es el diferencial.",
+  "El motor de emparejamiento sigue la prioridad de precio y tiempo: primero el mejor precio, luego quien llegó primero. Tu orden a mercado de cien acciones se compra a veintiséis dólares.",
+  "Un fondo que compra mil acciones se come a los vendedores más baratos y paga un promedio de unos veintiséis dólares con cuatro centavos y medio. Esos cuarenta y cinco dólares extra son el impacto en el precio. Mientras más líquida es una acción, más pequeño es.",
+  "Los creadores de mercado siempre cotizan un precio de compra y uno de venta, y ganan el diferencial: cinco centavos por acción sobre un millón de acciones son cincuenta mil dólares al día. Muchas apps sin comisión cobran de ellos, con el pago por flujo de órdenes.",
+  "También puedes vender en corto: pides prestadas acciones, las vendes y las recompras después. Vendes en corto a veintiséis, recompras a veinte, y ganas seiscientos dólares con cien acciones. Pero si el precio sube, tu pérdida no tiene límite.",
+  "La operación tarda un milisegundo, pero la liquidación tarda un día hábil. Desde mayo de dos mil veinticuatro, las acciones de Estados Unidos se liquidan en T más uno."
+ ]
+}
