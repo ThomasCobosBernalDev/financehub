@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en" data-alt="../../es/lessons/derivatives/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Options and Futures · FinancedHub</title>
+  <meta name="description" content="Unit 16, Lesson 3: derivatives, contracts whose value comes from something else: futures and locking in a price, hedging and speculating, call and put options, strike, premium and expiration, payoffs and break-even, using a put as insurance, and why options' leverage makes gains and losses bigger. Play: Derivatives desk, eight options and futures questions.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Options and Futures">
+  <meta property="og:description" content="Unit 16, Lesson 3: derivatives, contracts whose value comes from something else: futures and locking in a price, hedging and speculating, call and put options, strike, premium and expiration, payoffs and break-even, using a put as insurance, and why options' leverage makes gains and losses bigger. Play: Derivatives desk, eight options and futures questions.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=202611110025">
+  <link rel="icon" href="../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="lesson.css?v=202611110025">
+
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/lessons/derivatives/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/derivatives/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/derivatives/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/derivatives/">
+  <meta property="og:url" content="https://financedhub.com/lessons/derivatives/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Skip to the lesson</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Home</a><a href="../../course/">Course</a><a href="../../certifications/">Certifications</a><a href="../../about">About</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Switch light or dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Sign in</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Lesson chapters">
+  <a href="#start"><i></i><span>Start</span></a>
+  <a href="#see" data-style="visual"><i></i><span>See it</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Hear it</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Play it</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Break it down</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Nature</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Notes</span></a>
+  <a href="#together" data-style="social"><i></i><span>Together</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>On your own</span></a>
+  <a href="#check"><i></i><span>Check</span></a>
+  <a href="#connects"><i></i><span>Where it leads</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unit 16 · Lesson 3</span> Banks and markets</div>
+        <h1 class="reveal">Lock in a price today. <em>Or buy the right to choose later.</em></h1>
+        <p class="story reveal"><span class="story-tag">The story so far</span> The bike chain (Lessons 16.1 and 16.2) needs <span class="mark">100 tons of aluminum</span> for frames in 6 months, and aluminum prices jump around. A rise could wipe out a year's profit. Meanwhile, you own <span class="mark">100 shares</span> of the chain's stock at <span class="mark">$26</span>, and you think it could climb, or crash. Both problems have the same kind of tool: a contract about what happens next. This lesson shows how they work, and why they can protect you or burn you.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">What</div><p>A <b>derivative</b> is a contract whose value comes from something else, like a stock or aluminum. <b>Futures</b> and <b>options</b> are the most common.</p></div>
+          <div class="reveal"><div class="word">Why</div><p>Companies use them to lock in prices and protect profits. Investors use them to protect portfolios, or to bet with less money up front.</p></div>
+          <div class="reveal"><div class="word">How</div><p>A future is a promise to trade at a set price later. An option is the right, not the duty, to trade at a set price, and you pay for that right up front.</p></div>
+          <div class="reveal"><div class="word">Who</div><p><b>Derivatives traders</b> at banks make markets in them. <b>Risk managers</b> at companies use them to hedge. <b>Commodity traders</b> deal in oil, metals and crops.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="A contract card for a call option: the right to buy 100 shares at $30 until June, for a $200 premium, with a stamp that says right, not duty.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">A contract on tomorrow</text>
+          <rect x="70" y="110" width="380" height="300" rx="20" fill="var(--card)" stroke="var(--line)" stroke-width="3"/>
+          <text x="260" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="26" fill="var(--needs)">Call option</text>
+          <path d="M110 180 H 410" stroke="var(--line)" stroke-width="2"/>
+          <g font-size="18" fill="var(--ink-2)">
+            <text x="110" y="220">Right to buy</text><text x="410" y="220" text-anchor="end" font-weight="700" fill="var(--ink)">100 shares</text>
+            <text x="110" y="260">At (strike)</text><text x="410" y="260" text-anchor="end" font-weight="700" fill="var(--ink)">$30 a share</text>
+            <text x="110" y="300">Until</text><text x="410" y="300" text-anchor="end" font-weight="700" fill="var(--ink)">June</text>
+            <text x="110" y="340">Price (premium)</text><text x="410" y="340" text-anchor="end" font-weight="700" fill="var(--ink)">$200</text>
+          </g>
+          <g class="dv-stamp"><rect x="290" y="360" width="170" height="64" rx="12" fill="none" stroke="var(--wants)" stroke-width="4"/><text x="375" y="388" text-anchor="middle" font-size="16" font-weight="700" fill="var(--wants)">RIGHT,</text><text x="375" y="410" text-anchor="middle" font-size="16" font-weight="700" fill="var(--wants)">NOT DUTY</text></g>
+          <text x="260" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">you choose later; you pay now</text>
+        </svg>
+        <p class="chart-cap"><b>What you're looking at:</b> a call option on the chain's stock. For a $200 price paid today, you get the right to buy 100 shares at $30 each any time until June. If the stock stays below $30, you just don't use it. That's what "right, not duty" means.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> See it</div>
+      <h2 class="reveal">A contract whose value <em>comes from something else.</em></h2>
+      <p class="lead reveal">Stocks and bonds are pieces of a company or a loan. A <dfn class="term" data-def="A contract whose value depends on something else, called the underlying, like a stock, an interest rate, oil or aluminum.">derivative</dfn> is different: it's a contract about something else, called the <dfn class="term" data-def="The thing a derivative's value comes from, like a stock, a commodity or an interest rate.">underlying</dfn>. When the underlying's price moves, the contract's value moves too.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Futures: locking in a price</h3>
+      <p class="reveal">A <dfn class="term" data-def="A contract to buy or sell a set amount of something at a set price on a set future date. Both sides must go through with it. Traded on exchanges like the CME.">futures contract</dfn> is a deal to buy or sell a set amount at a set price on a future date. Both sides must go through with it. Futures trade on exchanges like the CME in Chicago, for oil, metals, crops, stock indexes and more.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The chain's futures</dt><dd>It agrees today to buy 100 tons of aluminum in 6 months at <b>$2,500 a ton</b>: $250,000.</dd></div><div><dt>If aluminum rises to $3,000</dt><dd>The futures gain ($3,000 − $2,500) × 100 = <b>$50,000</b>, covering the higher price. The chain still pays about $250,000 in total.</dd></div><div><dt>If aluminum falls to $2,000</dt><dd>The futures lose ($2,500 − $2,000) × 100 = $50,000, but the metal is $50,000 cheaper. Still about <b>$250,000</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Hedgers and speculators</h3>
+      <p class="reveal">The chain isn't trying to win; it wants a price it can plan around. Using a derivative to reduce a risk you already have is <dfn class="term" data-def="Using a derivative or other trade to reduce a risk you already have, like locking in a price you'll need to pay.">hedging</dfn>. Using one to bet on a price, with no risk to protect, is <dfn class="term" data-def="Trading to profit from a price move you expect, without an existing risk to protect.">speculating</dfn>. Markets need both: speculators take the other side of hedgers' trades.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Hedger</dt><dd>The bike chain, which really needs the aluminum.</dd></div><div><dt>Speculator</dt><dd>A trader who sold the chain those futures, betting aluminum won't rise.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Options: the right, not the duty</h3>
+      <p class="reveal">An option gives its buyer a choice. A <dfn class="term" data-def="An option that gives the right, but not the duty, to buy something at a set price before a set date.">call option</dfn> is the right to buy at a set price; a <dfn class="term" data-def="An option that gives the right, but not the duty, to sell something at a set price before a set date.">put option</dfn> is the right to sell. The set price is the <dfn class="term" data-def="The set price at which an option lets you buy (call) or sell (put).">strike price</dfn>, the last day is the <dfn class="term" data-def="The last day an option can be used. After it, the option is gone.">expiration</dfn>, and the price you pay for the option is the <dfn class="term" data-def="The price paid up front to buy an option. It's the most an option buyer can lose.">premium</dfn>. One stock option contract covers 100 shares.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your call</dt><dd>Strike <b>$30</b>, expires in June, premium $2 a share × 100 shares = <b>$200</b>.</dd></div><div><dt>Stock at $36 in June</dt><dd>Buy at $30, worth $36: ($36 − $30) × 100 = $600. Minus the $200 premium: <b>$400 profit</b>.</dd></div><div><dt>Stock at $28 in June</dt><dd>Why buy at $30? You don't. The option expires, and you lose the <b>$200</b> premium, no more.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Break-even and leverage</h3>
+      <p class="reveal">A call starts making money only when the stock passes the strike plus the premium, its <b>break-even</b>. Options are a form of leverage (Lesson 13.1): a small amount controls a lot of stock, so the percent gains and losses are huge.</p>
+      <div class="formula reveal">Call break-even <span class="op">=</span> strike <span class="op">+</span> premium per share</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Break-even</dt><dd>$30 + $2 = <b>$32</b>.</dd></div><div><dt>Stock goes $26 → $36</dt><dd>Owning 100 shares: $2,600 becomes $3,600, <span class="frac"><span>$1,000</span><span>$2,600</span></span> = about <b>38%</b>. The call: $200 becomes $600, <span class="frac"><span>$400</span><span>$200</span></span> = <b>200%</b>.</dd></div><div><dt>Stock goes $26 → $28</dt><dd>Shares: up about 8%. The call: <b>−100%</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="op">
+        <label class="md-lab" for="op-p">Stock price in June <b id="op-p-v">$36</b></label><input type="range" id="op-p" min="20" max="40" step="1" value="36">
+        <div id="op-out" aria-hidden="true"></div>
+        <p class="op-msg" id="op-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> your profit in June at each stock price from $20 to $40. Blue is owning 100 shares bought at $26. Green is the $30 call bought for $200. The dashed line is zero profit. The dots show where you are at the price you pick.</p>
+
+      <h3 class="reveal" style="margin-top:56px">A put as insurance</h3>
+      <p class="reveal">Worried your shares could crash? Buy a put. It's like insurance (Lesson 6.1): you pay a premium, and if the price falls below the strike, the put pays you back.</p>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The put</dt><dd>Right to sell 100 shares at <b>$24</b>, premium $1 a share: <b>$100</b>.</dd></div><div><dt>Put break-even</dt><dd>A put gains as the price falls, so subtract: strike − premium = $24 − $1 = <b>$23</b>.</dd></div><div><dt>Stock crashes to $15</dt><dd>Your shares lose ($26 − $15) × 100 = $1,100. The put pays ($24 − $15) × 100 = $900. Total loss: $1,100 − $900 + $100 premium = <b>$300</b>, instead of $1,100.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Hear it</div>
+      <h2 class="reveal">Two minutes. <em>Just listen.</em></h2>
+      <p class="muted reveal">Tap any line to jump to it.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Play narration">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Playback speed">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Play it</div>
+      <h2 class="reveal">Derivatives <em>desk.</em></h2>
+      <p class="lead reveal">Eight questions from a derivatives desk. Each one gives you the numbers. One option contract is 100 shares. One try each.</p>
+
+      <div class="fd reveal rr-wide" id="dv">
+        <div class="fd-top">
+          <div><small id="dv-round">Question 1 of 8</small><b id="dv-q"></b></div>
+          <div class="pg-score"><small>Right</small><b id="dv-score">0 of 0</b></div>
+        </div>
+        <ul class="ld-facts" id="dv-facts"></ul>
+        <div class="sd-opts" id="dv-opts" role="group" aria-label="Your answer"></div>
+        <div class="fd-why hidden" id="dv-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="dv-next" disabled>Next question <span class="arrow">→</span></button>
+      </div>
+      <div id="dv-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> made-up contracts. Each lists the details, then asks one question.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Break it down</div>
+      <h2 class="reveal">The logic, <em>step by step.</em></h2>
+      <p class="reveal">To work out any option at expiration, take four steps.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Step 1: Call or put?</h3>
+      <div class="formula reveal">Call: right to buy. Put: right to sell.</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Your option</dt><dd>A call, strike $30.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 2: Would you use it?</h3>
+      <div class="formula reveal">Call: only if the stock is above the strike. Put: only if it's below.</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Stock at $36</dt><dd>Yes: buying at $30 beats $36.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 3: What's it worth?</h3>
+      <div class="formula reveal">Call: (stock − strike) × 100. Put: (strike − stock) × 100. Or zero.</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>The call</dt><dd>($36 − $30) × 100 = $600.</dd></div></dl></div>
+
+      <h3 class="reveal">Step 4: Subtract the premium</h3>
+      <div class="formula reveal">Profit = value − premium paid</div>
+      <div class="in-example reveal"><div class="ie-tag">In this example</div><dl><div><dt>Profit</dt><dd>$600 − $200 = $400.</dd></div></dl></div>
+
+      <h3 class="reveal">Worked example: should you protect your shares?</h3>
+      <p class="reveal">The chain reports earnings next month, and the stock could jump or crash. Here are the facts:</p>
+      <ul class="reveal">
+        <li><b>You own:</b> 100 shares bought at $26.</li>
+        <li><b>A $24 put:</b> costs $100 for 100 shares.</li>
+        <li><b>A $30 call:</b> costs $200 for 100 shares.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Name your risk.</b> You already own the shares, so your risk is a crash. That calls for a hedge, not a bet.</li>
+        <li><b>Price the hedge.</b> The put costs $100, about <span class="frac"><span>$100</span><span>$2,600</span></span> = 4% of your shares' value.</li>
+        <li><b>Check the worst case.</b> With the put, the most you can lose is ($26 − $24) × 100 + $100 = $300, however far the stock falls.</li>
+        <li><b>Skip the bet.</b> Buying the call too would add a $200 speculation on top of shares that already gain if the stock rises.</li>
+        <li><b>The answer.</b> If a crash would really hurt you, the $100 put is cheap insurance. If you can live with the swings, keep the $100: like all insurance, most of the time it expires unused.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Nature link</div>
+      <h2 class="reveal">Desert seeds <em>hedge their bets.</em></h2>
+      <p class="lead reveal">In deserts, some years bring rain and some bring none. Many desert annual plants don't let all their seeds sprout at once. Some sprout the first year; others wait in the soil for years. If one year is a drought, the waiting seeds survive. Biologists call this bet-hedging.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Desert soil with seeds. Some have sprouted this year; others are waiting in the soil for a later rain.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--wants) 8%, var(--card))"/>
+        <circle cx="790" cy="80" r="40" fill="#f2c14e" opacity=".8"/>
+        <path d="M0 220 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#c9a77c"/>
+        <g class="dv-sprout">
+          <g><path d="M200 220 V 160" stroke="#4f8a3f" stroke-width="5"/><path d="M200 175 q -26 -10 -30 -32 q 26 6 30 32 Z M200 165 q 24 -12 32 -34 q -26 4 -32 34 Z" fill="#6fa35a"/><ellipse cx="200" cy="232" rx="9" ry="6" fill="#7a5a3a"/></g>
+          <g><path d="M330 220 V 170" stroke="#4f8a3f" stroke-width="5"/><path d="M330 182 q -24 -8 -28 -28 q 24 6 28 28 Z M330 174 q 22 -10 28 -30 q -24 4 -28 30 Z" fill="#6fa35a"/><ellipse cx="330" cy="232" rx="9" ry="6" fill="#7a5a3a"/></g>
+        </g>
+        <g fill="#7a5a3a"><ellipse cx="520" cy="290" rx="9" ry="6"/><ellipse cx="600" cy="320" rx="9" ry="6"/><ellipse cx="680" cy="280" rx="9" ry="6"/><ellipse cx="760" cy="330" rx="9" ry="6"/><ellipse cx="440" cy="335" rx="9" ry="6"/></g>
+        <g text-anchor="middle">
+          <text x="265" y="100" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Sprout now</text><text x="265" y="126" font-size="15" fill="var(--ink-2)">bet on this year's rain</text>
+          <text x="600" y="170" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Wait in the soil</text><text x="600" y="196" font-size="15" fill="var(--ink-2)">insurance for a dry year</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> an illustration, not data. Desert soil where some seeds from the same plant have sprouted this year, while others wait underground for a later rain.</p>
+      <p class="reveal" style="max-width:680px"><b>Why this sticks.</b> The waiting seeds are a put option: they give up some growth this year to make sure a bad year can't wipe the plant out. A good hedge costs a little every year so that no single year can ruin you.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Notes</div>
+      <h2 class="reveal">The page you'd <em>copy down.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Derivative</b>: a contract whose value comes from an <b>underlying</b> (stock, oil, aluminum, rates).</li>
+          <li><b>Futures</b>: both sides must trade at a set price on a set date. Chain locks aluminum at $2,500 a ton: about $250,000 either way.</li>
+          <li><b>Hedging</b> reduces a risk you have; <b>speculating</b> bets on a move.</li>
+          <li><b>Call</b>: right to buy. <b>Put</b>: right to sell. <b>Strike</b>, <b>expiration</b>, <b>premium</b>. 1 contract = 100 shares.</li>
+          <li><b>Call profit</b> = (stock − strike) × 100 − premium: ($36 − $30) × 100 − $200 = $400. Below the strike: lose the premium only.</li>
+          <li><b>Call break-even</b> = strike + premium: $32. Leverage: +200% or −100%.</li>
+          <li><b>Put as insurance</b>: $24 put for $100 caps the loss at $300 if the stock crashes. <b>Put break-even</b> = strike − premium: $23.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Fill in the blanks</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. An option that gives the right to sell is a <input type="text" class="blank" data-answer="put|put option" aria-label="Blank 1">.</div>
+        <div>2. The price paid to buy an option is the <input type="text" class="blank" data-answer="premium" aria-label="Blank 2">.</div>
+        <div>3. A call with a $50 strike and a $4 premium breaks even at <input type="text" class="blank" data-answer="54|$54" inputmode="numeric" aria-label="Blank 3"> dollars.</div>
+        <div>4. Using a derivative to reduce a risk you already have is called <input type="text" class="blank" data-answer="hedging|a hedge|hedge" aria-label="Blank 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Check</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> Together</div>
+      <h2 class="reveal">Grab a friend or <em>a study group.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Concert ticket option</h3>
+          <p>One person sells another the right to buy a concert ticket at today's price next month, for $5. Next month, the ticket costs more or less. Who won?</p>
+        </div>
+        <div class="reveal">
+          <h3>Who hedges?</h3>
+          <p>List five businesses, like an airline, a farm or a coffee chain. What price risk does each one face, and which futures could it use?</p>
+        </div>
+        <div class="reveal">
+          <h3>Draw the payoff</h3>
+          <p>Each person draws the profit line for a call or a put on paper, then trades papers and checks the break-even.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> On your own</div>
+      <h2 class="reveal">Just you and <em>your money.</em></h2>
+      <p class="muted reveal">These stay on this device. Nobody else sees them.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Options can turn $200 into $600 or into $0. How would you feel losing the whole premium? Does that change whether you'd use them?</div><textarea data-reflect="r1" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">What risks in your own life do you already hedge, with insurance or savings? Which ones don't you?</div><textarea data-reflect="r2" placeholder="Write freely…"></textarea></div>
+        <div class="prompt reveal"><div class="q">You finished the course. Which lesson changed how you think about money the most?</div><textarea data-reflect="r3" placeholder="Write freely…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Check</div>
+      <h2 class="reveal">Exam-style <em>questions.</em></h2>
+      <p class="muted reveal">Written the way a college exam would ask them. Each right answer on the first try is worth 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">On the job: you're a risk manager at an airline</h3>
+      <div class="reveal">
+        <p>Your airline will buy 1 million gallons of jet fuel in 3 months. The CFO wants a plan. Here's the situation:</p>
+        <ul>
+          <li><b>Fuel futures price for 3 months out:</b> $2.50 a gallon.</li>
+          <li><b>The airline's budget:</b> built on $2.50 a gallon, or $2.5 million.</li>
+          <li><b>Option 1:</b> buy fuel futures at $2.50.</li>
+          <li><b>Option 2:</b> buy call options with a $2.60 strike, for a premium of $0.10 a gallon.</li>
+        </ul>
+        <p><b>Your task:</b> what does each choice cost if fuel ends at $3.20? And if it falls to $2.00? Which would you recommend, and why?</p>
+        <textarea id="job-answer" placeholder="Write your note to the CFO…"></textarea>
+        <details class="deeper">
+          <summary>See a model answer</summary>
+          <div>
+            <p><b>Futures, fuel at $3.20:</b> fuel costs $3.2 million, the futures gain ($3.20 − $2.50) × 1 million = $700,000. Net <b>$2.5 million</b>. At $2.00: fuel $2.0 million, futures lose $500,000. Net still <b>$2.5 million</b>.</p>
+            <p><b>Calls, fuel at $3.20:</b> fuel $3.2 million, the calls pay ($3.20 − $2.60) × 1 million = $600,000, premium $100,000. Net $3.2 − $0.6 + $0.1 = <b>$2.7 million</b>. At $2.00: the calls expire; fuel $2.0 million + $100,000 premium = <b>$2.1 million</b>.</p>
+            <p><b>To the CFO:</b> futures give a fixed $2.5 million no matter what, which matches our budget exactly. Calls cost $100,000 up front and cap our cost at $2.7 million, but let us save if fuel falls. If our priority is hitting the budget, use futures. If we can afford a bit more risk for the chance of savings, calls are worth it.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Where it leads</div>
+      <h2 class="reveal">You finished <em>the whole course.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="This lesson builds on risk and return, insurance, and how trading works. It's the last lesson in the course.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../risk-return/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Risk and return</text><text x="20" y="86">Unit 14 · measuring risk</text></a>
+          <a href="../insurance/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Insurance</text><text x="20" y="186">Unit 6 · paying to cut risk</text></a>
+          <a href="../trading/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">How trading works</text><text x="20" y="286">Unit 16 · markets</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">You are here</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Options and futures</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../../course/"><text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Course complete</text><text x="690" y="186">Review any lesson on the map</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>What you're looking at:</b> a map of where this lesson fits in the course. Read it left to right: the lessons it builds on, this lesson in the middle, and the end of the course.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Back · Unit 14</span><b>Risk and return</b></li>
+        <li><span class="muted small">Back · Unit 6</span><b>Insurance</b></li>
+        <li><span class="muted small">Back · Unit 16</span><b>How trading works</b></li>
+        <li class="here"><span class="small">You are here</span><b>Options and futures</b></li>
+        <li><span class="muted small">Next</span><b>Course complete</b></li>
+      </ul>
+      <p class="reveal" style="max-width:680px;margin-top:32px">That's every lesson, from your first budget to options and futures. Everything ties together: the time value of money prices bonds, companies and options; risk and return set every discount rate; and every job on Wall Street does one piece of it. Go back to any lesson on the map to review.</p>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../trading/">Revisit: How trading works <span class="arrow">→</span></a><a class="btn line" href="../../course/">Course map</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Legal and info"><a href="../../about">About</a><a href="../../contact">Contact</a><a href="../../legal/privacy">Privacy</a><a href="../../legal/terms">Terms</a><a href="../../legal/cookies">Cookies and storage</a><a href="../../credits">Credits</a></nav>
+    <p><a class="foot-lang" href="../../es/lessons/derivatives/" data-set-lang="es" hreflang="es" lang="es">Ver en español</a></p>
+    <p class="disclaimer">FinancedHub is for education only. It isn't financial, tax, investment or legal advice. Examples are simplified and the numbers are made up for practice.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/save.js?v=202611110025"></script>
+<script src="../../assets/vendor/supabase-2.45.4.js?v=202611110025"></script>
+<script src="../../assets/js/auth.js?v=202611110025"></script>
+<script src="../../assets/js/site.js?v=202611110025"></script>
+<script src="../../assets/js/lesson-kit.js?v=202611110025"></script>
+<script src="lesson.js?v=202611110025"></script>
+</body>
+</html>

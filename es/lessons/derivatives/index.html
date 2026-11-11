@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es" data-alt="../../../lessons/derivatives/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Opciones y futuros · FinancedHub</title>
+  <meta name="description" content="Unidad 16, Lección 3: los derivados, contratos cuyo valor viene de otra cosa: futuros y fijar un precio, cobertura y especulación, opciones call y put, precio de ejercicio, prima y vencimiento, ganancias y precio de equilibrio, usar una put como seguro, y por qué el apalancamiento de las opciones agranda las ganancias y las pérdidas. Juego: Mesa de derivados, ocho preguntas de opciones y futuros.">
+  <meta property="og:site_name" content="FinancedHub">
+  <meta property="og:title" content="Opciones y futuros">
+  <meta property="og:description" content="Unidad 16, Lección 3: los derivados, contratos cuyo valor viene de otra cosa: futuros y fijar un precio, cobertura y especulación, opciones call y put, precio de ejercicio, prima y vencimiento, ganancias y precio de equilibrio, usar una put como seguro, y por qué el apalancamiento de las opciones agranda las ganancias y las pérdidas. Juego: Mesa de derivados, ocho preguntas de opciones y futuros.">
+  <meta property="og:image" content="https://financedhub.com/assets/og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://financedhub.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>try { var h = document.documentElement, l = localStorage.getItem("fh-lang"); if (l ? l !== h.lang : h.lang === "en" && /^es/i.test(navigator.language || "")) location.replace(h.dataset.alt + location.search + location.hash); if (localStorage.getItem("fh-theme") === "dark") h.dataset.theme = "dark"; } catch (e) {}</script>
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=202611110025">
+  <link rel="icon" href="../../../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../../lessons/derivatives/lesson.css?v=202611110025">
+
+
+  <!-- seo -->
+  <link rel="canonical" href="https://financedhub.com/es/lessons/derivatives/">
+  <link rel="alternate" hreflang="en" href="https://financedhub.com/lessons/derivatives/">
+  <link rel="alternate" hreflang="es" href="https://financedhub.com/es/lessons/derivatives/">
+  <link rel="alternate" hreflang="x-default" href="https://financedhub.com/lessons/derivatives/">
+  <meta property="og:url" content="https://financedhub.com/es/lessons/derivatives/">
+  <!-- /seo -->
+</head>
+<body data-root="../../">
+<a class="skip" href="#main">Saltar a la lección</a>
+
+<header class="topbar">
+  <div class="wrap wide">
+    <a class="logo" href="../../"><svg class="logo-mark" viewBox="7 7 50 50" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor"/><g fill="none" stroke="var(--paper)" stroke-width="2.6"><circle cx="29.5" cy="34.5" r="16.5"/><circle cx="27.5" cy="36.5" r="9.5"/></g><circle cx="26.5" cy="37.5" r="3.2" fill="var(--paper)"/></svg><span class="logo-word">Financed<span>Hub</span></span></a>
+    <nav class="topnav" aria-label="Site"><a href="../../home/">Inicio</a><a href="../../course/">Curso</a><a href="../../certifications/">Certificaciones</a><a href="../../about">Acerca de</a></nav>
+    <div class="top-right">
+    <span class="xp"><b id="xp">0</b> xp</span>
+    <button class="icon-btn theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn sm" href="../../account/">Entrar</a>
+    </div>
+  </div>
+  <div class="read-progress"></div>
+</header>
+
+<nav class="rail" aria-label="Capítulos de la lección">
+  <a href="#start"><i></i><span>Inicio</span></a>
+  <a href="#see" data-style="visual"><i></i><span>Míralo</span></a>
+  <a href="#hear" data-style="auditory"><i></i><span>Escúchalo</span></a>
+  <a href="#play" data-style="kinesthetic"><i></i><span>Juégalo</span></a>
+  <a href="#logic" data-style="logical"><i></i><span>Paso a paso</span></a>
+  <a href="#nature" data-style="naturalistic"><i></i><span>Naturaleza</span></a>
+  <a href="#notes" data-style="reading"><i></i><span>Apuntes</span></a>
+  <a href="#together" data-style="social"><i></i><span>En grupo</span></a>
+  <a href="#solo" data-style="solitary"><i></i><span>Por tu cuenta</span></a>
+  <a href="#check"><i></i><span>Ponte a prueba</span></a>
+  <a href="#connects"><i></i><span>Hacia dónde va</span></a>
+</nav>
+
+<main id="main">
+
+  <section class="chapter" id="start">
+    <div class="wrap fold">
+      <div class="fold-text">
+        <div class="kicker reveal"><span class="num">Unidad 16 · Lección 3</span> Bancos y mercados</div>
+        <h1 class="reveal">Fija un precio hoy. <em>O compra el derecho a decidir después.</em></h1>
+        <p class="story reveal"><span class="story-tag">La historia hasta ahora</span> La cadena de bicicletas (Lecciones 16.1 y 16.2) necesita <span class="mark">100 toneladas de aluminio</span> para cuadros dentro de 6 meses, y el precio del aluminio sube y baja mucho. Una subida podría borrar la ganancia de un año. Mientras tanto, tienes <span class="mark">100 acciones</span> de la cadena a <span class="mark">$26</span>, y crees que podrían subir, o desplomarse. Los dos problemas tienen el mismo tipo de herramienta: un contrato sobre lo que va a pasar. Esta lección muestra cómo funcionan, y por qué te pueden proteger o quemar.</p>
+        <div class="four compact">
+          <div class="reveal"><div class="word">Qué</div><p>Un <b>derivado</b> es un contrato cuyo valor viene de otra cosa, como una acción o el aluminio. Los <b>futuros</b> y las <b>opciones</b> son los más comunes.</p></div>
+          <div class="reveal"><div class="word">Por qué</div><p>Las empresas los usan para fijar precios y proteger sus ganancias. Los inversionistas los usan para proteger sus portafolios, o para apostar con menos dinero al principio.</p></div>
+          <div class="reveal"><div class="word">Cómo</div><p>Un futuro es una promesa de comprar o vender a un precio fijado más adelante. Una opción es el derecho, no la obligación, de hacerlo a un precio fijado, y pagas ese derecho por adelantado.</p></div>
+          <div class="reveal"><div class="word">Quién</div><p>En las <b>mesas de derivados</b> de los bancos se crea mercado en ellos. Los equipos de <b>gestión de riesgos</b> de las empresas los usan para cubrirse. En <b>materias primas</b> se opera petróleo, metales y granos.</p></div>
+        </div>
+      </div>
+      <div class="fold-art reveal">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Una tarjeta de contrato de una opción call: el derecho a comprar 100 acciones a $30 hasta junio, por una prima de $200, con un sello que dice derecho, no obligación.">
+          <text x="260" y="64" text-anchor="middle" font-family="Fraunces, serif" font-size="32" fill="var(--ink)">Un contrato sobre el mañana</text>
+          <rect x="70" y="110" width="380" height="300" rx="20" fill="var(--card)" stroke="var(--line)" stroke-width="3"/>
+          <text x="260" y="160" text-anchor="middle" font-family="Fraunces, serif" font-size="26" fill="var(--needs)">Opción call</text>
+          <path d="M110 180 H 410" stroke="var(--line)" stroke-width="2"/>
+          <g font-size="18" fill="var(--ink-2)">
+            <text x="110" y="220">Derecho a comprar</text><text x="410" y="220" text-anchor="end" font-weight="700" fill="var(--ink)">100 acciones</text>
+            <text x="110" y="260">Ejercicio</text><text x="410" y="260" text-anchor="end" font-weight="700" fill="var(--ink)">$30 la acción</text>
+            <text x="110" y="300">Hasta</text><text x="410" y="300" text-anchor="end" font-weight="700" fill="var(--ink)">Junio</text>
+            <text x="110" y="340">Precio (prima)</text><text x="410" y="340" text-anchor="end" font-weight="700" fill="var(--ink)">$200</text>
+          </g>
+          <g class="dv-stamp"><rect x="290" y="360" width="170" height="64" rx="12" fill="none" stroke="var(--wants)" stroke-width="4"/><text x="375" y="388" text-anchor="middle" font-size="16" font-weight="700" fill="var(--wants)">DERECHO,</text><text x="375" y="410" text-anchor="middle" font-size="16" font-weight="700" fill="var(--wants)">NO OBLIGACIÓN</text></g>
+          <text x="260" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="var(--ink-2)">decides después; pagas ahora</text>
+        </svg>
+        <p class="chart-cap"><b>Qué estás viendo:</b> una opción call sobre la acción de la cadena. Por $200 que pagas hoy, recibes el derecho de comprar 100 acciones a $30 cada una en cualquier momento hasta junio. Si la acción se queda abajo de $30, simplemente no la usas. Eso significa "derecho, no obligación".</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="see" data-style="visual">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">01</span> Míralo</div>
+      <h2 class="reveal">Un contrato cuyo valor <em>viene de otra cosa.</em></h2>
+      <p class="lead reveal">Las acciones y los bonos son pedazos de una empresa o de un préstamo. Un <dfn class="term" data-def="Un contrato cuyo valor depende de otra cosa, llamada activo subyacente, como una acción, una tasa de interés, el petróleo o el aluminio.">derivado</dfn> es distinto: es un contrato sobre otra cosa, llamada el <dfn class="term" data-def="Lo que le da su valor a un derivado, como una acción, una materia prima o una tasa de interés.">activo subyacente</dfn>. Cuando se mueve el precio del subyacente, también se mueve el valor del contrato.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Futuros: fijar un precio</h3>
+      <p class="reveal">Un <dfn class="term" data-def="Un contrato para comprar o vender una cantidad fija de algo a un precio fijo en una fecha futura. Los dos lados tienen que cumplirlo. Se opera en bolsas como la CME.">contrato de futuros</dfn> es un acuerdo para comprar o vender una cantidad fija a un precio fijo en una fecha futura. Los dos lados tienen que cumplirlo. Los futuros se operan en bolsas como la CME de Chicago, para petróleo, metales, granos, índices bursátiles y más.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Los futuros de la cadena</dt><dd>Acuerda hoy comprar 100 toneladas de aluminio en 6 meses a <b>$2,500 la tonelada</b>: $250,000.</dd></div><div><dt>Si el aluminio sube a $3,000</dt><dd>Los futuros ganan ($3,000 − $2,500) × 100 = <b>$50,000</b>, lo que cubre el precio más alto. La cadena igual paga unos $250,000 en total.</dd></div><div><dt>Si el aluminio baja a $2,000</dt><dd>Los futuros pierden ($2,500 − $2,000) × 100 = $50,000, pero el metal sale $50,000 más barato. Igual unos <b>$250,000</b>.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Cobertura y especulación</h3>
+      <p class="reveal">La cadena no busca ganar; quiere un precio con el que pueda planear. Usar un derivado para reducir un riesgo que ya tienes es hacer una <dfn class="term" data-def="Usar un derivado u otra operación para reducir un riesgo que ya tienes, como fijar un precio que vas a tener que pagar.">cobertura</dfn>. Usarlo para apostar a un precio, sin ningún riesgo que proteger, es <dfn class="term" data-def="Operar para ganar con un movimiento de precio que esperas, sin tener un riesgo que proteger.">especular</dfn>. Los mercados necesitan las dos cosas: quienes especulan toman el otro lado de las coberturas.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Cobertura</dt><dd>La cadena de bicicletas, que de verdad necesita el aluminio.</dd></div><div><dt>Especulación</dt><dd>Alguien que le vendió esos futuros a la cadena, apostando a que el aluminio no va a subir.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Opciones: el derecho, no la obligación</h3>
+      <p class="reveal">Una opción le da una elección a quien la compra. Una <dfn class="term" data-def="Una opción que da el derecho, pero no la obligación, de comprar algo a un precio fijo antes de una fecha fija.">opción call</dfn> es el derecho a comprar a un precio fijado; una <dfn class="term" data-def="Una opción que da el derecho, pero no la obligación, de vender algo a un precio fijo antes de una fecha fija.">opción put</dfn> es el derecho a vender. El precio fijado es el <dfn class="term" data-def="El precio fijado al que una opción te deja comprar (call) o vender (put).">precio de ejercicio</dfn>, el último día es el <dfn class="term" data-def="El último día en que se puede usar una opción. Después, la opción desaparece.">vencimiento</dfn>, y lo que pagas por la opción es la <dfn class="term" data-def="El precio que se paga por adelantado para comprar una opción. Es lo máximo que puede perder quien compra la opción.">prima</dfn>. Un contrato de opciones sobre acciones cubre 100 acciones.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu call</dt><dd>Precio de ejercicio <b>$30</b>, vence en junio, prima de $2 por acción × 100 acciones = <b>$200</b>.</dd></div><div><dt>La acción en $36 en junio</dt><dd>Compras a $30 algo que vale $36: ($36 − $30) × 100 = $600. Menos la prima de $200: <b>$400 de ganancia</b>.</dd></div><div><dt>La acción en $28 en junio</dt><dd>¿Para qué comprar a $30? No la usas. La opción vence y pierdes la prima de <b>$200</b>, nada más.</dd></div></dl></div>
+
+      <h3 class="reveal" style="margin-top:56px">Precio de equilibrio y apalancamiento</h3>
+      <p class="reveal">Una call empieza a dar ganancia solo cuando la acción pasa el precio de ejercicio más la prima, su <b>precio de equilibrio</b>. Las opciones son una forma de apalancamiento (Lección 13.1): con poco dinero controlas muchas acciones, así que las ganancias y pérdidas en porcentaje son enormes.</p>
+      <div class="formula reveal">Precio de equilibrio de una call <span class="op">=</span> precio de ejercicio <span class="op">+</span> prima por acción</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Precio de equilibrio</dt><dd>$30 + $2 = <b>$32</b>.</dd></div><div><dt>La acción va de $26 a $36</dt><dd>Con 100 acciones: $2,600 se vuelven $3,600, <span class="frac"><span>$1,000</span><span>$2,600</span></span> = como <b>38%</b>. La call: $200 se vuelven $600, <span class="frac"><span>$400</span><span>$200</span></span> = <b>200%</b>.</dd></div><div><dt>La acción va de $26 a $28</dt><dd>Acciones: suben como 8%. La call: <b>−100%</b>.</dd></div></dl></div>
+      <div class="md-card reveal" id="op">
+        <label class="md-lab" for="op-p">Precio de la acción en junio <b id="op-p-v">$36</b></label><input type="range" id="op-p" min="20" max="40" step="1" value="36">
+        <div id="op-out" aria-hidden="true"></div>
+        <p class="op-msg" id="op-msg" aria-live="polite"></p>
+      </div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> tu ganancia en junio con cada precio de la acción, de $20 a $40. Azul es tener 100 acciones compradas a $26. Verde es la call de $30 comprada en $200. La línea punteada es ganancia cero. Los puntos muestran dónde estás con el precio que elijas.</p>
+
+      <h3 class="reveal" style="margin-top:56px">Una put como seguro</h3>
+      <p class="reveal">¿Te preocupa que tus acciones se desplomen? Compra una put. Es como un seguro (Lección 6.1): pagas una prima, y si el precio baja del precio de ejercicio, la put te lo devuelve.</p>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La put</dt><dd>Derecho a vender 100 acciones a <b>$24</b>, prima de $1 por acción: <b>$100</b>.</dd></div><div><dt>Precio de equilibrio de la put</dt><dd>Una put gana cuando el precio baja, así que se resta: precio de ejercicio − prima = $24 − $1 = <b>$23</b>.</dd></div><div><dt>La acción se desploma a $15</dt><dd>Tus acciones pierden ($26 − $15) × 100 = $1,100. La put paga ($24 − $15) × 100 = $900. Pérdida total: $1,100 − $900 + $100 de prima = <b>$300</b>, en vez de $1,100.</dd></div></dl></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="hear" data-style="auditory">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">02</span> Escúchalo</div>
+      <h2 class="reveal">Dos minutos. <em>Solo escucha.</em></h2>
+      <p class="muted reveal">Toca cualquier línea para saltar a ella.</p>
+
+      <div class="player reveal" id="player">
+        <button class="play-btn" id="play-btn" aria-label="Reproducir narración">
+          <svg class="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          <svg class="pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        </button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+        <div class="speed" role="group" aria-label="Velocidad">
+          <button data-rate="0.9">0.9×</button><button data-rate="1" class="on">1×</button><button data-rate="1.25">1.25×</button><button data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="transcript reveal" id="transcript"></div>
+      <audio id="narration" preload="none"></audio>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="play" data-style="kinesthetic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">03</span> Juégalo</div>
+      <h2 class="reveal">Mesa de <em>derivados.</em></h2>
+      <p class="lead reveal">Ocho preguntas de una mesa de derivados. Cada una te da los números. Un contrato de opciones son 100 acciones. Un intento por pregunta.</p>
+
+      <div class="fd reveal rr-wide" id="dv">
+        <div class="fd-top">
+          <div><small id="dv-round">Pregunta 1 de 8</small><b id="dv-q"></b></div>
+          <div class="pg-score"><small>Correctas</small><b id="dv-score">0 de 0</b></div>
+        </div>
+        <ul class="ld-facts" id="dv-facts"></ul>
+        <div class="sd-opts" id="dv-opts" role="group" aria-label="Tu respuesta"></div>
+        <div class="fd-why hidden" id="dv-why" aria-live="polite"></div>
+        <button class="btn fd-next" type="button" id="dv-next" disabled>Siguiente pregunta <span class="arrow">→</span></button>
+      </div>
+      <div id="dv-result" class="hidden"></div>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> contratos inventados. Cada uno muestra los datos y luego hace una pregunta.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="logic" data-style="logical">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">04</span> Paso a paso</div>
+      <h2 class="reveal">La lógica, <em>paso a paso.</em></h2>
+      <p class="reveal">Para calcular cualquier opción al vencimiento, sigue cuatro pasos.</p>
+
+      <h3 class="reveal" style="margin-top:40px">Paso 1: ¿Call o put?</h3>
+      <div class="formula reveal">Call: derecho a comprar. Put: derecho a vender.</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Tu opción</dt><dd>Una call, precio de ejercicio $30.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 2: ¿La usarías?</h3>
+      <div class="formula reveal">Call: solo si la acción está arriba del precio de ejercicio. Put: solo si está abajo.</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La acción en $36</dt><dd>Sí: comprar a $30 es mejor que a $36.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 3: ¿Cuánto vale?</h3>
+      <div class="formula reveal">Call: (acción − precio de ejercicio) × 100. Put: (precio de ejercicio − acción) × 100. O cero.</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>La call</dt><dd>($36 − $30) × 100 = $600.</dd></div></dl></div>
+
+      <h3 class="reveal">Paso 4: Resta la prima</h3>
+      <div class="formula reveal">Ganancia = valor − prima pagada</div>
+      <div class="in-example reveal"><div class="ie-tag">En este ejemplo</div><dl><div><dt>Ganancia</dt><dd>$600 − $200 = $400.</dd></div></dl></div>
+
+      <h3 class="reveal">Ejemplo resuelto: ¿proteges tus acciones?</h3>
+      <p class="reveal">La cadena publica sus resultados el mes que viene, y la acción podría saltar o desplomarse. Estos son los datos:</p>
+      <ul class="reveal">
+        <li><b>Tienes:</b> 100 acciones compradas a $26.</li>
+        <li><b>Una put de $24:</b> cuesta $100 por 100 acciones.</li>
+        <li><b>Una call de $30:</b> cuesta $200 por 100 acciones.</li>
+      </ul>
+      <ol class="steps reveal">
+        <li><b>Ponle nombre a tu riesgo.</b> Ya tienes las acciones, así que tu riesgo es una caída fuerte. Eso pide una cobertura, no una apuesta.</li>
+        <li><b>Calcula el costo de la cobertura.</b> La put cuesta $100, como <span class="frac"><span>$100</span><span>$2,600</span></span> = 4% del valor de tus acciones.</li>
+        <li><b>Revisa el peor caso.</b> Con la put, lo máximo que puedes perder es ($26 − $24) × 100 + $100 = $300, por mucho que baje la acción.</li>
+        <li><b>Olvida la apuesta.</b> Comprar también la call sería sumar una especulación de $200 a unas acciones que ya ganan si la acción sube.</li>
+        <li><b>La respuesta.</b> Si una caída fuerte de verdad te afectaría, la put de $100 es un seguro barato. Si puedes vivir con los altibajos, quédate con los $100: como todo seguro, la mayoría de las veces vence sin usarse.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="nature" data-style="naturalistic">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">05</span> Conexión con la naturaleza</div>
+      <h2 class="reveal">Las semillas del desierto <em>se cubren.</em></h2>
+      <p class="lead reveal">En los desiertos, algunos años llueve y otros no llueve nada. Muchas plantas anuales del desierto no dejan que todas sus semillas broten a la vez. Algunas brotan el primer año; otras esperan en la tierra durante años. Si un año hay sequía, las semillas que esperan sobreviven. En biología a esto se le llama cobertura de apuestas.</p>
+      <svg class="nature-art reveal" viewBox="0 0 900 390" role="img" aria-label="Suelo del desierto con semillas. Algunas brotaron este año; otras esperan en la tierra una lluvia futura.">
+        <rect width="900" height="390" rx="24" fill="color-mix(in srgb, var(--wants) 8%, var(--card))"/>
+        <circle cx="790" cy="80" r="40" fill="#f2c14e" opacity=".8"/>
+        <path d="M0 220 H 900 V 366 Q 900 390 876 390 H 24 Q 0 390 0 366 Z" fill="#c9a77c"/>
+        <g class="dv-sprout">
+          <g><path d="M200 220 V 160" stroke="#4f8a3f" stroke-width="5"/><path d="M200 175 q -26 -10 -30 -32 q 26 6 30 32 Z M200 165 q 24 -12 32 -34 q -26 4 -32 34 Z" fill="#6fa35a"/><ellipse cx="200" cy="232" rx="9" ry="6" fill="#7a5a3a"/></g>
+          <g><path d="M330 220 V 170" stroke="#4f8a3f" stroke-width="5"/><path d="M330 182 q -24 -8 -28 -28 q 24 6 28 28 Z M330 174 q 22 -10 28 -30 q -24 4 -28 30 Z" fill="#6fa35a"/><ellipse cx="330" cy="232" rx="9" ry="6" fill="#7a5a3a"/></g>
+        </g>
+        <g fill="#7a5a3a"><ellipse cx="520" cy="290" rx="9" ry="6"/><ellipse cx="600" cy="320" rx="9" ry="6"/><ellipse cx="680" cy="280" rx="9" ry="6"/><ellipse cx="760" cy="330" rx="9" ry="6"/><ellipse cx="440" cy="335" rx="9" ry="6"/></g>
+        <g text-anchor="middle">
+          <text x="265" y="100" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Brotar ahora</text><text x="265" y="126" font-size="15" fill="var(--ink-2)">apuesta a la lluvia de este año</text>
+          <text x="600" y="170" font-family="Fraunces, serif" font-size="22" fill="var(--ink)">Esperar en la tierra</text><text x="600" y="196" font-size="15" fill="var(--ink-2)">seguro para un año seco</text>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> una ilustración, no datos. Tierra del desierto donde algunas semillas de la misma planta ya brotaron este año, mientras otras esperan bajo tierra una lluvia más adelante.</p>
+      <p class="reveal" style="max-width:680px"><b>Por qué se te queda.</b> Las semillas que esperan son una opción put: renuncian a algo de crecimiento este año para asegurarse de que un mal año no acabe con la planta. Una buena cobertura cuesta un poco cada año para que ningún año pueda arruinarte.</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="notes" data-style="reading">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">06</span> Apuntes</div>
+      <h2 class="reveal">La página que <em>copiarías.</em></h2>
+      <div class="paper reveal" style="margin-top:32px">
+        <ul>
+          <li><b>Derivado</b>: un contrato cuyo valor viene de un <b>activo subyacente</b> (acción, petróleo, aluminio, tasas).</li>
+          <li><b>Futuros</b>: los dos lados deben operar a un precio fijo en una fecha fija. La cadena fija el aluminio a $2,500 la tonelada: unos $250,000 pase lo que pase.</li>
+          <li><b>Cobertura</b>: reduce un riesgo que tienes; <b>especular</b>: apostar a un movimiento.</li>
+          <li><b>Call</b>: derecho a comprar. <b>Put</b>: derecho a vender. <b>Precio de ejercicio</b>, <b>vencimiento</b>, <b>prima</b>. 1 contrato = 100 acciones.</li>
+          <li><b>Ganancia de una call</b> = (acción − precio de ejercicio) × 100 − prima: ($36 − $30) × 100 − $200 = $400. Abajo del precio de ejercicio: solo pierdes la prima.</li>
+          <li><b>Equilibrio de una call</b> = precio de ejercicio + prima: $32. Apalancamiento: +200% o −100%.</li>
+          <li><b>Put como seguro</b>: una put de $24 por $100 limita la pérdida a $300 si la acción se desploma. <b>Equilibrio de una put</b> = precio de ejercicio − prima: $23.</li>
+        </ul>
+      </div>
+
+      <h3 class="reveal" style="margin-top:64px">Llena los espacios</h3>
+      <div class="paper reveal" id="blanks">
+        <div>1. Una opción que da el derecho a vender es una <input type="text" class="blank" data-answer="put|opción put|opcion put" aria-label="Espacio 1">.</div>
+        <div>2. El precio que se paga para comprar una opción es la <input type="text" class="blank" data-answer="prima" aria-label="Espacio 2">.</div>
+        <div>3. Una call con precio de ejercicio de $50 y prima de $4 llega al equilibrio en <input type="text" class="blank" data-answer="54|$54|cincuenta y cuatro" inputmode="numeric" aria-label="Espacio 3"> dólares.</div>
+        <div>4. Usar un derivado para reducir un riesgo que ya tienes se llama hacer una <input type="text" class="blank" data-answer="cobertura" aria-label="Espacio 4">.</div>
+        <div style="margin-top:12px"><button class="btn sm" id="blanks-check">Revisar</button> <span class="small" id="blanks-result" aria-live="polite" style="margin-left:10px"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="together" data-style="social">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">07</span> En grupo</div>
+      <h2 class="reveal">Busca a alguien <em>o a tu grupo de estudio.</em></h2>
+      <div class="cols">
+        <div class="reveal">
+          <h3>Una opción sobre un boleto</h3>
+          <p>Una persona le vende a otra, por $5, el derecho a comprar un boleto de concierto el mes que viene al precio de hoy. Al mes siguiente, el boleto cuesta más o menos. ¿Quién ganó?</p>
+        </div>
+        <div class="reveal">
+          <h3>¿Quién se cubre?</h3>
+          <p>Hagan una lista de cinco negocios, como una aerolínea, una granja o una cadena de cafeterías. ¿Qué riesgo de precio enfrenta cada uno y qué futuros podría usar?</p>
+        </div>
+        <div class="reveal">
+          <h3>Dibujen la ganancia</h3>
+          <p>Cada persona dibuja en papel la línea de ganancia de una call o una put, luego intercambian papeles y revisan el precio de equilibrio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="solo" data-style="solitary">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">08</span> Por tu cuenta</div>
+      <h2 class="reveal">Solo tú y <em>tu dinero.</em></h2>
+      <p class="muted reveal">Esto se queda en este dispositivo. Nadie más lo ve.</p>
+      <div style="margin-top:40px">
+        <div class="prompt reveal"><div class="q">Las opciones pueden convertir $200 en $600 o en $0. ¿Cómo te sentirías al perder toda la prima? ¿Cambia eso si las usarías?</div><textarea data-reflect="r1" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">¿Qué riesgos de tu vida ya cubres, con seguros o ahorros? ¿Cuáles no?</div><textarea data-reflect="r2" placeholder="Escribe libremente…"></textarea></div>
+        <div class="prompt reveal"><div class="q">Terminaste el curso. ¿Qué lección cambió más tu forma de pensar sobre el dinero?</div><textarea data-reflect="r3" placeholder="Escribe libremente…"></textarea></div>
+        <p class="small muted" id="reflect-saved"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="check">
+    <div class="wrap narrow">
+      <div class="kicker reveal"><span class="num">09</span> Ponte a prueba</div>
+      <h2 class="reveal">Preguntas <em>tipo examen.</em></h2>
+      <p class="muted reveal">Escritas como las haría un examen universitario. Cada respuesta correcta al primer intento vale 10 xp.</p>
+      <div id="quiz" style="margin-top:24px"></div>
+
+      <h3 class="reveal" style="margin-top:72px">En el trabajo: manejas el riesgo de una aerolínea</h3>
+      <div class="reveal">
+        <p>Tu aerolínea va a comprar 1 millón de galones de combustible para aviones en 3 meses. La dirección de finanzas quiere un plan. Esta es la situación:</p>
+        <ul>
+          <li><b>Precio de los futuros de combustible a 3 meses:</b> $2.50 el galón.</li>
+          <li><b>El presupuesto de la aerolínea:</b> se armó con $2.50 el galón, o sea $2.5 millones.</li>
+          <li><b>Opción 1:</b> comprar futuros de combustible a $2.50.</li>
+          <li><b>Opción 2:</b> comprar opciones call con precio de ejercicio de $2.60, con una prima de $0.10 por galón.</li>
+        </ul>
+        <p><b>Tu tarea:</b> ¿cuánto cuesta cada opción si el combustible termina en $3.20? ¿Y si baja a $2.00? ¿Cuál recomendarías y por qué?</p>
+        <textarea id="job-answer" placeholder="Escribe tu nota para la dirección de finanzas…"></textarea>
+        <details class="deeper">
+          <summary>Ver una respuesta modelo</summary>
+          <div>
+            <p><b>Futuros, combustible a $3.20:</b> el combustible cuesta $3.2 millones, los futuros ganan ($3.20 − $2.50) × 1 millón = $700,000. Neto <b>$2.5 millones</b>. A $2.00: combustible $2.0 millones, los futuros pierden $500,000. Neto igual <b>$2.5 millones</b>.</p>
+            <p><b>Calls, combustible a $3.20:</b> combustible $3.2 millones, las calls pagan ($3.20 − $2.60) × 1 millón = $600,000, prima $100,000. Neto $3.2 − $0.6 + $0.1 = <b>$2.7 millones</b>. A $2.00: las calls vencen; combustible $2.0 millones + $100,000 de prima = <b>$2.1 millones</b>.</p>
+            <p><b>Para la dirección de finanzas:</b> los futuros dan $2.5 millones fijos pase lo que pase, justo lo del presupuesto. Las calls cuestan $100,000 por adelantado y ponen un tope de $2.7 millones a nuestro costo, pero nos dejan ahorrar si el combustible baja. Si la prioridad es cumplir el presupuesto, usen futuros. Si podemos aceptar un poco más de riesgo por la posibilidad de ahorrar, las calls valen la pena.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="connects">
+    <div class="wrap">
+      <div class="kicker reveal"><span class="num">10</span> Hacia dónde va</div>
+      <h2 class="reveal">Terminaste <em>todo el curso.</em></h2>
+      <svg class="connect-map reveal" viewBox="0 0 1000 340" role="img" aria-label="Esta lección se basa en riesgo y rendimiento, en los seguros y en cómo se compran y venden acciones. Es la última lección del curso.">
+        <g fill="none" stroke="var(--line)" stroke-width="2.5">
+          <path d="M270 70 C 320 70, 320 170, 360 170"/><path d="M270 170 C 300 170, 320 170, 360 170"/><path d="M270 270 C 320 270, 320 170, 360 170"/>
+          <path d="M520 170 C 600 170, 610 170, 680 170"/>
+        </g>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../risk-return/"><text x="20" y="64" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Riesgo y rendimiento</text><text x="20" y="86">Unidad 14 · medir el riesgo</text></a>
+          <a href="../insurance/"><text x="20" y="164" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Seguros</text><text x="20" y="186">Unidad 6 · pagar para bajar el riesgo</text></a>
+          <a href="../trading/"><text x="20" y="264" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">La compraventa</text><text x="20" y="286">Unidad 16 · los mercados</text></a>
+        </g>
+        <rect x="360" y="130" width="160" height="80" rx="40" fill="var(--accent)"/>
+        <text x="440" y="166" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="var(--on-color)">Estás aquí</text>
+        <text x="440" y="188" text-anchor="middle" font-size="13" fill="var(--on-color)" opacity=".85">Opciones y futuros</text>
+        <g font-size="14" fill="var(--ink-2)">
+          <a href="../../course/"><text x="690" y="166" font-family="Fraunces, serif" font-size="19" fill="var(--ink)">Curso completo</text><text x="690" y="186">Repasa cualquier lección en el mapa</text></a>
+        </g>
+      </svg>
+      <p class="chart-cap reveal"><b>Qué estás viendo:</b> un mapa de dónde encaja esta lección en el curso. Léelo de izquierda a derecha: las lecciones en las que se basa, esta lección en el centro y el final del curso.</p>
+      <ul class="connect-list">
+        <li><span class="muted small">Antes · Unidad 14</span><b>Riesgo y rendimiento</b></li>
+        <li><span class="muted small">Antes · Unidad 6</span><b>Seguros</b></li>
+        <li><span class="muted small">Antes · Unidad 16</span><b>Cómo se compran y venden acciones</b></li>
+        <li class="here"><span class="small">Estás aquí</span><b>Opciones y futuros</b></li>
+        <li><span class="muted small">Siguiente</span><b>Curso completo</b></li>
+      </ul>
+      <p class="reveal" style="max-width:680px;margin-top:32px">Esas son todas las lecciones, desde tu primer presupuesto hasta las opciones y los futuros. Todo se conecta: el valor del dinero en el tiempo le pone precio a los bonos, a las empresas y a las opciones; el riesgo y el rendimiento fijan cada tasa de descuento; y cada trabajo de Wall Street hace una parte. Vuelve a cualquier lección del mapa para repasar.</p>
+      <div style="margin-top:48px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="../trading/">Repasa: Cómo se compran y venden acciones <span class="arrow">→</span></a><a class="btn line" href="../../course/">Mapa del curso</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Información legal"><a href="../../about">Acerca de</a><a href="../../contact">Contacto</a><a href="../../legal/privacy">Privacidad</a><a href="../../legal/terms">Términos</a><a href="../../legal/cookies">Cookies y almacenamiento</a><a href="../../credits">Créditos</a></nav>
+    <p><a class="foot-lang" href="../../../lessons/derivatives/" data-set-lang="en" hreflang="en" lang="en">View in English</a></p>
+    <p class="disclaimer">FinancedHub es solo educativo. No es asesoría financiera, fiscal, de inversión ni legal. Los ejemplos están simplificados y los números son inventados para practicar.</p>
+    <p>© 2026 FinancedHub</p>
+  </div>
+</footer>
+
+<script src="../../../assets/js/save.js?v=202611110025"></script>
+<script src="../../../assets/vendor/supabase-2.45.4.js?v=202611110025"></script>
+<script src="../../../assets/js/auth.js?v=202611110025"></script>
+<script src="../../../assets/js/site.js?v=202611110025"></script>
+<script src="../../../assets/js/lesson-kit.js?v=202611110025"></script>
+<script src="../../../lessons/derivatives/lesson.js?v=202611110025"></script>
+</body>
+</html>
